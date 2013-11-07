@@ -32,7 +32,7 @@ execute pathogen#infect()
 "14 editing text
 "15 tabs and indenting
     "Auto indent after indentation"
-    set smartindent
+    "set smartindent
     "Tab size 4
     set tabstop=4
     "Convert tabs to spaces
