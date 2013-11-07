@@ -9,6 +9,8 @@ execute pathogen#infect()
     set smartcase
     "Map single quote to apostrophe in normal mode (jump to exact mark)
     nmap ' `
+    "Substitute multiple occurences in one line per default
+    set gdefault
 "3 tags
 "4 displaying text
 "5 syntax, highlighting and spelling
