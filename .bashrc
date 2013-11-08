@@ -82,6 +82,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias prak='cd ~/Dropbox/Uni/Praktikum/EP'
+alias caut='cd ~/Projects/cautotex/'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
