@@ -52,6 +52,10 @@ execute pathogen#infect()
     nmap <silent> <C-n> :noh<CR>
 "19 reading and writing files
 "20 the swap file
+    " Don't write backup and swap files.
+    set nobackup
+    set nowritebackup
+    set noswapfile
 "21 command line editing
 "22 executing external commands
 "23 running make and jumping to errors
