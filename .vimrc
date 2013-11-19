@@ -3,6 +3,8 @@ execute pathogen#infect()
 "2 moving around, searching and patterns
     "Highlight search while typing
     set incsearch
+    "Show search highlight
+    set hlsearch
     "Set ignore case when searching (watch out for smartcase)
     set ignorecase
     "Search case sensitive when pattern contains uppercase characters
