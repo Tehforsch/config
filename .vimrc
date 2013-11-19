@@ -30,6 +30,8 @@ execute pathogen#infect()
     set number
 "13 selecting text
 "14 editing text
+    " Swap the current word with the next word (which can be on a newline and punctuation is "skipped"):
+    nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
 "15 tabs and indenting
     "Auto indent after indentation"
     "set smartindent
