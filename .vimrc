@@ -1,5 +1,4 @@
 "1 important
-execute pathogen#infect()
 "2 moving around, searching and patterns
     "Highlight search while typing
     set incsearch
@@ -20,6 +19,8 @@ execute pathogen#infect()
     syntax on
     "Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
+    "Disable automatic comment insertion when inserting new line while on a commented line
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "6 multiple windows
 "7 multiple tab pages
 "8 terminal
@@ -73,6 +74,31 @@ execute pathogen#infect()
     set timeout timeoutlen=1000 ttimeoutlen=100
     "Increase history size.
     set history=200
-"Pre-defined macros
-    "Make a for loop in Java
-    let @f ='^ifor<SPACE>(int<SPACE><ESC>lyiwa<SPACE>=<ESC>wa;<SPACE>i<SPACE><LT><BACKSPACE><BACKSPACE><BACKSPACE><ESC>pa<LT><SPACE><BACKSPACE><BACKSPACE><SPACE><LT><ESC>A;<SPACE><ESC>pA++)]<BACKSPACE>{<RETURN>}<ESC>O<ESC>'
+
+"27 vundle
+    set nocompatible              " be iMproved
+    filetype off                  " required!
+
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+
+    " let Vundle manage Vundle
+    Bundle 'gmarik/vundle'
+    " Comment out lines with gcc, comment out movements/visual selections with gc
+    Bundle 'tpope/vim-commentary'
+    " Repeat composite commands with .
+    Bundle 'tpope/vim-repeat'
+    " Surround movements/ranges, for example ysiw( surrounds the word with a
+    " bracket.
+    Bundle 'tpope/vim-surround'
+    " Git plugin.
+    Bundle 'tpope/vim-fugitive'
+    " Syntax checker 
+    Bundle 'scrooloose/syntastic'
+    " File manager thing
+    Bundle 'scrooloose/nerdtree'
+    " Status bar
+    Bundle 'bling/vim-airline'
+
+
+    filetype plugin indent on
