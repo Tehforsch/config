@@ -1,5 +1,5 @@
-"1 important
-"2 moving around, searching and patterns
+" important
+" moving around, searching and patterns
     "Highlight search while typing
     set incsearch
     "Show search highlight
@@ -12,30 +12,30 @@
     nmap ' `
     "Substitute multiple occurences in one line per default
     set gdefault
-"3 tags
-"4 displaying text
-"5 syntax, highlighting and spelling
+" tags
+" displaying text
+" syntax, highlighting and spelling
     "Enable Syntax Highlighting
     syntax on
     "Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
     "Disable automatic comment insertion when inserting new line while on a commented line
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-"6 multiple windows
-"7 multiple tab pages
-"8 terminal
-"9 using the mouse
-"10 GUI
+" multiple windows
+" multiple tab pages
+" terminal
+" using the mouse
+" GUI
     set guicursor=a:blinkon0
-"11 printing
-"12 messages and info
+" printing
+" messages and info
     set ruler
     set number
-"13 selecting text
-"14 editing text
+" selecting text
+" editing text
     " Swap the current word with the next word (which can be on a newline and punctuation is "skipped"):
     nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
-"15 tabs and indenting
+" tabs and indenting
     "Auto indent after indentation"
     "set smartindent
     "Tab size 4
@@ -48,23 +48,23 @@
     set softtabstop=4
     "Enable filetype detection
     filetype indent on
-"16 folding
-"17 diff mode
-"18 mapping
+" folding
+" diff mode
+" mapping
     "Map <C-n> to clear all search highlights.
     nmap <silent> <C-n> :noh<CR>
-"19 reading and writing files
-"20 the swap file
+" reading and writing files
+" the swap file
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup
     set noswapfile
-"21 command line editing
-"22 executing external commands
-"23 running make and jumping to errors
-"24 language specific
-"25 multi-byte characters
-"26 various
+" command line editing
+" executing external commands
+" running make and jumping to errors
+" language specific
+" multi-byte characters
+" various
     "Enable filetype specific plugins
     filetype plugin on
     "Set tab-key behaviour (when opening files).
@@ -75,7 +75,18 @@
     "Increase history size.
     set history=200
 
-"27 vundle
+" plugin specific settings
+    " Syntastic
+    let g:syntastic_enable_highlighting=0
+    let g:syntastic_check_on_open=0
+    let g:syntastic_check_on_wq=0
+    let g:syntastic_enable_balloons=0
+    let g:syntastic_python_checkers=['flake8']
+    let g:syntastic_tex_checkers = []
+    " Airline
+    set laststatus=2
+
+" vundle
     set nocompatible              " be iMproved
     filetype off                  " required!
 
@@ -99,6 +110,8 @@
     Bundle 'scrooloose/nerdtree'
     " Status bar
     Bundle 'bling/vim-airline'
+    " Git plugin 2.
+    Bundle 'airblade/vim-gitgutter'
 
 
     filetype plugin indent on
