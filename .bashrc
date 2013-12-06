@@ -78,12 +78,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -alF'
-alias prak='cd ~/Dropbox/Uni/Praktikum/EP'
-alias caut='cd ~/Projects/cautotex/'
-alias parse='python ~/Projects/cautotex/parse.py .'
+source ~/.aliases
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
