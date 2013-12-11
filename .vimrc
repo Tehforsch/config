@@ -112,6 +112,8 @@
     Bundle 'bling/vim-airline'
     " Git plugin 2.
     Bundle 'airblade/vim-gitgutter'
+    " Todo.txt for testing
+    Bundle 'freitass/todo.txt-vim'
 
 
     filetype plugin indent on
