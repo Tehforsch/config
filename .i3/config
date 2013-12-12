@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -22,13 +22,13 @@ focus_follows_mouse no
 workspace_auto_back_and_forth yes
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym Mod1+2 exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Q kill
+bindsym Mod1+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym Mod1+1 exec dmenu_run
 
 # change focus
 bindsym $mod+h focus left
@@ -145,9 +145,31 @@ bar {
         status_command i3status
 }
 
+# Shortcuts to open specific applications
+bindsym Mod1+Shift+m exec Mathematica
+bindsym Mod1+Shift+x exec nautilus
+bindsym Mod1+Shift+s exec google-chrome
+
 # Volume changing hotkeys
 bindsym Ctrl+Shift+R exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
 bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
 
 # Spotify controls
+bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+# Startup
+exec --no-startup-id /usr/bin/nm-applet # network applet
+exec ~/.dropbox-dist/dropboxd
+exec spotify
+exec_always xmodmap ~/.Xmodmap
 
+# Use specific workspaces for certain programs
+# Assign specific workspaces to some applications
+assign [class="Skype"] 8
+assign [class="Pidgin"] 8
+
+assign [class="Spotify"] 4
+assign [class="Google-chrome"] 3
+assign [class="Gnome-Terminal"] 2
+assign [class="Evince"] 1
