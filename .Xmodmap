@@ -9,6 +9,5 @@ keycode 133 = Super_R NoSymbol Super_R
 keycode 52 = y Y braceleft braceleft braceleft braceleft
 keycode 53 = x X braceright braceright braceright braceright
 keycode 42 = g G dollar dollar dollar dollar
-remove Lock = Caps_Lock
-keysym Caps_Lock = Escape
-add Lock = Caps_Lock
+clear lock 
+keycode 66 = Escape
