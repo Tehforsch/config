@@ -31,10 +31,10 @@ bindsym Mod1+Q kill
 bindsym Mod1+1 exec dmenu_run
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym Mod1+h focus left
+bindsym Mod1+j focus down
+bindsym Mod1+k focus up
+bindsym Mod1+l focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
