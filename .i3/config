@@ -23,6 +23,7 @@ workspace_auto_back_and_forth yes
 
 # start a terminal
 bindsym Mod1+2 exec i3-sensible-terminal
+bindsym $mod+Return exec xcwd | xargs gnome-terminal --working-directory
 
 # kill focused window
 bindsym Mod1+Q kill
@@ -150,12 +151,22 @@ exec ~/.dropbox-dist/dropboxd
 exec spotify
 exec_always xmodmap ~/.Xmodmap
 
-# Use specific workspaces for certain programs
+# Assign workspaces to monitors.
+workspace 1 output DVI-I-1 # Terminals
+workspace 2 output DVI-I-1 # Browser
+workspace 3 output DVI-I-0 # Output
+workspace 4 output DVI-I-1 # Spotify
+workspace 5 output DVI-I-0 # Pidgin, Mail
+workspace 6 output DVI-I-1
+workspace 7 output DVI-I-0
+workspace 8 output DVI-I-1
+workspace 9 output DVI-I-0
+
 # Assign specific workspaces to some applications
-assign [class="Skype"] 8
-assign [class="Pidgin"] 8
+assign [class="Pidgin"] 5
 
 assign [class="Spotify"] 4
-assign [class="Google-chrome"] 3
-assign [class="Gnome-Terminal"] 2
-assign [class="Evince"] 1
+assign [class="Google-chrome"] 2
+assign [class="Gnome-Terminal"] 1
+assign [class="Evince"] 3
+assign [class="Shotwell"] 3
