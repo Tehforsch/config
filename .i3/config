@@ -145,11 +145,6 @@ bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10% && kil
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-# Startup
-exec --no-startup-id /usr/bin/nm-applet # network applet
-exec ~/.dropbox-dist/dropboxd
-exec spotify
-exec_always xmodmap ~/.Xmodmap
 
 # Assign workspaces to monitors.
 workspace 1 output DVI-I-1
@@ -170,3 +165,10 @@ assign [class="Google-chrome"] 2
 assign [class="Gnome-Terminal"] 1
 assign [class="Evince"] 3
 assign [class="Shotwell"] 3
+
+# Startup
+exec --no-startup-id /usr/bin/nm-applet # network applet
+exec ~/.dropbox-dist/dropboxd
+exec spotify
+exec_always xmodmap ~/.Xmodmap
+exec_always xset -dpms
