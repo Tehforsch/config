@@ -1,1 +1,4 @@
 .vim/bundle/*
+.vim/bundle/syntastic/
+.vim/bundle/vim-gitgutter/
+.vim/bundle/vim-airline/

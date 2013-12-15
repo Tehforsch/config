@@ -20,8 +20,6 @@
     "Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
     "This has to be at the end I think
-    "Disable automatic comment insertion when inserting new line while on a commented line
-   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " multiple windows
 " multiple tab pages
 " terminal
@@ -119,3 +117,5 @@
 
     filetype plugin indent on
 
+    "Disable automatic comment insertion when inserting new line while on a commented line
+   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
