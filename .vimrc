@@ -1,25 +1,25 @@
 " important
 " moving around, searching and patterns
-    "Highlight search while typing
+    " Highlight search while typing
     set incsearch
-    "Show search highlight
-    set hlsearch
-    "Set ignore case when searching (watch out for smartcase)
+    " Show search highlight
+    " set hlsearch
+    " Set ignore case when searching (watch out for smartcase)
     set ignorecase
-    "Search case sensitive when pattern contains uppercase characters
+    " Search case sensitive when pattern contains uppercase characters
     set smartcase
-    "Map single quote to apostrophe in normal mode (jump to exact mark)
+    " Map single quote to apostrophe in normal mode (jump to exact mark)
     nmap ' `
-    "Substitute multiple occurences in one line per default
+    " Substitute multiple occurences in one line per default
     set gdefault
 " tags
-" displaying text
+
 " syntax, highlighting and spelling
-    "Enable Syntax Highlighting
+    " Enable syntax highlighting
     syntax on
-    "Disable highlighting of matching parantheses (lags)
+    " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
-    "This has to be at the end I think
+" displaying text
 " multiple windows
 " multiple tab pages
 " terminal
@@ -32,25 +32,25 @@
     set number
 " selecting text
 " editing text
-    " Swap the current word with the next word (which can be on a newline and punctuation is "skipped"):
-    nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
+    " Swap the current word with the next word (which can be on a newline and punctuation is " skipped"):
+    nmap <silent> gw " _yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
 " tabs and indenting
-    "Auto indent after indentation"
-    "set smartindent
-    "Tab size 4
+    " Auto indent after indentation"
+    " set smartindent
+    " Tab size 4
     set tabstop=4
-    "Convert tabs to spaces
+    " Convert tabs to spaces
     set expandtab
-    "Size of indents with < and > command: 4
+    " Size of indents with < and > command: 4
     set shiftwidth=4
-    "Delete 4 spaces at once when deleting tabs.
+    " Delete 4 spaces at once when deleting tabs.
     set softtabstop=4
-    "Enable filetype detection
+    " Enable filetype detection
     filetype indent on
 " folding
 " diff mode
 " mapping
-    "Map <C-n> to clear all search highlights.
+    " Map <C-n> to clear all search highlights.
     nmap <silent> <C-n> :noh<CR>
 " reading and writing files
 " the swap file
@@ -64,14 +64,14 @@
 " language specific
 " multi-byte characters
 " various
-    "Enable filetype specific plugins
+    " Enable filetype specific plugins
     filetype plugin on
-    "Set tab-key behaviour (when opening files).
+    " Set tab-key behaviour (when opening files).
     set wildmode=longest,list,full
     set wildmenu
-    "Fix the delay after ESC - o
+    " Fix the delay after ESC - o
     set timeout timeoutlen=1000 ttimeoutlen=100
-    "Increase history size.
+    " Increase history size.
     set history=200
 
 " plugin specific settings
@@ -94,6 +94,8 @@
 
     " let Vundle manage Vundle
     Bundle 'gmarik/vundle'
+    " Solarized color scheme
+    Bundle 'altercation/vim-colors-solarized'
     " Comment out lines with gcc, comment out movements/visual selections with gc
     Bundle 'tpope/vim-commentary'
     " Repeat composite commands with .
@@ -117,5 +119,10 @@
 
     filetype plugin indent on
 
-    "Disable automatic comment insertion when inserting new line while on a commented line
+    " Disable automatic comment insertion when inserting new line while on a commented line
    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Solarized color scheme
+    set t_Co=16
+    set background=dark
+    colorscheme solarized
