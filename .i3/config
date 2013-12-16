@@ -63,6 +63,14 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# Enable floating mode (popup style) for some applications
+for_window [window_role="pop-up"] floating enable
+for_window [title="Welcome to Wolfram Mathematica 9"] floating enable
+for_window [title="Find and Replace"] floating enable
+for_window [class="Pidgin"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="Qalculate"] floating enable
+
 # focus the child container
 # bindcode $mod+d focus child
 
@@ -171,5 +179,9 @@ exec ~/.dropbox-dist/dropboxd
 exec spotify
 exec pidgin
 exec anki
+exec fluxgui
+exec_always xmodmap ~/.Xmodmap
+exec_always xmodmap ~/.Xmodmap
+exec_always xmodmap ~/.Xmodmap
 exec_always xmodmap ~/.Xmodmap
 exec_always xset -dpms
