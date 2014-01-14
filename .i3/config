@@ -67,7 +67,7 @@ bindsym $mod+space focus mode_toggle
 for_window [window_role="pop-up"] floating enable
 for_window [title="Welcome to Wolfram Mathematica 9"] floating enable
 for_window [title="Find and Replace"] floating enable
-for_window [class="Pidgin"] floating enable
+#for_window [class="Pidgin"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Qalculate"] floating enable
 
@@ -152,6 +152,9 @@ bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
+#Disable window titles
+bindsym Control+Shift+1 [class="^.*"] border toggle
+
 # Assign workspaces to monitors.
 workspace 1 output DVI-I-0
 workspace 2 output DVI-I-1 
@@ -171,6 +174,7 @@ assign [class="Spotify"] 9
 # assign [class="Google-chrome"] 4
 # assign [class="Gnome-Terminal"] 2
 assign [class="Evince"] 3
+assign [class="Okular"] 3
 assign [class="Shotwell"] 3
 
 # Startup
@@ -180,8 +184,5 @@ exec spotify
 exec pidgin
 exec anki
 exec fluxgui
-exec_always xmodmap ~/.Xmodmap
-exec_always xmodmap ~/.Xmodmap
-exec_always xmodmap ~/.Xmodmap
 exec_always xmodmap ~/.Xmodmap
 exec_always xset -dpms
