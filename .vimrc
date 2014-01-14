@@ -13,16 +13,28 @@
     " Substitute multiple occurences in one line per default
     set gdefault
 " tags
-
 " syntax, highlighting and spelling
     " Enable syntax highlighting
     syntax on
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
 " displaying text
+" multiple buffers
+    set hidden
 " multiple windows
 " multiple tab pages
 " terminal
+    " Use different cursor colors for the different modes.
+    if &term =~ "xterm\\|rxvt"
+      " use an orange cursor in insert mode
+      let &t_SI = "\<Esc>]12;orange\x7"
+      " use a red cursor otherwise
+      let &t_EI = "\<Esc>]12;red\x7"
+      silent !echo -ne "\033]12;red\007"
+      " reset cursor when vim exits
+      autocmd VimLeave * silent !echo -ne "\033]112\007"
+      " use \003]12;gray\007 for gnome-terminal
+    endif
 " using the mouse
 " GUI
     set guicursor=a:blinkon0
@@ -84,6 +96,10 @@
     let g:syntastic_tex_checkers = []
     " Airline
     set laststatus=2
+    " Nerdtree
+    map <C-t> :NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
+    vmap <C-t> <esc>:NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
+    imap <C-t> <esc>:NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
 
 " vundle
     set nocompatible              " be iMproved
@@ -115,6 +131,8 @@
     Bundle 'airblade/vim-gitgutter'
     " Todo.txt for testing
     Bundle 'freitass/todo.txt-vim'
+    " Haskell syntax
+    Bundle 'travitch/hasksyn'
 
 
     filetype plugin indent on
