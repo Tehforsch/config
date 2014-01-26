@@ -12,7 +12,7 @@
     nmap ' `
     " Substitute multiple occurences in one line per default
     set gdefault
-" tags
+" searching and replacing
 " syntax, highlighting and spelling
     " Enable syntax highlighting
     syntax on
@@ -58,7 +58,7 @@
     " Delete 4 spaces at once when deleting tabs.
     set softtabstop=4
     " Enable filetype detection
-    filetype indent on
+    "filetype indent on
 " folding
 " diff mode
 " mapping
@@ -77,7 +77,7 @@
 " multi-byte characters
 " various
     " Enable filetype specific plugins
-    filetype plugin on
+    "  filetype plugin on
     " Set tab-key behaviour (when opening files).
     set wildmode=longest,list,full
     set wildmenu
@@ -135,8 +135,9 @@
     Bundle 'travitch/hasksyn'
 
 
-    filetype plugin indent on
-
+    "Switch back on. Turned off for vundle.
+    filetype indent on
+    filetype plugin on
     " Disable automatic comment insertion when inserting new line while on a commented line
    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
