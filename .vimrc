@@ -44,8 +44,9 @@
     set number
 " selecting text
 " editing text
-    " Swap the current word with the next word (which can be on a newline and punctuation is " skipped"):
-    nmap <silent> gw " _yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
+    " Swap the word the cursor is on with the next word (which can be on a
+    " newline, and punctuation is "skipped"):
+    nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
 " tabs and indenting
     " Auto indent after indentation"
     " set smartindent
@@ -64,6 +65,9 @@
 " mapping
     " Map <C-n> to clear all search highlights.
     nmap <silent> <C-n> :noh<CR>
+    " Map C-l and C-h to switch buffers
+    nmap <silent> <C-l> :bn<CR>
+    nmap <silent> <C-h> :bp<CR>
 " reading and writing files
 " the swap file
     " Don't write backup and swap files.
