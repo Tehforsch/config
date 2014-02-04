@@ -68,6 +68,9 @@
     " Map C-l and C-h to switch buffers
     nmap <silent> <C-l> :bn<CR>
     nmap <silent> <C-h> :bp<CR>
+    " Map ö and ä to useful keys
+    nmap <silent> ö :
+    nmap <silent> ä ;
 " reading and writing files
 " the swap file
     " Don't write backup and swap files.
