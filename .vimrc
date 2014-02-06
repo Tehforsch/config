@@ -12,6 +12,8 @@
     nmap ' `
     " Substitute multiple occurences in one line per default
     set gdefault
+" internal vim features
+    set nrformats=""
 " searching and replacing
 " syntax, highlighting and spelling
     " Enable syntax highlighting
