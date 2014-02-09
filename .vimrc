@@ -1,9 +1,6 @@
-" important
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
-    " Show search highlight
-    " set hlsearch
     " Set ignore case when searching (watch out for smartcase)
     set ignorecase
     " Search case sensitive when pattern contains uppercase characters
@@ -13,18 +10,15 @@
     " Substitute multiple occurences in one line per default
     set gdefault
 " internal vim features
+    " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
-" searching and replacing
 " syntax, highlighting and spelling
     " Enable syntax highlighting
     syntax on
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
-" displaying text
 " multiple buffers
     set hidden
-" multiple windows
-" multiple tab pages
 " terminal
     " Use different cursor colors for the different modes.
     if &term =~ "xterm\\|rxvt"
@@ -37,21 +31,14 @@
       autocmd VimLeave * silent !echo -ne "\033]112\007"
       " use \003]12;gray\007 for gnome-terminal
     endif
-" using the mouse
-" GUI
-    set guicursor=a:blinkon0
-" printing
 " messages and info
     set ruler
     set number
-" selecting text
 " editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
     nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
 " tabs and indenting
-    " Auto indent after indentation"
-    " set smartindent
     " Tab size 4
     set tabstop=4
     " Convert tabs to spaces
@@ -60,33 +47,26 @@
     set shiftwidth=4
     " Delete 4 spaces at once when deleting tabs.
     set softtabstop=4
-    " Enable filetype detection
-    "filetype indent on
-" folding
-" diff mode
 " mapping
     " Map <C-n> to clear all search highlights.
     nmap <silent> <C-n> :noh<CR>
-    " Map C-l and C-h to switch buffers
-    nmap <silent> <C-l> :bn<CR>
-    nmap <silent> <C-h> :bp<CR>
+    " Map C-l and C-h to switch windows
+    nmap <silent> <C-k> :wincmd k<CR>
+    nmap <silent> <C-j> :wincmd j<CR>
+    nmap <silent> <C-h> :wincmd h<CR>
+    nmap <silent> <C-l> :wincmd l<CR>
     " Map ö and ä to useful keys
     nmap <silent> ö :
     nmap <silent> ä ;
-" reading and writing files
-" the swap file
+" command mapping
+    " Introduce hs for horizontal split (instead of sp which I find counter intuitive)
+    cmap hs sp
+" swap file
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup
     set noswapfile
-" command line editing
-" executing external commands
-" running make and jumping to errors
-" language specific
-" multi-byte characters
 " various
-    " Enable filetype specific plugins
-    "  filetype plugin on
     " Set tab-key behaviour (when opening files).
     set wildmode=longest,list,full
     set wildmenu
