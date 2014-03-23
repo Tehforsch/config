@@ -55,6 +55,9 @@
     nmap <silent> <C-j> :wincmd j<CR>
     nmap <silent> <C-h> :wincmd h<CR>
     nmap <silent> <C-l> :wincmd l<CR>
+    " Map C-n and C-m to switch buffers
+    nmap <silent> <C-m> :bn
+    nmap <silent> <C-n> :bp
     " Map ö and ä to useful keys
     nmap <silent> ö :
     nmap <silent> ä ;
@@ -89,6 +92,8 @@
     map <C-t> :NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
     vmap <C-t> <esc>:NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
     imap <C-t> <esc>:NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
+    " Php indentation
+    let g:PHP_default_indenting = 1
 
 " vundle
     set nocompatible              " be iMproved
@@ -122,6 +127,8 @@
     Bundle 'freitass/todo.txt-vim'
     " Haskell syntax
     Bundle 'travitch/hasksyn'
+    " Indentation for PHP
+    Bundle '2072/PHP-Indenting-for-VIm'
 
 
     "Switch back on. Turned off for vundle.
