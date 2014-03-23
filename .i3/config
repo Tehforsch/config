@@ -139,7 +139,7 @@ bar {
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+m exec Mathematica
-bindsym Mod1+Shift+x exec nautilus
+bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
 
 # Volume changing hotkeys
@@ -168,13 +168,15 @@ workspace 10 output DVI-I-1
 
 # Assign specific workspaces to some applications
 assign [class="Pidgin"] 7
-
+assign [class="Skype"] 7
 assign [class="Spotify"] 9
 # assign [class="Google-chrome"] 4
 # assign [class="Gnome-Terminal"] 2
-assign [class="Evince"] 3
-assign [class="Okular"] 3
-assign [class="Shotwell"] 3
+assign [class="Evince"] 1
+assign [class="Okular"] 1
+assign [class="Shotwell"] 1
+assign [class="Shotwell"] 1
+assign [class="desktop_window"] 1
 assign [class="Anki"] 8
 
 # Startup
@@ -184,5 +186,5 @@ exec spotify
 exec pidgin
 exec anki
 exec fluxgui
-exec_always xmodmap ~/.Xmodmap
 exec_always xset -dpms
+exec --no-startup-id sh ~/.XmodmapScript
