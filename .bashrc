@@ -99,3 +99,7 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# CUDA variables
+export PATH=$PATH:/usr/local/cuda-5.5/bin 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-5.5/lib64:/lib
