@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH=~/.usrconfig/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -10,7 +10,6 @@ ZSH_THEME="blinks"
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias m="TPATH=\$(pwd)"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
