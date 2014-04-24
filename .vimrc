@@ -21,6 +21,7 @@
     let loaded_matchparen = 1
 " multiple buffers
     set hidden
+    set wildignore=*.o,*.pyc,*.class
 " terminal
     " Use different cursor colors for the different modes.
     if &term =~ "xterm\\|rxvt"
@@ -52,6 +53,8 @@
 " mapping
     " Map <C-n> to clear all search highlights.
     nmap <silent> <C-n> :noh<CR>
+    " Map <C-T> to command-t plugin which doesn't seem to work by default
+    nmap <silent> <C-t> :CommandT<CR>
     " Map C-l and C-h to switch windows
     nmap <silent> <C-k> :wincmd k<CR>
     nmap <silent> <C-j> :wincmd j<CR>
@@ -90,6 +93,8 @@
     let g:syntastic_tex_checkers = []
     " Php indentation
     let g:PHP_default_indenting = 1
+    " Command-T
+    let g:CommandTAlwaysShowDotFiles = 1
 
 " vundle
     set nocompatible              " be iMproved
@@ -123,6 +128,11 @@
     Bundle 'travitch/hasksyn'
     " Indentation for PHP
     Bundle '2072/PHP-Indenting-for-VIm'
+    " Snipmate 
+    Bundle "MarcWeber/vim-addon-mw-utils"
+    Bundle "tomtom/tlib_vim"
+    Bundle "garbas/vim-snipmate"
+    Bundle "honza/vim-snippets"
 
 
     "Switch back on. Turned off for vundle.
