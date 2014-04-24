@@ -9,6 +9,8 @@
     nmap ' `
     " Substitute multiple occurences in one line per default
     set gdefault
+    " Enable the mouse for scrolling purposes
+    set mouse=a
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
@@ -86,12 +88,6 @@
     let g:syntastic_enable_balloons=0
     let g:syntastic_python_checkers=['flake8']
     let g:syntastic_tex_checkers = []
-    " Airline
-    set laststatus=2
-    " Nerdtree
-    map <C-t> :NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
-    vmap <C-t> <esc>:NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
-    imap <C-t> <esc>:NERDTreeToggle<cr> \| :silent NERDTreeMirror<CR>
     " Php indentation
     let g:PHP_default_indenting = 1
 
@@ -117,10 +113,8 @@
     Bundle 'tpope/vim-fugitive'
     " Syntax checker 
     Bundle 'scrooloose/syntastic'
-    " File manager thing
-    Bundle 'scrooloose/nerdtree'
-    " Status bar
-    Bundle 'bling/vim-airline'
+    " File finder
+    Bundle 'wincent/command-t'
     " Git plugin 2.
     Bundle 'airblade/vim-gitgutter'
     " Todo.txt for testing
