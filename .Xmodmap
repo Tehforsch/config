@@ -10,5 +10,6 @@ keycode 135 = Super_R
 keycode 52 = y Y braceleft braceleft braceleft braceleft
 keycode 53 = x X braceright braceright braceright braceright
 keycode 42 = g G dollar dollar dollar dollar
+
 clear lock 
 keycode 66 = Escape
