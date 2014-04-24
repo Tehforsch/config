@@ -11,8 +11,8 @@ source ~/.usrconfig/.aliases
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
- COMPLETION_WAITING_DOTS="true"
+# Enable auto completion for special directories like . and ..
+zstyle ':completion:*' special-dirs true
 
 # Uncomment to change how often before auto-updates occur? (in days)
 export UPDATE_ZSH_DAYS=40
