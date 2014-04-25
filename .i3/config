@@ -144,8 +144,10 @@ bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
 
 # Volume changing hotkeys
-bindsym Ctrl+Shift+R exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
-bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
+#bindsym Ctrl+Shift+R exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
+#bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
+bindsym Ctrl+Shift+R exec --no-startup-id pactl set-sink-volume 0 -- +10% 
+bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10%
 
 # Spotify controls
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
