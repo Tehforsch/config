@@ -1,3 +1,17 @@
+"mappings - basic
+    " Use space as leader key
+    let mapleader = "\<Space>"
+    " Map <C-T> to command-t plugin which doesn't seem to work by default
+    nmap <silent> <Leader>t :CommandT<CR>
+    " Map , to : since I never use , anyways
+    nmap <silent> , :
+    " Map single quote to apostrophe in normal mode (jump to exact mark)
+    nmap ' `
+"mappings - editing text
+    " Swap the word the cursor is on with the next word (which can be on a
+    " newline, and punctuation is "skipped"):
+    nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
+
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
@@ -5,42 +19,33 @@
     set ignorecase
     " Search case sensitive when pattern contains uppercase characters
     set smartcase
-    " Map single quote to apostrophe in normal mode (jump to exact mark)
-    nmap ' `
     " Substitute multiple occurences in one line per default
     set gdefault
     " Enable the mouse for scrolling purposes
     set mouse=a
+
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
+
 " syntax, highlighting and spelling
     " Enable syntax highlighting
     syntax on
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
-" multiple buffers
+
+" multiple files
     set hidden
     set wildignore=*.o,*.pyc,*.class
-" terminal
-    " Use different cursor colors for the different modes.
-    if &term =~ "xterm\\|rxvt"
-      " use an orange cursor in insert mode
-      let &t_SI = "\<Esc>]12;orange\x7"
-      " use a red cursor otherwise
-      let &t_EI = "\<Esc>]12;red\x7"
-      silent !echo -ne "\033]12;red\007"
-      " reset cursor when vim exits
-      autocmd VimLeave * silent !echo -ne "\033]112\007"
-      " use \003]12;gray\007 for gnome-terminal
-    endif
+    " Don't write backup and swap files.
+    set nobackup
+    set nowritebackup
+    set noswapfile
+
 " messages and info
     set ruler
     set number
-" editing text
-    " Swap the word the cursor is on with the next word (which can be on a
-    " newline, and punctuation is "skipped"):
-    nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
+
 " tabs and indenting
     " Tab size 4
     set tabstop=4
@@ -50,30 +55,7 @@
     set shiftwidth=4
     " Delete 4 spaces at once when deleting tabs.
     set softtabstop=4
-" mapping
-    " Map <C-n> to clear all search highlights.
-    nmap <silent> <C-n> :noh<CR>
-    " Map <C-T> to command-t plugin which doesn't seem to work by default
-    nmap <silent> <C-t> :CommandT<CR>
-    " Map C-l and C-h to switch windows
-    nmap <silent> <C-k> :wincmd k<CR>
-    nmap <silent> <C-j> :wincmd j<CR>
-    nmap <silent> <C-h> :wincmd h<CR>
-    nmap <silent> <C-l> :wincmd l<CR>
-    " Map C-n and C-m to switch buffers
-    nmap <silent> <C-m> :bn
-    nmap <silent> <C-n> :bp
-    " Map ö and ä to useful keys
-    nmap <silent> ö :
-    nmap <silent> ä ;
-" command mapping
-    " Introduce hs for horizontal split (instead of sp which I find counter intuitive)
-    cmap hs sp
-" swap file
-    " Don't write backup and swap files.
-    set nobackup
-    set nowritebackup
-    set noswapfile
+
 " various
     " Set tab-key behaviour (when opening files).
     set wildmode=longest,list,full
@@ -81,7 +63,8 @@
     " Fix the delay after ESC - o
     set timeout timeoutlen=1000 ttimeoutlen=100
     " Increase history size.
-    set history=200
+    set history=2000
+
 
 " plugin specific settings
     " Syntastic
@@ -96,10 +79,9 @@
     " Command-T
     let g:CommandTAlwaysShowDotFiles = 1
 
-" vundle
+" vundle - plugin manager
     set nocompatible              " be iMproved
     filetype off                  " required!
-
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
 
@@ -111,21 +93,14 @@
     Bundle 'tpope/vim-commentary'
     " Repeat composite commands with .
     Bundle 'tpope/vim-repeat'
-    " Surround movements/ranges, for example ysiw( surrounds the word with a
-    " bracket.
+    " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Bundle 'tpope/vim-surround'
-    " Git plugin.
-    Bundle 'tpope/vim-fugitive'
     " Syntax checker 
     Bundle 'scrooloose/syntastic'
     " File finder
     Bundle 'wincent/command-t'
-    " Git plugin 2.
-    Bundle 'airblade/vim-gitgutter'
     " Todo.txt for testing
     Bundle 'freitass/todo.txt-vim'
-    " Haskell syntax
-    Bundle 'travitch/hasksyn'
     " Indentation for PHP
     Bundle '2072/PHP-Indenting-for-VIm'
     " Snipmate 
@@ -133,6 +108,10 @@
     Bundle "tomtom/tlib_vim"
     Bundle "garbas/vim-snipmate"
     Bundle "honza/vim-snippets"
+    " Exchange
+    Bundle "tommcdo/vim-exchange"
+    " Targets - Adds some text objects to work on.
+    Bundle "wellle/targets.vim"
 
 
     "Switch back on. Turned off for vundle.
@@ -140,6 +119,7 @@
     filetype plugin on
     " Disable automatic comment insertion when inserting new line while on a commented line
    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 
 " Solarized color scheme
     set t_Co=16
