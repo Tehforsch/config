@@ -1,4 +1,2 @@
-# Install
-sudo apt-get install ack-grep
-# Change name from ack-grep to ack
-sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
+# Download the file into bin and chmod it
+sudo curl http://beyondgrep.com/ack-2.12-single-file > ~/.bin/ack && chmod 0755 ~/.bin/ack
