@@ -7,6 +7,8 @@
     nmap <silent> , :
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nmap ' `
+    " Write file 
+    nnoremap <Leader>w :w<Cr>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
@@ -78,6 +80,9 @@
     let g:PHP_default_indenting = 1
     " Command-T
     let g:CommandTAlwaysShowDotFiles = 1
+    " Expand region
+    vmap v <Plug>(expand_region_expand)
+    vmap <C-v> <Plug>(expand_region_shrink)
 
 " vundle - plugin manager
     set nocompatible              " be iMproved
@@ -112,6 +117,10 @@
     Bundle "tommcdo/vim-exchange"
     " Targets - Adds some text objects to work on.
     Bundle "wellle/targets.vim"
+    " Expand region - selects surrounding objects with +/- or in my case by multiple presses of v
+    Bundle "terryma/vim-expand-region"
+    " Ack.vim
+    Bundle "mileszs/ack.vim"
 
 
     "Switch back on. Turned off for vundle.
