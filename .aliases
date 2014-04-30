@@ -7,6 +7,7 @@ alias parse='python ~/Projects/cautotex/parse.py .'
 alias edvim='vim ~/.usrconfig/.vimrc'
 alias edconf='vim ~/.usrconfig/.i3/config'
 alias edzsh='vim ~/.usrconfig/.zshrc'
+alias v='vim'
 alias plot='gnuplot'
 alias todo='sh /home/toni/Dropbox/Scripts/getTodo'
 alias gs='git status' # This shadows ghostscript - I don't care
