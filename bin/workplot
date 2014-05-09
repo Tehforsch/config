@@ -5,7 +5,7 @@ then
     echo "Need at least the plot file as input"
 elif [ $# = 1 ]
 then
-    outputFile=$(cat plot2.gpi | ack output | ack "\'([\w]*\.[\w]*)\'" --output=\$1)
+    outputFile=$(cat $1 | ack output | ack "\'([\w]*\.[\w]*)\'" --output=\$1)
     echo "Assuming that '$outputFile' is the output file of the plot script"
 else
     outputFile=$2
