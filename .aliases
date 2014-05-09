@@ -11,3 +11,5 @@ alias v='vim'
 alias plot='gnuplot'
 alias todo='sh /home/toni/Dropbox/Scripts/getTodo'
 alias gs='git status' # This shadows ghostscript - I don't care
+alias wpy='workpython'
+alias wpl='workplot'
