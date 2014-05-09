@@ -10,7 +10,9 @@ then
 else
     outputFile=$2
 fi
+# Start okular and redirect standard output into the infinite void
 $> okular $outputFile > /dev/null &
+# Start an extra terminal and open the plot file in it
 gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"    
-echo $(pwd)
+# Watch for changes in the plotfile and plot if necessary
 when-changed $1 gnuplot $1
