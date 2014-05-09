@@ -5,10 +5,13 @@
     nmap <silent> <Leader>t :CommandT<CR>
     " Map , to : since I never use , anyways
     nmap <silent> , :
+    vmap <silent> , :
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nmap ' `
     " Write file 
     nnoremap <Leader>w :w<Cr>
+    " Close vim
+    nnoremap <Leader>q :q<Cr>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
