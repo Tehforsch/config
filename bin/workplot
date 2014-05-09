@@ -1,0 +1,16 @@
+# This script opens a given gnuplotfile in vim so you can edit it while opening okular in the background and running when-changed gnuplotfile outputfile
+echo $#
+if [ $# = 0 ]
+then 
+    echo "Need at least the plot file as input"
+elif [ $# = 1 ]
+then
+    outputFile=$(cat plot2.gpi | ack output | ack "\'([\w]*\.[\w]*)\'" --output=\$1)
+    echo "Assuming that '$outputFile' is the output file of the plot script"
+else
+    outputFile=$2
+fi
+$> okular $outputFile > /dev/null &
+gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"    
+echo $(pwd)
+when-changed $1 gnuplot $1

@@ -1,0 +1,7 @@
+# This script runs a python file whenever it gets changed (using when-changed) while opening vim in a separate terminal
+if [ $# = 0 ] ; then 
+    echo "Need the python file as input"
+    exit 1
+fi
+gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"
+when-changed $1 python $1
