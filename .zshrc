@@ -11,7 +11,7 @@ source ~/.usrconfig/.aliases
 # Automatically ls after cd (even when not using cd but just typing the directory)
 function chpwd() {
     emulate -L zsh
-    l
+    ls -alF
 }
 
 # Set to this to use case-sensitive completion
