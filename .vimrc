@@ -19,6 +19,15 @@
     " Duplicate the current line and comment out the top one (using vim-commentary)
     nmap <Leader>c Ypkgccj
     vmap <Leader>c gcgvyPgvgc
+"mappings for plugins
+    " Add quick mappings for sideways.vim that allow shifting of arguments
+    nmap <Leader>h :SidewaysLeft<CR>
+    nmap <Leader>l :SidewaysRight<CR>
+    " Add text objects for sideways.vim
+    omap aa <Plug>SidewaysArgumentTextobjA
+    xmap aa <Plug>SidewaysArgumentTextobjA
+    omap ia <Plug>SidewaysArgumentTextobjI
+    xmap ia <Plug>SidewaysArgumentTextobjI
 
 " moving around, searching and patterns
     " Highlight search while typing
@@ -122,7 +131,9 @@
     " Exchange
     Bundle "tommcdo/vim-exchange"
     " Targets - Adds some text objects to work on.
-    Bundle "wellle/targets.vim"
+    " Bundle "wellle/targets.vim"
+    " Adds function argument text objects
+    Bundle "AndrewRadev/sideways.vim"
     " Expand region - selects surrounding objects with +/- or in my case by multiple presses of v
     Bundle "terryma/vim-expand-region"
     " Ack.vim
