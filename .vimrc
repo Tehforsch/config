@@ -6,6 +6,8 @@
     " Map , to : since I never use , anyways
     nmap <silent> , :
     vmap <silent> , :
+    " Map <CR> to G so number<CR> jumps to the line which is convenient
+    nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nmap ' `
     " Write file 
@@ -28,7 +30,6 @@
     xmap aa <Plug>SidewaysArgumentTextobjA
     omap ia <Plug>SidewaysArgumentTextobjI
     xmap ia <Plug>SidewaysArgumentTextobjI
-
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
@@ -50,6 +51,9 @@
     syntax on
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
+    " Gnuplot comments
+    autocmd BufNewFile, BufRead *.gpi set filetype gnuplot
+    autocmd FileType gnuplot set commentstring=#\ %s
 
 " multiple files
     set hidden
