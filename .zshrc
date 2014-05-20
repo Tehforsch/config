@@ -17,6 +17,9 @@ function chpwd() {
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
+# Disable auto correction
+unsetopt correctall
+
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
 

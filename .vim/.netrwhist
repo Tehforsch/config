@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/toni/Dropbox/Uni/Praktikum/EP/3/new/plots/backup'
-let g:netrw_dirhist_2='/home/toni/Dropbox/Uni/Praktikum/EP/3/new/plots'
-let g:netrw_dirhist_3='/home/toni/Dropbox/Other/installation/Ubuntu'
-let g:netrw_dirhist_4='/home/toni/Dropbox/Other/installation/Ubuntu/installRepos'
-let g:netrw_dirhist_5='/home/toni/Projects/cautotex'
-let g:netrw_dirhist_6='/home/toni/DBU/DBU2/Uni/Praktikum/EP (1)/5/data'

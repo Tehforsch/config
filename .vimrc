@@ -6,6 +6,8 @@
     " Map , to : since I never use , anyways
     nmap <silent> , :
     vmap <silent> , :
+    " Map <CR> to G so number<CR> jumps to the line which is convenient
+    nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nmap ' `
     " Write file 
@@ -18,7 +20,16 @@
     nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
     " Duplicate the current line and comment out the top one (using vim-commentary)
     nmap <Leader>c Ypkgccj
-
+    vmap <Leader>c gcgvyPgvgc
+"mappings for plugins
+    " Add quick mappings for sideways.vim that allow shifting of arguments
+    nmap <Leader>h :SidewaysLeft<CR>
+    nmap <Leader>l :SidewaysRight<CR>
+    " Add text objects for sideways.vim
+    omap aa <Plug>SidewaysArgumentTextobjA
+    xmap aa <Plug>SidewaysArgumentTextobjA
+    omap ia <Plug>SidewaysArgumentTextobjI
+    xmap ia <Plug>SidewaysArgumentTextobjI
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
@@ -40,6 +51,9 @@
     syntax on
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
+    " Gnuplot comments
+    autocmd BufNewFile, BufRead *.gpi set filetype gnuplot
+    autocmd FileType gnuplot set commentstring=#\ %s
 
 " multiple files
     set hidden
@@ -121,7 +135,9 @@
     " Exchange
     Bundle "tommcdo/vim-exchange"
     " Targets - Adds some text objects to work on.
-    Bundle "wellle/targets.vim"
+    " Bundle "wellle/targets.vim"
+    " Adds function argument text objects
+    Bundle "AndrewRadev/sideways.vim"
     " Expand region - selects surrounding objects with +/- or in my case by multiple presses of v
     Bundle "terryma/vim-expand-region"
     " Ack.vim
