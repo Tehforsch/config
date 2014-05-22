@@ -108,14 +108,15 @@
     let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
 
-" vundle - plugin manager
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 
-    "" PLUGINS
-    " let Vundle manage Vundle
-    Plugin 'gmarik/vundle'
+    " let Vundle manage Vundle, required
+    Plugin 'gmarik/Vundle.vim'
     " Solarized color scheme
     Plugin 'altercation/vim-colors-solarized'
     " Comment out lines with gcc, comment out movements/visual selections with gc
@@ -145,9 +146,10 @@
     " Ack.vim
     Plugin 'mileszs/ack.vim'
 
-    "Switch back on. Turned off for vundle.
-    filetype indent on
-    filetype plugin on
+    " Plugin adding ended, switch filetype settings back on
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+
     " Disable automatic comment insertion when inserting new line while on a commented line
    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
