@@ -30,6 +30,7 @@
     xmap aa <Plug>SidewaysArgumentTextobjA
     omap ia <Plug>SidewaysArgumentTextobjI
     xmap ia <Plug>SidewaysArgumentTextobjI
+
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
@@ -102,6 +103,10 @@
     " Expand region
     vmap v <Plug>(expand_region_expand)
     vmap <C-v> <Plug>(expand_region_shrink)
+    " Ultisnips
+    let g:UltiSnipsExpandTrigger="<tab>"                                            
+    let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
 
 " vundle - plugin manager
     set nocompatible              " be iMproved
@@ -109,6 +114,7 @@
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
 
+    "" PLUGINS
     " let Vundle manage Vundle
     Bundle 'gmarik/vundle'
     " Solarized color scheme
@@ -127,11 +133,9 @@
     Bundle 'freitass/todo.txt-vim'
     " Indentation for PHP
     Bundle '2072/PHP-Indenting-for-VIm'
-    " Snipmate 
-    Bundle "MarcWeber/vim-addon-mw-utils"
-    Bundle "tomtom/tlib_vim"
-    Bundle "garbas/vim-snipmate"
-    Bundle "honza/vim-snippets"
+    " Ultisnips 
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
     " Exchange
     Bundle "tommcdo/vim-exchange"
     " Targets - Adds some text objects to work on.
@@ -143,13 +147,11 @@
     " Ack.vim
     Bundle "mileszs/ack.vim"
 
-
     "Switch back on. Turned off for vundle.
     filetype indent on
     filetype plugin on
     " Disable automatic comment insertion when inserting new line while on a commented line
    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 
 " Solarized color scheme
     set t_Co=16
