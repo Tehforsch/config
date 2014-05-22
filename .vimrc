@@ -104,9 +104,6 @@
     let g:PHP_default_indenting = 1
     " Command-T
     let g:CommandTAlwaysShowDotFiles = 1
-    " Expand region
-    vmap v <Plug>(expand_region_expand)
-    vmap <C-v> <Plug>(expand_region_shrink)
     " Ultisnips
     let g:UltiSnipsExpandTrigger="<tab>"                                            
     let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
@@ -145,8 +142,6 @@
     " Targets - Adds some text objects to work on.
     " Adds function argument text objects
     Plugin 'AndrewRadev/sideways.vim'
-    " Expand region - selects surrounding objects with +/- or in my case by multiple presses of v
-    Plugin 'terryma/vim-expand-region'
     " Ack.vim
     Plugin 'mileszs/ack.vim'
 
