@@ -21,6 +21,10 @@
     " Duplicate the current line and comment out the top one (using vim-commentary)
     nmap <Leader>c Ypkgccj
     vmap <Leader>c gcgvyPgvgc
+    " Quicker mapping for commenting out lines
+    nmap <C-e> gcc
+    imap <C-e> <C-o>gcc
+    vmap <C-e> gc
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
     nmap <Leader>h :SidewaysLeft<CR>
