@@ -115,36 +115,35 @@
 
     "" PLUGINS
     " let Vundle manage Vundle
-    Bundle 'gmarik/vundle'
+    Plugin 'gmarik/vundle'
     " Solarized color scheme
-    Bundle 'altercation/vim-colors-solarized'
+    Plugin 'altercation/vim-colors-solarized'
     " Comment out lines with gcc, comment out movements/visual selections with gc
-    Bundle 'tpope/vim-commentary'
+    Plugin 'tpope/vim-commentary'
     " Repeat composite commands with .
-    Bundle 'tpope/vim-repeat'
+    Plugin 'tpope/vim-repeat'
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
-    Bundle 'tpope/vim-surround'
+    Plugin 'tpope/vim-surround'
     " Syntax checker 
-    Bundle 'scrooloose/syntastic'
+    Plugin 'scrooloose/syntastic'
     " File finder
-    Bundle 'wincent/command-t'
+    Plugin 'wincent/command-t'
     " Todo.txt for testing
-    Bundle 'freitass/todo.txt-vim'
+    Plugin 'freitass/todo.txt-vim'
     " Indentation for PHP
-    Bundle '2072/PHP-Indenting-for-VIm'
+    Plugin '2072/PHP-Indenting-for-VIm'
     " Ultisnips 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
     " Exchange
-    Bundle "tommcdo/vim-exchange"
+    Plugin 'tommcdo/vim-exchange'
     " Targets - Adds some text objects to work on.
-    " Bundle "wellle/targets.vim"
     " Adds function argument text objects
-    Bundle "AndrewRadev/sideways.vim"
+    Plugin 'AndrewRadev/sideways.vim'
     " Expand region - selects surrounding objects with +/- or in my case by multiple presses of v
-    Bundle "terryma/vim-expand-region"
+    Plugin 'terryma/vim-expand-region'
     " Ack.vim
-    Bundle "mileszs/ack.vim"
+    Plugin 'mileszs/ack.vim'
 
     "Switch back on. Turned off for vundle.
     filetype indent on
