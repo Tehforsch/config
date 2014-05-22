@@ -1,3 +1,0 @@
-# Solarized plugin doesn't work anymore so just execute this.
-mkdir ~/.usrconfig/.vim/colors/
-cp -v ~/.usrconfig/.vim/bundle/vim-colors-solarized/colors/* ~/.usrconfig/.vim/colors/
