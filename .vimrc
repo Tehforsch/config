@@ -104,10 +104,9 @@
     vmap <C-v> <Plug>(expand_region_shrink)
 
 " vundle - plugin manager
-    set nocompatible              " be iMproved
-    filetype off                  " required!
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 
     " let Vundle manage Vundle
     Bundle 'gmarik/vundle'

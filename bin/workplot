@@ -14,7 +14,7 @@ else
 fi
 # Start okular and redirect standard output into the infinite void
 # $> okular $outputFile > /dev/null &
-okular $outputFile &> /dev/null
+evince $outputFile &> /dev/null
 clear
 # Start an extra terminal and open the plot file in it
 gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"    
