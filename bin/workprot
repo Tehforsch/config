@@ -1,0 +1,14 @@
+# This script opens a latexfile in vim so you can edit it while opening okular in the background and running when-changed inputfile parse inputfile
+if [ $# = 0 ]
+then 
+    echo "Need at least the latex file as input"
+    exit 1
+fi
+
+outputFile='output.pdf'
+# Start okular and redirect standard output into the infinite void
+okular $outputFile &> /dev/null
+# Start an extra terminal and open the plot file in it
+gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"    
+# Watch for changes in the latex file and parse if necessary
+when-changed $1 "clear && python ~/Projects/cautotex/parse.py"
