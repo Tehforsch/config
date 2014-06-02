@@ -1,4 +1,4 @@
-# This script opens a given gnuplotfile in vim so you can edit it while opening okular in the background and running when-changed gnuplotfile outputfile
+# This script opens a given gnuplotfile in vim so you can edit it while opening okular in the background and running when-changed plotfile gnuplot plotfile
 if [ $# = 0 ]
 then 
     echo "Need at least the plot file as input"
@@ -6,18 +6,18 @@ then
 elif [ $# = 1 ]
 then
     # Find out the output file by searching for output, taking only the first line
-    # and then searching for strings "abc.xyz"
-    outputFile=$(cat $1 | ack output | head -n 1 | ack "\'([\w]*\.[\w]*)\'" --output=\$1)
+    # and then searching for strings "abc.xyz" or '../test/abc.xyz'
+    outputFile=$(cat $1 | ack output | head -n 1 | ack "[\'\"]([[\w\.\/]*\.[\w]*)[\'\"]" --output=\$1)
+    clear
     echo "Assuming that '$outputFile' is the output file of the plot script"
 else
     outputFile=$2
 fi
+# Plot first so that the output file actually exists when we open okular
+gnuplot $1
 # Start okular and redirect standard output into the infinite void
-# $> okular $outputFile > /dev/null &
-evince $outputFile &> /dev/null
-clear
+okular $outputFile &> /dev/null
 # Start an extra terminal and open the plot file in it
 gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"    
 # Watch for changes in the plotfile and plot if necessary
-clear
 when-changed $1 "clear && gnuplot $1"
