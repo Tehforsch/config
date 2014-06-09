@@ -191,5 +191,5 @@ exec anki
 exec fluxgui
 exec_always xset -dpms
 
-exec setxkbmap -layout de
-exec xmodmap ~/.Xmodmap
+exec_always setxkbmap -layout de
+exec_always xmodmap ~/.Xmodmap
