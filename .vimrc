@@ -25,6 +25,8 @@
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
     vmap <C-e> gc
+    " Make Y behave like y$ which is analogous to C or D
+    nmap Y y$
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
     nmap <Leader>h :SidewaysLeft<CR>
