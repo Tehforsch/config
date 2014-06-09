@@ -1,0 +1,8 @@
+echo "Needs to be executed as sudo (Im lazy, i didnt check just try to remember :D)"
+pushd $(pwd)
+mkdir ~/.solarized/
+cd ~/.solarized/
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+gnome-terminal-colors-solarized/install.sh
+popd
+
