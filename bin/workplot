@@ -1,4 +1,4 @@
-# This script opens a given gnuplotfile in vim so you can edit it while opening okular in the background and running when-changed plotfile gnuplot plotfile
+ This script opens a given gnuplotfile in vim so you can edit it while opening okular in the background and running when-changed plotfile gnuplot plotfile
 if [ $# = 0 ]
 then 
     echo "Need at least the plot file as input"
@@ -13,8 +13,10 @@ then
 else
     outputFile=$2
 fi
-# Plot first so that the output file actually exists when we open okular
-gnuplot $1
+# If the output file does not exist copy a dummy file to the output eps file so okular thinks it does.
+if [ ! -f $outputFile ]; then
+    cp ~/.usrconfig/resources/dummy.eps $outputFile
+fi
 # Start okular and redirect standard output into the infinite void
 okular $outputFile &> /dev/null
 # Start an extra terminal and open the plot file in it

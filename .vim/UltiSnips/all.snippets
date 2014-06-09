@@ -1,0 +1,11 @@
+snippet fileexists
+if [[ -f $1 ]]; then
+    $0
+fi
+endsnippet
+
+snippet notfileexists
+if [[ ! -f $1 ]]; then
+    $0
+fi
+endsnippet

@@ -1,6 +1,6 @@
-set terminal postscript enhanced
+set terminal postscript enhanced size 17cm,10cm
 
-set size 0.5, 0.5
+#set size 0.5, 0.5
 
 # color definitions
 set border linewidth 1.5
