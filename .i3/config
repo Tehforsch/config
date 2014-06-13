@@ -180,7 +180,7 @@ assign [class="Okular"] 1
 assign [class="Shotwell"] 1
 assign [class="Shotwell"] 1
 assign [class="desktop_window"] 1
-assign [class="Anki"] 8
+assign [class="Anki"] 5
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
@@ -191,5 +191,4 @@ exec anki
 exec fluxgui
 exec_always xset -dpms
 
-exec_always setxkbmap -layout de
-exec_always xmodmap ~/.Xmodmap
+exec_always ~/.usrconfig/scripts/XmodmapScript
