@@ -14,6 +14,8 @@
     nnoremap <Leader>w :w<Cr>
     " Close vim
     nnoremap <Leader>q :q<Cr>
+    " Switch to last buffer
+    noremap <Leader>^ <C-^>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
