@@ -13,3 +13,4 @@ alias gs='git status' # This shadows ghostscript - I don't care
 alias wpy='workpython'
 alias wpl='workplot'
 alias v='splitvim'
+alias to='vim ~/.playground/todo.txt'
