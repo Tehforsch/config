@@ -66,7 +66,7 @@
 
 " multiple files
     set hidden
-    set wildignore=*.o,*.pyc,*.class
+    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup
@@ -97,13 +97,6 @@
 
 
 " plugin specific settings
-    " Syntastic
-    let g:syntastic_enable_highlighting=0
-    let g:syntastic_check_on_open=0
-    let g:syntastic_check_on_wq=0
-    let g:syntastic_enable_balloons=0
-    let g:syntastic_python_checkers=['flake8']
-    let g:syntastic_tex_checkers = []
     " Php indentation
     let g:PHP_default_indenting = 1
     " Command-T
@@ -130,8 +123,6 @@
     Plugin 'tpope/vim-repeat'
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
-    " Syntax checker 
-    Plugin 'scrooloose/syntastic'
     " File finder
     Plugin 'wincent/command-t'
     " Todo.txt for testing
@@ -148,7 +139,6 @@
     Plugin 'AndrewRadev/sideways.vim'
     " Ack.vim
     Plugin 'mileszs/ack.vim'
-
     " Plugin adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required

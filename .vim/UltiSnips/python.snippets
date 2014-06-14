@@ -3,4 +3,9 @@ for ($1, $2) in enumerate($3):
 	$0
 endsnippet
 
-            
+snippet ownmodule
+import os, sys
+path = os.path.abspath("/home/toni/.usrconfig/python/")
+sys.path.append(path)
+import $1
+endsnippet
