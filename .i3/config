@@ -82,11 +82,13 @@ bindsym $mod+s workspace 4
 bindsym $mod+d workspace 6
 bindsym $mod+f workspace 8
 bindsym $mod+g workspace 10
+bindsym $mod+h workspace 12
 bindsym $mod+less workspace 1
 bindsym $mod+y workspace 3
 bindsym $mod+x workspace 5
 bindsym $mod+c workspace 7
 bindsym $mod+v workspace 9
+bindsym $mod+b workspace 11
 
 # move focused container to workspace
 bindsym $mod+Shift+a move workspace 2
@@ -94,11 +96,13 @@ bindsym $mod+Shift+s move workspace 4
 bindsym $mod+Shift+d move workspace 6
 bindsym $mod+Shift+f move workspace 8
 bindsym $mod+Shift+g move workspace 10
+bindsym $mod+Shift+h move workspace 12
 bindsym $mod+Shift+less move workspace 1
 bindsym $mod+Shift+y move workspace 3
 bindsym $mod+Shift+x move workspace 5
 bindsym $mod+Shift+c move workspace 7
 bindsym $mod+Shift+v move workspace 9
+bindsym $mod+Shift+b move workspace 11
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
@@ -168,6 +172,8 @@ workspace 7 output DVI-I-0
 workspace 8 output DVI-I-1
 workspace 9 output DVI-I-0
 workspace 10 output DVI-I-1
+workspace 11 output DVI-I-0
+workspace 12 output DVI-I-1
 
 # Assign specific workspaces to some applications
 assign [class="Pidgin"] 7
@@ -180,7 +186,7 @@ assign [class="Okular"] 1
 assign [class="Shotwell"] 1
 assign [class="Shotwell"] 1
 assign [class="desktop_window"] 1
-assign [class="Anki"] 5
+assign [class="Anki"] 12
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
