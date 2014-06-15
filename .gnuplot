@@ -1,4 +1,5 @@
-set terminal postscript enhanced size 17cm,10cm
+#set terminal postscript enhanced size 17cm,10cm
+set terminal epslatex color size 17cm,10cm
 
 #set size 0.5, 0.5
 
