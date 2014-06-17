@@ -66,7 +66,7 @@
 
 " multiple files
     set hidden
-    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf
+    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup

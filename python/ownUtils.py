@@ -1,4 +1,6 @@
 import numpy as np
+import subprocess
+import os
 
 def readFile(fname):
     """Returns the lines contained in fname in standard list format"""
@@ -44,6 +46,16 @@ def charactersBetween(string, beginning, end):
         if collect:
             collected = collected + z
     return None
+
+def getFileType(fname):
+    """Extracts the file ending of file name by returning everything after the first point (including the point)"""
+    return os.path.splitext(fname)[1]
+
+def runCommand(command):
+    """Runs the system command and returns output and errors"""
+    p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    output, errors = p.communicate()
+    return output, errors
 
 # def plotData(pairs):
 #     """Uses pyplot to quickly plot a list of (x, y) pairs"""

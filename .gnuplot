@@ -1,13 +1,22 @@
 #set terminal postscript enhanced size 17cm,10cm
-set terminal epslatex color size 17cm,10cm
+set terminal epslatex color size 13cm,8cm
 
 #set size 0.5, 0.5
 
 # color definitions
 set border linewidth 1.5
-set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 2 ps 1.3 # --- blue
-set style line 2 lc rgb '#bf1919' lt 1 lw 4 pt 4 ps 1.3 # --- red
-set style line 3 lc rgb '#009900' lt 1 lw 4 pt 6 ps 1.3 # --- green
-set style line 4 lc rgb '#BDB76B' lt 1 lw 4 pt 8 ps 1.3 # --- yellow/brown
+set style line 1 lc rgb '#0060ad' lt 1 lw 6 pt 2 ps 2.5 # --- blue line
+set style line 2 lc rgb '#bf1919' lt 1 lw 6 pt 4 ps 2.5 # --- red line
+set style line 3 lc rgb '#009900' lt 1 lw 6 pt 6 ps 2.5 # --- green line
+set style line 4 lc rgb '#E9D66B' lt 1 lw 6 pt 8 ps 2.5 # --- yellow/brown line
+
+set style line 5 lc rgb '#0060ad' lt 1 lw 4 pt 2 ps 2.5 # --- blue point
+set style line 6 lc rgb '#bf1919' lt 1 lw 4 pt 4 ps 2.5 # --- red point
+set style line 7 lc rgb '#009900' lt 1 lw 4 pt 6 ps 2.5 # --- green point
+set style line 8 lc rgb '#E9D66B' lt 1 lw 4 pt 8 ps 2.5 # --- yellow/brown point
+
+set style line 17 lc rgb '#000000' lt 2 lw 4 pt 8 ps 1.6 # --- grid lines
+
+set style line 21 lc rgb '#000000' lt 3 lw 6 pt 8 ps 1.6 # --- grid lines
 
 set tics scale 0.75
