@@ -5,4 +5,4 @@ if [ $# = 0 ] ; then
 fi
 gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"
 clear
-when-changed $1 "clear && echo '-----------------' && python $1 && echo '-----------------'"
+when-changed $1 "clear && echo '-----------------' && python3 $@ && echo '-----------------'"

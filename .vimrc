@@ -14,12 +14,14 @@
     nnoremap <Leader>w :w<Cr>
     " Close vim
     nnoremap <Leader>q :q<Cr>
+    " Switch to last buffer
+    noremap <Leader>^ <C-^>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
     nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
     " Duplicate the current line and comment out the top one (using vim-commentary)
-    nmap <Leader>c Ypkgccj
+    nmap <Leader>c yypkgccj
     vmap <Leader>c gcgvyPgvgc
     " Quicker mapping for commenting out lines
     nmap <C-e> gcc
@@ -64,7 +66,7 @@
 
 " multiple files
     set hidden
-    set wildignore=*.o,*.pyc,*.class
+    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup
@@ -95,13 +97,6 @@
 
 
 " plugin specific settings
-    " Syntastic
-    let g:syntastic_enable_highlighting=0
-    let g:syntastic_check_on_open=0
-    let g:syntastic_check_on_wq=0
-    let g:syntastic_enable_balloons=0
-    let g:syntastic_python_checkers=['flake8']
-    let g:syntastic_tex_checkers = []
     " Php indentation
     let g:PHP_default_indenting = 1
     " Command-T
@@ -128,8 +123,6 @@
     Plugin 'tpope/vim-repeat'
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
-    " Syntax checker 
-    Plugin 'scrooloose/syntastic'
     " File finder
     Plugin 'wincent/command-t'
     " Todo.txt for testing
@@ -146,7 +139,6 @@
     Plugin 'AndrewRadev/sideways.vim'
     " Ack.vim
     Plugin 'mileszs/ack.vim'
-
     " Plugin adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
