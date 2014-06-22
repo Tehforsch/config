@@ -33,16 +33,15 @@ def writeDataFile(fname, data, sep = " "):
     s = "\n".join(map(sep.join, strData))
     writeFile(fname, s)
 
-def charactersBetween(string, start, end):
-    """Returns all characters in a string that are contained between two strings start and end"""
-    startIndex = string.find(start) + len(start)
+def charactersBetween(string, start, end, startIndex=0):
+    """Returns all characters in a string that are contained between the 
+    first two occurences of start and end, starting at index startIndex"""
+    startIndex = string.find(start, startIndex) + len(start)
     endIndex = string.find(end, startIndex)
     if startIndex == -1 or endIndex == -1:
         return None
     return string[startIndex:endIndex]
     
-
-
 def getFileType(fname):
     """Extracts the file ending of file name by returning everything after the first point (including the point)"""
     return os.path.splitext(fname)[1]
