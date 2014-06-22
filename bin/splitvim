@@ -1,5 +1,1 @@
-if [ $# = 0 ]; then 
-    echo "Need an file to open"
-    exit 1
-fi
-gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $1; zsh"    
+gnome-terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); vim $@; zsh"    
