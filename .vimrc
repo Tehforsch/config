@@ -126,7 +126,7 @@
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
     " File finder
-    " Plugin 'wincent/command-t'
+    Plugin 'wincent/command-t'
     " Todo.txt for testing
     Plugin 'freitass/todo.txt-vim'
     " Indentation for PHP
