@@ -38,6 +38,8 @@
     xmap aa <Plug>SidewaysArgumentTextobjA
     omap ia <Plug>SidewaysArgumentTextobjI
     xmap ia <Plug>SidewaysArgumentTextobjI
+" saved macros
+    let @t = "ysiw}i\\text\<Esc>f}"
 
 " moving around, searching and patterns
     " Highlight search while typing
@@ -124,7 +126,7 @@
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
     " File finder
-    Plugin 'wincent/command-t'
+    " Plugin 'wincent/command-t'
     " Todo.txt for testing
     Plugin 'freitass/todo.txt-vim'
     " Indentation for PHP
