@@ -15,3 +15,25 @@ snippet fig
 \end{figure}
 $0
 endsnippet
+
+snippet unit
+\unit[${1:value}]{${2:unit}} $0
+endsnippet
+
+snippet unitf
+\unitfrac[${1:value}]{${2:unit numerator}}{${3:unit denominator}} $0
+endsnippet
+
+snippet fracdev
+\begin{equation}
+	F = \vert D_{\mathrm{$1}} - D_{\mathrm{$1}^{\mathrm{T}}} \vert D_{\mathrm{$1}}
+\end{equation}
+$0
+endsnippet
+
+snippet equ
+\begin{equation}
+	$0
+	\label{eq:$1}
+\end{equation}
+endsnippet
