@@ -51,7 +51,7 @@
     " Substitute multiple occurences in one line per default
     set gdefault
     " Enable the mouse for scrolling purposes
-    set mouse=a
+    " set mouse=a
 
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
@@ -68,7 +68,7 @@
 
 " multiple files
     set hidden
-    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out
+    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out,*.bbl,*.blg
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup
