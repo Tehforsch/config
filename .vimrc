@@ -17,8 +17,8 @@
     " Switch to last buffer
     noremap <Leader>^ <C-^>
     " Switch buffer forwards and backwards
-    nmap <C-P> :bp<CR>
-    nmap <C-N> :bn<CR>
+    nmap <Leader>p :bp<CR>
+    nmap <Leader>n :bn<CR>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
