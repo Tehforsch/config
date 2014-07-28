@@ -16,6 +16,9 @@
     nnoremap <Leader>q :q<Cr>
     " Switch to last buffer
     noremap <Leader>^ <C-^>
+    " Switch buffer forwards and backwards
+    nmap <C-P> :bp<CR>
+    nmap <C-N> :bn<CR>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
@@ -38,6 +41,13 @@
     xmap aa <Plug>SidewaysArgumentTextobjA
     omap ia <Plug>SidewaysArgumentTextobjI
     xmap ia <Plug>SidewaysArgumentTextobjI
+    " Camel-Case plugin mappings
+    omap <silent> ic <Plug>CamelCaseMotion_iw
+    xmap <silent> ic <Plug>CamelCaseMotion_iw
+    "omap <silent> ib <Plug>CamelCaseMotion_ib
+    "xmap <silent> ib <Plug>CamelCaseMotion_ib
+    "omap <silent> ie <Plug>CamelCaseMotion_ie
+    "xmap <silent> ie <Plug>CamelCaseMotion_ie
 " saved macros
     let @t = "ysiw}i\\text\<Esc>f}"
 
@@ -142,6 +152,7 @@
     " Ack.vim
     Plugin 'mileszs/ack.vim'
     " Plugin adding ended, switch filetype settings back on
+    Plugin 'bkad/CamelCaseMotion'
     call vundle#end()            " required
     filetype plugin indent on    " required
 
