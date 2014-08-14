@@ -148,10 +148,8 @@ bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
 
 # Volume changing hotkeys
-#bindsym Ctrl+Shift+R exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
-#bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
-bindsym Ctrl+Shift+R exec --no-startup-id pactl set-sink-volume 0 -- +5% 
-bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -5%
+bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/.usrconfig/scripts/increaseVolume.sh
+bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 0 -- -10%
 
 # Spotify controls
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
@@ -190,11 +188,11 @@ assign [class="Anki"] 12
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
-exec ~/.dropbox-dist/dropboxd
-exec spotify
-exec pidgin
-exec anki
-exec fluxgui
-exec_always xset -dpms
+exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id spotify
+exec --no-startup-id pidgin
+exec --no-startup-id anki
+exec --no-startup-id fluxgui
+exec_always --no-startup-id xset -dpms
 
 exec_always ~/.usrconfig/scripts/XmodmapScript
