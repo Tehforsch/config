@@ -6,3 +6,7 @@ sh installSolarizedGnomeTerminal.sh
 sh installAck.sh
 sh installCommandT.sh
 sh installWhenChanged.sh
+sh installPip.sh
+sh installPythonModules.sh
+
+
