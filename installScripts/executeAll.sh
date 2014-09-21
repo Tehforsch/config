@@ -1,5 +1,5 @@
 sh installPackages.sh
-sh setupSymlinks.sh
+sh installSpotify.sh
 sh installVundle.sh
 sh installOhMyZsh.sh
 sh installSolarizedGnomeTerminal.sh
@@ -8,5 +8,4 @@ sh installCommandT.sh
 sh installWhenChanged.sh
 sh installPip.sh
 sh installPythonModules.sh
-
-
+sh setupSymlinks.sh

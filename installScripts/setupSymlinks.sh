@@ -1,3 +1,11 @@
+rm ~/.vimrc
+rm ~/.zshrc
+rm ~/.gitconfig
+rm ~/.gitignoreGlobal
+rm ~/.gnuplot
+rm ~/.Xmodmap
+rm ~/.i3/config
+rm ~/.i3status.conf
 ln -s ~/.usrconfig/.vimrc ~/.vimrc
 ln -s ~/.usrconfig/.zshrc ~/.zshrc
 ln -s ~/.usrconfig/.gitconfig ~/.gitconfig
