@@ -143,7 +143,6 @@ bar {
 }
 
 # Shortcuts to open specific applications
-bindsym Mod1+Shift+m exec Mathematica
 bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
 
@@ -204,9 +203,6 @@ assign [class="Anki"] 12
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id spotify
-exec --no-startup-id pidgin
 exec --no-startup-id anki
-exec --no-startup-id fluxgui
-exec_always --no-startup-id xset -dpms
 
-exec_always ~/.usrconfig/scripts/XmodmapScript
+exec_always ~/.usrconfig/startupScripts/runAll.sh
