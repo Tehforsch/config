@@ -22,7 +22,6 @@ focus_follows_mouse no
 
 # start a terminal
 bindsym Mod1+2 exec i3-sensible-terminal
-bindsym $mod+Return gnome-terminal --working-directory=$TPATH
 
 # kill focused window
 bindsym Mod1+Q kill
