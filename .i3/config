@@ -204,5 +204,3 @@ exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id spotify
 exec --no-startup-id anki
-
-exec_always ~/.usrconfig/startupScripts/runAll.sh
