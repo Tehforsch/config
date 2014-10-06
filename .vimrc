@@ -48,6 +48,8 @@
     "xmap <silent> ib <Plug>CamelCaseMotion_ib
     "omap <silent> ie <Plug>CamelCaseMotion_ie
     "xmap <silent> ie <Plug>CamelCaseMotion_ie
+    " CommandT file refresh
+    noremap <F5> :CommandTFlush<CR>
 " saved macros
     let @t = "ysiw}i\\text\<Esc>f}"
 
