@@ -148,9 +148,14 @@ new_window 1pixel
 bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
 
+bindsym Mod1+Shift+t exec bash ~/.usrconfig/startupScripts/runAll.sh
+
 # Volume changing hotkeys
-bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/.usrconfig/scripts/increaseVolume.sh
-bindsym Ctrl+Shift+F exec --no-startup-id pactl set-sink-volume 1 -- -10%
+bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/.usrconfig/scripts/changeVolume.sh 1
+bindsym Ctrl+Shift+F exec --no-startup-id /home/toni/.usrconfig/scripts/changeVolume.sh 0
+# Brightness changing hotkeys
+bindsym Ctrl+Shift+T exec --no-startup-id /home/toni/.usrconfig/scripts/changeBrightness.sh 1
+bindsym Ctrl+Shift+G exec --no-startup-id /home/toni/.usrconfig/scripts/changeBrightness.sh 0
 
 # Spotify controls
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
@@ -172,14 +177,12 @@ workspace 11 output eDP1
 workspace 12 output HDMI1
 
 # Assign specific workspaces to some applications
-assign [class="Pidgin"] 7
 assign [class="Skype"] 7
 assign [class="Spotify"] 9
 # assign [class="Google-chrome"] 4
 # assign [class="Gnome-Terminal"] 2
 assign [class="Evince"] 1
-assign [class="Okular"] 1
-assign [class="Shotwell"] 1
+# assign [class="Okular"] 1
 assign [class="Shotwell"] 1
 assign [class="desktop_window"] 1
 assign [class="Anki"] 12
