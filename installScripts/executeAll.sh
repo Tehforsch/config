@@ -1,4 +1,5 @@
 sh installPackages.sh
+sh installGit.sh
 sh installSpotify.sh
 sh installVundle.sh
 sh installOhMyZsh.sh
