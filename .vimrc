@@ -3,9 +3,6 @@
     let mapleader = "\<Space>"
     " Map <C-T> to command-t plugin which doesn't seem to work by default
     nmap <silent> <Leader>t :CommandT<CR>
-    " Map , to : since I never use , anyways
-    nmap <silent> , :
-    vmap <silent> , :
     " Map <CR> to G so number<CR> jumps to the line which is convenient
     nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
