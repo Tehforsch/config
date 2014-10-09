@@ -159,7 +159,7 @@
     filetype plugin indent on    " required
 
     " Disable automatic comment insertion when inserting new line while on a commented line
-    " set formatoptions-=c formatoptions-=r formatoptions-=o
+    set formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Solarized color scheme
     set t_Co=16
