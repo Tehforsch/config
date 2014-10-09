@@ -182,7 +182,6 @@
     Plugin 'honza/vim-snippets'
     " Exchange
     Plugin 'tommcdo/vim-exchange'
-    " Targets - Adds some text objects to work on.
     " Adds function argument text objects
     Plugin 'AndrewRadev/sideways.vim'
     " Ack.vim
