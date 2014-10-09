@@ -21,12 +21,8 @@
     " newline, and punctuation is "skipped"):
     nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
     " Duplicate the current line and comment out the top one (using vim-commentary)
-    nnoremap <Leader>c yypkgccj
-    vnoremap <Leader>c gcgvyPgvgc
-    " Quicker mapping for commenting out lines
-    nnoremap <C-e> gcc
-    inoremap <C-e> <C-o>gcc
-    vnoremap <C-e> gc
+    nmap <Leader>c yypkgccj
+    vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
 "mappings for plugins
@@ -47,6 +43,13 @@
     "xnoremap <silent> ie <Plug>CamelCaseMotion_ie
     " CommandT file refresh
     noremap <F5> :CommandTFlush<CR>
+    " Quicker mapping for commenting out lines
+    nmap <C-e> gcc
+    imap <C-e> <C-o>gcc
+    vmap <C-e> gc
+" mappings - misc
+    noremap <F4> :source ~/.vimrc<CR>
+
 " saved macros
     let @t = "ysiw}i\\text\<Esc>f}"
 
@@ -159,7 +162,7 @@
     filetype plugin indent on    " required
 
     " Disable automatic comment insertion when inserting new line while on a commented line
-    set formatoptions-=c formatoptions-=r formatoptions-=o
+    autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Solarized color scheme
     set t_Co=16
