@@ -34,3 +34,4 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 PATH=/home/toni/.cabal/bin:/home/toni/.usrconfig/bin:/home/toni/.bin:$PATH
+PYTHONDONTWRITEBYTECODE="1"
