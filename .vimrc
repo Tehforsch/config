@@ -25,6 +25,13 @@
     vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
+    " Change text objects for parantheses, brackets and braces so that they find the next object if there are none under the cursor
+    onoremap ib :<c-u>normal! f)vi(<cr>
+    onoremap ab :<c-u>normal! f)va(<cr>
+    onoremap in :<c-u>normal! f]vi[<cr>
+    onoremap an :<c-u>normal! f]va[<cr>
+    onoremap im :<c-u>normal! f}vi{<cr>
+    onoremap am :<c-u>normal! f}va{<cr>
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
     nnoremap <Leader>h :SidewaysLeft<CR>
