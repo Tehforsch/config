@@ -26,12 +26,14 @@
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
     " Change text objects for parantheses, brackets and braces so that they find the next object if there are none under the cursor
-    onoremap ib :<c-u>normal! f)vi(<cr>
+    " onoremap ib :<c-u>normal! f)vi(<cr>
+    onoremap ib :<c-u>execute "normal! /\\v[()]\r"<cr> va(<cr>
     onoremap ab :<c-u>normal! f)va(<cr>
     onoremap in :<c-u>normal! f]vi[<cr>
     onoremap an :<c-u>normal! f]va[<cr>
     onoremap im :<c-u>normal! f}vi{<cr>
     onoremap am :<c-u>normal! f}va{<cr>
+    "test ()() ))) ))
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
     nnoremap <Leader>h :SidewaysLeft<CR>
@@ -56,6 +58,28 @@
     vmap <C-e> gc
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
+
+" Session saving / loading - http://lucasoman.blogspot.de/2009/08/vim-tip-session-management.html
+    nmap <F3> <ESC>:call LoadSession()<CR>
+    " don't store any options in sessions
+    if version >= 700
+        set sessionoptions=blank,buffers,curdir,tabpages,winpos,folds
+    endif
+    " automatically update session, if loaded
+    let s:sessionloaded = 0
+    function LoadSession()
+        source Session.vim
+        let s:sessionloaded = 1
+    endfunction
+    function SaveSession()
+        if s:sessionloaded == 1
+        mksession!
+        end
+    endfunction
+    augroup session
+        autocmd!
+        autocmd VimLeave * call SaveSession()
+    augroup END
 
 " saved macros
     let @t = "ysiw}i\\text\<Esc>f}"
