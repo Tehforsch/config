@@ -2,11 +2,11 @@
     " Use space as leader key
     let mapleader = "\<Space>"
     " Map <C-T> to command-t plugin which doesn't seem to work by default
-    nmap <silent> <Leader>t :CommandT<CR>
+    nnoremap <silent> <Leader>t :CommandT<CR>
     " Map <CR> to G so number<CR> jumps to the line which is convenient
     nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
-    nmap ' `
+    nnoremap ' `
     " Write file 
     nnoremap <Leader>w :w<Cr>
     " Close vim
@@ -14,37 +14,37 @@
     " Switch to last buffer
     noremap <Leader>^ <C-^>
     " Switch buffer forwards and backwards
-    nmap <Leader>p :bp<CR>
-    nmap <Leader>n :bn<CR>
+    nnoremap <Leader>p :bp<CR>
+    nnoremap <Leader>n :bn<CR>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
-    nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
+    nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
     " Duplicate the current line and comment out the top one (using vim-commentary)
-    nmap <Leader>c yypkgccj
-    vmap <Leader>c gcgvyPgvgc
+    nnoremap <Leader>c yypkgccj
+    vnoremap <Leader>c gcgvyPgvgc
     " Quicker mapping for commenting out lines
-    nmap <C-e> gcc
-    imap <C-e> <C-o>gcc
-    vmap <C-e> gc
+    nnoremap <C-e> gcc
+    inoremap <C-e> <C-o>gcc
+    vnoremap <C-e> gc
     " Make Y behave like y$ which is analogous to C or D
-    nmap Y y$
+    nnoremap Y y$
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
-    nmap <Leader>h :SidewaysLeft<CR>
-    nmap <Leader>l :SidewaysRight<CR>
+    nnoremap <Leader>h :SidewaysLeft<CR>
+    nnoremap <Leader>l :SidewaysRight<CR>
     " Add text objects for sideways.vim
-    omap aa <Plug>SidewaysArgumentTextobjA
-    xmap aa <Plug>SidewaysArgumentTextobjA
-    omap ia <Plug>SidewaysArgumentTextobjI
-    xmap ia <Plug>SidewaysArgumentTextobjI
+    onoremap aa <Plug>SidewaysArgumentTextobjA
+    xnoremap aa <Plug>SidewaysArgumentTextobjA
+    onoremap ia <Plug>SidewaysArgumentTextobjI
+    xnoremap ia <Plug>SidewaysArgumentTextobjI
     " Camel-Case plugin mappings
-    omap <silent> ic <Plug>CamelCaseMotion_iw
-    xmap <silent> ic <Plug>CamelCaseMotion_iw
-    "omap <silent> ib <Plug>CamelCaseMotion_ib
-    "xmap <silent> ib <Plug>CamelCaseMotion_ib
-    "omap <silent> ie <Plug>CamelCaseMotion_ie
-    "xmap <silent> ie <Plug>CamelCaseMotion_ie
+    onoremap <silent> ic <Plug>CamelCaseMotion_iw
+    xnoremap <silent> ic <Plug>CamelCaseMotion_iw
+    "onoremap <silent> ib <Plug>CamelCaseMotion_ib
+    "xnoremap <silent> ib <Plug>CamelCaseMotion_ib
+    "onoremap <silent> ie <Plug>CamelCaseMotion_ie
+    "xnoremap <silent> ie <Plug>CamelCaseMotion_ie
     " CommandT file refresh
     noremap <F5> :CommandTFlush<CR>
 " saved macros
