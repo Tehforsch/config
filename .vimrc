@@ -72,8 +72,11 @@
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
     " Gnuplot comments
-    autocmd BufNewFile, BufRead *.gpi set filetype gnuplot
-    autocmd FileType gnuplot set commentstring=#\ %s
+    augroup gnuplot
+        autocmd!
+        autocmd BufNewFile, BufRead *.gpi set filetype gnuplot
+        autocmd FileType gnuplot set commentstring=#\ %s
+    augroup END
 
 " multiple files
     set hidden
@@ -156,7 +159,7 @@
     filetype plugin indent on    " required
 
     " Disable automatic comment insertion when inserting new line while on a commented line
-   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " set formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Solarized color scheme
     set t_Co=16
