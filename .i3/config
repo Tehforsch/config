@@ -139,6 +139,7 @@ bindsym Mod1+asciicircum mode "resize"
 bar {
     status_command i3status
     mode hide
+    hidden_state hide
 }
 
 #Disable window titles
