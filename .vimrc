@@ -27,7 +27,7 @@
     nnoremap Y y$
     " Change text objects for parantheses, brackets and braces so that they find the next object if there are none under the cursor
     " onoremap ib :<c-u>normal! f)vi(<cr>
-    onoremap ib :<c-u>execute "normal! /\\v[()]\r"<cr> va(<cr>
+    onoremap ib :<c-u>normal! f)vi(<cr>
     onoremap ab :<c-u>normal! f)va(<cr>
     onoremap in :<c-u>normal! f]vi[<cr>
     onoremap an :<c-u>normal! f]va[<cr>
@@ -36,16 +36,16 @@
     "test ()() ))) ))
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
-    nnoremap <Leader>h :SidewaysLeft<CR>
-    nnoremap <Leader>l :SidewaysRight<CR>
+    nmap <Leader>h :SidewaysLeft<CR>
+    nmap <Leader>l :SidewaysRight<CR>
     " Add text objects for sideways.vim
-    onoremap aa <Plug>SidewaysArgumentTextobjA
-    xnoremap aa <Plug>SidewaysArgumentTextobjA
-    onoremap ia <Plug>SidewaysArgumentTextobjI
-    xnoremap ia <Plug>SidewaysArgumentTextobjI
+    omap aa <Plug>SidewaysArgumentTextobjA
+    xmap aa <Plug>SidewaysArgumentTextobjA
+    omap ia <Plug>SidewaysArgumentTextobjI
+    xmap ia <Plug>SidewaysArgumentTextobjI
     " Camel-Case plugin mappings
-    onoremap <silent> ic <Plug>CamelCaseMotion_iw
-    xnoremap <silent> ic <Plug>CamelCaseMotion_iw
+    omap <silent> ic <Plug>CamelCaseMotion_iw
+    xmap <silent> ic <Plug>CamelCaseMotion_iw
     "onoremap <silent> ib <Plug>CamelCaseMotion_ib
     "xnoremap <silent> ib <Plug>CamelCaseMotion_ib
     "onoremap <silent> ie <Plug>CamelCaseMotion_ie
@@ -60,27 +60,48 @@
     noremap <F4> :source ~/.vimrc<CR>
 
 " Session saving / loading - http://lucasoman.blogspot.de/2009/08/vim-tip-session-management.html
-    nmap <F3> <ESC>:call LoadSession()<CR>
-    " don't store any options in sessions
     if version >= 700
-        set sessionoptions=blank,buffers,curdir,tabpages,winpos,folds
+        " localoptions has to be here:
+        " for some reason, new session loading code fails to set filetype of files in session
+      set sessionoptions=blank,tabpages,folds,localoptions,curdir,resize,winsize,winpos
     endif
-    " automatically update session, if loaded
-    let s:sessionloaded = 0
-    function LoadSession()
-        source Session.vim
-        let s:sessionloaded = 1
-    endfunction
-    function SaveSession()
-        if s:sessionloaded == 1
-        mksession!
-        end
-    endfunction
-    augroup session
-        autocmd!
-        autocmd VimLeave * call SaveSession()
-    augroup END
 
+    command! -nargs=1 Project :call LoadProject('<args>')
+    command! -nargs=+ SaveProject :call SaveProject('<args>')
+
+    let s:projectloaded = 0
+    let s:loadingproject = 0
+    let s:projectname = ''
+
+    function! LoadProject(name)
+
+        let s:projectloaded = 1
+        let s:projectname = a:name
+        exe "source ~/.vimfiles/projects/".a:name.".vim"
+        exe "rviminfo! ~/.vimfiles/projects/".a:name.".viminfo"
+
+    endfunction
+
+    function! SaveProject(name)
+
+        if a:name ==# ''
+            if s:projectloaded == 1
+                let pname = s:projectname
+            endif
+        else
+            let pname = a:name
+        endif
+
+        if pname !=# ''
+            let s:projectloaded = 0
+            let s:projectname = ''
+            exe "mksession! ~/.vimfiles/projects/".pname.".vim"
+            exe "wviminfo! ~/.vimfiles/projects/".pname.".vim"
+        endif
+
+    endfunction
+
+autocmd VimLeave * call SaveProject()
 " saved macros
     let @t = "ysiw}i\\text\<Esc>f}"
 
@@ -180,14 +201,18 @@
     " Ultisnips 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
-    " Exchange
+    " Exchange with cx<operator>
     Plugin 'tommcdo/vim-exchange'
     " Adds function argument text objects
     Plugin 'AndrewRadev/sideways.vim'
     " Ack.vim
     Plugin 'mileszs/ack.vim'
-    " Plugin adding ended, switch filetype settings back on
     Plugin 'bkad/CamelCaseMotion'
+    " Browse a source file - just testing
+    Plugin 'majutsushi/tagbar'
+    " Autocompletion for python 
+    Plugin 'davidhalter/jedi-vim'
+    " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
 
