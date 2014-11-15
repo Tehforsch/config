@@ -7,6 +7,8 @@
     nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nnoremap ' `
+    " Map # which searches backwards for the current word under the cursor to exact mark jumping
+    nnoremap # `
     " Write file 
     nnoremap <Leader>w :w<Cr>
     " Close vim
@@ -20,20 +22,14 @@
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
     nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
+    " Surround the word under the cursor with {} and start typing a latex command in front of it
+    " so we get \TYPEHERE{word}. This will probably create some problems?
+    nmap gl ysiw}i\
     " Duplicate the current line and comment out the top one (using vim-commentary)
     nmap <Leader>c yypkgccj
     vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
-    " Change text objects for parantheses, brackets and braces so that they find the next object if there are none under the cursor
-    " onoremap ib :<c-u>normal! f)vi(<cr>
-    onoremap ib :<c-u>normal! f)vi(<cr>
-    onoremap ab :<c-u>normal! f)va(<cr>
-    onoremap in :<c-u>normal! f]vi[<cr>
-    onoremap an :<c-u>normal! f]va[<cr>
-    onoremap im :<c-u>normal! f}vi{<cr>
-    onoremap am :<c-u>normal! f}va{<cr>
-    "test ()() ))) ))
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
     nmap <Leader>h :SidewaysLeft<CR>
@@ -135,7 +131,7 @@ autocmd VimLeave * call SaveProject()
 
 " multiple files
     set hidden
-    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out,*.bbl,*.blg
+    set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out,*.bbl,*.blg,*.toc,*.snm,*.nav
     " Don't write backup and swap files.
     set nobackup
     set nowritebackup
