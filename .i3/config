@@ -186,7 +186,7 @@ assign [class="Evince"] 1
 # assign [class="Okular"] 1
 assign [class="Shotwell"] 1
 assign [class="desktop_window"] 1
-assign [class="Anki"] 12
+# assign [class="Anki"] 12
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
