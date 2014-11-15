@@ -6,3 +6,5 @@ then
     # Open pdf in okular and make nohup shut up then open makeRunView
     gnome-terminal -e "zsh -c 'nohup okular $1 >/dev/null 2>&1 &;python3 ~/Projects/makeRunView/main.py -v .;exec $SHELL'"
 fi
+
+vim
