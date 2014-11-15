@@ -17,11 +17,6 @@ source ~/.usrconfig/.aliases
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
-# Disable auto correction
-unsetopt correct_all
-unsetopt correct
-setopt nocorrectall
-
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
 
