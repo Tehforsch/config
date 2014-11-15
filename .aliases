@@ -1,9 +1,6 @@
-alias ll='ls -alF'
 alias l='ls -alF'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias wpy='workpython'
-alias wpl='workplot'
-alias v='splitvim'
 alias t='splitterminal'
 alias work='python3 ~/Projects/makeRunView/main.py .'
 alias inst='sudo apt-get install'
