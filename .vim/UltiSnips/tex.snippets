@@ -24,17 +24,10 @@ snippet unitf
 \unitfrac[${1:value}]{${2:unit numerator}}{${3:unit denominator}} $0
 endsnippet
 
-snippet fracdev
-\begin{equation}
-	F = \vert D_{\mathrm{$1}} - D_{\mathrm{$1}^{\mathrm{T}}} \vert / D_{\mathrm{$1}}
-\end{equation}
-$0
-endsnippet
-
 snippet equ
-\begin{equation}
+\begin{align}
 	\label{eq:$1} $0
-\end{equation} 
+\end{align} 
 endsnippet
 
 snippet fig
@@ -51,4 +44,23 @@ endsnippet
 
 snippet mr
 \mathrm{$1}$0
+endsnippet
+
+snippet frame
+\begin{frame}
+    \frametitle{$1}
+    \begin{columns}
+    \begin{column}{6cm}
+        \begin{itemize}
+            \setlength{\itemsep}{15pt}
+			\item $0
+        \end{itemize}
+    \end{column}
+    \begin{column}{6cm}
+        \begin{figure}
+            \includegraphics[scale=0.5]{../pics/$2}
+        \end{figure}
+    \end{column}
+    \end{columns}
+\end{frame}
 endsnippet
