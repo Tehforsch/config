@@ -180,8 +180,6 @@ autocmd VimLeave * call SaveProject()
 
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
-    " Solarized color scheme
-    Plugin 'altercation/vim-colors-solarized'
     " Comment out lines with gcc, comment out movements/visual selections with gc
     Plugin 'tpope/vim-commentary'
     " Repeat composite commands with .
@@ -190,10 +188,6 @@ autocmd VimLeave * call SaveProject()
     Plugin 'tpope/vim-surround'
     " File finder
     Plugin 'wincent/command-t'
-    " Todo.txt for testing
-    Plugin 'freitass/todo.txt-vim'
-    " Indentation for PHP
-    Plugin '2072/PHP-Indenting-for-VIm'
     " Ultisnips 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
@@ -202,12 +196,11 @@ autocmd VimLeave * call SaveProject()
     " Adds function argument text objects
     Plugin 'AndrewRadev/sideways.vim'
     " Ack.vim
-    Plugin 'mileszs/ack.vim'
     Plugin 'bkad/CamelCaseMotion'
-    " Browse a source file - just testing
-    Plugin 'majutsushi/tagbar'
     " Autocompletion for python 
     Plugin 'davidhalter/jedi-vim'
+    " Molokai Colorscheme
+    Bundle 'tomasr/molokai'
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -216,6 +209,4 @@ autocmd VimLeave * call SaveProject()
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Solarized color scheme
-    set t_Co=16
-    set background=dark
-    colorscheme solarized
+    colorscheme molokai
