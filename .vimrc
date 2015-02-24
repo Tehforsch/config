@@ -2,7 +2,7 @@
     " Use space as leader key
     let mapleader = "\<Space>"
     " Map <C-T> to command-t plugin which doesn't seem to work by default
-    nnoremap <silent> <Leader>t :CommandT<CR>
+    nnoremap <silent> <Leader>t :CommandT .<CR>
     " Map <CR> to G so number<CR> jumps to the line which is convenient
     nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
@@ -15,9 +15,8 @@
     nnoremap <Leader>q :q<Cr>
     " Switch to last buffer
     noremap <Leader>^ <C-^>
-    " Switch buffer forwards and backwards
-    nnoremap <Leader>p :bp<CR>
-    nnoremap <Leader>n :bn<CR>
+    " Replace the current line by the line thats contained in "0 and leave all registers intact
+    nnoremap <Leader>p "_ddP
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
@@ -199,8 +198,8 @@ autocmd VimLeave * call SaveProject()
     Plugin 'bkad/CamelCaseMotion'
     " Autocompletion for python 
     Plugin 'davidhalter/jedi-vim'
-    " Molokai Colorscheme
-    Bundle 'tomasr/molokai'
+    " Solarized Colorscheme
+    Bundle 'altercation/vim-colors-solarized'
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -209,4 +208,7 @@ autocmd VimLeave * call SaveProject()
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Solarized color scheme
-    colorscheme molokai
+    set t_Co=16
+    syntax enable
+    set background=dark
+    colorscheme solarized
