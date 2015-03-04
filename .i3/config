@@ -138,8 +138,6 @@ bindsym Mod1+asciicircum mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-    mode hide
-    hidden_state hide
 }
 
 #Disable window titles
@@ -148,8 +146,13 @@ new_window 1pixel
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
+bindsym Mod1+Shift+w exec google-chrome web.whatsapp.com
+bindsym Mod1+Shift+m exec google-chrome mail.google.com
+# Telegram
+bindsym Mod1+Shift+t exec google-chrome --app-id=clhhggbfdinjmjhajaheehoeibfljjno
 
-bindsym Mod1+Shift+t exec bash ~/.usrconfig/startupScripts/runAll.sh
+
+bindsym Mod1+Shift+o exec bash ~/.usrconfig/startupScripts/runAll.sh
 
 # Volume changing hotkeys
 bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/.usrconfig/scripts/changeVolume.sh 1
@@ -192,4 +195,4 @@ assign [class="desktop_window"] 1
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id spotify
-exec --no-startup-id anki
+# exec --no-startup-id anki
