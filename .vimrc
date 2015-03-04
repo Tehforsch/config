@@ -15,7 +15,7 @@
     nnoremap <Leader>q :q<Cr>
     " Switch to last buffer
     noremap <Leader>^ <C-^>
-    " Replace the current line by the line thats contained in "0 and leave all registers intact
+    " Replace the current line by the line thats contained in "1 and leave all registers intact
     nnoremap <Leader>p "_ddP
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
