@@ -191,6 +191,12 @@ assign [class="Shotwell"] 1
 assign [class="desktop_window"] 1
 # assign [class="Anki"] 12
 
+# Jump to specific windows directly
+bindsym $mod+q [class="Google-chrome"]
+bindsym $mod+w [class="Okular"]
+bindsym $mod+e [class="Gnome-Terminal"]
+bindsym $mod+r [class="Spotify"]
+
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
