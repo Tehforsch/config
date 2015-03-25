@@ -141,7 +141,7 @@ bar {
 }
 
 #Disable window titles
-new_window 1pixel
+# new_window 1pixel
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
@@ -192,10 +192,10 @@ assign [class="desktop_window"] 1
 # assign [class="Anki"] 12
 
 # Jump to specific windows directly
-bindsym $mod+q [class="Google-chrome"]
-bindsym $mod+w [class="Okular"]
-bindsym $mod+e [class="Gnome-Terminal"]
-bindsym $mod+r [class="Spotify"]
+bindsym $mod+q [class="Google-chrome"] focus
+bindsym $mod+w [class="Okular"] focus
+bindsym $mod+e [class="Gnome-Terminal"] focus
+bindsym $mod+r [class="Spotify"] focus
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
