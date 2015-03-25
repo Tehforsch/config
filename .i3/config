@@ -195,6 +195,7 @@ assign [class="desktop_window"] 1
 bindsym $mod+q exec /home/toni/.usrconfig/scripts/focusWindow.sh chrome google-chrome Google-chrome
 bindsym $mod+w [class="Okular"] focus
 bindsym $mod+e exec /home/toni/.usrconfig/scripts/focusWindow.sh terminal gnome-terminal Gnome-terminal
+bindsym $mod+r exec /home/toni/.usrconfig/scripts/focusWindow.sh spotify spotify Spotify
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
