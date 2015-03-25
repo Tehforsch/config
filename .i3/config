@@ -192,10 +192,9 @@ assign [class="desktop_window"] 1
 # assign [class="Anki"] 12
 
 # Jump to specific windows directly
-bindsym $mod+q [class="Google-chrome"] focus
+bindsym $mod+q exec /home/toni/.usrconfig/scripts/focusWindow.sh chrome google-chrome Google-chrome
 bindsym $mod+w [class="Okular"] focus
-bindsym $mod+e [class="Gnome-Terminal"] focus
-bindsym $mod+r [class="Spotify"] focus
+bindsym $mod+e exec /home/toni/.usrconfig/scripts/focusWindow.sh terminal gnome-terminal Gnome-terminal
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
