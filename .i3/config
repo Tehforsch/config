@@ -141,7 +141,7 @@ bar {
 }
 
 #Disable window titles
-# new_window 1pixel
+new_window 1pixel
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
