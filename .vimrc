@@ -139,6 +139,11 @@ autocmd VimLeave * call SaveProject()
 " messages and info
     set ruler
     set number
+" messages and info in gvim (for eclim mostly)
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
 
 " tabs and indenting
     " Tab size 4
