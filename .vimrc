@@ -18,6 +18,8 @@
     " Replace the current line by the line thats contained in "1 and leave all registers intact
     nnoremap <Leader>p "_ddP
     vnoremap <Leader>p "_dP
+    " Delete line without copying
+    nnoremap <Leader>d "_dd
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
