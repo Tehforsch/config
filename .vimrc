@@ -20,6 +20,8 @@
     vnoremap <Leader>p "_dP
     " Delete line without copying
     nnoremap <Leader>d "_dd
+    " Disable ex mode which is only opened because I mess up
+    nnoremap Q <nop>
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
