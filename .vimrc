@@ -1,8 +1,8 @@
 "mappings - basic
     " Use space as leader key
     let mapleader = "\<Space>"
-    " Map <C-T> to command-t plugin which doesn't seem to work by default - use most recent results
-    nnoremap <silent> <Leader>t :CommandTMRU .<CR>
+    " Map <C-T> to command-t plugin which doesn't seem to work by default
+    nnoremap <silent> <Leader>t :CommandT .<CR>
     " Map <CR> to G so number<CR> jumps to the line which is convenient
     nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
