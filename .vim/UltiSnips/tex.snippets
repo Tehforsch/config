@@ -6,16 +6,6 @@ snippet pfrac
 \frac{\partial $1}{\partial $2} $0
 endsnippet
 
-snippet figure
-\begin{figure}[ht!]
-\centering
-\subimport{$1}{$2}
-\caption{$3}
-\label{$4}
-\end{figure}
-$0
-endsnippet
-
 snippet unit
 \unit[${1:value}]{${2:unit}} $0
 endsnippet
@@ -30,37 +20,22 @@ snippet equ
 \end{align} 
 endsnippet
 
-snippet fig
-Fig.~\ref{fig:$1} $0
-endsnippet
-
-snippet eq
-Eq.~\ref{eq:$1} $0
-endsnippet
-
-snippet mb
-\mathbf{$1}$0
-endsnippet
-
 snippet mr
 \mathrm{$1}$0
 endsnippet
 
-snippet frame
-\begin{frame}
-    \frametitle{$1}
-    \begin{columns}
-    \begin{column}{6cm}
-        \begin{itemize}
-            \setlength{\itemsep}{15pt}
-			\item $0
-        \end{itemize}
-    \end{column}
-    \begin{column}{6cm}
-        \begin{figure}
-            \includegraphics[scale=0.5]{../pics/$2}
-        \end{figure}
-    \end{column}
-    \end{columns}
-\end{frame}
+snippet cases
+\begin{cases} 
+	EXP1 &\mbox{if } COND1 \\\\
+	EXP2 &\mbox{if } COND2
+\end{cases}
+endsnippet
+
+snippet begin
+\begin{$1}$0
+\end{$1}
+endsnippet
+
+snippet subim
+\subimport{../pics/}{$1}
 endsnippet
