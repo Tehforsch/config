@@ -175,14 +175,10 @@ workspace 12 output HDMI1
 
 # Assign specific workspaces to some applications
 assign [class="Skype"] 7
+assign [class="Soffice"] 8
+assign [class="libreoffice"] 8
 assign [class="Spotify"] 9
-# assign [class="Google-chrome"] 4
-# assign [class="Gnome-Terminal"] 2
-assign [class="Evince"] 1
-# assign [class="Okular"] 1
-assign [class="Shotwell"] 1
 assign [class="desktop_window"] 1
-# assign [class="Anki"] 12
 
 # Jump to specific windows directly
 bindsym $mod+q exec /home/toni/.usrconfig/scripts/focusWindow.sh chrome google-chrome Google-chrome
