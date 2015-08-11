@@ -59,9 +59,6 @@
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
 
-" saved macros
-    let @t = "ysiw}i\\text\<Esc>f}"
-
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
