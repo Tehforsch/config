@@ -179,6 +179,10 @@ autocmd VimLeave * call SaveProject()
     let g:UltiSnipsExpandTrigger="<tab>"                                            
     let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
+    " Jedi-Vim - disable autocompletion on dot
+    let g:jedi#popup_on_dot = 0
+
+" VUNDLE INITIALIZATION
 
     set nocompatible              " be iMproved, required
     filetype off                  " required
@@ -186,6 +190,7 @@ autocmd VimLeave * call SaveProject()
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
+
 
     " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
@@ -208,6 +213,8 @@ autocmd VimLeave * call SaveProject()
     Plugin 'bkad/CamelCaseMotion'
     " Autocompletion for python 
     Plugin 'davidhalter/jedi-vim'
+    " Supertab - Autocompletion
+    Plugin 'ervandew/supertab'
     " Solarized Colorscheme
     Bundle 'altercation/vim-colors-solarized'
     " Adding ended, switch filetype settings back on
