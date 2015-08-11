@@ -59,49 +59,6 @@
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
 
-" Session saving / loading - http://lucasoman.blogspot.de/2009/08/vim-tip-session-management.html
-    if version >= 700
-        " localoptions has to be here:
-        " for some reason, new session loading code fails to set filetype of files in session
-      set sessionoptions=blank,tabpages,folds,localoptions,curdir,resize,winsize,winpos
-    endif
-
-    command! -nargs=1 Project :call LoadProject('<args>')
-    command! -nargs=+ SaveProject :call SaveProject('<args>')
-
-    let s:projectloaded = 0
-    let s:loadingproject = 0
-    let s:projectname = ''
-
-    function! LoadProject(name)
-
-        let s:projectloaded = 1
-        let s:projectname = a:name
-        exe "source ~/.vimfiles/projects/".a:name.".vim"
-        exe "rviminfo! ~/.vimfiles/projects/".a:name.".viminfo"
-
-    endfunction
-
-    function! SaveProject(name)
-
-        if a:name ==# ''
-            if s:projectloaded == 1
-                let pname = s:projectname
-            endif
-        else
-            let pname = a:name
-        endif
-
-        if pname !=# ''
-            let s:projectloaded = 0
-            let s:projectname = ''
-            exe "mksession! ~/.vimfiles/projects/".pname.".vim"
-            exe "wviminfo! ~/.vimfiles/projects/".pname.".vim"
-        endif
-
-    endfunction
-
-autocmd VimLeave * call SaveProject()
 " saved macros
     let @t = "ysiw}i\\text\<Esc>f}"
 
