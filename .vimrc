@@ -135,6 +135,8 @@
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
     " Jedi-Vim - disable autocompletion on dot
     let g:jedi#popup_on_dot = 0
+    " Supertab - Complete from top to bottom - I don't quite understand this but it seems more logical to me.
+    let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " VUNDLE INITIALIZATION
 
