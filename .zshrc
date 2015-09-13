@@ -25,7 +25,7 @@ export UPDATE_ZSH_DAYS=40
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git autojump)
+plugins=(git fasd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -35,3 +35,6 @@ PYTHONDONTWRITEBYTECODE="1"
 
 # Binding 
 bindkey -s '^d' 'bg && disown && exit\n'
+
+# Implement the fasd keybind to jump into a dir with j.
+alias j='fasd_cd -d'
