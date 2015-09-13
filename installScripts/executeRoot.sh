@@ -8,5 +8,6 @@ sh ./installPythonModules.sh
 sh ./installWhenChanged.sh
 sh ./installSpotify.sh
 sh ./setupSymlinks.sh
+sh ./installFasd.sh
 sh ./setZshAsDefaultShell.sh
-sudo zsh ./installSolarizedGnomeTerminal.sh
+zsh ./installSolarizedGnomeTerminal.sh
