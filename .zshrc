@@ -38,3 +38,7 @@ bindkey -s '^d' 'bg && disown && exit\n'
 
 # Implement the fasd keybind to jump into a dir with j.
 alias j='fasd_cd -d'
+# fasd - vim
+alias v='f -e vim'
+# fasd - okular 
+alias o='f -e okular'
