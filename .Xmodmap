@@ -12,5 +12,5 @@ keycode 53 = x X braceright braceright braceright braceright
 keycode 42 = g G dollar dollar dollar dollar
 keycode 60 = period colon period period period period
 
-clear lock 
-keycode 66 = Escape
+! clear lock 
+! keycode 66 = Escape
