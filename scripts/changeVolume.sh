@@ -2,7 +2,7 @@
 #Get volume of the pulse audio source $id
 for id in $(seq 0 5)
 do
-    increase=10
+    increase=5
 
     if [[ $1 -eq 0 ]]; then
         pactl set-sink-volume $id -- -$increase%
