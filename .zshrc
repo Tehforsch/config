@@ -5,11 +5,11 @@ ZSH=~/.usrconfig/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="blinks"
 
-# Auto ls when cding
-function chpwd() {
-    emulate -L zsh
-    ls -alF
-}
+# # Auto ls when cding
+# function chpwd() {
+#     emulate -L zsh
+#     ls -alF
+# }
 
 # Aliases
 source ~/.usrconfig/.aliases
