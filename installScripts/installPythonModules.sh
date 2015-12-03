@@ -1,1 +1,1 @@
-pip3.4 install pyinotify numpy mock nose livestreamer
+yes | pip3.4 install pyinotify numpy mock nose livestreamer
