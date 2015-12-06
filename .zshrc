@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=~/.usrconfig/.oh-my-zsh
+ZSH=~/projects/config/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -12,7 +12,7 @@ ZSH_THEME="blinks"
 # }
 
 # Aliases
-source ~/.usrconfig/.aliases
+source ~/projects/config/aliases
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -30,7 +30,7 @@ plugins=(git fasd)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-PATH=/home/toni/.cabal/bin:/home/toni/.usrconfig/bin:/home/toni/.bin:$PATH
+PATH=/home/toni/.cabal/bin:/home/toni/projects/config/bin:/home/toni/.bin:$PATH
 PYTHONDONTWRITEBYTECODE="1"
 
 # Binding 

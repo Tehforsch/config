@@ -6,13 +6,11 @@ rm ~/.gnuplot
 rm ~/.Xmodmap
 rm ~/.i3/config
 rm ~/.i3status.conf
-ln -s ~/.usrconfig/.vimrc ~/.vimrc
-ln -s ~/.usrconfig/.zshrc ~/.zshrc
-ln -s ~/.usrconfig/.gitconfig ~/.gitconfig
-ln -s ~/.usrconfig/.gitignoreGlobal ~/.gitignoreGlobal
-ln -s ~/.usrconfig/.gnuplot ~/.gnuplot
-ln -s ~/.usrconfig/.Xmodmap ~/.Xmodmap
-ln -s ~/.usrconfig/.i3/config ~/.i3/config
-ln -s ~/.usrconfig/.i3status.conf ~/.i3status.conf
-#rm -fr ~/.vim/
-#ln -s ~/.usrconfig/.vim ~/.vim/
+ln -s ~/projects/config/.vimrc ~/.vimrc
+ln -s ~/projects/config/.zshrc ~/.zshrc
+ln -s ~/projects/config/.gitconfig ~/.gitconfig
+ln -s ~/projects/config/.gitignoreGlobal ~/.gitignoreGlobal
+ln -s ~/projects/config/.gnuplot ~/.gnuplot
+ln -s ~/projects/config/.Xmodmap ~/.Xmodmap
+ln -s ~/projects/config/.i3/config ~/.i3/config
+ln -s ~/projects/config/.i3status.conf ~/.i3status.conf
