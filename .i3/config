@@ -145,14 +145,14 @@ bindsym Mod1+Shift+m exec google-chrome mail.google.com
 bindsym Mod1+Shift+t exec google-chrome --app-id=clhhggbfdinjmjhajaheehoeibfljjno
 
 
-bindsym Mod1+Shift+o exec bash ~/.usrconfig/startupScripts/runAll.sh
+bindsym Mod1+Shift+o exec zsh /home/toni/projects/config/startupScripts/runAll.sh
 
 # Volume changing hotkeys
-bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/.usrconfig/scripts/changeVolume.sh 1
-bindsym Ctrl+Shift+F exec --no-startup-id /home/toni/.usrconfig/scripts/changeVolume.sh 0
+bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/projects/config/scripts/changeVolume.sh 1
+bindsym Ctrl+Shift+F exec --no-startup-id /home/toni/projects/config/scripts/changeVolume.sh 0
 # Brightness changing hotkeys
-bindsym Ctrl+Shift+T exec --no-startup-id /home/toni/.usrconfig/scripts/changeBrightness.sh 1
-bindsym Ctrl+Shift+G exec --no-startup-id /home/toni/.usrconfig/scripts/changeBrightness.sh 0
+bindsym Ctrl+Shift+T exec --no-startup-id /home/toni/projects/config/scripts/changeBrightness.sh 1
+bindsym Ctrl+Shift+G exec --no-startup-id /home/toni/projects/config/scripts/changeBrightness.sh 0
 
 # Spotify controls
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
@@ -181,10 +181,10 @@ assign [class="Spotify"] 9
 assign [class="desktop_window"] 1
 
 # Jump to specific windows directly
-bindsym $mod+q exec /home/toni/.usrconfig/scripts/focusWindow.sh chrome google-chrome Google-chrome
+bindsym $mod+q exec /home/toni/projects/config/scripts/focusWindow.sh chrome google-chrome Google-chrome
 bindsym $mod+w [class="Okular"] focus
-bindsym $mod+e exec /home/toni/.usrconfig/scripts/focusWindow.sh terminal gnome-terminal Gnome-terminal
-bindsym $mod+r exec /home/toni/.usrconfig/scripts/focusWindow.sh spotify spotify Spotify
+bindsym $mod+e exec /home/toni/projects/config/scripts/focusWindow.sh terminal gnome-terminal Gnome-terminal
+bindsym $mod+r exec /home/toni/projects/config/scripts/focusWindow.sh spotify spotify Spotify
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet

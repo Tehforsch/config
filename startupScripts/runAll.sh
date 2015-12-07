@@ -1,3 +1,3 @@
 #!/bin/bash
-~/.usrconfig/startupScripts/screenConfiguration.sh
-~/.usrconfig/startupScripts/keyboardConfiguration.sh
+~/projects/config/startupScripts/screenConfiguration.sh
+~/projects/config/startupScripts/keyboardConfiguration.sh

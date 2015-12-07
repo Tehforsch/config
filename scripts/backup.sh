@@ -3,6 +3,6 @@
 # Destination: #1
 dest=#1
 
-cp -rv /home/toni/Projects/* #1
-cp -rv /home/toni/Dropbox/* #1
-cp -rv /home/toni/.usrconfig/* #1
+cp -rv /home/toni/projects #1
+cp -rv /home/toni/resource #1
+cp -rv /home/toni/archive #1
