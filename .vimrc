@@ -210,8 +210,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Plugin 'AndrewRadev/sideways.vim'
     " Ack.vim
     Plugin 'bkad/CamelCaseMotion'
-    " Autocompletion for python 
-    Plugin 'davidhalter/jedi-vim'
     " Supertab - Autocompletion
     Plugin 'ervandew/supertab'
     " Vim-Easymotion
