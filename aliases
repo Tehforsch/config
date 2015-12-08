@@ -5,6 +5,7 @@ alias work='/home/toni/projects/config/bin/makeRunViewInSeparateTerminal'
 alias inst='sudo apt-get install'
 alias dlc='bash /home/toni/projects/config/scripts/copyLastDownload.sh'
 alias to='cd ~/resource/todo/ && ./gather'
+alias toi='~/projects/config/bin/gatherTodo' # todo in place
 alias jou='cp ~/resource/journal/jou ~/resource/journal/jou~ && vim ~/resource/journal/jou'
 alias fin='cd ~/resource/finances/ && ledger -f finances'
 alias efin='cd ~/resource/finances/ && ./readIn.py'

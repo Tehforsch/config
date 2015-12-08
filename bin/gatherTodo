@@ -1,0 +1,32 @@
+#!/bin/bash
+
+red='\e[0;31m'
+blue='\e[0;34m'
+nc='\e[0m' # No Color
+
+function redEcho {
+    echo -e "${red}$1${nc}"
+}
+function blueEcho {
+    echo -e "${blue}$1${nc}"
+}
+function printFile {
+    for f in ./*
+    do
+        # Is directory
+        if [ -d $f ]; then
+            # File is not empty
+            if [ -s $f/$1 ]; then
+                # GO
+                blueEcho "$(basename $f)"
+                cat $f/$1
+            fi
+        fi
+    done
+}
+redEcho "Someday / Maybe"
+printFile somedayMaybe
+redEcho "Waiting"
+printFile waiting
+redEcho "Next Actions:"
+printFile nextActions
