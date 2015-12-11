@@ -12,4 +12,4 @@ add-apt-repository ppa:mbudde/ledger
 apt-get update
 
 # Install everything
-apt-get --yes git install ledger spotify-client
+apt-get --yes install -f ledger spotify-client git
