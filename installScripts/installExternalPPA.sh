@@ -1,15 +1,16 @@
 #Git most recent version
-sudo add-apt-repository ppa:git-core/ppa
+# sudo add-apt-repository ppa:git-core/ppa
 
 #Spotify
-add-apt-repository 'deb http://repository.spotify.com/ stable non-free' 
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 94558F59  
+# add-apt-repository 'deb http://repository.spotify.com/ stable non-free' 
+# apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 94558F59  
 
 #Ledger
-add-apt-repository ppa:mbudde/ledger
+# add-apt-repository ppa:mbudde/ledger
 
 # Update
 apt-get update
 
 # Install everything
-apt-get --yes install -f ledger spotify-client git
+apt-get --yes install ledger spotify-client git
+apt-get --yes install -f
