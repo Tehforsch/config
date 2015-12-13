@@ -9,6 +9,9 @@
     nnoremap ' `
     " Map # which searches backwards for the current word under the cursor to exact mark jumping
     nnoremap # `
+    " Map jumping through changelist to <C-j> and <C-k>
+    map <C-k> g;
+    map <C-j> g,
     " Write file 
     nnoremap <Leader>w :w<Cr>
     " Close vim
