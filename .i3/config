@@ -15,7 +15,7 @@ set $mod Mod4
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Set background to black
-exec --no-startup-id xsetroot -solid "#333333"
+exec --no-startup-id xsetroot -solid "#000000"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
