@@ -3,7 +3,7 @@
 
 #Spotify
 # add-apt-repository 'deb http://repository.spotify.com/ stable non-free' 
-# apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 94558F59  
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com D2C19886  
 
 #Ledger
 # add-apt-repository ppa:mbudde/ledger
