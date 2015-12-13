@@ -4,3 +4,6 @@ Spotify doesnt start because of libgcrypt11? installing with apt doesnt help, us
 # Sound
 18i6 no sound but "crackling" whenever activated? try activating the outputs in alsamixer, the monitors are actually the outputs since this is recognized now.
 The desired output (=guitar + sound from pc) is probably MIX1, one of the last options
+
+# Graphics
+Apparently nvidia-352 works with 840M only if i upgrade everything before
