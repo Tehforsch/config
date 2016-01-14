@@ -3,6 +3,8 @@
 # Destination: #1
 dest=$1
 
+mkdir $1
+
 cp -rv /home/toni/projects $1
 cp -rv /home/toni/resource $1
 cp -rv /home/toni/archive $1
