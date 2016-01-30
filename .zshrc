@@ -40,3 +40,5 @@ alias o='f -e okular'
 
 # bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
 bindkey -s '^g' '&!\n^z exit\n'
+bindkey ^l forward-word
+bindkey ^h backward-word
