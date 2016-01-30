@@ -6,12 +6,6 @@ ZSH=$CONFIG/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="blinks"
 
-# # Auto ls when cding
-# function chpwd() {
-#     emulate -L zsh
-#     ls -alF
-# }
-
 # Aliases
 source $CONFIG/aliases
 
@@ -35,7 +29,7 @@ PATH=/home/toni/.cabal/bin:$CONFIG/bin:/home/toni/.bin:$PATH
 PYTHONDONTWRITEBYTECODE="1"
 
 # Binding 
-bindkey -s '^d' 'bg && disown && exit\n'
+bindkey -s '^f' 'bg && disown && exit\n'
 
 # Implement the fasd keybind to jump into a dir with j.
 alias j='fasd_cd -d'
@@ -43,3 +37,6 @@ alias j='fasd_cd -d'
 alias v='f -e vim'
 # fasd - okular 
 alias o='f -e okular'
+
+# bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
+bindkey -s '^g' '&!\n^z exit\n'
