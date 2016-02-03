@@ -2,6 +2,7 @@ alias l='ls -alF'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias t='splitterminal'
 alias work='/home/toni/projects/config/bin/makeRunViewInSeparateTerminal'
+alias mrv='python3.4 /home/toni/projects/makeRunView/main.py -v .'
 alias inst='sudo apt-get install'
 alias dlc='bash /home/toni/projects/config/scripts/copyLastDownload.sh'
 alias to='cd ~/resource/todo/ && ./gather'
