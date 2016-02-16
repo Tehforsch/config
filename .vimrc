@@ -215,8 +215,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Plugin 'bkad/CamelCaseMotion'
     " Supertab - Autocompletion
     Plugin 'ervandew/supertab'
-    " Vim-Easymotion
-    Plugin 'easymotion/vim-easymotion'
     " Solarized Colorscheme
     Bundle 'altercation/vim-colors-solarized'
     " Adding ended, switch filetype settings back on
