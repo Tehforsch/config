@@ -42,3 +42,5 @@ alias o='f -e okular'
 bindkey -s '^g' '&!\n^z exit\n'
 bindkey ^l forward-word
 bindkey ^h backward-word
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
