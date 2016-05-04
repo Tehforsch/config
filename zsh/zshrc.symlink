@@ -51,4 +51,6 @@ bindkey -s '^g' '&!\n^z exit\n'
 bindkey ^l forward-word
 bindkey ^h backward-word
 
+# add ~/.bin to PATH
+PATH=$PATH:~/.bin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
