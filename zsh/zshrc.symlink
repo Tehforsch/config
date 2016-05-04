@@ -28,7 +28,7 @@ fi
 
 ## Misc settings
 # Load aliases
-source $CONFIG/aliases
+source "$HOME/.aliases"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
