@@ -2,7 +2,7 @@
     " Use space as leader key
     let mapleader = "\<Space>"
     " Map <C-T> to command-t plugin which doesn't seem to work by default
-    nnoremap <silent> <Leader>t :CommandT .<CR>
+    nnoremap <silent> <Leader>t :CtrlP .<CR>
     " Map <CR> to G so number<CR> jumps to the line which is convenient
     nnoremap <CR> G
     " Map single quote to apostrophe in normal mode (jump to exact mark)
@@ -53,8 +53,6 @@
     "xnoremap <silent> ib <Plug>CamelCaseMotion_ib
     "onoremap <silent> ie <Plug>CamelCaseMotion_ie
     "xnoremap <silent> ie <Plug>CamelCaseMotion_ie
-    " CommandT file refresh
-    noremap <F5> :CommandTFlush<CR>
     " Quicker mapping for commenting out lines
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
@@ -173,8 +171,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 " plugin specific settings
     " Php indentation
     let g:PHP_default_indenting = 1
-    " Command-T
-    let g:CommandTAlwaysShowDotFiles = 1
+    " Ctrl-P: show dotfiles
+    let g:ctrlp_show_hidden = 1
     " Ultisnips
     let g:UltiSnipsExpandTrigger="<tab>"                                            
     let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
@@ -203,7 +201,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
     " File finder
-    Plugin 'wincent/command-t'
+    Plugin 'kien/ctrlp.vim'
     " Ultisnips 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
