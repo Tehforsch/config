@@ -1,12 +1,33 @@
-# Path to your oh-my-zsh configuration.
-CONFIG=/home/toni/projects/config
-ZSH=$CONFIG/.oh-my-zsh
+## Config folder
+CONFIG=$HOME/projects/config
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="blinks"
+# load zgen
+source "$CONFIG/zgen/zgen.zsh"
 
-# Aliases
+# if the init scipt doesn't exist
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+
+    # plugins
+    zgen oh-my-zsh plugins/git
+    # zgen oh-my-zsh plugins/sudo
+    # zgen oh-my-zsh plugins/command-not-found
+    # zgen load zsh-users/zsh-syntax-highlighting
+
+EOPLUGINS
+    zgen load zsh-users/zsh-completions src
+
+    # theme
+    zgen oh-my-zsh themes/blinks
+
+    # save all to init script
+    zgen save
+fi
+
+## Misc settings
+# Load aliases
 source $CONFIG/aliases
 
 # Set to this to use case-sensitive completion
@@ -14,19 +35,6 @@ CASE_SENSITIVE="true"
 
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
-
-# Uncomment to change how often before auto-updates occur? (in days)
-export UPDATE_ZSH_DAYS=40
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git fasd)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-PATH=/home/toni/.cabal/bin:$CONFIG/bin:/home/toni/.bin:$PATH
-PYTHONDONTWRITEBYTECODE="1"
 
 # Binding 
 bindkey -s '^f' 'bg && disown && exit\n'
