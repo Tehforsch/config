@@ -121,6 +121,10 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
 
+" persistent undo - apparently this is possible
+    set undofile
+    set undodir=~/.vim/undodir
+
 " syntax, highlighting and spelling
     " Enable syntax highlighting
     syntax on
@@ -168,7 +172,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set timeout timeoutlen=1000 ttimeoutlen=100
     " Increase history size.
     set history=2000
-
 
 " plugin specific settings
     " Php indentation
