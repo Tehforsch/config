@@ -37,6 +37,9 @@
     vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
+"mappings - command line
+    " w!! writes file as sudo if it was opened without
+    cnoremap  w!! w !sudo tee % > /dev/null
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
     nmap <Leader>h :SidewaysLeft<CR>
@@ -206,7 +209,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
     " File finder
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
     " Ultisnips 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
