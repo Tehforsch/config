@@ -57,6 +57,8 @@
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
     vmap <C-e> gc
+    " Open gundo tree
+    nnoremap <F6> :GundoToggle<CR>
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
 
@@ -209,12 +211,12 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Plugin 'tommcdo/vim-exchange'
     " Adds function argument text objects
     Plugin 'AndrewRadev/sideways.vim'
-    " Ack.vim
-    Plugin 'bkad/CamelCaseMotion'
     " Supertab - Autocompletion
     Plugin 'ervandew/supertab'
     " Solarized Colorscheme
     Bundle 'altercation/vim-colors-solarized'
+    " Undo tree visualization
+    Bundle 'sjl/gundo.vim'
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
