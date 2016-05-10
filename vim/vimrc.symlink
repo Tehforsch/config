@@ -131,6 +131,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 " syntax, highlighting and spelling
     " Enable syntax highlighting
     syntax on
+    " Disable showing of matching parantheses for some versions of vim
+    set noshowmatch
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
     " Gnuplot comments
@@ -188,7 +190,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Jedi-Vim - disable autocompletion on dot
     let g:jedi#popup_on_dot = 0
     " Supertab - Complete from top to bottom - I don't quite understand this but it seems more logical to me.
-    let g:SuperTabDefaultCompletionType = "<c-n>"
+    " let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " VUNDLE INITIALIZATION
 
@@ -218,7 +220,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Adds function argument text objects
     Plugin 'AndrewRadev/sideways.vim'
     " Supertab - Autocompletion
-    Plugin 'ervandew/supertab'
+    " Plugin 'ervandew/supertab'
     " Solarized Colorscheme
     Bundle 'altercation/vim-colors-solarized'
     " Undo tree visualization

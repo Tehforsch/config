@@ -1,7 +1,10 @@
 #!/bin/bash
 #
-# Inspired by (stolen from) https://github.com/holman/dotfiles
+# update submodules
+git submodule init
+git submodule update
 
+# Inspired by (stolen from) https://github.com/holman/dotfiles
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd)
 
