@@ -18,9 +18,13 @@
     nnoremap <Leader>q :q<Cr>
     " Switch to last buffer
     noremap <Leader>^ <C-^>
-    " Replace the current line by the line thats contained in "1 and leave all registers intact
-    nnoremap <Leader>p "_ddP
-    vnoremap <Leader>p "_dP
+    " Replace the current word with the contents of "1, leave registers intact, jump to beginning of pasted word
+    nnoremap <Leader>p "_diwP'[
+    " Replace the current selection with the contents of "1, leave registers intact, jump to beginning of pasted word
+    vnoremap <Leader>p "_dP'[
+    " Replace the current line by the line thats contained in "1, leave registers intact
+    nnoremap <Leader>P "_ddP
+    vnoremap <Leader>P "_dP
     " Delete line without copying
     nnoremap <Leader>d "_dd
     " Disable ex mode which is only opened because I mess up
