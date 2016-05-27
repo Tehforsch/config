@@ -15,3 +15,13 @@ alias ank='anki -b /home/toni/.anki/'
 alias nose='nosetests'
 alias python2='python2.7'
 alias python='python3.4'
+alias live='$CONFIG/scripts/startLivestreamer.sh'
+
+# Implement the fasd keybind to jump into a dir with j.
+alias j='fasd_cd -d'
+# fasd - vim
+alias v='f -e vim'
+# fasd - okular 
+alias o='f -e okular'
+# fasd - vlc 
+alias vl='f -e vlc'

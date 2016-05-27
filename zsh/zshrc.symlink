@@ -31,22 +31,10 @@ CASE_SENSITIVE="true"
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
 
-# Binding 
+# Binding to close the terminal with a process running in it without killing the process
 bindkey -s '^f' 'bg && disown && exit\n'
-
-# Implement the fasd keybind to jump into a dir with j.
-alias j='fasd_cd -d'
-# fasd - vim
-alias v='f -e vim'
-# fasd - okular 
-alias o='f -e okular'
-# fasd - vlc 
-alias vl='f -e vlc'
-
 # bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
 bindkey -s '^g' '&!\n^z exit\n'
-bindkey ^l forward-word
-bindkey ^h backward-word
 
 # add ~/.bin to PATH
 PATH=$PATH:~/.bin
