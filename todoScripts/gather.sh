@@ -7,7 +7,7 @@ else
     full=false
 fi
 
-python "$CONFIG/pythonScripts/addTimed.py"
+python "$CONFIG/todoScripts/addTimed.py"
 red='\e[0;31m'
 blue='\e[0;34m'
 nc='\e[0m' # No Color
