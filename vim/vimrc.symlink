@@ -53,13 +53,6 @@
     xmap aa <Plug>SidewaysArgumentTextobjA
     omap ia <Plug>SidewaysArgumentTextobjI
     xmap ia <Plug>SidewaysArgumentTextobjI
-    " Camel-Case plugin mappings
-    omap <silent> ic <Plug>CamelCaseMotion_iw
-    xmap <silent> ic <Plug>CamelCaseMotion_iw
-    "onoremap <silent> ib <Plug>CamelCaseMotion_ib
-    "xnoremap <silent> ib <Plug>CamelCaseMotion_ib
-    "onoremap <silent> ie <Plug>CamelCaseMotion_ie
-    "xnoremap <silent> ie <Plug>CamelCaseMotion_ie
     " Quicker mapping for commenting out lines
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
@@ -144,6 +137,14 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
         autocmd FileType gnuplot set commentstring=#\ %s
     augroup END
 
+" latex text object for an command of type \command{...}
+    vnoremap ac :<C-U>call SelectEntireCommand()<CR>
+    nnoremap ac :<C-U>call SelectEntireCommand()<CR>
+    onoremap ac :<C-U>call SelectEntireCommand()<CR>
+    vnoremap ic :<C-U>call SelectCommandName()<CR>
+    nnoremap ic :<C-U>call SelectCommandName()<CR>
+    onoremap ic :<C-U>call SelectCommandName()<CR>
+
 " multiple files
     set hidden
     set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out,*.bbl,*.blg,*.toc,*.snm,*.nav
@@ -227,6 +228,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'altercation/vim-colors-solarized'
     " Undo tree visualization
     Bundle 'sjl/gundo.vim'
+    " My own latex command text object plugin
+    Bundle 'tehforsch/vimSelectLatexCommand'
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
