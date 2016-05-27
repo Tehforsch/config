@@ -11,7 +11,6 @@ alias toi='~/projects/config/bin/gatherTodo full' # todo in place
 alias jou='cp ~/resource/journal/jou ~/resource/journal/jou~ && vim ~/resource/journal/jou'
 alias fin='cd ~/resource/finances/ && ledger -f finances'
 alias efin='cd ~/resource/finances/ && ./readIn.py'
-alias gac='gitAddAndCommit'
 alias tp='trash-put'
 alias ank='anki -b /home/toni/.anki/'
 alias nose='nosetests'
