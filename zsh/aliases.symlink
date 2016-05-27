@@ -1,12 +1,12 @@
 alias l='ls -alF'
 alias gs='git status' # This shadows ghostscript - I don't care
-alias t='$CONFIG/bin/splitterminal'
+alias t='$CONFIG/scripts/splitterminal.sh'
 alias inst='sudo apt-get install'
 alias dlc='bash $CONFIG/scripts/copyLastDownload.sh'
-alias to='cd $TODO && $CONFIG/bin/gatherTodo'
-alias tof='cd $TODO && $CONFIG/bin/gatherTodo full'
-alias toi='$CONFIG/bin/gatherTodo full' # todo in place
-alias ton='$CONFIG/bin/newTodoFolder'
+alias to='cd $TODO && $CONFIG/scripts/gatherTodo.sh'
+alias tof='cd $TODO && $CONFIG/scripts/gatherTodo.sh full'
+alias toi='$CONFIG/scripts/gatherTodo.sh full' # todo in place
+alias ton='$CONFIG/scripts/newTodoFolder.sh'
 alias jou='cp ~/resource/journal/jou ~/resource/journal/jou~ && vim ~/resource/journal/jou'
 alias fin='cd ~/resource/finances/ && ledger -f finances'
 alias efin='cd ~/resource/finances/ && ./readIn.py'
