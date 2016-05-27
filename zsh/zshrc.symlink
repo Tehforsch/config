@@ -1,6 +1,5 @@
-## Config folder
-CONFIG=$HOME/projects/config
-
+# This sets some paths such as where the CONFIG folder lies. Makes it easier to use on other machines without getting confused
+source "$HOME/.localConfig"
 # load zgen
 source "$CONFIG/zgen/zgen.zsh"
 
