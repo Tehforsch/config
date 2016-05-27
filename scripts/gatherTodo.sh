@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 param=$1
 if [ "$param" = "full" ]; then
@@ -7,7 +7,7 @@ else
     full=false
 fi
 
-python3.4 ./addTimed.py
+python "$CONFIG/pythonScripts/addTimed.py"
 red='\e[0;31m'
 blue='\e[0;34m'
 nc='\e[0m' # No Color
