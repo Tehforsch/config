@@ -139,10 +139,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 
 " latex text object for an command of type \command{...}
     vnoremap ac :<C-U>call SelectEntireCommand()<CR>
-    nnoremap ac :<C-U>call SelectEntireCommand()<CR>
     onoremap ac :<C-U>call SelectEntireCommand()<CR>
     vnoremap ic :<C-U>call SelectCommandName()<CR>
-    nnoremap ic :<C-U>call SelectCommandName()<CR>
     onoremap ic :<C-U>call SelectCommandName()<CR>
 
 " multiple files
