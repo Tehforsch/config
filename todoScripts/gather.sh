@@ -1,5 +1,13 @@
-#!/bin/bash
+#!/bin/zsh
 
+param=$1
+if [ "$param" = "full" ]; then
+    full=true
+else
+    full=false
+fi
+
+python "$CONFIG/todoScripts/addTimed.py"
 red='\e[0;31m'
 blue='\e[0;34m'
 nc='\e[0m' # No Color
@@ -24,9 +32,14 @@ function printFile {
         fi
     done
 }
-redEcho "Someday / Maybe"
-printFile somedayMaybe
-redEcho "Waiting"
-printFile waiting
+if $full; then
+    redEcho "Timed"
+    printFile timed
+    echo "-----------------------------------------------"
+    redEcho "Someday / Maybe"
+    printFile somedayMaybe
+    redEcho "Waiting"
+    printFile waiting
+fi
 redEcho "Next Actions:"
 printFile nextActions

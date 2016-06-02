@@ -1,6 +1,0 @@
-if [ $# -ne 2 ]; then
-    echo "Invalid number of arguments - Needs name of the file you plan to commit and a message"
-else
-    git add $1
-    git commit -m "\"$2\""
-fi

@@ -1,6 +1,6 @@
 set -e
 
-downloadDir="$HOME/Downloads"
+downloadDir="$HOME/downloads"
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
     echo "Usage: dcp [DEST]"

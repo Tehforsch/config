@@ -1,18 +1,22 @@
 alias l='ls -alF'
 alias gs='git status' # This shadows ghostscript - I don't care
-alias t='splitterminal'
-alias work='/home/toni/projects/config/bin/makeRunViewInSeparateTerminal'
-alias mrv='python3.4 /home/toni/projects/makeRunView/main.py -v .'
+alias t='$CONFIG/scripts/splitterminal.sh'
 alias inst='sudo apt-get install'
-alias dlc='bash /home/toni/projects/config/scripts/copyLastDownload.sh'
-alias to='cd ~/fluids/resource/todo/ && ./gatherAndLog'
-alias tof='cd ~/fluids/resource/todo/ && ./gather full'
-alias toi='~/projects/config/bin/gatherTodo full' # todo in place
-alias jou='cp ~/resource/journal/jou ~/resource/journal/jou~ && vim ~/resource/journal/jou'
-alias fin='cd ~/resource/finances/ && ledger -f finances'
-alias efin='cd ~/resource/finances/ && ./readIn.py'
-alias gac='gitAddAndCommit'
-alias tp='trash-put'
-alias ank='anki -b /home/toni/.anki/'
-alias nose='nosetests'
+alias dlc='$CONFIG/scripts/copyLastDownload.sh'
+alias to='cd $TODO && . $CONFIG/todoScripts/gather.sh'
+alias tof='cd $TODO && . $CONFIG/todoScripts/gather.sh full'
+alias toi='. $CONFIG/todoScripts/gather.sh full' # todo in place
+alias ton='. $CONFIG/todoScripts/newFolder.sh'
 alias ok='okular'
+alias python2='python2.7'
+alias python='python3.4'
+alias live='$CONFIG/scripts/startLivestreamer.sh'
+
+# Implement the fasd keybind to jump into a dir with j.
+alias j='fasd_cd -d'
+# fasd - vim
+alias v='f -e vim'
+# fasd - okular 
+alias o='f -e okular'
+# fasd - vlc 
+alias vl='f -e vlc'
