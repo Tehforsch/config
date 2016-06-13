@@ -11,6 +11,7 @@ alias ok='okular'
 alias python2='python2.7'
 alias python='python3.4'
 alias live='$CONFIG/scripts/startLivestreamer.sh'
+alias pydir='$CONFIG/scripts/printPythonDir.sh'
 
 # Implement the fasd keybind to jump into a dir with j.
 alias j='fasd_cd -d'
