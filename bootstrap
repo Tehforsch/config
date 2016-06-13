@@ -148,7 +148,6 @@ install_cf () {
     echo "$dst"
     link_file "$src" "$dst"
   done
-  exit
 
   mkdir -p $HOME/.config
   for src in $(find "$DOTFILES_ROOT/" -name '*.symlink-config')
