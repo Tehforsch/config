@@ -2,6 +2,14 @@
 #
 # Inspired by (stolen from) https://github.com/holman/dotfiles
 
+if [ $# -eq 1 ]
+then
+    # for local configuration files (named .symlink.configuration) we need an argument to this script
+    SYSTEM_NAME=$1
+else
+    SYSTEM_NAME=
+fi
+
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd)
 
@@ -102,15 +110,19 @@ link_file () {
 }
 
 install_cf () {
-  info 'installing config-files'
-
+  info 'installing config-files\n'
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find "$DOTFILES_ROOT/" -name '*.symlink')
+  # These files should always be symlinked
+  resultsGlobal=$(find "$DOTFILES_ROOT/" -name '*.symlink')
+  # These files should be symlinked since they end with the correct configuration
+  resultsSystem=$(find "$DOTFILES_ROOT/" -name "*.symlink.$SYSTEM_NAME")
+  for src in "${resultsGlobal[@]}" "${resultsSystem[@]}"
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+  exit
 
   mkdir -p $HOME/.config
   for src in $(find "$DOTFILES_ROOT/" -name '*.symlink-config')
