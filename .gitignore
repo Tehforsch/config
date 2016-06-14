@@ -1,2 +1,6 @@
 todo
 vim/vim.symlink/undodir
+ssh/ssh.symlink/id_rsa
+ssh/ssh.symlink/id_rsa.pub
+ssh/ssh.symlink/known_hosts
+
