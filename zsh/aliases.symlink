@@ -7,7 +7,6 @@ alias to='cd $TODO && . $CONFIG/todoScripts/gather.sh'
 alias tof='cd $TODO && . $CONFIG/todoScripts/gather.sh full'
 alias toi='. $CONFIG/todoScripts/gather.sh full' # todo in place
 alias ton='. $CONFIG/todoScripts/newFolder.sh'
-alias ok='okular'
 alias python2='python2.7'
 alias python='python3.4'
 alias live='$CONFIG/scripts/startLivestreamer.sh'
