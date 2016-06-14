@@ -5,6 +5,14 @@ git submodule init
 git submodule update
 
 # Inspired by (stolen from) https://github.com/holman/dotfiles
+if [ $# -eq 1 ]
+then
+    # for local configuration files (named .symlink.configuration) we need an argument to this script
+    SYSTEM_NAME=$1
+else
+    SYSTEM_NAME=""
+fi
+
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd)
 
@@ -105,13 +113,42 @@ link_file () {
 }
 
 install_cf () {
-  info 'installing config-files'
-
+  info 'installing config-files\n'
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find "$DOTFILES_ROOT/" -name '*.symlink')
+  # These files should always be symlinked
+  resultsGlobal=$(find "$DOTFILES_ROOT/" -name '*.symlink')
+  if [ "$SYSTEM_NAME" != "" ] 
+  then
+      # These files should be symlinked since they end with the correct configuration
+      resultsSystem=$(find "$DOTFILES_ROOT/" -name "*.symlink.$SYSTEM_NAME")
+  else
+      resultsSystem=() # Dont do anything
+  fi
+  # Apparently concatenating arrays like this:
+  # results=("${resultsGlobal[@]}" "${resultsSystem[@]}")
+  # and looping over both will somehow treat them as a multi-dimensional array (i.e. only loop
+  # twice) and i seem to be the only person in the world who wants to do this so lets just
+  # create a big array by appending to it one by one. Dont we just love bash
+  results=()
+  for src in "${resultsGlobal[@]}"
   do
-    dst="$HOME/.$(basename "${src%.*}")"
+      results+=($src)
+  done
+  for src in "${resultsSystem[@]}"
+  do
+      results+=($src)
+  done
+  for src in "${results[@]}"
+  do
+    dst=${src%.*}
+    echo "-----"
+    if [[ "$dst" =~ "symlink" ]]; then # If there is still a dot left we need to remove it (happens with system specific files since they contain two dots)
+        dst=${dst%.*}
+    fi
+    dst="$HOME/.$(basename ${dst})"
+    echo "$src"
+    echo "$dst"
     link_file "$src" "$dst"
   done
 

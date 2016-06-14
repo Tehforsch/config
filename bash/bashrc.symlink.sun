@@ -1,0 +1,88 @@
+#! /bin/bash
+# -*- mode: sh; eval:(sh-set-shell "bash"); -*-
+########################################################################
+#            Global Bash initialization: Main
+#
+# Author: Roland Fehrenbacher, rf@q-leap.de
+#
+# Copyright (C) 2014 Q-Leap Networks, Roland Fehrenbacher
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+#    USA
+#
+########################################################################
+#
+# Do not change the following 4 lines, otherwise things might get severely
+# broken, and you are on your own.
+#
+GLOBAL_BASHRC=/etc/qlustar/common/skel/bash/bashrc
+if [ -f $GLOBAL_BASHRC ]; then
+  . ${GLOBAL_BASHRC}
+fi
+#
+#******************************************************************************
+#/////////////////////////// Source Bash variables \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#******************************************************************************
+#
+if [ -f ${USER_BASH_DIR}/bash-vars ]; then
+  . ${USER_BASH_DIR}/bash-vars
+fi
+#
+#******************************************************************************
+#//////////// Source Architecture-independent Environment variables \\\\\\\\\\\
+#******************************************************************************
+#
+if [ -f ${USER_BASH_DIR}/env ]; then
+  . ${USER_BASH_DIR}/env
+fi
+#
+#******************************************************************************
+#////////////////////////////// USER ALIASES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#******************************************************************************
+#
+if [ -f ${USER_BASH_DIR}/alias ]; then
+  . ${USER_BASH_DIR}/alias
+fi
+#
+#******************************************************************************
+#/////////////////////////// Source Bash functions \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#******************************************************************************
+#
+if [ -f ${USER_BASH_DIR}/functions ]; then
+  . ${USER_BASH_DIR}/functions
+fi
+source ~/.aliases
+source ~/.localAliases
+
+export LD_LIBRARY_PATH=/apps/prod/HI-ERN/lib:$LD_LIBRARY_PATH
+export PATH=/usr/lib/openmpi/1.8.4/common/bin/:$PATH
+# decent prompt, at least doesnt have awful colors if i cant use zsh
+export PS1="\u@\h:\w "
+
+if [ -t 1 ]
+then
+    bind '"\C-w":kill-region'
+    bind 'set show-all-if-ambiguous on'
+    bind '"\e[1;5C": forward-word'
+    bind '"\e[1;5D": backward-word'
+    bind '"\e[5C": forward-word'
+    bind '"\e[5D": backward-word'
+    bind '"\e\e[C": forward-word'
+    bind '"\e\e[D": backward-word'
+    unalias cp
+    unalias rm
+    alias cp='cp -f'
+    alias rm='rm -f'
+fi
