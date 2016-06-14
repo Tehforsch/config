@@ -1,4 +1,4 @@
-set loadpath './gnuplotConfig'
+set loadpath '~/.gnuplotConfig'
 
 #set terminal postscript enhanced size 17cm,10cm
 set terminal epslatex color size 15cm,15cm
