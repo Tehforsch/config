@@ -1,0 +1,5 @@
+## Config folder
+CONFIG=$HOME/projects/config
+
+## Other important paths
+TODO=$HOME/fluids/resource/todo
