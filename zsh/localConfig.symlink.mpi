@@ -3,3 +3,5 @@ CONFIG=$HOME/projects/config
 
 ## Other important paths
 TODO=$HOME/fluids/resource/todo
+
+SSH_ASKPASS=
