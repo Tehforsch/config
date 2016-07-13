@@ -5,3 +5,5 @@ CONFIG=$HOME/projects/config
 TODO=$HOME/fluids/resource/todo
 
 SSH_ASKPASS=
+
+export LANG=en_US.UTF-8
