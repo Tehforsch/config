@@ -186,7 +186,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:PHP_default_indenting = 1
     " Ctrl-P: show dotfiles
     let g:ctrlp_show_hidden = 1
-    " Ignore simulation dirs
+    " Ignore files and directories that are ignored by the local .gitignore  (if it exists)
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
     " Ultisnips
     let g:UltiSnipsExpandTrigger="<tab>"                                            
