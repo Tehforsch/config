@@ -154,8 +154,6 @@ bindsym Mod1+Shift+o exec zsh /home/toni/projects/config/startupScripts/runAll.s
 bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/projects/config/scripts/changeVolume.sh 1
 bindsym Ctrl+Shift+F exec --no-startup-id /home/toni/projects/config/scripts/changeVolume.sh 0
 # Brightness changing hotkeys
-bindsym Ctrl+Shift+T exec --no-startup-id /home/toni/projects/config/scripts/changeBrightness.sh 1
-bindsym Ctrl+Shift+G exec --no-startup-id /home/toni/projects/config/scripts/changeBrightness.sh -1
 bindsym Ctrl+Shift+B exec --no-startup-id /home/toni/projects/config/scripts/changeBrightness.sh 0
 
 # Spotify controls
