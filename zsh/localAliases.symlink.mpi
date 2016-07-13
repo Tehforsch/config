@@ -1,3 +1,4 @@
 alias python='~/bin/Python-3.5.1/python'
 alias ok='okular'
-alias ores='okular ~/fluids/projects/mastersThesis/notes/latex/simulations.pdf'
+alias oknotes='okular ~/fluids/projects/mastersThesis/notes/latex/notes.pdf'
+alias okres='okular ~/fluids/projects/mastersThesis/notes/latex/results.pdf'
