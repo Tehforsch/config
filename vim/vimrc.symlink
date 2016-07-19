@@ -113,6 +113,20 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Enable the mouse for scrolling purposes
     " set mouse=a
 
+" " status line
+"     set laststatus=2
+"     set statusline=%t       "tail of the filename
+"     set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+"     set statusline+=%{&ff}] "file format
+"     set statusline+=%h      "help file flag
+"     set statusline+=%m      "modified flag
+"     set statusline+=%r      "read only flag
+"     set statusline+=%y      "filetype
+"     set statusline+=%=      "left/right separator
+"     set statusline+=%c,     "cursor column
+"     set statusline+=%l/%L   "cursor line/total lines
+"     set statusline+=\ %P    "percent through file
+
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
@@ -228,6 +242,9 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'sjl/gundo.vim'
     " My own latex command text object plugin
     Bundle 'tehforsch/vimSelectLatexCommand'
+    " Status line
+    Bundle 'vim-airline/vim-airline'
+
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
