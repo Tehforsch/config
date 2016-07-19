@@ -19,8 +19,8 @@
     nnoremap <Leader>q :q<Cr>
     " Switch to last buffer
     noremap <Leader>^ <C-^>
-    nnoremap <Leader>p :bp<CR>
-    nnoremap <Leader>n :bn<CR>
+    nnoremap <Leader>h :bp<CR>
+    nnoremap <Leader>l :bn<CR>
     " Delete line without copying
     nnoremap <Leader>d "_dd
     " Disable ex mode which is only opened because I mess up
@@ -42,8 +42,8 @@
     cnoremap  w!! w !sudo tee % > /dev/null
 "mappings for plugins
     " Add quick mappings for sideways.vim that allow shifting of arguments
-    nmap <Leader>h :SidewaysLeft<CR>
-    nmap <Leader>l :SidewaysRight<CR>
+    " nmap <Leader>h :SidewaysLeft<CR>
+    " nmap <Leader>l :SidewaysRight<CR>
     " Add text objects for sideways.vim
     omap aa <Plug>SidewaysArgumentTextobjA
     xmap aa <Plug>SidewaysArgumentTextobjA
@@ -112,6 +112,13 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set gdefault
     " Enable the mouse for scrolling purposes
     " set mouse=a
+
+" tab line for buffers
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ''
+    let g:airline#extensions#tabline#left_alt_sep = ''
+    let g:airline#extensions#tabline#right_sep = ''
+    let g:airline#extensions#tabline#right_alt_sep = ''
 
 " status line
     " always show status line
