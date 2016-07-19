@@ -29,6 +29,9 @@ source "$HOME/.localAliases"
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
+# Disable "do you wish to see all ... possibilities?" prompt
+LISTMAX=0
+
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
 
@@ -39,4 +42,3 @@ bindkey -s '^g' '&!\n^z exit\n'
 
 # add ~/.bin to PATH
 PATH=$PATH:~/.bin
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
