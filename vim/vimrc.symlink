@@ -113,19 +113,28 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Enable the mouse for scrolling purposes
     " set mouse=a
 
-" " status line
-"     set laststatus=2
-"     set statusline=%t       "tail of the filename
-"     set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-"     set statusline+=%{&ff}] "file format
-"     set statusline+=%h      "help file flag
-"     set statusline+=%m      "modified flag
-"     set statusline+=%r      "read only flag
-"     set statusline+=%y      "filetype
-"     set statusline+=%=      "left/right separator
-"     set statusline+=%c,     "cursor column
-"     set statusline+=%l/%L   "cursor line/total lines
-"     set statusline+=\ %P    "percent through file
+" status line
+    " always show status line
+    set laststatus=2
+    " create dir for airline symbols if it doesnt exist
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    " disable separators
+    let g:airline_left_sep = ''
+    let g:airline_right_sep = ''
+    " Show path of current file relative to working directory
+    let g:airline_section_b = '%f'
+    let g:airline_section_c = ''
+    " For the following see airline-customization in airline help
+    " for reference
+    " By default shows warnings/errors (from syntastic or something)
+    let g:airline_section_warning = ''
+    let g:airline_section_errors = ''
+    " By default shows file encoding which is too cluttered for me
+    let g:airline_section_x = ''
+    let g:airline_section_y = ''
+    let g:airline_section_z = ''
 
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
@@ -187,7 +196,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set wildmode=longest,list,full
     set wildmenu
     " Fix the delay after ESC - o
-    set timeout timeoutlen=1000 ttimeoutlen=100
+    set timeout timeoutlen=1000 ttimeoutlen=10
     " Increase history size.
     set history=2000
 
@@ -244,6 +253,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'tehforsch/vimSelectLatexCommand'
     " Status line
     Bundle 'vim-airline/vim-airline'
+    Bundle 'vim-airline/vim-airline-themes'
+
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
@@ -254,6 +265,10 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 
 " Solarized color scheme
     set t_Co=16
+    let g:solarized_termtrans=1
     syntax enable
     set background=dark
     colorscheme solarized
+
+" Stuff we have to do after everything else. (for whatever reason)
+    set noshowmode
