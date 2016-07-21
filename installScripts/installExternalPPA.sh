@@ -2,8 +2,8 @@
 sudo add-apt-repository ppa:git-core/ppa
 
 #Spotify
-add-apt-repository 'deb http://repository.spotify.com/ stable non-free' 
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com D2C19886  
+#add-apt-repository 'deb http://repository.spotify.com/ stable non-free' 
+#apt-key adv --recv-keys --keyserver keyserver.ubuntu.com D2C19886  
 
 #Ledger
 add-apt-repository ppa:mbudde/ledger
