@@ -14,10 +14,10 @@ set style line 2 lc rgb '#bf1919' lt 1 lw 4 pt 4 ps 2.0 # --- red point
 set style line 3 lc rgb '#009900' lt 1 lw 4 pt 6 ps 2.0 # --- green point
 set style line 4 lc rgb '#4F4F2F' lt 1 lw 4 pt 8 ps 2.0 # --- yellow/brown point
 
-set style line 21 lc rgb '#0060ad' lt 1 lw 5 pt 2 ps 2.5 # --- blue line
-set style line 22 lc rgb '#bf1919' lt 1 lw 5 pt 4 ps 2.5 # --- red line
-set style line 23 lc rgb '#009900' lt 1 lw 5 pt 6 ps 2.5 # --- green line
-set style line 24 lc rgb '#4F4F2F' lt 1 lw 5 pt 8 ps 2.5 # --- yellow/brown line
+set style line 21 lc rgb '#0060ad' lt 1 lw 3 pt 2 ps 2.5 # --- blue line
+set style line 22 lc rgb '#bf1919' lt 1 lw 3 pt 4 ps 2.5 # --- red line
+set style line 23 lc rgb '#009900' lt 1 lw 3 pt 6 ps 2.5 # --- green line
+set style line 24 lc rgb '#4F4F2F' lt 1 lw 3 pt 8 ps 2.5 # --- yellow/brown line
 
 # set style line 17 lc rgb '#000000' lt 2 lw 1 pt 8 ps 1.6 # --- grid lines
 
