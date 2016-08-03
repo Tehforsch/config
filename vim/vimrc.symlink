@@ -203,7 +203,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set wildmode=longest,list,full
     set wildmenu
     " Fix the delay after ESC - o
-    set timeout timeoutlen=0 ttimeoutlen=10
+    set noesckeys
+    set timeout timeoutlen=300 ttimeoutlen=10
     " Increase history size.
     set history=2000
 
