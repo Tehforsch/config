@@ -67,7 +67,7 @@ source ~/.aliases
 source ~/.localAliases
 
 export LD_LIBRARY_PATH=/apps/prod/HI-ERN/lib:$LD_LIBRARY_PATH
-export PATH=/usr/lib/openmpi/1.8.4/common/bin/:$PATH
+export PATH=/usr/lib/openmpi/1.8.8/common/bin/:$PATH
 # decent prompt, at least doesnt have awful colors if i cant use zsh
 export PS1="\u@\h:\w "
 
