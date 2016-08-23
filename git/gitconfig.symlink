@@ -5,6 +5,7 @@
 	helper = cache
 [core]
 	excludesfile = /home/toni/.gitignoreGlobal
+    editor = vim
 [color]
     branch = auto
     diff = auto
