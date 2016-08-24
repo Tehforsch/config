@@ -160,8 +160,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let loaded_matchparen = 1
     " Gnuplot comments
     augroup gnuplot
-        autocmd!
-        autocmd BufNewFile, BufRead *.gpi set filetype gnuplot
         autocmd FileType gnuplot set commentstring=#\ %s
     augroup END
 
