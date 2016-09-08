@@ -163,6 +163,9 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
         autocmd FileType gnuplot set commentstring=#\ %s
     augroup END
 
+" javascript indent 2
+    autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
 " latex text object for an command of type \command{...}
     vnoremap ac :<C-U>call SelectEntireCommand()<CR>
     onoremap ac :<C-U>call SelectEntireCommand()<CR>
