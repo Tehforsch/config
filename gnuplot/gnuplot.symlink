@@ -9,10 +9,10 @@ unset grid
 
 # color definitions
 set border linewidth 1.5
-set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 2 ps 2.0 # --- blue point
-set style line 2 lc rgb '#bf1919' lt 1 lw 4 pt 4 ps 2.0 # --- red point
-set style line 3 lc rgb '#009900' lt 1 lw 4 pt 6 ps 2.0 # --- green point
-set style line 4 lc rgb '#4F4F2F' lt 1 lw 4 pt 8 ps 2.0 # --- yellow/brown point
+set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 2 ps 1.0 # --- blue point
+set style line 2 lc rgb '#bf1919' lt 1 lw 4 pt 4 ps 1.0 # --- red point
+set style line 3 lc rgb '#009900' lt 1 lw 4 pt 6 ps 1.0 # --- green point
+set style line 4 lc rgb '#4F4F2F' lt 1 lw 4 pt 8 ps 1.0 # --- yellow/brown point
 
 set style line 21 lc rgb '#0060ad' lt 1 lw 3 pt 2 ps 2.5 # --- blue line
 set style line 22 lc rgb '#bf1919' lt 1 lw 3 pt 4 ps 2.5 # --- red line
