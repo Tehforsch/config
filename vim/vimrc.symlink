@@ -55,9 +55,19 @@
     vmap <C-e> gc
     " Open gundo tree
     nnoremap <F6> :GundoToggle<CR>
+    " gitgutter - disable all automatic mappings
+    let g:gitgutter_map_keys = 0
     " gitgutter hunk jumping
     nmap <Leader>j <Plug>GitGutterNextHunk
     nmap <Leader>k <Plug>GitGutterPrevHunk
+    " gitgutter hunk text objects
+    omap ih <Plug>GitGutterTextObjectInnerPending
+    omap ah <Plug>GitGutterTextObjectOuterPending
+    xmap ih <Plug>GitGutterTextObjectInnerVisual
+    xmap ah <Plug>GitGutterTextObjectOuterVisual 
+    " gitgutter hunk staging and undo
+    nmap <Leader>ha <Plug>GitGutterStageHunk
+    nmap <Leader>hr <Plug>GitGutterUndoHunk
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
 
