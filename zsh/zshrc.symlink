@@ -21,6 +21,8 @@ if ! zgen saved; then
     zgen save
 fi
 
+#Disable zgen auto update
+DISABLE_AUTO_UPDATE=true
 ## Misc settings
 # Load aliases
 source "$HOME/.aliases"
@@ -42,3 +44,4 @@ bindkey -s '^g' '&!\n^z exit\n'
 
 # add ~/.bin to PATH
 PATH=$PATH:~/.bin
+
