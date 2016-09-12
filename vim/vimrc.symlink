@@ -255,6 +255,10 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
     " Supertab - Complete from top to bottom - I don't quite understand this but it seems more logical to me.
     " let g:SuperTabDefaultCompletionType = "<c-n>"
+    " Jedi-vim: Disable autocompletion on dot
+    let g:jedi#popup_on_dot = 0
+    " Disable from ... import autocompletion
+    let g:jedi#smart_auto_mappings = 0
 
 " VUNDLE INITIALIZATION
 
@@ -298,6 +302,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'airblade/vim-gitgutter'
     " Some text objects
     Bundle 'wellle/targets.vim'
+    " Jedi-vim for python
+    Bundle 'davidhalter/jedi-vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
