@@ -253,8 +253,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:UltiSnipsExpandTrigger="<tab>"                                            
     let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
-    " Jedi-Vim - disable autocompletion on dot
-    let g:jedi#popup_on_dot = 0
     " Supertab - Complete from top to bottom - I don't quite understand this but it seems more logical to me.
     " let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -300,9 +298,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'airblade/vim-gitgutter'
     " Some text objects
     Bundle 'wellle/targets.vim'
-    " Try this for the xth time
-    Bundle 'davidhalter/jedi-vim'
-
 
 
     " Adding ended, switch filetype settings back on
