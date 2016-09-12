@@ -255,17 +255,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
     " Supertab - Complete from top to bottom - I don't quite understand this but it seems more logical to me.
     " let g:SuperTabDefaultCompletionType = "<c-n>"
-    " Python-mode
-    " disable folding
-    let g:pymode_folding = 0
-    " use leader d to go to definition
-    let g:pymode_rope_goto_definition_bind = '<Leader>d'
-    " open definition in new buffer instead of in split
-    let g:pymode_rope_goto_definition_cmd = 'e'
-    " disable annoying color line which shows max line length since i dont care to be honest
-    let g:pymode_options_colorcolumn = 0
-    " disable pymode code checking
-    let g:pymode_lint = 0
 
 " VUNDLE INITIALIZATION
 
@@ -309,8 +298,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'airblade/vim-gitgutter'
     " Some text objects
     Bundle 'wellle/targets.vim'
-    " Python goto definition etc
-    Bundle 'klen/python-mode'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
