@@ -123,8 +123,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set smartcase
     " Substitute multiple occurences in one line per default
     set gdefault
-    " Enable the mouse for scrolling purposes
-    " set mouse=a
 
 " tab line for buffers
     let g:airline#extensions#tabline#enabled = 1
