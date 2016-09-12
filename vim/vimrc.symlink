@@ -124,6 +124,11 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Substitute multiple occurences in one line per default
     set gdefault
 
+"Buffer settings
+    " Do not jump to the beginning of the line when switching buffers but stay
+    " at exact cursor position (life saving)
+    set nostartofline
+    
 " tab line for buffers
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_sep = ''
