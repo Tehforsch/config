@@ -283,6 +283,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'vim-airline/vim-airline-themes'
     " Git plugin
     Bundle 'airblade/vim-gitgutter'
+    " Some text objects
+    Bundle 'wellle/targets.vim'
 
 
 
