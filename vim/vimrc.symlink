@@ -1,17 +1,17 @@
-"mappings - basic
-    " Use space as leader key
-    let mapleader = "\<Space>"
-    " Map <C-T> to command-t plugin which doesn't seem to work by default
-    nnoremap <silent> <Leader>t :CtrlP .<CR>
-    nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-    " Map <CR> to G so number<CR> jumps to the line which is convenient
-    nnoremap <CR> G
-    " Map single quote to apostrophe in normal mode (jump to exact mark)
-    nnoremap ' `
-    " Map # which searches backwards for the current word under the cursor to exact mark jumping
-    nnoremap # `
-    " Map jumping through changelist to <C-j> and <C-k>
-    map <C-k> g;
+    "mappings - basic
+        " Use space as leader key
+        let mapleader = "\<Space>"
+        " Map <C-T> to ctrlp plugin which doesn't seem to work by default
+        nnoremap <silent> <Leader>t :CtrlP .<CR>
+        nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+        " Map <CR> to G so number<CR> jumps to the line which is convenient
+        nnoremap <CR> G
+        " Map single quote to apostrophe in normal mode (jump to exact mark)
+        nnoremap ' `
+        " Map # which searches backwards for the current word under the cursor to exact mark jumping
+        nnoremap # `
+        " Map jumping through changelist to <C-j> and <C-k>
+        map <C-k> g;
     map <C-j> g,
     " Write file 
     nnoremap <Leader>w :w<Cr>
