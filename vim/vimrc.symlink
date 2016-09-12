@@ -264,6 +264,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:pymode_rope_goto_definition_cmd = 'e'
     " disable annoying color line which shows max line length since i dont care to be honest
     let g:pymode_options_colorcolumn = 0
+    " disable pymode code checking
+    let g:pymode_lint = 0
 
 " VUNDLE INITIALIZATION
 
