@@ -288,6 +288,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Bundle 'airblade/vim-gitgutter'
     " Some text objects
     Bundle 'wellle/targets.vim'
+    " Try this for the xth time
+    Bundle 'davidhalter/jedi-vim'
 
 
 
