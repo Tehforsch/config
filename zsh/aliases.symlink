@@ -1,4 +1,5 @@
 alias l='ls -alF'
+alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias gdc='git diff --staged' # show diff between index and HEAD
 alias t='$CONFIG/scripts/splitterminal.sh'
