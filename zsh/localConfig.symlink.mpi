@@ -7,3 +7,6 @@ TODO=$HOME/fluids/resource/todo
 SSH_ASKPASS=
 
 PATH=$PATH:/home/fluids/peter/projects/rubber/usr/bin
+
+# Disable annoying "which manual page do you want?" prompt - JUST GIVE ME ONE, HOLY SHIT!
+function man { /usr/bin/man "$@" | /usr/bin/less ;}
