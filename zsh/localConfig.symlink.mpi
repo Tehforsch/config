@@ -5,3 +5,5 @@ CONFIG=$HOME/projects/config
 TODO=$HOME/fluids/resource/todo
 
 SSH_ASKPASS=
+
+PATH=$PATH:/home/fluids/peter/projects/rubber/usr/bin
