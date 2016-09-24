@@ -65,7 +65,7 @@
     xmap ah <Plug>GitGutterTextObjectOuterVisual 
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>GitGutterStageHunk
-    nmap <Leader>hr <Plug>GitGutterUndoHunk
+    nmap <Leader>hu <Plug>GitGutterUndoHunk
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
 
