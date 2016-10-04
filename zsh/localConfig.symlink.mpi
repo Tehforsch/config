@@ -3,7 +3,7 @@ CONFIG=$HOME/projects/config
 
 SSH_ASKPASS=
 
-PATH=$PATH:/home/fluids/peter/projects/rubber/usr/bin
+PATH=$PATH:/home/fluids/peter/bin/rubber/usr/bin
 
 # Disable annoying "which manual page do you want?" prompt - JUST GIVE ME ONE, HOLY SHIT!
 function man { /usr/bin/man "$@" | /usr/bin/less ;}
