@@ -1,5 +1,2 @@
 ## Config folder
 CONFIG=$HOME/projects/config
-
-## Other important paths
-TODO=$HOME/resource/todo
