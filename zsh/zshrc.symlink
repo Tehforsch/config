@@ -45,3 +45,4 @@ bindkey -s '^g' '&!\n^z exit\n'
 # add ~/.bin to PATH
 PATH=$PATH:~/.bin
 
+TODO=$HOME/resource/todo
