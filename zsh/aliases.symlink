@@ -14,6 +14,8 @@ alias python='python3.4'
 alias live='$CONFIG/scripts/startLivestreamer.sh'
 alias pydir='$CONFIG/scripts/printPythonDir.sh'
 
+alias add='$CONFIG/scripts/addToTodo.sh'
+
 # Implement the fasd keybind to jump into a dir with j.
 alias j='fasd_cd -d'
 # fasd - vim
