@@ -198,6 +198,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     autocmd Filetype fortran setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " javascript indent 2
     autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" use latex instead of plaintex at all times
+    let g:tex_flavor = "latex"
 
 " latex text object for an command of type \command{...}
     vnoremap ac :<C-U>call SelectEntireCommand()<CR>
