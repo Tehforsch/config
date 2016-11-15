@@ -3,12 +3,6 @@ general {
         interval = 5
 }
 
-order += "run_watch VPN"
-order += "wireless wlan0"
-order += "cpu_temperature 0"
-order += "load"
-order += "time"
-
 wireless wlan0 {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
