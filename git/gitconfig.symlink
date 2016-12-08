@@ -26,5 +26,4 @@
 [push]
 	default = simple
 [alias]
-   alol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-
+   lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
