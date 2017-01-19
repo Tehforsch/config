@@ -292,20 +292,20 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Supertab - Autocompletion
     " Plugin 'ervandew/supertab'
     " Solarized Colorscheme
-    Bundle 'altercation/vim-colors-solarized'
+    Plugin 'altercation/vim-colors-solarized'
     " Undo tree visualization
-    Bundle 'sjl/gundo.vim'
+    Plugin 'sjl/gundo.vim'
     " My own latex command text object plugin
-    Bundle 'tehforsch/vimSelectLatexCommand'
+    Plugin 'tehforsch/vimSelectLatexCommand'
     " Status line
-    Bundle 'vim-airline/vim-airline'
-    Bundle 'vim-airline/vim-airline-themes'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     " Git plugin
-    Bundle 'airblade/vim-gitgutter'
+    Plugin 'airblade/vim-gitgutter'
     " Some text objects
-    Bundle 'wellle/targets.vim'
+    Plugin 'wellle/targets.vim'
     " Jedi-vim for python
-    Bundle 'davidhalter/jedi-vim'
+    Plugin 'davidhalter/jedi-vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
