@@ -1,2 +1,3 @@
 ## Config folder
-CONFIG=$HOME/projects/config
+export CONFIG=$HOME/projects/config
+export MASTER=$HOME/projects/mastersThesis

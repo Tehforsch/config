@@ -1,1 +1,2 @@
-okular ~/projects/mastersThesis/simulations/$1/report/main.pdf
+#!/usr/bin/zsh
+okular $MASTER/simulations/$1/report/main.pdf

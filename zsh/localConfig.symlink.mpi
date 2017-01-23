@@ -1,5 +1,6 @@
 ## Config folder
-CONFIG=$HOME/projects/config
+export CONFIG=$HOME/projects/config
+export MASTER=$HOME/fluids/projects/mastersThesis
 
 SSH_ASKPASS=
 
