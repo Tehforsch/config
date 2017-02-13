@@ -53,3 +53,6 @@ Thumbs.db
 *.aux
 *.log
 *.out
+*.toc
+*.nav
+*.snm
