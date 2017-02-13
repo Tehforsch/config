@@ -166,3 +166,5 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id spotify
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
+exec_always --no-startup-id sleep 3 && redshift -l 48.7:9.18 -t 5700:3600 -g 0.8 -m randr -v
+ 
