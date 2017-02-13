@@ -1,3 +1,6 @@
 Host nuern
     HostName sun.iek.fz-juelich.de 
     User peter
+Host nuerndat
+    HostName dam.iek.fz-juelich.de 
+    User peter
