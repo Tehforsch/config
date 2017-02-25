@@ -26,4 +26,3 @@ alias o='f -e okular'
 alias vl='f -e vlc'
 
 alias okr='$CONFIG/scripts/openReport.sh'
-alias vim='neovim'

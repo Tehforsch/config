@@ -263,6 +263,9 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:jedi#popup_on_dot = 0
     " Disable from ... import autocompletion
     let g:jedi#smart_auto_mappings = 0
+    "Always use py3
+    let g:jedi#force_py_version = 3
+
 
 " VUNDLE INITIALIZATION
 
