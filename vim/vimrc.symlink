@@ -41,14 +41,6 @@
     " w!! writes file as sudo if it was opened without
     cnoremap  w!! w !sudo tee % > /dev/null
 "mappings for plugins
-    " Add quick mappings for sideways.vim that allow shifting of arguments
-    " nmap <Leader>h :SidewaysLeft<CR>
-    " nmap <Leader>l :SidewaysRight<CR>
-    " Add text objects for sideways.vim
-    omap aa <Plug>SidewaysArgumentTextobjA
-    xmap aa <Plug>SidewaysArgumentTextobjA
-    omap ia <Plug>SidewaysArgumentTextobjI
-    xmap ia <Plug>SidewaysArgumentTextobjI
     " Quicker mapping for commenting out lines
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
@@ -292,16 +284,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Plugin 'honza/vim-snippets'
     " Exchange with cx<operator>
     Plugin 'tommcdo/vim-exchange'
-    " Adds function argument text objects
-    Plugin 'AndrewRadev/sideways.vim'
-    " Supertab - Autocompletion
-    " Plugin 'ervandew/supertab'
     " Solarized Colorscheme
     Plugin 'altercation/vim-colors-solarized'
-    " Undo tree visualization
-    Plugin 'sjl/gundo.vim'
-    " My own latex command text object plugin
-    Plugin 'tehforsch/vimSelectLatexCommand'
     " Status line
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
