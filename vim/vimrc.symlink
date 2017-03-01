@@ -146,9 +146,9 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " always show status line
     set laststatus=2
     " create dir for airline symbols if it doesnt exist
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
+    " if !exists('g:airline_symbols')
+        " let g:airline_symbols = {}
+    " endif
     " disable separators
     let g:airline_left_sep = ''
     let g:airline_right_sep = ''
@@ -194,12 +194,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " use latex instead of plaintex at all times
     let g:tex_flavor = "latex"
-
-" latex text object for an command of type \command{...}
-    vnoremap ac :<C-U>call SelectEntireCommand()<CR>
-    onoremap ac :<C-U>call SelectEntireCommand()<CR>
-    vnoremap ic :<C-U>call SelectCommandName()<CR>
-    onoremap ic :<C-U>call SelectCommandName()<CR>
 
 " multiple files
     set hidden
@@ -256,7 +250,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Disable from ... import autocompletion
     let g:jedi#smart_auto_mappings = 0
     "Always use py3
-    let g:jedi#force_py_version = 3
+    " let g:jedi#force_py_version = 3
 
 
 " VUNDLE INITIALIZATION
@@ -299,13 +293,12 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     Plugin 'reedes/vim-wordy'
     " Quickly check for synonyms
     Plugin 'ron89/thesaurus_query.vim'
+    "Latex
+    Plugin 'lervag/vimtex'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
     filetype plugin indent on    " required
-
-    " Disable automatic comment insertion when inserting new line while on a commented line
-    autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Solarized color scheme
     set t_Co=16
@@ -313,7 +306,10 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     syntax enable
     set background=dark
     colorscheme solarized
-    let g:airline_extensions=[]
 
 " Stuff we have to do after everything else. (for whatever reason)
+    " Hide status (insert etc.) because its done by airline
     set noshowmode
+    " Disable automatic comment insertion when inserting new line while on a commented line
+    autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
+
