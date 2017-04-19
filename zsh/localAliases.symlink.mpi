@@ -1,5 +1,5 @@
 alias ok='okular'
 alias oknotes='okular ~/fluids/projects/mastersThesis/notes/latex/notes.pdf'
 alias okres='okular ~/fluids/projects/mastersThesis/notes/latex/results.pdf'
-alias okt='okular ~/fluids/projects/mastersThesis/notes/latex/theory.pdf'
+alias okt='okular ~/fluids/projects/mastersThesis/notes/latex/theoryMethods.pdf'
 alias ank='export LANG=en_US.UTF-8; ~/downloads/anki-2.0.36/runanki'
