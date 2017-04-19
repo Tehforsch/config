@@ -251,6 +251,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:jedi#smart_auto_mappings = 0
     "Always use py3
     " let g:jedi#force_py_version = 3
+    " Disable highlighting of matching delimiters in vimtex
+    let g:vimtex_motion_matchparen = 0
 
 
 " VUNDLE INITIALIZATION
