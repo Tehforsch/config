@@ -44,6 +44,7 @@ bindkey -s '^g' '&!\n^z exit\n'
 
 # add ~/.bin to PATH
 PATH="$PATH:~/.bin"
-PATH="$PATH:$HOME/.trigger" >> .bashrc
+PATH="$PATH:$HOME/.trigger"
+PATH="$PATH:$HOME/.fd/target/release"
 
 TODO=$HOME/resource/todo
