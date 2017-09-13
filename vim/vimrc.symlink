@@ -1,13 +1,13 @@
     "mappings - basic
         " Use space as leader key
         let mapleader = "\<Space>"
-        " Map <C-T> to ctrlp plugin which doesn't seem to work by default
+        " Map <Leader>t to ctrlp plugin which doesn't seem to work by default
         nnoremap <silent> <Leader>t :CtrlP .<CR>
         nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+        " Map <Leader>a to go directly into an Ag search without typing the awkward command
+        nnoremap <silent> <Leader>a :Ag<Space>
         " Map synonym lookup
         nnoremap <Leader>s :ThesaurusQueryReplaceCurrentWord<CR>
-        " Map <CR> to G so number<CR> jumps to the line which is convenient
-        nnoremap <CR> G
         " Map single quote to apostrophe in normal mode (jump to exact mark)
         nnoremap ' `
         " Map # which searches backwards for the current word under the cursor to exact mark jumping
@@ -253,7 +253,16 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " let g:jedi#force_py_version = 3
     " Disable highlighting of matching delimiters in vimtex
     let g:vimtex_motion_matchparen = 0
+    " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
+function! FoldingEnter()
+    if &buftype ==# 'quickfix'
+        execute "normal! \<CR>:ccl\<CR>zz"
+    else
+        normal! za
+    endif
+endfunction
 
+nnoremap <CR> :call FoldingEnter()<CR>
 
 " VUNDLE INITIALIZATION
 
@@ -290,13 +299,17 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " Some text objects
     Plugin 'wellle/targets.vim'
     " Jedi-vim for python
-    Plugin 'davidhalter/jedi-vim'
+    " Plugin 'davidhalter/jedi-vim'
     " Checks spelling and grammar (weak wording etc)
     Plugin 'reedes/vim-wordy'
     " Quickly check for synonyms
     Plugin 'ron89/thesaurus_query.vim'
-    "Latex
+    " Latex
     Plugin 'lervag/vimtex'
+    " Rust
+    Plugin 'rust-lang/rust.vim'
+    " Ag
+    Plugin 'brookhong/ag.vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
