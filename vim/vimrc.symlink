@@ -258,7 +258,7 @@ function! FoldingEnter()
     if &buftype ==# 'quickfix'
         execute "normal! \<CR>:ccl\<CR>zz"
     else
-        normal! za
+        normal! G
     endif
 endfunction
 
