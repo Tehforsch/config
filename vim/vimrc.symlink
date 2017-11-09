@@ -252,7 +252,7 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     "Always use py3
     " let g:jedi#force_py_version = 3
     " Disable highlighting of matching delimiters in vimtex
-    let g:vimtex_motion_matchparen = 0
+    " let g:vimtex_motion_matchparen = 0
     " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
 function! FoldingEnter()
     if &buftype ==# 'quickfix'
@@ -305,7 +305,7 @@ nnoremap <CR> :call FoldingEnter()<CR>
     " Quickly check for synonyms
     Plugin 'ron89/thesaurus_query.vim'
     " Latex
-    Plugin 'lervag/vimtex'
+    " Plugin 'lervag/vimtex'
     " Rust
     Plugin 'rust-lang/rust.vim'
     " Ag
