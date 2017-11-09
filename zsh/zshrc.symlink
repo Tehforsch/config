@@ -49,3 +49,6 @@ PATH="$PATH:$HOME/.fd/target/release"
 PATH="$PATH:$HOME/.cargo/bin"
 
 TODO=$HOME/resource/todo
+
+# Magically make converting utf-8 buffers to string and then printing them work
+export PYTHONIOENCODING="utf-8"
