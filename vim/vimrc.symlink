@@ -1,9 +1,8 @@
     "mappings - basic
         " Use space as leader key
         let mapleader = "\<Space>"
-        " Map <Leader>t to ctrlp plugin which doesn't seem to work by default
-        nnoremap <silent> <Leader>t :CtrlP .<CR>
-        nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+        " Map <Leader>t to fzf fuzzy search plugin 
+        nnoremap <silent> <Leader>t :FZF<CR>
         " Map <Leader>a to go directly into an Ag search without typing the awkward command
         nnoremap <silent> <Leader>a :Ag<Space>
         " Map synonym lookup
@@ -235,10 +234,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 " plugin specific settings
     " Php indentation
     let g:PHP_default_indenting = 1
-    " Ctrl-P: show dotfiles
-    let g:ctrlp_show_hidden = 1
-    " Ignore files and directories that are ignored by the local .gitignore  (if it exists)
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
     " Ultisnips
     let g:UltiSnipsExpandTrigger="<tab>"                                            
     let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
@@ -282,8 +277,6 @@ nnoremap <CR> :call FoldingEnter()<CR>
     Plugin 'tpope/vim-repeat'
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
-    " File finder
-    Plugin 'ctrlpvim/ctrlp.vim'
     " Ultisnips 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
@@ -310,6 +303,9 @@ nnoremap <CR> :call FoldingEnter()<CR>
     Plugin 'rust-lang/rust.vim'
     " Ag
     Plugin 'brookhong/ag.vim'
+    " Fzf-Vim
+    Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plugin 'junegunn/fzf.vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
