@@ -25,10 +25,10 @@
     " Disable ex mode which is only opened because I mess up
     nnoremap Q <nop>
     " This is a little out of place but this is quite nice when viewing guitar tabs.
-    " It opens the same file in a split window to the right of the current window and scrolls down
+    " It opens the same file in two split windows to the right of the current window and scrolls down
     " as many lines as my main monitor can fit so that I can see as much as possible of the tab
     " at once.
-    nnoremap <F10> :vert new %<CR><C-w>l80jzz
+    nnoremap <F10> :vert new %<CR>:vert new %<CR><C-w>l54jzt<C-w>l107jzt
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
