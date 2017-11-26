@@ -24,6 +24,11 @@
     nnoremap <Leader>l :bn<CR>
     " Disable ex mode which is only opened because I mess up
     nnoremap Q <nop>
+    " This is a little out of place but this is quite nice when viewing guitar tabs.
+    " It opens the same file in a split window to the right of the current window and scrolls down
+    " as many lines as my main monitor can fit so that I can see as much as possible of the tab
+    " at once.
+    nnoremap <F10> :vert new %<CR><C-w>l80jzz
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
@@ -170,10 +175,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
-
-" persistent undo - apparently this is possible
-    set undofile
-    set undodir=~/.vim/undodir
 
 " syntax, highlighting and spelling
     " Enable syntax highlighting
