@@ -56,4 +56,8 @@ export PYTHONIOENCODING="utf-8"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Use fd for fzf
-export FZF_CTRL_T_COMMAND="fd --follow"
+export FZF_DEFAULT_COMMAND="fd --follow"
+export FZF_CTRL_T_COMMAND="fd --follow -I"
+# export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
+# Show a preview of the file while using Ctrl-T (mostly because its cool)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
