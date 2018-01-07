@@ -45,6 +45,10 @@
 ehthumbs.db
 Thumbs.db
 
+# Misc #
+######################
+*.mp3
+
 # Latex byproducts #
 ####################
 *.bbl
