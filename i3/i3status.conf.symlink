@@ -41,3 +41,5 @@ cpu_temperature 0 {
 disk "/" {
 	format = "%free"
 }
+
+order = "general"

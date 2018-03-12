@@ -5,8 +5,6 @@
         nnoremap <silent> <Leader>t :FZF<CR>
         " Map <Leader>a to go directly into an Ag search without typing the awkward command
         nnoremap <silent> <Leader>a :Ag<Space>
-        " Map synonym lookup
-        nnoremap <Leader>s :ThesaurusQueryReplaceCurrentWord<CR>
         " Map single quote to apostrophe in normal mode (jump to exact mark)
         nnoremap ' `
         " Map # which searches backwards for the current word under the cursor to exact mark jumping
@@ -22,6 +20,8 @@
     noremap <Leader>^ <C-^>
     nnoremap <Leader>h :bp<CR>
     nnoremap <Leader>l :bn<CR>
+    " Jump to definition
+    nnoremap <Leader>d <C-]>
     " Disable ex mode which is only opened because I mess up
     nnoremap Q <nop>
     " This is a little out of place but this is quite nice when viewing guitar tabs.
@@ -66,6 +66,8 @@
     nmap <Leader>hu <Plug>GitGutterUndoHunk
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
+" mappings - search for functions with taglist
+    nnoremap <Leader>s :TlistOpen<CR>/
 
 " More complex custom functions
     " in visual mode map pasting to pasting without copying
@@ -249,6 +251,8 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " let g:jedi#force_py_version = 3
     " Disable highlighting of matching delimiters in vimtex
     " let g:vimtex_motion_matchparen = 0
+    "In taglist close the tag-window automatically after selecting a tag.
+        let Tlist_Close_On_Select = 1
     " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
 function! FoldingEnter()
     if &buftype ==# 'quickfix'
@@ -257,6 +261,7 @@ function! FoldingEnter()
         normal! G
     endif
 endfunction
+
 
 nnoremap <CR> :call FoldingEnter()<CR>
 
@@ -307,6 +312,8 @@ nnoremap <CR> :call FoldingEnter()<CR>
     " Fzf-Vim
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plugin 'junegunn/fzf.vim'
+    " Taglist
+    Plugin 'vim-scripts/taglist.vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
