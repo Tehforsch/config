@@ -4,3 +4,6 @@ Host nuern
 Host nuerndat
     HostName dam.iek.fz-juelich.de 
     User peter
+Host cray
+    HostName hazelhen.hww.de
+    User hpctpete
