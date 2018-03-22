@@ -51,6 +51,8 @@
     vmap <C-e> gc
     " Open gundo tree
     nnoremap <F6> :GundoToggle<CR>
+    " Open Taglist window
+    nnoremap <F5> :TlistToggle<CR>
     " gitgutter - disable all automatic mappings
     let g:gitgutter_map_keys = 0
     " gitgutter hunk jumping
