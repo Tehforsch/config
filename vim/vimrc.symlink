@@ -334,3 +334,7 @@ nnoremap <CR> :call FoldingEnter()<CR>
     " Disable automatic comment insertion when inserting new line while on a commented line
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Set search highlighting colors to less intrusive
+    syntax on
+    hi Search ctermbg=white ctermfg=black
+
