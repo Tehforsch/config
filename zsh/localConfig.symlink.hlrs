@@ -7,4 +7,4 @@ source $HOME/.intel/compilers_and_libraries_2018/linux/bin/compilervars.sh intel
 export EDITOR=vim
 
 #dnf autocompletion is buggy, use yums instead
-compdef dnf=yum
+# compdef dnf=yum
