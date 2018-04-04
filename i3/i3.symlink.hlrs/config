@@ -184,3 +184,5 @@ exec --no-startup-id spotify
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
  
+# Disable mouse jumping to the a window when I switch focus between two workspaces
+mouse_warping none
