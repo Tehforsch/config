@@ -137,6 +137,10 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set smartcase
     " Substitute multiple occurences in one line per default
     set gdefault
+    " Clear highlighting on escape in normal mode
+    nnoremap <esc> :noh<return><esc>
+    nnoremap <esc>^[ <esc>^[
+
 
 "Buffer settings
     " Do not jump to the beginning of the line when switching buffers but stay
