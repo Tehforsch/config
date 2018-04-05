@@ -1,6 +1,4 @@
-## Config folder
 export CONFIG=$HOME/projects/config
-export MASTER=$HOME/projects/mastersThesis
 
 export PATH=$PATH:$HOME/projects/flexi/build/bin
 # source $HOME/intel/compilers_and_libraries_2018/linux/bin/compilervars.sh intel64

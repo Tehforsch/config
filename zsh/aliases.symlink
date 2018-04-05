@@ -1,4 +1,4 @@
-alias l='ls -alFh'
+alias l='ls -alFh --color=auto'
 alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias gdc='git diff --staged' # show diff between index and HEAD

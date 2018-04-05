@@ -1,0 +1,10 @@
+# Load aliases
+source "$HOME/.aliases"
+source "$HOME/.localAliases"
+source "$HOME/.localConfig"
+# Load python3
+module load tools/python/3.4.3
+# Load nice solarized dircolors
+eval $(dircolors ~/.dir_colors)
+
+PS1="\n\[\033[01;33;40m\]\u\[\033[01;36;40m\]@\h \[\033[01;35;40m\]\w\[\e[0m\]\n\[\033[01;34;40m\] %\[\e[0m\] "

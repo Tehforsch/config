@@ -34,3 +34,7 @@
 [mergetool]
     keepBackup = false
 
+[http]
+	proxy = socks5://localhost:7777
+[https]
+	proxy = socks5://localhost:7777

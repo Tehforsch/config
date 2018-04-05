@@ -1,0 +1,4 @@
+alias ml='module list'
+alias ma='module avail'
+alias qs='qstat -u hpctpete'
+alias cws='cd $(ws_find $(ws_list -s))'
