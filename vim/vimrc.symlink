@@ -51,6 +51,8 @@
     vmap <C-e> gc
     " Open gundo tree
     nnoremap <F6> :GundoToggle<CR>
+    " Open Taglist window
+    nnoremap <F5> :TlistToggle<CR>
     " gitgutter - disable all automatic mappings
     let g:gitgutter_map_keys = 0
     " gitgutter hunk jumping
@@ -135,6 +137,10 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     set smartcase
     " Substitute multiple occurences in one line per default
     set gdefault
+    " Clear highlighting on escape in normal mode
+    nnoremap <esc> :noh<return><esc>
+    nnoremap <esc>^[ <esc>^[
+
 
 "Buffer settings
     " Do not jump to the beginning of the line when switching buffers but stay
@@ -331,4 +337,8 @@ nnoremap <CR> :call FoldingEnter()<CR>
     set noshowmode
     " Disable automatic comment insertion when inserting new line while on a commented line
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Set search highlighting colors to less intrusive
+    syntax on
+    hi Search ctermbg=white ctermfg=black
 

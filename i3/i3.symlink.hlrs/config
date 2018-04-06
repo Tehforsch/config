@@ -14,7 +14,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym Mod1+2 exec i3-sensible-terminal
+bindsym Mod1+2 exec gnome-terminal
 
 # kill focused window
 bindsym Mod1+Q kill
@@ -27,6 +27,8 @@ bindsym Mod1+h focus left
 bindsym Mod1+j focus down
 bindsym Mod1+k focus up
 bindsym Mod1+l focus right
+bindsym Mod1+a focus left
+bindsym Mod1+d focus right
 
 # move focused window
 bindsym Mod1+Shift+h move left
@@ -65,6 +67,8 @@ set $ws7 "4:7"
 set $ws8 "9:8"
 set $ws9 "5:9"
 set $ws10 "10:10"
+set $ws11 "6:11"
+set $ws12 "11:12"
 
 # switch to workspace
 bindsym $mod+a workspace $ws2
@@ -98,6 +102,8 @@ bindsym $mod+Shift+b move workspace $ws11; workspace $ws11
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exit
+# lock screen
+bindsym $mod+Shift+L exec i3lock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -157,19 +163,19 @@ bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 # Assign workspaces to monitors.
-workspace $ws1 output eDP1
-workspace $ws2 output HDMI1
-workspace $ws3 output eDP1
-workspace $ws4 output HDMI1
-workspace $ws5 output eDP1
-workspace $ws6 output HDMI1
-workspace $ws7 output eDP1
-workspace $ws8 output HDMI1
-workspace $ws9 output eDP1
-workspace $ws10 output HDMI1
+workspace $ws1 output eDP-1
+workspace $ws2 output DP-2
+workspace $ws3 output eDP-1
+workspace $ws4 output DP-2
+workspace $ws5 output eDP-1
+workspace $ws6 output DP-2
+workspace $ws7 output eDP-1
+workspace $ws8 output DP-2
+workspace $ws9 output eDP-1
+workspace $ws10 output DP-2
 
 # Assign specific workspaces to some applications
-assign [class="Spotify"] $ws9
+assign [class="Spotify"] 9
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet

@@ -1,11 +1,10 @@
 # Spotify
-Spotify doesnt start because of libgcrypt11? installing with apt doesnt help, use the .deb on external hdd folder instead -.- 
-Oh fuck spotify, honestly:
-Use https://github.com/olejon/spotcommander/wiki/DowngradeSpotify for the 0.9 version which is an extremely shitty program but is still an order of magnitude better than what comes after it. 
+Use https://github.com/olejon/spotcommander/wiki/DowngradeSpotify for the 0.9 version 
 
 # Sound
 18i6 no sound but "crackling" whenever activated? try activating the outputs in alsamixer, the monitors are actually the outputs since this is recognized now.
 The desired output (=guitar + sound from pc) is probably MIX1, one of the last options
+
 the wifi module is the cause of the skips
 
 # Graphics
