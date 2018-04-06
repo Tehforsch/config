@@ -3,6 +3,7 @@ alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias ga='git add'
 alias gc='git commit'
+alias gp='git push'
 alias gdc='git diff --staged' # show diff between index and HEAD
 alias t='$CONFIG/scripts/splitterminal.sh'
 alias inst='sudo apt-get install'
