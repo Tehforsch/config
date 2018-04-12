@@ -47,13 +47,14 @@ PATH="$PATH:~/.bin"
 PATH="$PATH:$HOME/.trigger"
 PATH="$PATH:$HOME/.fd/target/release"
 PATH="$PATH:$HOME/.cargo/bin"
+PATH="$PATH:$HOME/.fzf/bin"
 
 TODO=$HOME/resource/todo
 
 # Magically make converting utf-8 buffers to string and then printing them work
 export PYTHONIOENCODING="utf-8"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.fzf.zsh
 
 # Use fd for fzf
 export FZF_DEFAULT_COMMAND="fd --follow"
