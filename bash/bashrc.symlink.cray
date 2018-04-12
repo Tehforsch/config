@@ -1,0 +1,20 @@
+# Load aliases
+source "$HOME/.aliases"
+source "$HOME/.localAliases"
+source "$HOME/.localConfig"
+# Load python3
+module load tools/python/3.4.3
+# Load nice solarized dircolors
+eval $(dircolors ~/.dir_colors)
+
+PS1="\n\[\033[01;33;40m\]\u\[\033[01;36;40m\]@\h \[\033[01;35;40m\]\w\[\e[0m\]\n\[\033[01;34;40m\] %\[\e[0m\] "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Use fd for fzf
+export FZF_DEFAULT_COMMAND="fd --follow"
+export FZF_CTRL_T_COMMAND="fd --follow -I"
+# export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
+# Show a preview of the file while using Ctrl-T (mostly because its cool)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export PATH=$PATH:~/.fd

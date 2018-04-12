@@ -1,1 +1,1 @@
-alias fin='cd ~/resource/finances/ && ledger -f finances'
+alias fin='cd ~/resource/ledger/ && ledger -f finances'

@@ -203,6 +203,9 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 " use latex instead of plaintex at all times
     let g:tex_flavor = "latex"
 
+" indent preprocessor statements correctly in c++
+    set cinkeys=0{,0},0),:,!^F,o,O,e
+
 " multiple files
     set hidden
     set wildignore=*.o,*.pyc,*.class,*.eps,*.pdf,*.log,*.aux,*.dvi,*.out,*.bbl,*.blg,*.toc,*.snm,*.nav,*.mod
