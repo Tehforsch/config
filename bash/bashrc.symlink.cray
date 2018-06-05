@@ -2,8 +2,6 @@
 source "$HOME/.aliases"
 source "$HOME/.localAliases"
 source "$HOME/.localConfig"
-# Load python3
-module load tools/python/3.4.3
 # Load nice solarized dircolors
 eval $(dircolors ~/.dir_colors)
 
@@ -17,4 +15,13 @@ export FZF_CTRL_T_COMMAND="fd --follow -I"
 # export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
 # Show a preview of the file while using Ctrl-T (mostly because its cool)
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export PATH=$PATH:~/.fd
+export PATH=$PATH:~/.fd:~/.bin
+export WS=/lustre/cray/ws8/ws/
+
+#Avoid duplicates in history
+export HISTCONTROL=ignoredups:erasedups  
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+
+# After each command, append to the history file and reread it
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
