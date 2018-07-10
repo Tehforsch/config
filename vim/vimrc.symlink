@@ -1,16 +1,16 @@
-    "mappings - basic
-        " Use space as leader key
-        let mapleader = "\<Space>"
-        " Map <Leader>t to fzf fuzzy search plugin 
-        nnoremap <silent> <Leader>t :FZF<CR>
-        " Map <Leader>a to go directly into an Ag search without typing the awkward command
-        nnoremap <silent> <Leader>a :Ag<Space>
-        " Map single quote to apostrophe in normal mode (jump to exact mark)
-        nnoremap ' `
-        " Map # which searches backwards for the current word under the cursor to exact mark jumping
-        nnoremap # `
-        " Map jumping through changelist to <C-j> and <C-k>
-        map <C-k> g;
+" mappings
+    " Use space as leader key
+    let mapleader = "\<Space>"
+    " Map <Leader>t to fzf fuzzy search plugin 
+    nnoremap <silent> <Leader>t :FZF<CR>
+    " Map <F7> to go directly into an Ag search without typing the awkward command
+    nnoremap <silent> <F7> :Ag<Space>
+    " Map single quote to apostrophe in normal mode (jump to exact mark)
+    nnoremap ' `
+    " Map # which searches backwards for the current word under the cursor to exact mark jumping
+    nnoremap # `
+    " Map jumping through changelist to <C-j> and <C-k>
+    map <C-k> g;
     map <C-j> g,
     " Write file 
     nnoremap <Leader>w :w<Cr>
@@ -71,61 +71,24 @@
 " mappings - search for functions with taglist
     nnoremap <Leader>s :TlistOpen<CR>/
 
+" copy/paste to system clipboard
+set clipboard=unnamedplus
+
 " More complex custom functions
-    " in visual mode map pasting to pasting without copying
-    " which is cool because its super nice to replace words
-    " in visual mode and i never want to copy the replaced words
-    " stolen from http://stackoverflow.com/questions/290465/vim-how-to-paste-over-without-overwriting-register 
-    function! RestoreRegister()
-        let @" = s:restore_reg
-        return ''
-    endfunction
-    function! s:Repl()
-        let s:restore_reg = @"
-        return "p@=RestoreRegister()\<cr>"
-    endfunction
-    vnoremap <silent> <expr> p <sid>Repl()
-" make paragraph motion accept lines containing whitespace as delimiters (stolen from http://stackoverflow.com/a/2777488)
-function! ParagraphMove(delta, visual, count)
-    normal m'
-    normal |
-    if a:visual
-        normal gv
-    endif
 
-    if a:count == 0
-        let limit = 1
-    else
-        let limit = a:count
-    endif
+" Repeat the last macro (or last recorded macro) with .
+source ~/.vim/repeatMacro.vim
 
-    let i = 0
-    while i < limit
-        if a:delta > 0
-            " first whitespace-only line following a non-whitespace character           
-            let pos1 = search("\\S", "W")
-            let pos2 = search("^\\s*$", "W")
-            if pos1 == 0 || pos2 == 0
-                let pos = search("\\%$", "W")
-            endif
-        elseif a:delta < 0
-            " first whitespace-only line preceding a non-whitespace character           
-            let pos1 = search("\\S", "bW")
-            let pos2 = search("^\\s*$", "bW")
-            if pos1 == 0 || pos2 == 0
-                let pos = search("\\%^", "bW")
-            endif
-        endif
-        let i += 1
-    endwhile
-    normal |
-endfunction
+" Paste over visual selections without yanking them
+source ~/.vim/pasteDoesNotYank.vim
 
+" Proper paragraph motion which ignores whitespace in the delimiting lines
+source ~/.vim/paragraphMotion.vim
 nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
 onoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
-" vnoremap <silent> } :<C-U>call ParagraphMove( 1, 1)<CR>
 nnoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
+
 " vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1)<CR>
 
 " moving around, searching and patterns
@@ -344,4 +307,3 @@ nnoremap <CR> :call FoldingEnter()<CR>
 " Set search highlighting colors to less intrusive
     syntax on
     hi Search ctermbg=white ctermfg=black
-
