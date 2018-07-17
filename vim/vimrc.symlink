@@ -2,7 +2,9 @@
         " Use space as leader key
         let mapleader = "\<Space>"
         " Map <Leader>t to fzf fuzzy search plugin 
-        nnoremap <silent> <Leader>t :FZF<CR>
+        " nnoremap <silent> <Leader>t :FZF<CR>
+        nnoremap <silent> <leader>t :call fzf#vim#files('',
+      \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
         " Map <Leader>a to go directly into an Ag search without typing the awkward command
         nnoremap <silent> <Leader>a :Ag<Space>
         " Map single quote to apostrophe in normal mode (jump to exact mark)
@@ -270,9 +272,10 @@ function! FoldingEnter()
         normal! G
     endif
 endfunction
-
-
 nnoremap <CR> :call FoldingEnter()<CR>
+    " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
+    autocmd FileType netrw setl bufhidden=wipe
+
 
 " VUNDLE INITIALIZATION
 
