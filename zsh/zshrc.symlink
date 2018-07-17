@@ -63,3 +63,11 @@ export FZF_CTRL_T_COMMAND="fd --follow -I"
 # export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
 # Show a preview of the file while using Ctrl-T (mostly because its cool)
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+
+# Remove duplicates
+setopt HIST_IGNORE_ALL_DUPS
+# Allow sharing of history
+setopt append_history
+setopt share_history
+setopt inc_append_history
+
