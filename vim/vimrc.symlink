@@ -80,7 +80,7 @@ set clipboard=unnamedplus
 source ~/.vim/repeatMacro.vim
 
 " Paste over visual selections without yanking them
-source ~/.vim/pasteDoesNotYank.vim
+xnoremap p pgvy
 
 " Proper paragraph motion which ignores whitespace in the delimiting lines
 source ~/.vim/paragraphMotion.vim
