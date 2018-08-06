@@ -51,10 +51,6 @@
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
     vmap <C-e> gc
-    " Open gundo tree
-    nnoremap <F6> :GundoToggle<CR>
-    " Open Taglist window
-    nnoremap <F5> :TlistToggle<CR>
     " gitgutter - disable all automatic mappings
     let g:gitgutter_map_keys = 0
     " gitgutter hunk jumping
@@ -68,10 +64,10 @@
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>GitGutterStageHunk
     nmap <Leader>hu <Plug>GitGutterUndoHunk
+    " rust racer go to defintiion
+    au FileType rust nmap <Leader>d <Plug>(rust-def)
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
-" mappings - search for functions with taglist
-    nnoremap <Leader>s :TlistOpen<CR>/
 
 " copy/paste to system clipboard
 set clipboard=unnamedplus
@@ -225,8 +221,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " let g:jedi#force_py_version = 3
     " Disable highlighting of matching delimiters in vimtex
     " let g:vimtex_motion_matchparen = 0
-    "In taglist close the tag-window automatically after selecting a tag.
-        let Tlist_Close_On_Select = 1
     " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
 function! FoldingEnter()
     if &buftype ==# 'quickfix'
@@ -282,13 +276,13 @@ nnoremap <CR> :call FoldingEnter()<CR>
     " Plugin 'lervag/vimtex'
     " Rust
     Plugin 'rust-lang/rust.vim'
+    " Rust autocomlpetion / go to definition
+    Plugin 'racer-rust/vim-racer'
     " Ag
     Plugin 'brookhong/ag.vim'
     " Fzf-Vim
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plugin 'junegunn/fzf.vim'
-    " Taglist
-    Plugin 'vim-scripts/taglist.vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
