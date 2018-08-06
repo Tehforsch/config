@@ -1,10 +1,12 @@
-" mappings
+"mappings
     " Use space as leader key
     let mapleader = "\<Space>"
     " Map <Leader>t to fzf fuzzy search plugin 
-    nnoremap <silent> <Leader>t :FZF<CR>
-    " Map <F7> to go directly into an Ag search without typing the awkward command
-    nnoremap <silent> <F7> :Ag<Space>
+    " nnoremap <silent> <Leader>t :FZF<CR>
+    nnoremap <silent> <leader>t :call fzf#vim#files('',
+  \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
+    " Map <Leader>a to go directly into an Ag search without typing the awkward command
+    nnoremap <silent> <Leader>a :Ag<Space>
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nnoremap ' `
     " Map # which searches backwards for the current word under the cursor to exact mark jumping
@@ -233,9 +235,10 @@ function! FoldingEnter()
         normal! G
     endif
 endfunction
-
-
 nnoremap <CR> :call FoldingEnter()<CR>
+    " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
+    autocmd FileType netrw setl bufhidden=wipe
+
 
 " VUNDLE INITIALIZATION
 
