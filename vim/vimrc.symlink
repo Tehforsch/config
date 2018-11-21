@@ -43,6 +43,9 @@
     vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
+    " <F5> starts the current rust program with cargo run (I usually have an inotify-type command running in another terminal
+    " which runs the program on save, but this can be annoying when developing something with a graphical interface)
+    nnoremap <Leader>r :silent make run<CR>
 "mappings - command line
     " w!! writes file as sudo if it was opened without
     cnoremap  w!! w !sudo tee % > /dev/null
