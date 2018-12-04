@@ -1,3 +1,6 @@
 Host cray
     HostName hazelhen.hww.de
     User hpctpete
+Host vulcan
+    HostName vulcan.hww.hlrs.de
+    User hpctpete
