@@ -72,4 +72,3 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt append_history
 setopt share_history
 setopt inc_append_history
-

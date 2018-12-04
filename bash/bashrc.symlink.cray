@@ -24,4 +24,14 @@ export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 
 # After each command, append to the history file and reread it
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r;history -a; $PROMPT_COMMAND"
+
+export PYTHONDONTWRITEBYTECODE="1"
+
+export BASELIB_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/baselib
+export N3DLIB_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/n3dlib
+export EAS3IOMOD_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3iomod
+
+export EAS3_BASELIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/baselib
+export EAS3_N3DLIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/n3dlib
+export EAS3_EAS3IOMOD=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3iomod
