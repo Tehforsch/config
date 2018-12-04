@@ -83,6 +83,9 @@ source ~/.vim/repeatMacro.vim
 " Paste over visual selections without yanking them
 xnoremap p pgvy
 
+" Don't yank when changing
+nnoremap c "_c
+
 " Proper paragraph motion which ignores whitespace in the delimiting lines
 source ~/.vim/paragraphMotion.vim
 nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
