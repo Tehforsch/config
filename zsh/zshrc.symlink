@@ -30,6 +30,7 @@ source "$HOME/.localAliases"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # Disable "do you wish to see all ... possibilities?" prompt
 LISTMAX=0
@@ -41,6 +42,8 @@ zstyle ':completion:*' special-dirs true
 bindkey -s '^f' 'bg && disown && exit\n'
 # bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
 bindkey -s '^g' '&!\n^z exit\n'
+# bind C-h ton run the command(\n), ^z to suspend and exit\n to close the current terminal. This only works if the command already has & or &! appended to it (which the commands in my history which i last started with Ctrl-g have).
+bindkey -s '^h' '\n^z exit\n'
 
 # add ~/.bin to PATH
 PATH="$PATH:~/.bin"

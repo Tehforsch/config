@@ -1,16 +1,18 @@
-    "mappings - basic
-        " Use space as leader key
-        let mapleader = "\<Space>"
-        " Map <Leader>t to fzf fuzzy search plugin 
-        nnoremap <silent> <Leader>t :FZF<CR>
-        " Map <Leader>a to go directly into an Ag search without typing the awkward command
-        nnoremap <silent> <Leader>a :Ag<Space>
-        " Map single quote to apostrophe in normal mode (jump to exact mark)
-        nnoremap ' `
-        " Map # which searches backwards for the current word under the cursor to exact mark jumping
-        nnoremap # `
-        " Map jumping through changelist to <C-j> and <C-k>
-        map <C-k> g;
+"mappings
+    " Use space as leader key
+    let mapleader = "\<Space>"
+    " Map <Leader>t to fzf fuzzy search plugin 
+    " nnoremap <silent> <Leader>t :FZF<CR>
+    nnoremap <silent> <leader>t :call fzf#vim#files('',
+  \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
+    " Map <Leader>a to go directly into an Ag search without typing the awkward command
+    nnoremap <silent> <Leader>a :Ag<Space>
+    " Map single quote to apostrophe in normal mode (jump to exact mark)
+    nnoremap ' `
+    " Map # which searches backwards for the current word under the cursor to exact mark jumping
+    nnoremap # `
+    " Map jumping through changelist to <C-j> and <C-k>
+    map <C-k> g;
     map <C-j> g,
     " Write file 
     nnoremap <Leader>w :w<Cr>
@@ -41,6 +43,9 @@
     vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
+    " <F5> starts the current rust program with cargo run (I usually have an inotify-type command running in another terminal
+    " which runs the program on save, but this can be annoying when developing something with a graphical interface)
+    nnoremap <Leader>r :silent make run<CR>
 "mappings - command line
     " w!! writes file as sudo if it was opened without
     cnoremap  w!! w !sudo tee % > /dev/null
@@ -49,10 +54,6 @@
     nmap <C-e> gcc
     imap <C-e> <C-o>gcc
     vmap <C-e> gc
-    " Open gundo tree
-    nnoremap <F6> :GundoToggle<CR>
-    " Open Taglist window
-    nnoremap <F5> :TlistToggle<CR>
     " gitgutter - disable all automatic mappings
     let g:gitgutter_map_keys = 0
     " gitgutter hunk jumping
@@ -66,66 +67,29 @@
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>GitGutterStageHunk
     nmap <Leader>hu <Plug>GitGutterUndoHunk
+    " rust racer go to defintiion
+    au FileType rust nmap <Leader>d <Plug>(rust-def)
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
-" mappings - search for functions with taglist
-    nnoremap <Leader>s :TlistOpen<CR>/
+
+" copy/paste to system clipboard
+set clipboard=unnamedplus
 
 " More complex custom functions
-    " in visual mode map pasting to pasting without copying
-    " which is cool because its super nice to replace words
-    " in visual mode and i never want to copy the replaced words
-    " stolen from http://stackoverflow.com/questions/290465/vim-how-to-paste-over-without-overwriting-register 
-    function! RestoreRegister()
-        let @" = s:restore_reg
-        return ''
-    endfunction
-    function! s:Repl()
-        let s:restore_reg = @"
-        return "p@=RestoreRegister()\<cr>"
-    endfunction
-    vnoremap <silent> <expr> p <sid>Repl()
-" make paragraph motion accept lines containing whitespace as delimiters (stolen from http://stackoverflow.com/a/2777488)
-function! ParagraphMove(delta, visual, count)
-    normal m'
-    normal |
-    if a:visual
-        normal gv
-    endif
 
-    if a:count == 0
-        let limit = 1
-    else
-        let limit = a:count
-    endif
+" Repeat the last macro (or last recorded macro) with .
+source ~/.vim/repeatMacro.vim
 
-    let i = 0
-    while i < limit
-        if a:delta > 0
-            " first whitespace-only line following a non-whitespace character           
-            let pos1 = search("\\S", "W")
-            let pos2 = search("^\\s*$", "W")
-            if pos1 == 0 || pos2 == 0
-                let pos = search("\\%$", "W")
-            endif
-        elseif a:delta < 0
-            " first whitespace-only line preceding a non-whitespace character           
-            let pos1 = search("\\S", "bW")
-            let pos2 = search("^\\s*$", "bW")
-            if pos1 == 0 || pos2 == 0
-                let pos = search("\\%^", "bW")
-            endif
-        endif
-        let i += 1
-    endwhile
-    normal |
-endfunction
+" Paste over visual selections without yanking them
+xnoremap p pgvy
 
+" Proper paragraph motion which ignores whitespace in the delimiting lines
+source ~/.vim/paragraphMotion.vim
 nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
 onoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
-" vnoremap <silent> } :<C-U>call ParagraphMove( 1, 1)<CR>
 nnoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
+
 " vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1)<CR>
 
 " moving around, searching and patterns
@@ -260,8 +224,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     " let g:jedi#force_py_version = 3
     " Disable highlighting of matching delimiters in vimtex
     " let g:vimtex_motion_matchparen = 0
-    "In taglist close the tag-window automatically after selecting a tag.
-        let Tlist_Close_On_Select = 1
     " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
 function! FoldingEnter()
     if &buftype ==# 'quickfix'
@@ -270,9 +232,10 @@ function! FoldingEnter()
         normal! G
     endif
 endfunction
-
-
 nnoremap <CR> :call FoldingEnter()<CR>
+    " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
+    autocmd FileType netrw setl bufhidden=wipe
+
 
 " VUNDLE INITIALIZATION
 
@@ -316,13 +279,13 @@ nnoremap <CR> :call FoldingEnter()<CR>
     " Plugin 'lervag/vimtex'
     " Rust
     Plugin 'rust-lang/rust.vim'
+    " Rust autocomlpetion / go to definition
+    Plugin 'racer-rust/vim-racer'
     " Ag
     Plugin 'brookhong/ag.vim'
     " Fzf-Vim
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plugin 'junegunn/fzf.vim'
-    " Taglist
-    Plugin 'vim-scripts/taglist.vim'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
@@ -344,4 +307,3 @@ nnoremap <CR> :call FoldingEnter()<CR>
 " Set search highlighting colors to less intrusive
     syntax on
     hi Search ctermbg=white ctermfg=black
-
