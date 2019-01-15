@@ -1,3 +1,0 @@
-alias fin='cd ~/resource/ledger/ && ledger -f finances'
-alias vim='vimx'
-alias ledger='ledger -f finances'
