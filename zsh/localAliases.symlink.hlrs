@@ -1,3 +1,3 @@
 ssh='ssh -X'
 alias vim='vimx'
-alias ledger='ledger -f finances'
+alias ledger='ledger -f ~/resource/finances/finances'
