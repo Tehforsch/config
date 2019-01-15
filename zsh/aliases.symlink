@@ -12,3 +12,6 @@ alias dlc='$CONFIG/scripts/copyLastDownload.sh'
 alias python2='python2.7'
 alias python='python3'
 alias v='vim $(fzf)'
+# cargo run and cargo build with an absolute path for the target folder (in order to preserve space on the dropbox since rust targets are quite large)
+alias cb='mkdir -p $RUST_TARGET_FOLDER/$(basename $(realpath .)); cargo build --target-dir=$RUST_TARGET_FOLDER/$(basename $(realpath .))/'
+alias cr='mkdir -p $RUST_TARGET_FOLDER/$(basename $(realpath .)); cargo run --target-dir=$RUST_TARGET_FOLDER/$(basename $(realpath .))/'
