@@ -146,7 +146,7 @@ bindsym Mod1+Shift+s exec /home/toni/projects/config/scripts/startChrome.sh
 bindsym Mod1+Shift+w exec google-chrome web.whatsapp.com
 bindsym Mod1+Shift+m exec google-chrome mail.google.com
 # Telegram
-bindsym Mod1+Shift+t exec google-chrome --app-id=clhhggbfdinjmjhajaheehoeibfljjno
+bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
 
 
 bindsym Mod1+Shift+o exec zsh /home/toni/projects/config/startupScripts/runAll.sh
