@@ -175,7 +175,7 @@ workspace $ws9 output eDP1
 workspace $ws10 output HDMI1
 
 # Assign specific workspaces to some applications
-assign [class="Spotify"] 9
+for_window [class="Spotify"] move to workspace 9
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
