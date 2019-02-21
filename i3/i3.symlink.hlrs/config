@@ -141,7 +141,7 @@ bar {
 new_window 1pixel
 
 # Shortcuts to open specific applications
-bindsym Mod1+Shift+x exec nautilus --no-desktop
+bindsym Mod1+Shift+x exec nautilus
 bindsym Mod1+Shift+s exec /home/toni/projects/config/scripts/startChrome.sh
 bindsym Mod1+Shift+w exec google-chrome web.whatsapp.com
 bindsym Mod1+Shift+m exec google-chrome mail.google.com
