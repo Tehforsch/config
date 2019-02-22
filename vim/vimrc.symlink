@@ -31,6 +31,7 @@
     " as many lines as my main monitor can fit so that I can see as much as possible of the tab
     " at once.
     nnoremap <F10> :vert new %<CR>:vert new %<CR><C-w>l52jzt<C-w>l106jzt
+    vnoremap Y ygv
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
