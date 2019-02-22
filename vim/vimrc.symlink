@@ -31,6 +31,7 @@
     " as many lines as my main monitor can fit so that I can see as much as possible of the tab
     " at once.
     nnoremap <F10> :vert new %<CR>:vert new %<CR><C-w>l52jzt<C-w>l106jzt
+    " map Y to yank and re-select on visual selections
     vnoremap Y ygv
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
@@ -170,6 +171,12 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " use latex instead of plaintex at all times
     let g:tex_flavor = "latex"
+
+" when having a visual selection: replace the selection by typing a variable name
+" and write variable = selection in the line above
+" currently this is only mapped in python, in other languages there might be different
+" assignment operators.
+autocmd FileType python vnoremap <expr> gs "ygvc" . input("Variable name:") . "\<ESC>O\<C-r>. = \<C-r>0\<Esc>"
 
 " indent preprocessor statements correctly in c++
     set cinkeys=0{,0},0),:,!^F,o,O,e
