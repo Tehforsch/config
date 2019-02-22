@@ -87,6 +87,7 @@ xnoremap p pgvy
 
 " Don't yank when changing
 nnoremap c "_c
+nnoremap C "_C
 
 " Proper paragraph motion which ignores whitespace in the delimiting lines
 source ~/.vim/paragraphMotion.vim
