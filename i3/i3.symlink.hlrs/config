@@ -84,6 +84,9 @@ bindsym $mod+c workspace $ws7
 bindsym $mod+v workspace $ws9
 bindsym $mod+b workspace $ws11
 
+# focus last workspace
+bindsym $mod+asciicircum workspace back_and_forth
+
 # move focused container to workspace
 bindsym $mod+Shift+a move workspace $ws2; workspace $ws2
 bindsym $mod+Shift+s move workspace $ws4; workspace $ws4
@@ -97,9 +100,6 @@ bindsym $mod+Shift+x move workspace $ws5; workspace $ws5
 bindsym $mod+Shift+c move workspace $ws7; workspace $ws7
 bindsym $mod+Shift+v move workspace $ws9; workspace $ws9
 bindsym $mod+Shift+b move workspace $ws11; workspace $ws11
-
-# focus last workspace
-bindsym $mod+asciicircum workspace back_and_forth
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
