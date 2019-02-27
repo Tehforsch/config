@@ -178,15 +178,15 @@ workspace $ws9 output eDP-1
 workspace $ws10 output DP-2
 
 # Assign specific workspaces to some applications
-for_window [class="Spotify"] move to workspace 9
+for_window [class="Spotify"] move to workspace $ws9
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
-exec --no-startup-id spotify
+exec spotify
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
-exec_always --no-startup-id sleep 3 && redshift-gtk
+exec --no-startup-id sleep 3 && redshift-gtk
  
 # Disable mouse jumping to the a window when I switch focus between two workspaces
 mouse_warping none
