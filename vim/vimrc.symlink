@@ -69,15 +69,13 @@
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>GitGutterStageHunk
     nmap <Leader>hu <Plug>GitGutterUndoHunk
-    " rust racer go to defintiion
-    au FileType rust nmap <Leader>d <Plug>(rust-def)
+    " Language Server - go to definition
+    nmap <Leader>d :LspDefinition<CR>
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
 
 " copy/paste to system clipboard
 set clipboard=unnamedplus
-
-" More complex custom functions
 
 " Repeat the last macro (or last recorded macro) with .
 source ~/.vim/repeatMacro.vim
@@ -93,11 +91,11 @@ nnoremap C "_C
 source ~/.vim/paragraphMotion.vim
 nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
 onoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
+vnoremap <silent> } :<C-U>call ParagraphMove( 1, 1, v:count)<CR>
 nnoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
-
-" vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1)<CR>
-
+vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
+  
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
@@ -127,10 +125,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 " status line
     " always show status line
     set laststatus=2
-    " create dir for airline symbols if it doesnt exist
-    " if !exists('g:airline_symbols')
-        " let g:airline_symbols = {}
-    " endif
     " disable separators
     let g:airline_left_sep = ''
     let g:airline_right_sep = ''
@@ -146,9 +140,6 @@ onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
     let g:airline_section_x = ''
     let g:airline_section_y = ''
     let g:airline_section_z = ''
-
-" git gutter timeout
-    " set updatetime=250 
 
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
@@ -193,11 +184,6 @@ autocmd FileType python vnoremap <expr> gs "ygvc" . input("Variable name:") . "\
 " messages and info
     set ruler
     set number
-" messages and info in gvim (for eclim mostly)
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L  "remove left-hand scroll bar
 
 " tabs and indenting
     " Tab size 4
@@ -214,28 +200,11 @@ autocmd FileType python vnoremap <expr> gs "ygvc" . input("Variable name:") . "\
     set wildmode=longest,list,full
     set wildmenu
     " Fix the delay after ESC - o
-    " set noesckeys
     set timeout timeoutlen=300 ttimeoutlen=10
     " Increase history size.
     set history=2000
 
 " plugin specific settings
-    " Php indentation
-    let g:PHP_default_indenting = 1
-    " Ultisnips
-    let g:UltiSnipsExpandTrigger="<tab>"                                            
-    let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
-    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"        
-    " Supertab - Complete from top to bottom - I don't quite understand this but it seems more logical to me.
-    " let g:SuperTabDefaultCompletionType = "<c-n>"
-    " Jedi-vim: Disable autocompletion on dot
-    let g:jedi#popup_on_dot = 0
-    " Disable from ... import autocompletion
-    let g:jedi#smart_auto_mappings = 0
-    "Always use py3
-    " let g:jedi#force_py_version = 3
-    " Disable highlighting of matching delimiters in vimtex
-    " let g:vimtex_motion_matchparen = 0
     " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
 function! FoldingEnter()
     if &buftype ==# 'quickfix'
@@ -248,9 +217,18 @@ nnoremap <CR> :call FoldingEnter()<CR>
     " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
     autocmd FileType netrw setl bufhidden=wipe
 
+" Register python lanauge server
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
 
 " VUNDLE INITIALIZATION
-
     set nocompatible              " be iMproved, required
     filetype off                  " required
 
@@ -267,9 +245,6 @@ nnoremap <CR> :call FoldingEnter()<CR>
     Plugin 'tpope/vim-repeat'
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
     Plugin 'tpope/vim-surround'
-    " Ultisnips 
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
     " Exchange with cx<operator>
     Plugin 'tommcdo/vim-exchange'
     " Solarized Colorscheme
@@ -281,23 +256,20 @@ nnoremap <CR> :call FoldingEnter()<CR>
     Plugin 'airblade/vim-gitgutter'
     " Some text objects
     Plugin 'wellle/targets.vim'
-    " Jedi-vim for python
-    " Plugin 'davidhalter/jedi-vim'
-    " Checks spelling and grammar (weak wording etc)
-    Plugin 'reedes/vim-wordy'
     " Quickly check for synonyms
     Plugin 'ron89/thesaurus_query.vim'
     " Latex
     " Plugin 'lervag/vimtex'
     " Rust
     Plugin 'rust-lang/rust.vim'
-    " Rust autocomlpetion / go to definition
-    Plugin 'racer-rust/vim-racer'
     " Ag
     Plugin 'brookhong/ag.vim'
     " Fzf-Vim
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plugin 'junegunn/fzf.vim'
+    " Language Server
+    Plugin 'prabirshrestha/async.vim'
+    Plugin 'prabirshrestha/vim-lsp'
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
