@@ -214,6 +214,7 @@ let g:LanguageClient_serverCommands = {
 " Mappings for Language Server
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<CR>
 " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 
