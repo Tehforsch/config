@@ -17,6 +17,7 @@ export FZF_CTRL_T_COMMAND="fd --follow -I"
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export PATH=$PATH:~/.fd:~/.bin
 export WS=/lustre/cray/ws8/ws/
+export WS9=/lustre/cray/ws9/0/ws/
 
 #Avoid duplicates in history
 export HISTCONTROL=ignoredups:erasedups  
@@ -35,3 +36,4 @@ export EAS3IOMOD_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3i
 export EAS3_BASELIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/baselib
 export EAS3_N3DLIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/n3dlib
 export EAS3_EAS3IOMOD=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3iomod
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/Compiler/18.0.2.199/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin
