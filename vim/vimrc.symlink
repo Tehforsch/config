@@ -2,11 +2,8 @@
     " Use space as leader key
     let mapleader = "\<Space>"
     " Map <Leader>t to fzf fuzzy search plugin 
-    " nnoremap <silent> <Leader>t :FZF<CR>
     nnoremap <silent> <leader>t :call fzf#vim#files('',
   \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
-    " Map <Leader>a to go directly into an Ag search without typing the awkward command
-    nnoremap <silent> <Leader>a :Ag<Space>
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nnoremap ' `
     " Map # which searches backwards for the current word under the cursor to exact mark jumping
@@ -22,17 +19,11 @@
     noremap <Leader>^ <C-^>
     nnoremap <Leader>h :bp<CR>
     nnoremap <Leader>l :bn<CR>
-    " Jump to definition
-    nnoremap <Leader>d <C-]>
     " Disable ex mode which is only opened because I mess up
     nnoremap Q <nop>
-    " This is a little out of place but this is quite nice when viewing guitar tabs.
-    " It opens the same file in two split windows to the right of the current window and scrolls down
-    " as many lines as my main monitor can fit so that I can see as much as possible of the tab
-    " at once.
-    nnoremap <F10> :vert new %<CR>:vert new %<CR><C-w>l52jzt<C-w>l106jzt
     " map Y to yank and re-select on visual selections
     vnoremap Y ygv
+
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
@@ -45,12 +36,11 @@
     vmap <Leader>c gcgvyPgvgc
     " Make Y behave like y$ which is analogous to C or D
     nnoremap Y y$
-    " <F5> starts the current rust program with cargo run (I usually have an inotify-type command running in another terminal
-    " which runs the program on save, but this can be annoying when developing something with a graphical interface)
-    nnoremap <Leader>r :silent make run<CR>
+
 "mappings - command line
     " w!! writes file as sudo if it was opened without
     cnoremap  w!! w !sudo tee % > /dev/null
+
 "mappings for plugins
     " Quicker mapping for commenting out lines
     nmap <C-e> gcc
@@ -69,32 +59,44 @@
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>GitGutterStageHunk
     nmap <Leader>hu <Plug>GitGutterUndoHunk
-    " Language Server - go to definition
-    nmap <Leader>d :LspDefinition<CR>
+    " " Language Server - go to definition
+    " nmap <Leader>d :LspDefinition<CR>
+    " " Map <Leader>f to fzf fuzzy search for symbols in file
+    " nnoremap <silent> <leader>t :call fzf#vim#files('',
+  " \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
+
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
+    " This is a little out of place but this is quite nice when viewing guitar tabs.
+    " It opens the same file in two split windows to the right of the current window and scrolls down
+    " as many lines as my main monitor can fit so that I can see as much as possible of the tab
+    " at once.
+    nnoremap <F10> :vert new %<CR>:vert new %<CR><C-w>l52jzt<C-w>l106jzt
 
 " copy/paste to system clipboard
-set clipboard=unnamedplus
+    set clipboard=unnamedplus
 
 " Repeat the last macro (or last recorded macro) with .
-source ~/.vim/repeatMacro.vim
+    source ~/.vim/repeatMacro.vim
 
 " Paste over visual selections without yanking them
-xnoremap p pgvy
+    xnoremap p pgvy
+
+" When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
+    autocmd FileType netrw setl bufhidden=wipe
 
 " Don't yank when changing
-nnoremap c "_c
-nnoremap C "_C
+    nnoremap c "_c
+    nnoremap C "_C
 
 " Proper paragraph motion which ignores whitespace in the delimiting lines
-source ~/.vim/paragraphMotion.vim
-nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
-onoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
-vnoremap <silent> } :<C-U>call ParagraphMove( 1, 1, v:count)<CR>
-nnoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
-onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
-vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
+    source ~/.vim/paragraphMotion.vim
+    nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
+    onoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
+    vnoremap <silent> } :<C-U>call ParagraphMove( 1, 1, v:count)<CR>
+    nnoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
+    onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
+    vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
   
 " moving around, searching and patterns
     " Highlight search while typing
@@ -168,7 +170,7 @@ vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
 " and write variable = selection in the line above
 " currently this is only mapped in python, in other languages there might be different
 " assignment operators.
-autocmd FileType python vnoremap <expr> gs "ygvc" . input("Variable name:") . "\<ESC>O\<C-r>. = \<C-r>0\<Esc>"
+    autocmd FileType python vnoremap <expr> gs "ygvc" . input("Variable name:") . "\<ESC>O\<C-r>. = \<C-r>0\<Esc>"
 
 " indent preprocessor statements correctly in c++
     set cinkeys=0{,0},0),:,!^F,o,O,e
@@ -204,28 +206,15 @@ autocmd FileType python vnoremap <expr> gs "ygvc" . input("Variable name:") . "\
     " Increase history size.
     set history=2000
 
-" plugin specific settings
-    " Enable automatically closing the quickfix window when pressing enter such that the Ag plugin becomes nicer to use. Also do "zz" at the end to place the screen a little more useful (otherwise it scrolls to the end when jumping for some reason)
-function! FoldingEnter()
-    if &buftype ==# 'quickfix'
-        execute "normal! \<CR>:ccl\<CR>zz"
-    else
-        normal! G
-    endif
-endfunction
-nnoremap <CR> :call FoldingEnter()<CR>
-    " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
-    autocmd FileType netrw setl bufhidden=wipe
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
 
-" Register python lanauge server
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
+" Mappings for Language Server
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 
 " VUNDLE INITIALIZATION
@@ -267,9 +256,12 @@ endif
     " Fzf-Vim
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plugin 'junegunn/fzf.vim'
-    " Language Server
-    Plugin 'prabirshrestha/async.vim'
-    Plugin 'prabirshrestha/vim-lsp'
+    Plugin 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+    Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 
     " Adding ended, switch filetype settings back on
     call vundle#end()            " required
