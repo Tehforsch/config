@@ -4,6 +4,8 @@
     " Map <Leader>t to fzf fuzzy search plugin 
     nnoremap <silent> <leader>t :call fzf#vim#files('',
   \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
+    " Map <Leader>b to fzf fuzzy search plugin for buffers
+    nnoremap <silent> <leader>b :call fzf#vim#buffers('', {'down': '40%'})<cr>
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nnoremap ' `
     " Map # which searches backwards for the current word under the cursor to exact mark jumping
@@ -23,6 +25,8 @@
     nnoremap Q <nop>
     " map Y to yank and re-select on visual selections
     vnoremap Y ygv
+    " map C-o to the normal behavior (go to last jump location) but then center on the current position (zz)
+    nnoremap <C-o> <C-o>zz
 
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
@@ -217,7 +221,7 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': ''})<CR>
 
 
 " VUNDLE INITIALIZATION
