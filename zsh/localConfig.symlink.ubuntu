@@ -1,5 +1,3 @@
 ## Config folder
 export CONFIG=$HOME/projects/config
 export MASTER=$HOME/projects/mastersThesis
-
-export RUST_TARGET_FOLDER=$HOME/.rustTargets/
