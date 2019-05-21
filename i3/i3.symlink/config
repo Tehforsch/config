@@ -53,8 +53,6 @@ bindsym $mod+space focus mode_toggle
 
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
-for_window [title="Welcome to Wolfram Mathematica 9"] floating enable
-for_window [title="Find and Replace"] floating enable
 
 # set workspace names (latter number is the sorting)
 set $ws1 "1"
@@ -145,7 +143,7 @@ new_window 1pixel
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
-bindsym Mod1+Shift+s exec firefox
+bindsym Mod1+Shift+s exec google-chrome
 # Telegram
 bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
 
@@ -177,6 +175,8 @@ workspace $ws10 output HDMI1
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws9
+for_window [title="Twoxel"] move to workspace 3
+assign [title="Twoxel"] 3
 
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet

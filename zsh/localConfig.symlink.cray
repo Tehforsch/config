@@ -1,6 +1,0 @@
-export CONFIG=$HOME/projects/config
-
-module load tools/git
-
-# Disable annoying "which manual page do you want?" prompt
-function man { /usr/bin/man "$@" | /usr/bin/less ;}
