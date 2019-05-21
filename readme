@@ -2,10 +2,7 @@
 Use https://github.com/olejon/spotcommander/wiki/DowngradeSpotify for the 0.9 version 
 
 # Sound
-18i6 no sound but "crackling" whenever activated? try activating the outputs in alsamixer, the monitors are actually the outputs since this is recognized now.
-The desired output (=guitar + sound from pc) is probably MIX1, one of the last options
-
-the wifi module is the cause of the skips
+The bug in the driver of the wifi module is the cause of the skips
 
 # Graphics
 Apparently nvidia-352 works with 840M only if i upgrade everything before
