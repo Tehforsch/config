@@ -99,6 +99,12 @@ bindsym $mod+Shift+c move workspace $ws7; workspace $ws7
 bindsym $mod+Shift+v move workspace $ws9; workspace $ws9
 bindsym $mod+Shift+b move workspace $ws11; workspace $ws11
 
+# Change colors
+# class                 border  backgr. text    indicator child_border                                                                     
+client.focused_inactive #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
+client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
+client.focused          #0d1010 #ffffff #d9d9d9 #424242 #063340   
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
@@ -140,10 +146,12 @@ bar {
 
 #Disable window titles
 new_window 1pixel
+for_window [class="^.*"] border pixel 3
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
+bindsym Mod1+Shift+z exec /home/toni/.apps/zotero/zotero
 # Telegram
 bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
 
