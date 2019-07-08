@@ -215,6 +215,8 @@
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'python': ['/usr/local/bin/pyls'],
+    \ 'c': ['/usr/bin/clangd-9'],
+    \ 'cpp': ['/usr/bin/clangd-9'],
     \ }
 
 " Mappings for Language Server
