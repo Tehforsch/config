@@ -72,6 +72,3 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt append_history
 setopt share_history
 setopt inc_append_history
-# This disables the globbing of zsh which might be a powerful feature but usually just gets in the way for me (i.e. when typing ? or * in normal commands which zsh then ruins because it tries to expand them or just complains about not finding matches)
-setopt noglob
-
