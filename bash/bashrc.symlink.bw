@@ -37,3 +37,4 @@ export EAS3_BASELIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/baseli
 export EAS3_N3DLIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/n3dlib
 export EAS3_EAS3IOMOD=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3iomod
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/Compiler/18.0.2.199/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin
+set show-all-if-ambiguous on
