@@ -1,0 +1,2 @@
+## Config folder
+export CONFIG=$HOME/projects/config
