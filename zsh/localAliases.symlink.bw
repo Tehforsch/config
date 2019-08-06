@@ -1,2 +1,2 @@
-alias ml='module list'
-alias ma='module avail'
+alias ml='module list -t'
+alias ma='module avail -t'
