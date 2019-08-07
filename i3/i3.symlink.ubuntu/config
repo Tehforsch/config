@@ -101,9 +101,9 @@ bindsym $mod+Shift+b move workspace $ws11; workspace $ws11
 
 # Change colors
 # class                 border  backgr. text    indicator child_border                                                                     
-client.focused_inactive #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
-client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
-client.focused          #0d1010 #ffffff #d9d9d9 #424242 #063340   
+client.focused_inactive #ffffff #212121 #d9d9d9 #424242 #063340                                                                            
+client.unfocused        #ffffff #212121 #d9d9d9 #424242 #063340                                                                            
+client.focused          #002b36 #002b36 #002b36 #002b36 #93a1a1   
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
@@ -180,6 +180,8 @@ workspace $ws7 output eDP1
 workspace $ws8 output HDMI1
 workspace $ws9 output eDP1
 workspace $ws10 output HDMI1
+workspace $ws11 output eDP1
+workspace $ws12 output HDMI1
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws9
