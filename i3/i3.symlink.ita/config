@@ -14,7 +14,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym Mod1+2 exec gnome-terminal
+bindsym Mod1+2 exec terminator
 
 # kill focused window
 bindsym Mod1+Q kill
@@ -151,7 +151,7 @@ for_window [class="^.*"] border pixel 3
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
 bindsym Mod1+Shift+s exec google-chrome
-bindsym Mod1+Shift+z exec /home/toni/.apps/zotero/zotero
+bindsym Mod1+Shift+z exec /home/toni/.apps/Zotero_linux-x86_64/zotero
 # Telegram
 bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
 
