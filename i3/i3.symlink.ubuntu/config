@@ -173,7 +173,7 @@ bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 workspace $ws1 output eDP1
 workspace $ws2 output HDMI1
 workspace $ws3 output eDP1
-workspace $ws4 output HDMI1
+workspace $ws4 output HDMI1 
 workspace $ws5 output eDP1
 workspace $ws6 output HDMI1
 workspace $ws7 output eDP1
@@ -182,6 +182,20 @@ workspace $ws9 output eDP1
 workspace $ws10 output HDMI1
 workspace $ws11 output eDP1
 workspace $ws12 output HDMI1
+
+
+# # Assign workspaces to monitors.
+# workspace $ws1 output eDP1
+# workspace $ws2 output DP1
+# workspace $ws3 output eDP1
+# workspace $ws4 output DP1
+# workspace $ws5 output eDP1
+# workspace $ws6 output DP1
+# workspace $ws7 output eDP1
+# workspace $ws8 output DP1
+# workspace $ws9 output eDP1
+# workspace $ws10 output DP1
+
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws9
