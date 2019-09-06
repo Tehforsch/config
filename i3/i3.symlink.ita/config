@@ -150,7 +150,7 @@ for_window [class="^.*"] border pixel 3
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
-bindsym Mod1+Shift+s exec google-chrome
+bindsym Mod1+Shift+s exec /home/toni/projects/config/scripts/startChrome.sh
 bindsym Mod1+Shift+z exec /home/toni/.apps/Zotero_linux-x86_64/zotero
 # Telegram
 bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
@@ -191,7 +191,8 @@ assign [title="Twoxel"] 3
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
-exec spotify
+exec sleep 3 && spotify
+exec sleep 3 && thunderbird
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
 exec --no-startup-id sleep 3 && redshift-gtk
