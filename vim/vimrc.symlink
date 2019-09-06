@@ -226,55 +226,39 @@ nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<C
 nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': ''})<CR>
 
 
-" VUNDLE INITIALIZATION
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
-
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-
-
-    " let Vundle manage Vundle, required
-    Plugin 'gmarik/Vundle.vim'
+    call plug#begin('~/.local/share/nvim/plugged')
     " Comment out lines with gcc, comment out movements/visual selections with gc
-    Plugin 'tpope/vim-commentary'
+    Plug 'tpope/vim-commentary'
     " Repeat composite commands with .
-    Plugin 'tpope/vim-repeat'
+    Plug 'tpope/vim-repeat'
     " Surround text objects. example: ysiw( surrounds the word with a bracket.
-    Plugin 'tpope/vim-surround'
+    Plug 'tpope/vim-surround'
     " Exchange with cx<operator>
-    Plugin 'tommcdo/vim-exchange'
+    Plug 'tommcdo/vim-exchange'
     " Solarized Colorscheme
-    Plugin 'altercation/vim-colors-solarized'
+    Plug 'altercation/vim-colors-solarized'
     " Status line
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     " Git plugin
-    Plugin 'airblade/vim-gitgutter'
+    Plug 'airblade/vim-gitgutter'
     " Some text objects
-    Plugin 'wellle/targets.vim'
+    Plug 'wellle/targets.vim'
     " Quickly check for synonyms
-    Plugin 'ron89/thesaurus_query.vim'
-    " Latex
-    " Plugin 'lervag/vimtex'
+    Plug 'ron89/thesaurus_query.vim'
     " Rust
-    Plugin 'rust-lang/rust.vim'
+    Plug 'rust-lang/rust.vim'
     " Ag
-    Plugin 'brookhong/ag.vim'
+    Plug 'brookhong/ag.vim'
     " Fzf-Vim
-    Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plugin 'junegunn/fzf.vim'
-    Plugin 'autozimu/LanguageClient-neovim', {
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
-    Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-
-    " Adding ended, switch filetype settings back on
-    call vundle#end()            " required
-    filetype plugin indent on    " required
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    call plug#end()
 
 " Solarized color scheme
     set t_Co=16

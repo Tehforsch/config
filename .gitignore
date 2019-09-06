@@ -5,3 +5,4 @@ ssh/ssh.symlink/id_rsa.pub
 ssh/ssh.symlink/known_hosts
 ssh/ssh.symlink/authorized_keys
 redshift/*
+vim/vim.symlink/autoload
