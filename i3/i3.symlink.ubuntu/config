@@ -45,11 +45,8 @@ bindsym $mod+p split v
 # enter fullscreen mode for the focused container
 bindsym Mod1+e fullscreen
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# toggle split / tab mode
+bindsym $mod+space layout toggle splith tabbed
 
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
@@ -150,7 +147,7 @@ for_window [class="^.*"] border pixel 3
 
 # Shortcuts to open specific applications
 bindsym Mod1+Shift+x exec nautilus --no-desktop
-bindsym Mod1+Shift+s exec google-chrome
+bindsym Mod1+Shift+s exec /home/toni/projects/config/scripts/startChrome.sh
 bindsym Mod1+Shift+z exec /home/toni/.apps/zotero/zotero
 # Telegram
 bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
