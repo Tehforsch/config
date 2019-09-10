@@ -1,2 +1,7 @@
 alias ml='module list -t'
 alias ma='module avail -t'
+alias fd='find . -name'
+alias showout='tail $(ls -l --sort=time | head -n 2 | tail -n 1 | tr -s " " | cut -f 9 -d " ") -n 50'
+alias bob='python3 ~/projects/bob/main.py'
+alias loadpython='module load devel/python_intel/3.6'
+alias vim='nvim'

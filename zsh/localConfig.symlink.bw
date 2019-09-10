@@ -1,2 +1,6 @@
 ## Config folder
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/hd/hd_hd/hd_hp240/projects/gmp/lib
 export CONFIG=$HOME/projects/config
+export GMPDIR=$HOME/projects/gmp/
+export work=/beegfs/work/ws/hd_hp240-arepoTest-0/
+export PATH=$PATH:$HOME/projects/neovim/install/usr/local/bin
