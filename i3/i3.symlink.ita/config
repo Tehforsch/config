@@ -29,6 +29,8 @@ bindsym Mod1+k focus up
 bindsym Mod1+l focus right
 bindsym Mod1+a focus left
 bindsym Mod1+d focus right
+# alt-tab like behavior
+bindsym Mod1+Tab exec i3-msg "[con_id=$(cat /tmp/last_focus)] focus"
 
 # move focused window
 bindsym Mod1+Shift+h move left
@@ -83,7 +85,7 @@ bindsym $mod+v workspace $ws9
 bindsym $mod+b workspace $ws11
 
 # focus last workspace
-bindsym $mod+asciicircum workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+a move workspace $ws2; workspace $ws2
@@ -191,11 +193,12 @@ assign [title="Twoxel"] 3
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
-exec sleep 3 && spotify
-exec sleep 3 && thunderbird
+exec sleep 10 && spotify
+exec sleep 10 && thunderbird
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
 exec --no-startup-id sleep 3 && redshift-gtk
+exec --no-startup-id python3 ~/projects/config/scripts/toggleFocus.py
  
 # Disable mouse jumping to the a window when I switch focus between two workspaces
 # mouse_warping none
