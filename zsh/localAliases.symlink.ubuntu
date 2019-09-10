@@ -1,1 +1,2 @@
 alias vim='nvim'
+alias bw='ssh -X bwprod'
