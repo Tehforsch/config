@@ -1,8 +1,8 @@
+# Change font
+font pango: Dejavu Sans Mono 10
+
 # use windows as mod
 set $mod Mod4
-
-# font for window titles. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Set background to black
 exec --no-startup-id xsetroot -solid "#000000"
@@ -199,6 +199,3 @@ exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
 exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id python3 ~/projects/config/scripts/toggleFocus.py
- 
-# Disable mouse jumping to the a window when I switch focus between two workspaces
-# mouse_warping none
