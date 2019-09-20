@@ -5,8 +5,8 @@ font pango: Dejavu Sans Mono 10
 set $mod Mod4
 
 # set monitor names
-set monitor1=eDP-1
-set monitor2=DP-1-3
+set $monitor1=eDP-1
+set $monitor2=DP-1-3
 
 
 # Set background to black
@@ -25,7 +25,8 @@ bindsym Mod1+2 exec terminator
 bindsym Mod1+Q kill
 
 # start dmenu (a program launcher)
-bindsym Mod1+1 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu"
+# bindsym Mod1+1 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu"
+bindsym Mod1+1 exec --no-startup-id dmenu_run
 
 # change focus
 bindsym Mod1+h focus left
@@ -171,18 +172,18 @@ bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 # Assign workspaces to monitors.
-workspace $ws1 output eDP-1
-workspace $ws2 output DP-1-3
-workspace $ws3 output eDP-1
-workspace $ws4 output DP-1-3
-workspace $ws5 output eDP-1
-workspace $ws6 output DP-1-3
-workspace $ws7 output eDP-1
-workspace $ws8 output DP-1-3
-workspace $ws9 output eDP-1
-workspace $ws10 output DP-1-3
-workspace $ws11 output eDP-1
-workspace $ws12 output DP-1-3
+workspace $ws1 output $monitor1
+workspace $ws2 output $monitor2
+workspace $ws3 output $monitor1
+workspace $ws4 output $monitor2
+workspace $ws5 output $monitor1
+workspace $ws6 output $monitor2
+workspace $ws7 output $monitor1
+workspace $ws8 output $monitor2
+workspace $ws9 output $monitor1
+workspace $ws10 output $monitor2
+workspace $ws11 output $monitor1
+workspace $ws12 output $monitor2
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws9
