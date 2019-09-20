@@ -26,7 +26,7 @@ bindsym Mod1+Q kill
 
 # start dmenu (a program launcher)
 # bindsym Mod1+1 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu"
-bindsym Mod1+1 exec --no-startup-id dmenu_run
+bindsym Mod1+1 exec --no-startup-id dmenu_run -fn xft:Inconsolata-12
 
 # change focus
 bindsym Mod1+h focus left
