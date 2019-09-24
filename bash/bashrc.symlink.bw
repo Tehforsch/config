@@ -43,3 +43,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/Compiler/18.0.2.199/compilers
 # Hopefully map Ctrl-w to remove only until last slash or so (like in zsh)
 stty werase undef
 bind '\C-w:unix-filename-rubout'
+export TERM='xterm-256color'
