@@ -53,16 +53,16 @@
     " gitgutter - disable all automatic mappings
     let g:gitgutter_map_keys = 0
     " gitgutter hunk jumping
-    nmap <Leader>j <Plug>GitGutterNextHunk
-    nmap <Leader>k <Plug>GitGutterPrevHunk
+    nmap <Leader>j <Plug>(GitGutterNextHunk)
+    nmap <Leader>k <Plug>(GitGutterPrevHunk)
     " gitgutter hunk text objects
-    omap ih <Plug>GitGutterTextObjectInnerPending
-    omap ah <Plug>GitGutterTextObjectOuterPending
-    xmap ih <Plug>GitGutterTextObjectInnerVisual
-    xmap ah <Plug>GitGutterTextObjectOuterVisual 
+    omap ih <Plug>(GitGutterTextObjectInnerPending)
+    omap ah <Plug>(GitGutterTextObjectOuterPending)
+    xmap ih <Plug>(GitGutterTextObjectInnerVisual)
+    xmap ah <Plug>(GitGutterTextObjectOuterVisual)
     " gitgutter hunk staging and undo
-    nmap <Leader>ha <Plug>GitGutterStageHunk
-    nmap <Leader>hu <Plug>GitGutterUndoHunk
+    nmap <Leader>ha <Plug>(GitGutterStageHunk)
+    nmap <Leader>hu <Plug>(GitGutterUndoHunk)
     " " Language Server - go to definition
     " nmap <Leader>d :LspDefinition<CR>
     " " Map <Leader>f to fzf fuzzy search for symbols in file
