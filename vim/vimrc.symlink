@@ -2,8 +2,7 @@
     " Use space as leader key
     let mapleader = "\<Space>"
     " Map <Leader>t to fzf fuzzy search plugin 
-    nnoremap <silent> <leader>t :call fzf#vim#files('',
-  \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
+    " nnoremap <silent> <leader>t :Files<cr>
     " Map <Leader>b to fzf fuzzy search plugin for buffers
     nnoremap <silent> <leader>b :call fzf#vim#buffers('', {'down': '40%'})<cr>
     " Map single quote to apostrophe in normal mode (jump to exact mark)
