@@ -5,7 +5,7 @@
 	helper = cache
 [core]
 	excludesfile = ~/.gitignoreGlobal
-    editor = vim
+    editor = nvim
 [color]
     branch = auto
     diff = auto
