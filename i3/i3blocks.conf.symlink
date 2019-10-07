@@ -1,0 +1,3 @@
+[weather]
+command=curl 'wttr.in/Heidelberg?format="%C+%t+%h"'
+interval=300

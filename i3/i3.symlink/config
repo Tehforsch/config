@@ -144,6 +144,7 @@ bindsym Mod1+o mode "resize"
 bar {
     # strip_workspace_numbers yes
     status_command i3status
+    status_command i3blocks
 }
 
 #Disable window titles
