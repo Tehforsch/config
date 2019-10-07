@@ -5,8 +5,8 @@ font pango: Dejavu Sans Mono 10
 set $mod Mod4
 
 # set monitor names
-set $monitor1=eDP-1
-set $monitor2=DP-1-3
+set $monitor1=eDP1
+set $monitor2=HDMI1
 
 
 # Set background to black
@@ -19,7 +19,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym Mod1+2 exec terminator
+bindsym Mod1+2 exec gnome-terminal
 
 # kill focused window
 bindsym Mod1+Q kill
@@ -173,18 +173,18 @@ bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 # Assign workspaces to monitors.
-workspace $ws1 output $monitor1
-workspace $ws2 output $monitor2
-workspace $ws3 output $monitor1
-workspace $ws4 output $monitor2
-workspace $ws5 output $monitor1
-workspace $ws6 output $monitor2
-workspace $ws7 output $monitor1
-workspace $ws8 output $monitor2
-workspace $ws9 output $monitor1
-workspace $ws10 output $monitor2
-workspace $ws11 output $monitor1
-workspace $ws12 output $monitor2
+workspace $ws1 output eDP1
+workspace $ws2 output HDMI1
+workspace $ws3 output eDP1
+workspace $ws4 output HDMI1
+workspace $ws5 output eDP1
+workspace $ws6 output HDMI1
+workspace $ws7 output eDP1
+workspace $ws8 output HDMI1
+workspace $ws9 output eDP1
+workspace $ws10 output HDMI1
+workspace $ws11 output eDP1
+workspace $ws12 output HDMI1
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws9
