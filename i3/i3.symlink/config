@@ -19,7 +19,7 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # start a terminal
-bindsym Mod1+2 exec gnome-terminal
+bindsym Mod1+2 exec terminator
 
 # kill focused window
 bindsym Mod1+Q kill
@@ -157,6 +157,8 @@ bindsym Mod1+Shift+s exec /home/toni/projects/config/scripts/startChrome.sh
 bindsym Mod1+Shift+z exec /home/toni/.apps/Zotero_linux-x86_64/zotero
 # Telegram
 bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
+# Weird timer display script
+bindsym Mod1+Shift+e exec /home/toni/Dropbox/resource/timer/killTimers.sh
 
 
 bindsym Mod1+Shift+o exec zsh /home/toni/projects/config/startupScripts/runAll.sh
@@ -173,18 +175,18 @@ bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 # Assign workspaces to monitors.
-workspace $ws1 output eDP1
-workspace $ws2 output HDMI1
-workspace $ws3 output eDP1
-workspace $ws4 output HDMI1
-workspace $ws5 output eDP1
-workspace $ws6 output HDMI1
-workspace $ws7 output eDP1
-workspace $ws8 output HDMI1
-workspace $ws9 output eDP1
-workspace $ws10 output HDMI1
-workspace $ws11 output eDP1
-workspace $ws12 output HDMI1
+workspace $ws1 output eDP-1
+workspace $ws2 output DP-1-3
+workspace $ws3 output eDP-1
+workspace $ws4 output DP-1-3
+workspace $ws5 output eDP-1
+workspace $ws6 output DP-1-3
+workspace $ws7 output eDP-1
+workspace $ws8 output DP-1-3
+workspace $ws9 output eDP-1
+workspace $ws10 output DP-1-3
+workspace $ws11 output eDP-1
+workspace $ws12 output DP-1-3
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws9

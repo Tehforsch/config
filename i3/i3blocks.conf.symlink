@@ -1,3 +1,8 @@
+[mine]
+command=bash ~/Dropbox/resource/timer/showTimers
+color=#F79494
+interval=1
+
 [weather]
-command=curl 'wttr.in/Heidelberg?format=%C+%t+%h'
-interval=300
+command=curl 'wttr.in/49.414300,8.694484?format=%t+%h'
+interval=120
