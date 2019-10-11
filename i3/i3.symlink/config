@@ -25,6 +25,11 @@ bindsym Mod1+a focus left
 bindsym Mod1+d focus right
 # alt-tab like behavior
 bindsym Mod1+Tab exec i3-msg "[con_id=$(cat /tmp/last_focus)] focus"
+bindsym Mod1+1 exec ~/projects/config/scripts/focusNthWindow.py -n 1
+bindsym Mod1+2 exec ~/projects/config/scripts/focusNthWindow.py -n 2
+bindsym Mod1+3 exec ~/projects/config/scripts/focusNthWindow.py -n 3
+bindsym Mod1+4 exec ~/projects/config/scripts/focusNthWindow.py -n 4
+bindsym Mod1+5 exec ~/projects/config/scripts/focusNthWindow.py -n 5
 
 # move focused window
 bindsym Mod1+Shift+h move left
@@ -140,20 +145,26 @@ new_window 1pixel
 for_window [class="^.*"] border pixel 3
 
 # Shortcuts to Open Applications
-# start dmenu (a program launcher)
-bindsym Mod1+1 exec --no-startup-id dmenu_run -fn xft:Inconsolata-12
+# Open application launch mode.
+set $launch Launch: [a]ny [c]hrome [k]illTimers [n]autilus [t]elegram [z]otero
+bindsym Mod1+s mode "$launch"
+
+mode "$launch" {
+    # start dmenu (a program launcher)
+    bindsym a exec --no-startup-id dmenu_run -fn xft:Inconsolata-12; mode "default"
+    bindsym c exec /home/toni/projects/config/scripts/startChrome.sh; mode "default"
+    bindsym k exec /home/toni/Dropbox/resource/timer/killTimers.sh; mode "default"
+    bindsym n exec nautilus --no-desktop; mode "default"
+    bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
+    bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; mode "default"
+    bindsym Escape mode "default"
+}
+
 # start a terminal. since on some systems terminator doesnt work and having multiple
 # i3 configs is basically suicide, i put this here
 # and then just put whatever terminal i want to open in ~/.bin/terminal.
 # Not nice but it works
-bindsym Mod1+2 exec ~/.bin/terminal
-bindsym Mod1+Shift+x exec nautilus --no-desktop
-bindsym Mod1+Shift+s exec /home/toni/projects/config/scripts/startChrome.sh
-bindsym Mod1+Shift+z exec /home/toni/.apps/Zotero_linux-x86_64/zotero
-# Telegram
-bindsym Mod1+Shift+t exec /home/toni/.apps/Telegram/Telegram
-# Weird timer display script
-bindsym Mod1+Shift+e exec /home/toni/Dropbox/resource/timer/killTimers.sh
+bindsym Mod1+w exec ~/.bin/terminal
 
 # Reload monitors script and xmodmap. This is necessary when the power goes out for a second and my usb hub separates the keyboard from the computer, resetting the xmodmap :D
 bindsym Mod1+Shift+o exec zsh /home/toni/projects/config/startupScripts/runAll.sh
