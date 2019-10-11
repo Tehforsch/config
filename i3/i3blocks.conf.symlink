@@ -1,7 +1,12 @@
-[mine]
+[timers]
 command=bash ~/Dropbox/resource/timer/showTimers
 color=#F79494
 interval=1
+
+[jobs]
+command=bash ~/projects/config/scripts/i3GetJobStatus.sh
+color=#00FF00
+interval=120
 
 [weather]
 command=curl 'wttr.in/49.414300,8.694484?format=%t+%h'
