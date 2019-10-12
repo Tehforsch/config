@@ -1,11 +1,8 @@
-import sys
 import argparse
 import os
-from pathlib import Path
 from math import ceil
 import i3
 
-defaultContext = 0
 contextNames = {
         0: "a",
         1: "b",
@@ -15,7 +12,7 @@ contextNames = {
 }
 
 sharedWorkspaceNames = ["music"]
-contextFile = Path(os.path.expanduser("~"), ".context")
+
 workspaceNameFormat = "{workspaceId}:{contextName}{workspaceNumber}"
 sharedWorkspaceNameFormat = "{workspaceId}:{workspaceName}"
 
@@ -51,11 +48,6 @@ def getFocusedContextNumber():
 
 def getContextName(contextNumber):
     return contextNames[contextNumber]
-
-def createContextFileIfItDoesNotExist():
-    if not contextFile.is_file():
-        with contextFile.open("w") as f:
-            f.write(str(defaultContext))
 
 def getSharedWorkspaceId(sharedWorkspaceNumber):
     return sharedWorkspaceNames.index(sharedWorkspaceNumber)
@@ -104,7 +96,6 @@ def setupArgs():
     return args
 
 def main():
-    createContextFileIfItDoesNotExist()
     args = setupArgs()
     if args.switchContext is not None:
         switchContext(args.switchContext)
