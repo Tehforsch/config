@@ -103,8 +103,7 @@ bindsym $mod+Shift+b exec $i3contexts --moveToSharedWorkspace todo
 bindsym $mod+Shift+m exec $i3contexts --moveToSharedWorkspace mail
 
 # Move workspaces between monitors
-bindsym Mod1+Ctrl+h move workspace to output left
-bindsym Mod1+Ctrl+l move workspace to output right
+bindsym $mod+space move workspace to output left
 
 # Assign workspaces to monitors.
 workspace $ output eDP-1 eDP1
