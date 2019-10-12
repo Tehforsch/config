@@ -2,9 +2,11 @@
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
+set $i3contexts python3 ~/projects/config/scripts/workspaces/switch.py
 
+# MISC
 # Change font
-font pango: Dejavu Sans Mono 10
+font pango: Dejavu Sans Mono 12
 
 # use windows as mod
 set $mod Mod4
@@ -29,12 +31,6 @@ bindsym Mod1+l focus right
 bindsym Mod1+a focus left
 bindsym Mod1+d focus right
 
-bindsym Mod1+1 exec $scripts/workspaces/switch.py --mode 1
-bindsym Mod1+2 exec $scripts/workspaces/switch.py --mode 2
-bindsym Mod1+3 exec $scripts/workspaces/switch.py --mode 3
-bindsym Mod1+4 exec $scripts/workspaces/switch.py --mode 4
-bindsym Mod1+5 exec $scripts/workspaces/switch.py --mode 5
-
 # move focused window
 bindsym Mod1+Shift+h move left
 bindsym Mod1+Shift+j move down
@@ -58,87 +54,66 @@ bindsym Mod1+e layout toggle splith tabbed
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
 
-# set workspace names (latter number is the sorting)
-set $ws1_1 "1:w1"
-set $ws1_2 "2:w2"
-set $ws1_3 "3:w3"
-set $ws1_4 "4:w4"
-set $ws1_5 "5:w5"
-set $ws1_6 "6:w6"
-set $ws1_7 "7:w7"
-set $ws1_8 "8:w8"
-set $ws1_9 "9:w9"
-set $ws1_10 "10:w10"
-set $ws1_11 "11:w11"
-set $ws1_12 "12:w12"
+# WORKSPACES
 
-# set workspace names (latter number is the sorting)
-set $ws2_1 "1:p1"
-set $ws2_2 "2:p2"
-set $ws2_3 "3:p3"
-set $ws2_4 "4:p4"
-set $ws2_5 "5:p5"
-set $ws2_6 "6:p6"
-set $ws2_7 "7:p7"
-set $ws2_8 "8:p8"
-set $ws2_9 "9:p9"
-set $ws2_10 "10:p10"
-set $ws2_11 "11:p11"
-set $ws2_12 "12:p12"
+# Context switching hotkeys
+bindsym $mod+1 exec $i3contexts --switchContext 0
+bindsym $mod+2 exec $i3contexts --switchContext 1
+bindsym $mod+3 exec $i3contexts --switchContext 2
+bindsym $mod+4 exec $i3contexts --switchContext 3
+bindsym $mod+5 exec $i3contexts --switchContext 4
 
-# mode "work" {
-    bindsym $mod+a workspace $ws1_2
-    bindsym $mod+s workspace $ws1_4
-    bindsym $mod+d workspace $ws1_6
-    bindsym $mod+f workspace $ws1_8
-    bindsym $mod+g workspace $ws1_10
-    bindsym $mod+h workspace $ws1_12
-    bindsym $mod+less workspace $ws1_1
-    bindsym $mod+y workspace $ws1_3
-    bindsym $mod+x workspace $ws1_5
-    bindsym $mod+c workspace $ws1_7
-    bindsym $mod+v workspace $ws1_9
-    bindsym $mod+b workspace $ws1_11
-# }
+bindsym $mod+Shift+1 exec $i3contexts --moveToContext 0
+bindsym $mod+Shift+2 exec $i3contexts --moveToContext 1
+bindsym $mod+Shift+3 exec $i3contexts --moveToContext 2
+bindsym $mod+Shift+4 exec $i3contexts --moveToContext 3
+bindsym $mod+Shift+5 exec $i3contexts --moveToContext 4
 
-# mode "personal" {
-#     bindsym $mod+a workspace $ws2_2
-#     bindsym $mod+s workspace $ws2_4
-#     bindsym $mod+d workspace $ws2_6
-#     bindsym $mod+f workspace $ws2_8
-#     bindsym $mod+g workspace $ws2_10
-#     bindsym $mod+h workspace $ws2_12
-#     bindsym $mod+less workspace $ws2_1
-#     bindsym $mod+y workspace $ws2_3
-#     bindsym $mod+x workspace $ws2_5
-#     bindsym $mod+c workspace $ws2_7
-#     bindsym $mod+v workspace $ws2_9
-#     bindsym $mod+b workspace $ws2_11
-# }
-
-# bindsym $mod+i mode "work"
-# bindsym $mod+o mode "personal"
-
-# focus last workspace
-bindsym $mod+Tab workspace back_and_forth
+# Workspace switching hotkeys
+bindsym $mod+a exec $i3contexts --switchWorkspace 2
+bindsym $mod+s exec $i3contexts --switchWorkspace 4
+bindsym $mod+d exec $i3contexts --switchWorkspace 6
+bindsym $mod+f exec $i3contexts --switchWorkspace 8
+bindsym $mod+g exec $i3contexts --switchWorkspace 10
+bindsym $mod+h exec $i3contexts --switchWorkspace 12
+bindsym $mod+less exec $i3contexts --switchWorkspace 1
+bindsym $mod+y exec $i3contexts --switchWorkspace 3
+bindsym $mod+x exec $i3contexts --switchWorkspace 5
+bindsym $mod+c exec $i3contexts --switchWorkspace 7
+bindsym $mod+v exec $i3contexts --switchWorkspace music
+bindsym $mod+b exec $i3contexts --switchWorkspace 11
 
 # move focused container to workspace
-bindsym $mod+Shift+a move workspace $ws1_2; workspace $ws1_2
-bindsym $mod+Shift+s move workspace $ws1_4; workspace $ws1_4
-bindsym $mod+Shift+d move workspace $ws1_6; workspace $ws1_6
-bindsym $mod+Shift+f move workspace $ws1_8; workspace $ws1_8
-bindsym $mod+Shift+g move workspace $ws1_10; workspace $ws1_10
-bindsym $mod+Shift+h move workspace $ws1_12; workspace $ws1_12
-bindsym $mod+Shift+less move workspace $ws1_1; workspace $ws1_1
-bindsym $mod+Shift+y move workspace $ws1_3; workspace $ws1_3
-bindsym $mod+Shift+x move workspace $ws1_5; workspace $ws1_5
-bindsym $mod+Shift+c move workspace $ws1_7; workspace $ws1_7
-bindsym $mod+Shift+v move workspace $ws1_9; workspace $ws1_9
-bindsym $mod+Shift+b move workspace $ws1_11; workspace $ws1_11
+bindsym $mod+Shift+a exec $i3contexts --moveToWorkspace 2
+bindsym $mod+Shift+s exec $i3contexts --moveToWorkspace 4
+bindsym $mod+Shift+d exec $i3contexts --moveToWorkspace 6
+bindsym $mod+Shift+f exec $i3contexts --moveToWorkspace 8
+bindsym $mod+Shift+g exec $i3contexts --moveToWorkspace 10
+bindsym $mod+Shift+h exec $i3contexts --moveToWorkspace 12
+bindsym $mod+Shift+less exec $i3contexts --moveToWorkspace 1
+bindsym $mod+Shift+y exec $i3contexts --moveToWorkspace 3
+bindsym $mod+Shift+x exec $i3contexts --moveToWorkspace 5
+bindsym $mod+Shift+c exec $i3contexts --moveToWorkspace 7
+bindsym $mod+Shift+v exec $i3contexts --moveToWorkspace music
+bindsym $mod+Shift+b exec $i3contexts --moveToWorkspace 11
 
 # Move workspaces between monitors
 bindsym Mod1+Ctrl+h move workspace to output left
 bindsym Mod1+Ctrl+l move workspace to output right
+
+# Assign workspaces to monitors.
+workspace $ws1_1 output eDP-1 eDP1
+workspace $ws1_2 output DP-1-3 HDMI1
+workspace $ws1_3 output eDP-1 eDP1
+workspace $ws1_4 output DP-1-3 HDMI1
+workspace $ws1_5 output eDP-1 eDP1
+workspace $ws1_6 output DP-1-3 HDMI1
+workspace $ws1_7 output eDP-1 eDP1
+workspace $ws1_8 output DP-1-3 HDMI1
+workspace $ws1_9 output eDP-1 eDP1
+workspace $ws1_10 output DP-1-3 HDMI1
+workspace $ws1_11 output eDP-1 eDP1
+workspace $ws1_12 output DP-1-3 HDMI1
 
 # Change colors
 # class                 border  backgr. text    indicator child_border                                                                     
@@ -183,9 +158,9 @@ bar {
     output primary
     output HDMI1
     output DP-1-3
+    strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
-    strip_workspace_numbers yes
 }
 
 # Second monitor bar
@@ -235,20 +210,6 @@ bindsym Ctrl+Shift+B exec --no-startup-id $scripts/changeBrightness.sh 0
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-
-# Assign workspaces to monitors.
-workspace $ws1_1 output eDP-1 eDP1
-workspace $ws1_2 output DP-1-3 HDMI1
-workspace $ws1_3 output eDP-1 eDP1
-workspace $ws1_4 output DP-1-3 HDMI1
-workspace $ws1_5 output eDP-1 eDP1
-workspace $ws1_6 output DP-1-3 HDMI1
-workspace $ws1_7 output eDP-1 eDP1
-workspace $ws1_8 output DP-1-3 HDMI1
-workspace $ws1_9 output eDP-1 eDP1
-workspace $ws1_10 output DP-1-3 HDMI1
-workspace $ws1_11 output eDP-1 eDP1
-workspace $ws1_12 output DP-1-3 HDMI1
 
 # Assign specific workspaces to some applications
 for_window [class="Spotify"] move to workspace $ws1_9
