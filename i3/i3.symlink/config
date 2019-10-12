@@ -106,18 +106,8 @@ bindsym $mod+Shift+m exec $i3contexts --moveToSharedWorkspace mail
 bindsym $mod+space move workspace to output left
 
 # Assign workspaces to monitors.
-workspace $ output eDP-1 eDP1
+workspace $w output eDP-1 eDP1
 workspace $ws1_2 output DP-1-3 HDMI1
-workspace $ws1_3 output eDP-1 eDP1
-workspace $ws1_4 output DP-1-3 HDMI1
-workspace $ws1_5 output eDP-1 eDP1
-workspace $ws1_6 output DP-1-3 HDMI1
-workspace $ws1_7 output eDP-1 eDP1
-workspace $ws1_8 output DP-1-3 HDMI1
-workspace $ws1_9 output eDP-1 eDP1
-workspace $ws1_10 output DP-1-3 HDMI1
-workspace $ws1_11 output eDP-1 eDP1
-workspace $ws1_12 output DP-1-3 HDMI1
 
 # Change colors
 # class                 border  backgr. text    indicator child_border                                                                     
@@ -162,7 +152,7 @@ bar {
     output primary
     output HDMI1
     output DP-1-3
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
 }
@@ -181,13 +171,15 @@ for_window [class="^.*"] border pixel 3
 
 # Shortcuts to Open Applications
 # Open application launch mode.
-set $launch Launch: [s]dmenu [a]nki [c]hrome [k]illTimers [n]autilus [t]elegram [z]otero
+set $launch Launch: [a]nki [c]hrome [k]illTimers [n]autilus [t]elegram [z]otero t[o]doist [s]any other 
 bindsym Mod1+s mode "$launch"
 
 mode "$launch" {
     # start dmenu (a program launcher)
     bindsym a exec ~/.bin/anki; mode "default"
     bindsym c exec $scripts/startChrome.sh; mode "default"
+    bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
+    bindsym o exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym n exec nautilus --no-desktop; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:Inconsolata-12; mode "default"
@@ -216,17 +208,14 @@ bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
-# Assign specific workspaces to some applications
-for_window [class="Spotify"] exec $i3contexts --moveToSharedWorkspace music
-for_window [class="thunderbird"] exec $i3contexts --moveToSharedWorkspace mail
-
 # Startup
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id pulseaudio --start
-exec --no-startup-id sleep 5 && spotify
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id sleep 3 && redshift-gtk
-exec --no-startup-id sleep 10 && thunderbird
-exec --no-startup-id exec $scripts/startChrome.sh --new-window todoist.com
+exec --no-startup-id i3-msg 'workspace 0:chat; exec /home/toni/.apps/Telegram/Telegram'
+exec --no-startup-id i3-msg 'workspace 1:music; exec spotify'
+exec --no-startup-id i3-msg 'workspace 2:todo; $scripts/startChrome.sh --new-window todoist.com'
+exec --no-startup-id i3-msg 'workspace 3:mail; exec $scripts/startChrome.sh --new-window mail.google.com; exec thunderbird'
