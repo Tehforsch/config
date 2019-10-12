@@ -44,6 +44,11 @@ def getFocusedWorkspaceNumber():
     contextNumber, workspaceNumber = getNumbersFromId(workspaceId)
     return workspaceNumber
 
+def getFocusedContextNumber():
+    workspaceId = getFocusedWorkspaceId()
+    contextNumber, workspaceNumber = getNumbersFromId(workspaceId)
+    return contextNumber
+
 def getContextName(contextNumber):
     return contextNames[contextNumber]
 
@@ -60,14 +65,13 @@ def getSharedWorkspaceName(sharedWorkspaceName):
     workspaceId = getSharedWorkspaceId(sharedWorkspaceName)
     return sharedWorkspaceNameFormat.format(workspaceId=workspaceId, workspaceName=sharedWorkspaceName)
 
-def getWorkspaceName(workspaceIdentifier):
+def getWorkspaceName(contextNumber, workspaceIdentifier):
     if workspaceIdentifier in sharedWorkspaceNames:
         return getSharedWorkspaceName(workspaceIdentifier)
     else:
-        return getNonSharedWorkspaceName(int(workspaceIdentifier))
+        return getNonSharedWorkspaceName(contextNumber, int(workspaceIdentifier))
 
-def getNonSharedWorkspaceName(workspaceNumber):
-    contextNumber = readContext()
+def getNonSharedWorkspaceName(contextNumber, workspaceNumber):
     contextName = getContextName(contextNumber)
     workspaceId = getWorkspaceId(contextNumber, workspaceNumber)
     workspaceName = workspaceNameFormat.format(contextName=contextName, workspaceNumber=workspaceNumber, workspaceId=workspaceId)
@@ -80,25 +84,15 @@ def moveToWorkspace(workspaceName):
     os.system("i3-msg move workspace {}".format(workspaceName))
     switchWorkspace(workspaceName)
 
-def readContext():
-    with contextFile.open("r") as f:
-        return int(f.read())
-
-def switchContext(context):
-    setContext(context)
+def switchContext(contextNumber):
     focusedWorkspaceNumber = getFocusedWorkspaceNumber()
-    switchWorkspace(getWorkspaceName(focusedWorkspaceNumber))
+    switchWorkspace(getWorkspaceName(contextNumber, focusedWorkspaceNumber))
 
-def moveToContext(context):
-    setContext(context)
+def moveToContext(contextNumber):
     focusedWorkspaceNumber = getFocusedWorkspaceNumber()
-    workspaceName = getWorkspaceName(focusedWorkspaceNumber)
+    workspaceName = getWorkspaceName(contextNumber, focusedWorkspaceNumber)
     moveToWorkspace(workspaceName)
     switchWorkspace(workspaceName)
-
-def setContext(context):
-    with contextFile.open("w") as f:
-        f.write(str(context))
 
 def setupArgs():
     parser = argparse.ArgumentParser(description='Process some integers.')
@@ -117,8 +111,8 @@ def main():
     if args.moveToContext is not None:
         moveToContext(args.moveToContext)
     if args.switchWorkspace is not None:
-        switchWorkspace(getWorkspaceName(args.switchWorkspace))
+        switchWorkspace(getWorkspaceName(getFocusedContextNumber(), args.switchWorkspace))
     if args.moveToWorkspace is not None:
-        moveToWorkspace(getWorkspaceName(args.moveToWorkspace))
+        moveToWorkspace(getWorkspaceName(getFocusedContextNumber(), args.moveToWorkspace))
 
 main()
