@@ -12,10 +12,14 @@ numSharedWorkspaces = len(sharedWorkspaceNames)
 offsetPerContext = (ceil(workspacesPerContext / niceNumber)) * niceNumber
 minContextOffset = ceil(numSharedWorkspaces / offsetPerContext) * offsetPerContext
 
+SHARED_CONTEXT = -1
+
 def getWorkspaceId(contextNumber, workspaceNumber):
     return minContextOffset + offsetPerContext * contextNumber + workspaceNumber
 
 def getNumbersFromId(workspaceId):
+    if workspaceId < numSharedWorkspaces:
+        return (SHARED_CONTEXT, workspaceId)
     contextNumber = (workspaceId - minContextOffset) // offsetPerContext
     workspaceNumber = workspaceId - contextNumber * offsetPerContext - minContextOffset
     assert getWorkspaceId(contextNumber, workspaceNumber) == workspaceId
@@ -49,7 +53,6 @@ def getSharedWorkspaceId(sharedWorkspaceNumber):
     return sharedWorkspaceNames.index(sharedWorkspaceNumber)
 
 def getSharedWorkspaceName(sharedWorkspaceName):
-    print(sharedWorkspaceName)
     assert sharedWorkspaceName in sharedWorkspaceNames
     workspaceId = getSharedWorkspaceId(sharedWorkspaceName)
     return sharedWorkspaceNameFormat.format(workspaceId=workspaceId, workspaceName=sharedWorkspaceName)
@@ -68,14 +71,20 @@ def moveToWorkspace(workspaceName):
     switchWorkspace(workspaceName)
 
 def switchContext(contextNumber):
-    focusedWorkspaceNumber = getFocusedWorkspaceNumber()
-    switchWorkspace(getWorkspaceName(contextNumber, focusedWorkspaceNumber))
+    focusedContextNumber, focusedWorkspaceNumber = getNumbersFromId(getFocusedWorkspaceNumber())
+    # If focusedContextNumber == SHARED_CONTEXT it means we're currently on a shared context.
+    # This means we should not change workspace here at all.
+    if focusedContextNumber != SHARED_CONTEXT:
+        switchWorkspace(getWorkspaceName(contextNumber, focusedWorkspaceNumber))
 
 def moveToContext(contextNumber):
-    focusedWorkspaceNumber = getFocusedWorkspaceNumber()
-    workspaceName = getWorkspaceName(contextNumber, focusedWorkspaceNumber)
-    moveToWorkspace(workspaceName)
-    switchWorkspace(workspaceName)
+    focusedContextNumber, focusedWorkspaceNumber = getNumbersFromId(getFocusedWorkspaceNumber())
+    # If focusedContextNumber == SHARED_CONTEXT it means we're currently on a shared context.
+    # This means we should not change workspace here at all.
+    if focusedContextNumber != SHARED_CONTEXT:
+        workspaceName = getWorkspaceName(contextNumber, focusedWorkspaceNumber)
+        moveToWorkspace(workspaceName)
+        switchWorkspace(workspaceName)
 
 def setupArgs():
     parser = argparse.ArgumentParser(description='Process some integers.')
