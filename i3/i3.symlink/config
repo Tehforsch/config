@@ -29,11 +29,11 @@ bindsym Mod1+l focus right
 bindsym Mod1+a focus left
 bindsym Mod1+d focus right
 
-bindsym Mod1+1 exec $scripts/focusNthWindow.py -n 1
-bindsym Mod1+2 exec $scripts/focusNthWindow.py -n 2
-bindsym Mod1+3 exec $scripts/focusNthWindow.py -n 3
-bindsym Mod1+4 exec $scripts/focusNthWindow.py -n 4
-bindsym Mod1+5 exec $scripts/focusNthWindow.py -n 5
+bindsym Mod1+1 exec $scripts/workspaces/switch.py --mode 1
+bindsym Mod1+2 exec $scripts/workspaces/switch.py --mode 2
+bindsym Mod1+3 exec $scripts/workspaces/switch.py --mode 3
+bindsym Mod1+4 exec $scripts/workspaces/switch.py --mode 4
+bindsym Mod1+5 exec $scripts/workspaces/switch.py --mode 5
 
 # move focused window
 bindsym Mod1+Shift+h move left
