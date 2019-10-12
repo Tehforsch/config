@@ -80,7 +80,7 @@ bindsym $mod+less exec $i3contexts --switchWorkspace 1
 bindsym $mod+y exec $i3contexts --switchWorkspace 3
 bindsym $mod+x exec $i3contexts --switchWorkspace 5
 bindsym $mod+c exec $i3contexts --switchWorkspace 7
-bindsym $mod+v exec $i3contexts --switchWorkspace music
+bindsym $mod+v exec $i3contexts --switchSharedWorkspace music
 bindsym $mod+b exec $i3contexts --switchWorkspace 11
 
 # move focused container to workspace
@@ -94,7 +94,7 @@ bindsym $mod+Shift+less exec $i3contexts --moveToWorkspace 1
 bindsym $mod+Shift+y exec $i3contexts --moveToWorkspace 3
 bindsym $mod+Shift+x exec $i3contexts --moveToWorkspace 5
 bindsym $mod+Shift+c exec $i3contexts --moveToWorkspace 7
-bindsym $mod+Shift+v exec $i3contexts --moveToWorkspace music
+bindsym $mod+Shift+v exec $i3contexts --moveToSharedWorkspace music
 bindsym $mod+Shift+b exec $i3contexts --moveToWorkspace 11
 
 # Move workspaces between monitors
@@ -158,7 +158,7 @@ bar {
     output primary
     output HDMI1
     output DP-1-3
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
 }
