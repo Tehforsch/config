@@ -100,8 +100,10 @@ def setupArgs():
 def main():
     args = setupArgs()
     if args.switchContext is not None:
+        watchContext.setContext(args.switchContext)
         switchContext(args.switchContext)
     if args.moveToContext is not None:
+        watchContext.setContext(args.switchContext)
         moveToContext(args.moveToContext)
     if args.switchWorkspace is not None:
         switchWorkspace(getWorkspaceName(getFocusedContextNumber(), args.switchWorkspace))
