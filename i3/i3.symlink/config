@@ -152,7 +152,7 @@ bar {
     output primary
     output HDMI1
     output DP-1-3
-    # strip_workspace_numbers yes
+    strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
 }
@@ -161,7 +161,7 @@ bar {
 bar {
     output eDP1
     output eDP-1
-    # strip_workspace_numbers yes
+    strip_workspace_numbers yes
     status_command i3status
 }
 
