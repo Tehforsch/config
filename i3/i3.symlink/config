@@ -2,7 +2,7 @@
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
-set $i3contexts python3 ~/projects/config/scripts/workspaces/switch.py
+set $i3contexts python3 ~/projects/i3Contexts/switch.py
 
 # MISC
 # Change font
@@ -57,50 +57,50 @@ for_window [window_role="pop-up"] floating enable
 # WORKSPACES
 
 # Context switching hotkeys
-bindsym $mod+Escape exec $i3contexts --switchContext 0
-bindsym $mod+Tab exec $i3contexts --switchContext 1
-bindsym $mod+asciicircum exec $i3contexts --switchContext 2
-bindsym $mod+1 exec $i3contexts --switchContext 3
-bindsym $mod+2 exec $i3contexts --switchContext 4
+bindsym $mod+Escape exec $i3contexts context 0
+bindsym $mod+Tab exec $i3contexts context 1
+bindsym $mod+asciicircum exec $i3contexts context 2
+bindsym $mod+1 exec $i3contexts context 3
+bindsym $mod+2 exec $i3contexts context 4
 
-bindsym $mod+Shift+Escape exec $i3contexts --moveToContext 0
-bindsym $mod+Shift+Tab exec $i3contexts --moveToContext 1
-bindsym $mod+Shift+asciicircum exec $i3contexts --moveToContext 2
-bindsym $mod+Shift+1 exec $i3contexts --moveToContext 3
-bindsym $mod+Shift+2 exec $i3contexts --moveToContext 4
+bindsym $mod+Shift+Escape exec $i3contexts context --move 0
+bindsym $mod+Shift+Tab exec $i3contexts context --move 1
+bindsym $mod+Shift+asciicircum exec $i3contexts context --move 2
+bindsym $mod+Shift+1 exec $i3contexts context --move 3
+bindsym $mod+Shift+2 exec $i3contexts context --move 4
 
 # Workspace switching hotkeys
-bindsym $mod+a exec $i3contexts --switchWorkspace 2
-bindsym $mod+s exec $i3contexts --switchWorkspace 4
-bindsym $mod+d exec $i3contexts --switchWorkspace 6
-bindsym $mod+f exec $i3contexts --switchWorkspace 8
-bindsym $mod+g exec $i3contexts --switchWorkspace 10
-bindsym $mod+h exec $i3contexts --switchWorkspace 12
-bindsym $mod+less exec $i3contexts --switchWorkspace 1
-bindsym $mod+y exec $i3contexts --switchWorkspace 3
-bindsym $mod+x exec $i3contexts --switchWorkspace 5
+bindsym $mod+a exec $i3contexts workspace 2
+bindsym $mod+s exec $i3contexts workspace 4
+bindsym $mod+d exec $i3contexts workspace 6
+bindsym $mod+f exec $i3contexts workspace 8
+bindsym $mod+g exec $i3contexts workspace 10
+bindsym $mod+h exec $i3contexts workspace 12
+bindsym $mod+less exec $i3contexts workspace 1
+bindsym $mod+y exec $i3contexts workspace 3
+bindsym $mod+x exec $i3contexts workspace 5
 
 # move focused container to workspace
-bindsym $mod+Shift+a exec $i3contexts --moveToWorkspace 2
-bindsym $mod+Shift+s exec $i3contexts --moveToWorkspace 4
-bindsym $mod+Shift+d exec $i3contexts --moveToWorkspace 6
-bindsym $mod+Shift+f exec $i3contexts --moveToWorkspace 8
-bindsym $mod+Shift+g exec $i3contexts --moveToWorkspace 10
-bindsym $mod+Shift+h exec $i3contexts --moveToWorkspace 12
-bindsym $mod+Shift+less exec $i3contexts --moveToWorkspace 1
-bindsym $mod+Shift+y exec $i3contexts --moveToWorkspace 3
-bindsym $mod+Shift+x exec $i3contexts --moveToWorkspace 5
+bindsym $mod+Shift+a exec $i3contexts workspace --move 2
+bindsym $mod+Shift+s exec $i3contexts workspace --move 4
+bindsym $mod+Shift+d exec $i3contexts workspace --move 6
+bindsym $mod+Shift+f exec $i3contexts workspace --move 8
+bindsym $mod+Shift+g exec $i3contexts workspace --move 10
+bindsym $mod+Shift+h exec $i3contexts workspace --move 12
+bindsym $mod+Shift+less exec $i3contexts workspace --move 1
+bindsym $mod+Shift+y exec $i3contexts workspace --move 3
+bindsym $mod+Shift+x exec $i3contexts workspace --move 5
 
 # shared workspaces
-bindsym $mod+v exec $i3contexts --switchSharedWorkspace music
-bindsym $mod+c exec $i3contexts --switchSharedWorkspace chat
-bindsym $mod+b exec $i3contexts --switchSharedWorkspace todo
-bindsym $mod+m exec $i3contexts --switchSharedWorkspace mail
+bindsym $mod+v exec $i3contexts workspace music
+bindsym $mod+c exec $i3contexts workspace chat
+bindsym $mod+b exec $i3contexts workspace todo
+bindsym $mod+m exec $i3contexts workspace mail
 
-bindsym $mod+Shift+v exec $i3contexts --moveToSharedWorkspace music
-bindsym $mod+Shift+c exec $i3contexts --moveToSharedWorkspace chat
-bindsym $mod+Shift+b exec $i3contexts --moveToSharedWorkspace todo
-bindsym $mod+Shift+m exec $i3contexts --moveToSharedWorkspace mail
+bindsym $mod+Shift+v exec $i3contexts workspace --move music
+bindsym $mod+Shift+c exec $i3contexts workspace --move chat
+bindsym $mod+Shift+b exec $i3contexts workspace --move todo
+bindsym $mod+Shift+m exec $i3contexts workspace --move mail
 
 # Move workspaces between monitors
 bindsym $mod+space move workspace to output left
@@ -152,7 +152,7 @@ bar {
     output primary
     output HDMI1
     output DP-1-3
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
 }
@@ -161,7 +161,7 @@ bar {
 bar {
     output eDP1
     output eDP-1
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
     status_command i3status
 }
 
