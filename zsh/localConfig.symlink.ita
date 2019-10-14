@@ -4,3 +4,4 @@ export PROJECTS=$HOME/Dropbox/projects
 export projects=$PROJECTS
 export scripts=$config/scripts
 export GPG_TTY=$(tty)
+export systemName="ita"
