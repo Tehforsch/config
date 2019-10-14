@@ -66,8 +66,8 @@ bindsym $mod+t exec $i3contexts context 4
 bindsym $mod+Shift+q exec $i3contexts context --move 0
 bindsym $mod+Shift+w exec $i3contexts context --move 1
 bindsym $mod+Shift+e exec $i3contexts context --move 2
-bindsym $mod+Shift+t exec $i3contexts context --move 3
-bindsym $mod+Shift+r exec $i3contexts context --move 4
+bindsym $mod+Shift+r exec $i3contexts context --move 3
+bindsym $mod+Shift+t exec $i3contexts context --move 4
 
 # Workspace switching hotkeys
 bindsym $mod+a exec $i3contexts workspace 2
