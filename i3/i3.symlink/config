@@ -62,12 +62,22 @@ bindsym $mod+w exec $i3contexts context 1
 bindsym $mod+e exec $i3contexts context 2
 bindsym $mod+r exec $i3contexts context 3
 bindsym $mod+t exec $i3contexts context 4
+bindsym F1 exec $i3contexts context 0
+bindsym F2 exec $i3contexts context 1
+bindsym F3 exec $i3contexts context 2
+bindsym F4 exec $i3contexts context 3
+bindsym F5 exec $i3contexts context 4
 
 bindsym $mod+Shift+q exec $i3contexts context --move 0
 bindsym $mod+Shift+w exec $i3contexts context --move 1
 bindsym $mod+Shift+e exec $i3contexts context --move 2
 bindsym $mod+Shift+r exec $i3contexts context --move 3
 bindsym $mod+Shift+t exec $i3contexts context --move 4
+bindsym Shift+F1 exec $i3contexts context --move 0
+bindsym Shift+F2 exec $i3contexts context --move 1
+bindsym Shift+F3 exec $i3contexts context --move 2
+bindsym Shift+F4 exec $i3contexts context --move 3
+bindsym Shift+F5 exec $i3contexts context --move 4
 
 # Workspace switching hotkeys
 bindsym $mod+a exec $i3contexts workspace 2
