@@ -52,16 +52,16 @@ for_window [window_role="pop-up"] floating enable
 # WORKSPACES
 
 # Context switching hotkeys
-bindsym $mod+q exec $i3contexts context 0
-bindsym $mod+w exec $i3contexts context 1
-bindsym $mod+e exec $i3contexts context 2
-bindsym $mod+r exec $i3contexts context 3
-bindsym $mod+t exec $i3contexts context 4
-bindsym F1 exec $i3contexts context 0
-bindsym F2 exec $i3contexts context 1
-bindsym F3 exec $i3contexts context 2
-bindsym F4 exec $i3contexts context 3
-bindsym F5 exec $i3contexts context 4
+bindsym $mod+q exec $i3contexts context 0 --firstNonEmptyWorkspace
+bindsym $mod+w exec $i3contexts context 1 --firstNonEmptyWorkspace
+bindsym $mod+e exec $i3contexts context 2 --firstNonEmptyWorkspace
+bindsym $mod+r exec $i3contexts context 3 --firstNonEmptyWorkspace
+bindsym $mod+t exec $i3contexts context 4 --firstNonEmptyWorkspace
+bindsym F1 exec $i3contexts context 0 --firstNonEmptyWorkspace
+bindsym F2 exec $i3contexts context 1 --firstNonEmptyWorkspace
+bindsym F3 exec $i3contexts context 2 --firstNonEmptyWorkspace
+bindsym F4 exec $i3contexts context 3 --firstNonEmptyWorkspace
+bindsym F5 exec $i3contexts context 4 --firstNonEmptyWorkspace
 
 bindsym $mod+Shift+q exec $i3contexts context --move 0
 bindsym $mod+Shift+w exec $i3contexts context --move 1
