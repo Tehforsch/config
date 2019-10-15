@@ -1,5 +1,12 @@
+# Paths
+set $config ~/projects/config
+set $scripts ~/projects/config/scripts
+set $startupScripts ~/projects/config/startupScripts
+set $i3contexts python3 ~/projects/i3Contexts/switch.py
+
+# MISC
 # Change font
-font pango: Dejavu Sans Mono 10
+font pango: Dejavu Sans Mono 12
 
 # use windows as mod
 set $mod Mod4
@@ -23,24 +30,12 @@ bindsym Mod1+k focus up
 bindsym Mod1+l focus right
 bindsym Mod1+a focus left
 bindsym Mod1+d focus right
-# alt-tab like behavior
-bindsym Mod1+Tab exec i3-msg "[con_id=$(cat /tmp/last_focus)] focus"
-bindsym Mod1+1 exec ~/projects/config/scripts/focusNthWindow.py -n 1
-bindsym Mod1+2 exec ~/projects/config/scripts/focusNthWindow.py -n 2
-bindsym Mod1+3 exec ~/projects/config/scripts/focusNthWindow.py -n 3
-bindsym Mod1+4 exec ~/projects/config/scripts/focusNthWindow.py -n 4
-bindsym Mod1+5 exec ~/projects/config/scripts/focusNthWindow.py -n 5
 
 # move focused window
 bindsym Mod1+Shift+h move left
 bindsym Mod1+Shift+j move down
 bindsym Mod1+Shift+k move up
 bindsym Mod1+Shift+l move right
-
-# move focused window to scratchpad (mainly for terminals that i dont care about anymore but they have something running in them and i'm too lazy to press ctrl-z ctrl-f)
-bindsym Mod1+Shift+u move scratchpad
-# also have a hotkey to restore them in case its ever necessary
-bindsym Mod1+Shift+i scratchpad show; floating disable
 
 # split in horizontal orientation
 bindsym $mod+o split h
@@ -54,54 +49,64 @@ bindsym Mod1+e layout toggle splith tabbed
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
 
-# set workspace names (latter number is the sorting)
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-set $ws11 "11"
-set $ws12 "12"
+# WORKSPACES
 
-# switch to workspace
-bindsym $mod+a workspace $ws2
-bindsym $mod+s workspace $ws4
-bindsym $mod+d workspace $ws6
-bindsym $mod+f workspace $ws8
-bindsym $mod+g workspace $ws10
-bindsym $mod+h workspace $ws12
-bindsym $mod+less workspace $ws1
-bindsym $mod+y workspace $ws3
-bindsym $mod+x workspace $ws5
-bindsym $mod+c workspace $ws7
-bindsym $mod+v workspace $ws9
-bindsym $mod+b workspace $ws11
+# Context switching hotkeys
+bindsym $mod+q exec $i3contexts context 0 --firstNonEmptyWorkspace
+bindsym $mod+w exec $i3contexts context 1 --firstNonEmptyWorkspace
+bindsym $mod+e exec $i3contexts context 2 --firstNonEmptyWorkspace
+bindsym $mod+r exec $i3contexts context 3 --firstNonEmptyWorkspace
+bindsym $mod+t exec $i3contexts context 4 --firstNonEmptyWorkspace
+bindsym F1 exec $i3contexts context 0 --firstNonEmptyWorkspace
+bindsym F2 exec $i3contexts context 1 --firstNonEmptyWorkspace
+bindsym F3 exec $i3contexts context 2 --firstNonEmptyWorkspace
+bindsym F4 exec $i3contexts context 3 --firstNonEmptyWorkspace
+bindsym F5 exec $i3contexts context 4 --firstNonEmptyWorkspace
 
-# focus last workspace
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+q exec $i3contexts context --move 0
+bindsym $mod+Shift+w exec $i3contexts context --move 1
+bindsym $mod+Shift+e exec $i3contexts context --move 2
+bindsym $mod+Shift+r exec $i3contexts context --move 3
+bindsym $mod+Shift+t exec $i3contexts context --move 4
+bindsym Shift+F1 exec $i3contexts context --move 0
+bindsym Shift+F2 exec $i3contexts context --move 1
+bindsym Shift+F3 exec $i3contexts context --move 2
+bindsym Shift+F4 exec $i3contexts context --move 3
+bindsym Shift+F5 exec $i3contexts context --move 4
+
+# Workspace switching hotkeys
+bindsym $mod+a exec $i3contexts workspace 2
+bindsym $mod+s exec $i3contexts workspace 4
+bindsym $mod+d exec $i3contexts workspace 6
+bindsym $mod+f exec $i3contexts workspace 8
+bindsym $mod+g exec $i3contexts workspace 10
+bindsym $mod+less exec $i3contexts workspace 1
+bindsym $mod+y exec $i3contexts workspace 3
+bindsym $mod+x exec $i3contexts workspace 5
 
 # move focused container to workspace
-bindsym $mod+Shift+a move workspace $ws2; workspace $ws2
-bindsym $mod+Shift+s move workspace $ws4; workspace $ws4
-bindsym $mod+Shift+d move workspace $ws6; workspace $ws6
-bindsym $mod+Shift+f move workspace $ws8; workspace $ws8
-bindsym $mod+Shift+g move workspace $ws10; workspace $ws10
-bindsym $mod+Shift+h move workspace $ws12; workspace $ws12
-bindsym $mod+Shift+less move workspace $ws1; workspace $ws1
-bindsym $mod+Shift+y move workspace $ws3; workspace $ws3
-bindsym $mod+Shift+x move workspace $ws5; workspace $ws5
-bindsym $mod+Shift+c move workspace $ws7; workspace $ws7
-bindsym $mod+Shift+v move workspace $ws9; workspace $ws9
-bindsym $mod+Shift+b move workspace $ws11; workspace $ws11
+bindsym $mod+Shift+a exec $i3contexts workspace --move 2
+bindsym $mod+Shift+s exec $i3contexts workspace --move 4
+bindsym $mod+Shift+d exec $i3contexts workspace --move 6
+bindsym $mod+Shift+f exec $i3contexts workspace --move 8
+bindsym $mod+Shift+g exec $i3contexts workspace --move 10
+bindsym $mod+Shift+less exec $i3contexts workspace --move 1
+bindsym $mod+Shift+y exec $i3contexts workspace --move 3
+bindsym $mod+Shift+x exec $i3contexts workspace --move 5
+
+# shared workspaces
+bindsym $mod+v exec $i3contexts workspace music
+bindsym $mod+c exec $i3contexts workspace chat
+bindsym $mod+b exec $i3contexts workspace todo
+bindsym $mod+m exec $i3contexts workspace mail
+
+bindsym $mod+Shift+v exec $i3contexts workspace --move music
+bindsym $mod+Shift+c exec $i3contexts workspace --move chat
+bindsym $mod+Shift+b exec $i3contexts workspace --move todo
+bindsym $mod+Shift+m exec $i3contexts workspace --move mail
 
 # Move workspaces between monitors
-bindsym Mod1+Ctrl+h move workspace to output left
-bindsym Mod1+Ctrl+l move workspace to output right
+bindsym $mod+space move workspace to output left
 
 # Change colors
 # class                 border  backgr. text    indicator child_border                                                                     
@@ -109,65 +114,68 @@ bindsym Mod1+Ctrl+l move workspace to output right
 client.unfocused        #073642 #073642 #586e75 #424242 #063340                                                                            
 client.focused          #93a1a1 #93a1a1 #fdf6e3 #aaaaaa #aaaaaa   
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+R restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
-# lock screen
-bindsym $mod+Shift+L exec i3lock -c 000000
-
-# resize window (you can also use the mouse for that)
+# Resize window
+bindsym Mod1+o mode "resize"
 mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-# They resize the border in the direction you pressed, e.g.
-# when pressing left, the window is resized so that it has
-# more space on its left
+    bindsym h resize grow left 10 px or 10 ppt
+    bindsym Shift+H resize shrink   left 10 px or 10 ppt
 
-bindsym h resize grow left 10 px or 10 ppt
-bindsym Shift+H resize shrink   left 10 px or 10 ppt
+    bindsym j resize grow down 10 px or 10 ppt
+    bindsym Shift+J resize shrink   down 10 px or 10 ppt
 
-bindsym j resize grow down 10 px or 10 ppt
-bindsym Shift+J resize shrink   down 10 px or 10 ppt
+    bindsym k resize grow up 10 px or 10 ppt
+    bindsym Shift+K resize shrink   up 10 px or 10 ppt
 
-bindsym k resize grow up 10 px or 10 ppt
-bindsym Shift+K resize shrink   up 10 px or 10 ppt
+    bindsym l resize grow right 10 px or 10 ppt
+    bindsym Shift+L resize shrink   right 10 px or 10 ppt
 
-bindsym l resize grow right 10 px or 10 ppt
-bindsym Shift+L resize shrink   right 10 px or 10 ppt
-
-# back to normal: Escape
-bindsym Escape mode "default"
+    bindsym Escape mode "default"
 }
 
-bindsym Mod1+o mode "resize"
+# Shortcuts to Open Applications
+# Open application launch mode.
+set $launch Launch: [a]nki [c]hrome [k]illTimers [n]autilus [t]elegram [z]otero t[o]doist [l]ockscreen [shift+r]estart [shift+e]xit [s]any other
+bindsym Mod1+s mode "$launch"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+mode "$launch" {
+    # start dmenu (a program launcher)
+    bindsym a exec ~/.bin/anki; mode "default"
+    bindsym c exec $scripts/startChrome.sh; mode "default"
+    bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
+    bindsym o exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
+    bindsym k exec $scripts/timer/killTimers.sh; mode "default"
+    bindsym n exec nautilus --no-desktop; mode "default"
+    bindsym s exec --no-startup-id dmenu_run -fn xft:Inconsolata-12; mode "default"
+    bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
+    bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; mode "default"
+    bindsym l exec i3lock -c 000000; mode "default"
+    bindsym Shift+R restart; mode "default"
+    bindsym Shift+E exit; mode "default"
+
+    bindsym Escape mode "default"
+}
+
+# Main monitor bar
 bar {
-    # strip_workspace_numbers yes
+    output primary
+    output HDMI1
+    output DP-1-3
+    strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
+}
+
+# Second monitor bar
+bar {
+    output eDP1
+    output eDP-1
+    strip_workspace_numbers yes
+    status_command i3status
 }
 
 #Disable window titles
 new_window 1pixel
 for_window [class="^.*"] border pixel 3
-
-# Shortcuts to Open Applications
-# Open application launch mode.
-set $launch Launch: [a]ny [c]hrome [k]illTimers [n]autilus [t]elegram [z]otero
-bindsym Mod1+s mode "$launch"
-
-mode "$launch" {
-    # start dmenu (a program launcher)
-    bindsym a exec --no-startup-id dmenu_run -fn xft:Inconsolata-12; mode "default"
-    bindsym c exec /home/toni/projects/config/scripts/startChrome.sh; mode "default"
-    bindsym k exec /home/toni/Dropbox/resource/timer/killTimers.sh; mode "default"
-    bindsym n exec nautilus --no-desktop; mode "default"
-    bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
-    bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; mode "default"
-    bindsym Escape mode "default"
-}
 
 # start a terminal. since on some systems terminator doesnt work and having multiple
 # i3 configs is basically suicide, i put this here
@@ -176,43 +184,27 @@ mode "$launch" {
 bindsym Mod1+w exec ~/.bin/terminal
 
 # Reload monitors script and xmodmap. This is necessary when the power goes out for a second and my usb hub separates the keyboard from the computer, resetting the xmodmap :D
-bindsym Mod1+Shift+o exec zsh /home/toni/projects/config/startupScripts/runAll.sh
+bindsym Mod1+Shift+o exec --no-startup-id zsh $startupScripts/runAll.sh
 
 # Volume changing hotkeys
-bindsym Ctrl+Shift+R exec --no-startup-id /home/toni/projects/config/scripts/changeVolume.sh 1
-bindsym Ctrl+Shift+F exec --no-startup-id /home/toni/projects/config/scripts/changeVolume.sh 0
+bindsym Ctrl+Shift+R exec --no-startup-id $scripts/changeVolume.sh 1
+bindsym Ctrl+Shift+F exec --no-startup-id $scripts/changeVolume.sh 0
 # Brightness changing hotkeys
-bindsym Ctrl+Shift+B exec --no-startup-id /home/toni/projects/config/scripts/changeBrightness.sh 0
+bindsym Ctrl+Shift+B exec --no-startup-id $scripts/changeBrightness.sh 0
 
 # Spotify controls
 bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
-# Assign workspaces to monitors.
-workspace $ws1 output eDP-1 eDP1
-workspace $ws2 output DP-1-3 HDMI1
-workspace $ws3 output eDP-1 eDP1
-workspace $ws4 output DP-1-3 HDMI1
-workspace $ws5 output eDP-1 eDP1
-workspace $ws6 output DP-1-3 HDMI1
-workspace $ws7 output eDP-1 eDP1
-workspace $ws8 output DP-1-3 HDMI1
-workspace $ws9 output eDP-1 eDP1
-workspace $ws10 output DP-1-3 HDMI1
-workspace $ws11 output eDP-1 eDP1
-workspace $ws12 output DP-1-3 HDMI1
-
-# Assign specific workspaces to some applications
-for_window [class="Spotify"] move to workspace $ws9
-
 # Startup
+exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id pulseaudio --start
-exec --no-startup-id sleep 5 && spotify
 exec --no-startup-id /opt/urserver/urserver --daemon
-exec_always --no-startup-id sleep 3 && /home/toni/projects/config/startupScripts/runAll.sh
 exec --no-startup-id sleep 3 && redshift-gtk
-exec --no-startup-id sleep 10 && thunderbird
-exec --no-startup-id python3 ~/projects/config/scripts/toggleFocus.py
+exec --no-startup-id i3-msg 'workspace 0:chat; exec /home/toni/.apps/Telegram/Telegram'
+exec --no-startup-id i3-msg 'workspace 1:music; exec spotify'
+exec --no-startup-id i3-msg 'workspace 2:todo; $scripts/startChrome.sh --new-window todoist.com'
+exec --no-startup-id i3-msg 'workspace 3:mail; exec $scripts/startChrome.sh --new-window mail.google.com; exec thunderbird'
