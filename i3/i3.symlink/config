@@ -2,7 +2,7 @@
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
-set $i3contexts python3 ~/projects/i3Contexts/switch.py
+set $i3contexts python3 ~/projects/config/i3Contexts/switch.py
 
 # MISC
 # Change font
