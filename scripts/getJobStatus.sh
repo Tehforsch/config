@@ -1,7 +1,7 @@
 function stripSeconds {
-    colonIndex=$(expr index $1 ":")
-    secondColonIndex=$(($colonIndex + $(expr index ${1:$colonIndex:100} ":")))
-    echo ${1:0:$(($secondColonIndex - 1))}
+    reversed=$(echo $1 | rev)
+    colonIndex=$(expr index $reversed ":")
+    echo $(echo ${reversed:$colonIndex:100} | rev)
 }
 
 # can't use showq or checkjob via ssh because its an alias, so use full path
