@@ -2,7 +2,8 @@
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
-set $i3contexts python3 ~/projects/config/i3Contexts/switch.py
+set $i3contexts python3 ~/projects/i3Contexts/switch.py
+set $i3contextsServer python3 ~/projects/i3Contexts/server.py
 
 # MISC
 # Change font
@@ -52,27 +53,27 @@ for_window [window_role="pop-up"] floating enable
 # WORKSPACES
 
 # Context switching hotkeys
-bindsym $mod+q exec $i3contexts context 0 --firstNonEmptyWorkspace
-bindsym $mod+w exec $i3contexts context 1 --firstNonEmptyWorkspace
-bindsym $mod+e exec $i3contexts context 2 --firstNonEmptyWorkspace
-bindsym $mod+r exec $i3contexts context 3 --firstNonEmptyWorkspace
-bindsym $mod+t exec $i3contexts context 4 --firstNonEmptyWorkspace
-bindsym F1 exec $i3contexts context 0 --firstNonEmptyWorkspace
-bindsym F2 exec $i3contexts context 1 --firstNonEmptyWorkspace
-bindsym F3 exec $i3contexts context 2 --firstNonEmptyWorkspace
-bindsym F4 exec $i3contexts context 3 --firstNonEmptyWorkspace
-bindsym F5 exec $i3contexts context 4 --firstNonEmptyWorkspace
+bindsym $mod+q exec $i3contexts context q --firstNonEmptyWorkspace
+bindsym $mod+w exec $i3contexts context w --firstNonEmptyWorkspace
+bindsym $mod+e exec $i3contexts context e --firstNonEmptyWorkspace
+bindsym $mod+r exec $i3contexts context r --firstNonEmptyWorkspace
+bindsym $mod+t exec $i3contexts context t --firstNonEmptyWorkspace
+bindsym F1 exec $i3contexts context q --firstNonEmptyWorkspace
+bindsym F2 exec $i3contexts context w --firstNonEmptyWorkspace
+bindsym F3 exec $i3contexts context e --firstNonEmptyWorkspace
+bindsym F4 exec $i3contexts context r --firstNonEmptyWorkspace
+bindsym F5 exec $i3contexts context t --firstNonEmptyWorkspace
 
-bindsym $mod+Shift+q exec $i3contexts context --move 0
-bindsym $mod+Shift+w exec $i3contexts context --move 1
-bindsym $mod+Shift+e exec $i3contexts context --move 2
-bindsym $mod+Shift+r exec $i3contexts context --move 3
-bindsym $mod+Shift+t exec $i3contexts context --move 4
-bindsym Shift+F1 exec $i3contexts context --move 0
-bindsym Shift+F2 exec $i3contexts context --move 1
-bindsym Shift+F3 exec $i3contexts context --move 2
-bindsym Shift+F4 exec $i3contexts context --move 3
-bindsym Shift+F5 exec $i3contexts context --move 4
+bindsym $mod+Shift+q exec $i3contexts context --move q
+bindsym $mod+Shift+w exec $i3contexts context --move w
+bindsym $mod+Shift+e exec $i3contexts context --move e
+bindsym $mod+Shift+r exec $i3contexts context --move r
+bindsym $mod+Shift+t exec $i3contexts context --move t
+bindsym Shift+F1 exec $i3contexts context --move q
+bindsym Shift+F2 exec $i3contexts context --move w
+bindsym Shift+F3 exec $i3contexts context --move e
+bindsym Shift+F4 exec $i3contexts context --move r
+bindsym Shift+F5 exec $i3contexts context --move t
 
 # Workspace switching hotkeys
 bindsym $mod+a exec $i3contexts workspace 2
@@ -198,6 +199,7 @@ bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 # Startup
+exec --no-startup-id $i3ContextsServer
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
