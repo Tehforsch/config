@@ -37,11 +37,6 @@ bindsym Mod1+Shift+j move down
 bindsym Mod1+Shift+k move up
 bindsym Mod1+Shift+l move right
 
-# move focused window to scratchpad (mainly for terminals that i dont care about anymore but they have something running in them and i'm too lazy to press ctrl-z ctrl-f)
-bindsym Mod1+Shift+u move scratchpad
-# also have a hotkey to restore them in case its ever necessary
-bindsym Mod1+Shift+i scratchpad show; floating disable
-
 # split in horizontal orientation
 bindsym $mod+o split h
 
