@@ -108,62 +108,29 @@ bindsym $mod+Shift+m exec $i3contexts workspace --move mail
 # Move workspaces between monitors
 bindsym $mod+space move workspace to output left
 
-# Assign workspaces to monitors.
-workspace $w output eDP-1 eDP1
-workspace $ws1_2 output DP-1-3 HDMI1
-
 # Change colors
 # class                 border  backgr. text    indicator child_border                                                                     
 # client.focused_inactive #002b36 #073642 #d9d9d9 #424242 #063340                                                                            
 client.unfocused        #073642 #073642 #586e75 #424242 #063340                                                                            
 client.focused          #93a1a1 #93a1a1 #fdf6e3 #aaaaaa #aaaaaa   
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-# They resize the border in the direction you pressed, e.g.
-# when pressing left, the window is resized so that it has
-# more space on its left
-
-bindsym h resize grow left 10 px or 10 ppt
-bindsym Shift+H resize shrink   left 10 px or 10 ppt
-
-bindsym j resize grow down 10 px or 10 ppt
-bindsym Shift+J resize shrink   down 10 px or 10 ppt
-
-bindsym k resize grow up 10 px or 10 ppt
-bindsym Shift+K resize shrink   up 10 px or 10 ppt
-
-bindsym l resize grow right 10 px or 10 ppt
-bindsym Shift+L resize shrink   right 10 px or 10 ppt
-
-# back to normal: Escape
-bindsym Escape mode "default"
-}
-
+# Resize window
 bindsym Mod1+o mode "resize"
+mode "resize" {
+    bindsym h resize grow left 10 px or 10 ppt
+    bindsym Shift+H resize shrink   left 10 px or 10 ppt
 
-# Main monitor bar
-bar {
-    output primary
-    output HDMI1
-    output DP-1-3
-    strip_workspace_numbers yes
-    status_command i3status
-    status_command i3blocks
+    bindsym j resize grow down 10 px or 10 ppt
+    bindsym Shift+J resize shrink   down 10 px or 10 ppt
+
+    bindsym k resize grow up 10 px or 10 ppt
+    bindsym Shift+K resize shrink   up 10 px or 10 ppt
+
+    bindsym l resize grow right 10 px or 10 ppt
+    bindsym Shift+L resize shrink   right 10 px or 10 ppt
+
+    bindsym Escape mode "default"
 }
-
-# Second monitor bar
-bar {
-    output eDP1
-    output eDP-1
-    strip_workspace_numbers yes
-    status_command i3status
-}
-
-#Disable window titles
-new_window 1pixel
-for_window [class="^.*"] border pixel 3
 
 # Shortcuts to Open Applications
 # Open application launch mode.
@@ -188,6 +155,28 @@ mode "$launch" {
     bindsym Escape mode "default"
 }
 
+# Main monitor bar
+bar {
+    output primary
+    output HDMI1
+    output DP-1-3
+    strip_workspace_numbers yes
+    status_command i3status
+    status_command i3blocks
+}
+
+# Second monitor bar
+bar {
+    output eDP1
+    output eDP-1
+    strip_workspace_numbers yes
+    status_command i3status
+}
+
+#Disable window titles
+new_window 1pixel
+for_window [class="^.*"] border pixel 3
+
 # start a terminal. since on some systems terminator doesnt work and having multiple
 # i3 configs is basically suicide, i put this here
 # and then just put whatever terminal i want to open in ~/.bin/terminal.
@@ -195,7 +184,7 @@ mode "$launch" {
 bindsym Mod1+w exec ~/.bin/terminal
 
 # Reload monitors script and xmodmap. This is necessary when the power goes out for a second and my usb hub separates the keyboard from the computer, resetting the xmodmap :D
-bindsym Mod1+Shift+o exec zsh $startupScripts/runAll.sh
+bindsym Mod1+Shift+o exec --no-startup-id zsh $startupScripts/runAll.sh
 
 # Volume changing hotkeys
 bindsym Ctrl+Shift+R exec --no-startup-id $scripts/changeVolume.sh 1
@@ -209,11 +198,11 @@ bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
 # Startup
+exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
-exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id i3-msg 'workspace 0:chat; exec /home/toni/.apps/Telegram/Telegram'
 exec --no-startup-id i3-msg 'workspace 1:music; exec spotify'
