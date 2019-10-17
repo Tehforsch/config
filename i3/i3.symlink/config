@@ -6,10 +6,10 @@ set $i3contexts python3 ~/projects/i3Contexts/switch.py
 set $i3contextsServer bash ~/projects/i3Contexts/restartServer.sh
 
 set $bg #000000
-set $activeBg #001219
+set $activeBg #000000
 set $activeFont #fdf6e3
 set $activeBorder #fdf6e3
-set $inactiveBg #001219
+set $inactiveBg #000000
 set $inactiveFont #839496
 set $activeWindowBorder #839496
 
@@ -231,7 +231,4 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
-exec --no-startup-id i3-msg 'workspace 0:chat; exec /home/toni/.apps/Telegram/Telegram'
-exec --no-startup-id i3-msg 'workspace 1:music; exec spotify'
-exec --no-startup-id i3-msg 'workspace 2:todo; $scripts/startChrome.sh --new-window todoist.com'
-exec --no-startup-id i3-msg 'workspace 3:mail; exec $scripts/startChrome.sh --new-window mail.google.com; exec thunderbird'
+exec --no-startup-id $startupScripts/startPrograms.sh
