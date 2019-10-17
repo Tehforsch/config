@@ -1,5 +1,5 @@
 [timers]
-command=bash ~/projects/config/scripts/timer/showTimers
+command=bash ~/projects/config/scripts/timer/showTimers.sh
 color=#F79494
 interval=1
 
