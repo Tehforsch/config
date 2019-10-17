@@ -14,8 +14,8 @@ for line in $output; do
     colonIndex=$(expr index wallTime ":")
     if [[ $state == "Idle" ]]; then
         echo -n "Queue"
-    else
-        echo -n "$state($(stripSeconds $wallTime)/$(stripSeconds $maxTime)) "
+    elif [[ $state == "Running" ]]; then
+        echo -n "Run($(stripSeconds $wallTime)/$(stripSeconds $maxTime)) "
     fi
 done
 
