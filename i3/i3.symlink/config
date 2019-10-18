@@ -137,7 +137,7 @@ mode "resize" {
 
 # Shortcuts to Open Applications
 # Open application launch mode.
-set $launch Launch: [a]nki [c]hrome [k]illTimers [n]autilus [t]elegram [z]otero t[o]doist [l]ockscreen [shift+r]estart [shift+e]xit [s]any other
+set $launch Launch: [a]nki [c]hrome [k]illTimers [m]ail.google.com [n]autilus [t]elegram [z]otero t[o]doist [l]ockscreen [shift+r]estart [shift+e]xit [s]any other
 bindsym Mod1+s mode "$launch"
 
 mode "$launch" {
@@ -145,7 +145,7 @@ mode "$launch" {
     bindsym a exec ~/.bin/anki; mode "default"
     bindsym c exec $scripts/startChrome.sh; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
-    bindsym o exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
+    bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym n exec nautilus --no-desktop; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:Inconsolata-12; mode "default"
