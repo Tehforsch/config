@@ -150,8 +150,8 @@ mode "$launch" {
     bindsym n exec nautilus --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
-    bindsym t exec /home/toni/.apps/telegram/telegram; mode "default"
-    bindsym z exec /home/toni/.apps/zotero_linux-x86_64/zotero; mode "default"
+    bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
+    bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
 
