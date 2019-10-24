@@ -115,6 +115,8 @@
     " Clear highlighting on escape in normal mode
     nnoremap <esc> :noh<return><esc>
     nnoremap <esc>^[ <esc>^[
+    " Disable vim restarting at top (or bottom) of file when searching which is only annoying
+    set nowrapscan
 
 
 "Buffer settings
