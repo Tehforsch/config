@@ -1,17 +1,15 @@
-xrandr --output HDMI1 --auto --output eDP1 --auto --left-of HDMI1
-# xrandr --output DP1 --auto --output eDP1 --auto --left-of DP1
-xrandr --output HDMI1 --auto --output eDP1 --auto --left-of HDMI1
+#!/bin/bash
 xset -dpms
 xset s off
-#!/bin/bash
-#Get volume of the pulse audio source $id
-increase=4
 
-if [[ $(lsb_release -a | grep 18.04 | wc -l) == 2 ]]; then
+source ~/.localConfig
+if [[ $systemName == "ubuntu" ]]; then
+    echo "a"
     main=HDMI1
     second=eDP1
 else
-    main=FILLTHISIN
+    echo "b"
+    main=DP-1-3
     second=eDP-1
 fi
 xrandr --output $main --primary --auto --output $second --auto --left-of $main
