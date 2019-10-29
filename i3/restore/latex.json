@@ -1,0 +1,48 @@
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 452,
+               "width": 722,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Latex parser",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^Terminator$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 452,
+               "width": 722,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Random Terminal",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^Terminator$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
