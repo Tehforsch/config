@@ -6,6 +6,7 @@ else
     echo "Need filename of main latex file!"
     exit 1
 fi
+touch $latexFileName
 withoutExtension=${latexFileName/.tex/}
 i3-msg append_layout ~/projects/config/i3/restore/latex.json
 ~/.bin/terminal --working-directory=$(pwd) -x "~/.trigger/trigger '~/projects/config/scripts/parseLatex.sh $latexFileName' $(fd .\*.tex); zsh"
