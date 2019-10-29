@@ -61,11 +61,11 @@ for_window [window_role="pop-up"] floating enable
 # WORKSPACES
 
 # Context switching hotkeys
-bindsym $mod+q exec $i3contexts context q
-bindsym $mod+w exec $i3contexts context w
-bindsym $mod+e exec $i3contexts context e
-bindsym $mod+r exec $i3contexts context r
-bindsym $mod+t exec $i3contexts context t
+# bindsym $mod+q exec $i3contexts context q
+# bindsym $mod+w exec $i3contexts context w
+# bindsym $mod+e exec $i3contexts context e
+# bindsym $mod+r exec $i3contexts context r
+# bindsym $mod+t exec $i3contexts context t
 bindsym F1 exec $i3contexts context q
 bindsym F2 exec $i3contexts context w
 bindsym F3 exec $i3contexts context e
