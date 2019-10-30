@@ -223,6 +223,11 @@ bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
+workspace "8: qa" output DP-1-3
+workspace "9: qs" output HDMI1
+workspace "14: qy" output eDP-1
+workspace "15: qx" output eDP1
+
 # Startup
 exec_always --no-startup-id $i3ContextsServer
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
@@ -232,4 +237,3 @@ exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id $startupScripts/openProgramsAtStartOfSession.sh
-exec --no-startup-id exec $i3contexts workspace a
