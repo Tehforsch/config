@@ -123,6 +123,9 @@
     " Do not jump to the beginning of the line when switching buffers but stay
     " at exact cursor position (life saving)
     set nostartofline
+
+" Terminator support
+    set guicursor=
     
 " tab line for buffers
     let g:airline#extensions#tabline#enabled = 1
