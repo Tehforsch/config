@@ -6,10 +6,7 @@ else
     exit 1
 fi
 withoutExtension=${latexFileName/.tex/}
-pdflatex --interaction=nonstopmode -shell-escape $latexFileName
-bibtex $withoutExtension
-pdflatex --interaction=nonstopmode -shell-escape $latexFileName
-pdflatex --interaction=nonstopmode -shell-escape $latexFileName
+rubber -d -s $latexFileName
 rm ${withoutExtension}-blx.bib
 rm ${withoutExtension}.aux
 rm ${withoutExtension}.bbl
