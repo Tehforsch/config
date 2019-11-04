@@ -224,10 +224,10 @@ bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
-workspace "8:qa" output DP-1-3
 workspace "8:qa" output HDMI1
+workspace "8:qa" output HDMI1 DP-1-3
 workspace "14:qy" output eDP-1
-workspace "14:qy" output eDP1
+workspace "14:qy" output eDP1 eDP-1
 
 # Startup
 exec_always --no-startup-id $i3ContextsServer
