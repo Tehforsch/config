@@ -1,0 +1,13 @@
+{
+  "percent": 0.4,
+  "nodes": [
+    {
+      "percent": 1,
+      "swallows": [
+        {
+          "class": "Zotero"
+        }
+      ]
+    }
+  ]
+}
