@@ -107,12 +107,16 @@ bindsym $mod+Shift+x exec $i3contexts workspace --move x
 bindsym $mod+v exec $i3contexts workspace music
 bindsym $mod+c exec $i3contexts workspace chat
 bindsym $mod+b exec $i3contexts workspace todo
-bindsym $mod+m exec $i3contexts workspace mail
+bindsym $mod+n exec $i3contexts workspace mail
+bindsym $mod+m exec $i3contexts workspace gmail
+bindsym $mod+z exec $i3contexts workspace zotero
 
 bindsym $mod+Shift+v exec $i3contexts workspace --move music
 bindsym $mod+Shift+c exec $i3contexts workspace --move chat
 bindsym $mod+Shift+b exec $i3contexts workspace --move todo
-bindsym $mod+Shift+m exec $i3contexts workspace --move mail
+bindsym $mod+Shift+n exec $i3contexts workspace --move mail
+bindsym $mod+Shift+m exec $i3contexts workspace --move gmail
+bindsym $mod+Shift+z exec $i3contexts workspace --move zotero
 
 # Move workspaces between monitors
 bindsym $mod+space move workspace to output left
@@ -149,6 +153,7 @@ mode "$launch" {
     bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
     bindsym n exec nautilus --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
+    bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
     bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
     bindsym w exec $scripts/startChrome.sh --new-window web.whatsapp.com; mode "default"
@@ -237,4 +242,4 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
-exec --no-startup-id $startupScripts/openProgramsAtStartOfSession.sh
+# exec --no-startup-id $startupScripts/openProgramsAtStartOfSession.sh

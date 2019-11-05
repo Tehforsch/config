@@ -9,6 +9,8 @@ sharedWorkspaceNames:
     - "music"
     - "todo"
     - "mail"
+    - "gmail"
+    - "zotero"
 defaultWorkspaceOnNewContext:
     "a"
 outputMap:
@@ -28,6 +30,8 @@ outputMap:
         - "music"
         - "todo"
         - "mail"
+        - "gmail"
+        - "zotero"
     DP-1-3:
         - "a"
         - "s"
@@ -44,6 +48,8 @@ outputMap:
         - "music"
         - "todo"
         - "mail"
+        - "gmail"
+        - "zotero"
 workspaceNames:
     - "a"
     - "s"
