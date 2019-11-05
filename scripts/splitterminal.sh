@@ -1,1 +1,1 @@
-~/.bin/terminal --working-directory=WORK_DIR -x zsh -c "cd $(pwd); zsh"
+~/.bin/terminal --working-directory=$(pwd) -x zsh -c "cd $(pwd); zsh"
