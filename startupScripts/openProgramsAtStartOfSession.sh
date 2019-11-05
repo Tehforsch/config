@@ -1,29 +1,39 @@
 #!/bin/bash
 source ~/.localConfig
 
-# Open telegram
-i3-msg workspace 0:chat
+# TELEGRAM
+python3 ~/projects/config/i3Contexts/switch.py workspace chat
 i3-msg append_layout ~/projects/config/i3/restore/telegram.json
 ~/.apps/Telegram/Telegram&
+sleep 0.3
 
-# Open todoist
-i3-msg workspace 2:todo
+# TODOIST
+python3 ~/projects/config/i3Contexts/switch.py workspace todo
 i3-msg append_layout ~/projects/config/i3/restore/todoist.json
 $scripts/startChrome.sh --new-window todoist.com&
+sleep 0.8
 
-sleep 1
-
-# Open Gmail + (Thunderbird)
-i3-msg workspace 3:mail
+# THUNDERBIRD
 if [[ $systemName == "ita" ]]; then
+    python3 ~/projects/config/i3Contexts/switch.py workspace mail
     i3-msg append_layout ~/projects/config/i3/restore/thunderbird.json
     thunderbird&
+    sleep 0.8
 fi
+
+# GMAIL
+python3 ~/projects/config/i3Contexts/switch.py workspace gmail
 i3-msg append_layout ~/projects/config/i3/restore/gmail.json
 $scripts/startChrome.sh --new-window mail.google.com&
+sleep 0.8
 
+# ZOTERO
+python3 ~/projects/config/i3Contexts/switch.py workspace zotero
+i3-msg append_layout ~/projects/config/i3/restore/zotero.json
+~/.apps/Zotero_linux-x86_64/zotero &
 sleep 1
 
+# SPOTIFY
 # Spotify wont listen anyways because its obviously a garbage program written by garbage people so just go to the workspace and open it
-i3-msg workspace 1:music
+python3 ~/projects/config/i3Contexts/switch.py workspace music
 spotify&
