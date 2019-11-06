@@ -238,7 +238,7 @@ workspace "14:qy" output eDP1 eDP-1
 exec_always --no-startup-id $i3ContextsServer
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
-exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id seafile-applet
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
