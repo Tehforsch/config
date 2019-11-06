@@ -160,6 +160,7 @@ mode "$launch" {
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
+    bindsym Shift+M exec $scripts/mountClusterSshfs.sh; exec nautilus ~/projects/cluster; mode "default"
 
     bindsym Escape mode "default"
 }
