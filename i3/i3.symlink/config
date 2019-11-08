@@ -122,9 +122,9 @@ bindsym $mod+Shift+z exec $i3contexts workspace --move zotero
 bindsym $mod+space move workspace to output left
 
 # Resize window
-bindsym Mod1+u mode "kill"; border pixel 10
+bindsym Mod1+u mode "killMove"; border pixel 10
 
-mode "kill" {
+mode "killMove" {
     bindsym h border pixel 1; focus left; border pixel 10
     bindsym l border pixel 1; focus right; border pixel 10
     bindsym space kill; mode "default"
@@ -190,7 +190,7 @@ bar {
 		urgent_workspace  $activeBg $activeBg $activeFont
 	}
     output primary
-    output HDMI1
+    output HDMI-1
     output DP-1-3
     strip_workspace_numbers yes
     status_command i3status
@@ -239,8 +239,8 @@ bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
-workspace "8:qa" output HDMI1
-workspace "8:qa" output HDMI1 DP-1-3
+workspace "8:qa" output HDMI-1
+workspace "8:qa" output HDMI-1 DP-1-3
 workspace "14:qy" output eDP-1
 workspace "14:qy" output eDP1 eDP-1
 
