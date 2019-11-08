@@ -122,6 +122,15 @@ bindsym $mod+Shift+z exec $i3contexts workspace --move zotero
 bindsym $mod+space move workspace to output left
 
 # Resize window
+bindsym Mod1+u mode "kill"; border pixel 10
+
+mode "kill" {
+    bindsym h border pixel 1; focus left; border pixel 10
+    bindsym l border pixel 1; focus right; border pixel 10
+    bindsym space kill; mode "default"
+    bindsym Escape mode "default"; border pixel 1
+}
+
 bindsym Mod1+o mode "resize"
 mode "resize" {
     bindsym h resize grow left 10 px or 10 ppt
@@ -157,7 +166,7 @@ mode "$launch" {
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
     bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
     bindsym w exec $scripts/startChrome.sh --new-window web.whatsapp.com; mode "default"
-    bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; mode "default"
+    bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
     bindsym Shift+M exec $scripts/mountClusterSshfs.sh; exec nautilus ~/projects/cluster; mode "default"
