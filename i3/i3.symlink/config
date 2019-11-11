@@ -150,23 +150,23 @@ mode "resize" {
 
 # Shortcuts to Open Applications
 # Open application launch mode.
-set $launch Launch: [a]nki [c]hrome [k]illTimers [m]ail.google.com [n]autilus [t]elegram [z]otero t[o]doist [l]ockscreen [shift+r]estart [shift+e]xit [s]any other
+set $launch Launch: t[o]doist, [E]xit, [O]pen programs, [M]ount cluster
 bindsym Mod1+s mode "$launch"
 
 mode "$launch" {
     # start dmenu (a program launcher)
     bindsym a exec ~/.bin/anki; mode "default"
     bindsym c exec $scripts/startChrome.sh; mode "default"
-    bindsym k exec $scripts/timer/killtimers.sh; mode "default"
+    bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
     bindsym n exec nautilus --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
-    bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
     bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
     bindsym w exec $scripts/startChrome.sh --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
+    bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
     bindsym Shift+M exec $scripts/mountClusterSshfs.sh; exec nautilus ~/projects/cluster; mode "default"
