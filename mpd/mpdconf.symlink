@@ -1,0 +1,11 @@
+## System config
+music_directory "/home/toni/music"
+bind_to_address "127.0.0.1"
+#log_file			"~/.mpd/log"
+pid_file			"~/.mpd/pid"
+# Database
+db_file			"~/.mpd/database"
+auto_update "yes"
+
+# Playback settings
+gapless_mp3_playback			"yes"

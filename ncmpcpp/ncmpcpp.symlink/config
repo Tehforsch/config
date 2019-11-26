@@ -1,0 +1,4 @@
+header_visibility = no
+statusbar_visibility = no
+allow_for_physical_item_deletion = no
+startup_screen = "media_library"
