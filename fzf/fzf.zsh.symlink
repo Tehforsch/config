@@ -72,8 +72,8 @@ fzf-cd-here-widget() {
 }
 zle     -N  fzf-cd-home-widget
 zle     -N  fzf-cd-here-widget
-bindkey '^J' fzf-cd-home-widget
-bindkey '^K' fzf-cd-here-widget
+bindkey '^f' fzf-cd-home-widget
+bindkey '^v' fzf-cd-here-widget
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {

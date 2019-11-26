@@ -39,7 +39,7 @@ LISTMAX=0
 zstyle ':completion:*' special-dirs true
 
 # Binding to close the terminal with a process running in it without killing the process
-bindkey -s '^f' 'bg && disown && exit\n'
+bindkey -s '^u' 'bg && disown && exit\n'
 # bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
 bindkey -s '^g' '&!\n^z exit\n'
 # bind C-h ton run the command(\n), ^z to suspend and exit\n to close the current terminal. This only works if the command already has & or &! appended to it (which the commands in my history which i last started with Ctrl-g have).
