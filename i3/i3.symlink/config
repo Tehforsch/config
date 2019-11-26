@@ -234,15 +234,13 @@ bindsym Ctrl+Shift+F exec --no-startup-id $scripts/changeVolume.sh 0
 # Brightness changing hotkeys
 bindsym Ctrl+Shift+B exec --no-startup-id $scripts/changeBrightness.sh 0
 
-# Spotify controls
-bindsym Ctrl+Shift+S exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym Ctrl+Shift+A exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym Ctrl+Shift+D exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+# Music controls
+bindsym Ctrl+Shift+S exec "mpc toggle"
+bindsym Ctrl+Shift+A exec "mpc next"
+bindsym Ctrl+Shift+D exec "mpc prev"
 
 workspace "8:qa" output HDMI-1
-workspace "8:qa" output HDMI-1 DP-1-3
 workspace "14:qy" output eDP-1
-workspace "14:qy" output eDP1 eDP-1
 
 # Startup
 exec_always --no-startup-id $i3ContextsServer
@@ -252,4 +250,5 @@ exec --no-startup-id seafile-applet
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
+exec --no-startup-id mpd
 # exec --no-startup-id $startupScripts/openProgramsAtStartOfSession.sh
