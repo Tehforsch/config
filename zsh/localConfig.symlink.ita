@@ -5,3 +5,4 @@ export projects=$PROJECTS
 export scripts=$config/scripts
 export GPG_TTY=$(tty)
 export systemName="ita"
+export PYTHONPATH=$PYTHONPATH:/home/toni/projects/arepy/python
