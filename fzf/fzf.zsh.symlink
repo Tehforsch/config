@@ -48,8 +48,9 @@ zle -N fzf-redraw-prompt
 
 # ALT-C - cd into the selected directory
 fzf-cd-widget() {
-  local cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-    -o -type d -print 2> /dev/null | cut -b3-"}"
+  # local cmd="${FZF_ALT_C_COMMAND:-"command fd -L ${1} -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+  local cmd="${FZF_ALT_C_COMMAND:-"command fd . ${1} -t d"}"
+  echo $cmd
   setopt localoptions pipefail 2> /dev/null
   local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
   if [[ -z "$dir" ]]; then
@@ -62,8 +63,17 @@ fzf-cd-widget() {
   typeset -f zle-line-init >/dev/null && zle zle-line-init
   return $ret
 }
-zle     -N    fzf-cd-widget
-bindkey '^U' fzf-cd-widget
+
+fzf-cd-home-widget() {
+    fzf-cd-widget ~
+}
+fzf-cd-here-widget() {
+    fzf-cd-widget .
+}
+zle     -N  fzf-cd-home-widget
+zle     -N  fzf-cd-here-widget
+bindkey '^J' fzf-cd-home-widget
+bindkey '^K' fzf-cd-here-widget
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {
