@@ -5,3 +5,4 @@ export PROJECTS=$HOME/projects
 export projects=$PROJECTS
 export scripts=$CONFIG/scripts
 export systemName=ubuntu
+export GPG_TTY=$(tty)

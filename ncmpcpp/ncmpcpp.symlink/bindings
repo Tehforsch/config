@@ -1,0 +1,16 @@
+def_key "p"
+  push_characters "y"
+  clear_main_playlist
+  add_item_to_playlist
+def_key "j"
+    scroll_down
+def_key "k"
+    scroll_up
+def_key "g"
+  move_home
+def_key "G"
+  move_end
+def_key "h"
+    previous_column
+def_key "l"
+    next_column
