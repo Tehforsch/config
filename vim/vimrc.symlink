@@ -87,6 +87,8 @@
 
 " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
     autocmd FileType netrw setl bufhidden=wipe
+" Close netrw buffer after selecting a file
+    let g:netrw_fastbrowse = 0
 
 " Don't yank when changing
     nnoremap c "_c
