@@ -2,3 +2,9 @@ header_visibility = no
 statusbar_visibility = no
 allow_for_physical_item_deletion = no
 startup_screen = "media_library"
+
+# color definitions
+main_window_color = "default"
+main_window_highlight_color = "default"
+alternative_ui_separator_color = "yellow"
+progressbar_color = "yellow"
