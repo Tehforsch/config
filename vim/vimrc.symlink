@@ -166,10 +166,13 @@
     set noshowmatch
     " Disable highlighting of matching parantheses (lags)
     let loaded_matchparen = 1
-    " Gnuplot comments
-    augroup gnuplot
-        autocmd FileType gnuplot set commentstring=#\ %s
-    augroup END
+    " Proper comment strings:
+    " set default comment string to #
+    set commentstring=#\ %s
+    " set various comment strings
+    augroup FTOptions
+        autocmd FileType c,cpp,cs,java          setlocal commentstring=//\ %s
+    augroup end
 
 " fortran indent 2
     autocmd Filetype fortran setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
