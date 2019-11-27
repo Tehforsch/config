@@ -6,3 +6,5 @@ ssh/ssh.symlink/known_hosts
 ssh/ssh.symlink/authorized_keys
 redshift/*
 vim/vim.symlink/autoload
+cargo/cargo.symlink/.package-cache
+cargo/cargo.symlink/registry/
