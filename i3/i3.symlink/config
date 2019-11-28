@@ -236,8 +236,8 @@ bindsym Ctrl+Shift+B exec --no-startup-id $scripts/changeBrightness.sh 0
 
 # Music controls
 bindsym Ctrl+Shift+S exec "mpc toggle"
-bindsym Ctrl+Shift+A exec "mpc next"
-bindsym Ctrl+Shift+D exec "mpc prev"
+bindsym Ctrl+Shift+A exec "mpc prev"
+bindsym Ctrl+Shift+D exec "mpc next"
 
 workspace "8:qa" output HDMI-1
 workspace "14:qy" output eDP-1
