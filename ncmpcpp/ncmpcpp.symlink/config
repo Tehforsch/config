@@ -5,8 +5,8 @@ startup_screen = "media_library"
 
 # color definitions
 main_window_color = "default"
-main_window_highlight_color = "yellow"
-active_column_color = "yellow"
+current_item_prefix = "$(yellow)$r"
+current_item_suffix = "$/r$(end)"
 alternative_ui_separator_color = "yellow"
 progressbar_color = "yellow"
 progressbar_elapsed_color = "yellow"
