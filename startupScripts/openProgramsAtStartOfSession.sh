@@ -33,7 +33,5 @@ i3-msg append_layout ~/projects/config/i3/restore/zotero.json
 ~/.apps/Zotero_linux-x86_64/zotero &
 sleep 1
 
-# SPOTIFY
-# Spotify wont listen anyways because its obviously a garbage program written by garbage people so just go to the workspace and open it
-python3 ~/projects/config/i3Contexts/switch.py workspace music
-spotify&
+# Music
+~/.bin/terminal --working-directory=$(pwd) -x "ncmpcpp; zsh"&

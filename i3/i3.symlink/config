@@ -239,7 +239,7 @@ bindsym Ctrl+Shift+S exec "mpc toggle"
 bindsym Ctrl+Shift+A exec "mpc prev"
 bindsym Ctrl+Shift+D exec "mpc next"
 
-workspace "8:qa" output HDMI-1
+workspace "8:qa" output DP-1-3
 workspace "14:qy" output eDP-1
 
 # Startup
