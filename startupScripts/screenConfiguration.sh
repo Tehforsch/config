@@ -7,9 +7,11 @@ if [[ $systemName == "ubuntu" ]]; then
     echo "a"
     main=HDMI1
     second=eDP1
+    xrandr --output $main --primary --auto --output $second --auto --left-of $main
 else
     echo "b"
-    main=DP-1-3
-    second=eDP-1
+    main=DP-2
+    left=eDP-1
+    right=DP-1-3
+    xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main
 fi
-xrandr --output $main --primary --auto --output $second --auto --left-of $main

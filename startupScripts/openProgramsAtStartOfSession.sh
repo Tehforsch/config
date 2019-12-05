@@ -34,4 +34,5 @@ i3-msg append_layout ~/projects/config/i3/restore/zotero.json
 sleep 1
 
 # Music
+python3 ~/projects/config/i3Contexts/switch.py workspace music
 ~/.bin/terminal --working-directory=$(pwd) -x "ncmpcpp; zsh"&
