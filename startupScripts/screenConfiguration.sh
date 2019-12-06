@@ -13,5 +13,5 @@ else
     main=DP-2
     left=eDP-1
     right=DP-1-3
-    xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main
+    xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main --rotate left
 fi

@@ -35,4 +35,5 @@ sleep 1
 
 # Music
 python3 ~/projects/config/i3Contexts/switch.py workspace music
+sleep 0.2
 ~/.bin/terminal --working-directory=$(pwd) -x "ncmpcpp; zsh"&
