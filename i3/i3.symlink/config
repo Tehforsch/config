@@ -194,7 +194,7 @@ bar {
     output primary
     output HDMI-1
     output DP-2
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
     status_command i3status
     status_command i3blocks
 }
@@ -213,7 +213,7 @@ bar {
     output eDP1
     output eDP-1
     output DP-1-3
-    strip_workspace_numbers yes
+    # strip_workspace_numbers yes
 }
 
 #Disable window titles
@@ -242,7 +242,9 @@ bindsym Ctrl+Shift+D exec "mpc next"
 
 workspace "13:1a" output DP-2
 workspace "12:1g" output DP-1-3
-workspace "14:1y" output eDP-1
+workspace "24:1y" output eDP-1
+workspace "14:1s" output HDMI-1
+workspace "25:1x" output eDP1
 
 # Startup
 exec_always --no-startup-id $i3ContextsServer
