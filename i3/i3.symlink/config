@@ -255,4 +255,5 @@ exec --no-startup-id pulseaudio --start
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id mpd
+exec --no-startup-id xbacklight -set 100
 # exec --no-startup-id $startupScripts/openProgramsAtStartOfSession.sh
