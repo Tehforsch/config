@@ -7,3 +7,4 @@ export GPG_TTY=$(tty)
 export systemName="ita"
 export PYTHONPATH=$PYTHONPATH:/home/toni/projects/arepy/python
 export CSCOPE_EDITOR="nvim"
+export DIR_AREPO="/home/toni/projects/arepo"

@@ -11,3 +11,8 @@ interval=300
 #[weather]
 #command=curl 'wttr.in/49.414300,8.694484?format=%t+%h'
 #interval=120
+
+# Update time every 5 seconds
+[time]
+command=date +"%H:%M"
+interval=10

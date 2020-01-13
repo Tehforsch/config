@@ -123,16 +123,6 @@ bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
 bindsym $mod+space move workspace to output right
 
-# Resize window
-bindsym Mod1+u mode "killMove"; border pixel 10
-
-mode "killMove" {
-    bindsym h border pixel 1; focus left; border pixel 10
-    bindsym l border pixel 1; focus right; border pixel 10
-    bindsym space kill; mode "default"
-    bindsym Escape mode "default"; border pixel 1
-}
-
 bindsym Mod1+o mode "resize"
 mode "resize" {
     bindsym h resize grow left 10 px or 10 ppt
