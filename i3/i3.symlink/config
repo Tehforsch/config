@@ -152,7 +152,7 @@ mode "$launch" {
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
-    bindsym n exec nautilus --no-desktop; mode "default"
+    bindsym n exec thunar --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
     bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
@@ -161,7 +161,7 @@ mode "$launch" {
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
-    bindsym Shift+M exec $scripts/mountClusterSshfs.sh; exec nautilus ~/projects/cluster; mode "default"
+    bindsym Shift+M exec $scripts/mountClusterSshfs.sh; mode "default"
 
     bindsym Escape mode "default"
 }
