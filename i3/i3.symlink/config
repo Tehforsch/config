@@ -50,7 +50,7 @@ bindsym Mod1+Shift+l move right
 bindsym $mod+o split h
 
 # split in vertical orientation
-bindsym $mod+p split v
+# bindsym $mod+p split v
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
