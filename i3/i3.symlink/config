@@ -60,63 +60,53 @@ for_window [window_role="pop-up"] floating enable
 
 # WORKSPACES
 
-# Context switching hotkeys
-bindsym F1 exec $i3contexts context 1
-bindsym F2 exec $i3contexts context 2
-bindsym F3 exec $i3contexts context 3
-bindsym F4 exec $i3contexts context 4
-bindsym F5 exec $i3contexts context 5
+# # Context switching hotkeys
+# bindsym F1 exec $i3contexts context 1
+# bindsym F2 exec $i3contexts context 2
+# bindsym F3 exec $i3contexts context 3
+# bindsym F4 exec $i3contexts context 4
+# bindsym F5 exec $i3contexts context 5
 
-bindsym Shift+F1 exec $i3contexts context --move 1
-bindsym Shift+F2 exec $i3contexts context --move 2
-bindsym Shift+F3 exec $i3contexts context --move 3
-bindsym Shift+F4 exec $i3contexts context --move 4
-bindsym Shift+F5 exec $i3contexts context --move 5
+# bindsym Shift+F1 exec $i3contexts context --move 1
+# bindsym Shift+F2 exec $i3contexts context --move 2
+# bindsym Shift+F3 exec $i3contexts context --move 3
+# bindsym Shift+F4 exec $i3contexts context --move 4
+# bindsym Shift+F5 exec $i3contexts context --move 5
 
 # Workspace switching hotkeys
-bindsym $mod+q exec $i3contexts workspace q
-bindsym $mod+w exec $i3contexts workspace w
-bindsym $mod+e exec $i3contexts workspace e
-bindsym $mod+r exec $i3contexts workspace r
-bindsym $mod+t exec $i3contexts workspace t
-bindsym $mod+a exec $i3contexts workspace a
-bindsym $mod+s exec $i3contexts workspace s
-bindsym $mod+d exec $i3contexts workspace d
-bindsym $mod+f exec $i3contexts workspace f
-bindsym $mod+g exec $i3contexts workspace g
-bindsym $mod+less exec $i3contexts workspace <
-bindsym $mod+y exec $i3contexts workspace y
-bindsym $mod+x exec $i3contexts workspace x
+bindsym $mod+a workspace 1:a
+bindsym $mod+s workspace 2:s
+bindsym $mod+d workspace 3:d
+bindsym $mod+f workspace 4:f
+bindsym $mod+g workspace 5:g
+bindsym $mod+less workspace 6:<
+bindsym $mod+y workspace 7:y
+bindsym $mod+x workspace 8:x
 
 # move focused container to workspace
-bindsym $mod+Shift+q exec $i3contexts workspace --move q
-bindsym $mod+Shift+w exec $i3contexts workspace --move w
-bindsym $mod+Shift+e exec $i3contexts workspace --move e
-bindsym $mod+Shift+r exec $i3contexts workspace --move r
-bindsym $mod+Shift+t exec $i3contexts workspace --move t
-bindsym $mod+Shift+a exec $i3contexts workspace --move a
-bindsym $mod+Shift+s exec $i3contexts workspace --move s
-bindsym $mod+Shift+d exec $i3contexts workspace --move d
-bindsym $mod+Shift+f exec $i3contexts workspace --move f
-bindsym $mod+Shift+g exec $i3contexts workspace --move g
-bindsym $mod+Shift+less exec $i3contexts workspace --move <
-bindsym $mod+Shift+y exec $i3contexts workspace --move y
-bindsym $mod+Shift+x exec $i3contexts workspace --move x
+bindsym $mod+Shift+a move container to workspace 1:a; workspace 1:a
+bindsym $mod+Shift+s move container to workspace 2:s; workspace 2:s
+bindsym $mod+Shift+d move container to workspace 3:d; workspace 3:d
+bindsym $mod+Shift+f move container to workspace 4:f; workspace 4:f
+bindsym $mod+Shift+g move container to workspace 5:g; workspace 5:g
+bindsym $mod+Shift+less move container to workspace 12:<; workspace 12:<
+bindsym $mod+Shift+y move container to workspace 13:y; workspace 13:y
+bindsym $mod+Shift+x move container to workspace 14:x; workspace 14:x
 
 # shared workspaces
-bindsym $mod+v exec $i3contexts workspace music
-bindsym $mod+c exec $i3contexts workspace chat
-bindsym $mod+b exec $i3contexts workspace todo
-bindsym $mod+n exec $i3contexts workspace mail
-bindsym $mod+m exec $i3contexts workspace gmail
-bindsym $mod+z exec $i3contexts workspace zotero
+bindsym $mod+v workspace 6:music
+bindsym $mod+c workspace 7:chat
+bindsym $mod+b workspace 8:todo
+bindsym $mod+n workspace 9:mail
+bindsym $mod+m workspace 10:gmail
+bindsym $mod+z workspace 11:zotero
 
-bindsym $mod+Shift+v exec $i3contexts workspace --move music
-bindsym $mod+Shift+c exec $i3contexts workspace --move chat
-bindsym $mod+Shift+b exec $i3contexts workspace --move todo
-bindsym $mod+Shift+n exec $i3contexts workspace --move mail
-bindsym $mod+Shift+m exec $i3contexts workspace --move gmail
-bindsym $mod+Shift+z exec $i3contexts workspace --move zotero
+bindsym $mod+Shift+v move container to workspace 6:music; workspace 6:music
+bindsym $mod+Shift+c move container to workspace 7:chat; workspace 7:chat
+bindsym $mod+Shift+b move container to workspace 8:todo; workspace 8:todo
+bindsym $mod+Shift+n move container to workspace 9:mail; workspace 9:mail
+bindsym $mod+Shift+m move container to workspace 10:gmail; workspace 10:gmail
+bindsym $mod+Shift+z move container to workspace 11:zotero; workspace 11:zotero
 
 # Move workspaces between monitors
 bindsym $mod+h move workspace to output left
@@ -152,7 +142,7 @@ mode "$launch" {
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
-    bindsym n exec thunar --no-desktop; mode "default"
+    bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
     bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
@@ -230,11 +220,11 @@ bindsym Ctrl+Shift+S exec "mpc toggle"
 bindsym Ctrl+Shift+A exec "mpc prev"
 bindsym Ctrl+Shift+D exec "mpc next"
 
-workspace "13:1a" output DP-2
-workspace "12:1g" output DP-1-3
-workspace "24:1y" output eDP-1
-workspace "14:1s" output HDMI-1
-workspace "25:1x" output eDP1
+workspace "a" output DP-2
+workspace "g" output DP-1-3
+workspace "y" output eDP-1
+workspace "a" output HDMI-1
+workspace "a" output eDP1
 
 # Startup
 exec_always --no-startup-id $i3ContextsServer

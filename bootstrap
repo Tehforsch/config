@@ -167,7 +167,8 @@ echo '  All symlinks installed!'
 echo ''
 
 # find the installers and run them iteratively
-for installer in $(find "$DOTFILES_ROOT/" -name "install.*.sh") ; do
+for installer in $(find "$DOTFILES_ROOT/" -name "install*.sh") ; do
+    echo $installer
     info "Running '${installer}'"
     bash -c "${installer}"
     if [[ $? ]]; then

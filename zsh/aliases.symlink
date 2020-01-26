@@ -27,3 +27,5 @@ alias fin='python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/fin
 alias runlatex='$CONFIG/scripts/latexLayout.sh'
 alias runpython='$CONFIG/scripts/pythonLayout.sh'
 alias man='vim_man'
+alias timer='$CONFIG/scripts/timer/timer.sh'
+alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
