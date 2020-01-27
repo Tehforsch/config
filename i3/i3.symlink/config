@@ -28,6 +28,7 @@ floating_modifier $mod
  
 # Behaviour
 focus_follows_mouse no
+mouse_warping none
 
 # kill focused window
 bindsym Mod1+Q kill
