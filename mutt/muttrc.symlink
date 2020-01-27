@@ -1,0 +1,17 @@
+# Folder setup
+set folder="$HOME/mail"
+set record="+sent"
+set mbox="+mbox"
+set postponed="+postponed"
+
+set smtp_authenticators = "login"
+set ssl_force_tls = yes
+
+folder-hook 'personal' 'source ~/.mutt/personal'
+# folder-hook 'personal'
+macro index 1 "<change-folder> =../personal/inbox/<enter>"
+# macro index 2 
+macro index G "!mbsync -a^M" "Update through mbsync"
+set move = no
+
+source ~/.mutt/personal
