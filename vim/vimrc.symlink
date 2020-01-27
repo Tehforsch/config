@@ -62,6 +62,7 @@
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>(GitGutterStageHunk)
     nmap <Leader>hu <Plug>(GitGutterUndoHunk)
+    set signcolumn=yes
     " " Language Server - go to definition
     " nmap <Leader>d :LspDefinition<CR>
     " " Map <Leader>f to fzf fuzzy search for symbols in file
