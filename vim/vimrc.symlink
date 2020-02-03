@@ -26,6 +26,8 @@
     vnoremap Y ygv
     " map C-o to the normal behavior (go to last jump location) but then center on the current position (zz)
     nnoremap <C-o> <C-o>zz
+    " switch to header file of current cpp file (or vice versa)
+    nnoremap <Leader>s :A<CR>
 
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
@@ -170,11 +172,8 @@
     " Proper comment strings:
     " set default comment string to #
     set commentstring=#\ %s
-    " set various comment strings
-    augroup FTOptions
-        autocmd FileType c,cpp,cs,java          setlocal commentstring=//\ %s
-    augroup end
 
+    autocmd FileType c,cpp,cs,java set commentstring=//\ %s
 " fortran indent 2
     autocmd Filetype fortran setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " javascript indent 2
@@ -268,6 +267,8 @@ nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': '
         \ 'do': 'bash install.sh',
         \ }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Header file siwtch
+    Plug 'vim-scripts/a.vim'
     call plug#end()
 
 " Solarized color scheme
