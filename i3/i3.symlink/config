@@ -221,11 +221,11 @@ bindsym Ctrl+Shift+S exec "mpc toggle"
 bindsym Ctrl+Shift+A exec "mpc prev"
 bindsym Ctrl+Shift+D exec "mpc next"
 
-workspace "a" output DP-2
-workspace "g" output DP-1-3
-workspace "y" output eDP-1
-workspace "a" output HDMI-1
-workspace "a" output eDP1
+workspace "1:a" output DP-2
+workspace "5:g" output DP-1-3
+workspace "13:y" output eDP-1
+workspace "1:a" output HDMI-1
+workspace "1:a" output eDP1
 
 # Startup
 exec_always --no-startup-id $i3ContextsServer
