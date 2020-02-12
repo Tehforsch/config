@@ -26,8 +26,12 @@
     vnoremap Y ygv
     " map C-o to the normal behavior (go to last jump location) but then center on the current position (zz)
     nnoremap <C-o> <C-o>zz
-    " switch to header file of current cpp file (or vice versa)
-    nnoremap <Leader>s :A<CR>
+    " Go to next quickfix item
+    "nnoremap <Leader>n :cn<CR>
+    nnoremap <Leader>p :cp<CR>
+
+    nmap <Leader>d <plug>(quickr_cscope_symbols)
+
 
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
@@ -65,11 +69,10 @@
     nmap <Leader>ha <Plug>(GitGutterStageHunk)
     nmap <Leader>hu <Plug>(GitGutterUndoHunk)
     set signcolumn=yes
-    " " Language Server - go to definition
-    " nmap <Leader>d :LspDefinition<CR>
     " " Map <Leader>f to fzf fuzzy search for symbols in file
     " nnoremap <silent> <leader>t :call fzf#vim#files('',
   " \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
+
 
 " mappings - misc
     noremap <F4> :source ~/.vimrc<CR>
@@ -158,6 +161,13 @@
     let g:airline_section_y = ''
     let g:airline_section_z = ''
 
+" Dont let cscope plugin set keymaps automatically
+    let g:quickr_cscope_keymaps = 0
+
+" Quickscope only when fFtT pressed.
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
@@ -180,6 +190,9 @@
     autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " use latex instead of plaintex at all times
     let g:tex_flavor = "latex"
+
+" Close quickfix window with escape.
+    autocmd FileType qf nnoremap <buffer><silent> <esc> :quit<cr>
 
 " when having a visual selection: replace the selection by typing a variable name
 " and write variable = selection in the line above
@@ -230,7 +243,7 @@ let g:LanguageClient_serverCommands = {
 
 " Mappings for Language Server
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': ''})<CR>
 
@@ -262,13 +275,16 @@ nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': '
     " Fzf-Vim
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    " LSP
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Header file siwtch
-    Plug 'vim-scripts/a.vim'
+    " Plug 'sickill/vim-monokai'
+    Plug 'ronakg/quickr-cscope.vim'
+    Plug 'unblevable/quick-scope'       " Plug
+
     call plug#end()
 
 " Solarized color scheme
@@ -276,6 +292,7 @@ nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': '
     let g:solarized_termtrans=1
     syntax enable
     set background=dark
+    " colorscheme monokai
     colorscheme solarized
 
 " Stuff we have to do after everything else. (for whatever reason)
