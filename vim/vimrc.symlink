@@ -30,9 +30,6 @@
     "nnoremap <Leader>n :cn<CR>
     nnoremap <Leader>p :cp<CR>
 
-    nmap <Leader>d <plug>(quickr_cscope_symbols)
-
-
 "mappings - editing text
     " Swap the word the cursor is on with the next word (which can be on a
     " newline, and punctuation is "skipped"):
@@ -161,9 +158,6 @@
     let g:airline_section_y = ''
     let g:airline_section_z = ''
 
-" Dont let cscope plugin set keymaps automatically
-    let g:quickr_cscope_keymaps = 0
-
 " Quickscope only when fFtT pressed.
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -241,11 +235,22 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['/usr/bin/clangd-6.0'],
     \ }
 
+" Mappings for cscope
+    nmap <C-u>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-u>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-u>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-u>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-u>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-u>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+    nmap <C-u>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-u>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
+
+
 " Mappings for Language Server
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': ''})<CR>
+    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    " nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<CR>
+    nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': ''})<CR>
 
 
     call plug#begin('~/.local/share/nvim/plugged')
@@ -282,8 +287,9 @@ nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': '
         \ }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " Plug 'sickill/vim-monokai'
-    Plug 'ronakg/quickr-cscope.vim'
     Plug 'unblevable/quick-scope'       " Plug
+
+    Plug 'joe-skb7/cscope-maps'
 
     call plug#end()
 
