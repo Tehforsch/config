@@ -1,3 +1,2 @@
-alias vim='nvim'
 alias bw='ssh -X bwprod'
 alias apy='bash /home/toni/projects/arepy/shell/run.sh'
