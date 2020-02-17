@@ -80,9 +80,9 @@ bindsym $mod+s workspace 2:s
 bindsym $mod+d workspace 3:d
 bindsym $mod+f workspace 4:f
 bindsym $mod+g workspace 5:g
-bindsym $mod+less workspace 6:<
-bindsym $mod+y workspace 7:y
-bindsym $mod+x workspace 8:x
+bindsym $mod+less workspace 12:<
+bindsym $mod+y workspace 13:y
+bindsym $mod+x workspace 14:x
 
 # move focused container to workspace
 bindsym $mod+Shift+a move container to workspace 1:a; workspace 1:a
@@ -146,7 +146,7 @@ mode "$launch" {
     bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
-    bindsym t exec /home/toni/.apps/Telegram/Telegram; mode "default"
+    bindsym t exec telegram-desktop; mode "default"
     bindsym w exec $scripts/startChrome.sh --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
