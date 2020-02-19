@@ -28,6 +28,9 @@ DISABLE_AUTO_UPDATE=true
 source "$HOME/.aliases"
 source "$HOME/.localAliases"
 
+# Load env paths
+source ~/.profile
+
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -44,13 +47,6 @@ bindkey -s '^u' 'bg && disown && exit\n'
 bindkey -s '^g' '&!\n^z exit\n'
 # bind C-h ton run the command(\n), ^z to suspend and exit\n to close the current terminal. This only works if the command already has & or &! appended to it (which the commands in my history which i last started with Ctrl-g have).
 bindkey -s '^h' '\n^z exit\n'
-
-# add ~/.bin to PATH
-PATH="$PATH:$HOME/.bin"
-PATH="$PATH:$HOME/.trigger"
-PATH="$PATH:$HOME/.fd/target/release"
-PATH="$PATH:$HOME/.cargo/bin"
-PATH="$PATH:$HOME/.fzf/bin"
 
 TODO=$HOME/resource/todo
 
@@ -76,3 +72,4 @@ setopt inc_append_history
 vim_man() {
     'man' $1 | nvim -MR -
 }
+

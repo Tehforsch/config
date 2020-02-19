@@ -27,4 +27,6 @@ alias runlatex='$CONFIG/scripts/latexLayout.sh'
 alias runpython='$CONFIG/scripts/pythonLayout.sh'
 alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
-alias vim="echo 'youre trying to switch to spacemacs'"
+alias em="emacsclient -create-frame --alternate-editor=''"
+alias emacs="emacsclient -create-frame --alternate-editor=''"
+alias vim="emacsclient -create-frame --alternate-editor=''"
