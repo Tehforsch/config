@@ -158,8 +158,8 @@
     let g:airline_section_y = ''
     let g:airline_section_z = ''
 
-" Quickscope only when fFtT pressed.
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" " Quickscope only when fFtT pressed.
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 
 " internal vim features
