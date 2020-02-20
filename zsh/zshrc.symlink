@@ -28,9 +28,6 @@ DISABLE_AUTO_UPDATE=true
 source "$HOME/.aliases"
 source "$HOME/.localAliases"
 
-# Load env paths
-source ~/.profile
-
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'

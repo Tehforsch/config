@@ -27,6 +27,7 @@ alias runlatex='$CONFIG/scripts/latexLayout.sh'
 alias runpython='$CONFIG/scripts/pythonLayout.sh'
 alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
-alias em="emacsclient -create-frame --alternate-editor=''"
+alias vim="echo 'youre trying to switch!'; sleep 3; vim"
 alias emacs="emacsclient -create-frame --alternate-editor=''"
-alias vim="emacsclient -create-frame --alternate-editor=''"
+alias em="emacsclient -create-frame --alternate-editor=''"
+alias temacs="/usr/bin/emacs"
