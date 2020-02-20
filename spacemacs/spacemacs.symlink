@@ -31,31 +31,30 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     markdown
+     javascript
      python
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      helm
-     ;; auto-completion
-     ;; better-defaults
+     auto-completion
+     better-defaults
      emacs-lisp
-     ;; git
-     ;; markdown
-     ;; org
+     git
+     markdown
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      tabbar
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -313,12 +312,92 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; Make C-w delete a word when instead of autocompleting in helm.
-  ;; (define-key helm-map (kbd "C-w") 'evil-delete-backward-word)
-  (global-hl-line-mode -1) ; Disable current line highlight
-  (smartparens-global-mode -1) ; Disable closing parantheses automatically
-  (setq initial-buffer-choice t)
+  ; Make C-w delete a word when instead of autocompleting in helm.
+                                        ; (define-key helm-map (k
+  (with-eval-after-load 'company
+    (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
   )
+  (with-eval-after-load 'helm
+    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word)
+  )
+  (global-hl-line-mode -1) ; Disable current line highlight
+  (smartparens-global-mode 1) ; Disable closing parantheses automatically
+  (setq initial-buffer-choice t) ; Change initial buffer? Doesnt seem to work honestly
+  (setq vc-follow-symlinks t) ; Follow symlinks automatically instead of prompting
+  (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+  (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+
+  (defun save-buffer-always ()
+    "Save the buffer even if it is not modified."
+    (interactive)
+    (set-buffer-modified-p t)
+    (save-buffer)
+  )
+  ;; Make sure save-buffer-always doesnt ruin . key state from evil
+  (evil-declare-abort-repeat 'save-buffer-always)
+  (spacemacs/set-leader-keys "f s" 'save-buffer-always)
+
+  (setq projectile-project-search-path '("~/projects/"))
+
+  ;; Backup folder
+  (setq backup-directory-alist `(("." . "~/.emacsSaves")))
+
+  ;; Spaceline configuration
+  ;; (spaceline-toggle-buffer-id-on)
+  ;; (spaceline-toggle-major-mode-on)
+  (spaceline-toggle-buffer-id-off)
+  (spaceline-toggle-major-mode-off)
+
+  (spaceline-toggle-minor-modes-off)
+
+  (spaceline-toggle-anzu-off)
+  (spaceline-toggle-auto-compile-off)
+  (spaceline-toggle-battery-off)
+  (spaceline-toggle-buffer-encoding-abbrev-off)
+  (spaceline-toggle-buffer-modified-off)
+  (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-buffer-size-off)
+  (spaceline-toggle-erc-track-off)
+  (spaceline-toggle-evil-state-off)
+  (spaceline-toggle-flycheck-error-off)
+  (spaceline-toggle-flycheck-info-off)
+  (spaceline-toggle-flycheck-warning-off)
+  (spaceline-toggle-global-off)
+  (spaceline-toggle-helm-buffer-id-off)
+  (spaceline-toggle-helm-follow-off)
+  (spaceline-toggle-helm-help-off)
+  (spaceline-toggle-helm-number-off)
+  (spaceline-toggle-helm-prefix-argument-off)
+  (spaceline-toggle-hud-off)
+  (spaceline-toggle-info-nodes-off)
+  (spaceline-toggle-info-topic-off)
+  (spaceline-toggle-input-method-off)
+  (spaceline-toggle-line-column-off)
+  (spaceline-toggle-nyan-cat-off)
+  (spaceline-toggle-org-clock-off)
+  (spaceline-toggle-org-pomodoro-off)
+  (spaceline-toggle-paradox-menu-off)
+  (spaceline-toggle-persp-name-off)
+  (spaceline-toggle-point-position-off)
+  (spaceline-toggle-process-off)
+  (spaceline-toggle-python-pyenv-off)
+  (spaceline-toggle-python-pyvenv-off)
+  (spaceline-toggle-remote-host-off)
+  (spaceline-toggle-selection-info-off)
+  (spaceline-toggle-version-control-off)
+  (spaceline-toggle-which-function-on)
+  (spaceline-toggle-window-number-off)
+  (spaceline-toggle-workspace-number-off)
+
+  (setq tabbar-ruler-global-tabbar t)     ; get tabbar
+  
+  (setq-default dotspacemacs-editing-style '(vim :variables
+                                                 vim-style-visual-feedback nil
+                                                 vim-style-remap-Y-to-y$ t
+                                                 vim-style-retain-visual-state-on-shift t
+                                                 vim-style-visual-line-move-text nil
+                                                 vim-style-ex-substitute-global nil))
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -329,7 +408,8 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode anaconda-mode pythonic ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-tern company-statistics company-anaconda company auto-yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md tabbar powerline highlight-parentheses evil-search-highlight-persist highlight yapfify ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tern spaceline restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word cython-mode column-enforce-mode color-theme-sanityinc-solarized coffee-mode clean-aindent-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
