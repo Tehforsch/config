@@ -1,0 +1,5 @@
+PATH="$PATH:$HOME/.bin"
+PATH="$PATH:$HOME/.trigger"
+PATH="$PATH:$HOME/.fd/target/release"
+PATH="$PATH:$HOME/.cargo/bin"
+PATH="$PATH:$HOME/.fzf/bin"

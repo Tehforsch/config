@@ -112,7 +112,6 @@ bindsym $mod+Shift+z move container to workspace 11:zotero; workspace 11:zotero
 # Move workspaces between monitors
 bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
-bindsym $mod+space move workspace to output right
 
 bindsym Mod1+o mode "resize"
 mode "resize" {
