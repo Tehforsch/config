@@ -99,7 +99,7 @@
   "fs" 'save-buffer-always
   "ff" 'helm-find-files
   "b" '(:which-key "Buffer")
-  "bf" 'helm-switch-buffer
+  "bf" 'helm-buffers-list
 )
 
 ; Always follow symlinks without asking
@@ -128,7 +128,7 @@
     (add-hook 'prog-mode-hook 'linum-mode)
   (add-hook 'prog-mode-hook 'enable-line-numbers))
 
-; Hide menu bar
+;; Hide menu bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
