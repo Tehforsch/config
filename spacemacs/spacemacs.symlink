@@ -17,16 +17,16 @@
      cscope
      org-roam
      syntax-checking
-     ;; '((deft :variables deft-zetteldeft t))
-     ;; auto-completion
-     )
+     deft
+      ;; auto-completion
+   )
    dotspacemacs-additional-packages '(
-                                      )
+   )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
-                                    evil-search-highlight-persist
-                                    highlight-parentheses
-                                    )
+        evil-search-highlight-persist
+        highlight-parentheses
+   )
    dotspacemacs-install-packages 'used-only)
 )
 
@@ -43,9 +43,18 @@
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
+   ;; Some defaults that need to stay here
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-ex-command-key ":"
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; Actual changed settings
    dotspacemacs-remap-Y-to-y$ t
-   dotspacemacs-retain-visual-state-on-shift 'nil
+   dotspacemacs-retain-visual-state-on-shift nil
    dotspacemacs-ex-substitute-global t
+   dotspacemacs-default-layout-name "Default"
    dotspacemacs-large-file-size 50
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-enable-paste-transient-state t
@@ -76,17 +85,15 @@
   (global-hl-line-mode -1)
 
   ;; Disable smartparens while still keeping it around for Spacemacs to use
-  (smartparens-global-mode 1)
   (eval-after-load 'smartparens
     '(progn
-       (sp-pair "(" nil :actions :rem)
-       (sp-pair "[" nil :actions :rem)
-       (sp-pair "{" nil :actions :rem)
-       (sp-pair "'" nil :actions :rem)
-       (sp-pair "\"" nil :actions :rem)
+       (sp-pair "(" nil :actions '(:rem insert))
+       (sp-pair "[" nil :actions '(:rem insert))
+       (sp-pair "'" nil :actions '(:rem insert))
+       (sp-pair "\"" nil :actions '(:rem insert))
+       (sp-pair "{" nil :post-handlers '(:add ("||\n[i]" "RET")))
        )
     )
-
   ; Follow symlinks automatically instead of prompting
   (setq vc-follow-symlinks t) 
 
@@ -110,11 +117,22 @@
   ;; Backup folder
   (setq backup-directory-alist `(("." . "~/.emacsSaves")))
 
-  ; Org/deft settings
+  ; Org settings
+  (setq org-startup-truncated nil)
+  (setq deft-extensions '("org" "txt"))
+  (setq deft-default-extension "org")
+  (setq deft-directory "~/resource/org/notes")
   (setq org-directory "~/resource/org")
-  (setq deft-directory (concat org-directory "/notes"))
-  (setq deft-extensions '("org" "md" "txt"))
-  (setq def-recursive t)
+  (setq deft-recursive t)
+  (setq deft-use-filename-as-title nil)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-naming-rules '((nospace . "-")))
+
+  (spacemacs/set-leader-keys "n" nil)
+  (spacemacs/declare-prefix "n" "notes")
+  (spacemacs/set-leader-keys "na" 'deft-new-file)
+  (spacemacs/set-leader-keys "nf" 'deft)
+  
 
   ;; Spaceline configuration
   ;; (spaceline-toggle-buffer-id-on)
@@ -164,9 +182,17 @@
 )
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zetteldeft deft org-roam yasnippet-snippets helm-cscope xcscope disaster company-c-headers cmake-mode clang-format helm-gtags ggtags unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-tern company-statistics company-anaconda company auto-yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md tabbar powerline highlight-parentheses evil-search-highlight-persist highlight yapfify ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tern spaceline restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word cython-mode column-enforce-mode color-theme-sanityinc-solarized coffee-mode clean-aindent-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (spinner skewer-mode simple-httpd json-snatcher json-reformat yasnippet multiple-cursors js2-mode hydra lv dash-functional parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree bind-map bind-key packed pythonic f dash s helm avy helm-core popup async zetteldeft deft org-roam yasnippet-snippets helm-cscope xcscope disaster company-c-headers cmake-mode clang-format helm-gtags ggtags unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-tern company-statistics company-anaconda company auto-yasnippet ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md tabbar powerline highlight-parentheses evil-search-highlight-persist highlight yapfify ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tern spaceline restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word cython-mode column-enforce-mode color-theme-sanityinc-solarized coffee-mode clean-aindent-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
