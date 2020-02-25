@@ -1,0 +1,128 @@
+; The custom-file is where emacs writes its weird package configurations. I dont want this in my own dotfile because its ugly and messes up version control.
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
+
+(require 'package)
+; Add MELPA sources
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+; (package-refresh-contents)
+
+(unless (package-installed-p 'general)
+  (package-install 'general))
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+(unless (package-installed-p 'evil-numbers)
+  (package-install 'evil-numbers))
+(unless (package-installed-p 'evil-surround)
+  (package-install 'evil-surround))
+(unless (package-installed-p 'evil-commentary)
+  (package-install 'evil-commentary))
+(unless (package-installed-p 'helm)
+  (package-install 'helm))
+(unless (package-installed-p 'gruvbox-theme)
+  (package-install 'gruvbox-theme))
+(unless (package-installed-p 'which-key)
+  (package-install 'which-key))
+
+(require 'evil)
+(require 'evil-numbers)
+(require 'evil-commentary)
+(require 'general)
+(require 'helm)
+(require 'gruvbox-theme)
+(require 'which-key)
+
+; Turn which key mode on because its awesome
+(which-key-mode)
+
+;;; EVIL
+(setq evil-want-C-i-jump nil)
+
+(evil-mode 1)
+; Always use evil
+(setq evil-emacs-state-modes nil)
+(setq evil-insert-state-modes nil)
+(setq evil-motion-state-modes nil)
+
+; Always be in commentary mode
+(evil-commentary-mode)
+
+; Make Y yank to EOL instead of an effective remap of yy
+(setq evil-want-Y-yank-to-eol t)
+
+(general-evil-setup t)
+(general-create-definer my-leader-def :prefix "SPC")
+
+; Make C-w delete a word when instead of autocompleting in helm
+(with-eval-after-load 'company (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
+(with-eval-after-load 'helm (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
+
+; C-c + and C-c - to indent / decrease numbers as in vim but with different key bindings
+(global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+
+; Make substitution global by default (reverse meaning of appending g at end of substitution)
+(setq evil-ex-substitute-global t)
+
+; Important for triggering inotify events: save even when not modified
+(defun save-buffer-always ()
+    "Save the buffer even if it is not modified."
+    (interactive)
+    (set-buffer-modified-p t)
+    (save-buffer)
+)
+; Make sure save-buffer-always doesnt ruin . key state from evil. Not sure if this is actually all that important but someone mentioned it so whatever
+(evil-declare-abort-repeat 'save-buffer-always)
+
+; Backup folder
+(setq backup-directory-alist `(("." . "~/.emacsSaves")))
+
+; Org settings
+; (setq org-startup-truncated nil)
+; (setq deft-extensions '("org" "txt"))
+; (setq deft-default-extension "org")
+; (setq deft-directory "~/resource/org/notes")
+; (setq org-directory "~/resource/org")
+; (setq deft-recursive t)
+; (setq deft-use-filename-as-title nil)
+; (setq deft-use-filter-string-for-filename t)
+; (setq deft-file-naming-rules '((nospace . "-")))
+
+(general-evil-define-key 'normal 'global :prefix "SPC"
+  "x" 'helm-M-x
+  "f" '(:which-key "File")
+  "fs" 'save-buffer-always
+  "ff" 'helm-find-files
+  "b" '(:which-key "Buffer")
+  "bf" 'helm-switch-buffer
+)
+
+; Always follow symlinks without asking
+(setq vc-follow-symlinks t)
+
+; No wrapping of text
+(setq-default truncate-lines t)
+
+; Show line numbers
+(add-hook 'prog-mode-hook 'column-number-mode)
+(defun enable-line-numbers ()
+  (setq display-line-numbers t))
+(if (< emacs-major-version 26)
+    (add-hook 'prog-mode-hook 'linum-mode)
+  (add-hook 'prog-mode-hook 'enable-line-numbers))
+
+; Hide menu bar
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+; Hide startup splash screen
+(setq inhibit-startup-message t) 
+(setq initial-scratch-message nil)
+
+; Color theme: gruvbox
+(load-theme 'gruvbox t)
+
+; Use spaces of course, dont be a maniac and use tabs
+(setq-default indent-tabs-mode nil)
