@@ -263,7 +263,7 @@ let g:LanguageClient_serverCommands = {
     " Exchange with cx<operator>
     Plug 'tommcdo/vim-exchange'
     " Solarized Colorscheme
-    Plug 'altercation/vim-colors-solarized'
+    Plug 'morhetz/gruvbox'
     " Status line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -298,8 +298,7 @@ let g:LanguageClient_serverCommands = {
     let g:solarized_termtrans=1
     syntax enable
     set background=dark
-    " colorscheme monokai
-    colorscheme solarized
+    colorscheme gruvbox
 
 " Stuff we have to do after everything else. (for whatever reason)
     " Hide status (insert etc.) because its done by airline
