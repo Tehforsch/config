@@ -2,55 +2,99 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+; Load package
 (require 'package)
-; Add MELPA sources
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+    '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-; (package-refresh-contents)
 
-(unless (package-installed-p 'general)
-  (package-install 'general))
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
-(unless (package-installed-p 'evil-numbers)
-  (package-install 'evil-numbers))
-(unless (package-installed-p 'evil-surround)
-  (package-install 'evil-surround))
-(unless (package-installed-p 'evil-commentary)
-  (package-install 'evil-commentary))
-(unless (package-installed-p 'helm)
-  (package-install 'helm))
-(unless (package-installed-p 'gruvbox-theme)
-  (package-install 'gruvbox-theme))
-(unless (package-installed-p 'which-key)
-  (package-install 'which-key))
+; Load use-package
+(unless (package-installed-p 'use-package) (package-install 'use-package))
+(eval-when-compile (require 'use-package))
 
-(require 'evil)
-(require 'evil-numbers)
-(require 'evil-commentary)
-(require 'general)
-(require 'helm)
-(require 'gruvbox-theme)
-(require 'which-key)
+(setq use-package-always-ensure t)
 
-; Turn which key mode on because its awesome
-(which-key-mode)
+; Load straight
+(defvar bootstrap-version)
+(let ((bootstrap-file
+    (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+    (bootstrap-version 5))
+(unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+(load bootstrap-file nil 'nomessage))
 
-;;; EVIL
+; Load packages
+(use-package evil)
 (setq evil-want-C-i-jump nil)
-
 (evil-mode 1)
 ; Always use evil
-(setq evil-emacs-state-modes nil)
+(setq evil-emacs-state-odes nil)
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
-
-; Always be in commentary mode
-(evil-commentary-mode)
-
 ; Make Y yank to EOL instead of an effective remap of yy
 (setq evil-want-Y-yank-to-eol t)
+
+(use-package evil-numbers)
+
+(use-package evil-surround
+    :config
+    ; Remap S to surround instead of ys, S is usually replace entire line which i never use (theres cc for that)
+    (evil-define-key 'normal evil-surround-mode-map "S" 'evil-surround-region)
+)
+(global-evil-surround-mode 1)
+
+(use-package evil-commentary)
+(evil-commentary-mode)
+
+(use-package general)
+
+(use-package ivy
+    :config
+    (ivy-mode 1)
+    (define-key ivy-minibuffer-map (kbd "<C-return>") 'ivy-immediate-done)
+)
+
+(use-package helm)
+
+(use-package projectile)
+
+(use-package helm-projectile)
+
+(use-package gruvbox-theme)
+
+(use-package which-key
+    :config
+    (which-key-mode)
+    (setq which-key-idle-delay 0.1)
+)
+
+(use-package org-roam
+    :hook 
+    (after-init . org-roam-mode)
+    :straight (:host github :repo "jethrokuan/org-roam" :branch "develop")
+    :custom
+    (org-roam-directory "~/resource/org/roam")
+    ; Use only the id as filename, not the title
+)
+    (defun my-org-roam-no-timestamp-in-title (title)
+        (let ((slug (org-roam--title-to-slug title)))
+        (format "%s" slug)))
+    (setq org-roam-templates
+        (list (list "default" (list :file #'my-org-roam-no-timestamp-in-title
+    :content "#+TITLE: ${title}"))))
+
+(use-package deft
+    :custom
+    (deft-recursive t)
+    (deft-use-filter-string-for-filename t)
+    (deft-default-extension "org")
+    (deft-directory "~/resource/org/roam")
+)
 
 (general-evil-setup t)
 (general-create-definer my-leader-def :prefix "SPC")
@@ -62,9 +106,28 @@
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
 
+; More things escape properly, stolen from https://github.com/davvil/.emacs.d/blob/master/init.el
+(defun minibuffer-keyboard-quit ()
+  "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'evil-exit-emacs-state)
+
 ; C-c + and C-c - to indent / decrease numbers as in vim but with different key bindings
-(global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
-(global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+(global-set-key (kbd "C-c -") 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-c +") 'evil-numbers/dec-at-pt)
 
 ; Make substitution global by default (reverse meaning of appending g at end of substitution)
 (setq evil-ex-substitute-global t)
@@ -81,26 +144,27 @@
 
 ; Backup folder
 (setq backup-directory-alist `(("." . "~/.emacsSaves")))
-
-; Org settings
-; (setq org-startup-truncated nil)
-; (setq deft-extensions '("org" "txt"))
-; (setq deft-default-extension "org")
-; (setq deft-directory "~/resource/org/notes")
-; (setq org-directory "~/resource/org")
-; (setq deft-recursive t)
-; (setq deft-use-filename-as-title nil)
-; (setq deft-use-filter-string-for-filename t)
-; (setq deft-file-naming-rules '((nospace . "-")))
+(setq create-lockfiles nil)
 
 (general-evil-define-key 'normal 'global :prefix "SPC"
-  "x" 'helm-M-x
-  "f" '(:which-key "File")
-  "fs" 'save-buffer-always
-  "ff" 'helm-find-files
-  "b" '(:which-key "Buffer")
-  "bf" 'helm-buffers-list
+    "x" 'helm-M-x
+    "f" '(:which-key "File")
+    "fs" 'save-buffer-always
+    "fb" 'helm-find-files
+    "ff" 'helm-projectile-find-file
+    "b" '(:which-key "Buffer")
+    "bf" 'helm-buffers-list
+    "bp" 'next-buffer
+    "bn" 'previous-buffer
+    "n" '(:which-key "Notes/Todo")
+    "na" 'org-roam-find-file
+    "ng" 'org-roam-show-graph
+    "ni" 'org-roam-insert
+    "q" 'kill-emacs
 )
+
+;Do not truncate lines in org mode
+(setq org-startup-truncated nil)
 
 ; Always follow symlinks without asking
 (setq vc-follow-symlinks t)
@@ -118,23 +182,28 @@
 
 
 ; No wrapping of text
-(setq-default truncate-lines t)
+(setq-default truncate-lines nil)
 
 ; Show line numbers
 (add-hook 'prog-mode-hook 'column-number-mode)
 (defun enable-line-numbers ()
-  (setq display-line-numbers t))
+    (setq display-line-numbers t))
 (if (< emacs-major-version 26)
     (add-hook 'prog-mode-hook 'linum-mode)
-  (add-hook 'prog-mode-hook 'enable-line-numbers))
+    (add-hook 'prog-mode-hook 'enable-line-numbers)
+)
 
-;; Hide menu bar
+;; Graphical settings
+; Hide menu bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
 ; Hide startup splash screen
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
+
+; Stop cursor from blinking
+(blink-cursor-mode 0)
 
 ; Color theme: gruvbox
 (load-theme 'gruvbox-dark-hard t)
