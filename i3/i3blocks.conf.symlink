@@ -3,11 +3,6 @@ command=bash ~/projects/config/scripts/timer/showTimers.sh
 color=#fdf6e3
 interval=1
 
-[jobs]
-command=bash ~/projects/config/scripts/i3GetJobStatus.sh
-color=#fdf6e3
-interval=300
-
 #[weather]
 #command=curl 'wttr.in/49.414300,8.694484?format=%t+%h'
 #interval=120
