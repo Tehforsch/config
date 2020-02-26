@@ -61,6 +61,8 @@
 
 (use-package helm)
 
+(use-package helm-ag)
+
 (use-package projectile)
 
 (use-package helm-projectile)
@@ -148,18 +150,20 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (general-evil-define-key 'normal 'global :prefix "SPC"
     "x" 'helm-M-x
-    "f" '(:which-key "File")
-    "fs" 'save-buffer-always
-    "fb" 'helm-find-files
-    "ff" 'helm-projectile-find-file
     "b" '(:which-key "Buffer")
+    "bd" 'kill-buffer
     "bf" 'helm-buffers-list
     "bp" 'next-buffer
     "bn" 'previous-buffer
+    "f" '(:which-key "File")
+    "fa" 'helm-projectile-ag
+    "fs" 'save-buffer-always
+    "ff" 'helm-projectile-find-file
     "n" '(:which-key "Notes/Todo")
     "na" 'org-roam-find-file
     "ng" 'org-roam-show-graph
     "ni" 'org-roam-insert
+    "p" '(:which-key "Project")
     "q" 'kill-emacs
 )
 
