@@ -90,12 +90,6 @@
     (org-roam-directory "~/resource/org/roam")
     ; Use only the id as filename, not the title
 )
-    (defun my-org-roam-no-timestamp-in-title (title)
-        (let ((slug (org-roam--title-to-slug title)))
-        (format "%s" slug)))
-    (setq org-roam-templates
-        (list (list "default" (list :file #'my-org-roam-no-timestamp-in-title
-    :content "#+TITLE: ${title}"))))
 
 (use-package deft
     :custom
@@ -111,9 +105,11 @@
 ; Make C-w delete a word when instead of autocompleting in helm
 (with-eval-after-load 'company (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
 (with-eval-after-load 'helm (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
-; Make C-j and C-k go down/up in helm
+; Make C-j and C-k go down/up in helm/ivy
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
+(define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+(define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 
 ; More things escape properly, stolen from https://github.com/davvil/.emacs.d/blob/master/init.el
 (defun minibuffer-keyboard-quit ()
@@ -133,7 +129,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
-(define-key ivy-minibuffer-map (kbd "<ESC>") 'minibuffer-keyboard-quit)
+(define-key ivy-minibuffer-map [escape] 'minibuffer-keyboard-quit)
 
 ; C-c + and C-c - to indent / decrease numbers as in vim but with different key bindings
 (global-set-key (kbd "C-c -") 'evil-numbers/inc-at-pt)
