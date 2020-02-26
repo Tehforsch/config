@@ -39,6 +39,15 @@
 ; Make Y yank to EOL instead of an effective remap of yy
 (setq evil-want-Y-yank-to-eol t)
 
+; Make pasting in visual mode not replace the current killring
+(defun evil-paste-after-from-0 ()
+  (interactive)
+  (let ((evil-this-register ?0))
+    (call-interactively 'evil-paste-after)))
+
+(define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
+
+
 (use-package evil-numbers)
 
 (use-package evil-surround
