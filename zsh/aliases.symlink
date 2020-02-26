@@ -28,6 +28,8 @@ alias runpython='$CONFIG/scripts/pythonLayout.sh'
 alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
 alias vim="echo 'youre trying to switch!'; sleep 3; vim"
-alias emacs="emacsclient -create-frame --alternate-editor=''"
-alias em="emacsclient -create-frame --alternate-editor=''"
-alias temacs="/usr/bin/emacs"
+# alias emacs="/usr/bin/emacsclient26 -create-frame --alternate-editor=''"
+# alias em="/usr/bin/emacsclient26 -create-frame --alternate-editor=''"
+alias emacs="/usr/bin/emacs26"
+alias em="/usr/bin/emacs26"
+alias temacs="/usr/bin/emacs26"
