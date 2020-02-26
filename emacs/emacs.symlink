@@ -137,7 +137,7 @@
 (setq initial-scratch-message nil)
 
 ; Color theme: gruvbox
-(load-theme 'gruvbox t)
+(load-theme 'gruvbox-dark-hard t)
 
 ; Use spaces of course, dont be a maniac and use tabs
 (setq-default indent-tabs-mode nil)
