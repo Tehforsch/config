@@ -170,6 +170,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "bn" 'previous-buffer
     "f" '(:which-key "File")
     "fs" 'save-buffer-always
+    "fo" 'projectile-find-other-file
     "ff" 'helm-projectile-find-file
     "n" '(:which-key "Notes/Todo")
     "na" 'org-roam-find-file
