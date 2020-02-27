@@ -59,6 +59,9 @@
 )
 (global-evil-surround-mode 1)
 
+(use-package evil-exchange)
+(evil-exchange-install)
+
 (use-package evil-commentary)
 (evil-commentary-mode)
 
@@ -84,6 +87,8 @@
 (projectile-discover-projects-in-search-path)
 
 (use-package helm-projectile)
+
+(use-package hydra)
 
 (use-package gruvbox-theme)
 
@@ -163,20 +168,27 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq backup-directory-alist `(("." . "~/.emacsSaves")))
 (setq create-lockfiles nil)
 
+(defhydra hydra-switch-buffer ()
+  "Switch buffer"
+  ("n" next-buffer)
+  ("p" previous-buffer)
+)
+
 (general-evil-define-key 'normal 'global :prefix "SPC"
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
     "bd" 'kill-buffer
     "bf" 'smart-list-buffers
-    "bp" 'next-buffer
-    "bn" 'previous-buffer
+    ; Move to next/previous buffer but stay in buffer switching mode
+    "bp" '(lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body))
+    "bn" '(lambda () (interactive) (next-buffer) (hydra-switch-buffer/body))
     "f" '(:which-key "File")
     "fs" 'save-buffer-always
     "fo" 'projectile-find-other-file
     "ff" 'smart-list-files
     "n" '(:which-key "Notes/Todo")
-    "na" 'org-roam-find-file
-    "ng" 'org-roam-show-graph
+    "nf" 'org-roam-find-file
+    "ng" 'org-roam-open-at-point
     "ni" 'org-roam-insert
     "p" '(:which-key "Project")
     "pa" 'helm-projectile-ag
