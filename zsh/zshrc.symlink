@@ -1,32 +1,28 @@
 # This sets some paths such as where the CONFIG folder lies. Makes it easier to use on other machines without getting confused
 source "$HOME/.localConfig"
+# Aliases and machine-local aliases
+source "$HOME/.aliases"
+source "$HOME/.localAliases"
+
 # load zgen
 source "$CONFIG/zgen/zgen.zsh"
-
 # if the init scipt doesn't exist
 if ! zgen saved; then
     echo "Creating a zgen save"
-
     zgen oh-my-zsh
-
     # plugins
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/fasd
     zgen load zsh-users/zsh-completions src
-
     # theme
     zgen oh-my-zsh themes/blinks
-
     # save all to init script
     zgen save
 fi
 
-#Disable zgen auto update
+plugins=(zsh-autosuggestions)
+# Disable zgen autoupdate
 DISABLE_AUTO_UPDATE=true
-## Misc settings
-# Load aliases
-source "$HOME/.aliases"
-source "$HOME/.localAliases"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -38,27 +34,6 @@ LISTMAX=0
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
 
-# Binding to close the terminal with a process running in it without killing the process
-bindkey -s '^u' 'bg && disown && exit\n'
-# bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
-bindkey -s '^g' '&!\n^z exit\n'
-# bind C-h ton run the command(\n), ^z to suspend and exit\n to close the current terminal. This only works if the command already has & or &! appended to it (which the commands in my history which i last started with Ctrl-g have).
-bindkey -s '^h' '\n^z exit\n'
-
-TODO=$HOME/resource/todo
-
-# Magically make converting utf-8 buffers to string and then printing them work
-export PYTHONIOENCODING="utf-8"
-
-source ~/.fzf.zsh
-
-# Use fd for fzf
-export FZF_DEFAULT_COMMAND="fd --follow"
-export FZF_CTRL_T_COMMAND="fd --follow -I"
-# export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
-# Show a preview of the file while using Ctrl-T (mostly because its cool)
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-
 # Remove duplicates
 setopt HIST_IGNORE_ALL_DUPS
 # Allow sharing of history
@@ -66,7 +41,21 @@ setopt append_history
 setopt share_history
 setopt inc_append_history
 
-vim_man() {
-    'man' $1 | nvim -MR -
-}
+# Binding to close the terminal with a process running in it without killing the process
+bindkey -s '^u' 'bg && disown && exit\n'
+# bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
+bindkey -s '^g' '&!\n^z exit\n'
+# bind C-h ton run the command(\n), ^z to suspend and exit\n to close the current terminal. This only works if the command already has & or &! appended to it (which the commands in my history which i last started with Ctrl-g have).
+bindkey -s '^h' '\n^z exit\n'
 
+# Magically make converting utf-8 buffers to string and then printing them work
+export PYTHONIOENCODING="utf-8"
+
+# Fd settings
+source ~/.fzf.zsh
+# Use fd for fzf
+export FZF_DEFAULT_COMMAND="fd --follow"
+export FZF_CTRL_T_COMMAND="fd --follow -I"
+# export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
+# Show a preview of the file while using Ctrl-T (mostly because its cool)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
