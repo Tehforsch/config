@@ -8,6 +8,8 @@
     '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+; Refresh on first install
+(unless (package-installed-p 'use-package) (package-refresh-contents))
 ; Load use-package
 (unless (package-installed-p 'use-package) (package-install 'use-package))
 (eval-when-compile (require 'use-package))
