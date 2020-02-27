@@ -21,7 +21,7 @@ if ! zgen saved; then
     zgen save
 fi
 
-plugins=(zsh-autosuggestions)
+plugins=()
 # Disable zgen autoupdate
 DISABLE_AUTO_UPDATE=true
 
