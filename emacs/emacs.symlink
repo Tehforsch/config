@@ -167,13 +167,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
     "bd" 'kill-buffer
-    "bf" 'helm-projectile-switch-to-buffer
+    "bf" 'smart-list-buffers
     "bp" 'next-buffer
     "bn" 'previous-buffer
     "f" '(:which-key "File")
     "fs" 'save-buffer-always
     "fo" 'projectile-find-other-file
-    "ff" 'helm-projectile-find-file
+    "ff" 'smart-list-files
     "n" '(:which-key "Notes/Todo")
     "na" 'org-roam-find-file
     "ng" 'org-roam-show-graph
@@ -184,7 +184,25 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "q" 'kill-emacs
 )
 
-;Do not truncate lines in org mode
+(defun smart-list-buffers ()
+  "Call `helm-projectile-switch-to-buffer' if in projectile project, otherwise fall back to `helm-buffers-list'."
+    (interactive)
+    (if (projectile-project-p)
+        (helm-projectile-switch-to-buffer)
+        (helm-buffers-list)
+    )
+)
+
+(defun smart-list-files ()
+    "Call `helm-projectile-find-file' if in projectile project, otherwise fall back to `helm-find-files'."
+    (interactive)
+    (if (projectile-project-p)
+        (helm-projectile-find-file)
+        (helm-find-files ".")
+    )
+)
+
+; Do not truncate lines in org mode
 (setq org-startup-truncated nil)
 
 ; Always follow symlinks without asking
