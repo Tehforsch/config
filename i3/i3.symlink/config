@@ -98,15 +98,15 @@ bindsym $mod+Shift+x move container to workspace 14:x; workspace 14:x
 bindsym $mod+v workspace 6:music
 bindsym $mod+c workspace 7:chat
 bindsym $mod+b workspace 8:todo
-bindsym $mod+n workspace 9:mail
-bindsym $mod+m workspace 10:gmail
+bindsym $mod+n workspace 9:notes
+bindsym $mod+m workspace 10:mail
 bindsym $mod+z workspace 11:zotero
 
 bindsym $mod+Shift+v move container to workspace 6:music; workspace 6:music
 bindsym $mod+Shift+c move container to workspace 7:chat; workspace 7:chat
 bindsym $mod+Shift+b move container to workspace 8:todo; workspace 8:todo
-bindsym $mod+Shift+n move container to workspace 9:mail; workspace 9:mail
-bindsym $mod+Shift+m move container to workspace 10:gmail; workspace 10:gmail
+bindsym $mod+Shift+n move container to workspace 9:notes; workspace 9:notes
+bindsym $mod+Shift+m move container to workspace 10:mail; workspace 10:mail
 bindsym $mod+Shift+z move container to workspace 11:zotero; workspace 11:zotero
 
 # Move workspaces between monitors
@@ -139,14 +139,14 @@ mode "$launch" {
     # start dmenu (a program launcher)
     bindsym a exec ~/.bin/anki; mode "default"
     bindsym c exec $scripts/startChrome.sh; mode "default"
-    bindsym e exec emacs; mode "default"
+    bindsym e exec /usr/bin/emacs26; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
     bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
-    bindsym t exec telegram-desktop; mode "default"
+    bindsym t exec ~/.apps/Telegram/Telegram; mode "default"
     bindsym w exec $scripts/startChrome.sh --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
@@ -195,8 +195,6 @@ bar {
     output eDP-1
     output DP-1-3
     strip_workspace_numbers yes
-    status_command i3blocks
-}
 }
 
 #Disable window titles
@@ -223,19 +221,19 @@ bindsym Ctrl+Shift+S exec "mpc toggle"
 bindsym Ctrl+Shift+A exec "mpc prev"
 bindsym Ctrl+Shift+D exec "mpc next"
 
-workspace "1:a" output DP-2
-workspace "2:s" output DP-2
-workspace "3:d" output DP-2
-workspace "4:f" output DP-2
-workspace "5:g" output DP-2
-workspace "5:g" output DP-1-3
-workspace "12:<" output eDP1
-workspace "13:y" output eDP1
-workspace "14:x" output eDP1
-workspace "12:<" output eDP-1
-workspace "13:y" output eDP-1
-workspace "14:x" output eDP-1
-workspace "1:a" output HDMI-1
+# workspace "1:a" output DP-2
+# workspace "2:s" output DP-2
+# workspace "3:d" output DP-2
+# workspace "4:f" output DP-2
+# workspace "5:g" output DP-2
+# workspace "5:g" output DP-1-3
+# workspace "12:<" output eDP1
+# workspace "13:y" output eDP1
+# workspace "14:x" output eDP1
+# workspace "12:<" output eDP-1
+# workspace "13:y" output eDP-1
+# workspace "14:x" output eDP-1
+# workspace "1:a" output HDMI-1
 
 # Startup
 exec_always --no-startup-id $i3ContextsServer
