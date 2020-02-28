@@ -13,19 +13,25 @@ i3-msg append_layout ~/projects/config/i3/restore/todoist.json
 $scripts/startChrome.sh --new-window todoist.com&
 sleep 2.0
 
+# NOTES
+i3-msg workspace 9:notes
+i3-msg append_layout ~/projects/config/i3/restore/notes.json
+/usr/bin/emacs26&
+sleep 0.3
+
 # THUNDERBIRD
 if [[ $systemName == "ita" ]]; then
-    i3-msg workspace 9:mail
+    i3-msg workspace 10:mail
     i3-msg append_layout ~/projects/config/i3/restore/thunderbird.json
     thunderbird&
     sleep 0.8
+else
+    # GMAIL
+    i3-msg append_layout ~/projects/config/i3/restore/gmail.json
+    $scripts/startChrome.sh --new-window mail.google.com&
+    sleep 0.8
 fi
 
-# GMAIL
-i3-msg workspace 10:gmail
-i3-msg append_layout ~/projects/config/i3/restore/gmail.json
-$scripts/startChrome.sh --new-window mail.google.com&
-sleep 0.8
 
 # ZOTERO
 i3-msg workspace 11:zotero
