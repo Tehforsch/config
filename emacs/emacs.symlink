@@ -43,7 +43,8 @@
 ; Disable search from wrapping around the buffer (wrapscan=false)
 (setq evil-search-wrap nil)
 ; Make pasting in visual mode not replace the current killring
-(define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
+(setq-default evil-kill-on-visual-paste nil)
+;; (define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
 
 (use-package evil-numbers)
 
@@ -99,6 +100,10 @@
     (setq which-key-idle-delay 0.2)
 )
 
+; Sometimes links are not recognized as org links. Update org version to deal with this
+(require 'package)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+
 (use-package org-roam
     :hook 
     (after-init . org-roam-mode)
@@ -108,12 +113,41 @@
     ; Use only the id as filename, not the title
 )
 
+(setq bibliography-file "~/resource/org/bibliography/library.bib")
+(setq bibliography-papers-folder "~/resource/papers")
+
 (use-package deft
     :custom
     (deft-recursive t)
     (deft-use-filter-string-for-filename t)
     (deft-default-extension "org")
-    (deft-directory "~/resource/org/roam")
+    (deft-directory org-roam-directory)
+)
+
+(use-package reftex
+            :commands turn-on-reftex
+            :init
+            (progn
+                (setq reftex-default-bibliography '(bibliography-file))
+                (setq reftex-plug-intoAUCTex t))
+            )
+(use-package org-ref
+    :after org
+    :init
+    (setq reftex-default-bibliography '("~/resource/org/bibliography/library.bib"))
+    (setq org-ref-default-bibliography '("~/resource/org/bibliography/library.bib"))
+    (setq org-ref-pdf-directory "~/resource/papers")
+    (setq bibtex-completion-bibliography bibliography-file)
+    (require 'doi-utils)
+    (require 'org-ref-pdf)
+    (require 'org-ref-url-utils)
+    (require 'org-ref-bibtex)
+    (require 'org-ref-latex)
+    (require 'org-ref-arxiv)
+    (require 'org-ref-pubmed)
+    (require 'org-ref-isbn)
+    (require 'org-ref-wos)
+    (require 'org-ref-scopus)
 )
 
 (helm-flx-mode +1)
@@ -185,15 +219,16 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq create-lockfiles nil)
 
 (defhydra hydra-switch-buffer ()
-  "Switch buffer"
-  ("n" next-buffer)
-  ("p" previous-buffer)
+    "Switch buffer"
+    ("n" next-buffer)
+    ("p" previous-buffer)
+    ("d" kill-this-buffer)
 )
 
 (general-evil-define-key 'normal 'global :prefix "SPC"
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
-    "bd" 'kill-buffer
+    "bd" 'kill-this-buffer
     "bm" '(switch-to-buffer "Messages")
     "bf" 'smart-list-buffers
     ; Move to next/previous buffer but stay in buffer switching mode
@@ -205,14 +240,24 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "ff" 'smart-list-files
     "fp" 'comment-out-line-and-copypaste-below
     "n" '(:which-key "Notes")
+    "nc" '(:which-key "Citations/Bibliography")
+    "nca" 'crossref-add-bibtex-entry
+    "nci" 'org-ref-insert-link
+    "nco" 'open-bibliography
     "nf" 'org-roam-find-file
     "ni" 'org-roam-insert
+    "np" 'interleave-mode
     "p" '(:which-key "Project")
     "pa" 'helm-projectile-ag
     "pf" 'helm-projectile-switch-project
     "q" 'kill-emacs
     "t" '(:which-key "Todo")
     "^" 'evil-switch-to-windows-last-buffer
+)
+
+(defun open-bibliography ()
+    (interactive)
+    (find-file "~/resource/org/bibliography/library.bib")
 )
 
 ; Go to link under cursor
