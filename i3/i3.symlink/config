@@ -2,8 +2,6 @@
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
-set $i3contexts python3 ~/projects/config/i3Contexts/switch.py
-set $i3contextsServer bash ~/projects/config/i3Contexts/restartServer.sh
 
 set $bg #000000
 set $activeBg #000000
@@ -60,19 +58,6 @@ bindsym Mod1+e layout toggle splith tabbed
 for_window [window_role="pop-up"] floating enable
 
 # WORKSPACES
-
-# # Context switching hotkeys
-# bindsym F1 exec $i3contexts context 1
-# bindsym F2 exec $i3contexts context 2
-# bindsym F3 exec $i3contexts context 3
-# bindsym F4 exec $i3contexts context 4
-# bindsym F5 exec $i3contexts context 5
-
-# bindsym Shift+F1 exec $i3contexts context --move 1
-# bindsym Shift+F2 exec $i3contexts context --move 2
-# bindsym Shift+F3 exec $i3contexts context --move 3
-# bindsym Shift+F4 exec $i3contexts context --move 4
-# bindsym Shift+F5 exec $i3contexts context --move 5
 
 # Workspace switching hotkeys
 bindsym $mod+a workspace 1:a
@@ -138,16 +123,16 @@ bindsym Mod1+s mode "$launch"
 mode "$launch" {
     # start dmenu (a program launcher)
     bindsym a exec ~/.bin/anki; mode "default"
-    bindsym c exec $scripts/startChrome.sh; mode "default"
+    bindsym c exec firefox; mode "default"
     bindsym e exec /usr/bin/emacs26; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
-    bindsym m exec $scripts/startChrome.sh --new-window mail.google.com; mode "default"
+    bindsym m exec firefox --new-window mail.google.com; mode "default"
     bindsym n exec pcmanfm --no-desktop; mode "default"
-    bindsym o exec $scripts/startChrome.sh --new-window todoist.com; mode "default"
+    bindsym o exec firefox --new-window todoist.com; mode "default"
     bindsym s exec --no-startup-id dmenu_run -fn xft:inconsolata-12; mode "default"
     bindsym t exec ~/.apps/Telegram/Telegram; mode "default"
-    bindsym w exec $scripts/startChrome.sh --new-window web.whatsapp.com; mode "default"
+    bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
@@ -236,7 +221,6 @@ bindsym Ctrl+Shift+D exec "mpc next"
 # workspace "1:a" output HDMI-1
 
 # Startup
-exec_always --no-startup-id $i3ContextsServer
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet

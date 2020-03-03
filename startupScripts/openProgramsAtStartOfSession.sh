@@ -10,7 +10,7 @@ sleep 0.8
 # TODOIST
 i3-msg workspace 8:todo
 i3-msg append_layout ~/projects/config/i3/restore/todoist.json
-$scripts/startChrome.sh --new-window todoist.com&
+firefox --new-window todoist.com&
 sleep 2.0
 
 # NOTES
@@ -28,7 +28,7 @@ if [[ $systemName == "ita" ]]; then
 else
     # GMAIL
     i3-msg append_layout ~/projects/config/i3/restore/gmail.json
-    $scripts/startChrome.sh --new-window mail.google.com&
+    firefox --new-window mail.google.com&
     sleep 0.8
 fi
 

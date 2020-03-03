@@ -6,4 +6,4 @@ export projects=$PROJECTS
 export scripts=$CONFIG/scripts
 export systemName=ubuntu
 export GPG_TTY=$(tty)
-export BROWSER=/usr/bin/chromium
+export BROWSER=/usr/bin/firefox
