@@ -320,7 +320,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Graphical settings
 ; Font size
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 140)
 
 ; Hide menu bar
 (tool-bar-mode -1)
