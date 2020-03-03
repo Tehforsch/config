@@ -16,7 +16,7 @@ sleep 2.0
 # NOTES
 i3-msg workspace 9:notes
 i3-msg append_layout ~/projects/config/i3/restore/notes.json
-/usr/bin/emacs26&
+~/projects/config/startEmacs.sh&
 sleep 0.3
 
 # THUNDERBIRD

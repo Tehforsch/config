@@ -11,7 +11,7 @@ withoutExtension=${latexFileName/.tex/}
 i3-msg append_layout ~/projects/config/i3/restore/latex.json
 ~/.bin/terminal --working-directory=$(pwd) -- zsh -c "sleep 0.8; ~/.trigger/trigger '~/projects/config/scripts/parseLatex.sh $latexFileName' $(fd .\*.tex); zsh -i"
 ~/.bin/terminal --working-directory=$(pwd)
-emacs $latexFileName&
+~/projects/config/scripts/startEmacs.sh $latexFileName&
 
 sleep 0.3
 i3-msg workspace 13:y
