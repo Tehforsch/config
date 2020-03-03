@@ -92,6 +92,8 @@
 (use-package helm-fuzzier)
 (helm-fuzzier-mode 1)
 
+(use-package helm-gtags)
+
 (use-package projectile
     :config
     (setq projectile-mode 1)
