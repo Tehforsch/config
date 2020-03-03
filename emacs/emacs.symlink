@@ -148,7 +148,12 @@
     (require 'org-ref-isbn)
     (require 'org-ref-wos)
     (require 'org-ref-scopus)
+    (setq bibtex-completion-pdf-field "File")
 )
+
+(use-package openwith)
+(openwith-mode t)
+(setq openwith-associations '(("\\.pdf\\'" "okular" (file))))
 
 (helm-flx-mode +1)
 
@@ -206,13 +211,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq
    backup-by-copying t      ; don't clobber symlinks
    backup-directory-alist
-    '(("." . "~/.saves/"))    ; don't litter my fs tree
+    '(("." . "~/.emacsSaves/"))    ; don't litter my fs tree
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
    version-control t)       ; use versioned backups
-; No lock files
-(setq backup-directory-alist `(("." . "~/.emacsSaves")))
 ; Autosave folder
 (setq auto-save-file-name-transforms `((".*" "~/.emacsSaves" t)))
 
