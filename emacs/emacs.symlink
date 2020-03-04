@@ -246,10 +246,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (general-evil-define-key 'normal 'global :prefix "SPC"
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
-    "bd" 'kill-this-buffer
-    "bm" '(switch-to-buffer "Messages")
+    "bm" '(lambda () (interactive) (switch-to-buffer "Messages"))
     "bf" 'smart-list-buffers
-    ; Move to next/previous buffer but stay in buffer switching mode
+    ; When deleting or moving to next/previous buffer stay in buffer switching mode
+    "bd" '(lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body))
     "bp" '(lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body))
     "bn" '(lambda () (interactive) (next-buffer) (hydra-switch-buffer/body))
     "f" '(:which-key "File")
