@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ $systemName == "ita" ]]; then
     EMACS_STANDALONE="/usr/bin/emacs26"
     EMACS_CLIENT="/usr/bin/emacsclient26"
