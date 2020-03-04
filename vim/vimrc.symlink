@@ -158,10 +158,6 @@
     let g:airline_section_y = ''
     let g:airline_section_z = ''
 
-" " Quickscope only when fFtT pressed.
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-
 " internal vim features
     " Disable the interpretation of numbers as octal when using C-A or C-X on numbers like 07
     set nrformats=""
@@ -287,8 +283,6 @@ let g:LanguageClient_serverCommands = {
         \ }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " Plug 'sickill/vim-monokai'
-    Plug 'unblevable/quick-scope'       " Plug
-
     Plug 'joe-skb7/cscope-maps'
 
     call plug#end()
