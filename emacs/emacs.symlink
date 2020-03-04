@@ -134,7 +134,6 @@
     :straight (:host github :repo "jethrokuan/org-roam" :branch "develop")
     :custom
     (org-roam-directory "~/resource/org/roam")
-    ; Use only the id as filename, not the title
 )
 
 (setq bibliography-file "~/resource/org/bibliography/library.bib")
@@ -272,6 +271,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "oci" 'org-ref-insert-link
     "oco" 'open-bibliography
     "on" '(:which-key "Notes / org-roam")
+    "onb" 'org-roam
     "onf" 'org-roam-find-file
     "oni" 'org-roam-insert
     "onp" 'interleave-mode
