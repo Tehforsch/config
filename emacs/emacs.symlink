@@ -289,6 +289,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "pf" 'helm-projectile-switch-project
     "q" 'kill-buffer-and-window
     "t" '(:which-key "Todo")
+    "w" '(:which-key "Window")
+    "wd" 'quit-window
+    "wh" 'evil-window-left
+    "wj" 'evil-window-down
+    "wk" 'evil-window-up
+    "wl" 'evil-window-right
+    "wo" 'delete-other-windows
     "^" 'evil-switch-to-windows-last-buffer
 )
 
