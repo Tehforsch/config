@@ -42,8 +42,6 @@ setopt inc_append_history
 bindkey -s '^u' 'bg && disown && exit\n'
 # bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
 bindkey -s '^g' '&!\n^z exit\n'
-# bind C-h ton run the command(\n), ^z to suspend and exit\n to close the current terminal. This only works if the command already has & or &! appended to it (which the commands in my history which i last started with Ctrl-g have).
-bindkey -s '^h' '\n^z exit\n'
 
 # Magically make converting utf-8 buffers to string and then printing them work
 export PYTHONIOENCODING="utf-8"
@@ -61,3 +59,40 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 # Aliases and machine-local aliases
 source "$HOME/.aliases"
 source "$HOME/.localAliases"
+
+# FZF settings that i want in my version control
+# ALT-C - cd into the selected directory
+fzf-cd-home-widget() {
+  local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d '.*' ~"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  cd "$dir"
+  unset dir # ensure this doesn't end up appearing in prompt expansion
+  local ret=$?
+  zle fzf-redraw-prompt
+  return $ret
+}
+zle     -N    fzf-cd-home-widget
+bindkey '^f' fzf-cd-home-widget
+
+fzf-cd-widget() {
+  local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d "}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  cd "$dir"
+  unset dir # ensure this doesn't end up appearing in prompt expansion
+  local ret=$?
+  zle fzf-redraw-prompt
+  return $ret
+}
+zle     -N    fzf-cd-widget
+bindkey '^v' fzf-cd-widget
+bindkey '^h' fzf-cd-widget
