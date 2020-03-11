@@ -279,7 +279,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     ("d" kill-this-buffer)
 )
 
-(general-evil-define-key 'normal 'global :prefix "SPC"
+(general-evil-define-key '(normal visual) 'global :prefix "SPC"
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
     "bm" '(lambda () (interactive) (switch-to-buffer "*Messages*"))
