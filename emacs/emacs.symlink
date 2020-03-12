@@ -38,13 +38,12 @@
 (setq evil-emacs-state-odes nil)
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
-; Make Y kill to EOL instead of an effective remap of yy
+; Make Y kill to EOL instead of an effective remap of yy; THIS ISNT WORKING RIGHT NOW
 (setq evil-want-Y-yank-to-eol t)
 ; Disable search from wrapping around the buffer (wrapscan=false)
 (setq evil-search-wrap nil)
 ; Make pasting in visual mode not replace the current killring
 (setq-default evil-kill-on-visual-paste nil)
-;; (define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
 
 (use-package evil-numbers)
 
