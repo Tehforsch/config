@@ -19,7 +19,7 @@ font pango: Dejavu Sans Mono 12
 set $mod Mod4
 
 # Set background to black
-exec --no-startup-id xsetroot -solid $inactiveBg
+exec_always --no-startup-id xsetroot -solid "$inactiveBg"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
