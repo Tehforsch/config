@@ -7,7 +7,7 @@ else
     EMACS_CLIENT="emacsclient"
 fi
 if [[ $EMACS_TEST == 1 ]]; then
-    $($EMACS_STANDALONE)
+    eval $EMACS_STANDALONE
 else
-    $($EMACS_CLIENT --create-frame --alternate-editor='')
+    eval $EMACS_CLIENT --create-frame "$@"
 fi
