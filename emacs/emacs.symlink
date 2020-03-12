@@ -179,6 +179,7 @@
     (setq bibtex-completion-pdf-field "File")
 )
 
+(use-package helm-etags-plus)
 (use-package openwith)
 (openwith-mode t)
 (setq openwith-associations '(("\\.pdf\\'" "okular" (file))))
@@ -422,3 +423,4 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ; Use spaces of course, dont be a maniac and use tabs
 (setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4)
