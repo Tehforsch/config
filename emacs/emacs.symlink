@@ -181,7 +181,9 @@
 (use-package helm-etags-plus)
 (use-package openwith)
 (openwith-mode t)
-(setq openwith-associations '(("\\.pdf\\'" "okular" (file))))
+(setq openwith-associations '(("\\.epub\\'" "okular" (file)) ("\\.pdf\\'" "okular" (file))))
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
 
 (helm-flx-mode +1)
 
@@ -401,6 +403,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (add-hook 'prog-mode-hook 'linum-mode)
     (add-hook 'prog-mode-hook 'enable-line-numbers)
 )
+
+;; Misc
+; Don't ask when opening large files
+(setq large-file-warning-threshold nil)
 
 ;; Graphical settings
 ; Font size
