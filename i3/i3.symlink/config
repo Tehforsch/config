@@ -3,13 +3,13 @@ set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
 
-set $bg #000000
-set $activeBg #000000
-set $activeFont #fdf6e3
-set $activeBorder #fdf6e3
-set $inactiveBg #000000
-set $inactiveFont #839496
-set $activeWindowBorder #839496
+set $bg #1d2021
+set $activeBg #282828
+set $activeFont #ebdbb2
+set $activeBorder #ebdbb2
+set $inactiveBg #1d2021
+set $inactiveFont #928374
+set $activeWindowBorder #928374
 
 # MISC
 # Change font
