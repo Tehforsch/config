@@ -134,6 +134,7 @@ mode "$launch" {
     bindsym t exec telegram-desktop; mode "default"
     bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
+    bindsym Shift+C exec bash $startupScripts/runAll.sh
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
@@ -141,6 +142,23 @@ mode "$launch" {
 
     bindsym Escape mode "default"
 }
+
+set $media Medi: volume inc[r]ease, [f] volume decrease, [b]lack, [a] next song, [s] pause, [d] next
+bindsym Mod1+m mode "$media"
+mode "$media" {
+    bindsym Escape mode "default"
+    # Volume changing hotkeys
+    bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
+    bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
+    # Brightness changing hotkeys
+    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0
+    # Music controls
+    bindsym s exec "mpc toggle"
+    bindsym a exec "mpc prev"
+    bindsym d exec "mpc next"
+}
+
+bindsym Mod1+w exec terminator
 
 client.focused_inactive    $inactiveFont   $inactiveBg            $inactiveFont
 client.unfocused           $inactiveFont   $inactiveBg            $inactiveFont
@@ -186,40 +204,6 @@ bar {
 new_window 1pixel
 for_window [class="^.*"] border pixel 1
 
-# start a terminal. since on some systems terminator doesnt work and having multiple
-# i3 configs is basically suicide, i put this here
-# and then just put whatever terminal i want to open in ~/.bin/terminal.
-# Not nice but it works
-bindsym Mod1+w exec ~/.bin/terminal
-
-# Reload monitors script and xmodmap. This is necessary when the power goes out for a second and my usb hub separates the keyboard from the computer, resetting the xmodmap :D
-bindsym Mod1+Shift+o exec --no-startup-id zsh $startupScripts/runAll.sh
-
-# Volume changing hotkeys
-bindsym Ctrl+Shift+R exec --no-startup-id $scripts/changeVolume.sh 1
-bindsym Ctrl+Shift+F exec --no-startup-id $scripts/changeVolume.sh 0
-# Brightness changing hotkeys
-bindsym Ctrl+Shift+B exec --no-startup-id $scripts/changeBrightness.sh 0
-
-# Music controls
-bindsym Ctrl+Shift+S exec "mpc toggle"
-bindsym Ctrl+Shift+A exec "mpc prev"
-bindsym Ctrl+Shift+D exec "mpc next"
-
-# workspace "1:a" output DP-2
-# workspace "2:s" output DP-2
-# workspace "3:d" output DP-2
-# workspace "4:f" output DP-2
-# workspace "5:g" output DP-2
-# workspace "5:g" output DP-1-3
-# workspace "12:<" output eDP1
-# workspace "13:y" output eDP1
-# workspace "14:x" output eDP1
-# workspace "12:<" output eDP-1
-# workspace "13:y" output eDP-1
-# workspace "14:x" output eDP-1
-# workspace "1:a" output HDMI-1
-
 # Startup
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
@@ -229,4 +213,3 @@ exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id mpd
 exec --no-startup-id xbacklight -set 100
-# exec --no-startup-id $startupScripts/openProgramsAtStartOfSession.sh
