@@ -137,7 +137,7 @@ mode "$launch" {
 }
 
 set $media Medi: volume inc[r]ease, [f] volume decrease, [b]lack, [a] next song, [s] pause, [d] next
-bindsym Mod1+m mode "$media"
+bindsym Mod1+y mode "$media"
 mode "$media" {
     bindsym Escape mode "default"
     # Volume changing hotkeys
