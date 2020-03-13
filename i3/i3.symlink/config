@@ -138,6 +138,7 @@ mode "$launch" {
 
 set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] next song, [s] pause, [d] next
 bindsym Mod1+y mode "$media"
+
 mode "$media" {
     bindsym Escape mode "default"
     # Volume changing hotkeys
@@ -149,6 +150,7 @@ mode "$media" {
     bindsym s exec "mpc toggle"
     bindsym a exec "mpc prev"
     bindsym d exec "mpc next"
+    bindsym y mode "default"
 }
 
 bindsym Mod1+w exec terminator
