@@ -49,7 +49,7 @@ bindsym Mod1+Shift+l move right
 bindsym $mod+o split h
 
 # split in vertical orientation
-# bindsym $mod+p split v
+bindsym $mod+p split v
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
@@ -102,27 +102,20 @@ bindsym Mod1+o mode "resize"
 mode "resize" {
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
-
     bindsym j resize grow down 10 px or 10 ppt
     bindsym Shift+J resize shrink   down 10 px or 10 ppt
-
     bindsym k resize grow up 10 px or 10 ppt
     bindsym Shift+K resize shrink   up 10 px or 10 ppt
-
     bindsym l resize grow right 10 px or 10 ppt
     bindsym Shift+L resize shrink   right 10 px or 10 ppt
-
     bindsym Escape mode "default"
 }
 
-# Shortcuts to Open Applications
-# Open application launch mode.
-set $launch Launch: t[o]doist, [E]xit, [O]pen programs, [M]ount cluster
+set $launch Launch: [M]ount cluster, run startup [C]onfig
 bindsym Mod1+s mode "$launch"
-
 mode "$launch" {
     # start dmenu (a program launcher)
-    bindsym a exec ~/.bin/anki; mode "default"
+    bindsym a exec anki; mode "default"
     bindsym c exec firefox; mode "default"
     bindsym e exec ~/projects/config/scripts/startEmacs.sh; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
@@ -178,26 +171,11 @@ bar {
     output primary
     output HDMI-1
     output DP-2
-    strip_workspace_numbers yes
-    status_command i3status
-    status_command i3blocks
-}
-
-# Second monitor bar
-bar {
-	colors {
-		background $bg
-		statusline #ffffff
-		separator  $activeFont
-		focused_workspace $activeBg $activeBg $activeFont
-		active_workspace  $activeBg $activeBg $activeFont
-		inactive_workspace $inactiveBg $inactiveBg $inactiveFont
-		urgent_workspace  $activeBg $activeBg $activeFont
-	}
     output eDP1
     output eDP-1
     output DP-1-3
     strip_workspace_numbers yes
+    status_command i3status
 }
 
 #Disable window titles

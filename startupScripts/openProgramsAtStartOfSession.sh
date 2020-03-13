@@ -2,9 +2,9 @@
 source ~/.localConfig
 
 # TELEGRAM
-i3-msg workspace 7:chat
+i3-msg workspace 6:chat
 i3-msg append_layout ~/projects/config/i3/restore/telegram.json
-~/.apps/Telegram/Telegram&
+telegram-desktop&
 sleep 0.8
 
 # TODOIST
@@ -40,6 +40,6 @@ i3-msg append_layout ~/projects/config/i3/restore/zotero.json
 sleep 1
 
 # Music
-i3-msg workspace 6:music
+i3-msg workspace 7:music
 sleep 0.8
-~/.bin/terminal --working-directory=$(pwd) -x "ncmpcpp; zsh"&
+~/.bin/terminal --working-directory=$(pwd) -x "zsh -ci ncmpcpp"&
