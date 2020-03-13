@@ -1,0 +1,2 @@
+# disable menu bar
+ui.key.menuAccessKeyFocuses = false
