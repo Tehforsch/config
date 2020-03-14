@@ -127,7 +127,7 @@ mode "$launch" {
     bindsym t exec telegram-desktop; mode "default"
     bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
-    bindsym Shift+C exec bash $startupScripts/runAll.sh
+    bindsym Shift+C exec bash $startupScripts/runAll.sh; mode "default"
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
@@ -136,8 +136,9 @@ mode "$launch" {
     bindsym Escape mode "default"
 }
 
-set $media Medi: volume inc[r]ease, [f] volume decrease, [b]lack, [a] next song, [s] pause, [d] next
-bindsym Mod1+m mode "$media"
+set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] next song, [s] pause, [d] next
+bindsym Mod1+y mode "$media"
+
 mode "$media" {
     bindsym Escape mode "default"
     # Volume changing hotkeys
@@ -149,6 +150,7 @@ mode "$media" {
     bindsym s exec "mpc toggle"
     bindsym a exec "mpc prev"
     bindsym d exec "mpc next"
+    bindsym y mode "default"
 }
 
 bindsym Mod1+w exec terminator
