@@ -127,7 +127,7 @@ mode "$launch" {
     bindsym t exec telegram-desktop; mode "default"
     bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec /home/toni/.apps/Zotero_linux-x86_64/zotero; exec rmdir ~/Desktop; mode "default"
-    bindsym Shift+C exec bash $startupScripts/runAll.sh
+    bindsym Shift+C exec bash $startupScripts/runAll.sh; mode "default"
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
     bindsym Shift+E exit; mode "default"
