@@ -152,6 +152,20 @@ install_cf () {
     link_file "$src" "$dst"
   done
 
+  # Link the files to ~/.config/...
+  resultsConfig=$(find "$DOTFILES_ROOT/" -name '*.config')
+  for src in "${resultsConfig[@]}"
+  do
+    dst=${src%.*}
+    echo "-----"
+    if [[ "$dst" =~ "config" ]]; then # If there is still a dot left we need to remove it (happens with system specific files since they contain two dots)
+        dst=${dst%.*}
+    fi
+    dst="$HOME/.config/$(basename ${dst})"
+    echo "$src"
+    echo "$dst"
+    link_file "$src" "$dst"
+  done
   mkdir -p $HOME/.config
   for src in $(find "$DOTFILES_ROOT/" -name '*.symlink-config')
   do
