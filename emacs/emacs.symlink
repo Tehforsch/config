@@ -185,6 +185,9 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
 
+(use-package flycheck-mypy)
+(add-hook 'python-mode-hook 'flycheck-mode)
+
 (helm-flx-mode +1)
 
 ; From https://stackoverflow.com/questions/18102004/emacs-evil-mode-how-to-create-a-new-text-object-to-select-words-with-any-non-sp/18688066#18688066, akdom
@@ -293,6 +296,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "c" '(:which-key "Code")
     "c^" 'beginning-of-defun
     "c$" 'end-of-defun
+    "cen" 'next-error
+    "cep" 'previous-error
     "f" '(:which-key "File")
     "fs" 'save-buffer-always
     "fo" 'projectile-find-other-file
