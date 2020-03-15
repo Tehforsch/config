@@ -277,6 +277,26 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (setq create-lockfiles nil)
 
+(defun toggle-ansi-term ()
+  "Open an ansi-term if it doesn't already exist, otherwise switch to current one. If current buffer is ansi-term, close buffer"
+  (interactive)
+  (if (not buffer-file-name) (kill-buffer-and-window) (
+    progn
+    (split-window-sensibly)
+    (other-window 1)
+    (if (get-buffer "*ansi-term*")
+        (switch-to-buffer-other-window "*ansi-term*")
+    (ansi-term "/bin/zsh"))))
+)
+
+; Stop query 'running process" on ansi-term exit
+(defun set-no-process-query-on-exit ()
+  (let ((proc (get-buffer-process (current-buffer))))
+    (when (processp proc)
+      (set-process-query-on-exit-flag proc nil))))
+
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+
 (defhydra hydra-switch-buffer ()
     "Switch buffer"
     ("n" next-buffer)
@@ -285,11 +305,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 )
 
 (general-evil-define-key '(normal visual) 'global :prefix "SPC"
-    "!" 'shell
+    "!" 'toggle-ansi-term
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "bf" 'smart-list-buffers
+    "bf" 'helm-buffers-list
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer (transient)")
     "bp" '((lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
@@ -345,15 +365,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ; Go to link under cursor
 (define-key evil-normal-state-map "gl" 'org-roam-open-at-point)
-
-(defun smart-list-buffers ()
-  "Call `helm-projectile-switch-to-buffer' if in projectile project, otherwise fall back to `helm-buffers-list'."
-    (interactive)
-    (if (projectile-project-p)
-        (helm-projectile-switch-to-buffer)
-        (helm-buffers-list)
-    )
-)
 
 (defun smart-list-files ()
     "Call `helm-projectile-find-file' if in projectile project, otherwise fall back to `helm-find-files'."
