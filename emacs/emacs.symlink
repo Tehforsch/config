@@ -4,8 +4,8 @@
 
 ; Load package
 (require 'package)
-(add-to-list 'package-archives
-    '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 
 ; Refresh on first install
@@ -125,13 +125,12 @@
 )
 
 ; Sometimes links are not recognized as org links. Update org version to deal with this
-(require 'package)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
-(require 'org)
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.6))
-(setq org-startup-with-latex-preview t)
-
+(use-package org
+  :init
+  ;; Install Org from ELPA if not already
+  (unless (package-installed-p 'org (version-to-list "9.3"))
+    (package-refresh-contents)
+    (package-install (cadr (assq 'org package-archive-contents)))))
 (use-package org-roam
     :hook 
     (after-init . org-roam-mode)
@@ -139,6 +138,9 @@
     :custom
     (org-roam-directory "~/resource/org/roam")
 )
+
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.6))
+(setq org-startup-with-latex-preview t)
 
 (setq bibliography-file "~/resource/org/bibliography/library.bib")
 (setq bibliography-papers-folder "~/resource/papers")
