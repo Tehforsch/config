@@ -1,6 +1,11 @@
+[mypy]
 [mypy-numpy]
 ignore_missing_imports = True
 [mypy-matplotlib]
 ignore_missing_imports = True
+[mypy-matplotlib.pyplot]
+ignore_missing_imports = True
 [mypy-pathlib]
+ignore_missing_imports = True
+[mypy-yaml]
 ignore_missing_imports = True
