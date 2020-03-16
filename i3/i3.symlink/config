@@ -137,7 +137,7 @@ mode "$launch" {
     bindsym Escape mode "default"
 }
 
-set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] next song, [s] pause, [d] next
+set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song
 bindsym Mod1+y mode "$media"
 
 mode "$media" {
@@ -146,9 +146,9 @@ mode "$media" {
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
     # Brightness changing hotkeys
-    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0
+    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     # Music controls
-    bindsym s exec "mpc toggle"
+    bindsym s exec "mpc toggle"; mode "default"
     bindsym a exec "mpc prev"
     bindsym d exec "mpc next"
     bindsym y mode "default"
@@ -194,3 +194,4 @@ exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id mpd
 exec --no-startup-id xbacklight -set 100
+exec --no-startup-id /usr/bin/amixer -c 1 sset "Auto-Mute Mode" Disabled
