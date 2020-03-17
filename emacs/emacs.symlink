@@ -190,7 +190,7 @@
 (use-package flycheck-mypy)
 (setq flycheck-python-mypy-args '("--disallow-untyped-defs"))
 (add-hook 'python-mode-hook 'flycheck-mode)
-(add-hook 'c-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
 
 (helm-flx-mode +1)
 
@@ -277,7 +277,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
    kept-old-versions 2
    version-control t)       ; use versioned backups
 ; Autosave folder
-(setq auto-save-file-name-transforms `((".*" "~/.emacsSaves" t)))
+(setq auto-save-file-name-transforms `((".*" "~/.emacsSaves/" t)))
 
 (setq create-lockfiles nil)
 

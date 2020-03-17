@@ -116,7 +116,7 @@ bindsym Mod1+s mode "$launch"
 mode "$launch" {
     # start dmenu (a program launcher)
     bindsym a exec anki; mode "default"
-    bindsym b exec ~/.bin/terminal --working-directory=$(pwd) -x "zsh -ci ncmpcpp"&
+    bindsym b exec ~/.bin/terminal --working-directory=$(pwd) -x "zsh -ci ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
     bindsym e exec ~/projects/config/scripts/startEmacs.sh; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
