@@ -61,6 +61,9 @@
 (evil-commentary-mode)
 ; Default comment string in files emacs doesnt recognize (no file ending): #
 (setq-default comment-start "#")
+; Default C-comment: // is (objectively) much more beautiful than /*, especially for single lines 
+(add-hook 'c-mode-hook (lambda () (setq-local comment-start "//")))
+(add-hook 'c-mode-hook (lambda () (setq-local comment-end "")))
 
 (define-key evil-normal-state-map (kbd "C-e") 'evil-commentary-line)
 
