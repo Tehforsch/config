@@ -66,6 +66,7 @@ gcc-fortran
 gcc-libs
 gcolor2
 gconf
+gdb
 gettext
 gimp
 git
