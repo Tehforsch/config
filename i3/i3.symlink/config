@@ -134,6 +134,7 @@ mode "$launch" {
     bindsym shift+r restart; mode "default"
     bindsym Shift+C exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym Shift+E exit; mode "default"
+    bindsym shift+T exec teamspeak3; mode "default"
 
     bindsym Escape mode "default"
 }
