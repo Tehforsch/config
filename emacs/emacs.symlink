@@ -31,6 +31,7 @@
 (load bootstrap-file nil 'nomessage))
 
 ; Load packages
+(setq evil-want-Y-yank-to-eol t)
 (use-package evil)
 (setq evil-want-C-i-jump nil)
 (evil-mode 1)
@@ -39,7 +40,6 @@
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
 ; Make Y kill to EOL instead of an effective remap of yy; THIS ISNT WORKING RIGHT NOW
-(setq evil-want-Y-yank-to-eol t)
 ; Disable search from wrapping around the buffer (wrapscan=false)
 (setq evil-search-wrap nil)
 ; Make pasting in visual mode not replace the current killring
@@ -62,8 +62,12 @@
 ; Default comment string in files emacs doesnt recognize (no file ending): #
 (setq-default comment-start "#")
 ; Default C-comment: // is (objectively) much more beautiful than /*, especially for single lines 
-(add-hook 'c-mode-hook (lambda () (setq-local comment-start "//")))
-(add-hook 'c-mode-hook (lambda () (setq-local comment-end "")))
+(defun comment-c-mode-hook ()
+  (setq-local comment-start "//")
+  (setq-local comment-padding " ")
+  (setq-local comment-end "")
+  (setq-local comment-style 'indent))
+(add-hook 'c-mode-hook 'comment-c-mode-hook)
 
 (define-key evil-normal-state-map (kbd "C-e") 'evil-commentary-line)
 
