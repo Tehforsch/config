@@ -138,6 +138,7 @@
   (unless (package-installed-p 'org (version-to-list "9.3"))
     (package-refresh-contents)
     (package-install (cadr (assq 'org package-archive-contents)))))
+
 (use-package org-roam
     :hook 
     (after-init . org-roam-mode)
@@ -145,6 +146,43 @@
     :custom
     (org-roam-directory "~/resource/org/roam")
 )
+
+(defun org-roam--file-for-time (time)
+  "Create and find file for TIME."
+  (let* ((title (format-time-string org-roam-date-title-format time))
+         (filename (format-time-string org-roam-date-filename-format time))
+         (file-path (org-roam--file-path-from-id filename)))
+    (if (file-exists-p file-path)
+        (find-file file-path)
+      (let ((org-roam-capture-templates (list (list "d" "daily" 'plain (list 'function #'org-roam--capture-get-point)
+                                                    ""
+                                                    :immediate-finish t
+                                                    :file-name "${title}"
+                                                    :head "#+TITLE: ${title}\n[[file:20200320142808-journal.org][journal]]")))
+            (org-roam--capture-context 'title)
+            (org-roam--capture-info (list (cons 'title title))))
+        (org-roam-capture)))))
+
+(defun org-roam-today ()
+  "Create and find file for today."
+  (interactive)
+  (org-roam--file-for-time (current-time)))
+
+(defun org-roam-tomorrow ()
+  "Create and find the file for tomorrow."
+  (interactive)
+  (org-roam--file-for-time (time-add 86400 (current-time))))
+
+(defun org-roam-yesterday ()
+  "Create and find the file for yesterday."
+  (interactive)
+  (org-roam--file-for-time (time-add -86400 (current-time))))
+
+(defun org-roam-date ()
+  "Create the file for any date using the calendar."
+  (interactive)
+  (let ((time (org-read-date nil 'to-time nil "Date:  ")))
+    (org-roam--file-for-time time)))
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.6))
 (setq org-startup-with-latex-preview t)
@@ -352,6 +390,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     "onf" 'org-roam-find-file
     "oni" 'org-roam-insert
     "onp" 'interleave-mode
+    "onj" '(:which-key "Journal")
+    "onjt" 'org-roam-today
+    "onjy" 'org-roam-yesterday
+    "onjd" 'org-roam-date
     "ot" '(:which-key "Todo")
     "ota" 'org-agenda
     "p" '(:which-key "Project")
@@ -403,14 +445,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ; Enter insert mode immediately when capturing with evil turned on
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
-(setq org-capture-templates
-    '(
-      ("t" "Todo" entry
-          (file+headline "~/resource/org/todo/main.org" "Tasks")
-          "* TODO %t %?\n "
-      )
-    )
-)
+;; (setq org-capture-templates
+;;     '(
+;;       ("t" "Todo" entry
+;;           (file+headline "~/resource/org/todo/main.org" "Tasks")
+;;           "* TODO %t %?\n "
+;;       )
+;;     )
+;; )
 
 ; Always follow symlinks without asking
 (setq vc-follow-symlinks t)
