@@ -34,9 +34,9 @@
     "oni" 'org-roam-insert
     "onp" 'interleave-mode
     "onj" '(:which-key "Journal")
-    "onjt" 'org-roam-today
-    "onjy" 'org-roam-yesterday
-    "onjd" 'org-roam-date
+    "onjt" 'my-org-roam-today
+    "onjy" 'my-org-roam-yesterday
+    "onjd" 'my-org-roam-date
     "ot" '(:which-key "Todo")
     "ota" 'org-agenda
     "p" '(:which-key "Project")
