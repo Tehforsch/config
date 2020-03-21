@@ -6,7 +6,7 @@
     (org-roam-directory "~/resource/org/roam")
 )
 
-(defun my-org-roam-find-file-for-time (time)
+(defun find-file-for-time (time)
   "Create and find file for TIME."
   (let* ((title (format-time-string org-roam-date-title-format time))
          (filename (format-time-string org-roam-date-filename-format time))
@@ -23,26 +23,49 @@
         (add-hook 'org-capture-after-finalize-hook 'org-capture-goto-last-stored)
         (org-roam-capture)))))
 
-(defun my-org-roam-today ()
+(defun find-file-today ()
   "Create and find file for today."
   (interactive)
-  (my-org-roam-find-file-for-time (current-time)))
+  (find-file-for-time (current-time)))
 
-(defun my-org-roam-tomorrow ()
+(defun find-file-tomorrow ()
   "Create and find the file for tomorrow."
   (interactive)
-  (my-org-roam-find-file-for-time (time-add 86400 (current-time))))
+  (find-file-for-time (time-add 86400 (current-time))))
 
-(defun my-org-roam-yesterday ()
+(defun find-file-yesterday ()
   "Create and find the file for yesterday."
   (interactive)
-  (my-org-roam-find-file-for-time (time-add -86400 (current-time))))
+  (find-file-for-time (time-add -86400 (current-time))))
 
-(defun my-org-roam-date ()
+(defun find-file-relative-yesterday ()
+  "Find or create the file for the day before the current journal file."
+  (interactive)
+  (find-file-relative -86400)
+)
+
+(defun find-file-relative-tomorrow ()
+  "Find or create the file for the day after the current journal file."
+  (interactive)
+  (find-file-relative 86400)
+)
+
+(defun find-file-relative (time-delta)
+  (if (string-match "\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\).org" buffer-file-name)
+      (let* ((date-string (match-string 1 buffer-file-name))
+             (time (get-time-from-isoformat-date date-string)))
+        (find-file-for-time (time-add time time-delta)))
+))
+
+(defun get-time-from-isoformat-date (isoformat-date)
+    (org-time-convert-to-list (org-read-date nil t isoformat-date))
+)
+
+(defun find-file-date()
   "Create the file for any date using the calendar."
   (interactive)
   (let ((time (org-read-date nil 'to-time nil "Date:  ")))
-    (my-org-roam-find-file-for-time time)))
+    (find-file-for-time time)))
 
 (use-package deft
     :custom
@@ -51,12 +74,6 @@
     (deft-default-extension "org")
     (deft-directory org-roam-directory)
 )
-
-; Change database path
-(defun org-roam--get-db ()
-  "Return the sqlite db file."
-  (interactive "P")
-  "/home/toni/.orgRoamDb")
 
 ; Go to link under cursor
 (define-key evil-normal-state-map "gl" 'org-roam-open-at-point)

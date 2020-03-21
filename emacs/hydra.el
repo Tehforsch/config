@@ -5,3 +5,9 @@
     ("p" previous-buffer)
     ("d" kill-this-buffer)
 )
+
+(defhydra hydra-journal-switch-day ()
+    "Switch days in journal"
+    ("n" find-file-relative-tomorrow)
+    ("p" find-file-relative-yesterday)
+)

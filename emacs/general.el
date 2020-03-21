@@ -28,15 +28,16 @@
     "oco" 'open-bibliography
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
+    "oj" '(:which-key "Journal")
+    "ojt" 'find-file-today
+    "ojy" 'find-file-yesterday
+    "ojn" '((lambda () (interactive) (if (find-file-relative-tomorrow) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    "ojp" '((lambda () (interactive) (if (find-file-relative-yesterday) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
     "on" '(:which-key "Notes / org-roam")
     "onb" 'org-roam
     "onf" 'org-roam-find-file
     "oni" 'org-roam-insert
     "onp" 'interleave-mode
-    "onj" '(:which-key "Journal")
-    "onjt" 'my-org-roam-today
-    "onjy" 'my-org-roam-yesterday
-    "onjd" 'my-org-roam-date
     "ot" '(:which-key "Todo")
     "ota" 'org-agenda
     "p" '(:which-key "Project")
