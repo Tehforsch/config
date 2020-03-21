@@ -148,6 +148,8 @@ mode "$media" {
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
     # Brightness changing hotkeys
+    bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
+    bindsym t exec --no-startup-id $scripts/changeBrightness.sh R
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     # Music controls
     bindsym s exec "mpc toggle"; mode "default"
