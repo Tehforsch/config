@@ -11,6 +11,7 @@
 (load "~/projects/config/emacs/orgRoam.el")
 (load "~/projects/config/emacs/openwith.el")
 (load "~/projects/config/emacs/flycheck.el")
+(load "~/projects/config/emacs/pythonBlack.el")
 (load "~/projects/config/emacs/general.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
 (load "~/projects/config/emacs/autosaveAndLock.el")
@@ -23,4 +24,3 @@
 (load "~/projects/config/emacs/formatting.el")
 (load "~/projects/config/emacs/miscSettings.el")
 (load "~/projects/config/emacs/disableMouse.el")
-
