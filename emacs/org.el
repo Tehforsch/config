@@ -9,7 +9,7 @@
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.6))
 (setq org-startup-with-latex-preview t)
 
-(setq bibliography-file "~/resource/org/bibliography/library.bib")
+(setq bibliography-file "~/resource/papers/library.bib")
 (setq bibliography-papers-folder "~/resource/papers")
 
 (use-package reftex
@@ -36,12 +36,12 @@
     (require 'org-ref-isbn)
     (require 'org-ref-wos)
     (require 'org-ref-scopus)
-    (setq bibtex-completion-pdf-field "File")
+    (setq bibtex-completion-pdf-field "file")
 )
 
 (defun open-bibliography ()
     (interactive)
-    (find-file "~/resource/org/bibliography/library.bib")
+    (find-file bibliography-file)
 )
 
 ; Do not truncate lines in org mode

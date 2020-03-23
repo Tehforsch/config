@@ -26,6 +26,7 @@
     "oca" 'crossref-add-bibtex-entry
     "oci" 'org-ref-insert-link
     "oco" 'open-bibliography
+    "ocp" 'org-ref-open-pdf-at-point
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
     "oj" '(:which-key "Journal")
