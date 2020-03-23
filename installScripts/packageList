@@ -13,6 +13,7 @@ automake
 avahi
 b43-fwcutter
 bash
+bat
 bauh
 binutils
 bison
@@ -43,7 +44,6 @@ dnsmasq
 dosfstools
 downgrade
 e2fsprogs
-easytag
 ebook-tools
 ecryptfs-utils
 efibootmgr
@@ -208,6 +208,7 @@ qt5ct
 ranger
 reiserfsprogs
 rsync
+rubber
 s-nail
 sbxkb
 screenfetch
@@ -229,6 +230,7 @@ telegram-desktop
 terminator
 terminus-font
 texinfo
+texlive-latexextra
 the_silver_searcher
 thunderbird
 tlp
