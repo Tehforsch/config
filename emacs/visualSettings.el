@@ -8,7 +8,7 @@
 )
 
 ; Font size
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 130)
 
 ; Hide menu bar
 (tool-bar-mode -1)
