@@ -82,8 +82,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key [escape] 'evil-exit-emacs-state)
 
 ; C-c + and C-c - to indent / decrease numbers as in vim but with different key bindings
-(global-set-key (kbd "C-c -") 'evil-numbers/inc-at-pt)
-(global-set-key (kbd "C-c +") 'evil-numbers/dec-at-pt)
+(global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
 
 ; Make substitution global by default (reverse meaning of appending g at end of substitution)
 (setq evil-ex-substitute-global t)
