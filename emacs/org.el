@@ -8,6 +8,7 @@
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.6))
 (setq org-startup-with-latex-preview t)
+(setq org-startup-with-inline-images t)
 
 (setq bibliography-file "~/resource/papers/library.bib")
 (setq bibliography-papers-folder "~/resource/papers")

@@ -27,6 +27,9 @@
     "oci" 'org-ref-insert-link
     "oco" 'open-bibliography
     "ocp" 'org-ref-open-pdf-at-point
+    "oi" '(:which-key "Image")
+    "ois" 'insert-screenshot
+    "oit" 'org-toggle-inline-images
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
     "oj" '(:which-key "Journal")

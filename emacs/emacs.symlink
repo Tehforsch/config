@@ -9,6 +9,7 @@
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/org.el")
 (load "~/projects/config/emacs/orgRoam.el")
+(load "~/projects/config/emacs/screenshot.el")
 (load "~/projects/config/emacs/openwith.el")
 (load "~/projects/config/emacs/flycheck.el")
 (load "~/projects/config/emacs/pythonBlack.el")
