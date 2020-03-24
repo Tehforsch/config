@@ -15,6 +15,8 @@
     "c$" 'end-of-defun
     "cen" 'next-error
     "cep" 'previous-error
+    "ch" 'hs-hide-all
+    "cs" 'hs-show-all
     "f" '(:which-key "File")
     "fs" 'save-buffer-always
     "fo" 'projectile-find-other-file
