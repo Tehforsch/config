@@ -25,18 +25,19 @@
 
 (defun find-file-today ()
   "Create and find file for today."
+  ; 18000 is 5 hours. If I call the today-function before 5AM I want it to refer to the (technically) previous day
   (interactive)
-  (find-file-for-time (current-time)))
+  (find-file-for-time (time-add -18000 (current-time))))
 
 (defun find-file-tomorrow ()
   "Create and find the file for tomorrow."
   (interactive)
-  (find-file-for-time (time-add 86400 (current-time))))
+  (find-file-for-time (time-add 68400 (current-time))))
 
 (defun find-file-yesterday ()
   "Create and find the file for yesterday."
   (interactive)
-  (find-file-for-time (time-add -86400 (current-time))))
+  (find-file-for-time (time-add -104400 (current-time))))
 
 (defun find-file-relative-yesterday ()
   "Find or create the file for the day before the current journal file."
