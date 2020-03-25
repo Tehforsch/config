@@ -27,7 +27,6 @@ alias runlatex='$CONFIG/scripts/latexLayout.sh'
 alias runpython='$CONFIG/scripts/pythonLayout.sh'
 alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
-alias vim="echo 'youre trying to switch!'; sleep 3; vim"
 alias emacs="~/projects/config/scripts/startEmacs.sh"
 alias em="~/projects/config/scripts/startEmacs.sh"
 alias remacs="systemctl --user restart emacs.service"
