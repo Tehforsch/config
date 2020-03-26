@@ -111,7 +111,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-set $launch Launch: mount [C]luster, run startup [C]onfig
+set $launch Launch: mount cluster [I], run startup [C]onfig
 bindsym Mod1+s mode "$launch"
 mode "$launch" {
     # start dmenu (a program launcher)
@@ -132,7 +132,7 @@ mode "$launch" {
     bindsym Shift+C exec bash $startupScripts/runAll.sh; mode "default"
     bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym shift+r restart; mode "default"
-    bindsym Shift+C exec $scripts/mountClusterSshfs.sh; mode "default"
+    bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym Shift+E exit; mode "default"
     bindsym shift+T exec teamspeak3; mode "default"
 
