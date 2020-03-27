@@ -39,6 +39,7 @@
     "ojy" 'find-file-yesterday
     "ojn" '((lambda () (interactive) (if (find-file-relative-tomorrow) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
     "ojp" '((lambda () (interactive) (if (find-file-relative-yesterday) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes / org-roam")
     "ona" 'org-roam-append
     "onb" 'org-roam
