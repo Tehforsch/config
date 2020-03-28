@@ -39,6 +39,7 @@
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
     "oj" '(:which-key "Journal")
+    "ojr" 'find-file-random-day
     "ojt" 'find-file-today
     "ojy" 'find-file-yesterday
     "ojn" '((lambda () (interactive) (if (find-file-relative-tomorrow) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")

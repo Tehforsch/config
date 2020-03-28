@@ -84,3 +84,12 @@
   (evil-append nil nil nil)
   (org-roam-insert nil)
 )
+
+(defun random-choice (items)
+  (let* ((size (length items))
+         (index (random size)))
+    (nth index items)))
+
+(defun find-file-random-day ()
+  (interactive)
+  (view-file (concat (file-name-as-directory org-roam-directory) (random-choice (directory-files org-roam-directory nil "\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\).org" )))))
