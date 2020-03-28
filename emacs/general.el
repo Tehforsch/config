@@ -23,6 +23,8 @@
     "ff" 'smart-list-files
     "fF" 'helm-projectile-find-file-in-known-projects
     "fp" 'comment-out-line-and-copypaste-below
+    "g" '(:which-key "Magit")
+    "gs" 'magit-status
     "o" '(:which-key "Org")
     "oc" '(:which-key "Citations/Bibliography")
     "oca" 'crossref-add-bibtex-entry

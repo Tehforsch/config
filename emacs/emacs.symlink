@@ -7,6 +7,7 @@
 (load "~/projects/config/emacs/ivy.el")
 (load "~/projects/config/emacs/helm.el")
 (load "~/projects/config/emacs/projectile.el")
+(load "~/projects/config/emacs/magit.el")
 (load "~/projects/config/emacs/org.el")
 (load "~/projects/config/emacs/orgRoam.el")
 (load "~/projects/config/emacs/screenshot.el")
