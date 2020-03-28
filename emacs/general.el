@@ -10,6 +10,7 @@
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer (transient)")
     "bp" '((lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
     "bn" '((lambda () (interactive) (next-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
+    "bs" 'evil-save-modified-and-close
     "c" '(:which-key "Code")
     "c^" 'beginning-of-defun
     "c$" 'end-of-defun
@@ -24,6 +25,7 @@
     "fF" 'helm-projectile-find-file-in-known-projects
     "fp" 'comment-out-line-and-copypaste-below
     "g" '(:which-key "Magit")
+    "gb" 'magit-blame
     "gs" 'magit-status
     "o" '(:which-key "Org")
     "oc" '(:which-key "Citations/Bibliography")
