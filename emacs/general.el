@@ -34,7 +34,8 @@
     "oco" 'open-bibliography
     "ocp" 'org-ref-open-pdf-at-point
     "oi" '(:which-key "Image")
-    "ois" 'insert-screenshot
+    "ois" '((lambda () (interactive) (insert-screenshot "~/projects/config/scripts/captureScreenshot.sh")) :which-key "Screenshot with white taken as transparent.")
+    "oiS" '((lambda () (interactive) (insert-screenshot "scrot -s")) :which-key "Screenshot as it is.")
     "oit" 'org-toggle-inline-images
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment

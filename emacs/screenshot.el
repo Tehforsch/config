@@ -4,7 +4,7 @@
   "Redisplay images after inserting a screenshot with
 `insert-screenshot'?")
 
-(defun insert-screenshot ()
+(defun insert-screenshot (screenshot-command)
   "Capture a screenshot and insert a link to it in the current
 buffer. If `insert-screenshot/redisplay-images' is non-nil,
 redisplay images in the current buffer.
@@ -21,8 +21,7 @@ Depends upon `import` from ImageMagick."
   (let* ((dest
            (format-time-string (concat pic-folder "screen_%Y%m%d_%H%M%S.png")))
          )
-    ;; (call-process "scrot" nil "/usr/bin/scrot" "-s" dest)
-    (shell-command (concat "scrot -s " dest))
+    (shell-command (concat screenshot-command " " dest))
     (message pic-folder)
     (message dest)
     (org-insert-link t (concat "file:" dest) "")
