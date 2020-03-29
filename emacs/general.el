@@ -50,6 +50,7 @@
     "ona" 'org-roam-append
     "onb" 'org-roam
     "onf" 'org-roam-find-file
+    "ong" 'org-roam-show-graph
     "oni" 'org-roam-insert
     "onp" 'interleave-mode
     "ot" '(:which-key "Todo")
