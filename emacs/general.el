@@ -52,9 +52,44 @@
     "onf" 'org-roam-find-file
     "ong" 'org-roam-show-graph
     "oni" 'org-roam-insert
-    "onp" 'interleave-mode
+    "onp" 'org-latex-export-to-pdf
     "ot" '(:which-key "Todo")
-    "ota" 'org-agenda
+    "ott" 'org-set-tags-command
+    "ota" '((lambda () (interactive) (org-agenda nil "c")) :which-key "Agenda")
+    "otc" 'org-archive-done-tasks
+    "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
+    "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
+    "otd" '(:which-key "Set deadline")
+    "otm" '((lambda () (interactive) (org-refile)) :which-key "Refile")
+    "otdt" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "Now/Today")
+    "otdn" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "Tomorrow (Next day)")
+    "otdf" '((lambda () (interactive) (org-deadline nil nil)) :which-key "Find day")
+    "otdr" '((lambda () (interactive) (org-deadline '(4))) :which-key "Remove")
+    "otd0" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "Remove")
+    "otd1" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "Remove")
+    "otd2" '((lambda () (interactive) (org-deadline nil "+2d")) :which-key "Remove")
+    "otd3" '((lambda () (interactive) (org-deadline nil "+3d")) :which-key "Remove")
+    "otd4" '((lambda () (interactive) (org-deadline nil "+4d")) :which-key "Remove")
+    "otd5" '((lambda () (interactive) (org-deadline nil "+5d")) :which-key "Remove")
+    "otd6" '((lambda () (interactive) (org-deadline nil "+6d")) :which-key "Remove")
+    "otd7" '((lambda () (interactive) (org-deadline nil "+7d")) :which-key "Remove")
+    "otd8" '((lambda () (interactive) (org-deadline nil "+8d")) :which-key "Remove")
+    "otd9" '((lambda () (interactive) (org-deadline nil "+9d")) :which-key "Remove")
+    "ots" '(:which-key "Schedule task")
+    "otst" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "Now/Today")
+    "otsn" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "Tomorrow (Next day)")
+    "otsf" '((lambda () (interactive) (org-schedule nil nil)) :which-key "Find day")
+    "otsr" '((lambda () (interactive) (org-schedule '(4))) :which-key "Remove")
+    "ots0" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "Remove")
+    "ots1" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "Remove")
+    "ots2" '((lambda () (interactive) (org-schedule nil "+2d")) :which-key "Remove")
+    "ots3" '((lambda () (interactive) (org-schedule nil "+3d")) :which-key "Remove")
+    "ots4" '((lambda () (interactive) (org-schedule nil "+4d")) :which-key "Remove")
+    "ots5" '((lambda () (interactive) (org-schedule nil "+5d")) :which-key "Remove")
+    "ots6" '((lambda () (interactive) (org-schedule nil "+6d")) :which-key "Remove")
+    "ots7" '((lambda () (interactive) (org-schedule nil "+7d")) :which-key "Remove")
+    "ots8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "Remove")
+    "ots9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "Remove")
     "p" '(:which-key "Project")
     "p!" 'projectile-run-shell
     "pa" 'helm-projectile-ag
@@ -63,7 +98,6 @@
     "pS" 'projectile-save-project-buffers
     "pf" 'helm-projectile-switch-project
     "R" '((lambda () (interactive) (load-file "~/.emacs")) :which-key "Reload emacs config")
-    "t" '(:which-key "Todo")
     "w" '(:which-key "Window")
     "wd" 'kill-buffer-and-window
     "wh" 'evil-window-left

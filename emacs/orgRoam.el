@@ -52,6 +52,7 @@
 )
 
 (defun find-file-relative (time-delta)
+  (message buffer-file-name)
   (if (string-match "\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\).org" buffer-file-name)
       (let* ((date-string (match-string 1 buffer-file-name))
              (time (get-time-from-isoformat-date date-string)))
