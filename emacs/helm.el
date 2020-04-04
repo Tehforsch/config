@@ -12,6 +12,9 @@
       helm-quick-update                     t
       helm-recentf-fuzzy-match              t
       helm-semantic-fuzzy-match             t)
+
+(setq helm-ff-transformer-show-only-basename t)
+
 (use-package helm-fuzzier)
 (helm-fuzzier-mode 1)
 (helm-flx-mode +1)

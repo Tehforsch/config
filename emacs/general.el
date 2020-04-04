@@ -49,10 +49,13 @@
     "on" '(:which-key "Notes / org-roam")
     "ona" 'org-roam-append
     "onb" 'org-roam
+    "one" '(:which-key "Export notes")
+    "onep" 'org-latex-export-to-pdf
     "onf" 'org-roam-find-file
     "ong" 'org-roam-show-graph
     "oni" 'org-roam-insert
-    "onp" 'org-latex-export-to-pdf
+    "onp" '(:which-key "Papers")
+    "onpf" 'org-roam-find-file-for-paper
     "ot" '(:which-key "Todo")
     "ott" 'org-set-tags-command
     "ota" '((lambda () (interactive) (org-agenda nil "c")) :which-key "Agenda")

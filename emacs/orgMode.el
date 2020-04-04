@@ -41,6 +41,7 @@
     (require 'org-ref-wos)
     (require 'org-ref-scopus)
     (setq bibtex-completion-pdf-field "file")
+    (setq helm-bibtex-full-frame nil) ; Do not use full frame for completion buffer
 )
 
 (defun open-bibliography ()

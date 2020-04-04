@@ -13,6 +13,8 @@
 (load "~/projects/config/emacs/pythonBlack.el")
 (load "~/projects/config/emacs/orgMode.el")
 (load "~/projects/config/emacs/orgRoam.el")
+(load "~/projects/config/emacs/orgRoamPaper.el")
+(load "~/projects/config/emacs/orgRoamJournal.el")
 (load "~/projects/config/emacs/screenshot.el")
 (load "~/projects/config/emacs/general.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
