@@ -1,8 +1,8 @@
 (use-package hydra)
 (defhydra hydra-switch-buffer ()
     "Switch buffer"
-    ("n" next-buffer)
-    ("p" previous-buffer)
+    ("n" projectile-next-project-buffer)
+    ("p" projectile-previous-project-buffer)
     ("d" kill-this-buffer)
 )
 

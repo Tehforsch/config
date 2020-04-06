@@ -14,7 +14,6 @@
     (deft-directory org-roam-directory)
 )
 
-
 ; Go to link under cursor
 (define-key evil-normal-state-map "gl" 'org-roam-open-at-point)
 

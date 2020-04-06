@@ -2,14 +2,16 @@
 (general-evil-setup t)
 (general-evil-define-key '(normal visual) 'global :prefix "SPC"
     "!" 'toggle-ansi-term
+    "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "bf" 'helm-buffers-list
+    "bf" 'helm-projectile-switch-to-buffer
+    "bF" 'helm-buffers-list
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer (transient)")
-    "bp" '((lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
-    "bn" '((lambda () (interactive) (next-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
+    "bp" '((lambda () (interactive) (projectile-previous-project-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
+    "bn" '((lambda () (interactive) (projectile-next-project-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
     "bs" 'evil-save-modified-and-close
     "c" '(:which-key "Code")
     "c^" 'beginning-of-defun
