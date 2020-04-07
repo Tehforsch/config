@@ -21,6 +21,9 @@
     "ch" 'hs-hide-all
     "cs" 'hs-show-all
     "f" '(:which-key "File")
+    "fA" '(:which-key "Autosave")
+    "fAd" 'ediff-current-file
+    "fAr" 'recover-this-file
     "fs" 'save-buffer-always
     "fo" 'projectile-find-other-file
     "ff" 'smart-list-files
@@ -109,6 +112,10 @@
     "wj" 'evil-window-down
     "wk" 'evil-window-up
     "wl" 'evil-window-right
+    "wH" 'evil-window-move-far-left
+    "wJ" 'evil-window-move-very-bottom
+    "wK" 'evil-window-move-very-top
+    "wL" 'evil-window-move-far-right
     "wo" 'delete-other-windows
     "^" 'evil-switch-to-windows-last-buffer
 )
