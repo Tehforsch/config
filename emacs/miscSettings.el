@@ -2,7 +2,7 @@
 (setq large-file-warning-threshold nil)
 
 ; Don't loop over buffers that are not associated with a file
-(set-frame-parameter nil 'buffer-predicate #'buffer-file-name)
+(add-to-list 'default-frame-alist '(buffer-predicate . buffer-file-name))
 
 ; Focus help buffer automatically when using help functions and allow escaping them with escape
 ;; (evil-set-initial-state 'help-mode 'motion)
