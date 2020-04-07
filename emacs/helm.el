@@ -25,3 +25,5 @@
 ; Make C-j and C-k go down/up in helm
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
+
+(use-package helm-xref)
