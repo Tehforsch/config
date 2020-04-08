@@ -11,4 +11,4 @@
     (lambda () (evil-define-key 'normal help-mode-map [escape] 'kill-buffer-and-window)))
 
 ; Turn on hideshow by default
-(hs-minor-mode)
+(add-hook 'c-mode-hook 'hs-minor-mode)
