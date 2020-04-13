@@ -125,3 +125,5 @@
   (cond
    ((org-at-heading-p) (org-insert-heading-respect-content) (org-todo) (evil-insert nil nil nil))
    ((org-at-item-p)  (org-insert-item))))
+
+;; (use-package org-habit)

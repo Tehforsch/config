@@ -12,3 +12,9 @@
 
 ; Turn on hideshow by default
 (add-hook 'c-mode-hook 'hs-minor-mode)
+
+; Immediately debug when any lisp error occurs
+(setq debug-on-error 1)
+
+(use-package company)
+(add-hook 'after-init-hook 'global-company-mode)
