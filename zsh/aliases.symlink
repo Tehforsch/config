@@ -31,3 +31,5 @@ alias emacs="~/projects/config/scripts/startEmacs.sh"
 alias em="~/projects/config/scripts/startEmacs.sh"
 alias remacs="systemctl --user restart emacs.service"
 alias cat="bat"
+alias pamac="echo 'use build and search -a for what you want'; pamac"
+alias dls='ls -la --sort=time --reverse'

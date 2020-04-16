@@ -13,13 +13,6 @@
     "bp" '((lambda () (interactive) (projectile-previous-project-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
     "bn" '((lambda () (interactive) (projectile-next-project-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
     "bs" 'evil-save-modified-and-close
-    "c" '(:which-key "Code")
-    "c^" 'beginning-of-defun
-    "c$" 'end-of-defun
-    "cen" 'next-error
-    "cep" 'previous-error
-    "ch" 'hs-hide-all
-    "cs" 'hs-show-all
     "f" '(:which-key "File")
     "fA" '(:which-key "Autosave")
     "fAd" 'ediff-current-file
@@ -61,43 +54,9 @@
     "oni" 'org-roam-insert
     "onp" '(:which-key "Papers")
     "onpf" 'org-roam-find-file-for-paper
-    "ot" '(:which-key "Todo")
-    "ott" 'org-set-tags-command
-    "ota" '((lambda () (interactive) (org-agenda nil "c")) :which-key "Agenda")
-    "otc" 'org-archive-done-tasks
-    "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
+    "ota" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
-    "otd" '(:which-key "Set deadline")
-    "otm" '((lambda () (interactive) (org-refile)) :which-key "Refile")
-    "otdt" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "Now/Today")
-    "otdn" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "Tomorrow (Next day)")
-    "otdf" '((lambda () (interactive) (org-deadline nil nil)) :which-key "Find day")
-    "otdr" '((lambda () (interactive) (org-deadline '(4))) :which-key "Remove")
-    "otd0" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "Remove")
-    "otd1" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "Remove")
-    "otd2" '((lambda () (interactive) (org-deadline nil "+2d")) :which-key "Remove")
-    "otd3" '((lambda () (interactive) (org-deadline nil "+3d")) :which-key "Remove")
-    "otd4" '((lambda () (interactive) (org-deadline nil "+4d")) :which-key "Remove")
-    "otd5" '((lambda () (interactive) (org-deadline nil "+5d")) :which-key "Remove")
-    "otd6" '((lambda () (interactive) (org-deadline nil "+6d")) :which-key "Remove")
-    "otd7" '((lambda () (interactive) (org-deadline nil "+7d")) :which-key "Remove")
-    "otd8" '((lambda () (interactive) (org-deadline nil "+8d")) :which-key "Remove")
-    "otd9" '((lambda () (interactive) (org-deadline nil "+9d")) :which-key "Remove")
-    "ots" '(:which-key "Schedule task")
-    "otst" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "Now/Today")
-    "otsn" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "Tomorrow (Next day)")
-    "otsf" '((lambda () (interactive) (org-schedule nil nil)) :which-key "Find day")
-    "otsr" '((lambda () (interactive) (org-schedule '(4))) :which-key "Remove")
-    "ots0" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "Remove")
-    "ots1" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "Remove")
-    "ots2" '((lambda () (interactive) (org-schedule nil "+2d")) :which-key "Remove")
-    "ots3" '((lambda () (interactive) (org-schedule nil "+3d")) :which-key "Remove")
-    "ots4" '((lambda () (interactive) (org-schedule nil "+4d")) :which-key "Remove")
-    "ots5" '((lambda () (interactive) (org-schedule nil "+5d")) :which-key "Remove")
-    "ots6" '((lambda () (interactive) (org-schedule nil "+6d")) :which-key "Remove")
-    "ots7" '((lambda () (interactive) (org-schedule nil "+7d")) :which-key "Remove")
-    "ots8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "Remove")
-    "ots9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "Remove")
+    "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
     "p" '(:which-key "Project")
     "p!" 'projectile-run-shell
     "pa" 'helm-projectile-ag
@@ -118,4 +77,49 @@
     "wL" 'evil-window-move-far-right
     "wo" 'delete-other-windows
     "^" 'evil-switch-to-windows-last-buffer
+)
+
+
+(general-evil-define-key '(normal visual) 'c-mode-map :prefix ","
+    "" '(:which-key "Code")
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+)
+
+(general-evil-define-key '(normal visual) 'org-mode-map :prefix ","
+    "" '(:which-key "Todo")
+    "a" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
+    "t" 'org-set-tags-command
+    "c" 'org-archive-done-tasks
+    "d" '(:which-key "Set deadline")
+    "m" '((lambda () (interactive) (org-refile)) :which-key "Refile")
+    "df" '((lambda () (interactive) (org-deadline nil nil)) :which-key "Find day")
+    "dr" '((lambda () (interactive) (org-deadline '(4))) :which-key "Remove")
+    "d0" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "+0d")
+    "d1" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "+1d")
+    "d2" '((lambda () (interactive) (org-deadline nil "+2d")) :which-key "+2d")
+    "d3" '((lambda () (interactive) (org-deadline nil "+3d")) :which-key "+3d")
+    "d4" '((lambda () (interactive) (org-deadline nil "+4d")) :which-key "+4d")
+    "d5" '((lambda () (interactive) (org-deadline nil "+5d")) :which-key "+5d")
+    "d6" '((lambda () (interactive) (org-deadline nil "+6d")) :which-key "+6d")
+    "d7" '((lambda () (interactive) (org-deadline nil "+7d")) :which-key "+7d")
+    "d8" '((lambda () (interactive) (org-deadline nil "+8d")) :which-key "+8d")
+    "d9" '((lambda () (interactive) (org-deadline nil "+9d")) :which-key "+9d")
+    "s" '(:which-key "Set schedule")
+    "sf" '((lambda () (interactive) (org-schedule nil nil)) :which-key "Find day")
+    "sr" '((lambda () (interactive) (org-schedule '(4))) :which-key "Remove")
+    "s0" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "+0d")
+    "s1" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "+1d")
+    "s2" '((lambda () (interactive) (org-schedule nil "+2d")) :which-key "+2d")
+    "s3" '((lambda () (interactive) (org-schedule nil "+3d")) :which-key "+3d")
+    "s4" '((lambda () (interactive) (org-schedule nil "+4d")) :which-key "+4d")
+    "s5" '((lambda () (interactive) (org-schedule nil "+5d")) :which-key "+5d")
+    "s6" '((lambda () (interactive) (org-schedule nil "+6d")) :which-key "+6d")
+    "s7" '((lambda () (interactive) (org-schedule nil "+7d")) :which-key "+7d")
+    "s8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "+8d")
+    "s9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "+9d")
 )
