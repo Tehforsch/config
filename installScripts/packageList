@@ -75,6 +75,7 @@ gnome-keyring
 gnuplot
 gparted
 gpicview
+gprolog
 grep
 grub
 grub-theme-manjaro-dev
@@ -106,6 +107,7 @@ inxi
 iproute2
 iputils
 jfsutils
+kid3-qt
 kvantum-manjaro
 less
 lib32-flex
@@ -159,6 +161,7 @@ moc
 modemmanager
 morc_menu
 mousepad
+mp3wrap
 mpc
 mpd
 mplayer
@@ -194,6 +197,7 @@ pciutils
 pcmanfm
 perl
 perl-file-mimeinfo
+picard
 pkgconf
 polkit-gnome
 poppler-data
@@ -201,12 +205,12 @@ powertop
 procps-ng
 psmisc
 pulseaudio
-pygtk
 python-pip
 qt5-styleplugins
 qt5-tools
 qt5ct
 ranger
+redshift
 reiserfsprogs
 rsync
 rubber
@@ -218,8 +222,10 @@ shadow
 snapd
 spectre-meltdown-checker
 speedtest-cli
+sshfs
 subversion
 sudo
+swi-prolog
 sysfsutils
 syslog-ng
 systemd
@@ -242,6 +248,8 @@ ttf-droid
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
+unp
+unzip
 upower
 usbutils
 util-linux
