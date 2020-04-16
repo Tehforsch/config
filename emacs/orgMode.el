@@ -55,11 +55,23 @@
 ; Location of todolist/agenda
 (setq org-agenda-files '("~/resource/org/todo"))
 (setq org-default-notes-file "~/resource/org/todo/main.org")
+
+; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
 (setq org-agenda-custom-commands
-    '(
-        ("c" "Simple agenda view" ((agenda "") (alltodo "")))
-    )
-)
+    '(("n" "Simple agenda view" ((tags-todo "next")
+                                 (agenda "" ((org-agenda-span 7)))))))
+
+; Make agenda view prettier
+(setq org-agenda-prefix-format '(
+  (agenda  . " %?-12t% s") ;:%l ")
+  (timeline  . "• ")
+  (todo  . "• ")
+  (tags  . "• ")
+  (search . "• ")))
+
+; Start agenda today, not on monday
+(setq org-agenda-start-on-weekday nil)
+
 ;Enter insert mode immediately when capturing with evil turned on
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
