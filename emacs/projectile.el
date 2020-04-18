@@ -27,3 +27,7 @@
         (helm-find-files ".")
     )
 )
+
+; Create new file if helm query for files in the project doesnt result in a file.
+(defvar helm-source-file-not-found (helm-build-dummy-source "Create file" :action 'find-file))
+(add-to-list 'helm-projectile-sources-list helm-source-file-not-found t)
