@@ -16,4 +16,4 @@ i3-msg append_layout ~/projects/config/i3/restore/latex.json
 sleep 0.3
 i3-msg workspace 13:y
 
-okular ${withoutExtension}.pdf&
+zathura ${withoutExtension}.pdf&

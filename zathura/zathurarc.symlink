@@ -1,0 +1,13 @@
+set default-bg "#1d2021"
+set statusbar-bg "#1d2021"
+set statusbar-fg "#ebdbb2"
+set statusbar-basename true
+
+set recolor true
+set recolor-darkcolor "#ebdbb2"
+set recolor-lightcolor "#1d2021"
+map j scroll half-down
+map k scroll half-up
+map J scroll full-down
+map K scroll full-up
+map <C-t> feedkeys ":set recolor<Return>"

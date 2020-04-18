@@ -182,7 +182,6 @@ nfs-utils
 nss-mdns
 ntfs-3g
 ntp
-okular
 open-fuse-iso
 openresolv
 openssh
@@ -298,5 +297,7 @@ xorg-xsetroot
 xterm
 xz
 yay
+zathura
+zathura-pdf-mupdf
 zensu
 zsh
