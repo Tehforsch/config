@@ -63,6 +63,7 @@
     "pt" 'projectile-regenerate-tags
     "pr" 'projectile-replace
     "pS" 'projectile-save-project-buffers
+    "pR" 'projectile-discover-projects-in-search-path
     "pf" 'helm-projectile-switch-project
     "R" '((lambda () (interactive) (load-file "~/.emacs")) :which-key "Reload emacs config")
     "w" '(:which-key "Window")

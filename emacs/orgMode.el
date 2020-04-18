@@ -72,6 +72,7 @@
 ; Start agenda today, not on monday
 (setq org-agenda-start-on-weekday nil)
 
+(setq org-log-into-drawer "logbook")
 ;Enter insert mode immediately when capturing with evil turned on
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
@@ -79,7 +80,7 @@
     '(
       ("i" "Inbox" entry
           (file+headline org-default-notes-file "Inbox")
-          "* TODO %t %?\n "
+          "* TODO %?\n "
       )
     )
 )
