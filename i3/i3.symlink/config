@@ -200,3 +200,4 @@ exec --no-startup-id mpd
 exec --no-startup-id xbacklight -set 100
 exec --no-startup-id /usr/bin/amixer -c 1 sset "Auto-Mute Mode" Disabled
 exec --no-startup-id aw-qt
+exec --no-startup-id bash $scripts/tracker.sh
