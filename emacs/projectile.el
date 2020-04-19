@@ -31,3 +31,11 @@
 ; Create new file if helm query for files in the project doesnt result in a file.
 (defvar helm-source-file-not-found (helm-build-dummy-source "Create file" :action 'find-file))
 (add-to-list 'helm-projectile-sources-list helm-source-file-not-found t)
+
+; Make the name of the file in the status bar relative to projectile path
+(defun my-proj-relative-buf-name ()
+  (ignore-errors
+    (rename-buffer
+     (file-relative-name buffer-file-name (projectile-project-root)))))
+
+(add-hook 'find-file-hook #'my-proj-relative-buf-name)
