@@ -58,8 +58,9 @@
 
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
 (setq org-agenda-custom-commands
-    '(("n" "Simple agenda view" ((tags-todo "next")
-                                 (agenda "" ((org-agenda-span 7)))))))
+      '(("n" "Simple agenda view" ((tags-todo "toProcess")
+                                   (tags-todo "next")
+                                   (agenda "" ((org-agenda-span 7)))))))
 
 ; Make agenda view prettier
 (setq org-agenda-prefix-format '(
@@ -83,6 +84,13 @@
           "* TODO %?\n "
       )
     )
+)
+
+(defun add-task-to-inbox (task)
+  (message task)
+  (org-capture nil "i")
+  (insert task)
+  (evil-save-modified-and-close nil)
 )
 
 ; Nicer bullet points
