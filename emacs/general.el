@@ -54,6 +54,8 @@
     "oni" 'org-roam-insert
     "onp" '(:which-key "Papers")
     "onpf" 'org-roam-find-file-for-paper
+    "oNf" 'helm-find-or-create-note
+    "oNi" 'helm-insert-link-to-note
     "ota" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")

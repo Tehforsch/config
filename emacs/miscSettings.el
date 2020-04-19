@@ -14,10 +14,11 @@
 (add-hook 'c-mode-hook 'hs-minor-mode)
 
 ; Immediately debug when any lisp error occurs
-(setq debug-on-error nil)
+(setq debug-on-error t)
+;; (setq debug-on-error nil)
 
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
 
-(use-package activity-watch-mode)
-(global-activity-watch-mode)
+;; (use-package activity-watch-mode)
+;; (global-activity-watch-mode)
