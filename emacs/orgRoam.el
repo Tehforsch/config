@@ -15,7 +15,7 @@
 )
 
 ; Go to link under cursor
-(define-key evil-normal-state-map "gl" 'org-roam-open-at-point)
+(define-key evil-normal-state-map "gl" 'org-open-at-point)
 
 (defun org-roam-append ()
   (interactive)

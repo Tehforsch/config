@@ -55,6 +55,7 @@
     "onp" '(:which-key "Papers")
     "onpf" 'org-roam-find-file-for-paper
     "oNf" 'helm-find-or-create-note
+    "oNa" 'helm-append-link-to-note
     "oNi" 'helm-insert-link-to-note
     "ota" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")

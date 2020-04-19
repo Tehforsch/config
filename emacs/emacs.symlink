@@ -28,3 +28,5 @@
 (load "~/projects/config/emacs/formatting.el")
 (load "~/projects/config/emacs/miscSettings.el")
 (load "~/projects/config/emacs/disableMouse.el")
+
+(load "~/projects/config/emacs/myRoam.el")
