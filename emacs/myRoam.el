@@ -1,97 +1,89 @@
 (setq my-org-roam-directory "~/resource/org/myroam/")
 
 ; Bookkeeping, clean functions
-
-(defun list-note-files ()
-  (directory-files my-org-roam-directory nil ".*.org" )
-)
-
-(defun note-exists (note)
-  (file-exists-p (get-absolute-filename-from-note note))
-)
-(defun find-or-create-note (note)
-  (ensure-note-exists note)
-  (find-note note)
-)
-
-(defun ensure-note-exists (note)
-  (if (not (note-exists note))
-      (create-note note))
-)
-
-(defun create-link-to-note (insert-function note)
-  (funcall insert-function (get-link-to-note note))
-)
-
-(defun get-link-to-note (note)
-  (ensure-note-exists note)
-  (concat "[[file:" (note-filename note) "][" (note-title note) "]]")
-)
-
-(defun find-note (note)
-  (find-file (get-absolute-filename-from-note note))
-)
-
-(defun create-note (note)
-  (with-temp-file (get-absolute-filename-from-note note) (insert (get-title-string note)))
-)
-
 (cl-defstruct note filename title)
 
 (defun get-note-from-filename (filename)
-  (make-note :filename filename :title (get-title-from-filename filename))
-)
+  (make-note :filename filename :title (get-title-from-filename filename)))
 
 (defun get-note-from-title (title)
-    (make-note :filename (get-filename-from-title title) :title title))
+  (make-note :filename (get-filename-from-title title) :title title))
+
+(defun list-note-files ()
+  (directory-files my-org-roam-directory nil ".*.org" ))
+
+(defun note-exists (note)
+  (file-exists-p (get-absolute-filename-from-note note)))
+
+(defun find-or-create-note (note &optional text)
+  (ensure-note-exists note text)
+  (find-note note))
+
+(defun ensure-note-exists (note &optional text)
+  (if (not (note-exists note))
+      (create-note note text)))
+
+(defun create-link-to-note (insert-function note)
+  (funcall insert-function (get-link-to-note note)))
+
+(defun get-link-to-note (note)
+  (ensure-note-exists note)
+  (concat "[[file:" (note-filename note) "][" (note-title note) "]]"))
+
+(defun find-note (note)
+  (find-file (get-absolute-filename-from-note note)))
+
+(defun create-note (note &optional text)
+  (let* ((title-string (get-title-string note))
+        (text-string (if (null text) "" text))
+        (to-insert (concat title-string "\n" text-string)))
+  (with-temp-file (get-absolute-filename-from-note note) (insert to-insert))))
 
 ; Actual translation/string manipulation functions
 (defun get-absolute-filename-from-note (note)
-  (get-absolute-filename (note-filename note))
-)
+  (get-absolute-filename (note-filename note)))
 
 (defun get-absolute-filename (filename)
-    (f-join my-org-roam-directory filename)
-)
+  (f-join my-org-roam-directory filename))
 
 (defun get-title-from-filename (filename)
-  (s-replace "_" " " (s-replace ".org" "" (s-replace-regexp "[0-9]\\{14\\}-" "" filename)))
-)
+  (s-replace "_" " " (s-replace ".org" "" (s-replace-regexp "[0-9]\\{14\\}-" "" filename))))
 
 (defun get-title-string (note)
   (let ((title (note-title note)))
     (concat "#+TITLE: " title)))
 
 (defun get-filename-from-title (title)
-    (let ((date-string (format-time-string "%Y%m%d%H%M%S")))
-    (concat date-string "-" (s-replace " " "_" title) ".org"))
-)
-
+  (let*
+      ((title-part-of-filename (concat (s-replace " " "_" title) ".org"))
+       (matching-files (directory-files my-org-roam-directory nil (concat "^[0-9]\\{14\\}-" title-part-of-filename))))
+    (progn
+      (assert (< (list-length matching-files) 2))
+      (if (eq (list-length matching-files) 1)
+          (car matching-files)
+        (let ((date-string (format-time-string "%Y%m%d%H%M%S")))
+          (concat date-string "-" title-part-of-filename))))))
 
 ; Helm/User-functions
 (defun get-helm-source-note-files ()
-  (helm-build-sync-source "Notes" :candidates (list-note-files))
-)
+  (helm-build-sync-source "Notes" :candidates (list-note-files)))
 
 (defun get-helm-source-create-file ()
-  (helm-build-dummy-source "Create-file" :action 'identity)
-)
+  (helm-build-dummy-source "Create-file" :action 'identity))
 
 (defun get-helm-source-find-note ()
-    (list (get-helm-source-note-files) (get-helm-source-create-file))
-)
+  (list (get-helm-source-note-files) (get-helm-source-create-file)))
 
 (defun helm-find-note ()
   (let ((helm-query-result (helm :sources (get-helm-source-find-note))))
-       (if (null helm-query-result) 'nil
-       (if (file-exists-p (get-absolute-filename helm-query-result))
-       (get-note-from-filename helm-query-result)
-       (get-note-from-title helm-query-result))))
-)
+    (if (null helm-query-result) 'nil
+      (if (file-exists-p (get-absolute-filename helm-query-result))
+          (get-note-from-filename helm-query-result)
+        (get-note-from-title helm-query-result)))))
 
 (defun do-if-helm-query-succeeded (func query-result)
   (if (null query-result)
-    nil
+      nil
     (funcall func query-result)))
 
 (defun helm-find-or-create-note ()
@@ -111,4 +103,3 @@
 
 ; Go to link under cursor
 (define-key evil-normal-state-map "gl" 'org-open-at-point)
-

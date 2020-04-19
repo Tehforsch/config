@@ -44,19 +44,14 @@
     "ojn" '((lambda () (interactive) (if (find-file-relative-tomorrow) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
     "ojp" '((lambda () (interactive) (if (find-file-relative-yesterday) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
     "oL" 'org-toggle-link-display
-    "on" '(:which-key "Notes / org-roam")
-    "ona" 'org-roam-append
-    "onb" 'org-roam
+    "on" '(:which-key "Notes")
+    "ona" 'helm-append-link-to-note
     "one" '(:which-key "Export notes")
+    "onf" 'helm-find-or-create-note
+    "oni" 'helm-insert-link-to-note
     "onep" 'org-latex-export-to-pdf
-    "onf" 'org-roam-find-file
-    "ong" 'org-roam-show-graph
-    "oni" 'org-roam-insert
     "onp" '(:which-key "Papers")
-    "onpf" 'org-roam-find-file-for-paper
-    "oNf" 'helm-find-or-create-note
-    "oNa" 'helm-append-link-to-note
-    "oNi" 'helm-insert-link-to-note
+    "onpf" 'helm-find-note-for-paper
     "ota" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")

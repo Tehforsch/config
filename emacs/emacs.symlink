@@ -12,9 +12,9 @@
 (load "~/projects/config/emacs/flycheck.el")
 (load "~/projects/config/emacs/pythonBlack.el")
 (load "~/projects/config/emacs/orgMode.el")
-(load "~/projects/config/emacs/orgRoam.el")
-(load "~/projects/config/emacs/orgRoamPaper.el")
-(load "~/projects/config/emacs/orgRoamJournal.el")
+;; (load "~/projects/config/emacs/orgRoam.el")
+;; (load "~/projects/config/emacs/orgRoamPaper.el")
+;; (load "~/projects/config/emacs/orgRoamJournal.el")
 (load "~/projects/config/emacs/screenshot.el")
 (load "~/projects/config/emacs/general.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
@@ -30,3 +30,5 @@
 (load "~/projects/config/emacs/disableMouse.el")
 
 (load "~/projects/config/emacs/myRoam.el")
+(load "~/projects/config/emacs/myRoamPaper.el")
+(load "~/projects/config/emacs/myRoamJournal.el")
