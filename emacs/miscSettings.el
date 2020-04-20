@@ -24,3 +24,4 @@
 ;; (global-activity-watch-mode)
 
 (use-package frames-only-mode)
+(frames-only-mode)

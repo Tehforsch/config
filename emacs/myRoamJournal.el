@@ -65,6 +65,3 @@
 (defun find-file-random-day ()
   (interactive)
   (view-file (concat (file-name-as-directory my-org-roam-directory) (random-choice (directory-files my-org-roam-directory nil "\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\).org" )))))
-
-(find-file-for-time (time-add -1088000 (current-time)))
-(find-file-relative-tomorrow)
