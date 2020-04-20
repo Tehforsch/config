@@ -8,6 +8,7 @@
 
 (defhydra hydra-journal-switch-day ()
     "Switch days in journal"
-    ("n" find-file-relative-tomorrow)
-    ("p" find-file-relative-yesterday)
+    ("n" pundit-find-or-create-note-day-after)
+    ("p" pundit-find-or-create-note-day-before)
+    ("r" pundit-find-or-create-note-random-day)
 )

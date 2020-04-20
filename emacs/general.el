@@ -38,21 +38,21 @@
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
     "oj" '(:which-key "Journal")
-    "ojr" 'find-file-random-day
-    "ojt" 'find-file-today
-    "ojy" 'find-file-yesterday
-    "ojn" '((lambda () (interactive) (if (find-file-relative-tomorrow) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
-    "ojp" '((lambda () (interactive) (if (find-file-relative-yesterday) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    "ojt" 'pundit-find-or-create-note-today
+    "ojy" 'pundit-find-or-create-note-yesterday
+    "ojn" '((lambda () (interactive) (if (pundit-find-or-create-note-day-after) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    "ojp" '((lambda () (interactive) (if (pundit-find-or-create-note-day-before) (hydra-journal-switch-day/body))) :which-key "Previous day (transient).")
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
-    "ona" 'helm-append-link-to-note
-    "onb" 'helm-find-backlinks
+    "ona" 'pundit-helm-append-link-to-note
+    "onb" 'pundit-helm-find-backlinks
     "one" '(:which-key "Export notes")
-    "onf" 'helm-find-or-create-note
-    "oni" 'helm-insert-link-to-note
+    "onf" 'pundit-helm-find-or-create-note
+    "oni" 'pundit-helm-insert-link-to-note
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
-    "onpf" 'helm-find-note-for-paper
+    "onpf" 'pundit-helm-find-or-create-note-for-paper
     "ota" 'my-daily-agenda
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
@@ -85,6 +85,16 @@
     "^" 'beginning-of-defun
     "$" 'end-of-defun
     "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+)
+
+(general-evil-define-key '(normal visual) 'emacs-lisp-mode-map :prefix ","
+    "" '(:which-key "Code")
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "r" 'erefactor-rename-symbol-in-buffer
     "ep" 'previous-error
     "h" 'hs-hide-all
     "s" 'hs-show-all

@@ -32,3 +32,8 @@
 (load "~/projects/config/emacs/myRoam.el")
 (load "~/projects/config/emacs/myRoamPaper.el")
 (load "~/projects/config/emacs/myRoamJournal.el")
+(load "~/projects/config/emacs/myRoamSettings.el")
+
+; Run on startup
+(if (not (boundp 'stored-note-links))
+    (pundit--read-in-note-files))
