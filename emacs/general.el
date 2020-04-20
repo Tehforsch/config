@@ -46,6 +46,7 @@
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
     "ona" 'helm-append-link-to-note
+    "onb" 'helm-find-backlinks
     "one" '(:which-key "Export notes")
     "onf" 'helm-find-or-create-note
     "oni" 'helm-insert-link-to-note

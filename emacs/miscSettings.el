@@ -15,6 +15,7 @@
 
 ; Immediately debug when any lisp error occurs
 (setq debug-on-error t)
+(setq pp-escape-newlines nil)
 ;; (setq debug-on-error nil)
 
 (use-package company)

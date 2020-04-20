@@ -155,3 +155,5 @@
 
 ; Make org-open-at-point open the link in the same window
 (setq org-link-frame-setup (acons 'file 'find-file org-link-frame-setup))
+
+(define-key evil-normal-state-map "gl" 'org-open-at-point)

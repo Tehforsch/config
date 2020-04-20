@@ -65,3 +65,5 @@
 (defun find-file-random-day ()
   (interactive)
   (view-file (concat (file-name-as-directory my-org-roam-directory) (random-choice (directory-files my-org-roam-directory nil "\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\).org" )))))
+
+(setq default-link-filter-predicate (has-no-link-to-note-predicate (get-note-from-title name-of-journal-note)))
