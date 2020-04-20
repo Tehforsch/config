@@ -117,6 +117,10 @@
                   (local-set-key (kbd "C-s") 'org-agenda-todo)))
 (setq org-agenda-skip-scheduled-if-done t)
 
+(defun my-daily-agenda ()
+  (interactive)
+  (org-agenda nil "n"))
+
 (defun org-archive-done-tasks ()
   (interactive)
   (org-map-entries

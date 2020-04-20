@@ -52,7 +52,7 @@
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
     "onpf" 'helm-find-note-for-paper
-    "ota" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
+    "ota" 'my-daily-agenda
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
     "p" '(:which-key "Project")

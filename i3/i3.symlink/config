@@ -111,11 +111,12 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3
+set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki
 bindsym Mod1+s mode "$launch"
 mode "$launch" {
     # start dmenu (a program launcher)
-    bindsym a exec anki; mode "default"
+    bindsym a exec emacsclient -c -n -e '(my-daily-agenda)'; mode "default"
+    bindsym Shift+A exec anki; mode "default"
     bindsym b exec ~/.bin/terminal --working-directory=$(pwd) -x "zsh -ci ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
     bindsym e exec emacsclient -c -n; mode "default"
