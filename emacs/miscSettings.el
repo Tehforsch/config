@@ -22,3 +22,5 @@
 
 ;; (use-package activity-watch-mode)
 ;; (global-activity-watch-mode)
+
+(use-package frames-only-mode)
