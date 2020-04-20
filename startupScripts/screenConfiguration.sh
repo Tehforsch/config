@@ -16,3 +16,6 @@ else
     xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main --rotate left
     echo "xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main --rotate left"
 fi
+
+# temporary
+xrandr --output DP1 --primary --auto --output eDP1 --auto --left-of DP1
