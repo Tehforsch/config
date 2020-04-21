@@ -30,6 +30,7 @@ alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
 alias e="emacsclient -c -n"
 alias remacs="systemctl --user restart emacs.service"
 alias cat="bat"
-alias pamac="echo 'use build and search -a for what you want'; pamac"
 alias dls='ls -la --sort=time --reverse'
 alias ka="killall"
+alias pms="pamac search -a"
+alias pmb="pamac build --no-confirm"

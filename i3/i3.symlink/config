@@ -117,7 +117,7 @@ mode "$launch" {
     # start dmenu (a program launcher)
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
     bindsym Shift+A exec anki; mode "default"
-    bindsym b exec ~/.bin/terminal --working-directory=$(pwd) -x "zsh -ci ncmpcpp"; mode default
+    bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
     bindsym e exec emacsclient -c -n; mode "default"
     bindsym Shift+E exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"

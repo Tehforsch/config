@@ -1,6 +1,8 @@
 (use-package helm)
 (use-package helm-ag)
 
+(setq helm-ag-fuzzy-match t)
+
 (setq helm-completion-style 'helm-fuzzy)
 (setq helm-completion-in-region-fuzzy-match t)
 

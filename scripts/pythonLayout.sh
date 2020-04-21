@@ -7,5 +7,5 @@ else
     exit 1
 fi
 touch $pythonFileName
-~/.bin/terminal --working-directory=$(pwd) -x "~/.trigger/trigger 'python3 $pythonFileName \*.py'; zsh"
+kitty --directory=$(pwd) "~/.trigger/trigger 'python3 $pythonFileName \*.py'; zsh"
 nvim $pythonFileName

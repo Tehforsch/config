@@ -1,1 +1,1 @@
-~/.bin/terminal --working-directory=$(pwd) -x zsh -c "cd $(pwd); zsh"
+kitty --directory=$(pwd) zsh -c "cd $(pwd); zsh"

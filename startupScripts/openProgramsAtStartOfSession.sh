@@ -42,4 +42,4 @@ sleep 1
 # Music
 i3-msg workspace 7:music
 sleep 0.8
-~/.bin/terminal --working-directory=$(pwd) -x "zsh -ci ncmpcpp"&
+kitty "ncmpcpp"&

@@ -9,8 +9,8 @@ fi
 touch $latexFileName
 withoutExtension=${latexFileName/.tex/}
 i3-msg append_layout ~/projects/config/i3/restore/latex.json
-~/.bin/terminal --working-directory=$(pwd) -- zsh -c "sleep 0.8; ~/.trigger/trigger '~/projects/config/scripts/parseLatex.sh $latexFileName' $(fd .\*.tex); zsh -i"
-~/.bin/terminal --working-directory=$(pwd)
+kitty --directory=$(pwd) zsh -c "sleep 0.8; ~/.trigger/trigger '~/projects/config/scripts/parseLatex.sh $latexFileName' $(fd .\*.tex); zsh -i"
+kitty --directory=$(pwd)
 emacsclient -c -n $latexFileName
 
 sleep 0.3
