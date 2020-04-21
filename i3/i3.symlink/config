@@ -160,7 +160,7 @@ mode "$media" {
     bindsym y mode "default"
 }
 
-bindsym Mod1+w exec terminator
+bindsym Mod1+w exec kitty
 
 client.focused_inactive    $inactiveFont   $inactiveBg            $inactiveFont
 client.unfocused           $inactiveFont   $inactiveBg            $inactiveFont

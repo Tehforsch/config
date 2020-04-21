@@ -108,6 +108,7 @@ iproute2
 iputils
 jfsutils
 kid3-qt
+kitty
 kvantum-manjaro
 less
 lib32-flex
@@ -218,7 +219,6 @@ sbxkb
 screenfetch
 sed
 shadow
-snapd
 spectre-meltdown-checker
 speedtest-cli
 sshfs
