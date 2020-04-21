@@ -89,7 +89,7 @@
 (defun pundit--get-helm-source-notes (&optional link-filter-predicate)
   (let* ((notes (pundit--list-notes link-filter-predicate))
         (helm-formatted-notes (mapcar (lambda (note) (cons (pundit-note-title note) (pundit-note-filename note))) notes)))
-    (helm-build-sync-source "Notes" :candidates helm-formatted-notes)))
+    (helm-build-sync-source "Notes" :candidates helm-formatted-notes :fuzzy-match t)))
 
 (defun pundit--get-helm-source-create-file ()
   (helm-build-dummy-source "Create-file" :action 'identity))
