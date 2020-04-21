@@ -29,10 +29,10 @@
 (load "~/projects/config/emacs/miscSettings.el")
 (load "~/projects/config/emacs/disableMouse.el")
 
-(load "~/projects/config/emacs/myRoam.el")
-(load "~/projects/config/emacs/myRoamPaper.el")
-(load "~/projects/config/emacs/myRoamJournal.el")
-(load "~/projects/config/emacs/myRoamSettings.el")
+(load "~/projects/config/emacs/pundit.el")
+(load "~/projects/config/emacs/punditPaper.el")
+(load "~/projects/config/emacs/punditJournal.el")
+(load "~/projects/config/emacs/punditSettings.el")
 
 ; Run on startup
 (if (not (boundp 'stored-note-links))
