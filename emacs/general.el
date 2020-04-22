@@ -32,11 +32,11 @@
     "oco" 'open-bibliography
     "ocp" 'org-ref-open-pdf-at-point
     "oi" '(:which-key "Image")
-    "ois" '((lambda () (interactive) (insert-screenshot "~/projects/config/scripts/captureScreenshot.sh")) :which-key "Screenshot with white taken as transparent.")
-    "oiS" '((lambda () (interactive) (insert-screenshot "scrot -s")) :which-key "Screenshot as it is.")
+    "ois" '((lambda () (interactive) (insert-screenshot "scrot -s")) :which-key "Screenshot")
+    "oiS" '((lambda () (interactive) (insert-screenshot "~/projects/config/scripts/captureScreenshot.sh")) :which-key "Screenshot with white taken as transparent.")
     "oit" 'org-toggle-inline-images
     "ol" '(:which-key "Latex")
-    "oll" 'org-toggle-latex-fragment
+    "oll" 'org-latex-preview
     "oj" '(:which-key "Journal")
     "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
     "ojt" 'pundit-find-or-create-note-today
@@ -90,11 +90,22 @@
     "s" 'hs-show-all
 )
 
+(general-evil-define-key '(normal visual) 'fortran-mode-map :prefix ","
+    "" '(:which-key "Code")
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+)
+
 (general-evil-define-key '(normal visual) 'emacs-lisp-mode-map :prefix ","
     "" '(:which-key "Code")
     "^" 'beginning-of-defun
     "$" 'end-of-defun
     "r" 'erefactor-rename-symbol-in-buffer
+    "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
     "s" 'hs-show-all
