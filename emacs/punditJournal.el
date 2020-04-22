@@ -3,7 +3,7 @@
 
 ; Automatically create notes for days and switch between them (going to the next or previous day or to a random day)
 (defun pundit--find-or-create-note-for-time (time)
-  (let* ((title (format-time-string date-title-format time))
+  (let* ((title (format-time-string pundit-date-title-format time))
          (note (pundit--get-note-from-title title)))
     (pundit--find-or-create-note note (pundit--get-link-text-in-journal-note))))
 

@@ -51,7 +51,9 @@
   (concat "[[file:" (pundit-note-filename note) "][" (pundit-note-title note) "]]"))
 
 (defun pundit--find-note (note)
-  (find-file (pundit--get-absolute-filename-from-note note)))
+  (find-file (pundit--get-absolute-filename-from-note note))
+  (lexical-let ((note note))
+    (add-hook 'after-save-hook (lambda () (pundit--get-linked-notes note t)) nil t)))
 
 (defun pundit--create-note (note &optional text)
   (let* ((title-string (pundit--get-title-string note))
@@ -132,12 +134,14 @@
         (when (string= (org-element-property :type link) "file")
           (pundit--get-note-from-filename (org-element-property :path link)))))))
 
-(defun pundit--get-linked-notes (note)
+(defun pundit--get-linked-notes (note &optional refresh)
   (let* ((filename (pundit-note-filename note))
          (stored-link (assoc filename stored-note-links)))
-    (if (null stored-link)
+    (if (or (null stored-link) refresh)
         (let ((link (pundit--read-linked-notes-from-file note)))
-          (add-to-list 'stored-note-links (cons filename link))
+          (if refresh
+              (setcdr stored-link link)
+              (add-to-list 'stored-note-links (cons filename link)))
           link)
       (cdr stored-link))))
 
