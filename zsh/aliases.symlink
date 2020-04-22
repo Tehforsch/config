@@ -34,3 +34,4 @@ alias dls='ls -la --sort=time --reverse'
 alias ka="killall"
 alias pms="pamac search -a"
 alias pmb="pamac build --no-confirm"
+alias z="zathura"
