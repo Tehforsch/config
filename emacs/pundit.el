@@ -139,7 +139,7 @@
          (stored-link (assoc filename stored-note-links)))
     (if (or (null stored-link) refresh)
         (let ((link (pundit--read-linked-notes-from-file note)))
-          (if refresh
+          (if (and refresh (not (null stored-link)))
               (setcdr stored-link link)
               (add-to-list 'stored-note-links (cons filename link)))
           link)
