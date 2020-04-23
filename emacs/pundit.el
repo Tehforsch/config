@@ -1,3 +1,14 @@
+(defvar pundit-mode-map (make-sparse-keymap) "Keymap for pundit mode.")
+(defvar pundit-find-note-hook nil "Hook called when a new buffer with a pundit note is opened.")
+(defvar pundit-after-save-note-hook nil "Hook called when a buffer with a pundit note is saved.")
+(add-hook 'pundit-after-save-note-hook #'pundit--refresh-links-for-current-note)
+
+(define-minor-mode pundit-mode
+  "Toggle Pundit mode."
+  :init-value nil
+  :lighter " Pundit"
+  :keymap 'pundit-mode-map)
+
 ; Bookkeeping, clean functions
 (cl-defstruct pundit-note filename title)
 
@@ -52,8 +63,11 @@
 
 (defun pundit--find-note (note)
   (find-file (pundit--get-absolute-filename-from-note note))
-  (lexical-let ((note note))
-    (add-hook 'after-save-hook (lambda () (pundit--get-linked-notes note t)) nil t)))
+  (run-hooks 'pundit-find-note-hook)
+  (add-hook 'after-save-hook 'pundit--run-after-save-note-hook nil t))
+
+(defun pundit--run-after-save-note-hook ()
+  (run-hooks 'pundit-after-save-note-hook))
 
 (defun pundit--create-note (note &optional text)
   (let* ((title-string (pundit--get-title-string note))
@@ -144,6 +158,9 @@
               (add-to-list 'stored-note-links (cons filename link)))
           link)
       (cdr stored-link))))
+
+(defun pundit--refresh-links-for-current-note ()
+    (pundit--get-linked-notes (pundit--get-note-from-absolute-filename buffer-file-name) t))
 
 (defun pundit-helm-find-backlinks ()
   (interactive)
