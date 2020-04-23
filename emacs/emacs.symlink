@@ -8,7 +8,7 @@
 (load "~/projects/config/emacs/helm.el")
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/magit.el")
-(load "~/projects/config/emacs/openwith.el")
+(load "~/projects/config/emacs/fileAssociations.el")
 (load "~/projects/config/emacs/flycheck.el")
 (load "~/projects/config/emacs/pythonBlack.el")
 (load "~/projects/config/emacs/orgMode.el")
