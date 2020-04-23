@@ -4,7 +4,7 @@
     (setq projectile-project-search-path '("~/projects/"))
 )
 
-(setq projectile-mode 1)
+(projectile-mode)
 (setq projectile-project-search-path '("~/projects/"))
 (projectile-discover-projects-in-search-path)
 
@@ -39,3 +39,5 @@
      (file-relative-name buffer-file-name (projectile-project-root)))))
 
 (add-hook 'find-file-hook #'my-proj-relative-buf-name)
+
+(setq projectile-projects-cache (make-hash-table))
