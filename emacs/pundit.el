@@ -2,6 +2,7 @@
 (defvar pundit-find-note-hook nil "Hook called when a new buffer with a pundit note is opened.")
 (defvar pundit-after-save-note-hook nil "Hook called when a buffer with a pundit note is saved.")
 (add-hook 'pundit-after-save-note-hook #'pundit--refresh-links-for-current-note)
+(defvar pundit-title-property-name "TITLE")
 
 (define-minor-mode pundit-mode
   "Toggle Pundit mode."
@@ -176,24 +177,25 @@
     (if (not (file-exists-p absolute-filename))
         (message (format "Invalid link in pundit note:\n%s links to %s" (pundit-note-filename note) filename)))))
 
+(defun pundit--validate-buffer-contents (note)
+  (org-element-map (org-element-parse-buffer) 'link
+    (lambda (link)
+      (when (string= (org-element-property :type link) "file")
+        (pundit--check-link-is-correct note (org-element-property :path link))))))
+
 (defun pundit--validate-note (note)
   (with-temp-buffer
     (insert-file-contents (pundit--get-absolute-filename-from-note note))
-    (org-element-map (org-element-parse-buffer) 'link
-        (lambda (link)
-        (when (string= (org-element-property :type link) "file")
-            (pundit--check-link-is-correct note (org-element-property :path link)))))))
+    (pundit--validate-buffer-contents note)))
 
 (defun pundit--validate-this-note ()
   (let ((note (pundit--get-note-from-absolute-filename buffer-file-name)))
-    (org-element-map (org-element-parse-buffer) 'link
-      (lambda (link)
-        (when (string= (org-element-property :type link) "file")
-          (pundit--check-link-is-correct note (org-element-property :path link)))))))
+    (pundit--validate-buffer-contents note)))
 
 (defun pundit-validate-notes ()
   (mapcar 'pundit--validate-note (pundit--list-notes)))
 
-;; (defun pundit--rename-note (note new-title) ())
+(defun pundit--rename-note (note new-title) ()
+  (org-set-property pundit-title-property-name new-title))
 
-;; (pundit--rename-note (pundit--get-note-from-title "anewnote") "anevennewernote")
+;; (pundit--rename-note  "anevennewernote")

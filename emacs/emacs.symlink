@@ -24,6 +24,7 @@
 (load "~/projects/config/emacs/formatting.el")
 (load "~/projects/config/emacs/miscSettings.el")
 (load "~/projects/config/emacs/disableMouse.el")
+(load "~/projects/config/emacs/bookmarks.el")
 
 (load "~/projects/config/emacs/pundit.el")
 (load "~/projects/config/emacs/punditPaper.el")

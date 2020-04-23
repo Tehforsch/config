@@ -1,4 +1,4 @@
-(setq pundit-directory "~/resource/org/notes/")
+(setq pundit-directory "~/resource/org/debugNotes/")
 (setq pundit-journal-note-name "journal")
 (setq pundit-paper-note-name "paper")
 (setq default-link-filter-predicate (pundit--has-no-link-to-note-predicate (pundit--get-note-from-title pundit-journal-note-name)))

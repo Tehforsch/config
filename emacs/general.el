@@ -32,6 +32,9 @@
     "g" '(:which-key "Magit")
     "gb" 'magit-blame
     "gs" 'magit-status
+    "j" '(:which-key "Jump/Bookmarks")
+    "jf" 'helm-bookmarks
+    "ja" 'bookmark-set-with-default-name
     "o" '(:which-key "Org")
     "oc" '(:which-key "Citations/Bibliography")
     "oca" 'crossref-add-bibtex-entry
@@ -86,7 +89,25 @@
     "^" 'evil-switch-to-windows-last-buffer
 )
 
-(mode-leader-def '(normal visual) '(fortran-mode-map c-mode-map emacs-lisp-mode-map)
+(mode-leader-def '(normal visual) 'emacs-lisp-mode-map
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+)
+
+(mode-leader-def '(normal visual) 'c-mode-map
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+)
+
+(mode-leader-def '(normal visual) 'fortran-mode-map
     "^" 'beginning-of-defun
     "$" 'end-of-defun
     "en" 'next-error

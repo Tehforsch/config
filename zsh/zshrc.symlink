@@ -121,3 +121,5 @@ export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --co
 
 # # ctrl-r starts searching history backward
 # bindkey '^r' history-incremental-search-backward
+
+ulimit -c unlimited
