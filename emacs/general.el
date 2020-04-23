@@ -1,6 +1,13 @@
 (use-package general)
 (general-evil-setup t)
-(general-evil-define-key '(normal visual) 'global :prefix "SPC"
+
+(general-create-definer global-leader-def
+  :prefix "SPC")
+
+(general-create-definer mode-leader-def
+  :prefix ",")
+
+(global-leader-def '(normal visual) 'global
     "!" 'toggle-ansi-term
     "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
     "x" 'helm-M-x
@@ -79,9 +86,7 @@
     "^" 'evil-switch-to-windows-last-buffer
 )
 
-
-(general-evil-define-key '(normal visual) 'c-mode-map :prefix ","
-    "" '(:which-key "Code")
+(mode-leader-def '(normal visual) '(fortran-mode-map c-mode-map emacs-lisp-mode-map)
     "^" 'beginning-of-defun
     "$" 'end-of-defun
     "en" 'next-error
@@ -90,34 +95,17 @@
     "s" 'hs-show-all
 )
 
-(general-evil-define-key '(normal visual) 'fortran-mode-map :prefix ","
-    "" '(:which-key "Code")
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
-    "en" 'next-error
-    "ep" 'previous-error
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
-)
-
-(general-evil-define-key '(normal visual) 'emacs-lisp-mode-map :prefix ","
-    "" '(:which-key "Code")
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
+(mode-leader-def '(normal visual) 'emacs-lisp-mode-map
     "r" 'erefactor-rename-symbol-in-buffer
-    "en" 'next-error
-    "ep" 'previous-error
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
 )
 
-(general-evil-define-key '(normal visual) 'org-mode-map :prefix ","
+(mode-leader-def '(normal visual) 'org-mode-map
     "" '(:which-key "Todo")
     "a" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
     "t" 'org-set-tags-command
     "c" 'org-archive-done-tasks
     "d" '(:which-key "Set deadline")
-    "m" '((lambda () (interactive) (org-refile)) :which-key "Refile")
+    "r" '((lambda () (interactive) (org-refile)) :which-key "Refile")
     "df" '((lambda () (interactive) (org-deadline nil nil)) :which-key "Find day")
     "dr" '((lambda () (interactive) (org-deadline '(4))) :which-key "Remove")
     "d0" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "+0d")
@@ -144,3 +132,13 @@
     "s8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "+8d")
     "s9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "+9d")
 )
+
+(mode-leader-def '(normal visual) 'pundit-mode-map
+    "a" 'pundit-helm-append-link-to-note
+    "b" 'pundit-helm-find-backlinks
+    "e" '(:which-key "Export notes")
+    "f" 'pundit-helm-find-or-create-note
+    "i" 'pundit-helm-insert-link-to-note
+    "ep" 'org-latex-export-to-pdf
+    "p" '(:which-key "Papers")
+    "pf" 'pundit-helm-find-or-create-note-for-paper)
