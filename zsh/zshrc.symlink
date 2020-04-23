@@ -40,8 +40,10 @@ setopt inc_append_history
 
 # Binding to close the terminal with a process running in it without killing the process
 bindkey -s '^u' 'bg && disown && exit\n'
-# bind C-g to append &! to the written command (which nohups it), \n to run the command, ^z to suspend and exit\n to close the current terminal
-bindkey -s '^g' '&!\n^z exit\n'
+# bind C-h to run de command && exit instead of command, detaching the process
+bindkey -s '^h' '^ade ^e\n'
+# bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
+bindkey -s '^g' '^ade ^e&& exit\n'
 
 # Magically make converting utf-8 buffers to string and then printing them work
 export PYTHONIOENCODING="utf-8"
@@ -93,7 +95,6 @@ fzf-cd-widget() {
 }
 zle     -N    fzf-cd-widget
 bindkey '^v' fzf-cd-widget
-bindkey '^h' fzf-cd-widget
 export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 # # Vim mode
