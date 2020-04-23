@@ -7,4 +7,6 @@
 
 ; Run on startup
 (if (not (boundp 'stored-note-links))
-    (pundit--read-in-note-files))
+    (progn
+      (pundit--read-in-note-files)
+      (pundit-validate-notes)))

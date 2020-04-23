@@ -64,7 +64,8 @@
 (defun pundit--find-note (note)
   (find-file (pundit--get-absolute-filename-from-note note))
   (run-hooks 'pundit-find-note-hook)
-  (add-hook 'after-save-hook 'pundit--run-after-save-note-hook nil t))
+  (add-hook 'after-save-hook 'pundit--run-after-save-note-hook nil t)
+  (add-hook 'after-save-hook 'pundit--validate-this-note nil t))
 
 (defun pundit--run-after-save-note-hook ()
   (run-hooks 'pundit-after-save-note-hook))
@@ -169,3 +170,30 @@
 (defun pundit--read-in-note-files ()
   (setq stored-note-links '())
   (pundit--list-notes))
+
+(defun pundit--check-link-is-correct (note filename)
+  (let ((absolute-filename (pundit--get-absolute-filename filename)))
+    (if (not (file-exists-p absolute-filename))
+        (message (format "Invalid link in pundit note:\n%s links to %s" (pundit-note-filename note) filename)))))
+
+(defun pundit--validate-note (note)
+  (with-temp-buffer
+    (insert-file-contents (pundit--get-absolute-filename-from-note note))
+    (org-element-map (org-element-parse-buffer) 'link
+        (lambda (link)
+        (when (string= (org-element-property :type link) "file")
+            (pundit--check-link-is-correct note (org-element-property :path link)))))))
+
+(defun pundit--validate-this-note ()
+  (let ((note (pundit--get-note-from-absolute-filename buffer-file-name)))
+    (org-element-map (org-element-parse-buffer) 'link
+      (lambda (link)
+        (when (string= (org-element-property :type link) "file")
+          (pundit--check-link-is-correct note (org-element-property :path link)))))))
+
+(defun pundit-validate-notes ()
+  (mapcar 'pundit--validate-note (pundit--list-notes)))
+
+;; (defun pundit--rename-note (note new-title) ())
+
+;; (pundit--rename-note (pundit--get-note-from-title "anewnote") "anevennewernote")
