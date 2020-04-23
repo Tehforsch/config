@@ -119,8 +119,8 @@ mode "$launch" {
     bindsym Shift+A exec anki; mode "default"
     bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
-    bindsym e exec emacsclient -c -n; mode "default"
-    bindsym Shift+E exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
+    bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
+    bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec firefox --new-window mail.google.com; mode "default"
