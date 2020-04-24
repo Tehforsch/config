@@ -22,12 +22,18 @@
 (defun pundit--get-note-from-absolute-filename (absolute-filename)
   (pundit--get-note-from-filename (file-name-nondirectory absolute-filename)))
 
+(defun pundit--current-note ()
+  (pundit--get-note-from-absolute-filename buffer-file-name))
+
 (defun pundit--list-notes (&optional link-filter-predicate)
   (let* ((files (directory-files pundit-directory nil ".*.org" ))
         (notes (mapcar 'pundit--get-note-from-filename files)))
     (if (null link-filter-predicate)
         (remove-if-not default-link-filter-predicate notes)
         (remove-if-not link-filter-predicate notes))))
+
+(defun pundit--list-all-notes ()
+  (pundit--list-notes nil))
 
 (defun pundit--link-to-note-predicate (linked-note truth-value)
   (lexical-let ((linked-note linked-note)
@@ -60,7 +66,10 @@
 
 (defun pundit--get-link-to-note (note)
   (pundit--ensure-note-exists note)
-  (concat "[[file:" (pundit-note-filename note) "][" (pundit-note-title note) "]]"))
+  (pundit--get-link-string (pundit-note-filename note) (pundit-note-title note)))
+
+(defun pundit--get-link-string (filename title)
+  (concat "[[file:" filename "][" title "]]"))
 
 (defun pundit--find-note (note)
   (find-file (pundit--get-absolute-filename-from-note note))
@@ -89,11 +98,14 @@
 
 (defun pundit--get-title-string (note)
   (let ((title (pundit-note-title note)))
-    (concat "#+TITLE: " title)))
+    (concat "#+" pundit-title-property-name ": " title)))
+
+(defun pundit--convert-title-to-last-part-of-filename (title)
+    (concat (s-replace " " "_" title) ".org"))
 
 (defun pundit--get-filename-from-title (title)
   (let*
-      ((title-part-of-filename (concat (s-replace " " "_" title) ".org"))
+      ((title-part-of-filename (pundit--convert-title-to-last-part-of-filename title))
        (matching-files (directory-files pundit-directory nil (concat "^[0-9]\\{14\\}-" title-part-of-filename))))
     (progn
       (assert (< (list-length matching-files) 2))
@@ -102,8 +114,11 @@
         (let ((date-string (format-time-string "%Y%m%d%H%M%S")))
           (concat date-string "-" title-part-of-filename))))))
 
-; Helm/User-functions
+(defun convert-filename-with-new-title (old-filename new-title)
+  (let ((old-date-string (substring old-filename 0 14)))
+  (concat old-date-string "-" (pundit--convert-title-to-last-part-of-filename new-title))))
 
+; Helm/User-functions
 (defun pundit--get-helm-source-notes (&optional link-filter-predicate)
   (let* ((notes (pundit--list-notes link-filter-predicate))
         (helm-formatted-notes (mapcar (lambda (note) (cons (pundit-note-title note) (pundit-note-filename note))) notes)))
@@ -162,20 +177,20 @@
       (cdr stored-link))))
 
 (defun pundit--refresh-links-for-current-note ()
-    (pundit--get-linked-notes (pundit--get-note-from-absolute-filename buffer-file-name) t))
+    (pundit--get-linked-notes (pundit--current-note) t))
 
 (defun pundit-helm-find-backlinks ()
   (interactive)
-  (pundit-helm-find-or-create-note (pundit--has-link-to-note-predicate (pundit--get-note-from-absolute-filename (buffer-file-name)))))
+  (pundit-helm-find-or-create-note (pundit--has-link-to-note-predicate (pundit--current-note))))
 
 (defun pundit--read-in-note-files ()
   (setq stored-note-links '())
-  (pundit--list-notes))
+  (pundit--list-all-notes))
 
 (defun pundit--check-link-is-correct (note filename)
   (let ((absolute-filename (pundit--get-absolute-filename filename)))
     (if (not (file-exists-p absolute-filename))
-        (message (format "Invalid link in pundit note:\n%s links to %s" (pundit-note-filename note) filename)))))
+        (error (format "Invalid link in pundit note:\n%s links to %s" (pundit-note-filename note) filename)))))
 
 (defun pundit--validate-buffer-contents (note)
   (org-element-map (org-element-parse-buffer) 'link
@@ -189,13 +204,7 @@
     (pundit--validate-buffer-contents note)))
 
 (defun pundit--validate-this-note ()
-  (let ((note (pundit--get-note-from-absolute-filename buffer-file-name)))
-    (pundit--validate-buffer-contents note)))
+  (pundit--validate-buffer-contents (pundit--current-note)))
 
-(defun pundit-validate-notes ()
-  (mapcar 'pundit--validate-note (pundit--list-notes)))
-
-(defun pundit--rename-note (note new-title) ()
-  (org-set-property pundit-title-property-name new-title))
-
-;; (pundit--rename-note  "anevennewernote")
+(defun pundit-validate-all-notes ()
+  (mapcar 'pundit--validate-note (pundit--list-all-notes)))

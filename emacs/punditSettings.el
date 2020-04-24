@@ -9,4 +9,4 @@
 (if (not (boundp 'stored-note-links))
     (progn
       (pundit--read-in-note-files)
-      (pundit-validate-notes)))
+      (pundit-validate-all-notes)))
