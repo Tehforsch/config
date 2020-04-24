@@ -19,9 +19,6 @@
 (use-package erefactor)
 ;; (setq debug-on-error nil)
 
-(use-package company)
-(add-hook 'after-init-hook 'global-company-mode)
-
 ;; (use-package activity-watch-mode)
 ;; (global-activity-watch-mode)
 
