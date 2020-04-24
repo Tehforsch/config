@@ -31,5 +31,6 @@
 (load "~/projects/config/emacs/punditPaper.el")
 (load "~/projects/config/emacs/punditJournal.el")
 (load "~/projects/config/emacs/punditSettings.el")
+(load "~/projects/config/emacs/punditRename.el")
 
 (load "~/projects/config/emacs/general.el")

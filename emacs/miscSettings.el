@@ -17,6 +17,8 @@
 (setq debug-on-error t)
 (setq pp-escape-newlines nil)
 (use-package erefactor)
+(erefactor-highlight-mode nil)
+
 ;; (setq debug-on-error nil)
 
 ;; (use-package activity-watch-mode)

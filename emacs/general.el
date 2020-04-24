@@ -63,6 +63,7 @@
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
     "onpf" 'pundit-helm-find-or-create-note-for-paper
+    "onR" 'pundit-rename-this-note
     "ota" 'my-daily-agenda
     "oti" '((lambda () (interactive) (org-capture nil "i")) :which-key "Inbox task")
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")

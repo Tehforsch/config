@@ -1,6 +1,10 @@
 (defun replace-everywhere-in-buffer (old-string new-string)
+  (beginning-of-buffer)
+  (let ((has-old-string (search-forward old-string nil t)))
     (beginning-of-buffer)
-    (replace-string old-string new-string))
+    (while (search-forward old-string nil t)
+      (replace-match new-string nil t))
+    has-old-string))
 
 (defun pundit--rename-change-title-and-file (old-filename new-filename old-title-string new-title-string)
   (let ((old-absolute-filename (pundit--get-absolute-filename old-filename))
@@ -14,16 +18,20 @@
         (rename-file old-absolute-filename new-absolute-filename))))
 
 (defun pundit--rename-update-links-for-note (old-filename new-filename old-title new-title note)
-  (let ((absolute-filename (pundit--get-absolute-filename-from-note note)))
-    (with-temp-buffer
-        (kill-matching-buffers (file-name-nondirectory absolute-filename) nil t)
-        (insert-file-contents absolute-filename)
-        ; Replace strings that are completely unmodified, i.e. [[file:filename][title]]
-        ; with the new title
-        (replace-everywhere-in-buffer (pundit--get-link-string old-filename old-title) (pundit--get-link-string new-filename new-title))
-        ; and leave all the modified link titles as they are but change their filenames
-        (replace-everywhere-in-buffer old-filename new-filename)
-        (write-file absolute-filename))))
+  (let ((absolute-filename (pundit--get-absolute-filename-from-note note))
+        (old-link-string (pundit--get-link-string old-filename old-title))
+        (new-link-string (pundit--get-link-string new-filename new-title)))
+        (with-temp-buffer
+          (kill-matching-buffers (file-name-nondirectory absolute-filename) nil t)
+          (insert-file-contents absolute-filename)
+          (let
+                ; Replace strings that are completely unmodified, i.e. [[file:filename][title]]
+                ; with the new title
+              ((changed-exact-links (replace-everywhere-in-buffer old-link-string new-link-string))
+                ; and leave all the modified link titles as they are but change their filenames
+               (changed-filename-links (replace-everywhere-in-buffer old-filename new-filename)))
+            (if (or changed-exact-links changed-filename-links)
+                (write-file absolute-filename))))))
 
 (defun pundit--rename-update-all-links (old-filename new-filename old-title new-title)
   (mapcar (apply-partially #'pundit--rename-update-links-for-note old-filename new-filename old-title new-title) (pundit--list-all-notes)))
@@ -39,11 +47,12 @@
         (progn
           (pundit--rename-change-title-and-file old-filename new-filename old-title-string new-title-string)
           (pundit--rename-update-all-links old-filename new-filename old-title new-title)
-          (pundit--validate-all-notes))
-      
+          (pundit-validate-all-notes)
+          (pundit--read-in-note-files))
         (error "Cannot rename note, target file already exists: %s" new-filename))))
 
 (defun pundit-rename-this-note ()
   (interactive)
-  (let ((new-title (completing-read "New title:" nil)))
-    (pundit--rename-note (pundit--current-note) new-title)))
+  (let ((new-title (completing-read "New title: " nil)))
+    (pundit--rename-note (pundit--current-note) new-title)
+    (pundit--find-or-create-note (pundit--get-note-from-title new-title))))

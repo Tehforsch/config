@@ -207,4 +207,5 @@
   (pundit--validate-buffer-contents (pundit--current-note)))
 
 (defun pundit-validate-all-notes ()
+  (interactive)
   (mapcar 'pundit--validate-note (pundit--list-all-notes)))
