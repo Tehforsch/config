@@ -11,6 +11,7 @@
 (load "~/projects/config/emacs/fileAssociations.el")
 (load "~/projects/config/emacs/flycheck.el")
 (load "~/projects/config/emacs/pythonBlack.el")
+(load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/orgMode.el")
 (load "~/projects/config/emacs/screenshot.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
