@@ -70,6 +70,9 @@
   (tags  . "• ")
   (search . "• ")))
 
+; Dont show repeating entries
+(setq org-agenda-show-future-repeats nil)
+
 ; Start agenda today, not on monday
 (setq org-agenda-start-on-weekday nil)
 
