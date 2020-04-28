@@ -7,4 +7,4 @@ export scripts=$CONFIG/scripts
 export GPG_TTY=$(tty)
 export BROWSER=/usr/bin/firefox
 
-export systemName="manjaro"
+export systemName="manjaropc"
