@@ -1,4 +1,5 @@
 keycode 66 = p P p p p p
+keycode 64 = k K k k k k
 keycode 38 = a A bracketleft bracketleft bracketleft braceleft 
 keycode 39 = s S parenleft parenleft parenleft parenleft 
 keycode 40 = d D parenright parenright parenright parenright 

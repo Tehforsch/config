@@ -151,7 +151,7 @@ mode "$gameLaunch" {
 
 set $passthrough Game mode. F11: Launch, F12: Exit
 mode "$passthrough" {
-    bindsym F12 workspace 1:a; mode "default"; exec $scripts/postGameHook.sh
+    bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
     bindsym F11 mode "$gameLaunch"; exec $scripts/postGameHook.sh
 }
 bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
