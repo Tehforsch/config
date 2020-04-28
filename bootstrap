@@ -1,17 +1,18 @@
 #!/bin/bash
 #
 # update submodules
+if [ $# -eq 0 ]; then
+   echo "Need system name as input"
+   exit 1
+fi
+
+SYSTEM_NAME=$1
+
+echo $SYSTEM_NAME > ~/.systemName
+
 git submodule init
 git submodule update
 
-# Inspired by (stolen from) https://github.com/holman/dotfiles
-if [ $# -eq 1 ]
-then
-    # for local configuration files (named .symlink.configuration) we need an argument to this script
-    SYSTEM_NAME=$1
-else
-    SYSTEM_NAME=""
-fi
 
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd)

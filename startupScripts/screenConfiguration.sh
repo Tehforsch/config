@@ -3,19 +3,13 @@ xset -dpms
 xset s off
 
 source ~/.localConfig
-if [[ $systemName == "ubuntu" ]]; then
+if [[ $systemName == "manjaro" ]]; then
     echo "a"
     main=HDMI1
     second=eDP1
     xrandr --output $main --primary --auto --output $second --auto --left-of $main
 else
-    echo "b"
-    main=DP2
-    left=eDP1
-    right=DP1-3
-    xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main --rotate left
-    echo "xrandr --output $main --primary --auto --output $left --auto --left-of $main --output $right --auto --right-of $main --rotate left"
+    xrandr --output HDMI-0 --primary
 fi
 
 # temporary
-xrandr --output DP1 --primary --auto --output eDP1 --auto --left-of DP1
