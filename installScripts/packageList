@@ -125,7 +125,6 @@ libva-vdpau-driver
 licenses
 lightdm-settings
 lightdm-slick-greeter
-linux54
 logrotate
 lvm2
 lxappearance
@@ -205,7 +204,6 @@ powertop
 procps-ng
 psmisc
 pulseaudio
-python-pip
 qt5-styleplugins
 qt5-tools
 qt5ct
@@ -227,7 +225,6 @@ sudo
 swi-prolog
 sysfsutils
 syslog-ng
-systemd
 systemd-fsck-silent
 systemd-sysvcompat
 tar
@@ -296,9 +293,20 @@ xorg-xkill
 xorg-xprop
 xorg-xsetroot
 xterm
-xz
 yay
 zathura
 zathura-pdf-mupdf
 zensu
 zsh
+amd-ucode
+deluge
+groff
+haveged
+iptables
+ipw2100-fw
+ipw2200-fw
+json-c
+lm_sensors
+lsb-release
+rofi
+timeset-gui
