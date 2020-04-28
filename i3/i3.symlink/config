@@ -142,8 +142,6 @@ mode "$launch" {
     bindsym Escape mode "default"
 }
 
-For_Window [Title="fzf-menu"] floating enable
-
 set $gameLaunch [d]ota, [c]s
 mode "$gameLaunch" {
     bindsym d exec steam steam://rungameid/570; mode "$passthrough"
