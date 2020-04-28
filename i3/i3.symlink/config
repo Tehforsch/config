@@ -144,16 +144,17 @@ mode "$launch" {
 
 For_Window [Title="fzf-menu"] floating enable
 
-set $gameLaunch [a]ctivate game mode, [d]ota, [c]s
+set $gameLaunch [d]ota, [c]s
 mode "$gameLaunch" {
-    bindsym d exec steam steam://rungameid/570; mode "default"
-    bindsym c exec steam steam://rungameid/730; mode "default"
-    bindsym Escape mode "default"
+    bindsym d exec steam steam://rungameid/570; mode "$passthrough"
+    bindsym c exec steam steam://rungameid/730; mode "$passthrough"
+    bindsym Escape mode "$passthrough"
 }
 
-set $passthrough Game mode, exit with F11
+set $passthrough Game mode. F11: Launch, F12: Exit
 mode "$passthrough" {
-    bindsym F11 workspace 1:a; mode "default"; exec $scripts/postGameHook.sh
+    bindsym F12 workspace 1:a; mode "default"; exec $scripts/postGameHook.sh
+    bindsym F11 mode "$gameLaunch"; exec $scripts/postGameHook.sh
 }
 bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
 
