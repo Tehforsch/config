@@ -1,5 +1,17 @@
 # This sets some paths such as where the CONFIG folder lies. Makes it easier to use on other machines without getting confused
-source "$HOME/.localConfig"
+systemName=$(cat $HOME/.systemName)
+if [[ -a "$HOME/.localConfig" ]]; then
+    source "$HOME/.localConfig"
+fi
+
+## default folders folder
+export CONFIG=$HOME/projects/config
+export config=$CONFIG
+export PROJECTS=$HOME/projects
+export projects=$PROJECTS
+export scripts=$CONFIG/scripts
+export GPG_TTY=$(tty)
+export BROWSER=/usr/bin/firefox
 
 # load zgen
 source "$CONFIG/zgen/zgen.zsh"
@@ -58,7 +70,10 @@ export FZF_CTRL_T_COMMAND="fd --follow -I"
 # Source aliases at the end because, for some inexplicable reason, the git plugin of oh-my-zsh sets its own aliases (WHY?!) and overwrites some of mine.
 # Aliases and machine-local aliases
 source "$HOME/.aliases"
-source "$HOME/.localAliases"
+
+if [[ -a "$HOME/.localAliases" ]]; then
+    source "$HOME/.localAliases"
+fi
 
 # FZF settings that i want in my version control
 # ALT-C - cd into the selected directory

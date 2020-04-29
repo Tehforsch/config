@@ -47,6 +47,7 @@
     "oit" 'org-toggle-inline-images
     "ol" '(:which-key "Latex")
     "oll" 'org-latex-preview
+    "olL" '((lambda () (interactive) (org-latex-preview 16)) :which-key "Clear all latex fragments")
     "oj" '(:which-key "Journal")
     "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
     "ojt" 'pundit-find-or-create-note-today

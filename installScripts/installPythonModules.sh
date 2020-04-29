@@ -1,1 +1,11 @@
-yes | pip3 install pyinotify numpy mock nose livestreamer neovim python-language-server[all] todoist pytodoist python-language-server[all] rpyc i3-py
+#!/bin/sh
+
+requirements_file=pythonModuleList
+for module in $(cat $requirements_file); do
+    echo $module
+    if pip install "$module"; then
+    echo "Installed: $module"
+else
+    echo "ERROR: Could not install $module"
+    fi
+done

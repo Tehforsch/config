@@ -1,3 +1,5 @@
+keycode 66 = p P p p p p
+keycode 64 = k K k k k k
 keycode 38 = a A bracketleft bracketleft bracketleft braceleft 
 keycode 39 = s S parenleft parenleft parenleft parenleft 
 keycode 40 = d D parenright parenright parenright parenright 
@@ -13,6 +15,7 @@ keycode 53 = x X braceright braceright braceright braceright
 keycode 28 = t T dollar dollar dollar dollar
 keycode 60 = period colon period period period period
 keycode 12 = 3 underscore underscore underscore underscore underscore
+
 
 clear shift
 add shift = Shift_L
