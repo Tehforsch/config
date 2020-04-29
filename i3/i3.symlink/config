@@ -156,7 +156,7 @@ mode "$passthrough" {
 }
 bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
 
-set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song
+set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song
 bindsym Mod1+y mode "$media"
 
 mode "$media" {
@@ -173,6 +173,14 @@ mode "$media" {
     bindsym a exec "mpc prev"
     bindsym d exec "mpc next"
     bindsym y mode "default"
+    bindsym p mode "$findMusic"
+}
+
+set $findMusic [a]lbum, [s]ong, [k]: artist
+mode "$findMusic" {
+    bindsym "k" exec bash $config/rofiMusic/artist.sh; mode "default"
+    bindsym "a" exec bash $config/rofiMusic/album.sh; mode "default"
+    bindsym "s" exec bash $config/rofiMusic/song.sh; mode "default"
 }
 
 bindsym Mod1+w exec kitty
