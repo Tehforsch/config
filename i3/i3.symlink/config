@@ -164,6 +164,8 @@ mode "$media" {
     # Volume changing hotkeys
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
+    bindsym Shift+R exec --no-startup-id mpc volume +5
+    bindsym Shift+F exec --no-startup-id mpc volume -5
     # Brightness changing hotkeys
     bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
     bindsym t exec --no-startup-id $scripts/changeBrightness.sh R
