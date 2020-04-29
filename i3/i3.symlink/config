@@ -176,11 +176,13 @@ mode "$media" {
     bindsym p mode "$findMusic"
 }
 
-set $findMusic [a]lbum, [s]ong, [k]: artist
+set $findMusic [a]lbum, [s]ong, [r]andom album, [k]: artist
 mode "$findMusic" {
-    bindsym "k" exec bash $config/rofiMusic/artist.sh; mode "default"
-    bindsym "a" exec bash $config/rofiMusic/album.sh; mode "default"
-    bindsym "s" exec bash $config/rofiMusic/song.sh; mode "default"
+    bindsym "k" exec bash $scripts/musicSelection/artist.sh; mode "default"
+    bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
+    bindsym "s" exec bash $scripts/musicSelection/song.sh; mode "default"
+    bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh
+    bindsym "Escape" mode "default"
 }
 
 bindsym Mod1+w exec kitty
