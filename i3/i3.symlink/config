@@ -156,7 +156,7 @@ mode "$passthrough" {
 }
 bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
 
-set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song
+set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song
 bindsym Mod1+y mode "$media"
 
 mode "$media" {
@@ -164,6 +164,8 @@ mode "$media" {
     # Volume changing hotkeys
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
+    bindsym Shift+R exec --no-startup-id mpc volume +5
+    bindsym Shift+F exec --no-startup-id mpc volume -5
     # Brightness changing hotkeys
     bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
     bindsym t exec --no-startup-id $scripts/changeBrightness.sh R
@@ -173,6 +175,16 @@ mode "$media" {
     bindsym a exec "mpc prev"
     bindsym d exec "mpc next"
     bindsym y mode "default"
+    bindsym p mode "$findMusic"
+}
+
+set $findMusic [a]lbum, [s]ong, [r]andom album, [k]: artist
+mode "$findMusic" {
+    bindsym "k" exec bash $scripts/musicSelection/artist.sh; mode "default"
+    bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
+    bindsym "s" exec bash $scripts/musicSelection/song.sh; mode "default"
+    bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh
+    bindsym "Escape" mode "default"
 }
 
 bindsym Mod1+w exec kitty
@@ -212,11 +224,8 @@ exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift
-exec --no-startup-id sleep 3 && pulseaudio --start
 exec --no-startup-id sleep 5 && mpd
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id xbacklight -set 100
-exec --no-startup-id aw-qt
-# exec --no-startup-id bash $scripts/tracker.sh
 exec --no-startup-id sleep 10; python3 $config/todoBot/main.py

@@ -1,0 +1,5 @@
+rofi.theme: /usr/share/rofi/themes/gruvbox-dark-hard.rasi
+rofi.kb-remove-to-eol: KP_Enter
+rofi.kb-accept-entry: Return
+rofi.kb-row-down: Control+j
+rofi.kb-row-up: Control+k
