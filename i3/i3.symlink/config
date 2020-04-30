@@ -224,11 +224,8 @@ exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift
-exec --no-startup-id sleep 3 && pulseaudio --start
 exec --no-startup-id sleep 5 && mpd
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id xbacklight -set 100
-exec --no-startup-id aw-qt
-# exec --no-startup-id bash $scripts/tracker.sh
 exec --no-startup-id sleep 10; python3 $config/todoBot/main.py
