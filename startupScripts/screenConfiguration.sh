@@ -2,7 +2,7 @@
 xset -dpms
 xset s off
 
-source ~/.localConfig
+systemName=$(cat ~/.systemName)
 if [[ $systemName == "manjaro" ]]; then
     echo "a"
     main=HDMI1
@@ -11,5 +11,3 @@ if [[ $systemName == "manjaro" ]]; then
 else
     xrandr --output HDMI-0 --primary
 fi
-
-# temporary
