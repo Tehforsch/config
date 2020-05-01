@@ -26,6 +26,7 @@
     "fAr" 'recover-this-file
     "fs" 'save-buffer-always
     "fo" 'projectile-find-other-file
+    "fl" 'helm-locate
     "ff" 'smart-list-files
     "fF" 'helm-projectile-find-file-in-known-projects
     "fp" 'comment-out-line-and-copypaste-below

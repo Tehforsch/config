@@ -1,5 +1,5 @@
 #!/bin/bash
-artist=$(mpc list artist | rofi -i -dmenu -p "Artist:")
+artist=$(mpc list artist | shuf | rofi -i -dmenu -p "Artist:")
 if [[ $artist == "" ]]; then # Aborted query
    exit 1
 fi

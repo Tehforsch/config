@@ -24,3 +24,5 @@
 (define-key global-map (kbd "C-h a") 'helm-apropos)
 
 (use-package helm-xref)
+
+(use-package helm-fd)

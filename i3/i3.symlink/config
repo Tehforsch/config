@@ -49,7 +49,7 @@ bindsym Mod1+Shift+l move right
 bindsym $mod+o split h
 
 # split in vertical orientation
-bindsym $mod+p split v
+bindsym $mod+i split v
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
@@ -94,6 +94,9 @@ bindsym $mod+Shift+n move container to workspace 9:notes; workspace 9:notes
 bindsym $mod+Shift+m move container to workspace 10:mail; workspace 10:mail
 bindsym $mod+Shift+z move container to workspace 11:zotero; workspace 11:zotero
 
+bindsym $mod+Shift+p move scratchpad
+bindsym $mod+p scratchpad show
+
 # Move workspaces between monitors
 bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
@@ -120,7 +123,7 @@ mode "$launch" {
     bindsym Shift+A exec anki; mode "default"
     bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
-    bindsym g mode "$gameLaunch"
+    bindsym g mode "$gameLaunchNoPassthrough"
     bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
     bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
@@ -148,6 +151,12 @@ mode "$gameLaunch" {
     bindsym c exec steam steam://rungameid/730; mode "$passthrough"
     bindsym Escape mode "$passthrough"
 }
+set $gameLaunchNoPassthrough Launch: [d]ota, [c]s
+mode "$gameLaunchNoPassthrough" {
+    bindsym d exec steam steam://rungameid/570; mode "default"
+    bindsym c exec steam steam://rungameid/730; mode "default"
+    bindsym Escape mode "default"
+}
 
 set $passthrough Game mode. F11: Launch, F12: Exit
 mode "$passthrough" {
@@ -155,6 +164,7 @@ mode "$passthrough" {
     bindsym F11 mode "$gameLaunch"; exec $scripts/postGameHook.sh
 }
 bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
+bindsym Shift+F12 move workspace "100:steam"
 
 set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song
 bindsym Mod1+y mode "$media"
@@ -213,6 +223,9 @@ bar {
     strip_workspace_numbers yes
     status_command i3status
 }
+
+# Assign programs to workspace
+assign [class="dota2"] 100:steam
 
 #Disable window titles
 new_window 1pixel

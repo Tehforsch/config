@@ -1,5 +1,5 @@
 #!/bin/bash
-title=$(mpc list title | rofi -i -dmenu -p "Song title:")
+title=$(mpc list title | shuf | rofi -i -dmenu -p "Song title:")
 echo $title
 album=$(mpc list album title "$title")
 if [[ $(echo "$album" | wc -l) != 1 ]]; then
