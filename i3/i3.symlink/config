@@ -158,10 +158,12 @@ mode "$gameLaunchNoPassthrough" {
     bindsym Escape mode "default"
 }
 
-set $passthrough Game mode. F11: Launch, F12: Exit
+set $passthrough Game mode. F11: Launch, F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$passthrough" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
     bindsym F11 mode "$gameLaunch"; exec $scripts/postGameHook.sh
+    bindsym $mod+p; exec $scripts/screenCapture.sh
+    bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
 }
 bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
 bindsym Shift+F12 move workspace "100:steam"
