@@ -13,7 +13,6 @@
 (load "~/projects/config/emacs/pythonBlack.el")
 (load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/orgMode.el")
-(load "~/projects/config/emacs/screenshot.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
 (load "~/projects/config/emacs/autosaveAndLock.el")
 (load "~/projects/config/emacs/ansiterm.el")
@@ -33,5 +32,6 @@
 (load "~/projects/config/emacs/punditJournal.el")
 (load "~/projects/config/emacs/punditSettings.el")
 (load "~/projects/config/emacs/punditRename.el")
+(load "~/projects/config/emacs/screenshot.el")
 
 (load "~/projects/config/emacs/general.el")
