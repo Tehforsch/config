@@ -3,6 +3,8 @@ set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 set $startupScripts ~/projects/config/startupScripts
 
+set $mod Mod4
+
 set $bg #1d2021
 set $activeBg #282828
 set $activeFont #ebdbb2
@@ -11,15 +13,39 @@ set $inactiveBg #1d2021
 set $inactiveFont #928374
 set $activeWindowBorder #928374
 
-# MISC
-# Change font
 font pango: Dejavu Sans Mono 12
 
-# use windows as mod
-set $mod Mod4
+client.focused_inactive    $inactiveFont   $inactiveBg            $inactiveFont
+client.unfocused           $inactiveFont   $inactiveBg            $inactiveFont
+client.focused             $activeFont     $activeWindowBorder    $activeFont
+client.urgent              $activeFont     $activeWindowBorder    $activeFont
 
-# Set background to black
-exec_always --no-startup-id xsetroot -solid "$inactiveBg"
+bar {
+	colors {
+		background $bg
+		statusline #ffffff
+		separator  $activeFont
+		focused_workspace $activeBg $activeBg $activeFont
+		active_workspace  $activeBg $activeBg $activeFont
+		inactive_workspace $inactiveBg $inactiveBg $inactiveFont
+		urgent_workspace  $activeBg $activeBg $activeFont
+	}
+    output primary
+    output HDMI-1
+    output DP-2
+    output eDP1
+    output eDP-1
+    output DP-1-3
+    strip_workspace_numbers yes
+    status_command i3status
+}
+
+#Disable window titles
+new_window 1pixel
+for_window [class="^.*"] border pixel 1
+
+# Enable floating mode (popup style) for some applications
+for_window [window_role="pop-up"] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -53,11 +79,6 @@ bindsym $mod+i split v
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
-
-# Enable floating mode (popup style) for some applications
-for_window [window_role="pop-up"] floating enable
-
-# WORKSPACES
 
 # Workspace switching hotkeys
 bindsym $mod+a workspace 1:a
@@ -97,11 +118,17 @@ bindsym $mod+Shift+z move container to workspace 11:zotero; workspace 11:zotero
 bindsym $mod+Shift+p move scratchpad
 bindsym $mod+p scratchpad show
 
-# Move workspaces between monitors
 bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
 
+bindsym Mod1+c exec rofi -show window
 bindsym Mod1+o mode "resize"
+bindsym Mod1+s mode "$launch"
+bindsym Mod1+w exec kitty
+bindsym Mod1+y mode "$media"
+bindsym F12 workspace "100:steam"; mode "$game"; exec $scripts/preGameHook.sh
+bindsym Shift+F12 move workspace "100:steam"
+
 mode "resize" {
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
@@ -114,74 +141,64 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym Mod1+c exec rofi -show window
-
 set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki
-bindsym Mod1+s mode "$launch"
 mode "$launch" {
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
-    bindsym Shift+A exec anki; mode "default"
     bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
-    bindsym g mode "$gameLaunch"
+    bindsym d exec $scripts/runDiscord.sh; mode "default"
     bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
-    bindsym Shift+E exec emacsclient -c -n; mode "default"
+    bindsym g mode "$gameLaunch"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec firefox --new-window mail.google.com; mode "default"
-    bindsym shift+M exec thunderbird; mode "default"
     bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec firefox --new-window todoist.com; mode "default"
     bindsym s exec rofi -show run; mode "default"
     bindsym t exec telegram-desktop; mode "default"
     bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
+    bindsym Shift+A exec anki; mode "default"
     bindsym Shift+C exec bash $startupScripts/runAll.sh; mode "default"
-    bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
-    bindsym shift+r restart; mode "default"
+    bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
+    bindsym shift+M exec thunderbird; mode "default"
+    bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
-    bindsym shift+T exec teamspeak3; mode "default"
+    bindsym shift+R restart; mode "default"
     bindsym Escape mode "default"
 }
 
+# Game settings
 set $gameLaunch [d]ota, [c]s, [s]tranded deep
 mode "$gameLaunch" {
     bindsym d exec steam steam://rungameid/570; mode "default"
     bindsym c exec steam steam://rungameid/730; mode "default"
-    bindsym s exec steam steam://rungameid/313120; mode "default"
     bindsym Escape mode "default"
 }
 
-set $passthrough Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
-mode "$passthrough" {
+set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
+mode "$game" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
     bindsym $mod+p; exec $scripts/screenCapture.sh
     bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
 }
-bindsym F12 workspace "100:steam"; mode "$passthrough"; exec $scripts/preGameHook.sh
-bindsym Shift+F12 move workspace "100:steam"
 
 set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song
-bindsym Mod1+y mode "$media"
-
 mode "$media" {
     bindsym Escape mode "default"
-    # Volume changing hotkeys
-    bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
-    bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
-    bindsym Shift+R exec --no-startup-id mpc volume +5
-    bindsym Shift+F exec --no-startup-id mpc volume -5
-    # Brightness changing hotkeys
-    bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
-    bindsym t exec --no-startup-id $scripts/changeBrightness.sh R
-    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
-    # Music controls
-    bindsym s exec "mpc toggle"; mode "default"
     bindsym a exec "mpc prev"
+    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
-    bindsym y mode "default"
+    bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
+    bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
     bindsym p mode "$findMusic"
+    bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
+    bindsym s exec "mpc toggle"; mode "default"
+    bindsym t exec --no-startup-id $scripts/changeBrightness.sh R
+    bindsym y mode "default"
+    bindsym Shift+F exec --no-startup-id mpc volume -5
+    bindsym Shift+R exec --no-startup-id mpc volume +5
 }
 
 set $findMusic [a]lbum, [s]ong, [r]andom album, [k]: artist
@@ -193,50 +210,17 @@ mode "$findMusic" {
     bindsym "Escape" mode "default"
 }
 
-bindsym Mod1+w exec kitty
-
-client.focused_inactive    $inactiveFont   $inactiveBg            $inactiveFont
-client.unfocused           $inactiveFont   $inactiveBg            $inactiveFont
-client.focused             $activeFont     $activeWindowBorder    $activeFont
-client.urgent              $activeFont     $activeWindowBorder    $activeFont
-
-bar {
-	colors {
-		background $bg
-		statusline #ffffff
-		separator  $activeFont
-		focused_workspace $activeBg $activeBg $activeFont
-		active_workspace  $activeBg $activeBg $activeFont
-		inactive_workspace $inactiveBg $inactiveBg $inactiveFont
-		urgent_workspace  $activeBg $activeBg $activeFont
-	}
-    output primary
-    output HDMI-1
-    output DP-2
-    output eDP1
-    output eDP-1
-    output DP-1-3
-    strip_workspace_numbers yes
-    status_command i3status
-}
-
 # Assign programs to workspace
 assign [class="dota2"] 100:steam
-assign [class="Stranded Deep"] 100:steam
 
-#Disable window titles
-new_window 1pixel
-for_window [class="^.*"] border pixel 1
-
-# Startup
+# Set background to black
+exec_always --no-startup-id xsetroot -solid "$inactiveBg"
 exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
+exec_always --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet
-exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift
 exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
-exec --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id xbacklight -set 100
 exec --no-startup-id sleep 10; python3 $config/todoBot/main.py
-exec --no-startup-id obs --startreplaybuffer --minimize-to-tray 
