@@ -123,7 +123,7 @@ mode "$launch" {
     bindsym Shift+A exec anki; mode "default"
     bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
-    bindsym g mode "$gameLaunchNoPassthrough"
+    bindsym g mode "$gameLaunch"
     bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
     bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym k exec $scripts/timer/killTimers.sh; mode "default"
@@ -145,23 +145,17 @@ mode "$launch" {
     bindsym Escape mode "default"
 }
 
-set $gameLaunch [d]ota, [c]s
+set $gameLaunch [d]ota, [c]s, [s]tranded deep
 mode "$gameLaunch" {
-    bindsym d exec steam steam://rungameid/570; mode "$passthrough"
-    bindsym c exec steam steam://rungameid/730; mode "$passthrough"
-    bindsym Escape mode "$passthrough"
-}
-set $gameLaunchNoPassthrough Launch: [d]ota, [c]s
-mode "$gameLaunchNoPassthrough" {
     bindsym d exec steam steam://rungameid/570; mode "default"
     bindsym c exec steam steam://rungameid/730; mode "default"
+    bindsym s exec steam steam://rungameid/313120; mode "default"
     bindsym Escape mode "default"
 }
 
-set $passthrough Game mode. F11: Launch, F12: Exit, Win+p: Record Screen, Win+P: stop recording
+set $passthrough Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$passthrough" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
-    bindsym F11 mode "$gameLaunch"; exec $scripts/postGameHook.sh
     bindsym $mod+p; exec $scripts/screenCapture.sh
     bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
 }
@@ -228,6 +222,7 @@ bar {
 
 # Assign programs to workspace
 assign [class="dota2"] 100:steam
+assign [class="Stranded Deep"] 100:steam
 
 #Disable window titles
 new_window 1pixel
@@ -239,8 +234,9 @@ exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet
 exec --no-startup-id /opt/urserver/urserver --daemon
 exec --no-startup-id sleep 3 && redshift
-exec --no-startup-id sleep 5 && mpd
+exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id xbacklight -set 100
 exec --no-startup-id sleep 10; python3 $config/todoBot/main.py
+exec --no-startup-id obs --startreplaybuffer --minimize-to-tray 
