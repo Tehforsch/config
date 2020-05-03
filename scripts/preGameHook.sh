@@ -6,7 +6,7 @@ if [[ $count == 0 ]]; then
     obs --startreplaybuffer --minimize-to-tray &
 fi
 # Kill obs killscript. see script for details
-for id in $(pgrep -fl killObs.sh); do
+for id in $(pgrep -f killObs.sh); do
     echo $id
     kill $id
 done
