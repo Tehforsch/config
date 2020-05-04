@@ -190,6 +190,7 @@ mode "$media" {
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
+    bindsym l exec kitty "lyvi"; mode "default"
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
     bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
     bindsym p mode "$findMusic"
