@@ -4,16 +4,13 @@
 if [[ $# -ne 2 ]]; then
     exit 1
 fi
-path=$(dirname $(realpath $0))
-formatString="%track% - %title%"
+formatString="%title%"
 artist=$1
 album=$2
 titles=$(mpc -f "$formatString" find album "$album" artist "$artist")
-title=$(echo "$titles" | rofi -i -dmenu -p "Choose a song:")
-if [[ $(echo "$album" | wc -l) != 1 ]]; then
-    album=$(echo "$album" | rofi -i -dmenu -p "Many albums available, select one:")
-fi
+title=$(echo "$titles" | rofi -i -dmenu -no-custom -p "Choose a song:")
 if [[ $album == "" ]]; then # Aborted query
    exit 1
 fi
+path=$(dirname $(realpath $0))
 $path/playSong.sh "$artist" "$album" "$title"

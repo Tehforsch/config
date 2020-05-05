@@ -10,7 +10,7 @@ else
     outputSeparator=""
 fi
 shuffledArtistAlbums=$(echo -E "$artistAlbums" | uniq | shuf)
-artistAlbumIndex=$(echo -E "$shuffledArtistAlbums" | column -o "$outputSeparator" -s "$(printf "\t")" -t | rofi -i -dmenu -format "d" -p "Album:")
+artistAlbumIndex=$(echo -E "$shuffledArtistAlbums" | column -o "$outputSeparator" -s "$(printf "\t")" -t | rofi -i -dmenu -no-custom -format "d" -p "Album:")
 artistAlbum=$(echo -E "$shuffledArtistAlbums" | head -n $artistAlbumIndex | tail -n 1)
 artist=$(echo -E "$artistAlbum" | cut -f 1)
 album=$(echo -E "$artistAlbum" | cut -f 2)
