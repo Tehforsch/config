@@ -121,7 +121,7 @@ bindsym $mod+p scratchpad show
 bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
 
-bindsym Mod1+c exec rofi -show window
+bindsym Mod1+Tab exec rofi -show window
 bindsym Mod1+o mode "resize"
 bindsym Mod1+s mode "$launch"
 bindsym Mod1+w exec kitty
@@ -213,6 +213,7 @@ mode "$findMusic" {
 
 # Assign programs to workspace
 assign [class="dota2"] 100:steam
+assign [class="csgo_linux64"] 100:steam
 
 # Set background to black
 exec_always --no-startup-id xsetroot -solid "$inactiveBg"
