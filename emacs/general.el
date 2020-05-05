@@ -47,7 +47,7 @@
     "oiS" '((lambda () (interactive) (insert-screenshot "~/projects/config/scripts/captureScreenshot.sh")) :which-key "Screenshot with white taken as transparent.")
     "oit" 'org-toggle-inline-images
     "ol" '(:which-key "Latex")
-    "oll" 'org-latex-preview
+    "oll" 'org-toggle-latex-fragment
     "olL" '((lambda () (interactive) (org-latex-preview 16)) :which-key "Clear all latex fragments")
     "oj" '(:which-key "Journal")
     "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
@@ -166,3 +166,13 @@
     "ep" 'org-latex-export-to-pdf
     "p" '(:which-key "Papers")
     "pf" 'pundit-helm-find-or-create-note-for-paper)
+
+(mode-leader-def '(normal visual) 'rust-mode-map
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+    "d" 'rust-dbg-wrap-or-unwrap
+)

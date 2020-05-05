@@ -26,6 +26,7 @@
 (load "~/projects/config/emacs/disableMouse.el")
 (load "~/projects/config/emacs/bookmarks.el")
 (load "~/projects/config/emacs/modeLine.el")
+(load "~/projects/config/emacs/rust.el")
 
 (load "~/projects/config/emacs/pundit.el")
 (load "~/projects/config/emacs/punditPaper.el")
