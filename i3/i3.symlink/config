@@ -184,7 +184,7 @@ mode "$game" {
     bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
 }
 
-set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song
+set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song strea[m]
 mode "$media" {
     bindsym Escape mode "default"
     bindsym a exec "mpc prev"
@@ -196,15 +196,16 @@ mode "$media" {
     bindsym p mode "$findMusic"
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym s exec "mpc toggle"; mode "default"
-    bindsym t exec --no-startup-id $scripts/changeBrightness.sh R
+    bindsym t exec --no-startup-id $scripts/changeBrightness.sh 1
     bindsym y mode "default"
+    bindsym m exec --no-startup-id $scripts/streamlink.sh
     bindsym Shift+F exec --no-startup-id mpc volume -5
     bindsym Shift+R exec --no-startup-id mpc volume +5
 }
 
-set $findMusic [a]lbum, [s]ong, [r]andom album, [k]: artist
+set $findMusic [a]lbum, [s]ong, [r]andom album, a[r]tist
 mode "$findMusic" {
-    bindsym "k" exec bash $scripts/musicSelection/artist.sh; mode "default"
+    bindsym "r" exec bash $scripts/musicSelection/artist.sh; mode "default"
     bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
     bindsym "s" exec bash $scripts/musicSelection/song.sh; mode "default"
     bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh
