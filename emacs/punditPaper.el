@@ -25,13 +25,14 @@
 
 (defun pundit--get-autokey-from-cite-key (cite-key)
   (with-temp-buffer
-    (let* (
-      (results (org-ref-get-bibtex-key-and-file cite-key))
-      (bibfile (cdr results)))
-    (insert-file-contents bibfile)
-    (bibtex-set-dialect (parsebib-find-bibtex-dialect) t)
-    (bibtex-search-entry cite-key nil 0)
-    (prog1 (bibtex-generate-autokey)))))
+    (let ((results (org-ref-get-bibtex-key-and-file cite-key)))
+      (if (null (cdr results))
+          (error "No such citekey in any bib-file %s" cite-key))
+      (let ((bibfile (cdr results)))
+        (insert-file-contents bibfile)
+        (bibtex-set-dialect (parsebib-find-bibtex-dialect) t)
+        (bibtex-search-entry cite-key nil 0)
+        (prog1 (bibtex-generate-autokey))))))
 
 (defun pundit--helm-find-bibtex-key (&optional arg local-bib input)
   (when arg
