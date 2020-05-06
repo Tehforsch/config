@@ -26,8 +26,8 @@
 (use-package org-ref
     :after org
     :init
-    (setq reftex-default-bibliography '("~/resource/org/bibliography/library.bib"))
-    (setq org-ref-default-bibliography '("~/resource/org/bibliography/library.bib"))
+    (setq reftex-default-bibliography '("~/resource/papers/library.bib"))
+    (setq org-ref-default-bibliography '("~/resource/papers/library.bib"))
     (setq org-ref-pdf-directory "~/resource/papers")
     (setq bibtex-completion-bibliography bibliography-file)
     (require 'doi-utils)
