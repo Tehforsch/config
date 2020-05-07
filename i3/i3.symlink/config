@@ -199,6 +199,7 @@ mode "$media" {
     bindsym s exec "mpc toggle"; mode "default"
     bindsym t exec --no-startup-id $scripts/changeBrightness.sh 1
     bindsym y mode "default"
+    bindsym m exec --no-startup-id $scripts/streamlink.sh
     bindsym Shift+F exec --no-startup-id mpc volume -5
     bindsym Shift+R exec --no-startup-id mpc volume +5
 }
