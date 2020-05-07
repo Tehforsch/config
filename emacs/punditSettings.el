@@ -5,6 +5,14 @@
 (defcustom pundit-date-title-format "%Y %m %d"
   "Format string passed to `format-time-string' for getting a date file's title.")
 
+(defun pundit-helm-insert-link-to-note-with-custom-title ()
+  (interactive)
+  (pundit-helm-insert-link-to-note nil t))
+
+(defun pundit-helm-append-link-to-note-with-custom-title ()
+  (interactive)
+  (pundit-helm-append-link-to-note nil t))
+
 ; Run on startup
 (if (not (boundp 'stored-note-links))
     (progn

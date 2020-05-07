@@ -61,12 +61,16 @@
   (if (not (pundit--note-exists note))
       (pundit--create-note note text)))
 
-(defun pundit--create-link-to-note (insert-function note)
-  (funcall insert-function (pundit--get-link-to-note note)))
+(defun pundit--create-link-to-note (insert-function note &optional read-link-title)
+  (let ((link-title (if read-link-title
+                        (completing-read "Link title: " nil nil nil)
+                        (pundit-note-title note))))
+    (funcall insert-function (pundit--get-link-to-note note link-title))))
 
-(defun pundit--get-link-to-note (note)
+(defun pundit--get-link-to-note (note &optional supplied-link-title)
   (pundit--ensure-note-exists note)
-  (pundit--get-link-string (pundit-note-filename note) (pundit-note-title note)))
+  (let ((link-title (or supplied-link-title (pundit-note-title note))))
+    (pundit--get-link-string (pundit-note-filename note) link-title)))
 
 (defun pundit--get-link-string (filename title)
   (concat "[[file:" filename "][" title "]]"))
@@ -146,16 +150,16 @@
   (interactive)
   (pundit--do-if-helm-query-succeeded 'pundit--find-or-create-note (pundit--helm-get-note link-filter-predicate)))
 
-(defun pundit--helm-create-link-to-note (insert-function &optional link-filter-predicate)
-  (pundit--do-if-helm-query-succeeded (lambda (note) (pundit--create-link-to-note insert-function note)) (pundit--helm-get-note link-filter-predicate)))
+(defun pundit--helm-create-link-to-note (insert-function &optional link-filter-predicate read-link-title)
+  (pundit--do-if-helm-query-succeeded (lambda (note) (pundit--create-link-to-note insert-function note read-link-title)) (pundit--helm-get-note link-filter-predicate)))
 
-(defun pundit-helm-insert-link-to-note (&optional link-filter-predicate)
+(defun pundit-helm-insert-link-to-note (&optional link-filter-predicate read-link-title)
   (interactive)
-  (pundit--helm-create-link-to-note 'insert link-filter-predicate))
+  (pundit--helm-create-link-to-note 'insert link-filter-predicate read-link-title))
 
-(defun pundit-helm-append-link-to-note (&optional link-filter-predicate)
+(defun pundit-helm-append-link-to-note (&optional link-filter-predicate read-link-title)
   (interactive)
-  (pundit--helm-create-link-to-note (lambda (text) (progn (evil-append nil nil nil) (insert text)))) link-filter-predicate)
+  (pundit--helm-create-link-to-note (lambda (text) (progn (evil-append nil nil nil) (insert text))) link-filter-predicate read-link-title))
 
 (defun pundit--read-linked-notes-from-file (note)
   (with-temp-buffer

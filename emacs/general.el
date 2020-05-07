@@ -58,10 +58,12 @@
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
     "ona" 'pundit-helm-append-link-to-note
+    "onA" 'pundit-helm-append-link-to-note-with-custom-title
     "onb" 'pundit-helm-find-backlinks
     "one" '(:which-key "Export notes")
     "onf" 'pundit-helm-find-or-create-note
     "oni" 'pundit-helm-insert-link-to-note
+    "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
     "onpf" 'pundit-helm-find-or-create-note-for-paper
