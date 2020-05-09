@@ -206,7 +206,7 @@ mode "$media" {
 
 set $findMusic [a]lbum, [s]ong, [r]andom album, a[r]tist
 mode "$findMusic" {
-    bindsym "r" exec bash $scripts/musicSelection/artist.sh; mode "default"
+    bindsym "k" exec bash $scripts/musicSelection/artist.sh; mode "default"
     bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
     bindsym "s" exec bash $scripts/musicSelection/song.sh; mode "default"
     bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh
