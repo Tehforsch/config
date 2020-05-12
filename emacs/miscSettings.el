@@ -14,7 +14,7 @@
 (add-hook 'c-mode-hook 'hs-minor-mode)
 
 ; Immediately debug when any lisp error occurs
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 (setq pp-escape-newlines nil)
 (use-package erefactor)
 (erefactor-highlight-mode nil)

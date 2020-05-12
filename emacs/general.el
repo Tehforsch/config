@@ -178,3 +178,13 @@
     "s" 'hs-show-all
     "d" 'rust-dbg-wrap-or-unwrap
 )
+
+
+(mode-leader-def '(normal visual) 'python-mode-map
+    "^" 'beginning-of-defun
+    "$" 'end-of-defun
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'hs-hide-all
+    "s" 'hs-show-all
+)
