@@ -9,6 +9,8 @@ enable_audio_bell no
 
 update_check_interval 0
 
+map ctrl+Enter combine : new_window_with_cwd : detach_window
+
 # Gruvbox theme
 foreground            #ebdbb2
 background            #1d2021

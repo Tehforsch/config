@@ -7,7 +7,6 @@ alias gp='git push'
 alias gd='git diff'
 alias gdc='git diff --staged' # show diff between index and HEAD
 alias gdh='git log --follow -p --'
-alias t='$CONFIG/scripts/splitterminal.sh'
 alias inst='sudo apt-get install'
 alias dlc='$CONFIG/scripts/copyLastDownload.sh'
 alias python2='python2.7'
