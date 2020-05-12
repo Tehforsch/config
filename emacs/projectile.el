@@ -15,7 +15,7 @@
           :action 'find-file))
     (add-to-list 'helm-projectile-sources-list helm-source-file-not-found t))
 
-(setq projectile-switch-project-action 'helm-projectile)
+(setq projectile-switch-project-action 'helm-projectile-find-file)
 (use-package helm-etags-plus)
 
 (defun smart-list-files ()

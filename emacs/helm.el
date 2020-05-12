@@ -26,3 +26,5 @@
 (use-package helm-xref)
 
 (use-package helm-fd)
+
+(setq find-directory-functions 'helm-find-files-1)
