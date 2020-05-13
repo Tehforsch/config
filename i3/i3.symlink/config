@@ -1,7 +1,6 @@
 # Paths
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
-set $startupScripts ~/projects/config/startupScripts
 
 set $mod Mod4
 
@@ -151,7 +150,7 @@ mode "$launch" {
     bindsym d exec $scripts/runDiscord.sh; mode "default"
     bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
     bindsym g mode "$gameLaunch"
-    bindsym k exec $scripts/timer/killTimers.sh; mode "default"
+    bindsym k exec $scripts/keyboardConfiguration.sh toggle; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec firefox --new-window mail.google.com; mode "default"
     bindsym n exec pcmanfm --no-desktop; mode "default"
@@ -161,11 +160,11 @@ mode "$launch" {
     bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+A exec anki; mode "default"
-    bindsym Shift+C exec bash $startupScripts/runAll.sh; mode "default"
+    bindsym Shift+C exec bash $scripts/runAll.sh; mode "default"
     bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym shift+M exec thunderbird; mode "default"
-    bindsym Shift+O exec bash $startupScripts/openProgramsAtStartOfSession.sh; mode "default"
+    bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"
     bindsym Escape mode "default"
@@ -221,7 +220,7 @@ assign [class="csgo_linux64"] 100:steam
 
 # Set background to black
 exec_always --no-startup-id xsetroot -solid "$inactiveBg"
-exec_always --no-startup-id sleep 3 && $startupScripts/runAll.sh
+exec_always --no-startup-id sleep 3 && $scripts/startup.sh
 exec_always --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet
