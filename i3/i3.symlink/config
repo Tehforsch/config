@@ -121,6 +121,8 @@ bindsym $mod+p scratchpad show
 bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
 
+bindsym $mod+asciicircum workspace back_and_forth
+
 bindsym Mod1+Tab exec rofi -show window
 bindsym Mod1+o mode "resize"
 bindsym Mod1+s mode "$launch"
