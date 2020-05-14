@@ -1,38 +1,29 @@
-alias l='ls -alFh --color=auto'
-alias gpu='git pull'
-alias gs='git status' # This shadows ghostscript - I don't care
+alias cat="bat"
+alias de="~/projects/config/scripts/runDetached.sh"
+alias di="kitty +kitten diff"
+alias dlc='$CONFIG/scripts/copyLastDownload.sh'
+alias dls='ls -la --sort=time --reverse'
+alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
+alias fin='python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/finances'
 alias ga='git add'
 alias gc='git commit'
-alias gp='git push'
 alias gd='git diff'
 alias gdc='git diff --staged' # show diff between index and HEAD
 alias gdh='git log --follow -p --'
-alias inst='sudo apt-get install'
-alias dlc='$CONFIG/scripts/copyLastDownload.sh'
-alias python2='python2.7'
+alias gp='git push'
+alias gpu='git pull'
+alias gs='git status' # This shadows ghostscript - I don't care
+alias im="kitty +kitten icat"
+alias ka="killall"
+alias l='ls -alFh --color=auto'
+alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
+alias pmb="pamac build --no-confirm"
+alias pms="pamac search -a"
 alias python='python3'
 alias rmf='rm -rf'
-alias shut='killall spotify; sudo shutdown -h 0'
-alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
-alias cpr='cp -rv'
-alias track='python3 ~/resource/tracker/main.py'
-alias todo='python3 $CONFIG/scripts/addTodoistTask.py'
-alias buildrust='trigger "clear; cargo rustc -- -Awarnings" $(fd ".*.rs")'
-alias runrust='trigger "clear; cargo run"'
-alias calc='python3 -i $HOME/resource/calculator/calculator.py'
-alias pomodoro='timer 1500'
-alias fin='python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/finances'
+alias runrust="$CONFIG/scripts/runRust.sh"
 alias runlatex='$CONFIG/scripts/latexLayout.sh'
 alias runpython='$CONFIG/scripts/pythonLayout.sh'
+alias shut='sudo shutdown -h 0'
 alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
-alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
-alias remacs="systemctl --user restart emacs.service"
-alias cat="bat"
-alias dls='ls -la --sort=time --reverse'
-alias ka="killall"
-alias pms="pamac search -a"
-alias pmb="pamac build --no-confirm"
-alias de="~/projects/config/scripts/runDetached.sh"
-alias im="kitty +kitten icat"
-alias di="kitty +kitten diff"
