@@ -188,3 +188,7 @@
     "h" 'hs-hide-all
     "s" 'hs-show-all
 )
+
+(define-key evil-normal-state-map "gd" 'xref-find-definitions)
+(setq xref-prompt-for-identifier nil)
+(define-key evil-normal-state-map "gr" 'xref-find-references)
