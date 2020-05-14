@@ -95,8 +95,6 @@
 )
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
     "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
@@ -104,8 +102,6 @@
 )
 
 (mode-leader-def '(normal visual) 'c-mode-map
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
     "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
@@ -113,8 +109,6 @@
 )
 
 (mode-leader-def '(normal visual) 'fortran-mode-map
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
     "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
@@ -170,8 +164,6 @@
     "pf" 'pundit-helm-find-or-create-note-for-paper)
 
 (mode-leader-def '(normal visual) 'rust-mode-map
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
     "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
@@ -181,14 +173,16 @@
 
 
 (mode-leader-def '(normal visual) 'python-mode-map
-    "^" 'beginning-of-defun
-    "$" 'end-of-defun
     "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
     "s" 'hs-show-all
 )
 
+
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)
+(define-key evil-normal-state-map "gh" 'lsp-describe-thing-at-point)
+(define-key evil-normal-state-map "g^" 'beginning-of-defun)
+(define-key evil-normal-state-map "g$" 'end-of-defun)
