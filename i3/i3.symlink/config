@@ -205,7 +205,7 @@ mode "$media" {
     bindsym Shift+R exec --no-startup-id mpc volume +5
 }
 
-set $findMusic [a]lbum, [s]ong, [r]andom album, a[r]tist
+set $findMusic [k]: artist, [a]lbum, [s]ong, [r]andom album, 
 mode "$findMusic" {
     bindsym "k" exec bash $scripts/musicSelection/artist.sh; mode "default"
     bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
