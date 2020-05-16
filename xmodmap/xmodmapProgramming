@@ -9,16 +9,6 @@ keycode 52 = y Y braceleft braceleft braceleft braceleft
 keycode 53 = x X braceright braceright braceright braceright
 keycode 28 = t T dollar dollar dollar dollar
 keycode 12 = 3 period period period period period 
-! Remap ü
-keycode 34 = underscore underscore underscore underscore underscore underscore
-! Remap ö
-keycode 47 = minus minus minus minus minus minus
-! This is ä: What to do with this?
-! keycode 48 =  ?!? !? ?!? !?
-
-!! ? These are free
-keycode 60 = period colon period period period period
-! keycode 42 = g G  ???? what to do with this
 
 clear shift
 add shift = Shift_L
