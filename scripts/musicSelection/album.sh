@@ -1,9 +1,9 @@
 #!/bin/bash
 separator="\t"
-formatString="%artist%$separator%album%"
+formatString="%albumartist%$separator%album%"
 
 if [[ $# == 1 ]]; then
-    artistAlbums=$(mpc -f "$formatString" find artist "$1")
+    artistAlbums=$(mpc -f "$formatString" find albumartist "$1")
     outputSeparator="   -   "
 else
     artistAlbums=$(mpc -f "$formatString" search artist "")

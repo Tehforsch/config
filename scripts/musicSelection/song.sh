@@ -1,7 +1,7 @@
 #!/bin/bash
 separator="\t"
-formatString="%artist%$separator%album%$separator%title%"
-list=$(mpc -f "$formatString" search artist "")
+formatString="%albumartist%$separator%album%$separator%title%"
+list=$(mpc -f "$formatString" search albumartist "")
 outputSeparator=" "
 shuffled=$(echo -E "$list" | uniq | shuf)
 index=$(echo -E "$shuffled" | column -o "$outputSeparator" -s "$(printf "\t")" -t -T 1,2,3 --output-width 200  | rofi -i -dmenu -no-custom -format "d" -p "Song:" -width 1920)

@@ -30,7 +30,7 @@ trackNumber=$(mpc list track album "$album" title "$title")
 # I thought I could implement this with a while loop that queries for the currently playing title with mpc current but then there will be playback of small excerpts of all songs between the first and the one we want which is really annoying so instead we do some math:
 math=$(expr $discNumber - 1)
 for i in $(seq 1 $(expr $discNumber - 1)); do
-    numTracksOnThisAlbum=$(mpc list title disc "$i" album "$album" artist "$artist" | wc -l)
+    numTracksOnThisAlbum=$(mpc list title disc "$i" album "$album" albumartist "$artist" | wc -l)
     for i in $(seq 1 $numTracksOnThisAlbum); do
         mpc next
         echo "Skip"
