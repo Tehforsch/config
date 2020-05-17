@@ -163,7 +163,7 @@
     "p" '(:which-key "Papers")
     "pf" 'pundit-helm-find-or-create-note-for-paper)
 
-(mode-leader-def '(normal visual) 'rust-mode-map
+(mode-leader-def '(normal visual) 'rustic-mode-map
     "en" 'next-error
     "ep" 'previous-error
     "h" 'hs-hide-all
