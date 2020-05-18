@@ -1,11 +1,13 @@
 directory: ~/music
 library: ~/.beets/musiclibrary.db
+plugins:
+    ftintitle
+    lyrics
+    mpdupdate
 import:
     move: yes
 ftintitle:
     drop: yes
-plugins:
-    ftintitle
 language:
     en
 original_date:
