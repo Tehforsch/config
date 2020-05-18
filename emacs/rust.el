@@ -1,4 +1,6 @@
-(use-package lsp-mode)
 (use-package rustic)
 (setq rustic-format-on-save t)
 (add-hook 'rustic-mode-hook 'flycheck-mode)
+(setq auto-mode-alist (rassq-delete-all 'conf-colon-mode auto-mode-alist))
+(setq auto-mode-alist (rassq-delete-all 'image-mode auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.rs$" . rustic-mode))
