@@ -2,7 +2,6 @@ directory: ~/music
 library: ~/.beets/musiclibrary.db
 plugins:
     ftintitle
-    lyrics
     mpdupdate
 import:
     move: yes
