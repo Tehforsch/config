@@ -8,10 +8,10 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-artist=$(mpc list albumartist genre "$genre" | shuf | rofi -i -dmenu -no-custom -p "Artist:")
+artist=$(mpc list albumartist genre $genre | shuf | rofi -i -dmenu -no-custom -p "Artist:")
 echo "Selected artist: $artist"
 if [[ $artist == "" ]]; then # Aborted query
    exit 1
 fi
 path=$(dirname $(realpath $0))
-$path/album.sh --artist "$artist" --genre "$genre"
+$path/albumNew.sh --artist "$artist"

@@ -1,13 +1,32 @@
 #!/bin/bash
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -g|--genre) genre="$2"; shift ;;
+        -a|--artist) artist="$2"; shift ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
+
 separator="\t"
 formatString="%albumartist%$separator%album%"
 
-if [[ $# == 1 ]]; then
-    artistAlbums=$(mpc -f "$formatString" find albumartist "$1")
+if [ "$artist" != "" ]; then
+    if [ "$genre" != "" ]; then
+        artistAlbums=$(mpc -f "$formatString" find albumartist "$artist" genre "$genre")
+    else
+        artistAlbums=$(mpc -f "$formatString" find albumartist "$artist")
+    fi
     outputSeparator="   -   "
 else
-    artistAlbums=$(mpc -f "$formatString" search artist "")
-    outputSeparator=""
+    if [ "$genre" != "" ]; then
+        artistAlbums=$(mpc -f "$formatString" find genre "$genre")
+        outputSeparator="   -   "
+    else
+        artistAlbums=$(mpc -f "$formatString" search albumartist "")
+        outputSeparator=""
+    fi
 fi
 shuffledArtistAlbums=$(echo -E "$artistAlbums" | uniq | shuf)
 artistAlbumIndex=$(echo -E "$shuffledArtistAlbums" | column -o "$outputSeparator" -s "$(printf "\t")" -t | rofi -i -dmenu -no-custom -format "d" -p "Album:")
