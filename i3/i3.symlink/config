@@ -173,6 +173,7 @@ mode "$launch" {
 
 set $document Open: [p]dfs/epubs [i]mages
 mode "$document" {
+    bindsym d exec $scripts/openLastTouchedFileInDir.sh ~/downloads; mode "default"
     bindsym i exec $scripts/rofiFile.sh gpicview png jpg jpeg gif; mode "default"
     bindsym p exec $scripts/rofiFile.sh zathura pdf epub; mode "default"
     bindsym Escape mode "default"
