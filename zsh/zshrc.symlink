@@ -4,6 +4,9 @@ if [[ -a "$HOME/.localConfig" ]]; then
     source "$HOME/.localConfig"
 fi
 
+# Reduce timeout after going to normal mode
+export KEYTIMEOUT=1
+
 ## default folders folder
 export CONFIG=$HOME/projects/config
 export config=$CONFIG
@@ -50,12 +53,6 @@ setopt append_history
 setopt share_history
 setopt inc_append_history
 
-# Binding to close the terminal with a process running in it without killing the process
-bindkey -s '^u' 'bg && disown && exit\n'
-# bind C-h to run de command && exit instead of command, detaching the process
-bindkey -s '^h' '^ade ^e\n'
-# bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
-bindkey -s '^g' '^ade ^e&& exit\n'
 
 # Magically make converting utf-8 buffers to string and then printing them work
 export PYTHONIOENCODING="utf-8"
@@ -92,7 +89,6 @@ fzf-cd-home-widget() {
   return $ret
 }
 zle     -N    fzf-cd-home-widget
-bindkey '^f' fzf-cd-home-widget
 
 fzf-cd-widget() {
   local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d "}"
@@ -109,32 +105,40 @@ fzf-cd-widget() {
   return $ret
 }
 zle     -N    fzf-cd-widget
-bindkey '^v' fzf-cd-widget
 export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
-# # Vim mode
-# bindkey -v
-# export KEYTIMEOUT=1
+# Vim mode
+bindkey -v
+export KEYTIMEOUT=1
 # function zle-line-init zle-keymap-select {
-#     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-#     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
-#     zle reset-prompt
+    # VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
+    # zle reset-prompt
 # }
-# zle -N zle-line-init
+zle -N zle-line-init
 # zle -N zle-keymap-select
 
-# bindkey '^P' up-history
-# bindkey '^N' down-history
+bindkey '^P' up-history
+bindkey '^N' down-history
 
-# # backspace and ^h working even after
-# # returning from command mode
-# bindkey '^?' backward-delete-char
-# bindkey '^h' backward-delete-char
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
 
-# # ctrl-w removed word backwards
-# bindkey '^w' backward-kill-word
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
 
-# # ctrl-r starts searching history backward
-# bindkey '^r' history-incremental-search-backward
+# ctrl-r starts searching history backward
+bindkey '^r' fzf-history-widget
+bindkey '^f' fzf-cd-home-widget
+bindkey '^v' fzf-cd-widget
+# Binding to close the terminal with a process running in it without killing the process
+bindkey -s '^u' 'bg && disown && exit\n'
+# bind C-h to run de command && exit instead of command, detaching the process
+bindkey -s '^h' '^ade ^e\n'
+# bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
+bindkey -s '^g' '^ade ^e&& exit\n'
+
 
 ulimit -c unlimited
