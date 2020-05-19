@@ -133,6 +133,7 @@ bindkey '^w' backward-kill-word
 bindkey '^r' fzf-history-widget
 bindkey '^f' fzf-cd-home-widget
 bindkey '^v' fzf-cd-widget
+bindkey '^T' fzf-file-widget
 # Binding to close the terminal with a process running in it without killing the process
 bindkey -s '^u' 'bg && disown && exit\n'
 # bind C-h to run de command && exit instead of command, detaching the process
