@@ -147,7 +147,7 @@ mode "$launch" {
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
     bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
-    bindsym d exec $scripts/runDiscord.sh; mode "default"
+    bindsym d mode "$document"
     bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
     bindsym g mode "$gameLaunch"
     bindsym k exec $scripts/keyboardConfiguration.sh toggle; mode "default"
@@ -161,12 +161,20 @@ mode "$launch" {
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+A exec anki; mode "default"
     bindsym Shift+C exec bash $scripts/runAll.sh; mode "default"
+    bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
     bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym shift+M exec thunderbird; mode "default"
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"
+    bindsym Escape mode "default"
+}
+
+set $document Open: [p]dfs/epubs [i]mages
+mode "$document" {
+    bindsym i exec $scripts/rofiFile.sh gpicview png jpg jpeg gif; mode "default"
+    bindsym p exec $scripts/rofiFile.sh zathura pdf epub; mode "default"
     bindsym Escape mode "default"
 }
 
