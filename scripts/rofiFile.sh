@@ -22,7 +22,7 @@ for depth in $(seq 0 $maxDepth); do
 done
 docs=$docs$(fd $filetypeCommand --min-depth $(( $maxDepth + 1 )))
 
-file=$(printf "$docs" | rofi -dmenu -p  "Documents:" -no-custom)
+file=$(printf "$docs" | rofi -i -dmenu -p  "Documents:" -no-custom)
 if [ "$file" != "" ]; then
     $command "$file"
 fi
