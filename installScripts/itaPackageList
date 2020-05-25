@@ -2,3 +2,6 @@ amd-ucode
 ipw2100-fw
 ipw2200-fw
 linux54
+intltool
+texlive-core
+vala
