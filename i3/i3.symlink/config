@@ -221,6 +221,7 @@ mode "$findMusic" {
     bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
     bindsym "s" exec bash $scripts/musicSelection/song.sh; mode "default"
     bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh
+    bindsym "t" exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
     bindsym "Escape" mode "default"
 }
 set $findNewMusic NEW MUSIC: [k]: artist, [a]lbum, [s]ong, [r]andom album, 
