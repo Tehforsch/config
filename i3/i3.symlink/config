@@ -160,7 +160,7 @@ mode "$launch" {
     bindsym w exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+A exec anki; mode "default"
-    bindsym Shift+C exec bash $scripts/runAll.sh; mode "default"
+    bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
     bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
     bindsym Shift+E exec emacsclient -c -n; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
