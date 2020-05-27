@@ -3,6 +3,8 @@ library: ~/.beets/musiclibrary.db
 plugins:
     ftintitle
     mpdupdate
+    fetchart
+    embedart
 import:
     move: yes
 ftintitle:
