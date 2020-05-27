@@ -5,7 +5,7 @@ if [ $1 == "--preselect" ]; then
     songIndex=$2
     shift; shift
 else
-    songIndex=1
+    songIndex=0
 fi
 
 if [[ $# -ne 2 ]]; then
