@@ -57,10 +57,10 @@ mouse_warping none
 bindsym Mod1+Q kill
 
 # change focus
-bindsym Mod1+h focus left
+# bindsym Mod1+h focus left
 bindsym Mod1+j focus down
 bindsym Mod1+k focus up
-bindsym Mod1+l focus right
+# bindsym Mod1+l focus right
 bindsym Mod1+a focus left
 bindsym Mod1+d focus right
 
@@ -69,12 +69,6 @@ bindsym Mod1+Shift+h move left
 bindsym Mod1+Shift+j move down
 bindsym Mod1+Shift+k move up
 bindsym Mod1+Shift+l move right
-
-# split in horizontal orientation
-bindsym $mod+o split h
-
-# split in vertical orientation
-bindsym $mod+i split v
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
@@ -122,13 +116,37 @@ bindsym $mod+l move workspace to output right
 
 bindsym $mod+asciicircum workspace back_and_forth
 
+# Various launch buttons 
 bindsym Mod1+Tab exec rofi -show window
 bindsym Mod1+o mode "resize"
 bindsym Mod1+s mode "$launch"
 bindsym Mod1+w exec kitty
 bindsym Mod1+y mode "$media"
+bindsym Mod1+l mode "$layout"
 bindsym F12 workspace "100:steam"; mode "$game"; exec $scripts/preGameHook.sh
 bindsym Shift+F12 move workspace "100:steam"
+
+set $layout Layout [t]oggle float, split [h]orizontal, [v]ertical
+mode "$layout" {
+    bindsym a move container to workspace 1:a
+    bindsym s move container to workspace 2:s
+    bindsym d move container to workspace 3:d
+    bindsym f move container to workspace 4:f
+    bindsym g move container to workspace 5:g
+    bindsym less move container to workspace 12:<
+    bindsym y move container to workspace 13:y
+    bindsym x move container to workspace 14:x
+    bindsym c move container to workspace 6:chat
+    bindsym v move container to workspace 7:music
+    bindsym b move container to workspace 8:todo
+    bindsym n move container to workspace 9:notes
+    bindsym m move container to workspace 10:mail
+    bindsym z move container to workspace 11:zotero
+    bindsym t floating toggle
+    bindsym h split h; mode "default"
+    bindsym v split v; mode "default"
+    bindsym Escape mode "default";
+}
 
 mode "resize" {
     bindsym h resize grow left 10 px or 10 ppt
