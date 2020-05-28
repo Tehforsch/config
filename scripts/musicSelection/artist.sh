@@ -8,7 +8,11 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-artist=$(mpc list albumartist genre "$genre" | shuf | rofi -i -dmenu -no-custom -p "Artist:")
+if [[ "$genre" == "" ]]; then
+    artist=$(mpc list albumartist | shuf | rofi -i -dmenu -no-custom -p "Artist:")
+else
+    artist=$(mpc list albumartist genre "$genre" | shuf | rofi -i -dmenu -no-custom -p "Artist:")
+fi
 echo "Selected artist: $artist"
 if [[ $artist == "" ]]; then # Aborted query
    exit 1

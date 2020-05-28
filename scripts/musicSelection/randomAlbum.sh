@@ -8,7 +8,11 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-album=$(mpc list album genre "$genre" | shuf | head -n 1)
+if [[ "$genre" == "" ]]; then
+    album=$(mpc list album | shuf | head -n 1)
+else
+    album=$(mpc list album genre "$genre" | shuf | head -n 1)
+fi
 mpc clear
 mpc findadd album "$album"
 mpc play
