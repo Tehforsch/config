@@ -55,6 +55,7 @@ mouse_warping none
 
 # kill focused window
 bindsym Mod1+Q kill
+bindsym $mod+Q kill
 
 # change focus
 # bindsym Mod1+h focus left
@@ -72,6 +73,7 @@ bindsym Mod1+Shift+l move right
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
+bindsym $mod+e layout toggle splith tabbed
 
 # Workspace switching hotkeys
 bindsym $mod+a workspace 1:a
