@@ -122,7 +122,7 @@ bindsym Mod1+o mode "resize"
 bindsym Mod1+s mode "$launch"
 bindsym Mod1+w exec kitty
 bindsym Mod1+y mode "$media"
-bindsym Mod1+l mode "$layout"
+bindsym Mod1+p mode "$layout"
 bindsym F12 workspace "100:steam"; mode "$game"; exec $scripts/preGameHook.sh
 bindsym Shift+F12 move workspace "100:steam"
 
@@ -166,7 +166,7 @@ mode "$launch" {
     bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
     bindsym d mode "$document"
-    bindsym e exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
+    bindsym e exec emacsclient -c -n; mode "default"
     bindsym g mode "$gameLaunch"
     bindsym k exec $scripts/keyboardConfiguration.sh toggle; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
@@ -180,7 +180,7 @@ mode "$launch" {
     bindsym Shift+A exec anki; mode "default"
     bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
     bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
-    bindsym Shift+E exec emacsclient -c -n; mode "default"
+    bindsym Shift+E exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym shift+M exec thunderbird; mode "default"
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
