@@ -1,7 +1,7 @@
 (use-package lsp-mode)
 (setq lsp-enable-symbol-highlighting nil)
 
-(use-package lsp-ui)
+;; (use-package lsp-ui)
 
 ;; (use-package ccls
 ;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
