@@ -1,0 +1,6 @@
+(defun python-insert-debug-trace ()
+  (interactive)
+  (evil-open-above nil)
+  (insert "import pdb; pdb.set_trace()")
+  (evil-normal-state)
+)

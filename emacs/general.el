@@ -156,9 +156,9 @@
 (mode-leader-def '(normal visual) 'pundit-mode-map
     "a" 'pundit-helm-append-link-to-note
     "b" 'pundit-helm-find-backlinks
-    "e" '(:which-key "Export notes")
     "f" 'pundit-helm-find-or-create-note
     "i" 'pundit-helm-insert-link-to-note
+    "e" '(:which-key "Export notes")
     "ep" 'org-latex-export-to-pdf
     "p" '(:which-key "Papers")
     "pf" 'pundit-helm-find-or-create-note-for-paper)
@@ -175,6 +175,7 @@
 (mode-leader-def '(normal visual) 'python-mode-map
     "en" 'next-error
     "ep" 'previous-error
+    "d" 'python-insert-debug-trace
     "h" 'hs-hide-all
     "s" 'hs-show-all
 )
