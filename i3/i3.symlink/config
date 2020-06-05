@@ -70,6 +70,8 @@ bindsym Mod1+Shift+h move left
 bindsym Mod1+Shift+j move down
 bindsym Mod1+Shift+k move up
 bindsym Mod1+Shift+l move right
+bindsym Mod1+Shift+a move left
+bindsym Mod1+Shift+d move right
 
 # toggle split / tab mode
 bindsym Mod1+e layout toggle splith tabbed
