@@ -9,9 +9,18 @@
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/magit.el")
 (load "~/projects/config/emacs/fileAssociations.el")
+
+; Language support
 (load "~/projects/config/emacs/flycheck.el")
+(load "~/projects/config/emacs/lsp.el")
+
+(load "~/projects/config/emacs/rust.el")
+
+(load "~/projects/config/emacs/c.el")
+
 (load "~/projects/config/emacs/python.el")
 (load "~/projects/config/emacs/pythonBlack.el")
+
 (load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/orgMode.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
@@ -27,8 +36,6 @@
 (load "~/projects/config/emacs/disableMouse.el")
 (load "~/projects/config/emacs/bookmarks.el")
 (load "~/projects/config/emacs/modeLine.el")
-(load "~/projects/config/emacs/lsp.el")
-(load "~/projects/config/emacs/rust.el")
 
 (load "~/projects/config/emacs/pundit.el")
 (load "~/projects/config/emacs/punditPaper.el")
