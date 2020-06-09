@@ -129,6 +129,9 @@ bindkey '^h' backward-delete-char
 # ctrl-w removed word backwards
 bindkey '^w' backward-kill-word
 
+# Push current command to stack and pop it after another command has been entered
+bindkey '^q' push-line
+
 # ctrl-r starts searching history backward
 bindkey '^r' fzf-history-widget
 bindkey '^f' fzf-cd-home-widget
@@ -140,6 +143,7 @@ bindkey -s '^u' 'bg && disown && exit\n'
 bindkey -s '^h' '^ade ^e\n'
 # bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
 bindkey -s '^g' '^ade ^e&& exit\n'
+
 
 
 ulimit -c unlimited
