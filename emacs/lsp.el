@@ -5,6 +5,8 @@
 
 (setq lsp-enable-symbol-highlighting nil)
 
+;; (setq lsp-auto-guess-root t) ; This disables the message when opening a new project but I'm not sure its trustworthy?
+
 ;; (use-package lsp-ui)
 
 ;; (use-package ccls
@@ -12,6 +14,8 @@
 ;;          (lambda () (require 'ccls) (lsp))))
 
 (setq lsp-pyls-plugins-pycodestyle-enabled nil)
+
+(use-package lsp-ui)
 
 (setq lsp-ui-doc-enable nil
       lsp-ui-peek-enable nil

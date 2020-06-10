@@ -19,7 +19,6 @@
 (load "~/projects/config/emacs/c.el")
 
 (load "~/projects/config/emacs/python.el")
-(load "~/projects/config/emacs/pythonBlack.el")
 
 (load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/orgMode.el")
