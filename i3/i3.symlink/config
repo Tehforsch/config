@@ -87,6 +87,7 @@ bindsym $mod+g workspace 5:g
 bindsym $mod+less workspace 12:video
 bindsym $mod+y workspace 13:y
 bindsym $mod+x workspace 14:x
+bindsym $mod+t workspace 15:stream
 
 # move focused container to workspace
 bindsym $mod+Shift+a move container to workspace 1:a; workspace 1:a
@@ -97,6 +98,7 @@ bindsym $mod+Shift+g move container to workspace 5:g; workspace 5:g
 bindsym $mod+Shift+less move container to workspace 12:video; workspace 12:video
 bindsym $mod+Shift+y move container to workspace 13:y; workspace 13:y
 bindsym $mod+Shift+x move container to workspace 14:x; workspace 14:x
+bindsym $mod+Shift+t move container to workspace 15:stream; workspace 15:stream
 
 # shared workspaces
 bindsym $mod+c workspace 6:chat
@@ -139,6 +141,7 @@ mode "$layout" {
     bindsym f move container to workspace 4:f
     bindsym g move container to workspace 5:g
     bindsym less move container to workspace 12:video
+    bindsym t move container to workspace 15:stream
     bindsym y move container to workspace 13:y
     bindsym x move container to workspace 14:x
     bindsym c move container to workspace 6:chat
