@@ -13,6 +13,7 @@ alias gdh='git log --follow -p --'
 alias gp='git push'
 alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
+alias gsu='git submodule update --recursive --remote'
 alias im="kitty +kitten icat"
 alias ka="killall"
 alias l='ls -alFh --color=auto'
