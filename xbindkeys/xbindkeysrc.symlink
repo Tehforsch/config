@@ -1,5 +1,11 @@
- "/usr/bin/xvkbd -xsendevent -text "\[Alt_L]\[Left]""
-   m:0x0 + b:6
+"xdotool keydown Alt"
+  b:8
 
- "/usr/bin/xvkbd -xsendevent -text "\[Alt_L]\[Right]""
-  m:0x0 + b:7
+"xdotool keyup Alt"
+  release + Alt + b:8
+
+"xdotool keydown Super_L"
+  b:9
+
+"xdotool keyup Super_L"
+  release + Mod4 + Super_L + b:9

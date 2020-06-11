@@ -23,3 +23,7 @@ if [[ $active == 1 ]]; then
 else
     xmodmap $config/xmodmap/xmodmapProgramming
 fi
+
+killall xbindkeys
+sleep 0.5
+xbindkeys
