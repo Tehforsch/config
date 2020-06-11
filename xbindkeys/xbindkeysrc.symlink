@@ -4,8 +4,8 @@
 "xdotool keyup Alt"
   release + Alt + b:8
 
-"xdotool keydown Super_L"
-  b:9
+# "xdotool keydown Super_L"
+  # b:9
 
-"xdotool keyup Super_L"
-  release + Mod4 + Super_L + b:9
+# "xdotool keyup Super_L"
+  # release + Mod4 + Super_L + b:9
