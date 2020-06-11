@@ -243,20 +243,21 @@ mode "$media" {
 
 set $findMusic [k]: artist, [a]lbum, [s]ong, [r]andom album, 
 mode "$findMusic" {
-    bindsym "k" exec bash $scripts/musicSelection/artist.sh; mode "default"
-    bindsym "a" exec bash $scripts/musicSelection/album.sh; mode "default"
-    bindsym "s" exec bash $scripts/musicSelection/song.sh; mode "default"
-    bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh
-    bindsym "t" exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
-    bindsym "Escape" mode "default"
+    bindsym k exec bash $scripts/musicSelection/artist.sh; mode "default"
+    bindsym a exec bash $scripts/musicSelection/album.sh; mode "default"
+    bindsym s exec bash $scripts/musicSelection/song.sh; mode "default"
+    bindsym r exec bash $scripts/musicSelection/randomAlbum.sh
+    bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
+    bindsym Escape mode "default"
 }
-set $findNewMusic NEW MUSIC: [k]: artist, [a]lbum, [s]ong, [r]andom album, 
+set $findNewMusic NEW MUSIC: [k]: artist, [a]lbum, [s]ong, [r]andom album, remove [Q]uarantine status
 mode "$findNewMusic" {
-    bindsym "k" exec bash $scripts/musicSelection/artist.sh --genre quarantine; mode "default"
-    bindsym "a" exec bash $scripts/musicSelection/album.sh --genre quarantine; mode "default"
-    bindsym "s" exec bash $scripts/musicSelection/song.sh --genre quarantine; mode "default"
-    bindsym "r" exec bash $scripts/musicSelection/randomAlbum.sh --genre quarantine
-    bindsym "Escape" mode "default"
+    bindsym k exec bash $scripts/musicSelection/artist.sh --genre quarantine; mode "default"
+    bindsym a exec bash $scripts/musicSelection/album.sh --genre quarantine; mode "default"
+    bindsym s exec bash $scripts/musicSelection/song.sh --genre quarantine; mode "default"
+    bindsym r exec bash $scripts/musicSelection/randomAlbum.sh --genre quarantine
+    bindsym Shift+Q exec bash $scripts/musicSelection/removeQuarantineStatus.sh; mode "default"
+    bindsym Escape mode "default"
 }
 
 # Assign programs to workspace
