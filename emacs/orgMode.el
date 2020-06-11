@@ -160,3 +160,6 @@
 (setq org-link-frame-setup (acons 'file 'find-file org-link-frame-setup))
 
 (define-key evil-normal-state-map "gl" 'org-open-at-point)
+
+; Set day start at 5 AM
+(setq org-extend-today-until 5)
