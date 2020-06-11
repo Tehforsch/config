@@ -168,7 +168,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki
+set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki [S]creenshot
 mode "$launch" {
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
     bindsym b exec kitty "ncmpcpp"; mode default
@@ -194,6 +194,7 @@ mode "$launch" {
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"
+    bindsym --release Shift+S exec bash $scripts/takeScreenshot.sh; mode "default"
     bindsym Escape mode "default"
 }
 
@@ -220,7 +221,7 @@ mode "$game" {
     bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
 }
 
-set $media Media: volume inc[r]ease, [f] volume decrease, [b]lack, [a] previous song, [s] pause, [d] next song, [p]lay artist/album/song strea[m]
+set $media Media: [b]lack, [m]usic, [n]ew music, [o]:streams
 mode "$media" {
     bindsym Escape mode "default"
     bindsym a exec "mpc prev"
