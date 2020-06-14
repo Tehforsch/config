@@ -118,6 +118,7 @@ bindsym $mod+asciicircum workspace back_and_forth
 # Various launch buttons 
 bindsym $mod+Tab exec rofi -show window
 bindsym $mod+Escape mode "$launch"
+bindsym $mod+1 mode "$media"
 bindsym $mod+o mode "resize"
 
 bindsym $mod+F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
@@ -190,7 +191,7 @@ mode "$game" {
     bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
 }
 
-set $media Media: [b]lack, [m]usic, [n]ew music, [o]:streams
+set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
     bindsym Escape mode "default"
     bindsym a exec "mpc prev"
@@ -200,13 +201,10 @@ mode "$media" {
     bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
     bindsym l exec kitty "lyvi"; mode "default"
     bindsym o exec --no-startup-id $scripts/streamlink.sh; mode "default"
-    bindsym n mode "$findNewMusic"
-    bindsym m mode "$findMusic"
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym s exec "mpc toggle"; mode "default"
     bindsym t exec --no-startup-id $scripts/changeBrightness.sh 1
-    bindsym y mode "default"
-    bindsym m exec --no-startup-id $scripts/streamlink.sh
+    bindsym m mode "$findMusic"
     bindsym Shift+F exec --no-startup-id mpc volume -5
     bindsym Shift+R exec --no-startup-id mpc volume +5
 }
@@ -217,17 +215,11 @@ mode "$findMusic" {
     bindsym a exec bash $scripts/musicSelection/album.sh; mode "default"
     bindsym s exec bash $scripts/musicSelection/song.sh; mode "default"
     bindsym r exec bash $scripts/musicSelection/randomAlbum.sh
+    bindsym Shift+K exec bash $scripts/musicSelection/artist.sh --genre quarantine; mode "default"
+    bindsym Shift+A exec bash $scripts/musicSelection/album.sh --genre quarantine; mode "default"
+    bindsym Shift+S exec bash $scripts/musicSelection/song.sh --genre quarantine; mode "default"
+    bindsym Shift+R exec bash $scripts/musicSelection/randomAlbum.sh --genre quarantine
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
-    bindsym Escape mode "default"
-}
-
-set $findNewMusic NEW MUSIC: [k]: artist, [a]lbum, [s]ong, [r]andom album, remove [Q]uarantine status
-mode "$findNewMusic" {
-    bindsym k exec bash $scripts/musicSelection/artist.sh --genre quarantine; mode "default"
-    bindsym a exec bash $scripts/musicSelection/album.sh --genre quarantine; mode "default"
-    bindsym s exec bash $scripts/musicSelection/song.sh --genre quarantine; mode "default"
-    bindsym r exec bash $scripts/musicSelection/randomAlbum.sh --genre quarantine
-    bindsym Shift+Q exec bash $scripts/musicSelection/removeQuarantineStatus.sh; mode "default"
     bindsym Escape mode "default"
 }
 

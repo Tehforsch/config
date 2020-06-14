@@ -18,6 +18,7 @@ alias im="kitty +kitten icat"
 alias ka="killall"
 alias l='ls -alFh --color=auto'
 alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
+alias pac="sudo pacman"
 alias pmb="pamac build --no-confirm"
 alias pms="pamac search -a"
 alias python='python3'
