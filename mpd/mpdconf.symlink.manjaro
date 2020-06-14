@@ -1,6 +1,5 @@
 ## System config
-music_directory "/home/toni/music"
-# bind_to_address "127.0.0.1"
+music_directory "/run/media/toni/f202612d-6dfa-43fd-9d02-e99e618f503b/music"
 #log_file			"~/.mpd/log"
 pid_file			"~/.mpd/pid"
 # Database
