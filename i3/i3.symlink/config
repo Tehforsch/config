@@ -107,8 +107,8 @@ bindsym Shift+$mod+g move container to workspace 22g
 bindsym Shift+$mod+less workspace move container to workspace:<
 bindsym Shift+$mod+y move container to workspace 32:y
 bindsym Shift+$mod+x move container to workspace 33:x
-bindsym Shift+$mod+Shiftmove container to workspacep move scratchpad
-bindsym Shift+$mod+p move container to workspace show
+bindsym $mod+p scratchpad show
+bindsym Shift+$mod+P move scratchpad
 
 bindsym $mod+h move workspace to output left
 bindsym $mod+l move workspace to output right
