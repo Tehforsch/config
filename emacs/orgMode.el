@@ -154,6 +154,8 @@
    ((org-at-heading-p) (org-insert-heading-respect-content) (org-todo) (evil-insert nil nil nil))
    ((org-at-item-p)  (org-insert-item))))
 
+(evil-define-key '(normal insert) org-mode-map (kbd "<S-return>") 'org-insert-heading)
+
 ;; (use-package org-habit)
 
 ; Make org-open-at-point open the link in the same window
