@@ -86,7 +86,7 @@ bindsym $mod+t workspace 12:t
 bindsym $mod+f workspace 21:f
 bindsym $mod+g workspace 22g
 
-bindsym $mod+less workspace 31:<
+bindsym $mod+less workspace 31:l
 bindsym $mod+y workspace 32:y
 bindsym $mod+x workspace 33:x
 
@@ -104,7 +104,7 @@ bindsym Shift+$mod+t move container to workspace 12:t
 bindsym Shift+$mod+f move container to workspace 21:f
 bindsym Shift+$mod+g move container to workspace 22g
 
-bindsym Shift+$mod+less workspace move container to workspace:<
+bindsym Shift+$mod+less move container to workspace 31:l
 bindsym Shift+$mod+y move container to workspace 32:y
 bindsym Shift+$mod+x move container to workspace 33:x
 bindsym $mod+p scratchpad show
