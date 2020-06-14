@@ -58,15 +58,11 @@ mouse_warping none
 bindsym $mod+Q kill
 
 # change focus
-bindsym $mod+w focus up
 bindsym $mod+a focus left
-bindsym $mod+s focus down
 bindsym $mod+d focus right
 
 # move focused window
-bindsym Shift+$mod+w move up
 bindsym Shift+$mod+a move left
-bindsym Shift+$mod+s move down
 bindsym Shift+$mod+d move right
 
 # toggle split / tab mode
@@ -117,8 +113,9 @@ bindsym $mod+asciicircum workspace back_and_forth
 
 # Various launch buttons 
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+Escape mode "$launch"
-bindsym $mod+1 mode "$media"
+bindsym $mod+s mode "$launch"
+bindsym $mod+w exec kitty
+bindsym $mod+Escape mode "$media"
 bindsym $mod+o mode "resize"
 
 bindsym $mod+F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
