@@ -2,7 +2,7 @@
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
 
-set $mod Mod4
+set $mod Mod1
 
 set $bg #1d2021
 set $activeBg #282828
@@ -55,33 +55,25 @@ focus_wrapping no
 mouse_warping none
 
 # kill focused window
-bindsym Mod1+Q kill
 bindsym $mod+Q kill
 
 # change focus
-# bindsym Mod1+h focus left
-bindsym Mod1+j focus down
-bindsym Mod1+k focus up
-# bindsym Mod1+l focus right
-bindsym Mod1+a focus left
-bindsym Mod1+d focus right
+bindsym $mod+w focus up
+bindsym $mod+a focus left
+bindsym $mod+s focus down
+bindsym $mod+d focus right
 
 # move focused window
-bindsym Mod1+Shift+h move left
-bindsym Mod1+Shift+j move down
-bindsym Mod1+Shift+k move up
-bindsym Mod1+Shift+l move right
-bindsym Mod1+Shift+a move left
-bindsym Mod1+Shift+d move right
+bindsym Shift+$mod+w move up
+bindsym Shift+$mod+a move left
+bindsym Shift+$mod+s move down
+bindsym Shift+$mod+d move right
 
 # toggle split / tab mode
-bindsym Mod1+e layout toggle splith tabbed
 bindsym $mod+e layout toggle splith tabbed
 
 # Workspace switching hotkeys
-bindsym $mod+a workspace 1:a
 bindsym $mod+s workspace 2:s
-bindsym $mod+d workspace 3:d
 bindsym $mod+f workspace 4:f
 bindsym $mod+g workspace 5:g
 bindsym $mod+less workspace 12:video
@@ -90,9 +82,7 @@ bindsym $mod+x workspace 14:x
 bindsym $mod+t workspace 15:stream
 
 # move focused container to workspace
-bindsym $mod+Shift+a move container to workspace 1:a; workspace 1:a
 bindsym $mod+Shift+s move container to workspace 2:s; workspace 2:s
-bindsym $mod+Shift+d move container to workspace 3:d; workspace 3:d
 bindsym $mod+Shift+f move container to workspace 4:f; workspace 4:f
 bindsym $mod+Shift+g move container to workspace 5:g; workspace 5:g
 bindsym $mod+Shift+less move container to workspace 12:video; workspace 12:video
@@ -124,14 +114,14 @@ bindsym $mod+l move workspace to output right
 bindsym $mod+asciicircum workspace back_and_forth
 
 # Various launch buttons 
-bindsym Mod1+Tab exec rofi -show window
-bindsym Mod1+o mode "resize"
-bindsym Mod1+s mode "$launch"
-bindsym Mod1+w exec kitty
-bindsym Mod1+y mode "$media"
-bindsym Mod1+p mode "$layout"
-bindsym F12 workspace "100:steam"; mode "$game"; exec $scripts/preGameHook.sh
-bindsym Shift+F12 move workspace "100:steam"
+bindsym $mod+Tab exec rofi -show window
+bindsym $mod+1 mode "$launch"
+bindsym $mod+2 exec kitty
+bindsym $mod+3 mode "$media"
+bindsym $mod+4 mode "$layout"
+
+bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
+bindsym Shift+F12 move workspace "100:game"
 
 set $layout Layout [t]oggle float, split [h]orizontal, [v]ertical
 mode "$layout" {
@@ -251,6 +241,7 @@ mode "$findMusic" {
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
     bindsym Escape mode "default"
 }
+
 set $findNewMusic NEW MUSIC: [k]: artist, [a]lbum, [s]ong, [r]andom album, remove [Q]uarantine status
 mode "$findNewMusic" {
     bindsym k exec bash $scripts/musicSelection/artist.sh --genre quarantine; mode "default"
@@ -262,8 +253,8 @@ mode "$findNewMusic" {
 }
 
 # Assign programs to workspace
-assign [class="dota2"] 100:steam
-assign [class="csgo_linux64"] 100:steam
+assign [class="dota2"] 100:game
+assign [class="csgo_linux64"] 100:game
 
 # Set background to black
 exec_always --no-startup-id xsetroot -solid "$inactiveBg"
