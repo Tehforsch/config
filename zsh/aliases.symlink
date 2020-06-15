@@ -30,3 +30,4 @@ alias shut='sudo shutdown -h 0'
 alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
 alias old="$CONFIG/scripts/openLastTouchedFileInDir.sh"
+alias bob="python3 ~/projects/phd/bob/main.py"
