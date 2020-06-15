@@ -65,7 +65,6 @@
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>(GitGutterStageHunk)
     nmap <Leader>hu <Plug>(GitGutterUndoHunk)
-    set signcolumn=yes
     " " Map <Leader>f to fzf fuzzy search for symbols in file
     " nnoremap <silent> <leader>t :call fzf#vim#files('',
   " \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
@@ -224,13 +223,6 @@
     " Increase history size.
     set history=2000
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['/home/toni/.local/bin/pyls'],
-    \ 'c': ['/usr/bin/clangd-6.0'],
-    \ 'cpp': ['/usr/bin/clangd-6.0'],
-    \ }
-
 " Mappings for cscope
     nmap <C-u>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-u>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
@@ -240,13 +232,6 @@ let g:LanguageClient_serverCommands = {
     nmap <C-u>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
     nmap <C-u>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-u>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
-
-
-" Mappings for Language Server
-    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-    " nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <silent> <Leader>f :call LanguageClient#textDocument_documentSymbol()<CR>
-    nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename({'cword': ''})<CR>
 
 
     call plug#begin('~/.local/share/nvim/plugged')
@@ -277,13 +262,6 @@ let g:LanguageClient_serverCommands = {
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     " LSP
-    Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Plug 'sickill/vim-monokai'
-    Plug 'joe-skb7/cscope-maps'
 
     call plug#end()
 
