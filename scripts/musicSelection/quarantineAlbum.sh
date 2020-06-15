@@ -15,5 +15,5 @@ line=$(echo -E "$quarantinedAlbums" | head -n $lineNumber | tail -n 1)
 artist=$(echo "$line" | sed "s/^\"\(.*\)\",.*/\1/")
 album=$(echo "$line" | sed "s/.*, \"\(.*\)\"$/\1/")
 mpc clear
-mpc findadd album "$album" artist "$artist"
+mpc findadd album "$album" albumartist "$artist"
 mpc play
