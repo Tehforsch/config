@@ -31,3 +31,4 @@ alias timer='$CONFIG/scripts/timer/timer.sh'
 alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
 alias old="$CONFIG/scripts/openLastTouchedFileInDir.sh"
 alias bob="python3 ~/projects/phd/bob/main.py"
+alias addmusic="bash ~/music/addMusic.sh"
