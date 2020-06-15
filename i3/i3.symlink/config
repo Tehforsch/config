@@ -76,13 +76,13 @@ bindsym $mod+n workspace 4:notes
 bindsym $mod+m workspace 5:mail
 bindsym $mod+z workspace 6:zotero
 
+bindsym $mod+less workspace "10:|"
 bindsym $mod+r workspace 11:r
 bindsym $mod+t workspace 12:t
 
 bindsym $mod+f workspace 21:f
 bindsym $mod+g workspace 22g
 
-bindsym $mod+less workspace 31:l
 bindsym $mod+y workspace 32:y
 bindsym $mod+x workspace 33:x
 
@@ -94,13 +94,13 @@ bindsym Shift+$mod+n move container to workspace 4:notes
 bindsym Shift+$mod+m move container to workspace 5:mail
 bindsym Shift+$mod+z move container to workspace 6:zotero
 
+bindsym Shift+$mod+less move container to workspace "10:|"
 bindsym Shift+$mod+r move container to workspace 11:r
 bindsym Shift+$mod+t move container to workspace 12:t
 
 bindsym Shift+$mod+f move container to workspace 21:f
 bindsym Shift+$mod+g move container to workspace 22g
 
-bindsym Shift+$mod+less move container to workspace 31:l
 bindsym Shift+$mod+y move container to workspace 32:y
 bindsym Shift+$mod+x move container to workspace 33:x
 bindsym $mod+p scratchpad show
