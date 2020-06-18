@@ -112,8 +112,7 @@ bindsym $mod+asciicircum workspace back_and_forth
 
 # Various launch buttons 
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+s mode "$launch"
-bindsym $mod+w exec kitty
+bindsym $mod+w mode "$launch"
 bindsym $mod+Escape mode "$media"
 bindsym $mod+o mode "resize"
 
