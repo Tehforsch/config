@@ -58,12 +58,12 @@ mouse_warping none
 bindsym $mod+Q kill
 
 # change focus
-bindsym $mod+a focus left
-bindsym $mod+d focus right
+bindsym $mod+h focus left
+bindsym $mod+l focus right
 
 # move focused window
-bindsym Shift+$mod+a move left
-bindsym Shift+$mod+d move right
+bindsym Shift+$mod+h move left
+bindsym Shift+$mod+l move right
 
 # toggle split / tab mode
 bindsym $mod+e layout toggle splith tabbed
@@ -76,15 +76,14 @@ bindsym $mod+n workspace 4:notes
 bindsym $mod+m workspace 5:mail
 bindsym $mod+z workspace 6:zotero
 
-bindsym $mod+less workspace "10:|"
-bindsym $mod+r workspace 11:r
-bindsym $mod+t workspace 12:t
+bindsym $mod+a workspace 21:a
+bindsym $mod+s workspace 22:s
+bindsym $mod+d workspace 23:d
+bindsym $mod+f workspace 24:f
+bindsym $mod+g workspace 25:g
 
-bindsym $mod+f workspace 21:f
-bindsym $mod+g workspace 22g
-
-bindsym $mod+y workspace 32:y
-bindsym $mod+x workspace 33:x
+bindsym $mod+y workspace 21:y
+bindsym $mod+x workspace 22:x
 
 # Workspace moving hotkeys
 bindsym Shift+$mod+c move container to workspace 1:chat
@@ -94,20 +93,20 @@ bindsym Shift+$mod+n move container to workspace 4:notes
 bindsym Shift+$mod+m move container to workspace 5:mail
 bindsym Shift+$mod+z move container to workspace 6:zotero
 
-bindsym Shift+$mod+less move container to workspace "10:|"
-bindsym Shift+$mod+r move container to workspace 11:r
-bindsym Shift+$mod+t move container to workspace 12:t
+bindsym Shift+$mod+a move container to workspace 21:a
+bindsym Shift+$mod+s move container to workspace 22:s
+bindsym Shift+$mod+d move container to workspace 23:d
+bindsym Shift+$mod+f move container to workspace 24:f
+bindsym Shift+$mod+g move container to workspace 25:g
 
-bindsym Shift+$mod+f move container to workspace 21:f
-bindsym Shift+$mod+g move container to workspace 22g
+bindsym Shift+$mod+y move container to workspace 21:y
+Bindsym Shift+$mod+x move container to workspace 22:x
 
-bindsym Shift+$mod+y move container to workspace 32:y
-bindsym Shift+$mod+x move container to workspace 33:x
 bindsym $mod+p scratchpad show
 bindsym Shift+$mod+P move scratchpad
 
-bindsym $mod+h move workspace to output left
-bindsym $mod+l move workspace to output right
+bindsym $mod+u move workspace to output left
+bindsym $mod+i move workspace to output right
 
 bindsym $mod+asciicircum workspace back_and_forth
 
