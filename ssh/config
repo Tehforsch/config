@@ -1,0 +1,3 @@
+Host bwprod
+    HostName bwfor.cluster.uni-mannheim.de
+    User hd_hp240
