@@ -10,5 +10,4 @@ auto_update "yes"
 audio_output {
         type            "pulse"
         name            "pulse audio"
-        sink            "alsa_output.pci-0000_0b_00.4.analog-stereo"
 }
