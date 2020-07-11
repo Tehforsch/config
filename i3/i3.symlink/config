@@ -31,7 +31,9 @@ bar {
 	}
     output primary
     output HDMI-1
+    output HDMI-0
     output DP-2
+    output DP-0
     output eDP1
     output eDP-1
     output DP-1-3
@@ -116,7 +118,7 @@ bindsym $mod+w mode "$launch"
 bindsym $mod+Escape mode "$media"
 bindsym $mod+o mode "resize"
 
-bindsym $mod+F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
+bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
 bindsym Shift+$mod+F12 move workspace "100:game"
 
 mode "resize" {
@@ -215,6 +217,23 @@ mode "$findMusic" {
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
     bindsym Escape mode "default"
 }
+
+# Assign workspaces to outputs
+workspace 1:chat output HDMI-0
+workspace 2:music output HDMI-0
+workspace 3:browser output HDMI-0
+workspace 4:notes output HDMI-0
+workspace 5:mail output HDMI-0
+workspace 6:zotero output HDMI-0
+
+workspace 21:a output DP-0
+workspace 22:s output DP-0
+workspace 23:d output DP-0
+workspace 24:f output DP-0
+workspace 25:g output DP-0
+
+workspace 21:y output HDMI-0
+workspace 22:x output HDMI-0
 
 # Assign programs to workspace
 assign [class="dota2"] 100:game
