@@ -60,10 +60,18 @@ bindsym F11 mode "$i3"
 mode "$i3" {
     bindsym Escape mode "default"
     bindsym Tab exec rofi -show window
+    bindsym asciicircum workspace back_and_forth; mode "default"
+
     bindsym a focus left; mode "default"
     bindsym d focus right; mode "default"
     bindsym Shift+a move left; mode "default"
     bindsym Shift+d move right; mode "default"
+
+    bindsym h focus left; mode "default"
+    bindsym l focus right; mode "default"
+    bindsym Shift+h move left; mode "default"
+    bindsym Shift+l move right; mode "default"
+
     bindsym q kill; mode "default"
     bindsym e layout toggle splith tabbed; mode "default"
     bindsym s mode "$launch"
@@ -71,7 +79,7 @@ mode "$i3" {
     bindsym o mode "$output"
     bindsym y mode "$media"
     bindsym w mode "$workspace"
-    bindsym t exec kitty; mode "default"
+    bindsym 2 exec kitty; mode "default"
     bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
     bindsym Shift+$mod+F12 move workspace "100:game"
 
