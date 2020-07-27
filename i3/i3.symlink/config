@@ -1,8 +1,6 @@
-# Paths
+# paths
 set $config ~/projects/config
 set $scripts ~/projects/config/scripts
-
-set $mod Mod1
 
 set $bg #1d2021
 set $activeBg #282828
@@ -49,77 +47,75 @@ for_window [class="^.*"] border pixel 1
 for_window [window_role="pop-up"] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier Mod4
  
 # Behaviour
 focus_follows_mouse no
 focus_wrapping no
 mouse_warping none
 
-# kill focused window
-bindsym $mod+Q kill
+set $i3 i3 mode
+bindsym F11 mode "$i3"
 
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+l focus right
+mode "$i3" {
+    bindsym Escape mode "default"
+    bindsym Tab exec rofi -show window
+    bindsym a focus left; mode "default"
+    bindsym d focus right; mode "default"
+    bindsym Shift+a move left; mode "default"
+    bindsym Shift+d move right; mode "default"
+    bindsym q kill
+    bindsym e layout toggle splith tabbed
+    bindsym s mode "$launch"
+    bindsym r mode "$resize"
+    bindsym o mode "$output"
+    bindsym y mode "$media"
+    bindsym w mode "$workspace"
+    bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
+    bindsym Shift+$mod+F12 move workspace "100:game"
 
-# move focused window
-bindsym Shift+$mod+h move left
-bindsym Shift+$mod+l move right
+}
 
-# toggle split / tab mode
-bindsym $mod+e layout toggle splith tabbed
+set $output output mode
+mode "$output" {
+    bindsym a move workspace to output left
+    bindsym d move workspace to output right
+    bindsym Escape mode "default"
+}
 
-# Workspace switching hotkeys
-bindsym $mod+c workspace 1:chat
-bindsym $mod+v workspace 2:music
-bindsym $mod+b workspace 3:browser
-bindsym $mod+n workspace 4:notes
-bindsym $mod+m workspace 5:mail
-bindsym $mod+z workspace 6:zotero
-
-bindsym $mod+a workspace 21:a
-bindsym $mod+s workspace 22:s
-bindsym $mod+d workspace 23:d
-bindsym $mod+f workspace 24:f
-bindsym $mod+g workspace 25:g
-
-bindsym $mod+y workspace 21:y
-bindsym $mod+x workspace 22:x
-
-# Workspace moving hotkeys
-bindsym Shift+$mod+c move container to workspace 1:chat
-bindsym Shift+$mod+v move container to workspace 2:music
-bindsym Shift+$mod+b move container to workspace 3:browser
-bindsym Shift+$mod+n move container to workspace 4:notes
-bindsym Shift+$mod+m move container to workspace 5:mail
-bindsym Shift+$mod+z move container to workspace 6:zotero
-
-bindsym Shift+$mod+a move container to workspace 21:a
-bindsym Shift+$mod+s move container to workspace 22:s
-bindsym Shift+$mod+d move container to workspace 23:d
-bindsym Shift+$mod+f move container to workspace 24:f
-bindsym Shift+$mod+g move container to workspace 25:g
-
-bindsym Shift+$mod+y move container to workspace 21:y
-Bindsym Shift+$mod+x move container to workspace 22:x
-
-bindsym $mod+p scratchpad show
-bindsym Shift+$mod+P move scratchpad
-
-bindsym $mod+u move workspace to output left
-bindsym $mod+i move workspace to output right
-
-bindsym $mod+asciicircum workspace back_and_forth
-
-# Various launch buttons 
-bindsym $mod+Tab exec rofi -show window
-bindsym $mod+w mode "$launch"
-bindsym $mod+Escape mode "$media"
-bindsym $mod+o mode "resize"
-
-bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
-bindsym Shift+$mod+F12 move workspace "100:game"
+set $workspace workspace mode
+mode "$workspace" {
+    bindsym Escape mode "default"
+    bindsym asciicircum workspace back_and_forth
+    bindsym c workspace "1:chat"
+    bindsym v workspace "2:music"
+    bindsym b workspace "3:browser"
+    bindsym n workspace "4:notes"
+    bindsym m workspace "5:mail"
+    bindsym z workspace "6:zotero"
+    bindsym a workspace "21:a"
+    bindsym s workspace "22:s"
+    bindsym d workspace "23:d"
+    bindsym f workspace "24:f"
+    bindsym g workspace "25:g"
+    bindsym y workspace "21:y"
+    bindsym x workspace "22:x"
+    bindsym Shift+c move container to workspace "1:chat"
+    bindsym Shift+v move container to workspace "2:music"
+    bindsym Shift+b move container to workspace "3:browser"
+    bindsym Shift+n move container to workspace "4:notes"
+    bindsym Shift+m move container to workspace "5:mail"
+    bindsym Shift+z move container to workspace "6:zotero"
+    bindsym Shift+a move container to workspace "21:a"
+    bindsym Shift+s move container to workspace "22:s"
+    bindsym Shift+d move container to workspace "23:d"
+    bindsym Shift+f move container to workspace "24:f"
+    bindsym Shift+g move container to workspace "25:g"
+    bindsym Shift+y move container to workspace "21:y"
+    bindsym Shift+x move container to workspace "22:x"
+    bindsym p scratchpad show
+    bindsym Shift+P move scratchpad
+}
 
 mode "resize" {
     bindsym h resize grow left 10 px or 10 ppt

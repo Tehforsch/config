@@ -11,11 +11,10 @@ keycode 28 = t T dollar dollar dollar dollar
 keycode 12 = 3 period period period period period 
 
 clear shift
-add shift = Shift_L
 ! keycode 62 = Super_L
 clear control
 add control = Control_L
-keycode 62 = Alt_L
+keycode 62 = F11
 
 ! Disable middle mouse button paste 
 pointer = 1 25 3 4 5 6 7 8 9
