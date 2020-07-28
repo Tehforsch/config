@@ -89,6 +89,8 @@ set $output output mode
 mode "$output" {
     bindsym a move workspace to output left
     bindsym d move workspace to output right
+    bindsym h move workspace to output left
+    bindsym l move workspace to output right
     bindsym Escape mode "default"
 }
 
