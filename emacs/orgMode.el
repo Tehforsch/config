@@ -106,15 +106,11 @@
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
   (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys)
+  ;; (require 'evil-org-agenda)
+  ;; (evil-org-agenda-set-keys)
 )
 
 (require 'org-agenda)
-;Make escape quit agenda
-(add-hook 'org-agenda-mode-hook
-          (lambda ()
-                  (local-set-key [escape] 'org-agenda-exit)))
 (add-hook 'org-agenda-mode-hook
           (lambda ()
                   (local-set-key (kbd "C-s") 'org-agenda-todo)))
@@ -165,3 +161,12 @@
 
 ; Set day start at 5 AM
 (setq org-extend-today-until 5)
+
+(setq org-agenda-window-setup 'current-window)
+
+; Hotkeys
+(define-key org-agenda-mode-map "j" 'evil-next-line)
+(define-key org-agenda-mode-map "k" 'evil-previous-line)
+(define-key org-agenda-mode-map (kbd "SPC") 'org-agenda-show-and-scroll-up)
+(define-key org-agenda-mode-map (kbd "RET") 'org-agenda-switch-to)
+
