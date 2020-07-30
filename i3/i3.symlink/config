@@ -55,24 +55,24 @@ focus_wrapping no
 mouse_warping none
 
 set $i3 i3 mode
-bindsym F11 mode "$i3"
+bindsym F9 mode "$i3"
 
 mode "$i3" {
     bindsym Escape mode "default"
     bindsym Tab exec rofi -show window
     bindsym asciicircum workspace back_and_forth; mode "default"
 
-    bindsym a focus left; mode "default"
-    bindsym d focus right; mode "default"
-    bindsym Shift+a move left; mode "default"
-    bindsym Shift+d move right; mode "default"
+    bindsym a focus left
+    bindsym d focus right
+    bindsym Shift+a move left
+    bindsym Shift+d move right
 
-    bindsym h focus left; mode "default"
-    bindsym l focus right; mode "default"
-    bindsym Shift+h move left; mode "default"
-    bindsym Shift+l move right; mode "default"
+    bindsym h focus left
+    bindsym l focus right
+    bindsym Shift+h move left
+    bindsym Shift+l move right
 
-    bindsym q kill; mode "default"
+    bindsym q kill
     bindsym e layout toggle splith tabbed; mode "default"
     bindsym s mode "$launch"
     bindsym r mode "$resize"
@@ -91,12 +91,12 @@ mode "$output" {
     bindsym d move workspace to output right
     bindsym h move workspace to output left
     bindsym l move workspace to output right
-    bindsym Escape mode "default"
+    bindsym Escape mode "$i3"
 }
 
 set $workspace workspace mode
 mode "$workspace" {
-    bindsym Escape mode "default"
+    bindsym Escape mode "$i3"
     bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym c workspace "1:chat"; mode "default"
     bindsym v workspace "2:music"; mode "default"
@@ -137,7 +137,7 @@ mode "resize" {
     bindsym Shift+K resize shrink   up 10 px or 10 ppt
     bindsym l resize grow right 10 px or 10 ppt
     bindsym Shift+L resize shrink   right 10 px or 10 ppt
-    bindsym Escape mode "default"
+    bindsym Escape mode "$i3"
 }
 
 set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki [S]creenshot
@@ -169,7 +169,7 @@ mode "$launch" {
     bindsym shift+R restart; mode "default"
     bindsym --release Shift+S exec bash $scripts/takeScreenshot.sh; mode "default"
     bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
-    bindsym Escape mode "default"
+    bindsym Escape mode "$i3"
 }
 
 set $document Open: [p]dfs/epubs [i]mages
@@ -197,7 +197,7 @@ mode "$game" {
 
 set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
-    bindsym Escape mode "default"
+    bindsym Escape mode "$i3"
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
