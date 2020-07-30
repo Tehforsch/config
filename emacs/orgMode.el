@@ -96,6 +96,19 @@
   (evil-save-modified-and-close nil)
 )
 
+(defun get-agenda-tasks (show-all) ; For todobot
+    (setq org-agenda-window-setup 'create-frame)
+    (if show-all 
+      (my-daily-agenda)
+      '(org-agenda-list nil nil 1))
+    (org-agenda-write "~/.agenda"))
+    ;; (let (result (buffer-string))
+    ;;   (progn 
+    ;;     (kill-buffer org-agenda-buffer-name))
+    ;;     result))
+    ;; (let (result (buffer-string))
+      ;; (message result))
+
 ; Nicer bullet points
 (use-package org-bullets
   :config
