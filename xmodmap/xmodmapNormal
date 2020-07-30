@@ -15,8 +15,8 @@ clear Mod1
 ! keycode 62 = Super_L
 clear control
 add control = Control_L
-keycode 62 = F11
-keycode 64 = F11
+keycode 62 = F9
+keycode 64 = F9
 
 ! Disable middle mouse button paste 
 pointer = 1 25 3 4 5 6 7 8 9
