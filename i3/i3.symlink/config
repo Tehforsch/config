@@ -59,6 +59,7 @@ bindsym F9 mode "$i3"
 
 mode "$i3" {
     bindsym Escape mode "default"
+    bindsym i mode "default"
     bindsym Tab exec rofi -show window
     bindsym asciicircum workspace back_and_forth; mode "default"
 
@@ -79,7 +80,6 @@ mode "$i3" {
     bindsym o mode "$output"
     bindsym y mode "$media"
     bindsym w mode "$workspace"
-    bindsym 2 exec kitty; mode "default"
     bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
     bindsym Shift+$mod+F12 move workspace "100:game"
 
@@ -87,30 +87,33 @@ mode "$i3" {
 
 set $output output mode
 mode "$output" {
+    bindsym Escape mode "$i3"
+    bindsym i mode "default"
     bindsym a move workspace to output left
     bindsym d move workspace to output right
     bindsym h move workspace to output left
     bindsym l move workspace to output right
-    bindsym Escape mode "$i3"
 }
 
 set $workspace workspace mode
 mode "$workspace" {
     bindsym Escape mode "$i3"
+    bindsym i mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
-    bindsym c workspace "1:chat"; mode "default"
-    bindsym v workspace "2:music"; mode "default"
-    bindsym b workspace "3:browser"; mode "default"
-    bindsym n workspace "4:notes"; mode "default"
-    bindsym m workspace "5:mail"; mode "default"
-    bindsym z workspace "6:zotero"; mode "default"
-    bindsym a workspace "21:a"; mode "default"
-    bindsym s workspace "22:s"; mode "default"
-    bindsym d workspace "23:d"; mode "default"
-    bindsym f workspace "24:f"; mode "default"
-    bindsym g workspace "25:g"; mode "default"
-    bindsym y workspace "21:y"; mode "default"
-    bindsym x workspace "22:x"; mode "default"
+    bindsym q kill
+    bindsym c workspace "1:chat"
+    bindsym v workspace "2:music"
+    bindsym b workspace "3:browser"
+    bindsym n workspace "4:notes"
+    bindsym m workspace "5:mail"
+    bindsym z workspace "6:zotero"
+    bindsym a workspace "21:a"
+    bindsym s workspace "22:s"
+    bindsym d workspace "23:d"
+    bindsym f workspace "24:f"
+    bindsym g workspace "25:g"
+    bindsym y workspace "21:y"
+    bindsym x workspace "22:x"
     bindsym Shift+c move container to workspace "1:chat"
     bindsym Shift+v move container to workspace "2:music"
     bindsym Shift+b move container to workspace "3:browser"
@@ -128,7 +131,10 @@ mode "$workspace" {
     bindsym Shift+P move scratchpad
 }
 
-mode "resize" {
+set $resize workspace mode
+mode "$resize" {
+    bindsym Escape mode "$i3"
+    bindsym i mode "default"
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
     bindsym j resize grow down 10 px or 10 ppt
@@ -137,17 +143,16 @@ mode "resize" {
     bindsym Shift+K resize shrink   up 10 px or 10 ppt
     bindsym l resize grow right 10 px or 10 ppt
     bindsym Shift+L resize shrink   right 10 px or 10 ppt
-    bindsym Escape mode "$i3"
 }
 
 set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki [S]creenshot
 mode "$launch" {
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
-    bindsym b exec kitty "ncmpcpp"; mode default
     bindsym c exec firefox; mode "default"
     bindsym d mode "$document"
     bindsym e exec emacsclient -c -n; mode "default"
     bindsym g mode "$gameLaunch"
+    bindsym i exec emacsclient -c -n -e '(capture-inbox-task)'; mode "default"
     bindsym k exec $scripts/keyboardConfiguration.sh toggle; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec firefox --new-window mail.google.com; mode "default"
@@ -198,6 +203,7 @@ mode "$game" {
 set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
     bindsym Escape mode "$i3"
+    bindsym i mode "default"
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
@@ -222,7 +228,8 @@ mode "$findMusic" {
     bindsym Shift+A exec bash $scripts/musicSelection/quarantineAlbum.sh; mode "default"
     bindsym Shift+R exec bash $scripts/musicSelection/quarantineAlbum.sh --random
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
-    bindsym Escape mode "default"
+    bindsym Escape mode "$media"
+    bindsym i mode "default"
 }
 
 # Assign workspaces to outputs

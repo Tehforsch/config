@@ -96,6 +96,10 @@
   (evil-save-modified-and-close nil)
 )
 
+(defun capture-inbox-task ()
+  (interactive)
+  (org-capture nil "i"))
+
 (defun get-agenda-tasks (show-all) ; For todobot
     (setq org-agenda-window-setup 'create-frame)
     (if show-all 
