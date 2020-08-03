@@ -57,6 +57,8 @@ mouse_warping none
 set $i3 i3 mode
 bindsym F9 mode "$i3"
 
+bindsym Ctrl+F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
+
 mode "$i3" {
     bindsym Escape mode "default"
     bindsym i mode "default"
@@ -73,14 +75,23 @@ mode "$i3" {
     bindsym Shift+h move left
     bindsym Shift+l move right
 
+    bindsym j focus down
+    bindsym k focus up
+    bindsym Shift+j move down
+    bindsym Shift+k move up
+
     bindsym q kill
+
     bindsym e layout toggle splith tabbed; mode "default"
+    bindsym f floating toggle
+    bindsym minus split v
+    bindsym Shift+minus split h
+
     bindsym s mode "$launch"
     bindsym r mode "$resize"
     bindsym o mode "$output"
     bindsym y mode "$media"
     bindsym w mode "$workspace"
-    bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
     bindsym Shift+$mod+F12 move workspace "100:game"
 
 }
@@ -131,7 +142,7 @@ mode "$workspace" {
     bindsym Shift+P move scratchpad
 }
 
-set $resize workspace mode
+set $resize resize mode
 mode "$resize" {
     bindsym Escape mode "$i3"
     bindsym i mode "default"
@@ -153,14 +164,13 @@ mode "$launch" {
     bindsym e exec emacsclient -c -n; mode "default"
     bindsym g mode "$gameLaunch"
     bindsym i exec emacsclient -c -n -e '(capture-inbox-task)'; mode "default"
-    bindsym k exec $scripts/keyboardConfiguration.sh toggle; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
     bindsym m exec firefox --new-window mail.google.com; mode "default"
     bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec firefox --new-window todoist.com; mode "default"
     bindsym s exec rofi -show run; mode "default"
     bindsym t exec telegram-desktop; mode "default"
-    bindsym w exec kitty; mode "default"
+    bindsym k exec kitty; mode "default"
     bindsym y mode "$media"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
     bindsym Shift+A exec anki; mode "default"
@@ -195,9 +205,9 @@ mode "$gameLaunch" {
 
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
-    bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
-    bindsym $mod+p; exec $scripts/screenCapture.sh
-    bindsym $mod+Shift+p; exec $scripts/screenCapture.sh 1
+    bindsym Ctrl+F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
+    bindsym Shift+F11; exec $scripts/screenCapture.sh
+    bindsym Mod3+Shift+p; exec $scripts/screenCapture.sh 1
 }
 
 set $media Media: [b]lack, [m]usic, [o]:streams
