@@ -45,6 +45,7 @@ for_window [class="^.*"] border pixel 1
 
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
+for_window [class=feh|Pavucontrol] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -57,12 +58,14 @@ mouse_warping none
 set $i3 i3 mode
 bindsym F9 mode "$i3"
 
-bindsym Ctrl+F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
+bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
 
 mode "$i3" {
     bindsym Escape mode "default"
     bindsym i mode "default"
-    bindsym Tab exec rofi -show window
+    bindsym Return mode "default"
+    bindsym Tab exec i3-cycle right; mode "default"
+    bindsym Shift+Tab exec rofi -show window; mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
 
     bindsym a focus left
@@ -92,7 +95,7 @@ mode "$i3" {
     bindsym o mode "$output"
     bindsym y mode "$media"
     bindsym w mode "$workspace"
-    bindsym Shift+$mod+F12 move workspace "100:game"
+    bindsym Shift+F12 move workspace "100:game"
 
 }
 
@@ -100,6 +103,7 @@ set $output output mode
 mode "$output" {
     bindsym Escape mode "$i3"
     bindsym i mode "default"
+    bindsym Return mode "default"
     bindsym a move workspace to output left
     bindsym d move workspace to output right
     bindsym h move workspace to output left
@@ -110,6 +114,7 @@ set $workspace workspace mode
 mode "$workspace" {
     bindsym Escape mode "$i3"
     bindsym i mode "default"
+    bindsym Return mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym q kill
     bindsym c workspace "1:chat"
@@ -146,6 +151,7 @@ set $resize resize mode
 mode "$resize" {
     bindsym Escape mode "$i3"
     bindsym i mode "default"
+    bindsym Return mode "default"
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
     bindsym j resize grow down 10 px or 10 ppt
@@ -205,15 +211,16 @@ mode "$gameLaunch" {
 
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
-    bindsym Ctrl+F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
-    bindsym Shift+F11; exec $scripts/screenCapture.sh
-    bindsym Mod3+Shift+p; exec $scripts/screenCapture.sh 1
+    bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
+    bindsym F11; exec $scripts/screenCapture.sh
+    bindsym Shift+F11; exec $scripts/screenCapture.sh 1
 }
 
 set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
     bindsym Escape mode "$i3"
     bindsym i mode "default"
+    bindsym Return mode "default"
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
@@ -225,6 +232,8 @@ mode "$media" {
     bindsym s exec "mpc toggle"; mode "default"
     bindsym t exec --no-startup-id $scripts/changeBrightness.sh 1
     bindsym m mode "$findMusic"
+    bindsym j exec mpc seek +10
+    bindsym k exec mpc seek -10
     bindsym Shift+F exec --no-startup-id mpc volume -5
     bindsym Shift+R exec --no-startup-id mpc volume +5
 }
@@ -240,6 +249,7 @@ mode "$findMusic" {
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
     bindsym Escape mode "$media"
     bindsym i mode "default"
+    bindsym Return mode "default"
 }
 
 # Assign workspaces to outputs

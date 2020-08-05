@@ -1,5 +1,0 @@
-"xdotool keydown F11"
-  b:8
-
-"xdotool keyup F11"
-  release + b:8

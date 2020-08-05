@@ -56,6 +56,7 @@ setopt inc_append_history
 
 # Magically make converting utf-8 buffers to string and then printing them work
 export PYTHONIOENCODING="utf-8"
+export PYTHONHASHSEED=0 # The things they make me do for productivity
 
 # Fd settings
 source ~/.fzf.zsh

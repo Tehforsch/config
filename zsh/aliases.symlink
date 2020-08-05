@@ -14,7 +14,8 @@ alias gp='git push'
 alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias gsu='git submodule update --recursive --remote'
-alias im="kitty +kitten icat"
+alias tim="kitty +kitten icat"
+alias im="feh"
 alias ka="killall"
 alias l='ls -alFh --color=auto'
 alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
