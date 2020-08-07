@@ -1,11 +1,11 @@
 [user]
-	name = tehforsch
-	email = Tonipeter92@googlemail.com
+    name = tehforsch
+    email = Tonipeter92@googlemail.com
 [credential]
-	helper = cache
+    helper = cache
 [core]
-	excludesfile = ~/.gitignoreGlobal
-    editor = emacs
+    excludesfile = ~/.gitignoreGlobal
+    editor = vim
     hooksPath = .githooks/
 [color]
     branch = auto
@@ -25,7 +25,7 @@
     changed = green
     untracked = cyan
 [push]
-	default = simple
+    default = simple
 [alias]
    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [merge]
@@ -34,3 +34,5 @@
     prompt = false
 [mergetool]
     keepBackup = false
+[pull]
+    rebase = false
