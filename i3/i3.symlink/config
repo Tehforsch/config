@@ -284,5 +284,4 @@ exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 exec --no-startup-id sleep 10; python3 $config/todoBot/main.py
-exec --no-startup-id sleep 5; watch -n 3600 bash ~/notes/update.sh
-exec --no-startup-id sleep 5; watch -n 3600 bash ~/music/update.sh
+exec bash $scripts/syncRepos.sh
