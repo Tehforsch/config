@@ -53,8 +53,8 @@
 (setq org-startup-truncated nil)
 
 ; Location of todolist/agenda
-(setq org-agenda-files '("~/notes"))
-(setq org-default-notes-file "~/notes/todo.org")
+(setq org-agenda-files '("~/notes/todo/"))
+(setq org-default-notes-file "~/notes/todo/main.org")
 
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
 (setq org-agenda-custom-commands
@@ -156,7 +156,7 @@
 
 ; Change behavior of org goto / refile to show all subheadings
 (setq org-outline-path-complete-in-steps nil)
-(setq org-refile-targets '((("~/notes/todo.org") :maxlevel . 3)))
+(setq org-refile-targets '((("~/notes/todo/main.org") :maxlevel . 3)))
 
 ; Stolen from https://github.com/edwtjo/evil-org-mode/issues/33
 (defun smart-org-insert ()
