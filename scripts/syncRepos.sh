@@ -4,6 +4,7 @@ while [[ 1 ]]; do
     ./update.sh
     cd /home/$USER/music
     ./update.sh
+    mpc update
     cd /home/$USER/pictures
     ./update.sh
     sleep 3600
