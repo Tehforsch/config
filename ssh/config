@@ -2,5 +2,5 @@ Host bwprod
     HostName bwfor.cluster.uni-mannheim.de
     User hd_hp240
 Host rpi
-    HostName 192.168.0.199
+    HostName 192.168.0.200
     User pi
