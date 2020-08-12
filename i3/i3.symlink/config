@@ -62,7 +62,6 @@ bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
 
 mode "$i3" {
     bindsym Escape mode "default"
-    bindsym i mode "default"
     bindsym Return mode "default"
     bindsym Tab exec i3-cycle right; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
@@ -102,7 +101,6 @@ mode "$i3" {
 set $output output mode
 mode "$output" {
     bindsym Escape mode "$i3"
-    bindsym i mode "default"
     bindsym Return mode "default"
     bindsym a move workspace to output left
     bindsym d move workspace to output right
@@ -113,7 +111,6 @@ mode "$output" {
 set $workspace workspace mode
 mode "$workspace" {
     bindsym Escape mode "$i3"
-    bindsym i mode "default"
     bindsym Return mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym q kill
@@ -150,7 +147,6 @@ mode "$workspace" {
 set $resize resize mode
 mode "$resize" {
     bindsym Escape mode "$i3"
-    bindsym i mode "default"
     bindsym Return mode "default"
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
@@ -198,15 +194,18 @@ mode "$document" {
     bindsym d exec $scripts/openLastTouchedFileInDir.sh ~/downloads; mode "default"
     bindsym i exec $scripts/rofiFile.sh gpicview png jpg jpeg gif; mode "default"
     bindsym p exec $scripts/rofiFile.sh zathura pdf epub; mode "default"
-    bindsym Escape mode "default"
+    bindsym Escape mode "$launch"
+    bindsym Return mode "default"
 }
 
 # Game settings
-set $gameLaunch [d]ota, [c]eleste
+set $gameLaunch [d]ota, [c]eleste [t]erraria
 mode "$gameLaunch" {
     bindsym d exec steam steam://rungameid/570; mode "default"
     bindsym c exec steam steam://rungameid/504230; mode "default"
-    bindsym Escape mode "default"
+    bindsym t exec steam steam://rungameid/105600; mode "default"
+    bindsym Escape mode "$launch"
+    bindsym Return mode "default"
 }
 
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
@@ -219,7 +218,6 @@ mode "$game" {
 set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
     bindsym Escape mode "$i3"
-    bindsym i mode "default"
     bindsym Return mode "default"
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
@@ -248,7 +246,6 @@ mode "$findMusic" {
     bindsym Shift+R exec bash $scripts/musicSelection/quarantineAlbum.sh --random
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
     bindsym Escape mode "$media"
-    bindsym i mode "default"
     bindsym Return mode "default"
 }
 
@@ -271,6 +268,7 @@ workspace 22:x output HDMI-0
 
 # Assign programs to workspace
 assign [class="dota2"] 100:game
+assign [class="terraria"] 100:game
 assign [class="csgo_linux64"] 100:game
 
 # Set background to black
@@ -283,5 +281,4 @@ exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
-exec --no-startup-id sleep 10; python3 $config/todoBot/main.py
 exec bash $scripts/syncRepos.sh
