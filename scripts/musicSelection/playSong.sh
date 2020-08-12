@@ -22,7 +22,7 @@ echo "$album"
 echo "$title"
 
 mpc clear
-mpc findadd album "$album"
+mpc findadd album "$album" artist "$artist"
 numInPlaylist=$(mpc playlist -f "%title%" | grep -n "^$title\$" | cut -d ":" -f 1)
 echo $numInPlaylist
 mpc play $numInPlaylist
