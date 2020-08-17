@@ -63,7 +63,8 @@ bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
 mode "$i3" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
-    bindsym Tab exec i3-cycle right; mode "default"
+    bindsym Tab mode "default"
+    bindsym asciicircum exec i3-cycle right; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
 
@@ -102,6 +103,7 @@ set $output output mode
 mode "$output" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
     bindsym a move workspace to output left
     bindsym d move workspace to output right
     bindsym h move workspace to output left
@@ -112,6 +114,7 @@ set $workspace workspace mode
 mode "$workspace" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym q kill
     bindsym c workspace "1:chat"
@@ -148,6 +151,7 @@ set $resize resize mode
 mode "$resize" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
     bindsym j resize grow down 10 px or 10 ppt
@@ -196,16 +200,20 @@ mode "$document" {
     bindsym p exec $scripts/rofiFile.sh zathura pdf epub; mode "default"
     bindsym Escape mode "$launch"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
 }
 
 # Game settings
-set $gameLaunch [d]ota, [c]eleste [t]erraria
+set $gameLaunch [d]ota, [c]eleste [t]erraria [g]olfit [f]actorio
 mode "$gameLaunch" {
     bindsym d exec steam steam://rungameid/570; mode "default"
     bindsym c exec steam steam://rungameid/504230; mode "default"
     bindsym t exec steam steam://rungameid/105600; mode "default"
+    bindsym g exec steam steam://rungameid/571740; mode "default"
+    bindsym f exec steam steam://rungameid/427520; mode "default"
     bindsym Escape mode "$launch"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
 }
 
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
@@ -219,6 +227,7 @@ set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
@@ -247,6 +256,7 @@ mode "$findMusic" {
     bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
     bindsym Escape mode "$media"
     bindsym Return mode "default"
+    bindsym Tab mode "default"
 }
 
 # Assign workspaces to outputs
