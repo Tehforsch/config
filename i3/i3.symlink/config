@@ -188,7 +188,7 @@ mode "$launch" {
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"
-    bindsym --release Shift+S exec bash $scripts/takeScreenshot.sh; mode "default"
+    bindsym --release Shift+S exec flameshot gui; mode "default"
     bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym Escape mode "$i3"
 }
