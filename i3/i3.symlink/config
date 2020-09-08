@@ -85,7 +85,7 @@ mode "$i3" {
 
     bindsym q kill
 
-    bindsym e layout toggle splith tabbed; mode "default"
+    bindsym e layout toggle splith tabbed
     bindsym f floating toggle
     bindsym minus split v
     bindsym Shift+minus split h
@@ -143,6 +143,19 @@ mode "$workspace" {
     bindsym Shift+g move container to workspace "25:g"
     bindsym Shift+y move container to workspace "21:y"
     bindsym Shift+x move container to workspace "22:x"
+    bindsym Ctrl+c move container to workspace "1:chat"; workspace "1:chat"
+    bindsym Ctrl+v move container to workspace "2:music"; workspace "2:music"
+    bindsym Ctrl+b move container to workspace "3:browser"; workspace "3:browser"
+    bindsym Ctrl+n move container to workspace "4:notes"; workspace "4:notes"
+    bindsym Ctrl+m move container to workspace "5:mail"; workspace "5:mail"
+    bindsym Ctrl+z move container to workspace "6:zotero"; workspace "6:zotero"
+    bindsym Ctrl+a move container to workspace "21:a"; workspace "21:a"
+    bindsym Ctrl+s move container to workspace "22:s"; workspace "22:s"
+    bindsym Ctrl+d move container to workspace "23:d"; workspace "23:d"
+    bindsym Ctrl+f move container to workspace "24:f"; workspace "24:f"; workspace "24:f"; workspace "24:f"
+    bindsym Ctrl+g move container to workspace "25:g"; workspace "25:g"
+    bindsym Ctrl+y move container to workspace "21:y"; workspace "21:y"
+    bindsym Ctrl+x move container to workspace "22:x"; workspace "22:x"
     bindsym p scratchpad show
     bindsym Shift+P move scratchpad
 }
