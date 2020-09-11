@@ -5,10 +5,9 @@
 
 ;; (setq helm-completion-style 'helm-fuzzy)
 (setq helm-completion-in-region-fuzzy-match t)
-(setq completion-styles '(helm-flex))
 
-; Once we change to emacs 27 this needs to be
-;; (setq completion-styles '(flex))
+;; Once we change to emacs 27 this needs to be
+(setq completion-styles '(flex))
 
 (setq helm-ff-transformer-show-only-basename t)
 
