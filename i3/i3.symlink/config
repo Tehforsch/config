@@ -119,7 +119,7 @@ mode "$workspace" {
     bindsym q kill
     bindsym c workspace "1:chat"
     bindsym v workspace "2:music"
-    bindsym b workspace "3:browser"
+    bindsym b workspace "3:todo"
     bindsym n workspace "4:notes"
     bindsym m workspace "5:mail"
     bindsym z workspace "6:zotero"
@@ -132,7 +132,7 @@ mode "$workspace" {
     bindsym x workspace "22:x"
     bindsym Shift+c move container to workspace "1:chat"
     bindsym Shift+v move container to workspace "2:music"
-    bindsym Shift+b move container to workspace "3:browser"
+    bindsym Shift+b move container to workspace "3:todo"
     bindsym Shift+n move container to workspace "4:notes"
     bindsym Shift+m move container to workspace "5:mail"
     bindsym Shift+z move container to workspace "6:zotero"
@@ -145,7 +145,7 @@ mode "$workspace" {
     bindsym Shift+x move container to workspace "22:x"
     bindsym Ctrl+c move container to workspace "1:chat"; workspace "1:chat"
     bindsym Ctrl+v move container to workspace "2:music"; workspace "2:music"
-    bindsym Ctrl+b move container to workspace "3:browser"; workspace "3:browser"
+    bindsym Ctrl+b move container to workspace "3:todo"; workspace "3:todo"
     bindsym Ctrl+n move container to workspace "4:notes"; workspace "4:notes"
     bindsym Ctrl+m move container to workspace "5:mail"; workspace "5:mail"
     bindsym Ctrl+z move container to workspace "6:zotero"; workspace "6:zotero"
@@ -275,7 +275,7 @@ mode "$findMusic" {
 # Assign workspaces to outputs
 workspace 1:chat output HDMI-0
 workspace 2:music output HDMI-0
-workspace 3:browser output HDMI-0
+workspace 3:todo output HDMI-0
 workspace 4:notes output HDMI-0
 workspace 5:mail output HDMI-0
 workspace 6:zotero output HDMI-0
