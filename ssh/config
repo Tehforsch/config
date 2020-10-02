@@ -1,9 +1,10 @@
 Host bwprod
     HostName bwfor.cluster.uni-mannheim.de
     User hd_hp240
+    ForwardX11 yes
 Host binac
     HostName login01.binac.uni-tuebingen.de
     User hd_hp240
 Host rpi
-    HostName 192.168.0.200
+    HostName 192.168.0.199
     User pi
