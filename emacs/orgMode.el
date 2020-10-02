@@ -60,6 +60,7 @@
 (setq org-agenda-custom-commands
       '(("n" "Simple agenda view" ((tags-todo "toProcess")
                                    (tags-todo "next")
+                                   (tags-todo "spree")
                                    (agenda "" ((org-agenda-span 7)))))))
 
 ; Make agenda view prettier
