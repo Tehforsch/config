@@ -64,7 +64,8 @@ mode "$i3" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
     bindsym Tab mode "default"
-    bindsym asciicircum exec i3-cycle right; mode "default"
+    # bindsym asciicircum exec i3-cycle right; mode "default"
+    bindsym asciicircum focus right; move left; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
 
@@ -116,6 +117,9 @@ mode "$workspace" {
     bindsym Return mode "default"
     bindsym Tab mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
+    # Have Output changing commands here too
+    bindsym h move workspace to output left
+    bindsym l move workspace to output right
     bindsym q kill
     bindsym c workspace "1:chat"
     bindsym v workspace "2:music"
@@ -234,6 +238,8 @@ mode "$game" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
     bindsym F11; exec $scripts/screenCapture.sh
     bindsym Shift+F11; exec $scripts/screenCapture.sh 1
+    bindsym F10; exec bash $scripts/timer/repeat.sh
+    bindsym Shift+F10; exec bash $scripts/timer/killTimers.sh
 }
 
 set $media Media: [b]lack, [m]usic, [o]:streams
