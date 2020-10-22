@@ -148,3 +148,5 @@ bindkey -s '^g' '^ade ^e&& exit\n'
 
 
 ulimit -c unlimited
+
+export ANDROID_SDK_ROOT=~/.android/Sdk
