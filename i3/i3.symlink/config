@@ -97,7 +97,13 @@ mode "$i3" {
     bindsym y mode "$media"
     bindsym w mode "$workspace"
     bindsym Shift+F12 move workspace "100:game"
+    bindsym p mode "$passthrough"
 
+}
+
+set $passthrough passthrough mode exit with Shift+F12
+mode "$passthrough" {
+    bindsym Shift+F12 mode "default"
 }
 
 set $output output mode
@@ -162,6 +168,27 @@ mode "$workspace" {
     bindsym Ctrl+x move container to workspace "22:x"; workspace "22:x"
     bindsym p scratchpad show
     bindsym Shift+P move scratchpad
+    bindsym r mode "$rename"
+}
+
+set $rename rename mode
+mode "$rename" {
+    bindsym Escape mode "$workspace"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym c focus parent; move container to workspace "1:chat"; workspace "1:chat"
+    bindsym v focus parent; move container to workspace "2:music"; workspace "2:music"
+    bindsym b focus parent; move container to workspace "3:todo"; workspace "3:todo"
+    bindsym n focus parent; move container to workspace "4:notes"; workspace "4:notes"
+    bindsym m focus parent; move container to workspace "5:mail"; workspace "5:mail"
+    bindsym z focus parent; move container to workspace "6:zotero"; workspace "6:zotero"
+    bindsym a focus parent; move container to workspace "21:a"; workspace "21:a"
+    bindsym s focus parent; move container to workspace "22:s"; workspace "22:s"
+    bindsym d focus parent; move container to workspace "23:d"; workspace "23:d"
+    bindsym f focus parent; move container to workspace "24:f"; workspace "24:f"
+    bindsym g focus parent; move container to workspace "25:g"; workspace "25:g"
+    bindsym y focus parent; move container to workspace "21:y"; workspace "21:y"
+    bindsym x focus parent; move container to workspace "22:x"; workspace "22:x"
 }
 
 set $resize resize mode
@@ -311,4 +338,4 @@ exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 exec bash $scripts/syncRepos.sh
-exec_always i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
+exec i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
