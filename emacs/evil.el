@@ -103,3 +103,5 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; bind evil-jump-out-args
 (define-key evil-normal-state-map "K" 'evil-jump-out-args)
+
+(setq dabbrev-case-fold-search nil)
