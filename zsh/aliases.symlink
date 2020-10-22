@@ -15,7 +15,7 @@ alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias gsu='git submodule update --recursive --remote'
 alias tim="kitty +kitten icat"
-alias im="feh"
+alias im="feh --scale-down --auto-zoom -R 1"
 alias ka="killall"
 alias l='ls -alFh --color=auto'
 alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
@@ -34,3 +34,5 @@ alias old="$CONFIG/scripts/openLastTouchedFileInDir.sh"
 alias bob="python3 ~/projects/phd/bob/main.py"
 alias addmusic="bash ~/music/addMusic.sh"
 alias triggerbob="~/projects/config/scripts/triggerBob.sh"
+alias triggerarepo="~/projects/config/scripts/triggerArepo.sh"
+alias showsnap="~/projects/phd/tmp/samplePlot/showSnapshot.sh"
