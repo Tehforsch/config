@@ -46,3 +46,5 @@ bind '\C-w:unix-filename-rubout'
 export TERM='xterm-256color'
 source ~/modules.sh
 module load devel/python_intel/3.6
+
+export HDF5_DISABLE_VERSION_CHECK=2
