@@ -11,7 +11,7 @@ for filetype in "$@"; do
 done
 
 for depth in $(seq 0 $maxDepth); do
-    searchResult=$(fd $filetypeCommand --exact-depth $depth)
+    searchResult=$(fd -E projects/cluster $filetypeCommand --exact-depth $depth)
     if [ "$searchResult" != "" ]; then
         if [ "$docs" != "" ]; then
             docs="${docs}\n$searchResult"
