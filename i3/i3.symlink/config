@@ -45,7 +45,7 @@ for_window [class="^.*"] border pixel 1
 
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
-for_window [class=gpicview|feh|Pavucontrol] floating enable
+for_window [class=gpicviewPavucontrol] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -311,3 +311,4 @@ exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 exec bash $scripts/syncRepos.sh
+exec_always i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
