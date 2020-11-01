@@ -208,6 +208,8 @@ mode "$resize" {
 
 set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki [S]creenshot
 mode "$launch" {
+    bindsym Escape mode "$i3"
+    bindsym Tab mode "default"
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
     bindsym c exec firefox; mode "default"
     bindsym d mode "$document"
@@ -234,7 +236,6 @@ mode "$launch" {
     bindsym shift+R restart; mode "default"
     bindsym --release Shift+S exec flameshot gui; mode "default"
     bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
-    bindsym Escape mode "$i3"
 }
 
 set $document Open: [p]dfs/epubs [i]mages
@@ -338,4 +339,4 @@ exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 exec bash $scripts/syncRepos.sh
-exec i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
+exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; workspace 25:6; mode "default"
