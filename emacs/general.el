@@ -219,3 +219,4 @@
 (define-key evil-normal-state-map "gh" 'lsp-describe-thing-at-point)
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
+(define-key evil-normal-state-map "go" 'end-of-symbol)
