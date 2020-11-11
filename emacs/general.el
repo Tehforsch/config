@@ -220,3 +220,11 @@
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 (define-key evil-normal-state-map "go" 'end-of-symbol)
+
+
+; Org-mode hotkeys
+(define-key org-mode-map "gl" 'org-open-at-point)
+(define-key org-agenda-mode-map "j" 'evil-next-line)
+(define-key org-agenda-mode-map "k" 'evil-previous-line)
+(define-key org-agenda-mode-map (kbd "SPC") 'org-agenda-show-and-scroll-up)
+(define-key org-agenda-mode-map (kbd "RET") 'org-agenda-switch-to)

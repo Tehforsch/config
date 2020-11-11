@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 (defvar pundit-mode-map (make-sparse-keymap) "Keymap for pundit mode.")
 (defvar pundit-find-note-hook nil "Hook called when a new buffer with a pundit note is opened.")
 (defvar pundit-after-save-note-hook nil "Hook called when a buffer with a pundit note is saved.")
@@ -29,14 +30,14 @@
   (let* ((files (directory-files pundit-directory nil ".*.org" ))
         (notes (mapcar 'pundit--get-note-from-filename files)))
     (if (null link-filter-predicate)
-        (remove-if-not default-link-filter-predicate notes)
-        (remove-if-not link-filter-predicate notes))))
+        (cl-remove-if-not default-link-filter-predicate notes)
+        (cl-remove-if-not link-filter-predicate notes))))
 
 (defun pundit--list-all-notes ()
   (pundit--list-notes nil))
 
 (defun pundit--link-to-note-predicate (linked-note truth-value)
-  (lexical-let ((linked-note linked-note)
+  (let ((linked-note linked-note)
                 (truth-value truth-value))
     (lambda (note) (let* ((links (pundit--get-linked-notes note))
                          (is-member (member linked-note links)))
@@ -112,8 +113,8 @@
       ((title-part-of-filename (pundit--convert-title-to-last-part-of-filename title))
        (matching-files (directory-files pundit-directory nil (concat "^[0-9]\\{14\\}-" title-part-of-filename))))
     (progn
-      (assert (< (list-length matching-files) 2))
-      (if (eq (list-length matching-files) 1)
+      (cl-assert (< (cl-list-length matching-files) 2))
+      (if (eq (cl-list-length matching-files) 1)
           (car matching-files)
         (let ((date-string (format-time-string "%Y%m%d%H%M%S")))
           (concat date-string "-" title-part-of-filename))))))

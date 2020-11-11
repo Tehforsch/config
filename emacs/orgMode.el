@@ -123,9 +123,7 @@
   :after org
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
-  (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-  ;; (require 'evil-org-agenda)
-  ;; (evil-org-agenda-set-keys)
+  (evil-org-set-key-theme '(insert textobjects additional calendar))
 )
 
 (require 'org-agenda)
@@ -173,18 +171,10 @@
 ;; (use-package org-habit)
 
 ; Make org-open-at-point open the link in the same window
-(setq org-link-frame-setup (acons 'file 'find-file org-link-frame-setup))
+(setq org-link-frame-setup (cons (cons 'file 'find-file) org-link-frame-setup))
 
-(define-key evil-normal-state-map "gl" 'org-open-at-point)
 
 ; Set day start at 5 AM
 (setq org-extend-today-until 5)
 
 (setq org-agenda-window-setup 'current-window)
-
-; Hotkeys
-(define-key org-agenda-mode-map "j" 'evil-next-line)
-(define-key org-agenda-mode-map "k" 'evil-previous-line)
-(define-key org-agenda-mode-map (kbd "SPC") 'org-agenda-show-and-scroll-up)
-(define-key org-agenda-mode-map (kbd "RET") 'org-agenda-switch-to)
-
