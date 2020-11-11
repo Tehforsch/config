@@ -106,7 +106,8 @@ fzf-cd-widget() {
   return $ret
 }
 zle     -N    fzf-cd-widget
-export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+# export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+export FZF_DEFAULT_OPTS="--ansi"
 
 # Vim mode
 bindkey -v
