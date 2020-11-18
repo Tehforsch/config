@@ -18,3 +18,6 @@
     (progn
       (pundit--read-in-note-files)
       (pundit-validate-all-notes)))
+
+(setq rpundit/directory "~/notes")
+(setq rpundit/executable "~/.cargo-target/release/pundit")

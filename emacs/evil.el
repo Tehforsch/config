@@ -111,3 +111,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (evil-inner-symbol)
   (evil-backward-char)
 )
+
+; Automatically go into insert mode when opening a terminal
+(defun enter-evil-insert-mode ()
+  (evil-insert nil nil nil))
+(add-hook 'term-mode-hook 'enter-evil-insert-mode)

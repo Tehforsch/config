@@ -59,9 +59,9 @@
     "on" '(:which-key "Notes")
     "ona" 'pundit-helm-append-link-to-note
     "onA" 'pundit-helm-append-link-to-note-with-custom-title
-    "onb" 'pundit-helm-find-backlinks
+    "onb" 'rpundit-find-backlinks
     "one" '(:which-key "Export notes")
-    "onf" 'pundit-helm-find-or-create-note
+    "onf" 'rpundit-find
     "oni" 'pundit-helm-insert-link-to-note
     "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf
@@ -198,6 +198,7 @@
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "en" 'next-error
     "ep" 'previous-error
+    "x" 'lsp-execute-code-action
     "h" 'hs-hide-all
     "s" 'hs-show-all
     "d" 'rust-dbg-wrap-or-unwrap
@@ -223,8 +224,21 @@
 
 
 ; Org-mode hotkeys
-(define-key org-mode-map "gl" 'org-open-at-point)
-(define-key org-agenda-mode-map "j" 'evil-next-line)
-(define-key org-agenda-mode-map "k" 'evil-previous-line)
-(define-key org-agenda-mode-map (kbd "SPC") 'org-agenda-show-and-scroll-up)
-(define-key org-agenda-mode-map (kbd "RET") 'org-agenda-switch-to)
+(defun add-org-mode-motion-keys ()
+    (define-key evil-normal-state-map "gl" 'org-open-at-point)
+    (define-key org-agenda-mode-map "j" 'evil-next-line)
+    (define-key org-agenda-mode-map "k" 'evil-previous-line)
+    (define-key org-agenda-mode-map (kbd "SPC") 'org-agenda-show-and-scroll-up)
+    (define-key org-agenda-mode-map (kbd "RET") 'org-agenda-switch-to))
+
+(add-hook 'org-mode-hook 'add-org-mode-motion-keys)
+
+(defun add-term-mode-motion-keys ()
+    ;; (evil-local-set-key 'normal (kbd "<escape>") 'term-kill-subjob)
+    (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob)
+    (define-key term-mode-map (kbd "C-k") 'term-send-raw)
+    (define-key term-mode-map (kbd "C-p") 'term-send-raw)
+    (define-key evil-insert-state-map (kbd "C-k") 'term-send-raw)
+    (define-key evil-insert-state-map (kbd "C-j") 'term-send-raw))
+
+(add-hook 'term-mode-hook 'add-term-mode-motion-keys)
