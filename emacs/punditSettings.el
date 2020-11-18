@@ -21,3 +21,5 @@
 
 (setq rpundit/directory "~/notes")
 (setq rpundit/executable "~/.cargo-target/release/pundit")
+
+(setq rpundit/window-height 30)

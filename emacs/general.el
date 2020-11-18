@@ -239,6 +239,7 @@
     (define-key term-mode-map (kbd "C-k") 'term-send-raw)
     (define-key term-mode-map (kbd "C-p") 'term-send-raw)
     (define-key evil-insert-state-map (kbd "C-k") 'term-send-raw)
+    (define-key evil-insert-state-map (kbd "C-w") 'term-send-raw)
     (define-key evil-insert-state-map (kbd "C-j") 'term-send-raw))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)

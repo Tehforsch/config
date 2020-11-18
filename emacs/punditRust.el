@@ -47,7 +47,7 @@
   (let* ((buf (get-buffer-create "*rpundit*"))
          (min-height (min rpundit/window-height (/ (window-height) 2)))
          (window-height (if rpundit/position-bottom (- min-height) min-height))
-         (window-system-args (when window-system " --margin=1,0"))
+         (window-system-args (when window-system " --margin=0,0"))
          (rpundit-command (s-concat rpundit/executable " " rpundit/directory " " command)))
     (with-current-buffer buf
       (setq default-directory directory))
