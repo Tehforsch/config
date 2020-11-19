@@ -338,5 +338,8 @@ exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
+exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
-exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; workspace 25:6; mode "default"
+exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; i3-msg workspace 25:g; i3-msg mode "default"
+exec_always cp --backup=numbered /home/toni/.local/share/Anki2/realUser/collection.anki2 /home/toni/.playground/ankiBU/
+exec /home/toni/.cargo-target/release/pundit /home/toni/notes anki /home/toni/.local/share/Anki2/realUser/collection.anki2
