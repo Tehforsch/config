@@ -2,6 +2,8 @@
 args="$@"
 if [ "$1" = "build" ]; then
     command="clear; cargo rustc -- -Awarnings && cargo clippy"
+elif [ "$1" = "test" ]; then
+    command="clear; cargo rustc -- -Awarnings && cargo clippy && cargo test -- --nocapture"
 else
     command="clear; cargo rustc -- -Awarnings && cargo clippy && cargo run -- $args"
 fi
