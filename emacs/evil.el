@@ -116,3 +116,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (defun enter-evil-insert-mode ()
   (evil-insert nil nil nil))
 (add-hook 'term-mode-hook 'enter-evil-insert-mode)
+
+(use-package undo-tree)
+(evil-set-undo-system 'undo-tree)
+(add-hook 'after-init-hook 'global-undo-tree-mode)
