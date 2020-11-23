@@ -6,3 +6,13 @@
 (setq auto-mode-alist (rassq-delete-all 'image-mode auto-mode-alist))
 (setq auto-mode-alist (rassq-delete-all 'm2-mode auto-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rustic-mode))
+(setq rustic-lsp-server 'rust-analyzer)
+
+(use-package company)
+(add-hook 'rustic-mode-hook #'company-mode)
+;; (add-hook 'rustic-mode-hook #'racer-mode)
+;; (add-hook 'racer-mode-hook #'eldoc-mode)
+
+;; (require 'rust-mode)
+;; (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+;; (setq company-tooltip-align-annotations t)

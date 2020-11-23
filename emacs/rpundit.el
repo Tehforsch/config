@@ -1,7 +1,6 @@
 (require 'subr-x)
-
 ; Most of this code is just a translation of fzf.el to pundit.el. Credit goes to
-; https://github.com/bling/fzf.el
+; https://github.com/blint/fzf.el
 
 (defgroup rpundit nil
   "Configuration options for rpundit.el"
@@ -27,23 +26,51 @@
   :type 'bool
   :group 'rpundit)
 
-(defun rpundit/after-term-handle-exit (process-name msg)
+(defun rpundit/default-after-term-cleanup ()
+  (let ((text (buffer-substring-no-properties (point-min) (point-max))))
+    (kill-buffer "*rpundit*")
+    (when (cl-find "Error" text)
+        (message text))
+    (jump-to-register :rpundit-windows)))
+  
+(defun rpundit/after-term-handle-exit-open-file (process-name msg)
   (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
          (lines (split-string text "\n" t "\s*>\s+"))
          (line (car (last (butlast lines 1))))
          (filename (string-trim (substring line (cl-search "/" line))))); Certainly not proud of it but I can't seem to get the typed query to show up in front of the filename in pundit. This WONT work if the query contains a slash.
-    (kill-buffer "*rpundit*")
-    (when (cl-find "Error" text)
-        (message text))
-    (jump-to-register :rpundit-windows)
+    (rpundit/default-after-term-cleanup)
+    (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-open-file)
     (when (file-exists-p filename)
-      (find-file filename)))
-  (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit))
+      (find-file filename))))
 
-(defun rpundit/start (directory command)
+(defun rpundit/get-link-from-output ()
+  (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
+         (lines (split-string text "\n" t "\s*>\s+"))
+         (line (car (last (butlast lines 1))))
+         (index (cl-search "[[" line)))
+    (when index (s-trim (string-trim (substring line index))))))
+
+(defun rpundit/cleanup-and-insert-link-text (insert-func)
+  (let* ((link-text (rpundit/get-link-from-output)))
+    (rpundit/default-after-term-cleanup)
+    (when link-text
+        (funcall insert-func link-text))))
+      
+(defun rpundit/append-text (text)
+  (progn (evil-append nil nil nil) (insert text)))
+
+(defun rpundit/after-term-handle-exit-show-link-append (process-name msg)
+  (rpundit/cleanup-and-insert-link-text 'rpundit/append-text)
+  (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-show-link-append))
+
+(defun rpundit/after-term-handle-exit-show-link-insert (process-name msg)
+  (rpundit/cleanup-and-insert-link-text 'insert)
+  (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-show-link-insert))
+
+(defun rpundit/start (directory command custom-after-term-handle)
   (require 'term)
   (window-configuration-to-register :rpundit-windows)
-  (advice-add 'term-handle-exit :after #'rpundit/after-term-handle-exit)
+  (advice-add 'term-handle-exit :after custom-after-term-handle)
   (let* ((buf (get-buffer-create "*rpundit*"))
          (min-height (min rpundit/window-height (/ (window-height) 2)))
          (window-height (if rpundit/position-bottom (- min-height) min-height))
@@ -53,7 +80,6 @@
       (setq default-directory directory))
     (split-window-vertically window-height)
     (when rpundit/position-bottom (other-window 1))
-    (message rpundit-command)
     (make-term "rpundit" "sh" nil "-c" rpundit-command)
     (switch-to-buffer buf)
     (linum-mode 0)
@@ -73,10 +99,22 @@
 (defun rpundit-find ()
   "Starts a rpundit session."
   (interactive)
-  (rpundit/start rpundit/directory "find"))
+  (rpundit/start rpundit/directory "find" 'rpundit/after-term-handle-exit-open-file))
+
+;;;###autoload
+(defun rpundit-insert-link ()
+  "Get a rpundit link."
+  (interactive)
+  (rpundit/start rpundit/directory "link" 'rpundit/after-term-handle-exit-show-link-insert))
+
+;;;###autoload
+(defun rpundit-append-link ()
+  "Get a rpundit link."
+  (interactive)
+  (rpundit/start rpundit/directory "link" 'rpundit/after-term-handle-exit-show-link-append))
 
 ;;;###autoload
 (defun rpundit-find-backlinks ()
   "Starts a rpundit session showing the backlinks for the current file."
   (interactive)
-  (rpundit/start rpundit/directory (s-concat "backlinks " (buffer-file-name))))
+  (rpundit/start rpundit/directory (s-concat "backlinks " (buffer-file-name)) 'rpundit/after-term-handle-exit-open-file) )

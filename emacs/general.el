@@ -57,12 +57,12 @@
     "ojp" '((lambda () (interactive) (if (pundit-find-or-create-note-day-before) (hydra-journal-switch-day/body))) :which-key "Previous day (transient).")
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
-    "ona" 'pundit-helm-append-link-to-note
+    "ona" 'rpundit-append-link
     "onA" 'pundit-helm-append-link-to-note-with-custom-title
     "onb" 'rpundit-find-backlinks
     "one" '(:which-key "Export notes")
     "onf" 'rpundit-find
-    "oni" 'pundit-helm-insert-link-to-note
+    "oni" 'rpundit-insert-link
     "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
@@ -217,7 +217,7 @@
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)
-(define-key evil-normal-state-map "gh" 'lsp-describe-thing-at-point)
+(define-key evil-normal-state-map "gh" 'lsp-ui-doc-show)
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 (define-key evil-normal-state-map "go" 'end-of-symbol)
@@ -238,8 +238,8 @@
     (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob)
     (define-key term-mode-map (kbd "C-k") 'term-send-raw)
     (define-key term-mode-map (kbd "C-p") 'term-send-raw)
-    (define-key evil-insert-state-map (kbd "C-k") 'term-send-raw)
-    (define-key evil-insert-state-map (kbd "C-w") 'term-send-raw)
-    (define-key evil-insert-state-map (kbd "C-j") 'term-send-raw))
+    (define-key term-mode-map (kbd "C-k") 'term-send-raw)
+    (define-key term-mode-map (kbd "C-w") 'term-send-raw)
+    (define-key term-mode-map (kbd "C-j") 'term-send-raw))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)

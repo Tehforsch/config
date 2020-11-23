@@ -37,7 +37,7 @@
 (load "~/projects/config/emacs/bookmarks.el")
 (load "~/projects/config/emacs/modeLine.el")
 
-(load "~/projects/config/emacs/punditRust.el")
+(load "~/projects/config/emacs/rpundit.el")
 
 (load "~/projects/config/emacs/pundit.el")
 (load "~/projects/config/emacs/punditPaper.el")
