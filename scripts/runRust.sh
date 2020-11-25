@@ -1,7 +1,9 @@
 #!/bin/bash
 args="$@"
 if [ "$1" = "build" ]; then
-    command="clear; cargo rustc -- -Awarnings && cargo clippy"
+    shift
+    args="$@"
+    command="clear; cargo rustc $args -- -Awarnings"
 elif [ "$1" = "test" ]; then
     command="clear; cargo rustc -- -Awarnings && cargo clippy && cargo test -- --nocapture"
 else
