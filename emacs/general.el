@@ -62,6 +62,7 @@
     "onb" 'rpundit-find-backlinks
     "one" '(:which-key "Export notes")
     "onf" 'rpundit-find
+    "ong" 'rpundit-graph-find
     "oni" 'rpundit-insert-link
     "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf

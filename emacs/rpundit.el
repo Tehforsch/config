@@ -102,6 +102,12 @@
   (rpundit/start rpundit/directory "find" 'rpundit/after-term-handle-exit-open-file))
 
 ;;;###autoload
+(defun rpundit-graph-find ()
+  "Starts a rpundit session."
+  (interactive)
+  (rpundit/start rpundit/directory (s-concat "graph " (buffer-file-name)) 'rpundit/after-term-handle-exit-open-file))
+
+;;;###autoload
 (defun rpundit-insert-link ()
   "Get a rpundit link."
   (interactive)
