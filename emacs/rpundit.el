@@ -50,11 +50,28 @@
          (index (cl-search "[[" line)))
     (when index (s-trim (string-trim (substring line index))))))
 
+(defun is-anki-line (line)
+  (cl-search rpundit/anki-note-identifier line))
+
+(defun rpundit/get-anki-note-from-output ()
+  (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
+         (lines (split-string text "\n" t "\s*>\s+"))
+         (relevant-lines (seq-filter 'is-anki-line lines)); I hate term-char-mode for how messed up the output of my program is :(
+         (combined-lines (s-join "\n" relevant-lines))
+         (index (cl-search "#" combined-lines)))
+    (when index (s-trim (string-trim (substring combined-lines index))))))
+
 (defun rpundit/cleanup-and-insert-link-text (insert-func)
   (let* ((link-text (rpundit/get-link-from-output)))
     (rpundit/default-after-term-cleanup)
     (when link-text
         (funcall insert-func link-text))))
+      
+(defun rpundit/cleanup-and-insert-anki-note-text ()
+  (let* ((anki-note-text (rpundit/get-anki-note-from-output)))
+    (rpundit/default-after-term-cleanup)
+    (when anki-note-text
+        (funcall 'insert anki-note-text))))
       
 (defun rpundit/append-text (text)
   (progn (evil-append nil nil nil) (insert text)))
@@ -65,6 +82,10 @@
 
 (defun rpundit/after-term-handle-exit-show-link-insert (process-name msg)
   (rpundit/cleanup-and-insert-link-text 'insert)
+  (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-show-link-insert))
+
+(defun rpundit/after-term-handle-exit-get-anki-note (process-name msg)
+  (rpundit/cleanup-and-insert-anki-note-text)
   (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-show-link-insert))
 
 (defun rpundit/start (directory command custom-after-term-handle)
@@ -124,3 +145,9 @@
   "Starts a rpundit session showing the backlinks for the current file."
   (interactive)
   (rpundit/start rpundit/directory (s-concat "backlinks " (buffer-file-name)) 'rpundit/after-term-handle-exit-open-file) )
+
+;;;###autoload
+(defun rpundit-get-new-anki-note ()
+  "Add a new anki note entry in the current note"
+  (interactive)
+  (rpundit/start rpundit/directory (s-concat "pankit-get-note " rpundit/anki-collection) 'rpundit/after-term-handle-exit-get-anki-note))
