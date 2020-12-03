@@ -67,7 +67,7 @@ mode "$i3" {
     # bindsym asciicircum exec i3-cycle right; mode "default"
     bindsym asciicircum focus right; move left; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
-    bindsym asciicircum workspace back_and_forth; mode "default"
+    bindsym space workspace back_and_forth; mode "default"
 
     bindsym a focus left
     bindsym d focus right
@@ -221,7 +221,7 @@ mode "$launch" {
     bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec firefox --new-window todoist.com; mode "default"
     bindsym s exec rofi -show run; mode "default"
-    bindsym t exec "sleep 3; telegram-desktop"; mode "default"
+    bindsym t exec "telegram-desktop"; mode "default"
     bindsym k exec kitty; mode "default"
     bindsym v exec /opt/cisco/anyconnect/bin/vpnui; mode "default"
     bindsym y mode "$media"
@@ -243,7 +243,7 @@ set $document Open: [p]dfs/epubs [i]mages
 mode "$document" {
     bindsym d exec $scripts/openLastTouchedFileInDir.sh ~/downloads; mode "default"
     bindsym i exec $scripts/rofiFile.sh gpicview png jpg jpeg gif; mode "default"
-    bindsym p exec $scripts/rofiFile.sh zathura pdf epub; mode "default"
+    bindsym p exec $scripts/rofiFile.sh zathura pdf epub djvu; mode "default"
     bindsym Escape mode "$launch"
     bindsym Return mode "default"
     bindsym Tab mode "default"
@@ -343,4 +343,4 @@ exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
 exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; i3-msg workspace 25:g; i3-msg mode "default"
 exec_always cp --backup=numbered /home/toni/.local/share/Anki2/realUser/collection.anki2 /home/toni/.playground/ankiBU/
-exec /home/toni/.cargo-target/release/pundit /home/toni/notes pankit /home/toni/.local/share/Anki2/realUser/collection.anki2
+exec $scripts/updatePankit.sh
