@@ -44,3 +44,4 @@ alias inkscapeexport="inkscape --export-area-drawing --export-type=png --export-
 alias canibuy="bash ~/resource/finances/showBudget"
 alias striputary="cd /home/toni/projects/striputary/output/; ./striputary"
 alias openanki="~/projects/pundit/scripts/openAnkiDatabase.sh"
+alias f="rga-fzf"
