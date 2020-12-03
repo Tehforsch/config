@@ -132,13 +132,13 @@
 (defun rpundit-insert-link ()
   "Get a rpundit link."
   (interactive)
-  (rpundit/start rpundit/directory "link" 'rpundit/after-term-handle-exit-show-link-insert))
+  (rpundit/start rpundit/directory (s-concat "link " (buffer-file-name)) 'rpundit/after-term-handle-exit-show-link-insert))
 
 ;;;###autoload
 (defun rpundit-append-link ()
   "Get a rpundit link."
   (interactive)
-  (rpundit/start rpundit/directory "link" 'rpundit/after-term-handle-exit-show-link-append))
+  (rpundit/start rpundit/directory (s-concat "link " (buffer-file-name)) 'rpundit/after-term-handle-exit-show-link-append))
 
 ;;;###autoload
 (defun rpundit-find-backlinks ()
