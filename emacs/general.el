@@ -33,6 +33,7 @@
     "g" '(:which-key "Magit")
     "gb" 'magit-blame
     "gs" 'magit-status
+    "h" 'helm-resume
     "j" '(:which-key "Jump/Bookmarks")
     "jf" 'helm-bookmarks
     "ja" 'bookmark-set-with-default-name
