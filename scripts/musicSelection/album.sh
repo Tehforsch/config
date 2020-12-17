@@ -40,7 +40,7 @@ fi
 echo $exitCode
 
 if [ "$exitCode" == "10" ]; then
-    mpc findadd album "$album" artist "$artist" # Queue album
+    mpc findadd album "$album" albumartist "$artist" # Queue album
 else
     path=$(dirname $(realpath $0))
     $path/songSelection.sh "$artist" "$album"

@@ -14,7 +14,7 @@ fi
 formatString="%title%"
 artist=$1
 album=$2
-titles=$(mpc -f "$formatString" find album "$album" artist "$artist")
+titles=$(mpc -f "$formatString" find album "$album" albumartist "$artist")
 title=$(echo "$titles" | rofi -i -dmenu -no-custom -p "Choose a song:" -selected-row $songIndex)
 if [[ $album == "" ]]; then # Aborted query
    exit 1

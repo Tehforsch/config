@@ -8,4 +8,5 @@ numInPlaylist=$(mpc playlist -f "%title%" | grep -n "^$title\$" | cut -d ":" -f 
 indexInPlaylist=$(( numInPlaylist - 1 ))
 echo $indexInPlaylist
 path=$(dirname $(realpath $0))
+echo "$artist" "$album"
 $path/songSelection.sh --preselect $indexInPlaylist "$artist" "$album"
