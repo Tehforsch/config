@@ -15,7 +15,7 @@ alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias gsu='git submodule update --recursive --remote'
 alias tim="kitty +kitten icat"
-alias im="feh --scale-down --auto-zoom -R 1"
+alias im="launch feh --scale-down --auto-zoom -R 1"
 alias ka="killall"
 alias l='ls -alFh --color=auto'
 alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
@@ -46,3 +46,4 @@ alias striputary="cd /home/toni/projects/striputary/output/; ./striputary"
 alias openanki="~/projects/pundit/scripts/openAnkiDatabase.sh"
 alias f="rga-fzf"
 alias pf="emacsclient -c -n \$(pundit ~/notes find)"
+alias cheat="~/projects/config/scripts/getCommandHelp.sh"

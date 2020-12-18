@@ -154,7 +154,7 @@ bindkey '^f' fzf-cd-home-widget
 bindkey '^v' fzf-cd-widget
 bindkey '^T' fzf-file-widget
 # Binding to close the terminal with a process running in it without killing the process
-bindkey -s '^u' 'bg && disown && exit\n'
+bindkey -s '^u' 'bg && disown && kitty @ close-window\n'
 # bind C-h to run de command && exit instead of command, detaching the process
 bindkey -s '^h' '^ade ^e\n'
 # bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
@@ -165,3 +165,6 @@ bindkey -s '^g' '^ade ^e&& exit\n'
 ulimit -c unlimited
 
 export ANDROID_SDK_ROOT=~/.android/Sdk
+function launch {
+    nohup $1 >/dev/null 2>/dev/null & disown
+}
