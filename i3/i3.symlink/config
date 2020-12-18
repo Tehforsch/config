@@ -265,8 +265,8 @@ mode "$gameLaunch" {
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
-    bindsym F11; exec $scripts/screenCapture.sh
-    bindsym Shift+F11; exec $scripts/screenCapture.sh 1
+    # bindsym F11; exec $scripts/screenCapture.sh
+    # bindsym Shift+F11; exec $scripts/screenCapture.sh 1
     bindsym F10; exec bash $scripts/timer/repeat.sh
     bindsym Shift+F10; exec bash $scripts/timer/killTimers.sh
 }
@@ -342,5 +342,4 @@ exec --no-startup-id xbacklight -set 100
 exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
 exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; i3-msg workspace 25:g; i3-msg mode "default"
-exec_always cp --backup=numbered /home/toni/.local/share/Anki2/realUser/collection.anki2 /home/toni/.playground/ankiBU/
-exec $scripts/updatePankit.sh
+# exec_always $scripts/updatePankit.sh
