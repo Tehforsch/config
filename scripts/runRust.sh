@@ -5,7 +5,7 @@ args="$@"
 if [ "$subcmd" = "build" ]; then
     command="clear; cargo rustc $args -- -Awarnings"
 elif [ "$subcmd" = "test" ]; then
-    command="clear; cargo test $args"
+    command="clear; cargo rustc $args -- -Awarnings && cargo test $args"
 elif [ "$subcmd" = "testVerbose" ]; then
     command="clear; cargo test -- --nocapture"
 else
