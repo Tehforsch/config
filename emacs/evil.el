@@ -119,4 +119,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (use-package undo-tree)
 (evil-set-undo-system 'undo-tree)
+(evil-declare-abort-repeat 'evil-undo) ; Make sure we cant repeat undo with .
+(evil-declare-abort-repeat 'evil-redo) ; Make sure we cant repeat repeat with .
 (add-hook 'after-init-hook 'global-undo-tree-mode)
