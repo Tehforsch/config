@@ -8,6 +8,7 @@ scrollback_lines 500000
 enable_audio_bell no
 
 update_check_interval 0
+allow_remote_control yes
 
 map ctrl+Return combine : new_window_with_cwd : detach_window
 map ctrl+shift+j combine : scroll_line_down : scroll_line_down : scroll_line_down
