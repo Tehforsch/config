@@ -96,8 +96,9 @@ mode "$i3" {
     bindsym o mode "$output"
     bindsym y mode "$media"
     bindsym w mode "$workspace"
+    bindsym 1 mode "default"; exec bash $scripts/runLastCommandInTerminalToTheRight.sh
     bindsym Shift+F12 move workspace "100:game"
-    bindsym p mode "$passthrough"
+    bindsym Shift+p mode "$passthrough"
 
 }
 

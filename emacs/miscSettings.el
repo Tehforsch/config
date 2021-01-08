@@ -23,3 +23,8 @@
 
 (use-package frames-only-mode)
 (frames-only-mode)
+
+(defun save-file-and-run-last-command-in-terminal-to-the-right ()
+  (interactive)
+  (save-buffer-always)
+  (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh"))

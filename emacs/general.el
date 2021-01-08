@@ -82,6 +82,7 @@
     "pS" 'projectile-save-project-buffers
     "pR" 'projectile-discover-projects-in-search-path
     "pf" 'helm-projectile-switch-project
+    "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" '((lambda () (interactive) (load-file "~/.emacs")) :which-key "Reload emacs config")
     "w" '(:which-key "Window")
     "wd" 'kill-buffer-and-window
@@ -205,6 +206,7 @@
     "h" 'hs-hide-all
     "s" 'hs-show-all
     "d" 'rust-dbg-wrap-or-unwrap
+    "r" 'lsp-rename
 )
 
 
