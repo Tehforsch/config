@@ -13,6 +13,8 @@ allow_remote_control yes
 map ctrl+Return combine : new_window_with_cwd : detach_window
 map ctrl+shift+j combine : scroll_line_down : scroll_line_down : scroll_line_down
 map ctrl+shift+k combine : scroll_line_up : scroll_line_up : scroll_line_up
+map ctrl+shift+l combine : scroll_page_down : scroll_line_down : scroll_line_down
+map ctrl+shift+h combine : scroll_page_up : scroll_line_up : scroll_line_up
 
 # Gruvbox theme
 foreground            #ebdbb2
