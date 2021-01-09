@@ -238,6 +238,15 @@ mode "$launch" {
     bindsym shift+R restart; mode "default"
     bindsym --release Shift+S exec flameshot gui; mode "default"
     bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
+    bindsym F11; mode "$screenRecord" 
+}
+
+set $screenRecord [r]ecord, [s]top
+mode "$screenRecord" {
+    bindsym Escape mode "$i3"
+    bindsym Tab mode "default"
+    bindsym r exec bash /home/toni/projects/config/scripts/screenCapture.sh
+    bindsym s exec bash $scripts/screenCapture.sh 1; mode "default"
 }
 
 set $document Open: [p]dfs/epubs [i]mages
@@ -266,8 +275,6 @@ mode "$gameLaunch" {
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
-    # bindsym F11; exec $scripts/screenCapture.sh
-    # bindsym Shift+F11; exec $scripts/screenCapture.sh 1
     bindsym F10; exec bash $scripts/timer/repeat.sh
     bindsym Shift+F10; exec bash $scripts/timer/killTimers.sh
 }
