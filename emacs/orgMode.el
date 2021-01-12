@@ -59,8 +59,8 @@
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
 (setq org-agenda-custom-commands
       '(("n" "Simple agenda view" ((tags-todo "toProcess")
-                                   (tags-todo "next")
-                                   (tags-todo "spree")
+                                   (tags-todo "+spree-toProcess")
+                                   (tags-todo "+next-spree-toProcess")
                                    (agenda "" ((org-agenda-span 7)))))))
 
 ; Make agenda view prettier

@@ -20,7 +20,7 @@
       (pundit-validate-all-notes)))
 
 (setq rpundit/directory "~/notes")
-(setq rpundit/anki-collection "~/.local/share/Anki2/realUser/collection.anki2")
+(setq rpundit/anki-collection "~/.local/share/Anki2/User\\ 1/collection.anki2")
 (setq rpundit/executable "~/.cargo-target/release/pundit")
 
 (setq rpundit/window-height 30)

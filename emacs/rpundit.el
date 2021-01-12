@@ -150,4 +150,5 @@
 (defun rpundit-get-new-anki-note ()
   "Add a new anki note entry in the current note"
   (interactive)
+  (message (s-concat "pankit-get-note " rpundit/anki-collection))
   (rpundit/start rpundit/directory (s-concat "pankit-get-note " rpundit/anki-collection) 'rpundit/after-term-handle-exit-get-anki-note))

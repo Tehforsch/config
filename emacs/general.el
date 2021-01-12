@@ -216,6 +216,7 @@
     "d" 'python-insert-debug-trace
     "h" 'hs-hide-all
     "s" 'hs-show-all
+    "r" 'lsp-rename
 )
 
 
