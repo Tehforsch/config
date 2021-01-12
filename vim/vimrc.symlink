@@ -15,7 +15,7 @@
     " Write file 
     nnoremap <Leader>w :w<Cr>
     " Close vim
-    nnoremap <Leader>q :q<Cr>
+    nnoremap <Leader>q :wq<Cr>
     " Switch to last buffer
     noremap <Leader>^ <C-^>
     nnoremap <Leader>h :bp<CR>
@@ -262,6 +262,7 @@
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     " LSP
+    Plug 'morhetz/gruvbox'
 
     call plug#end()
 
