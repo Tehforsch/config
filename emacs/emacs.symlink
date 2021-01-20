@@ -2,7 +2,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+
 (load "~/projects/config/emacs/packageSetup.el")
+(package-refresh-contents)
 (load "~/projects/config/emacs/evil.el")
 (load "~/projects/config/emacs/ivy.el")
 (load "~/projects/config/emacs/helm.el")
