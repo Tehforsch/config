@@ -173,3 +173,4 @@ export ANDROID_SDK_ROOT=~/.android/Sdk
 function launch {
     nohup $1 >/dev/null 2>/dev/null & disown
 }
+source ~/projects/config/scripts/copyAbsolutePath.sh
