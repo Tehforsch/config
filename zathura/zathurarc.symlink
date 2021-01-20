@@ -17,7 +17,9 @@ map k scroll half-up
 map J scroll full-down
 map K scroll full-up
 map <C-t> feedkeys ":set recolor<Return>"
+map <C-m> toggle_statusbar
 
+map j scroll half-down
 set statusbar-basename true
 set window-title-basename "true"
 set selection-clipboard "clipboard"
