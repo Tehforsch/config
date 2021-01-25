@@ -13,8 +13,8 @@
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "bf" 'helm-projectile-switch-to-buffer
-    "bF" 'helm-buffers-list
+    "bf" 'helm-buffers-list
+    "bF" 'helm-projectile-switch-to-buffer
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer (transient)")
     "bp" '((lambda () (interactive) (projectile-previous-project-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
