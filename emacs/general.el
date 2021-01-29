@@ -51,11 +51,11 @@
     "oll" 'org-toggle-latex-fragment
     "olL" '((lambda () (interactive) (org-latex-preview 16)) :which-key "Clear all latex fragments")
     "oj" '(:which-key "Journal")
-    "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
-    "ojt" 'pundit-find-or-create-note-today
-    "ojy" 'pundit-find-or-create-note-yesterday
-    "ojn" '((lambda () (interactive) (if (pundit-find-or-create-note-day-after) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
-    "ojp" '((lambda () (interactive) (if (pundit-find-or-create-note-day-before) (hydra-journal-switch-day/body))) :which-key "Previous day (transient).")
+    ;; "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    "ojt" '((lambda () (interactive) (rpundit-journal-today "journal")) :which-key "Today")
+    "ojy" '((lambda () (interactive) (rpundit-journal-yesterday "journal")) :which-key "Yesterday")
+    ;; "ojn" '((lambda () (interactive) (if (pundit-find-or-create-note-day-after) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
+    ;; "ojp" '((lambda () (interactive) (if (pundit-find-or-create-note-day-before) (hydra-journal-switch-day/body))) :which-key "Previous day (transient).")
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
     "ona" 'rpundit-append-link
@@ -189,22 +189,11 @@
     "s8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "+8d")
     "s9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "+9d"))
 
-(mode-leader-def '(normal visual) 'pundit-mode-map
-    "a" 'pundit-helm-append-link-to-note
-    "b" 'pundit-helm-find-backlinks
-    "f" 'pundit-helm-find-or-create-note
-    "i" 'pundit-helm-insert-link-to-note
-    "e" '(:which-key "Export notes")
-    "ep" 'org-latex-export-to-pdf
-    "p" '(:which-key "Papers")
-    "pf" 'pundit-helm-find-or-create-note-for-paper)
-
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "en" 'next-error
     "ep" 'previous-error
-    "x" 'lsp-execute-code-action
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
+    "x" 'helm-lsp-code-actions
+    "s" 'helm-lsp-workspace-symbol
     "d" 'rust-dbg-wrap-or-unwrap
     "r" 'lsp-rename
 )
@@ -221,6 +210,7 @@
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
+(define-key evil-normal-state-map "gt" 'lsp-goto-type-definition)
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)
 (define-key evil-normal-state-map "gh" 'lsp-ui-doc-show)

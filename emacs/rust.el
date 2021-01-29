@@ -16,3 +16,5 @@
 ;; (setq company-tooltip-align-annotations t)
 
 (add-hook 'conf-space-mode-hook 'backtrace)
+
+(use-package helm-lsp)
