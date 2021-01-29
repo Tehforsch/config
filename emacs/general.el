@@ -193,7 +193,7 @@
     "en" 'next-error
     "ep" 'previous-error
     "x" 'helm-lsp-code-actions
-    "s" 'helm-lsp-workspace-symbol
+    "s" 'helm-lsp-workspace-all-symbols
     "d" 'rust-dbg-wrap-or-unwrap
     "r" 'lsp-rename
 )

@@ -17,4 +17,17 @@
 
 (add-hook 'conf-space-mode-hook 'backtrace)
 
+(setq lsp-auto-execute-action nil)
+
 (use-package helm-lsp)
+
+;; Like helm-lsp-workspace-symbol but with a prefixed # for the search so that it matches all symbols,
+;; not just types
+
+(defun helm-lsp-workspace-all-symbols () 
+  (interactive)
+  (helm-lsp--workspace-symbol (or (lsp-workspaces)
+                                  (gethash (lsp-workspace-root default-directory)
+                                           (lsp-session-folder->servers (lsp-session))))
+                              "Workspace symbol"
+                              "#"))
