@@ -147,6 +147,20 @@
   (rpundit/start rpundit/directory (s-concat "backlinks " (buffer-file-name)) 'rpundit/after-term-handle-exit-open-file) )
 
 ;;;###autoload
+(defun rpundit-journal-yesterday (journal-name)
+  "Open a journal for yesterday"
+  (rpundit/journal-command "yesterday" journal-name))
+
+;;;###autoload
+(defun rpundit-journal-today (journal-name)
+  "Open a journal for today"
+  (rpundit/journal-command "today" journal-name))
+
+;;;###autoload
+(defun rpundit/journal-command (command-name journal-name)
+  (rpundit/start rpundit/directory (s-concat "journal " journal-name " " command-name) 'rpundit/after-term-handle-exit-open-file))
+
+;;;###autoload
 (defun rpundit-get-new-anki-note ()
   "Add a new anki note entry in the current note"
   (interactive)
