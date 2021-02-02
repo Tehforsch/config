@@ -65,9 +65,9 @@ mode "$i3" {
     bindsym Return mode "default"
     bindsym Tab mode "default"
     # bindsym asciicircum exec i3-cycle right; mode "default"
-    bindsym asciicircum focus right; move left; mode "default"
+    bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
-    bindsym space workspace back_and_forth; mode "default"
+    bindsym space focus right; move left; mode "default"
 
     bindsym a focus left
     bindsym d focus right
@@ -127,6 +127,8 @@ mode "$workspace" {
     # Have Output changing commands here too
     bindsym h move workspace to output left
     bindsym l move workspace to output right
+    bindsym H move workspace to output left
+    bindsym L move workspace to output right
     bindsym q kill
     bindsym c workspace "1:chat"
     bindsym v workspace "2:music"
@@ -349,5 +351,5 @@ exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 # exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
-exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; emacsclient -c -n -e '(pundit-find-or-create-note-yesterday)'; i3-msg workspace 25:g; i3-msg mode "default"
+exec sleep 5; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; emacsclient -c -n -e '(rpundit-journal-yesterday "journal")'; i3-msg workspace 25:g; i3-msg mode "default"
 # exec_always $scripts/updatePankit.sh
