@@ -6,9 +6,37 @@
     ("d" kill-this-buffer)
 )
 
-(defhydra hydra-journal-switch-day ()
-    "Switch days in journal"
-    ("n" pundit-find-or-create-note-day-after)
-    ("p" pundit-find-or-create-note-day-before)
-    ("r" pundit-find-or-create-note-random-day)
+(defhydra hydra-journal ()
+    "Switch days in journal via pundit"
+    ("t" journal-today)
+    ("y" journal-yesterday)
+    ("a" journal-after)
+    ("b" journal-day-before)
+    ("n" journal-next)
+    ("p" journal-previous)
 )
+
+; Just try to avoid using anonymous functions here for simplicity even though this means duplication
+(defun journal-today ()
+  (interactive)
+  (rpundit-journal-today "journal"))
+
+(defun journal-yesterday ()
+  (interactive)
+  (rpundit-journal-yesterday "journal"))
+
+(defun journal-day-before ()
+  (interactive)
+  (rpundit-journal-day-before "journal"))
+
+(defun journal-day-after ()
+  (interactive)
+  (rpundit-journal-day-after "journal"))
+
+(defun journal-next ()
+  (interactive)
+  (rpundit-journal-next "journal"))
+
+(defun journal-previous ()
+  (interactive)
+  (rpundit-journal-previous "journal"))

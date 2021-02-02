@@ -32,7 +32,7 @@
     (when (cl-find "Error" text)
         (message text))
     (jump-to-register :rpundit-windows)))
-  
+
 (defun rpundit/after-term-handle-exit-open-file (process-name msg)
   (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
          (lines (split-string text "\n" t "\s*>\s+"))
@@ -166,3 +166,24 @@
   (interactive)
   (message (s-concat "pankit-get-note " rpundit/anki-collection))
   (rpundit/start rpundit/directory (s-concat "pankit-get-note " rpundit/anki-collection) 'rpundit/after-term-handle-exit-get-anki-note))
+
+
+;;;###autoload
+(defun rpundit-journal-previous (journal-name)
+  "Open the journal entry before the current one"
+  (rpundit/journal-command (s-concat "previous " (buffer-file-name)) journal-name))
+
+;;;###autoload
+(defun rpundit-journal-next (journal-name)
+  "Open the journal entry after the current one"
+  (rpundit/journal-command (s-concat "next " (buffer-file-name)) journal-name))
+
+;;;###autoload
+(defun rpundit-journal-day-before (journal-name)
+  "Open the journal for the day before the current one"
+  (rpundit/journal-command (s-concat "day-before " (buffer-file-name)) journal-name))
+
+;;;###autoload
+(defun rpundit-journal-day-after (journal-name)
+  "Open the journal for the day after the current one"
+  (rpundit/journal-command (s-concat "day-after " (buffer-file-name)) journal-name))
