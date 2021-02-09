@@ -50,14 +50,9 @@
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
     "olL" '((lambda () (interactive) (org-latex-preview 16)) :which-key "Clear all latex fragments")
-    "oj" '(hydra-journal/body :which-key "Journal")
-    ;; "ojr" '((lambda () (interactive) (if (pundit-find-or-create-note-random-day) (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
-    ;; "oja" '((lambda () (interactive) (progn (rpundit-journal-day-after "journal") (hydra-journal-switch-day/body))) :which-key "Next day (transient).")
-    ;; "ojb" '((lambda () (interactive) (progn (rpundit-journal-day-before "journal") (hydra-journal-switch-day/body))) :which-key "Previous day (transient).")
-    ;; "ojn" '((lambda () (interactive) (progn (rpundit-journal-next "journal") (hydra-journal-switch-day/body))) :which-key "Next entry (transient).")
-    ;; "ojp" '((lambda () (interactive) (progn (rpundit-journal-previous "journal") (hydra-journal-switch-day/body))) :which-key "Previous entry (transient).")
-    ;; "ojt" '((lambda () (interactive) (rpundit-journal-today "journal")) :which-key "Today")
-    ;; "ojy" '((lambda () (interactive) (rpundit-journal-yesterday "journal")) :which-key "Yesterday")
+    "oj" '(:which-key "Journal")
+    "ojp" '(hydra-journal-personal/body :which-key "Personal")
+    "ojw" '(hydra-journal-work/body :which-key "Work")
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
     "ona" 'rpundit-append-link

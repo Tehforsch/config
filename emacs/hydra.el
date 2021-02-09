@@ -6,37 +6,70 @@
     ("d" kill-this-buffer)
 )
 
-(defhydra hydra-journal ()
+(defhydra hydra-journal-personal ()
     "Switch days in journal via pundit"
-    ("t" journal-today)
-    ("y" journal-yesterday)
-    ("a" journal-after)
-    ("b" journal-day-before)
-    ("n" journal-next)
-    ("p" journal-previous)
+    ("t" journal-personal-today)
+    ("y" journal-personal-yesterday)
+    ("a" journal-personal-after)
+    ("b" journal-personal-day-before)
+    ("n" journal-personal-next)
+    ("p" journal-personal-previous)
 )
 
+(defhydra hydra-journal-work ()
+    "Switch days in journal via pundit"
+    ("t" journal-work-today)
+    ("y" journal-work-yesterday)
+    ("a" journal-work-after)
+    ("b" journal-work-day-before)
+    ("n" journal-work-next)
+    ("p" journal-work-previous)
+)
 ; Just try to avoid using anonymous functions here for simplicity even though this means duplication
-(defun journal-today ()
+(defun journal-personal-today ()
   (interactive)
   (rpundit-journal-today "journal"))
 
-(defun journal-yesterday ()
+(defun journal-personal-yesterday ()
   (interactive)
   (rpundit-journal-yesterday "journal"))
 
-(defun journal-day-before ()
+(defun journal-personal-day-before ()
   (interactive)
   (rpundit-journal-day-before "journal"))
 
-(defun journal-day-after ()
+(defun journal-personal-day-after ()
   (interactive)
   (rpundit-journal-day-after "journal"))
 
-(defun journal-next ()
+(defun journal-personal-next ()
   (interactive)
   (rpundit-journal-next "journal"))
 
-(defun journal-previous ()
+(defun journal-personal-previous ()
   (interactive)
   (rpundit-journal-previous "journal"))
+
+(defun journal-work-today ()
+  (interactive)
+  (rpundit-journal-today "work"))
+
+(defun journal-work-yesterday ()
+  (interactive)
+  (rpundit-journal-yesterday "work"))
+
+(defun journal-work-day-before ()
+  (interactive)
+  (rpundit-journal-day-before "work"))
+
+(defun journal-work-day-after ()
+  (interactive)
+  (rpundit-journal-day-after "work"))
+
+(defun journal-work-next ()
+  (interactive)
+  (rpundit-journal-next "work"))
+
+(defun journal-work-previous ()
+  (interactive)
+  (rpundit-journal-previous "work"))
