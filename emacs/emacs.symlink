@@ -26,6 +26,7 @@
 
 (load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/orgMode.el")
+(load "~/projects/config/emacs/orgAgenda.el")
 (load "~/projects/config/emacs/saveBufferAlways.el")
 (load "~/projects/config/emacs/autosaveAndLock.el")
 (load "~/projects/config/emacs/ansiterm.el")
