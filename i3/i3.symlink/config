@@ -46,6 +46,7 @@ for_window [class="^.*"] border pixel 1
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
 for_window [class=gpicviewPavucontrol] floating enable
+for_window [class=python3.9] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -345,7 +346,7 @@ exec_always --no-startup-id sleep 3 && $scripts/startup.sh
 exec_always --no-startup-id sleep 3 && $scripts/disableAcceleration.sh
 exec --no-startup-id /usr/bin/nm-applet # network applet
 exec --no-startup-id seafile-applet
-exec --no-startup-id sleep 3 && redshift-gtk
+exec --no-startup-id sleep 3 && redshift -l 49.40768:8.69079
 exec --no-startup-id sleep 5 && mpd && mpc repeat
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
