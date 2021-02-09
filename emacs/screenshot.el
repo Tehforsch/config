@@ -1,4 +1,4 @@
-(setq pic-folder (f-join pundit-directory "pics/"))
+(setq pic-folder (f-join rpundit/directory "pics/"))
 
 (defvar insert-screenshot/redisplay-images t
   "Redisplay images after inserting a screenshot with
