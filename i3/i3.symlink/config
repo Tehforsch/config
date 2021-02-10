@@ -300,6 +300,7 @@ mode "$media" {
     bindsym m mode "$findMusic"
     bindsym j exec mpc seek +10
     bindsym k exec mpc seek -10
+    bindsym Shift+ssharp exec $scripts/musicSelection/showNotification.sh
     bindsym Shift+F exec --no-startup-id mpc volume -5
     bindsym Shift+R exec --no-startup-id mpc volume +5
 }
