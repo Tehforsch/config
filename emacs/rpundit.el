@@ -11,12 +11,12 @@
   :type 'integer
   :group 'rpundit)
 
-(defcustom rpundit/executable "rpundit"
+(defcustom rpundit/executable "pundit"
   "The path to the rpundit executable."
   :type 'string
   :group 'rpundit)
 
-(defcustom rpundit/directory "rpundit"
+(defcustom rpundit/directory "~/notes"
   "The path to the rpundit folder."
   :type 'string
   :group 'rpundit)
