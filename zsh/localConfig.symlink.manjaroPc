@@ -1,3 +1,4 @@
-export PATH=$PATH:~/.cargo-target/release
+export PATH=$PATH:~/.cargo/bin
 source /usr/share/nvm/init-nvm.sh
 export PATH=$PATH:/home/toni/.nvm/versions/node/v15.6.0/bin
+export PATH=$PATH:/opt/texlive/2021/bin/x86_64-linux/
