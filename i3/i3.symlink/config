@@ -99,13 +99,13 @@ mode "$i3" {
     bindsym w mode "$workspace"
     bindsym 1 mode "default"; exec bash $scripts/runLastCommandInTerminalToTheRight.sh
     bindsym Shift+F12 move workspace "100:game"
-    bindsym Shift+p mode "$passthrough"
+    bindsym Shift+p exec setxkbmap de nodeadkeys; mode "$passthrough"
 
 }
 
 set $passthrough passthrough mode exit with Shift+F12
 mode "$passthrough" {
-    bindsym Shift+F12 mode "default"
+    bindsym Shift+F12 exec bash $scripts/keyboardConfiguration.sh; mode "default"
 }
 
 set $output output mode
