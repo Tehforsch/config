@@ -28,3 +28,6 @@
   (interactive)
   (save-buffer-always)
   (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh"))
+
+; Make sure that things copied from the system clipboard arent lost when we kill something in emacs. This has made my life so much better.
+(set save-interprogram-paste-before-kill t)
