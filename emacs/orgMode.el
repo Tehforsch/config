@@ -53,7 +53,7 @@
 (setq org-startup-truncated nil)
 
 ; Location of todolist/agenda
-(setq org-agenda-files '("~/notes/todo/"))
+(setq org-agenda-files '("~/notes/todo/" "~/projects/tearexCorpTodo/"))
 (setq org-default-notes-file "~/notes/todo/main.org")
 
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
