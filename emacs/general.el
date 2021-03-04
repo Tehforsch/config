@@ -187,13 +187,16 @@
     "s9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "+9d"))
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
+    "d" 'rust-dbg-wrap-or-unwrap
+    "es" 'helm-flycheck
     "en" 'next-error
     "ep" 'previous-error
-    "x" 'helm-lsp-code-actions
-    "s" 'helm-lsp-workspace-all-symbols
-    "d" 'rust-dbg-wrap-or-unwrap
+    "f" 'toggle-format-on-save
+    "h" 'toggle-lsp-ui-sideline-show-hover
     "g" 'surround-symbol-with-generic-type
     "r" 'lsp-rename
+    "s" 'helm-lsp-workspace-all-symbols
+    "x" 'helm-lsp-code-actions
 )
 
 

@@ -18,7 +18,25 @@
 (use-package lsp-ui)
 
 (setq lsp-ui-doc-enable nil
-      lsp-ui-peek-enable nil
-      lsp-ui-sideline-enable nil
-      lsp-ui-imenu-enable nil
+      lsp-ui-peek-enable t
+      lsp-ui-sideline-enable t
+      lsp-ui-imenu-enable t
       lsp-ui-flycheck-enable t)
+
+
+
+(setq lsp-ui-sideline-show-diagnostics t) ; dont show diagnostics messages in sideline
+(setq lsp-ui-sideline-show-hover nil) ; show hover messages in sideline
+(setq lsp-ui-sideline-show-code-actions nil); show code actions in sideline
+(setq lsp-ui-sideline-delay 0)
+
+
+(defun toggle-lsp-ui-sideline-show-hover ()
+  (interactive)
+  (if lsp-ui-sideline-show-hover
+      (progn
+        (setq lsp-ui-sideline-show-hover nil)
+        (message "Show hover OFF"))
+      (progn
+        (setq lsp-ui-sideline-show-hover t)
+        (message "Show hover ON"))))

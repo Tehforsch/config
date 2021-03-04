@@ -1,5 +1,6 @@
 (use-package rustic)
-(setq rustic-format-on-save t)
+;; (setq rustic-format-on-save t)
+(setq rustic-format-on-save nil)
 (setq rustic-format-display-method 'ignore); Don't show rustfmt buffer
 
 (push 'rustic-clippy flycheck-checkers)
@@ -40,3 +41,13 @@
          (start (car text-object))
          (end (car (cdr text-object))))
     (evil-surround-region start end nil ?>)))
+
+(defun toggle-format-on-save ()
+  (interactive)
+  (if rustic-format-on-save
+      (progn
+        (setq rustic-format-on-save nil)
+        (message "Rustic format on save OFF"))
+      (progn
+        (setq rustic-format-on-save t)
+        (message "Rustic format on save ON"))))
