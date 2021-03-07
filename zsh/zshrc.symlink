@@ -148,8 +148,10 @@ bindkey '^w' backward-kill-word
 # Push current command to stack and pop it after another command has been entered
 bindkey '^q' push-line
 
-# ctrl-r starts searching history backward
-bindkey '^r' fzf-history-widget
+source "$CONFIG/dirAwareHistory/history.zsh"
+source "$CONFIG/dirAwareHistory/widget.zsh"
+bindkey '^r' fzf-dir-aware-history-widget
+# bindkey '^r' fzf-history-widget
 bindkey '^f' fzf-cd-home-widget
 bindkey '^v' fzf-cd-widget
 bindkey '^T' fzf-file-widget
@@ -167,8 +169,6 @@ bindkey '^o' super-dir-widget
 
 export EDITOR="vim"
 bindkey '^e' edit-command-line
-
-
 
 ulimit -c unlimited
 
