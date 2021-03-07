@@ -162,6 +162,9 @@ bindkey -s '^g' '^ade ^e&& exit\n'
 
 bindkey '^l' insert-last-word
 
+source "$CONFIG/zsh/zshCdWidget.zsh"
+bindkey '^o' super-dir-widget
+
 export EDITOR="vim"
 bindkey '^e' edit-command-line
 
