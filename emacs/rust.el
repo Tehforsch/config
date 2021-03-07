@@ -1,6 +1,6 @@
 (use-package rustic)
 ;; (setq rustic-format-on-save t)
-(setq rustic-format-on-save nil)
+(setq rustic-format-on-save t)
 (setq rustic-format-display-method 'ignore); Don't show rustfmt buffer
 
 (push 'rustic-clippy flycheck-checkers)
