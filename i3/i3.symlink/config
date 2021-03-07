@@ -238,15 +238,12 @@ mode "$launch" {
     bindsym shift+R restart; mode "default"
     bindsym --release Shift+S exec flameshot gui; mode "default"
     bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
-    bindsym F11; mode "$screenRecord" 
+    bindsym F11; exec bash /home/toni/projects/config/scripts/screenCapture.sh; mode "$screenRecord" 
 }
 
-set $screenRecord [r]ecord, [s]top
+set $screenRecord RECORDING
 mode "$screenRecord" {
-    bindsym Escape mode "$i3"
-    bindsym Tab mode "default"
-    bindsym r exec bash /home/toni/projects/config/scripts/screenCapture.sh
-    bindsym s exec bash $scripts/screenCapture.sh 1; mode "default"
+    bindsym F11 exec bash $scripts/screenCapture.sh 1; mode "default"
 }
 
 set $document Open: [p]dfs/epubs [i]mages
