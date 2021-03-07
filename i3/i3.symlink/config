@@ -65,10 +65,8 @@ mode "$i3" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
     bindsym Tab mode "default"
-    # bindsym asciicircum exec i3-cycle right; mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
-    bindsym space focus right; move left; mode "default"
 
     bindsym a focus left
     bindsym d focus right
@@ -209,7 +207,7 @@ mode "$resize" {
     bindsym Shift+L resize shrink   right 10 px or 10 ppt
 }
 
-set $launch Launch: mount cluster [I], run startup [C]onfig [Q]uit i3 [A]nki [S]creenshot
+set $launch Launch: [Q]uit i3, droid[K]am
 mode "$launch" {
     bindsym Escape mode "$i3"
     bindsym Tab mode "default"
@@ -229,6 +227,7 @@ mode "$launch" {
     bindsym k exec kitty; mode "default"
     bindsym v exec /opt/cisco/anyconnect/bin/vpnui; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
+    bindsym Shift+K exec $scripts/startOrKillDroidcam.sh
     bindsym Shift+A exec anki; mode "default"
     bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
     bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
@@ -351,5 +350,4 @@ exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 # exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
-exec sleep 10; i3-msg workspace 3:todo; emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; emacsclient -c -n -e '(rpundit-journal-yesterday "journal")'; i3-msg workspace 25:g; i3-msg mode "default"
 # exec_always $scripts/updatePankit.sh
