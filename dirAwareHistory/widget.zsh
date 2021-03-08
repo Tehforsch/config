@@ -7,18 +7,16 @@ fzf-dir-aware-history-widget() {
     dir=${${(z)dirAndCommand}[1]} # First word
     command=${${(z)dirAndCommand}[2,-1]} # Rest
 
+    zle kill-whole-line
     if [[ "$key" == "ctrl-t" ]]; then 
         pwdBefore=$(pwd)
-        cd "$dir"
-        eval ${command}
-        cd "$pwdBefore"
+        # cd "$dir"
+        # eval ${command}
+        # cd "$pwdBefore"
+        BUFFER=" cd $dir && $command; cd $pwdBefore"
     else 
-        eval ${command}
+        # eval ${command}
+        BUFFER="$command"
     fi
-
-    zle kill-whole-line
-    BUFFER="$command"
-
-    zle send-break
 }
 zle -N fzf-dir-aware-history-widget
