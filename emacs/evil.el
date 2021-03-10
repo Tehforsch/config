@@ -16,7 +16,7 @@
 
 (use-package evil-surround
     :config
-    ; Remap S to surround instead of ys, S is usually replace entire line which i never use (theres cc for that)
+; Remap S to surround instead of ys, S is usually replace entire line which i never use (theres cc for that)
     (evil-define-key 'normal evil-surround-mode-map "S" 'evil-surround-region)
 )
 (global-evil-surround-mode 1)
@@ -82,8 +82,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key [escape] 'evil-exit-emacs-state)
 
 ; C-c + and C-c - to indent / decrease numbers as in vim but with different key bindings
-(global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
-(global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+; Since C-x is kinda special we apparently need to remap it to sth else first? Not sure why but some emacs related stuff
+(keyboard-translate ?\C-x ?\C-u)
+(keyboard-translate ?\C-u ?\C-x)
+(global-set-key (kbd "C-a") 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-u") 'evil-numbers/dec-at-pt)
 
 ; Make substitution global by default (reverse meaning of appending g at end of substitution)
 (setq evil-ex-substitute-global t)
@@ -119,6 +122,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (use-package undo-tree)
 (evil-set-undo-system 'undo-tree)
-(evil-declare-abort-repeat 'evil-undo) ; Make sure we cant repeat undo with .
-(evil-declare-abort-repeat 'evil-redo) ; Make sure we cant repeat repeat with .
+; Make sure we cant repeat undo with .
+(evil-declare-abort-repeat 'evil-undo)
+; Make sure we cant repeat repeat with .
+(evil-declare-abort-repeat 'evil-redo)
 (add-hook 'after-init-hook 'global-undo-tree-mode)
+
+; Don't add paragraph motions to jump list because I use them to move around casually
+(evil-remove-command-properties #'evil-forward-paragraph :jump)
+(evil-remove-command-properties #'evil-backward-paragraph :jump)
