@@ -65,6 +65,7 @@ mode "$i3" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
     bindsym Shift+Tab exec rofi -show window; mode "default"
 
@@ -110,6 +111,7 @@ mode "$output" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym a move workspace to output left
     bindsym d move workspace to output right
     bindsym h move workspace to output left
@@ -121,6 +123,7 @@ mode "$workspace" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym asciicircum workspace back_and_forth; mode "default"
     # Have Output changing commands here too
     bindsym h move workspace to output left
@@ -177,6 +180,7 @@ mode "$rename" {
     bindsym Escape mode "$workspace"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym c focus parent; move container to workspace "1:chat"; workspace "1:chat"
     bindsym v focus parent; move container to workspace "2:music"; workspace "2:music"
     bindsym b focus parent; move container to workspace "3:todo"; workspace "3:todo"
@@ -197,6 +201,7 @@ mode "$resize" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
     bindsym j resize grow down 10 px or 10 ppt
@@ -211,6 +216,7 @@ set $launch Launch: [Q]uit i3, droid[K]am
 mode "$launch" {
     bindsym Escape mode "$i3"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
     bindsym c exec firefox; mode "default"
     bindsym d mode "$document"
@@ -254,6 +260,7 @@ mode "$document" {
     bindsym Escape mode "$launch"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
 }
 
 # Game settings
@@ -267,6 +274,7 @@ mode "$gameLaunch" {
     bindsym Escape mode "$launch"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
 }
 
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
@@ -281,6 +289,7 @@ mode "$media" {
     bindsym Escape mode "$i3"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
     bindsym a exec "mpc prev"
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
@@ -311,6 +320,7 @@ mode "$findMusic" {
     bindsym Escape mode "$media"
     bindsym Return mode "default"
     bindsym Tab mode "default"
+    bindsym F9 mode "default"
 }
 
 # Assign workspaces to outputs
@@ -347,4 +357,4 @@ exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 # exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
-# exec_always $scripts/updatePankit.sh
+exec_always $scripts/updatePankit.sh
