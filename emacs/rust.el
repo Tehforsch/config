@@ -1,5 +1,7 @@
 (use-package rustic)
 ;; (setq rustic-format-on-save t)
+(setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
+(setq exec-path (append exec-path '("~/.cargo/bin")))
 (setq rustic-format-on-save t)
 (setq rustic-format-display-method 'ignore); Don't show rustfmt buffer
 
