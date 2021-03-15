@@ -57,16 +57,17 @@ focus_wrapping no
 mouse_warping none
 
 set $i3 i3 mode
-bindsym F9 mode "$i3"
+bindsym F9 mode "$i3"; border pixel 10
 
 bindsym F12 workspace "100:game"; mode "$game"; exec $scripts/preGameHook.sh
 
 mode "$i3" {
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
-    bindsym asciicircum workspace back_and_forth; mode "default"
-    bindsym Shift+Tab exec rofi -show window; mode "default"
+    bindsym Escape mode "default"; border pixel 1
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
+    bindsym asciicircum workspace back_and_forth; mode "default"; border pixel 1
+    bindsym Shift+Tab exec rofi -show window; mode "default"; border pixel 1
 
     bindsym a focus left
     bindsym d focus right
@@ -95,21 +96,22 @@ mode "$i3" {
     bindsym o mode "$output"
     bindsym y mode "$media"
     bindsym w mode "$workspace"
-    bindsym 1 mode "default"; exec bash $scripts/runLastCommandInTerminalToTheRight.sh
+    bindsym 1 mode "default"; border pixel 1; exec bash $scripts/runLastCommandInTerminalToTheRight.sh
     bindsym Shift+F12 move workspace "100:game"
     bindsym Shift+p exec setxkbmap de nodeadkeys; mode "$passthrough"
 }
 
 set $passthrough passthrough mode exit with Shift+F12
 mode "$passthrough" {
-    bindsym Shift+F12 exec bash $scripts/keyboardConfiguration.sh; mode "default"
+    bindsym Shift+F12 exec bash $scripts/keyboardConfiguration.sh; mode "default"; border pixel 1
 }
 
 set $output output mode
 mode "$output" {
     bindsym Escape mode "$i3"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
     bindsym a move workspace to output left
     bindsym d move workspace to output right
     bindsym h move workspace to output left
@@ -119,9 +121,10 @@ mode "$output" {
 set $workspace workspace mode
 mode "$workspace" {
     bindsym Escape mode "$i3"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
-    bindsym asciicircum workspace back_and_forth; mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
+    bindsym asciicircum workspace back_and_forth; mode "default"; border pixel 1
     # Have Output changing commands here too
     bindsym h move workspace to output left
     bindsym l move workspace to output right
@@ -175,8 +178,9 @@ mode "$workspace" {
 set $rename rename mode
 mode "$rename" {
     bindsym Escape mode "$workspace"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
     bindsym c focus parent; move container to workspace "1:chat"; workspace "1:chat"
     bindsym v focus parent; move container to workspace "2:music"; workspace "2:music"
     bindsym b focus parent; move container to workspace "3:todo"; workspace "3:todo"
@@ -195,8 +199,9 @@ mode "$rename" {
 set $resize resize mode
 mode "$resize" {
     bindsym Escape mode "$i3"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
     bindsym h resize grow left 10 px or 10 ppt
     bindsym Shift+H resize shrink   left 10 px or 10 ppt
     bindsym j resize grow down 10 px or 10 ppt
@@ -210,68 +215,71 @@ mode "$resize" {
 set $launch Launch: [Q]uit i3, droid[K]am
 mode "$launch" {
     bindsym Escape mode "$i3"
-    bindsym Tab mode "default"
-    bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"
-    bindsym c exec firefox; mode "default"
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
+    bindsym a exec emacsclient -c -n -e '(progn (setq org-agenda-window-setup (quote current-window)) (my-daily-agenda))'; mode "default"; border pixel 1
+    bindsym c exec firefox; mode "default"; border pixel 1
     bindsym d mode "$document"
-    bindsym e exec emacsclient -c -n; mode "default"
-    bindsym f exec emacsclient -c -n -e '(rpundit-find)'; mode "default"
+    bindsym e exec emacsclient -c -n; mode "default"; border pixel 1
+    bindsym f exec emacsclient -c -n -e '(rpundit-find)'; mode "default"; border pixel 1
     bindsym g mode "$gameLaunch"
-    bindsym i exec emacsclient -c -n -e '(capture-inbox-task)'; mode "default"
-    bindsym l exec i3lock -c 000000; mode "default"
-    bindsym m exec thunderbird; mode "default"
-    bindsym n exec pcmanfm --no-desktop; mode "default"
-    bindsym o exec firefox --new-window todoist.com; mode "default"
-    bindsym s exec rofi -show run; mode "default"
-    bindsym t exec "telegram-desktop"; mode "default"
-    bindsym k exec kitty; mode "default"
-    bindsym v exec /opt/cisco/anyconnect/bin/vpnui; mode "default"
-    bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
+    bindsym i exec emacsclient -c -n -e '(capture-inbox-task)'; mode "default"; border pixel 1
+    bindsym l exec i3lock -c 000000; mode "default"; border pixel 1
+    bindsym m exec thunderbird; mode "default"; border pixel 1
+    bindsym n exec pcmanfm --no-desktop; mode "default"; border pixel 1
+    bindsym o exec firefox --new-window todoist.com; mode "default"; border pixel 1
+    bindsym s exec rofi -show run; mode "default"; border pixel 1
+    bindsym t exec "telegram-desktop"; mode "default"; border pixel 1
+    bindsym k exec kitty; mode "default"; border pixel 1
+    bindsym v exec /opt/cisco/anyconnect/bin/vpnui; mode "default"; border pixel 1
+    bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"; border pixel 1
     bindsym Shift+K exec $scripts/startOrKillDroidcam.sh
-    bindsym Shift+A exec anki; mode "default"
-    bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
-    bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
-    bindsym Shift+E exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
-    bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
-    bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
-    bindsym Shift+Q exit; mode "default"
-    bindsym shift+R restart; mode "default"
-    bindsym --release Shift+S exec flameshot gui; mode "default"
-    bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
+    bindsym Shift+A exec anki; mode "default"; border pixel 1
+    bindsym Shift+C exec bash $scripts/startup.sh; mode "default"; border pixel 1
+    bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"; border pixel 1
+    bindsym Shift+E exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"; border pixel 1
+    bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"; border pixel 1
+    bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"; border pixel 1
+    bindsym Shift+Q exit; mode "default"; border pixel 1
+    bindsym shift+R restart; mode "default"; border pixel 1
+    bindsym --release Shift+S exec flameshot gui; mode "default"; border pixel 1
+    bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"; border pixel 1
     bindsym F11; exec bash /home/toni/projects/config/scripts/screenCapture.sh; mode "$screenRecord" 
 }
 
 set $screenRecord RECORDING
 mode "$screenRecord" {
-    bindsym F11 exec bash $scripts/screenCapture.sh 1; mode "default"
+    bindsym F11 exec bash $scripts/screenCapture.sh 1; mode "default"; border pixel 1
 }
 
 set $document Open: [p]dfs/epubs [i]mages
 mode "$document" {
-    bindsym d exec $scripts/openLastTouchedFileInDir.sh ~/downloads; mode "default"
-    bindsym i exec $scripts/rofiFile.sh gpicview png jpg jpeg gif; mode "default"
-    bindsym p exec $scripts/rofiFile.sh zathura pdf epub djvu; mode "default"
+    bindsym d exec $scripts/openLastTouchedFileInDir.sh ~/downloads; mode "default"; border pixel 1
+    bindsym i exec $scripts/rofiFile.sh gpicview png jpg jpeg gif; mode "default"; border pixel 1
+    bindsym p exec $scripts/rofiFile.sh zathura pdf epub djvu; mode "default"; border pixel 1
     bindsym Escape mode "$launch"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
 }
 
 # Game settings
 set $gameLaunch [d]ota, [c]eleste [t]erraria [g]olfit [f]actorio
 mode "$gameLaunch" {
-    bindsym d exec steam steam://rungameid/570; mode "default"
-    bindsym c exec steam steam://rungameid/504230; mode "default"
-    bindsym t exec steam steam://rungameid/105600; mode "default"
-    bindsym g exec steam steam://rungameid/571740; mode "default"
-    bindsym f exec steam steam://rungameid/427520; mode "default"
+    bindsym d exec steam steam://rungameid/570; mode "default"; border pixel 1
+    bindsym c exec steam steam://rungameid/504230; mode "default"; border pixel 1
+    bindsym t exec steam steam://rungameid/105600; mode "default"; border pixel 1
+    bindsym g exec steam steam://rungameid/571740; mode "default"; border pixel 1
+    bindsym f exec steam steam://rungameid/427520; mode "default"; border pixel 1
     bindsym Escape mode "$launch"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
 }
 
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
-    bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
+    bindsym F12 workspace back_and_forth; mode "default"; border pixel 1; exec $scripts/postGameHook.sh
     bindsym F10; exec bash $scripts/timer/repeat.sh
     bindsym Shift+F10; exec bash $scripts/timer/killTimers.sh
 }
@@ -279,17 +287,18 @@ mode "$game" {
 set $media Media: [b]lack, [m]usic, [o]:streams
 mode "$media" {
     bindsym Escape mode "$i3"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
     bindsym a exec "mpc prev"
-    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
+    bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"; border pixel 1
     bindsym d exec "mpc next"
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
     bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
-    bindsym l exec bash $scripts/showLyrics.sh; mode "default"
-    bindsym o exec --no-startup-id $scripts/streamlink.sh; mode "default"
+    bindsym l exec bash $scripts/showLyrics.sh; mode "default"; border pixel 1
+    bindsym o exec --no-startup-id $scripts/streamlink.sh; mode "default"; border pixel 1
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
-    bindsym s exec "mpc toggle"; mode "default"
+    bindsym s exec "mpc toggle"; mode "default"; border pixel 1
     bindsym t exec --no-startup-id $scripts/changeBrightness.sh 1
     bindsym m mode "$findMusic"
     bindsym j exec mpc seek +10
@@ -301,16 +310,17 @@ mode "$media" {
 
 set $findMusic [k]: artist, [a]lbum, [s]ong, [r]andom album, 
 mode "$findMusic" {
-    bindsym k exec bash $scripts/musicSelection/artist.sh; mode "default"
-    bindsym a exec bash $scripts/musicSelection/album.sh; mode "default"
-    bindsym s exec bash $scripts/musicSelection/song.sh; mode "default"
+    bindsym k exec bash $scripts/musicSelection/artist.sh; mode "default"; border pixel 1
+    bindsym a exec bash $scripts/musicSelection/album.sh; mode "default"; border pixel 1
+    bindsym s exec bash $scripts/musicSelection/song.sh; mode "default"; border pixel 1
     bindsym r exec bash $scripts/musicSelection/randomAlbum.sh
-    bindsym Shift+A exec bash $scripts/musicSelection/quarantineAlbum.sh; mode "default"
+    bindsym Shift+A exec bash $scripts/musicSelection/quarantineAlbum.sh; mode "default"; border pixel 1
     bindsym Shift+R exec bash $scripts/musicSelection/quarantineAlbum.sh --random
-    bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
+    bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"; border pixel 1
     bindsym Escape mode "$media"
-    bindsym Return mode "default"
-    bindsym Tab mode "default"
+    bindsym Return mode "default"; border pixel 1
+    bindsym Tab mode "default"; border pixel 1
+    bindsym F9 mode "default"; border pixel 1
 }
 
 # Assign workspaces to outputs
@@ -347,4 +357,4 @@ exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
 # exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
-# exec_always $scripts/updatePankit.sh
+exec_always $scripts/updatePankit.sh
