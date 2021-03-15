@@ -121,12 +121,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-hook 'term-mode-hook 'enter-evil-insert-mode)
 
 (use-package undo-tree)
-(evil-set-undo-system 'undo-tree)
+;; (evil-set-undo-system 'undo-tree)
 ; Make sure we cant repeat undo with .
 (evil-declare-abort-repeat 'evil-undo)
 ; Make sure we cant repeat repeat with .
 (evil-declare-abort-repeat 'evil-redo)
-(add-hook 'after-init-hook 'global-undo-tree-mode)
+;; (add-hook 'after-init-hook 'global-undo-tree-mode)
 
 ; Don't add paragraph motions to jump list because I use them to move around casually
 (evil-remove-command-properties #'evil-forward-paragraph :jump)
