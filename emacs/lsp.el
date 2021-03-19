@@ -3,7 +3,10 @@
            (c-mode . lsp)
            (lsp-mode . lsp-enable-which-key-integration)))
 
+(setq lsp-lens-enable nil)
 (setq lsp-enable-symbol-highlighting nil)
+(setq lsp-enable-on-type-formatting nil)
+(setq lsp-modeline-code-actions-enable nil)
 
 ;; (setq lsp-auto-guess-root t) ; This disables the message when opening a new project but I'm not sure its trustworthy?
 
@@ -21,11 +24,12 @@
       lsp-ui-peek-enable t
       lsp-ui-sideline-enable t
       lsp-ui-imenu-enable t
-      lsp-ui-flycheck-enable t)
+      lsp-ui-flycheck-enable nil)
+(setq lsp-signature-auto-activate nil)
+(setq lsp-eldoc-enable-hover nil)
 
 
-
-(setq lsp-ui-sideline-show-diagnostics t) ; dont show diagnostics messages in sideline
+(setq lsp-ui-sideline-show-diagnostics nil) ; dont show diagnostics messages in sideline
 (setq lsp-ui-sideline-show-hover nil) ; show hover messages in sideline
 (setq lsp-ui-sideline-show-code-actions nil); show code actions in sideline
 (setq lsp-ui-sideline-delay 0)
