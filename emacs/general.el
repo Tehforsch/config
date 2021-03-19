@@ -20,11 +20,13 @@
     "bp" '((lambda () (interactive) (projectile-previous-project-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
     "bn" '((lambda () (interactive) (projectile-next-project-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
     "bs" 'evil-save-modified-and-close
+    "e" '(:which-key "Emacs")
+    "eR" '((lambda () (interactive) (load-file "~/.emacs")) :which-key "Reload emacs config")
     "f" '(:which-key "File")
     "fA" '(:which-key "Autosave")
     "fAd" 'ediff-current-file
     "fAr" 'recover-this-file
-    "fs" 'save-buffer-always
+    "fs" 'save-buffer
     "fo" 'projectile-find-other-file
     "fl" 'helm-locate
     "ff" 'smart-list-files
@@ -80,7 +82,7 @@
     "pR" 'projectile-discover-projects-in-search-path
     "pf" 'helm-projectile-switch-project
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
-    "R" '((lambda () (interactive) (load-file "~/.emacs")) :which-key "Reload emacs config")
+    "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
     "w" '(:which-key "Window")
     "wd" 'kill-buffer-and-window
     "wh" 'evil-window-left
@@ -191,12 +193,12 @@
     "es" 'helm-flycheck
     "en" 'next-error
     "ep" 'previous-error
-    "f" 'toggle-format-on-save
+    "f" 'rustic-format-buffer
     "h" 'toggle-lsp-ui-sideline-show-hover
     "g" 'surround-symbol-with-generic-type
     "r" 'lsp-rename
     "s" 'helm-lsp-workspace-all-symbols
-    "x" 'helm-lsp-code-actions
+    "x" 'lsp-execute-code-action
 )
 
 
