@@ -26,5 +26,10 @@
 
 (defun save-file-and-run-last-command-in-terminal-to-the-right ()
   (interactive)
-  (save-buffer-always)
+  (save-buffer)
   (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh"))
+
+(defun save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back ()
+  (interactive)
+  (save-buffer)
+  (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh 0"))
