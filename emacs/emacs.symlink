@@ -4,10 +4,12 @@
 
 
 (load "~/projects/config/emacs/packageSetup.el")
-(package-refresh-contents)
+; (package-refresh-contents)
 
 (load "~/projects/config/emacs/evil.el")
-(load "~/projects/config/emacs/ivy.el")
+(load "~/projects/config/emacs/evilCollection.el")
+(load "~/projects/config/emacs/evilNumbers.el")
+; (load "~/projects/config/emacs/ivy.el")
 (load "~/projects/config/emacs/helm.el")
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/magit.el")

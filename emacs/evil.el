@@ -1,18 +1,19 @@
-(setq evil-want-Y-yank-to-eol t)
+; Needed for evil collection?
+(setq evil-want-keybinding nil)
+(setq evil-want-integration nil)
+
 (use-package evil)
-(setq evil-want-C-i-jump nil)
 (evil-mode 1)
-; Always use evil
+(setq evil-want-Y-yank-to-eol t)
+(setq evil-want-C-i-jump nil)
 (setq evil-emacs-state-odes nil)
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
-; Make Y kill to EOL instead of an effective remap of yy; THIS ISNT WORKING RIGHT NOW
+; Make Y kill to EOL instead of an effective remap of yy
 ; Disable search from wrapping around the buffer (wrapscan=false)
 (setq evil-search-wrap nil)
 ; Make pasting in visual mode not replace the current killring
 (setq-default evil-kill-on-visual-paste nil)
-
-(use-package evil-numbers)
 
 (use-package evil-surround
     :config
@@ -81,13 +82,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 (global-set-key [escape] 'evil-exit-emacs-state)
 
-; C-c + and C-c - to indent / decrease numbers as in vim but with different key bindings
-; Since C-x is kinda special we apparently need to remap it to sth else first? Not sure why but some emacs related stuff
-(keyboard-translate ?\C-x ?\C-u)
-(keyboard-translate ?\C-u ?\C-x)
-(global-set-key (kbd "C-a") 'evil-numbers/inc-at-pt)
-(global-set-key (kbd "C-u") 'evil-numbers/dec-at-pt)
-
 ; Make substitution global by default (reverse meaning of appending g at end of substitution)
 (setq evil-ex-substitute-global t)
 
@@ -121,7 +115,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-hook 'term-mode-hook 'enter-evil-insert-mode)
 
 (use-package undo-tree)
-;; (evil-set-undo-system 'undo-tree)
+(global-undo-tree-mode)
+(evil-set-undo-system 'undo-tree)
 ; Make sure we cant repeat undo with .
 (evil-declare-abort-repeat 'evil-undo)
 ; Make sure we cant repeat repeat with .
