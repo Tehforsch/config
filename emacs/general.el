@@ -32,9 +32,11 @@
     "ff" 'smart-list-files
     "fF" 'helm-projectile-find-file-in-known-projects
     "fp" 'comment-out-line-and-copypaste-below
+    "fq" 'evil-save-modified-and-close
     "g" '(:which-key "Magit")
     "gb" 'magit-blame
     "gs" 'magit-status
+    "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
     "h" 'helm-resume
     "j" '(:which-key "Jump/Bookmarks")
     "jf" 'helm-bookmarks
@@ -83,6 +85,7 @@
     "pf" 'helm-projectile-switch-project
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
+    "t" 'treemacs
     "w" '(:which-key "Window")
     "wd" 'kill-buffer-and-window
     "wh" 'evil-window-left
@@ -197,6 +200,7 @@
     "h" 'toggle-lsp-ui-sideline-show-hover
     "g" 'surround-symbol-with-generic-type
     "r" 'lsp-rename
+    "p" 'lsp-rust-find-parent-module
     "s" 'helm-lsp-workspace-all-symbols
     "x" 'lsp-execute-code-action
 )
