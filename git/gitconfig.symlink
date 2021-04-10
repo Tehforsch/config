@@ -6,7 +6,6 @@
 [core]
     excludesfile = ~/.gitignoreGlobal
     editor = vim
-    hooksPath = .githooks/
 [color]
     branch = auto
     diff = auto
