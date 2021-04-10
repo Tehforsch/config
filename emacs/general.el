@@ -202,7 +202,7 @@
     "r" 'lsp-rename
     "p" 'lsp-rust-find-parent-module
     "s" 'helm-lsp-workspace-all-symbols
-    "x" 'lsp-execute-code-action
+    "x" 'helm-lsp-code-actions
 )
 
 
@@ -218,6 +218,7 @@
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (define-key evil-normal-state-map "gt" 'lsp-goto-type-definition)
+(define-key evil-normal-state-map "gi" 'lsp-goto-implementation)
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)
 (define-key evil-normal-state-map "gh" 'lsp-ui-doc-show)
