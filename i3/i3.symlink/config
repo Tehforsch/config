@@ -267,10 +267,11 @@ mode "$document" {
 }
 
 # Game settings
-set $gameLaunch [d]ota, [c]eleste [t]erraria [g]olfit [f]actorio
+set $gameLaunch [d]ota, [c]eleste [C]s-Go [t]erraria [g]olfit [f]actorio
 mode "$gameLaunch" {
     bindsym d exec steam steam://rungameid/570; mode "default"
     bindsym c exec steam steam://rungameid/504230; mode "default"
+    bindsym Shift+C exec steam steam://rungameid/730; mode "default"
     bindsym t exec steam steam://rungameid/105600; mode "default"
     bindsym g exec steam steam://rungameid/571740; mode "default"
     bindsym f exec steam steam://rungameid/427520; mode "default"
