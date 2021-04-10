@@ -10,7 +10,7 @@
     "Switch days in journal via pundit"
     ("t" journal-personal-today)
     ("y" journal-personal-yesterday)
-    ("a" journal-personal-after)
+    ("a" journal-personal-day-after)
     ("b" journal-personal-day-before)
     ("n" journal-personal-next)
     ("p" journal-personal-previous)
