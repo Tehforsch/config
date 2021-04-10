@@ -241,7 +241,6 @@ mode "$launch" {
     bindsym Shift+A exec anki; mode "default"
     bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
     bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
-    bindsym Shift+E exec emacsclient -c -n -e '(switch-to-buffer nil)'; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
