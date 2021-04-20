@@ -7,13 +7,15 @@ fi
 preexec () {
     # Only write to our own history file if the command does not start with a space (like HIST_IGNORE_SPACE). This is mostly so that the ugly commands created by history-aware reverse search can be hidden from history (otherwise we enter a cascade of MEGA-DIRECTORY-AWARE commands)
     command="$1"
-    initialLetter="$(echo $command | head -c 1)"
+    initialChar="$(echo $command | head -c 1)"
     lineToAdd="$(pwd) $command"
-    lineExists=$(cat "$HISTORY_FILE" | grep -l "^$lineToAdd$" | wc -l)
-    if [[ $lineExists == 0 ]]; then
-        if ! [[ "$initialLetter" == " " ]]; then
-            echo "$lineToAdd"  >> "$HISTORY_FILE" 
+    lineExists=$(grep "^$lineToAdd$" "$HISTORY_FILE" | wc -l)
+    if ! [[ "$initialChar" == " " ]]; then
+        if [[ $lineExists != 0 ]]; then
+            lineNumber=$(grep -n "^$lineToAdd$" "$HISTORY_FILE" | cut -d ":" -f 1 | head -n 1)
+            sed -i "${lineNumber}d" $HISTORY_FILE
         fi
+        echo "$lineToAdd"  >> "$HISTORY_FILE" 
     fi
 }
 
