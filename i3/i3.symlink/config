@@ -245,10 +245,16 @@ mode "$launch" {
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"
-    bindsym Shift+T; exec bash $scripts/timer/killTimers.sh; mode "default"
+    bindsym Shift+T; mode "$timer"
     bindsym --release Shift+S exec flameshot gui; mode "default"
     bindsym Shift+W exec firefox --new-window web.whatsapp.com; mode "default"
     bindsym F11; exec bash /home/toni/projects/config/scripts/screenCapture.sh; mode "$screenRecord" 
+}
+
+set $timer Timer [s]tart [k]ill
+mode "$timer" {
+    bindsym s; exec bash $scripts/timer/startTimer.sh; mode "default"
+    bindsym k; exec bash $scripts/timer/killTimers.sh; mode "default"
 }
 
 set $screenRecord RECORDING
