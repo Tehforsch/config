@@ -24,6 +24,7 @@
 (load "~/projects/config/emacs/c.el")
 (load "~/projects/config/emacs/python.el")
 (load "~/projects/config/emacs/latex.el")
+(load "~/projects/config/emacs/gnuplot.el")
 
 (load "~/projects/config/emacs/miscSettings.el") ; Needs to be before orgmode so we can set org-agenda-window-setup to normal
 

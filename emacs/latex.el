@@ -13,9 +13,11 @@
 
 (defun set-display-line-numbers ()
   (interactive)
-  (message "heyoo")
   (setq display-line-numbers t))
 
 (add-hook 'latex-mode-hook 'set-display-line-numbers)
 
+(setq latex-bin-folder "/opt/texlive/2021/bin/x86_64-linux/")
 
+(setenv "PATH" (concat (getenv "PATH") (s-concat ":" latex-bin-folder)))
+(add-to-list 'exec-path latex-bin-folder)
