@@ -7,7 +7,7 @@ keycode 27 = r R backslash backslash backslash backslash
 keycode 46 = l L percent percent percent percent
 keycode 52 = y Y braceleft braceleft braceleft braceleft
 keycode 53 = x X braceright braceright braceright braceright
-keycode 28 = t T dollar dollar dollar dollar
+keycode 28 = t T ampersand ampersand ampersand ampersand
 keycode 12 = 3 period period period period period 
 
 clear shift
