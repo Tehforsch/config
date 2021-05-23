@@ -238,11 +238,6 @@
 (add-hook 'org-mode-hook 'add-org-mode-motion-keys)
 
 (defun add-term-mode-motion-keys ()
-    (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob)
-    (evil-local-set-key 'insert (kbd "C-k") 'term-send-raw)
-    (evil-local-set-key 'insert (kbd "C-p") 'term-send-raw)
-    (evil-local-set-key 'insert (kbd "C-w") 'term-send-raw)
-    (evil-local-set-key 'insert (kbd "C-t") 'term-send-raw)
-    (evil-local-set-key 'insert (kbd "C-j") 'term-send-raw)) 
+    (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)

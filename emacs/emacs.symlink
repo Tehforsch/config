@@ -2,16 +2,17 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-
 (load "~/projects/config/emacs/packageSetup.el")
 (package-refresh-contents)
 
+(load "~/projects/config/emacs/helm.el")
+
 (load "~/projects/config/emacs/evil.el")
 (load "~/projects/config/emacs/evilCollection.el")
+; Currently commented out because potentially replaced by the settings in evil collection
+; (load "~/projects/config/emacs/minibuffer.el")
 (load "~/projects/config/emacs/evilNumbers.el")
 (load "~/projects/config/emacs/multiCursors.el")
-; (load "~/projects/config/emacs/ivy.el")
-(load "~/projects/config/emacs/helm.el")
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/magit.el")
 (load "~/projects/config/emacs/fileAssociations.el")
