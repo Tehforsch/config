@@ -76,7 +76,7 @@
     "oti" 'capture-inbox-task
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
     "p" '(:which-key "Project")
-    "p!" 'projectile-run-shell
+    "p!" 'start-terminal-in-projectile-folder
     "pa" 'helm-projectile-ag
     "pt" 'projectile-regenerate-tags
     "pr" 'projectile-replace
