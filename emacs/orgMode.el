@@ -53,14 +53,15 @@
 (setq org-startup-truncated nil)
 
 ; Location of todolist/agenda
-(setq org-agenda-files '("~/notes/todo/" "~/projects/tearexCorpTodo/"))
-(setq org-default-notes-file "~/notes/todo/main.org")
+(setq org-agenda-files '("~/notes/20210519153324-todo.org" "~/projects/tearexCorpTodo/" "~/notes/20210519152011-guitar_practice.org"))
+(setq org-default-notes-file "~/notes/20210519153324-todo.org")
 
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
 (setq org-agenda-custom-commands
       '(("n" "Simple agenda view" ((tags-todo "toProcess")
                                    (tags-todo "+spree-toProcess")
                                    (tags-todo "+next-spree-toProcess")
+                                   (tags-todo "+guitar")
                                    (agenda "" ((org-agenda-span 7)))))))
 
 ; Make agenda view prettier
