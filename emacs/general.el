@@ -8,7 +8,7 @@
   :prefix ",")
 
 (global-leader-def '(normal visual) 'global
-    "!" 'toggle-ansi-term
+    "!" 'start-terminal-in-pwd
     "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
     "x" 'helm-M-x
     "b" '(:which-key "Buffer")

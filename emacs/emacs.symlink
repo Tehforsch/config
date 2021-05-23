@@ -31,7 +31,7 @@
 (load "~/projects/config/emacs/orgMode.el")
 (load "~/projects/config/emacs/orgAgenda.el")
 (load "~/projects/config/emacs/autosaveAndLock.el")
-(load "~/projects/config/emacs/ansiterm.el")
+(load "~/projects/config/emacs/terminal.el")
 (load "~/projects/config/emacs/hydra.el")
 (load "~/projects/config/emacs/symlinks.el")
 (load "~/projects/config/emacs/whichFunc.el")
