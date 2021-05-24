@@ -5,10 +5,10 @@
 (load "~/projects/config/emacs/packageSetup.el")
 (package-refresh-contents)
 
-(load "~/projects/config/emacs/helm.el")
 
 (load "~/projects/config/emacs/evil.el")
 (load "~/projects/config/emacs/evilCollection.el")
+(load "~/projects/config/emacs/helm.el")
 ; Currently commented out because potentially replaced by the settings in evil collection
 ; (load "~/projects/config/emacs/minibuffer.el")
 (load "~/projects/config/emacs/evilNumbers.el")
