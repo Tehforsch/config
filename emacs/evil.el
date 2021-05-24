@@ -107,3 +107,11 @@
 ; Don't add paragraph motions to jump list because I use them to move around casually
 (evil-remove-command-properties #'evil-forward-paragraph :jump)
 (evil-remove-command-properties #'evil-backward-paragraph :jump)
+
+(define-key evil-normal-state-map [escape] 'keyboard-quit-when-not-recording-macro)
+(define-key evil-visual-state-map [escape] 'keyboard-quit-when-not-recording-macro)
+
+(defun keyboard-quit-when-not-recording-macro ()
+  (interactive)
+  (when (not defining-kbd-macro)
+      (keyboard-quit)))
