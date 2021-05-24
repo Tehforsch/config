@@ -34,6 +34,7 @@
     (jump-to-register :rpundit-windows)))
 
 (defun rpundit/after-term-handle-exit-open-file (process-name msg)
+  ;; (cl-assert (equal (buffer-file-name) "*rpundit*")) ; This is never true but somehow the below code still works most of the time?? wtf
   (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
          (lines (split-string text "\n" t "\s*>\s+"))
          (line (car (last (butlast lines 1))))
@@ -55,11 +56,14 @@
 
 (defun rpundit/get-anki-note-from-output ()
   (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
-         (lines (split-string text "\n" t "\s*>\s+"))
-         (relevant-lines (seq-filter 'is-anki-line lines)); I hate term-char-mode for how messed up the output of my program is :(
-         (combined-lines (s-join "\n" relevant-lines))
-         (index (cl-search "#" combined-lines)))
-    (when index (s-trim (string-trim (substring combined-lines index))))))
+         (start (cl-search "#+begin_src yaml" text))
+         (begin-end (cl-search "#+end_src" text))
+         (end (+ begin-end 9))
+         (relevant-part (substring text start end))
+         (lines (split-string relevant-part "\n" t)))
+    (progn
+      (setf (nth 0 lines) (s-trim (nth 0 lines)))
+      (s-join "\n" lines))))
 
 (defun rpundit/cleanup-and-insert-link-text (insert-func)
   (let* ((link-text (rpundit/get-link-from-output)))
@@ -114,7 +118,7 @@
     (face-remap-add-relative 'mode-line '(:box nil))
 
     (term-char-mode)
-    (setq mode-line-format (format "   RPUNDIT  %s" directory))))
+    (setq mode-line-format (format "   pundit %s %s" command directory))))
 
 ;;;###autoload
 (defun rpundit-find ()
@@ -164,7 +168,6 @@
 (defun rpundit-get-new-anki-note ()
   "Add a new anki note entry in the current note"
   (interactive)
-  (message (s-concat "pankit-get-note " rpundit/anki-collection))
   (rpundit/start rpundit/directory (s-concat "pankit-get-note " rpundit/anki-collection) 'rpundit/after-term-handle-exit-get-anki-note))
 
 
