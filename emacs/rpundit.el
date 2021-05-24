@@ -33,46 +33,35 @@
         (message text))
     (jump-to-register :rpundit-windows)))
 
-(defun rpundit/after-term-handle-exit-open-file (process-name msg)
-  ;; (cl-assert (equal (buffer-file-name) "*rpundit*")) ; This is never true but somehow the below code still works most of the time?? wtf
+(defun rpundit/is-output-line (line)
+  (s-starts-with-p "OUTPUT" line))
+
+(defun rpundit/get-pundit-output-from-lines (lines)
+  (let ((filtered-lines (cl-remove-if-not #'rpundit/is-output-line lines)))
+    (mapcar #'(lambda (line) (string-trim line "OUTPUT")) filtered-lines)))
+
+(defun rpundit/get-pundit-output ()
   (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
-         (lines (split-string text "\n" t "\s*>\s+"))
-         (line (car (last (butlast lines 1))))
-         (filename (string-trim (substring line (cl-search "/" line))))); Certainly not proud of it but I can't seem to get the typed query to show up in front of the filename in pundit. This WONT work if the query contains a slash.
+         (lines (split-string text "\n" t))
+         (relevant-lines (rpundit/get-pundit-output-from-lines lines)))
+    (s-join "\n" relevant-lines)))
+
+(defun rpundit/after-term-handle-exit-open-file (process-name msg)
+  (let* ((filename (rpundit/get-pundit-output)))
     (rpundit/default-after-term-cleanup)
     (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-open-file)
     (when (file-exists-p filename)
       (find-file filename))))
 
-(defun rpundit/get-link-from-output ()
-  (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
-         (lines (split-string text "\n" t "\s*>\s+"))
-         (line (car (last (butlast lines 1))))
-         (index (cl-search "[[" line)))
-    (when index (s-trim (string-trim (substring line index))))))
-
-(defun is-anki-line (line)
-  (cl-search rpundit/anki-note-identifier line))
-
-(defun rpundit/get-anki-note-from-output ()
-  (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
-         (start (cl-search "#+begin_src yaml" text))
-         (begin-end (cl-search "#+end_src" text))
-         (end (+ begin-end 9))
-         (relevant-part (substring text start end))
-         (lines (split-string relevant-part "\n" t)))
-    (progn
-      (setf (nth 0 lines) (s-trim (nth 0 lines)))
-      (s-join "\n" lines))))
-
 (defun rpundit/cleanup-and-insert-link-text (insert-func)
-  (let* ((link-text (rpundit/get-link-from-output)))
+  (let* ((link-text (rpundit/get-pundit-output)))
     (rpundit/default-after-term-cleanup)
     (when link-text
         (funcall insert-func link-text))))
       
 (defun rpundit/cleanup-and-insert-anki-note-text ()
-  (let* ((anki-note-text (rpundit/get-anki-note-from-output)))
+  (let* ((anki-note-text (rpundit/get-pundit-output)))
+    (message anki-note-text)
     (rpundit/default-after-term-cleanup)
     (when anki-note-text
         (funcall 'insert anki-note-text))))
@@ -90,7 +79,7 @@
 
 (defun rpundit/after-term-handle-exit-get-anki-note (process-name msg)
   (rpundit/cleanup-and-insert-anki-note-text)
-  (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-show-link-insert))
+  (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-get-anki-note))
 
 (defun rpundit/start (directory command custom-after-term-handle)
   (require 'term)
@@ -100,7 +89,7 @@
          (min-height (min rpundit/window-height (/ (window-height) 2)))
          (window-height (if rpundit/position-bottom (- min-height) min-height))
          (window-system-args (when window-system " --margin=0,0"))
-         (rpundit-command (s-concat rpundit/executable " " rpundit/directory " " command)))
+         (rpundit-command (s-concat rpundit/executable " --add-identifier " rpundit/directory " " command)))
     (with-current-buffer buf
       (setq default-directory directory))
     (split-window-vertically window-height)
@@ -170,6 +159,11 @@
   (interactive)
   (rpundit/start rpundit/directory (s-concat "pankit-get-note " rpundit/anki-collection) 'rpundit/after-term-handle-exit-get-anki-note))
 
+;;;###autoload
+(defun rpundit-get-new-anki-note-check-file-for-model-and-deck ()
+  "Add a new anki note entry in the current note. Let pundit figure out the model and deck if there are any already used in the current file."
+  (interactive)
+  (rpundit/start rpundit/directory (s-concat "pankit-get-note " rpundit/anki-collection " " (buffer-file-name)) 'rpundit/after-term-handle-exit-get-anki-note))
 
 ;;;###autoload
 (defun rpundit-journal-previous (journal-name)
