@@ -16,6 +16,8 @@ export scripts=$CONFIG/scripts
 export GPG_TTY=$(tty)
 export BROWSER=/usr/bin/firefox
 
+DISABLE_AUTO_UPDATE=true
+
 # load zgen
 source "$CONFIG/zgen/zgen.zsh"
 # if the init scipt doesn't exist
@@ -33,8 +35,6 @@ if ! zgen saved; then
 fi
 
 plugins=()
-# Disable zgen autoupdate
-DISABLE_AUTO_UPDATE=true
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
