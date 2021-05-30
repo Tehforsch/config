@@ -64,7 +64,7 @@
     "onb" 'rpundit-find-backlinks
     "one" '(:which-key "Export notes")
     "onf" 'rpundit-find
-    "onk" 'rpundit-get-new-anki-note
+    "onk" 'rpundit-get-new-anki-note-check-file-for-model-and-deck
     "ong" 'rpundit-graph-find
     "oni" 'rpundit-insert-link
     "onI" 'pundit-helm-insert-link-to-note-with-custom-title
