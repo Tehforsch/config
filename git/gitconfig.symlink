@@ -1,11 +1,12 @@
 [user]
     name = tehforsch
-    email = Tonipeter92@googlemail.com
+    email = mail@tonipeter.de
 [credential]
     helper = cache
 [core]
     excludesfile = ~/.gitignoreGlobal
     editor = vim
+    autocrlf = input
 [color]
     branch = auto
     diff = auto
