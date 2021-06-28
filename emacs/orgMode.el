@@ -155,7 +155,7 @@
 
 ; Change behavior of org goto / refile to show all subheadings
 (setq org-outline-path-complete-in-steps nil)
-(setq org-refile-targets '((("~/notes/20210519153324-todo.org" "~/notes/20210628213812-work_todo.org" "~/notes/20210519152011-guitar_practice.org") :maxlevel . 2)))
+(setq org-refile-targets '((("~/notes/20210519153324-todo.org" "~/notes/20210628213812-work_todo.org" "~/notes/20210519152011-guitar_practice.org" "~/projects/tearexCorpTodo/main.org") :maxlevel . 2)))
 
 ; Stolen from https://github.com/edwtjo/evil-org-mode/issues/33
 (defun smart-org-insert ()
