@@ -75,6 +75,7 @@
     "ota" 'my-daily-agenda
     "oti" 'capture-inbox-task
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
+    "otw" '((lambda () (interactive) (find-file "~/notes/20210628213812-work_todo.org")) :which-key "Open work todo file.")
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'helm-projectile-ag
