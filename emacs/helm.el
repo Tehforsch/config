@@ -17,3 +17,5 @@
 (use-package helm-xref)
 
 (setq find-directory-functions 'helm-find-files-1)
+
+(helm-mode 1)

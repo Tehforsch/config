@@ -53,7 +53,7 @@
 (setq org-startup-truncated nil)
 
 ; Location of todolist/agenda
-(setq org-agenda-files '("~/notes/20210519153324-todo.org" "~/projects/tearexCorpTodo/" "~/notes/20210519152011-guitar_practice.org"))
+(setq org-agenda-files '("~/notes/20210519153324-todo.org" "~/notes/20210519152011-guitar_practice.org" "~/notes/20210628213812-work_todo.org" "~/projects/tearexCorpTodo/" ))
 (setq org-default-notes-file "~/notes/20210519153324-todo.org")
 
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
@@ -78,7 +78,6 @@
 ; Start agenda today, not on monday
 (setq org-agenda-start-on-weekday nil)
 
-(setq org-log-into-drawer "logbook")
 ;Enter insert mode immediately when capturing with evil turned on
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
@@ -156,7 +155,7 @@
 
 ; Change behavior of org goto / refile to show all subheadings
 (setq org-outline-path-complete-in-steps nil)
-(setq org-refile-targets '((("~/notes/todo/main.org") :maxlevel . 3)))
+(setq org-refile-targets '((("~/notes/20210519153324-todo.org" "~/notes/20210628213812-work_todo.org" "~/notes/20210519152011-guitar_practice.org") :maxlevel . 2)))
 
 ; Stolen from https://github.com/edwtjo/evil-org-mode/issues/33
 (defun smart-org-insert ()
@@ -169,11 +168,8 @@
 
 (evil-define-key '(normal insert) org-mode-map (kbd "<S-return>") 'org-insert-heading)
 
-;; (use-package org-habit)
-
 ; Make org-open-at-point open the link in the same window
 (setq org-link-frame-setup (cons (cons 'file 'find-file) org-link-frame-setup))
-
 
 ; Set day start at 5 AM
 (setq org-extend-today-until 5)
