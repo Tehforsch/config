@@ -110,8 +110,8 @@
 (mode-leader-def '(normal visual) 'c-mode-map
     "en" 'next-error
     "ep" 'previous-error
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
+    "s" 'helm-lsp-workspace-all-symbols
+    "x" 'helm-lsp-code-actions
 )
 
 (mode-leader-def '(normal visual) 'fortran-mode-map
