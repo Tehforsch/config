@@ -57,14 +57,22 @@
 (setq org-default-notes-file "~/notes/20210519153324-todo.org")
 
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
+
 (setq org-agenda-custom-commands
-      '(("n" "Simple agenda view" ((tags-todo "toProcess")
-                                   (tags-todo "+spree-toProcess")
-                                   (tags-todo "+next-spree-toProcess")
-                                   (tags-todo "+guitar")
-                                   (agenda "" ((org-agenda-span 7)))
-                                   (tags-todo "-waiting")
-                                   ))))
+      '(("p" "Personal agenda" ((tags-todo "+toProcess")
+                            (tags-todo "+spree-toProcess")
+                            (tags-todo "+next-spree-toProcess")
+                            (agenda "" ((org-agenda-span 14)
+                                        (org-deadline-warning-days 30)))
+                            (tags-todo "-waiting" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
+         ((org-agenda-tag-filter-preset '("+personal"))))
+        ("w" "Work agenda" ((tags-todo "+toProcess")
+                            (tags-todo "+spree-toProcess")
+                            (tags-todo "+next-spree-toProcess")
+                            (agenda "" ((org-agenda-span 14)
+                                        (org-deadline-warning-days 30)))
+                            (tags-todo "-waiting" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
+         ((org-agenda-tag-filter-preset '("+work"))))))
 
 ; Make agenda view prettier
 (setq org-agenda-prefix-format '(
@@ -103,19 +111,6 @@
   (interactive)
   (org-capture nil "i"))
 
-(defun get-agenda-tasks (show-all) ; For todobot
-    (setq org-agenda-window-setup 'create-frame)
-    (if show-all 
-      (my-daily-agenda)
-      '(org-agenda-list nil nil 1))
-    (org-agenda-write "~/.agenda"))
-    ;; (let (result (buffer-string))
-    ;;   (progn 
-    ;;     (kill-buffer org-agenda-buffer-name))
-    ;;     result))
-    ;; (let (result (buffer-string))
-      ;; (message result))
-
 ; Nicer bullet points
 (use-package org-bullets
   :config
@@ -134,9 +129,13 @@
                   (local-set-key (kbd "C-s") 'org-agenda-todo)))
 (setq org-agenda-skip-scheduled-if-done t)
 
-(defun my-daily-agenda ()
+(defun personal-agenda ()
   (interactive)
-  (org-agenda nil "n"))
+  (org-agenda nil "p"))
+
+(defun work-agenda ()
+  (interactive)
+  (org-agenda nil "w"))
 
 (defun org-archive-done-tasks ()
   (interactive)

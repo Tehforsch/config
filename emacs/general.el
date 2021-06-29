@@ -1,5 +1,14 @@
-(use-package general)
-(general-evil-setup t)
+(use-package general
+  :ensure t
+  :init
+  (setq general-override-states '(insert
+                                  emacs
+                                  hybrid
+                                  normal
+                                  visual
+                                  motion
+                                  operator
+                                  replace)))
 
 (general-create-definer global-leader-def
   :prefix "SPC")
@@ -72,7 +81,8 @@
     "onp" '(:which-key "Papers")
     "onpf" 'pundit-helm-find-or-create-note-for-paper
     "onR" 'pundit-rename-this-note
-    "ota" 'my-daily-agenda
+    "ota" 'personal-agenda
+    "otA" 'work-agenda
     "oti" 'capture-inbox-task
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
     "otw" '((lambda () (interactive) (find-file "~/notes/20210628213812-work_todo.org")) :which-key "Open work todo file.")
