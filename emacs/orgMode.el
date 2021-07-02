@@ -124,6 +124,7 @@
 )
 
 (require 'org-agenda)
+(setq org-agenda-sticky 1) ; This allows showing the two agendas side by side in different windows.
 (add-hook 'org-agenda-mode-hook
           (lambda ()
                   (local-set-key (kbd "C-s") 'org-agenda-todo)))
