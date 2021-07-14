@@ -97,17 +97,18 @@
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
     "t" 'treemacs
-    "w" '(:which-key "Window")
-    "wd" 'kill-buffer-and-window
-    "wh" 'evil-window-left
-    "wj" 'evil-window-down
-    "wk" 'evil-window-up
-    "wl" 'evil-window-right
-    "wH" 'evil-window-move-far-left
-    "wJ" 'evil-window-move-very-bottom
-    "wK" 'evil-window-move-very-top
-    "wL" 'evil-window-move-far-right
-    "wo" 'delete-other-windows
+    "w" 'save-buffer
+    "W" '(:which-key "Window")
+    "Wd" 'kill-buffer-and-window
+    "Wh" 'evil-window-left
+    "Wj" 'evil-window-down
+    "Wk" 'evil-window-up
+    "Wl" 'evil-window-right
+    "WH" 'evil-window-move-far-left
+    "WJ" 'evil-window-move-very-bottom
+    "WK" 'evil-window-move-very-top
+    "WL" 'evil-window-move-far-right
+    "Wo" 'delete-other-windows
     "^" 'evil-switch-to-windows-last-buffer
 )
 
