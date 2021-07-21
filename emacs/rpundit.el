@@ -29,8 +29,6 @@
 (defun rpundit/default-after-term-cleanup ()
   (let ((text (buffer-substring-no-properties (point-min) (point-max))))
     (kill-buffer "*rpundit*")
-    (when (cl-find "Error" text)
-        (message text))
     (jump-to-register :rpundit-windows)))
 
 (defun rpundit/is-output-line (line)
@@ -43,15 +41,17 @@
 (defun rpundit/get-pundit-output ()
   (let* ((text (buffer-substring-no-properties (point-min) (point-max)))
          (lines (split-string text "\n" t))
-         (relevant-lines (rpundit/get-pundit-output-from-lines lines)))
-    (s-join "\n" relevant-lines)))
+         (relevant-lines (rpundit/get-pundit-output-from-lines lines))
+         (num-lines (length relevant-lines)))
+    (when (> num-lines 0) (s-join "\n" relevant-lines))))
 
 (defun rpundit/after-term-handle-exit-open-file (process-name msg)
   (let* ((filename (rpundit/get-pundit-output)))
     (rpundit/default-after-term-cleanup)
     (advice-remove 'term-handle-exit #'rpundit/after-term-handle-exit-open-file)
-    (when (file-exists-p filename)
-      (find-file filename))))
+    (if filename 
+          (when (file-exists-p filename)
+            (find-file filename)))))
 
 (defun rpundit/cleanup-and-insert-link-text (insert-func)
   (let* ((link-text (rpundit/get-pundit-output)))
@@ -61,7 +61,6 @@
       
 (defun rpundit/cleanup-and-insert-anki-note-text ()
   (let* ((anki-note-text (rpundit/get-pundit-output)))
-    (message anki-note-text)
     (rpundit/default-after-term-cleanup)
     (when anki-note-text
         (funcall 'insert anki-note-text))))
