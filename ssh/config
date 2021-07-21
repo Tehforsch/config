@@ -10,7 +10,7 @@ Host binac
     HostName login01.binac.uni-tuebingen.de
     User hd_hp240
 Host rpi
-    HostName rpi.lan
+    HostName raspberrypi
     User pi
 Host rpizero
     HostName 192.168.0.95
