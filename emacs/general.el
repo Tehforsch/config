@@ -79,7 +79,7 @@
     "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
-    "onpf" 'pundit-helm-find-or-create-note-for-paper
+    "onpf" 'rpundit-find-paper
     "onR" 'pundit-rename-this-note
     "ota" 'personal-agenda
     "otA" 'work-agenda

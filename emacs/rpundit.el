@@ -139,6 +139,12 @@
   (rpundit/start rpundit/directory (s-concat "backlinks " (buffer-file-name)) 'rpundit/after-term-handle-exit-open-file) )
 
 ;;;###autoload
+(defun rpundit-find-paper ()
+  "Interactively select a paper from a list of papers in the bibtex file and find (or create) the corresponding for the selected paper."
+  (interactive)
+  (rpundit/start rpundit/directory (s-concat "paper " rpundit/bibtex-file " find") 'rpundit/after-term-handle-exit-open-file))
+
+;;;###autoload
 (defun rpundit-journal-yesterday (journal-name)
   "Open a journal for yesterday"
   (rpundit/journal-command "yesterday" journal-name))
