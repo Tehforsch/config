@@ -59,18 +59,18 @@
 ; My default agenda view with just the next items (those that i need to work on soon) and things scheduled for today + upcoming deadlines
 
 (setq org-agenda-custom-commands
-      '(("p" "Personal agenda" ((tags-todo "+toProcess")
-                            (tags-todo "+spree-toProcess")
-                            (tags-todo "+next-spree-toProcess")
+      '(("p" "Personal agenda" ((tags-todo "toProcess")
+                            (tags-todo "+next-toProcess")
                             (agenda "" ((org-agenda-span 14)
                                         (org-deadline-warning-days 30)))
+                            (tags-todo "+spree-next-toProcess")
                             (tags-todo "-waiting" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
          ((org-agenda-tag-filter-preset '("+personal"))))
         ("w" "Work agenda" ((tags-todo "+toProcess")
-                            (tags-todo "+spree-toProcess")
-                            (tags-todo "+next-spree-toProcess")
+                            (tags-todo "+next-toProcess")
                             (agenda "" ((org-agenda-span 14)
                                         (org-deadline-warning-days 30)))
+                            (tags-todo "+spree-next-toProcess")
                             (tags-todo "-waiting" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
          ((org-agenda-tag-filter-preset '("+work"))))))
 
