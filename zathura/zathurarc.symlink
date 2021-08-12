@@ -16,6 +16,11 @@ map j scroll half-down
 map k scroll half-up
 map J scroll full-down
 map K scroll full-up
+
+map [presentation] j scroll full-down
+map [presentation] k scroll full-up
+unmap [presentation] Button1
+
 map <C-t> feedkeys ":set recolor<Return>"
 map <C-m> toggle_statusbar
 
