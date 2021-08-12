@@ -40,6 +40,7 @@
 (load "~/projects/config/emacs/bookmarks.el")
 (load "~/projects/config/emacs/modeLine.el")
 
+(load "~/projects/config/emacs/punditSettings.el")
 (load "~/projects/config/emacs/rpundit.el")
 
 (load "~/projects/config/emacs/screenshot.el")
