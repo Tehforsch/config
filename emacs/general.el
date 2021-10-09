@@ -206,6 +206,7 @@
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "d" 'rust-dbg-wrap-or-unwrap
     "es" 'helm-flycheck
+    "el" 'helm-flycheck
     "en" 'next-error
     "ep" 'previous-error
     "f" 'rustic-format-buffer
