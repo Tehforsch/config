@@ -26,3 +26,5 @@
 (use-package gruvbox-theme)
 ; Color theme: gruvbox
 (load-theme 'gruvbox-dark-hard t)
+
+(fringe-mode '(0 . 0))

@@ -9,8 +9,6 @@
 (load "~/projects/config/emacs/evil.el")
 (load "~/projects/config/emacs/evilCollection.el")
 (load "~/projects/config/emacs/helm.el")
-; Currently commented out because potentially replaced by the settings in evil collection
-; (load "~/projects/config/emacs/minibuffer.el")
 (load "~/projects/config/emacs/evilNumbers.el")
 (load "~/projects/config/emacs/multiCursors.el")
 (load "~/projects/config/emacs/projectile.el")
@@ -26,6 +24,8 @@
 (load "~/projects/config/emacs/python.el")
 (load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/gnuplot.el")
+; Completion
+(load "~/projects/config/emacs/company.el")
 
 (load "~/projects/config/emacs/miscSettings.el") ; Needs to be before orgmode so we can set org-agenda-window-setup to normal
 
@@ -39,17 +39,12 @@
 (load "~/projects/config/emacs/whichKey.el")
 (load "~/projects/config/emacs/visualSettings.el")
 (load "~/projects/config/emacs/formatting.el")
-; (load "~/projects/config/emacs/disableMouse.el")
 (load "~/projects/config/emacs/bookmarks.el")
 (load "~/projects/config/emacs/modeLine.el")
 
+(load "~/projects/config/emacs/punditSettings.el")
 (load "~/projects/config/emacs/rpundit.el")
 
-(load "~/projects/config/emacs/pundit.el")
-(load "~/projects/config/emacs/punditPaper.el")
-(load "~/projects/config/emacs/punditJournal.el")
-(load "~/projects/config/emacs/punditSettings.el")
-(load "~/projects/config/emacs/punditRename.el")
 (load "~/projects/config/emacs/screenshot.el")
 
 (load "~/projects/config/emacs/general.el")

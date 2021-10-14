@@ -44,3 +44,5 @@
       (progn
         (setq lsp-ui-sideline-show-hover t)
         (message "Show hover ON"))))
+
+(setq lsp-response-timeout 2) ; Longer wait times than 2 seconds usually means it just won't respond anyways and i'd rather not wait for a long time

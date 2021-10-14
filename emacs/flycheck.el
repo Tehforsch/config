@@ -8,6 +8,8 @@
               (reusable-frames . visible)
               (window-height   . 0.33)))
 
+(use-package helm-flycheck) 
+
 ; (use-package flycheck-projectile)
 
 ; (defun helm-flycheck-projectile-errors ()

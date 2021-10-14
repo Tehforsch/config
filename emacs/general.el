@@ -1,5 +1,14 @@
-(use-package general)
-(general-evil-setup t)
+(use-package general
+  :ensure t
+  :init
+  (setq general-override-states '(insert
+                                  emacs
+                                  hybrid
+                                  normal
+                                  visual
+                                  motion
+                                  operator
+                                  replace)))
 
 (general-create-definer global-leader-def
   :prefix "SPC")
@@ -70,15 +79,16 @@
     "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
-    "onpf" 'pundit-helm-find-or-create-note-for-paper
+    "onpf" 'rpundit-find-paper
     "onR" 'pundit-rename-this-note
-    "ota" 'my-daily-agenda
+    "ota" 'personal-agenda
+    "otA" 'work-agenda
     "oti" 'capture-inbox-task
     "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
+    "otw" '((lambda () (interactive) (find-file "~/notes/20210628213812-work_todo.org")) :which-key "Open work todo file.")
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'helm-projectile-ag
-    "pt" 'projectile-regenerate-tags
     "pr" 'projectile-replace
     "pS" 'projectile-save-project-buffers
     "pR" 'projectile-discover-projects-in-search-path
@@ -86,17 +96,18 @@
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
     "t" 'treemacs
-    "w" '(:which-key "Window")
-    "wd" 'kill-buffer-and-window
-    "wh" 'evil-window-left
-    "wj" 'evil-window-down
-    "wk" 'evil-window-up
-    "wl" 'evil-window-right
-    "wH" 'evil-window-move-far-left
-    "wJ" 'evil-window-move-very-bottom
-    "wK" 'evil-window-move-very-top
-    "wL" 'evil-window-move-far-right
-    "wo" 'delete-other-windows
+    "w" 'save-buffer
+    "W" '(:which-key "Window")
+    "Wd" 'kill-buffer-and-window
+    "Wh" 'evil-window-left
+    "Wj" 'evil-window-down
+    "Wk" 'evil-window-up
+    "Wl" 'evil-window-right
+    "WH" 'evil-window-move-far-left
+    "WJ" 'evil-window-move-very-bottom
+    "WK" 'evil-window-move-very-top
+    "WL" 'evil-window-move-far-right
+    "Wo" 'delete-other-windows
     "^" 'evil-switch-to-windows-last-buffer
 )
 
@@ -110,8 +121,8 @@
 (mode-leader-def '(normal visual) 'c-mode-map
     "en" 'next-error
     "ep" 'previous-error
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
+    "s" 'helm-lsp-workspace-all-symbols
+    "x" 'helm-lsp-code-actions
 )
 
 (mode-leader-def '(normal visual) 'fortran-mode-map
@@ -194,6 +205,7 @@
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "d" 'rust-dbg-wrap-or-unwrap
     "es" 'helm-flycheck
+    "el" 'helm-flycheck
     "en" 'next-error
     "ep" 'previous-error
     "f" 'rustic-format-buffer

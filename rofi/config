@@ -1,8 +1,14 @@
-rofi.theme: /usr/share/rofi/themes/gruvbox-dark-hard.rasi
-rofi.kb-remove-to-eol: KP_Enter
-rofi.kb-accept-entry: Return
-rofi.kb-accept-custom: 
-rofi.kb-row-down: Control+j
-rofi.kb-row-up: Control+k
-rofi.lines: 40
-rofi.width: 1920
+configuration {
+    theme: "/usr/share/rofi/themes/gruvbox-dark-hard.rasi";
+    kb-remove-to-eol: "KP_Enter";
+    kb-accept-entry: "Return";
+    kb-custom-1: "";
+    kb-row-down: "Control+j";
+    kb-row-up: "Control+k";
+    show-icons: true;
+}
+window {
+    padding:          500;
+    background-color: var(background);
+    border:           0;
+}
