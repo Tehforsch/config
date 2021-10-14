@@ -89,7 +89,6 @@
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'helm-projectile-ag
-    "pt" 'projectile-regenerate-tags
     "pr" 'projectile-replace
     "pS" 'projectile-save-project-buffers
     "pR" 'projectile-discover-projects-in-search-path
