@@ -29,7 +29,7 @@ else
     fi
 fi
 shuffledArtistAlbums=$(echo -E "$artistAlbums" | uniq | shuf)
-artistAlbumIndex=$(echo -E "$shuffledArtistAlbums" | column -o "$outputSeparator" -s "$(printf "\t")" -t | rofi -i -dmenu -no-custom -format "d" -kb-custom-1 "Ctrl+Return" -p "Album:")
+artistAlbumIndex=$(echo -E "$shuffledArtistAlbums" | column -o "$outputSeparator" -s "$(printf "\t")" -t | rofi -i -dmenu -no-custom -format "d" -p "Album:")
 exitCode=$?
 artistAlbum=$(echo -E "$shuffledArtistAlbums" | head -n $artistAlbumIndex | tail -n 1)
 artist=$(echo -E "$artistAlbum" | cut -f 1)
