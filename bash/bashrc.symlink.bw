@@ -1,3 +1,4 @@
+PATH=$PATH:$HOME/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 # Load aliases
 source "$HOME/.aliases"
 source "$HOME/.localAliases"
@@ -48,3 +49,5 @@ source ~/modules.sh
 module load devel/python_intel/3.6
 
 export HDF5_DISABLE_VERSION_CHECK=2
+
+export PYTHONHASHSEED=0 # The things they make me do for productivity
