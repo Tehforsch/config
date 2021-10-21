@@ -7,8 +7,11 @@ alias loadpython='module load devel/python_intel/3.6'
 alias ag='grep -R'
 unalias e
 alias e="vim"
-unalias cat
 alias sb="sbatch"
 alias sc="scancel"
 alias sq="squeue"
 alias bu="make build -j 16"
+alias bob="~/projects/bob/target/release/bob"
+alias l="ls -lah --color=auto"
+alias ls="ls"
+alias interactive="srun --partition=single --ntasks=3 --time=2:00:00 --pty /bin/bash"

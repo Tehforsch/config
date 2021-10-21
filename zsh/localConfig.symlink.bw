@@ -5,3 +5,5 @@ export GMPDIR=$HOME/projects/gmp/
 export work=/beegfs/work/ws/hd_hp240-arepoTest-0/
 export PATH=$PATH:$HOME/projects/neovim/install/usr/local/bin
 export VIMEXE=$HOME/projects/neovim/install/usr/local/bin/nvim
+source ~/.cargo/env
+export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
