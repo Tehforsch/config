@@ -19,11 +19,11 @@
 (global-leader-def '(normal visual) 'global
     "!" 'start-terminal-in-pwd
     "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
-    "x" 'helm-M-x
+    "x" 'execute-extended-command
     "b" '(:which-key "Buffer")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "bf" 'helm-buffers-list
-    "bF" 'helm-projectile-switch-to-buffer
+    "bf" 'switch-to-buffer
+    "bF" 'projectile-switch-to-buffer
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer (transient)")
     "bp" '((lambda () (interactive) (projectile-previous-project-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
@@ -37,19 +37,15 @@
     "fAr" 'recover-this-file
     "fs" 'save-buffer
     "fo" 'projectile-find-other-file
-    "fl" 'helm-locate
     "ff" 'smart-list-files
-    "fF" 'helm-projectile-find-file-in-known-projects
+    "fF" 'projectile-find-file-in-known-projects
     "fp" 'comment-out-line-and-copypaste-below
     "fq" 'evil-save-modified-and-close
     "g" '(:which-key "Magit")
     "gb" 'magit-blame
     "gs" 'magit-status
     "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
-    "h" 'helm-resume
-    "j" '(:which-key "Jump/Bookmarks")
-    "jf" 'helm-bookmarks
-    "ja" 'bookmark-set-with-default-name
+    "h" 'selectrum-repeat
     "o" '(:which-key "Org")
     "oc" '(:which-key "Citations/Bibliography")
     "oca" 'crossref-add-bibtex-entry
@@ -69,14 +65,12 @@
     "oL" 'org-toggle-link-display
     "on" '(:which-key "Notes")
     "ona" 'rpundit-append-link
-    "onA" 'pundit-helm-append-link-to-note-with-custom-title
     "onb" 'rpundit-find-backlinks
     "one" '(:which-key "Export notes")
     "onf" 'rpundit-find
     "onk" 'rpundit-get-new-anki-note-check-file-for-model-and-deck
     "ong" 'rpundit-graph-find
     "oni" 'rpundit-insert-link
-    "onI" 'pundit-helm-insert-link-to-note-with-custom-title
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
     "onpf" 'rpundit-find-paper
@@ -88,11 +82,11 @@
     "otw" '((lambda () (interactive) (find-file "~/notes/20210628213812-work_todo.org")) :which-key "Open work todo file.")
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
-    "pa" 'helm-projectile-ag
+    "pa" 'consult-ripgrep
     "pr" 'projectile-replace
     "pS" 'projectile-save-project-buffers
     "pR" 'projectile-discover-projects-in-search-path
-    "pf" 'helm-projectile-switch-project
+    "pf" 'projectile-switch-project
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
     "t" 'treemacs
@@ -121,8 +115,8 @@
 (mode-leader-def '(normal visual) 'c-mode-map
     "en" 'next-error
     "ep" 'previous-error
-    "s" 'helm-lsp-workspace-all-symbols
-    "x" 'helm-lsp-code-actions
+    "s" 'consult-lsp-workspace-all-symbols
+    "x" 'helm-lsp-workspace-all-symbols
 )
 
 (mode-leader-def '(normal visual) 'fortran-mode-map
@@ -204,8 +198,7 @@
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "d" 'rust-dbg-wrap-or-unwrap
-    "es" 'helm-flycheck
-    "el" 'helm-flycheck
+    "el" 'consult-lsp-diagnostics
     "en" 'next-error
     "ep" 'previous-error
     "f" 'rustic-format-buffer

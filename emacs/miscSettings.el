@@ -33,3 +33,5 @@
   (interactive)
   (save-buffer)
   (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh 0"))
+
+(setq xref-search-program 'ripgrep)
