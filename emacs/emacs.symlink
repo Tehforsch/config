@@ -14,6 +14,7 @@
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/magit.el")
 (load "~/projects/config/emacs/fileAssociations.el")
+(load "~/projects/config/emacs/helm.el")
 
 ; Language support
 (load "~/projects/config/emacs/flycheck.el")

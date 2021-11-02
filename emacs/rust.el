@@ -8,6 +8,7 @@
 (push 'rustic-clippy flycheck-checkers)
 (add-hook 'rustic-mode-hook 'flycheck-mode)
 (setq rustic-lsp-server 'rust-analyzer)
+(setq rustic-analyzer-command '("rustup run nightly rust-analyzer"))
 
 (add-hook 'rustic-mode-hook #'company-mode)
 ;; (add-hook 'rustic-mode-hook #'racer-mode)
