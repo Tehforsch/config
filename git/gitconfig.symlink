@@ -28,6 +28,10 @@
     default = simple
 [alias]
    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+   a = add
+   c = commit
+   sw = switch
+   r = restore
 [merge]
     tool = vimdiff
     conflictstyle = diff3
