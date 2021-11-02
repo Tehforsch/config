@@ -5,6 +5,7 @@ alias dls='ls -la --sort=time --reverse'
 alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
 alias fin='python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/finances'
 alias ga='git add'
+alias g="git"
 alias gc='git commit'
 alias gd='git diff'
 alias gdcc='git diff --color-words'
