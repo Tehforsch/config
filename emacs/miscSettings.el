@@ -35,3 +35,7 @@
   (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh 0"))
 
 (setq xref-search-program 'ripgrep)
+
+(use-package glsl-mode)
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
