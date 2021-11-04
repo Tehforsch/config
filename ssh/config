@@ -15,3 +15,7 @@ Host rpi
 Host rpizero
     HostName 192.168.0.95
     User pi
+Host kalyke
+    HostName shark.fish
+    User toni
+    Port 2222
