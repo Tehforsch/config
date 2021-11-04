@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # This sets some paths such as where the CONFIG folder lies. Makes it easier to use on other machines without getting confused
 systemName=$(cat $HOME/.systemName)
 if [[ -a "$HOME/.localConfig" ]]; then
@@ -28,7 +35,7 @@ if ! zgen saved; then
     # zgen oh-my-zsh plugins/git
     # zgen load zsh-users/zsh-completions src
     # theme
-    zgen oh-my-zsh themes/blinks
+    zgen load romkatv/powerlevel10k powerlevel10k
     # save all to init script
     zgen save
 fi
@@ -179,3 +186,6 @@ source ~/projects/config/scripts/copyAbsolutePath.sh
 
 # Make tab completion be more like ls -la
 zstyle ':completion:*' file-list all
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
