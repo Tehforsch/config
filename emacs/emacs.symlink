@@ -8,12 +8,13 @@
 
 (load "~/projects/config/emacs/evil.el")
 (load "~/projects/config/emacs/evilCollection.el")
-(load "~/projects/config/emacs/helm.el")
+(load "~/projects/config/emacs/selectrum.el")
 (load "~/projects/config/emacs/evilNumbers.el")
 (load "~/projects/config/emacs/multiCursors.el")
 (load "~/projects/config/emacs/projectile.el")
 (load "~/projects/config/emacs/magit.el")
 (load "~/projects/config/emacs/fileAssociations.el")
+(load "~/projects/config/emacs/helm.el")
 
 ; Language support
 (load "~/projects/config/emacs/flycheck.el")
@@ -39,7 +40,6 @@
 (load "~/projects/config/emacs/whichKey.el")
 (load "~/projects/config/emacs/visualSettings.el")
 (load "~/projects/config/emacs/formatting.el")
-(load "~/projects/config/emacs/bookmarks.el")
 (load "~/projects/config/emacs/modeLine.el")
 
 (load "~/projects/config/emacs/punditSettings.el")

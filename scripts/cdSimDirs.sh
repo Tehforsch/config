@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ $1 == "sim" ]]; then
     a="run"
     b="simulations"
@@ -14,6 +15,7 @@ else
     newDir=~/projects/phd/$b
 fi
 if [[ $pwd == *"phd/$b/"* ]]; then
+    echo -E ""
 else
     while ! [[ -d $newDir ]]; do
         newDir=$(dirname $newDir)

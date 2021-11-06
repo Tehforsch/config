@@ -130,8 +130,6 @@ mode "$workspace" {
     bindsym F9 mode "$i3"
     bindsym asciicircum workspace back_and_forth; mode "default"
     # Have Output changing commands here too
-    bindsym h move workspace to output left
-    bindsym l move workspace to output right
     bindsym Shift+H move workspace to output left
     bindsym Shift+L move workspace to output right
     bindsym q kill
