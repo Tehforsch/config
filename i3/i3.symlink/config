@@ -236,9 +236,9 @@ mode "$launch" {
     bindsym k exec kitty; mode "default"
     bindsym v exec /opt/cisco/anyconnect/bin/vpnui; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
-    bindsym Shift+K exec $scripts/startOrKillDroidcam.sh
+    bindsym Shift+K mode "$ssh"
+    bindsym Shift+D exec $scripts/startOrKillDroidcam.sh
     bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
-    bindsym Shift+D exec $scripts/runDiscord.sh; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
@@ -262,6 +262,16 @@ mode "$timer" {
 set $screenRecord RECORDING
 mode "$screenRecord" {
     bindsym F11 exec bash $scripts/screenCapture.sh 1; mode "default"
+}
+
+set $ssh Launch ssh session [b]wfor [k]alyke 
+mode "$ssh" {
+    bindsym Escape mode "$launch"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym b exec kitty ssh bwprod
+    bindsym k exec kitty ssh kalyke
 }
 
 set $document Open: [p]dfs/epubs [i]mages
