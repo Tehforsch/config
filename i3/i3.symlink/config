@@ -10,7 +10,7 @@ set $inactiveBg #1d2021
 set $inactiveFont #928374
 set $activeWindowBorder #928374
 
-font pango: Dejavu Sans Mono 12
+font pango: Dejavu Sans Mono 16
 
 client.focused_inactive    $inactiveFont   $inactiveBg            $inactiveFont
 client.unfocused           $inactiveFont   $inactiveBg            $inactiveFont
@@ -46,8 +46,6 @@ for_window [class="^.*"] border pixel 1
 
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
-for_window [class=gpicviewPavucontrol] floating enable
-for_window [class=python3.9] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Mod4
