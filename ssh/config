@@ -12,6 +12,9 @@ Host binac
 Host rpi
     HostName raspberrypi
     User pi
+Host rpi2
+    HostName rpi2
+    User pi
 Host rpizero
     HostName 192.168.0.95
     User pi
