@@ -27,6 +27,8 @@
 (load "~/projects/config/emacs/python.el")
 (load "~/projects/config/emacs/latex.el")
 (load "~/projects/config/emacs/gnuplot.el")
+(load "~/projects/config/emacs/yaml.el")
+
 ; Completion
 (load "~/projects/config/emacs/company.el")
 
