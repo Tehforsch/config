@@ -226,11 +226,11 @@ mode "$launch" {
     bindsym g mode "$gameLaunch"
     bindsym i exec emacsclient -c -n -e '(capture-inbox-task)'; mode "default"
     bindsym l exec i3lock -c 000000; mode "default"
-    bindsym m exec $scripts/openProgramInfrequently.sh "/home/toni/.playground/openThunderbird" 10800 "thunderbird"; mode "default"
+    bindsym m exec thunderbird
     bindsym n exec pcmanfm --no-desktop; mode "default"
     bindsym o exec firefox --new-window todoist.com; mode "default"
     bindsym s exec rofi -show run; mode "default"
-    bindsym t exec $scripts/openProgramInfrequently.sh "/home/toni/.playground/openTelegram" 5400 "telegram-desktop"; mode "default"
+    bindsym t exec telegram
     bindsym k exec kitty; mode "default"
     bindsym v exec /opt/cisco/anyconnect/bin/vpnui; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
