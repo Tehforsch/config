@@ -238,6 +238,7 @@ mode "$launch" {
     bindsym Shift+D exec $scripts/startOrKillDroidcam.sh
     bindsym Shift+C exec bash $scripts/startup.sh; mode "default"
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
+    bindsym Shift+N exec kitty -o font_size=20 newsboat -u $config/newsboat/urls -C $config/newsboat/config; mode "default"
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"

@@ -1,0 +1,41 @@
+show-read-feeds yes
+show-keymap-hint no
+
+article-sort-order date
+feed-sort-order articlecount-asc
+
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
+bind-key b bookmark
+bind-key d delete-article
+
+bind-key ESC quit
+
+unbind-key mark-feed-read
+
+browser "~/projects/config/newsboat/browser.sh"
+
+color background          color223   color0
+color listnormal          color223   color0
+color listnormal_unread   color2     color0
+color listfocus           color223   color237
+color listfocus_unread    color223   color237
+color info                color8     color0
+color article             color223   color0
+
+feedlist-format     "%20t %11u "
+articlelist-format  "%f %D %?T?|%-17T|  ?%t"
+
+# highlights
+highlight article "^(Feed|Link):.*$" color11 default bold
+highlight article "^(Title|Date|Author):.*$" color11 default bold
+highlight article "https?://[^ ]+" color2 default underline
+highlight article "\\[[0-9]+\\]" color2 default bold
+highlight article "\\[image\\ [0-9]+\\]" color2 default bold
+highlight feedlist "^─.*$" color6 color6 bold
