@@ -6,6 +6,7 @@
     (add-hook 'prog-mode-hook 'linum-mode)
     (add-hook 'prog-mode-hook 'enable-line-numbers)
 )
+(global-display-line-numbers-mode +1)
 
 ; Font size
 (set-face-attribute 'default nil :height 130)
