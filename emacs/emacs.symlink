@@ -9,6 +9,7 @@
 (load "~/projects/config/emacs/evil.el")
 (load "~/projects/config/emacs/evilCollection.el")
 (load "~/projects/config/emacs/evilArgs.el")
+(load "~/projects/config/emacs/betterJumper.el")
 (load "~/projects/config/emacs/selectrum.el")
 (load "~/projects/config/emacs/consult.el")
 (load "~/projects/config/emacs/evilNumbers.el")

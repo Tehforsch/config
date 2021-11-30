@@ -5,7 +5,7 @@
 (use-package evil)
 (evil-mode 1)
 (setq evil-want-Y-yank-to-eol t)
-(setq evil-want-C-i-jump nil)
+(setq evil-want-C-i-jump t)
 (setq evil-emacs-state-odes nil)
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
