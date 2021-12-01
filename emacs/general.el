@@ -92,6 +92,8 @@
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
     "t" 'treemacs
+    "u" '(:which-key "Undo")
+    "ut" 'undo-tree-visualize
     "w" 'save-buffer
     "W" '(:which-key "Window")
     "Wd" 'kill-buffer-and-window
