@@ -15,6 +15,7 @@ alias gp='git push'
 alias gpu='git pull'
 alias gs='git status' # This shadows ghostscript - I don't care
 alias gsu='git submodule update --recursive --remote'
+alias gr='git reset'
 alias co="git checkout"
 alias tim="kitty +kitten icat"
 alias im="gpicview"
