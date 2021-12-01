@@ -29,13 +29,6 @@
 (evil-commentary-mode)
 ; Default comment string in files emacs doesnt recognize (no file ending): #
 (setq-default comment-start "#")
-; Default C-comment: // is (objectively) much more beautiful than /*, especially for single lines 
-(defun comment-c-mode-hook ()
-  (setq-local comment-start "//")
-  (setq-local comment-padding " ")
-  (setq-local comment-end "")
-  (setq-local comment-style 'indent))
-(add-hook 'c-mode-hook 'comment-c-mode-hook)
 
 (define-key evil-normal-state-map (kbd "C-e") 'evil-commentary-line)
 
@@ -78,8 +71,12 @@
 (defun end-of-symbol ()
   (interactive)
   (evil-inner-symbol)
-  (evil-backward-char)
-)
+  (evil-backward-char))
+
+(defun end-of-symbol ()
+  (interactive)
+  (evil-inner-symbol)
+  (evil-backward-char))
 
 ; Automatically go into insert mode when opening a terminal
 (defun enter-evil-insert-mode ()
@@ -89,20 +86,19 @@
 (use-package undo-tree)
 (global-undo-tree-mode)
 (evil-set-undo-system 'undo-tree)
-; Make sure we cant repeat undo with .
+
+; Make sure we cant repeat undo / repeat with .
 (evil-declare-abort-repeat 'evil-undo)
-; Make sure we cant repeat repeat with .
 (evil-declare-abort-repeat 'evil-redo)
-;; (add-hook 'after-init-hook 'global-undo-tree-mode)
 
 ; Don't add paragraph motions to jump list because I use them to move around casually
 (evil-remove-command-properties #'evil-forward-paragraph :jump)
 (evil-remove-command-properties #'evil-backward-paragraph :jump)
 
-(define-key evil-normal-state-map [escape] 'keyboard-quit-when-not-recording-macro)
-(define-key evil-visual-state-map [escape] 'keyboard-quit-when-not-recording-macro)
-
+; Make sure pressing escape does not cancel macro recording
 (defun keyboard-quit-when-not-recording-macro ()
   (interactive)
   (when (not defining-kbd-macro)
       (keyboard-quit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit-when-not-recording-macro)
+(define-key evil-visual-state-map [escape] 'keyboard-quit-when-not-recording-macro)
