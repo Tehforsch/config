@@ -34,6 +34,9 @@
   (save-buffer)
   (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh 0"))
 
+(evil-declare-abort-repeat 'save-file-and-run-last-command-in-terminal-to-the-right)
+(evil-declare-abort-repeat 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back)
+
 (setq xref-search-program 'ripgrep)
 
 (use-package glsl-mode)
