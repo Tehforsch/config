@@ -1,6 +1,7 @@
 (use-package general
   :ensure t
   :init
+  (general-evil-setup)
   (setq general-override-states '(insert
                                   emacs
                                   hybrid
@@ -11,6 +12,7 @@
                                   replace)))
 
 (general-create-definer global-leader-def
+  :keymaps 'override
   :prefix "SPC")
 
 (general-create-definer mode-leader-def
