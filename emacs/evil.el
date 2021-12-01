@@ -63,6 +63,13 @@
 (define-key evil-inner-text-objects-map "f" 'evil-inner-function)
 (define-key evil-outer-text-objects-map "f" 'evil-inner-function)
 
+; Bind text objects for symbols to "s" which is much nicer to reach than o, especially when pressing cis (instead of cio)
+(define-key evil-inner-text-objects-map "s" 'evil-inner-symbol)
+(define-key evil-outer-text-objects-map "s" 'evil-inner-symbol)
+; Bind the sentence thing to "S" instead, in case I might need it
+(define-key evil-inner-text-objects-map "S" 'evil-inner-sentence)
+(define-key evil-outer-text-objects-map "S" 'evil-inner-sentence)
+
 ; Make substitution global by default (reverse meaning of appending g at end of substitution)
 (setq evil-ex-substitute-global t)
 
