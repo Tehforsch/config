@@ -91,10 +91,6 @@
 (evil-declare-abort-repeat 'evil-undo)
 (evil-declare-abort-repeat 'evil-redo)
 
-; Don't add paragraph motions to jump list because I use them to move around casually
-(evil-remove-command-properties #'evil-forward-paragraph :jump)
-(evil-remove-command-properties #'evil-backward-paragraph :jump)
-
 ; Make sure pressing escape does not cancel macro recording
 (defun keyboard-quit-when-not-recording-macro ()
   (interactive)
