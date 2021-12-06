@@ -1,0 +1,16 @@
+configuration {
+	kb-remove-to-eol: "KP_Enter";
+	kb-accept-entry: "Return";
+	kb-accept-custom: "";
+	kb-row-up: "Control+k";
+	kb-row-down: "Control+j";
+}
+
+@theme "gruvbox-dark-hard"
+listview {
+	lines: 50;
+}
+
+window {
+	width: 100%;
+}
