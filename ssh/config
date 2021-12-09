@@ -22,3 +22,12 @@ Host kalyke
     HostName shark.fish
     User toni
     Port 2222
+Host ita
+    HostName welcome.ita.uni-heidelberg.de
+    User tpeter
+Host supermuc
+    HostName skx.supermuc.lrz.de
+    ProxyCommand ssh ita nc %h %p
+    User di46dev
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
