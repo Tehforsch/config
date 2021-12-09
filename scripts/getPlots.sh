@@ -1,2 +1,2 @@
 simName=$(basename $(realpath .))
-rsync -rv ~/.bwforWork/$simName/pics .
+rsync -rv $bwforWork/$simName/pics .
