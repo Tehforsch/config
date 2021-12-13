@@ -12,6 +12,7 @@
 (load "~/projects/config/emacs/betterJumper.el")
 (load "~/projects/config/emacs/selectrum.el")
 (load "~/projects/config/emacs/consult.el")
+(load "~/projects/config/emacs/marginalia.el")
 (load "~/projects/config/emacs/evilNumbers.el")
 (load "~/projects/config/emacs/multiCursors.el")
 (load "~/projects/config/emacs/projectile.el")
