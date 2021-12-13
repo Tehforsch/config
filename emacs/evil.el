@@ -2,14 +2,14 @@
 (setq evil-want-keybinding nil)
 (setq evil-want-integration nil)
 
-(use-package evil)
-(evil-mode 1)
 (setq evil-want-Y-yank-to-eol t)
 (setq evil-want-C-i-jump t)
 (setq evil-emacs-state-odes nil)
 (setq evil-insert-state-modes nil)
 (setq evil-motion-state-modes nil)
-; Make Y kill to EOL instead of an effective remap of yy
+
+(use-package evil)
+(evil-mode 1)
 ; Disable search from wrapping around the buffer (wrapscan=false)
 (setq evil-search-wrap nil)
 ; Make pasting in visual mode not replace the current killring
