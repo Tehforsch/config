@@ -240,6 +240,7 @@ mode "$launch" {
     bindsym Shift+I exec $scripts/mountClusterSshfs.sh; mode "default"
     bindsym Shift+N exec kitty -o font_size=20 newsboat -u $config/newsboat/urls -C $config/newsboat/config; mode "default"
     bindsym Shift+O exec bash $scripts/openProgramsAtStartOfSession.sh; mode "default"
+    bindsym Shift+P exec gpaste-client ui; mode "default"
     bindsym Shift+Q exit; mode "default"
     bindsym shift+R restart; mode "default"
     bindsym Shift+T; mode "$timer"
@@ -381,4 +382,5 @@ exec sleep 10; i3-msg workspace 3:todo; $scripts/startAgendas.sh; i3-msg mode "d
 # exec sleep 4; aw-qt
 exec bash $scripts/syncRepos.sh
 exec /opt/urserver/urserver --daemon
+exec gpaste-client start
 exec_always $scripts/updatePankit.sh
