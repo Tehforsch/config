@@ -2,6 +2,9 @@
 (setq evil-want-keybinding nil)
 (setq evil-want-integration nil)
 
+(setq evil-want-C-u-delete t)
+(setq evil-want-C-u-scroll t)
+
 (setq evil-want-Y-yank-to-eol t)
 (setq evil-want-C-i-jump t)
 (setq evil-emacs-state-odes nil)
