@@ -1,2 +1,3 @@
-alias tl="task next"
+alias tl="task default"
 alias ta="task add"
+alias tc="task context"

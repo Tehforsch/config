@@ -1,4 +1,26 @@
+# Task server setup
+taskd.ca=\/home\/toni\/.task\/ca.cert.pem
+taskd.certificate=\/home\/toni\/.task\/toni.cert.pem
+taskd.key=\/home\/toni\/.task\/toni.key.pem
+taskd.server=h2513905.stratoserver.net:53589
+taskd.credentials=Public/toni/ba2d4286-aadc-4f76-9a54-74908b07151c
+
+# Color Theme
+include solarized-light-256.theme
+
+# Default report
+report.default.columns=id,due,tags,project,description,urgency
+report.default.labels=id,due,tags,proj,desc,urg
+report.default.sort=urgency+\/,project
+report.default.filter=status:pending
+
+# Context setup
+context.phd.read=project:phd
+context.personal.read=project.not:phd
+
+# Urgency settings
 urgency.user.tag.maybe.coefficient = -100.0
+urgency.user.tag.ita.coefficient = -10.0
 urgency.user.tag.spree.coefficient = 8.0
 urgency.user.project.phd.code.coefficient = 1.0
 urgency.user.project.phd.bob.coefficient = 1.0
@@ -7,10 +29,3 @@ urgency.user.project.phd.tests.coefficient = 2.0
 urgency.user.project.phd.paper.coefficient = 4.0
 urgency.user.project.phd.orga.coefficient = 5.0
 urgency.user.project.phd.voronoiSwim.coefficient = -3.0
-context.phd.read=project:phd
-context.personal.read=project.not:phd
-taskd.ca=\/home\/toni\/.task\/ca.cert.pem
-taskd.certificate=\/home\/toni\/.task\/toni.cert.pem
-taskd.key=\/home\/toni\/.task\/toni.key.pem
-taskd.server=h2513905.stratoserver.net:53589
-taskd.credentials=Public/toni/ba2d4286-aadc-4f76-9a54-74908b07151c
