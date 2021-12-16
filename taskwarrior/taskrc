@@ -22,6 +22,9 @@ context.personal.read=project.not:phd
 urgency.user.tag.maybe.coefficient = -100.0
 urgency.user.tag.ita.coefficient = -10.0
 urgency.user.tag.spree.coefficient = 8.0
+urgency.user.project.todo.coefficient = 20.0
+urgency.user.project.routine.coefficient = -3.0
+
 urgency.user.project.phd.code.coefficient = 1.0
 urgency.user.project.phd.bob.coefficient = 1.0
 urgency.user.project.phd.tng.coefficient = 2.0
