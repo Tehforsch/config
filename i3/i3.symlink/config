@@ -375,7 +375,7 @@ exec --no-startup-id sleep 3 && redshift -l 49.40768:8.69079
 exec --no-startup-id sleep 5 && mpd
 exec --no-startup-id sleep 6 && mpdas
 exec --no-startup-id xbacklight -set 100
-exec sleep 10; i3-msg workspace 3:todo; kitty --hold --detach task default; i3-msg mode "default"
+exec sleep 10; i3-msg workspace 3:todo; kitty --hold --detach taskwarrior-tui; i3-msg mode "default"
 exec bash $scripts/syncRepos.sh
 exec /opt/urserver/urserver --daemon
 exec gpaste-client start
