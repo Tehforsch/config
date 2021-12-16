@@ -77,11 +77,7 @@
     "onp" '(:which-key "Papers")
     "onpf" 'rpundit-find-paper
     "onR" 'pundit-rename-this-note
-    "ota" 'personal-agenda
-    "otA" 'work-agenda
     "oti" 'capture-inbox-task
-    "otf" '((lambda () (interactive) (find-file org-default-notes-file)) :which-key "Open todo file.")
-    "otw" '((lambda () (interactive) (find-file "~/notes/20210628213812-work_todo.org")) :which-key "Open work todo file.")
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'consult-ripgrep
@@ -134,72 +130,6 @@
     "r" 'erefactor-rename-symbol-in-buffer
 )
 
-(mode-leader-def '(normal visual) org-agenda-mode-map
-    "" '(:which-key "Todo")
-    "a" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
-    "t" 'org-set-tags-command
-    "c" 'org-archive-done-tasks
-    "d" '(:which-key "Set deadline")
-    "r" '((lambda () (interactive) (org-refile)) :which-key "Refile")
-    "df" '((lambda () (interactive) (org-deadline nil nil)) :which-key "Find day")
-    "dr" '((lambda () (interactive) (org-deadline '(4))) :which-key "Remove")
-    "d0" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "+0d")
-    "d1" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "+1d")
-    "d2" '((lambda () (interactive) (org-deadline nil "+2d")) :which-key "+2d")
-    "d3" '((lambda () (interactive) (org-deadline nil "+3d")) :which-key "+3d")
-    "d4" '((lambda () (interactive) (org-deadline nil "+4d")) :which-key "+4d")
-    "d5" '((lambda () (interactive) (org-deadline nil "+5d")) :which-key "+5d")
-    "d6" '((lambda () (interactive) (org-deadline nil "+6d")) :which-key "+6d")
-    "d7" '((lambda () (interactive) (org-deadline nil "+7d")) :which-key "+7d")
-    "d8" '((lambda () (interactive) (org-deadline nil "+8d")) :which-key "+8d")
-    "d9" '((lambda () (interactive) (org-deadline nil "+9d")) :which-key "+9d")
-    "s" '(:which-key "Set schedule")
-    "sf" '((lambda () (interactive) (org-schedule nil nil)) :which-key "Find day")
-    "sr" '((lambda () (interactive) (org-schedule '(4))) :which-key "Remove")
-    "s0" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "+0d")
-    "s1" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "+1d")
-    "s2" '((lambda () (interactive) (org-schedule nil "+2d")) :which-key "+2d")
-    "s3" '((lambda () (interactive) (org-schedule nil "+3d")) :which-key "+3d")
-    "s4" '((lambda () (interactive) (org-schedule nil "+4d")) :which-key "+4d")
-    "s5" '((lambda () (interactive) (org-schedule nil "+5d")) :which-key "+5d")
-    "s6" '((lambda () (interactive) (org-schedule nil "+6d")) :which-key "+6d")
-    "s7" '((lambda () (interactive) (org-schedule nil "+7d")) :which-key "+7d")
-    "s8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "+8d")
-    "s9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "+9d"))
-
-(mode-leader-def '(normal visual) org-mode-map
-    "" '(:which-key "Todo")
-    "a" '((lambda () (interactive) (org-agenda nil "n")) :which-key "Agenda today")
-    "t" 'org-set-tags-command
-    "c" 'org-archive-done-tasks
-    "d" '(:which-key "Set deadline")
-    "r" '((lambda () (interactive) (org-refile)) :which-key "Refile")
-    "df" '((lambda () (interactive) (org-deadline nil nil)) :which-key "Find day")
-    "dr" '((lambda () (interactive) (org-deadline '(4))) :which-key "Remove")
-    "d0" '((lambda () (interactive) (org-deadline nil "+0d")) :which-key "+0d")
-    "d1" '((lambda () (interactive) (org-deadline nil "+1d")) :which-key "+1d")
-    "d2" '((lambda () (interactive) (org-deadline nil "+2d")) :which-key "+2d")
-    "d3" '((lambda () (interactive) (org-deadline nil "+3d")) :which-key "+3d")
-    "d4" '((lambda () (interactive) (org-deadline nil "+4d")) :which-key "+4d")
-    "d5" '((lambda () (interactive) (org-deadline nil "+5d")) :which-key "+5d")
-    "d6" '((lambda () (interactive) (org-deadline nil "+6d")) :which-key "+6d")
-    "d7" '((lambda () (interactive) (org-deadline nil "+7d")) :which-key "+7d")
-    "d8" '((lambda () (interactive) (org-deadline nil "+8d")) :which-key "+8d")
-    "d9" '((lambda () (interactive) (org-deadline nil "+9d")) :which-key "+9d")
-    "s" '(:which-key "Set schedule")
-    "sf" '((lambda () (interactive) (org-schedule nil nil)) :which-key "Find day")
-    "sr" '((lambda () (interactive) (org-schedule '(4))) :which-key "Remove")
-    "s0" '((lambda () (interactive) (org-schedule nil "+0d")) :which-key "+0d")
-    "s1" '((lambda () (interactive) (org-schedule nil "+1d")) :which-key "+1d")
-    "s2" '((lambda () (interactive) (org-schedule nil "+2d")) :which-key "+2d")
-    "s3" '((lambda () (interactive) (org-schedule nil "+3d")) :which-key "+3d")
-    "s4" '((lambda () (interactive) (org-schedule nil "+4d")) :which-key "+4d")
-    "s5" '((lambda () (interactive) (org-schedule nil "+5d")) :which-key "+5d")
-    "s6" '((lambda () (interactive) (org-schedule nil "+6d")) :which-key "+6d")
-    "s7" '((lambda () (interactive) (org-schedule nil "+7d")) :which-key "+7d")
-    "s8" '((lambda () (interactive) (org-schedule nil "+8d")) :which-key "+8d")
-    "s9" '((lambda () (interactive) (org-schedule nil "+9d")) :which-key "+9d"))
-
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "d" 'rust-dbg-wrap-or-unwrap
     "el" 'consult-lsp-diagnostics
@@ -236,11 +166,7 @@
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()
-    (define-key evil-normal-state-map "gl" 'org-open-at-point)
-    (define-key org-agenda-mode-map "j" 'evil-next-line)
-    (define-key org-agenda-mode-map "k" 'evil-previous-line)
-    (define-key org-agenda-mode-map (kbd "SPC") 'org-agenda-show-and-scroll-up)
-    (define-key org-agenda-mode-map (kbd "RET") 'org-agenda-switch-to))
+    (define-key evil-normal-state-map "gl" 'org-open-at-point))
 
 (add-hook 'org-mode-hook 'add-org-mode-motion-keys)
 

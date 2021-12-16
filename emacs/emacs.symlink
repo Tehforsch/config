@@ -34,10 +34,9 @@
 ; Completion
 (load "~/projects/config/emacs/company.el")
 
-(load "~/projects/config/emacs/miscSettings.el") ; Needs to be before orgmode so we can set org-agenda-window-setup to normal
+(load "~/projects/config/emacs/miscSettings.el")
 
 (load "~/projects/config/emacs/orgMode.el")
-(load "~/projects/config/emacs/orgAgenda.el")
 (load "~/projects/config/emacs/autosaveAndLock.el")
 (load "~/projects/config/emacs/terminal.el")
 (load "~/projects/config/emacs/hydra.el")
