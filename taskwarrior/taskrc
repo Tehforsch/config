@@ -12,7 +12,7 @@ include /home/toni/projects/config/taskwarrior/solarized-16.theme
 report.default.columns=id,due,tags,project,description,urgency
 report.default.labels=id,due,tags,proj,desc,urg
 report.default.sort=urgency+\/,project
-report.default.filter=status:pending
+report.default.filter=status:pending -maybe
 
 # Context setup
 context.phd.read=project:phd
