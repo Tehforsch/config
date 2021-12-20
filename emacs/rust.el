@@ -4,7 +4,6 @@
 (setq rustic-format-on-save nil)
 (setq rustic-format-display-method 'ignore); Don't show rustfmt buffer
 
-(push 'rustic-clippy flycheck-checkers)
 (add-hook 'rustic-mode-hook 'flycheck-mode)
 (setq rustic-lsp-server 'rust-analyzer)
 (setq rustic-analyzer-command '("rustup run nightly rust-analyzer"))
