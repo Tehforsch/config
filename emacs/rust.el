@@ -12,8 +12,6 @@
 
 (define-key rustic-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
-(add-hook 'conf-space-mode-hook 'backtrace)
-
 (setq lsp-auto-execute-action nil)
 
 (use-package helm-lsp)
