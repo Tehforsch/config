@@ -6,7 +6,7 @@ taskd.server=h2513905.stratoserver.net:53589
 taskd.credentials=Public/toni/ba2d4286-aadc-4f76-9a54-74908b07151c
 
 # Color Theme
-include solarized-light-256.theme
+include /home/toni/projects/config/taskwarrior/solarized-16.theme
 
 # Default report
 report.default.columns=id,due,tags,project,description,urgency
@@ -58,3 +58,5 @@ uda.taskwarrior-tui.keyconfig.zoom=z
 uda.taskwarrior-tui.keyconfig.context-menu=c
 uda.taskwarrior-tui.keyconfig.next-tab=]
 uda.taskwarrior-tui.keyconfig.previous-tab=[
+
+weekstart=monday

@@ -77,9 +77,9 @@ color.tag.none=
 color.tagged=
 
 # Due
-color.due=color9
+color.due=color3
 color.due.today=color1
-color.overdue=color5
+color.overdue=color9
 
 # Report: burndown
 color.burndown.done=color0 on color6
@@ -112,4 +112,3 @@ color.sync.rejected=color13
 # Command: undo
 color.undo.after=color2
 color.undo.before=color1
-
