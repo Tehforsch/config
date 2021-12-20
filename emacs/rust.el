@@ -1,5 +1,4 @@
 (use-package rustic)
-;; (setq rustic-format-on-save t)
 (setenv "PATH" (concat (getenv "PATH") ":/home/toni/.cargo/bin"))
 (setq exec-path (append exec-path '("/home/toni/.cargo/bin")))
 (setq rustic-format-on-save nil)
@@ -11,12 +10,8 @@
 (setq rustic-analyzer-command '("rustup run nightly rust-analyzer"))
 
 (add-hook 'rustic-mode-hook #'company-mode)
-;; (add-hook 'rustic-mode-hook #'racer-mode)
-;; (add-hook 'racer-mode-hook #'eldoc-mode)
 
-;; (require 'rust-mode)
 (define-key rustic-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-;; (setq company-tooltip-align-annotations t)
 
 (add-hook 'conf-space-mode-hook 'backtrace)
 
