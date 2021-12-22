@@ -85,9 +85,6 @@ mode "$i3" {
 
     bindsym q kill
 
-    bindsym t border normal
-    bindsym Shift+T border pixel 1
-
     bindsym e layout toggle splith tabbed
     bindsym f floating toggle
     bindsym minus split v
