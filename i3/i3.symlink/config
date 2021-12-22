@@ -42,7 +42,7 @@ bar {
 #Disable window titles
 # new_window 1pixel
 for_window [class="nomacs"] border normal
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 
 # Enable floating mode (popup style) for some applications
 for_window [window_role="pop-up"] floating enable
