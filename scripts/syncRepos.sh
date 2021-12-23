@@ -7,5 +7,6 @@ while [[ 1 ]]; do
     mpc update
     cd /home/$USER/pictures
     ./update.sh
+    task sync
     sleep 3600
 done
