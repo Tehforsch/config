@@ -35,3 +35,5 @@
          (start (car text-object))
          (end (car (cdr text-object))))
     (evil-surround-region start end nil ?>)))
+
+(setq lsp-rust-analyzer-proc-macro-enable t)
