@@ -312,12 +312,12 @@ mode "$media" {
     bindsym b exec --no-startup-id $scripts/changeBrightness.sh 0; mode "default"
     bindsym d exec "mpc next"
     bindsym f exec --no-startup-id $scripts/changeVolume.sh 0
-    bindsym g exec --no-startup-id $scripts/changeBrightness.sh -1
     bindsym l exec bash $scripts/showLyrics.sh; mode "default"
     bindsym o exec --no-startup-id $scripts/streamlink.sh; mode "default"
     bindsym r exec --no-startup-id $scripts/changeVolume.sh 1
     bindsym s exec "mpc toggle"; mode "default"
-    bindsym t exec --no-startup-id $scripts/changeBrightness.sh 1
+    bindsym g exec --no-startup-id $scripts/changeBrightness.sh -dec 300
+    bindsym t exec --no-startup-id $scripts/changeBrightness.sh -inc 300
     bindsym m mode "$findMusic"
     bindsym j exec mpc seek +10
     bindsym k exec mpc seek -10
@@ -372,7 +372,6 @@ exec --no-startup-id seafile-applet
 exec --no-startup-id sleep 3 && redshift -l 49.40768:8.69079
 exec --no-startup-id sleep 5 && mpd
 exec --no-startup-id sleep 6 && mpdas
-exec --no-startup-id xbacklight -set 100
 exec sleep 10; i3-msg workspace 3:todo; kitty --hold --detach taskwarrior-tui; i3-msg mode "default"
 exec bash $scripts/syncRepos.sh
 exec /opt/urserver/urserver --daemon
