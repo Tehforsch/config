@@ -24,8 +24,8 @@
 (blink-cursor-mode 0)
 
 ; Theme
-(use-package srcery-theme)
+(use-package gruvbox-theme)
 ; Color theme: srcery
-(load-theme 'srcery t)
+(load-theme 'gruvbox-dark-hard t)
 
 (fringe-mode '(0 . 0))
