@@ -77,7 +77,7 @@
     "pf" 'projectile-switch-project
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
-    "t" 'treemacs
+    "t" 'treemacs-toggle-only-current-project
     "u" '(:which-key "Undo")
     "ut" 'undo-tree-visualize
     "w" 'save-buffer
