@@ -4,10 +4,6 @@
   :after (treemacs evil)
   :ensure t)
 
-(use-package treemacs-projectile)
-
-(use-package lsp-treemacs)
-
 ; Always follow the currently open project
 (treemacs-project-follow-mode)
 (setq treemacs-project-follow-cleanup t)
