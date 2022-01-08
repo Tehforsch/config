@@ -1,11 +1,14 @@
-(general-create-definer global-leader-def
-  :keymaps 'override
-  :prefix "SPC")
+;; (general-create-definer global-leader-def
+;;   :keymaps 'override
+;;   :prefix "SPC")
 
 (general-create-definer mode-leader-def
   :prefix ",")
 
-(global-leader-def '(normal visual) 'global
+(general-define-key
+ :states '(normal visual emacs motion treemacs)
+ :keymaps 'override
+ :prefix "SPC"
     "!" 'start-terminal-in-pwd
     "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
     "x" 'execute-extended-command
