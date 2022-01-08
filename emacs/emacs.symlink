@@ -24,6 +24,8 @@
 (load "~/projects/config/emacs/fileAssociations.el")
 (load "~/projects/config/emacs/helm.el")
 
+(load "~/projects/config/emacs/treemacs.el")
+
 ; Specific languages
 (load "~/projects/config/emacs/rust.el")
 (load "~/projects/config/emacs/c.el")
