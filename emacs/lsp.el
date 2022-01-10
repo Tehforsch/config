@@ -16,8 +16,6 @@
 ;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
 ;;          (lambda () (require 'ccls) (lsp))))
 
-(setq lsp-pyls-plugins-pycodestyle-enabled nil)
-
 (use-package lsp-ui)
 
 (setq lsp-ui-doc-enable nil
