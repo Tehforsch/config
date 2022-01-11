@@ -11,7 +11,7 @@ for filetype in "$@"; do
 done
 
 for depth in $(seq 0 $maxDepth); do
-    searchResult=$(fd -E projects/cluster $filetypeCommand --exact-depth $depth)
+    searchResult=$(fd -I $filetypeCommand --exact-depth $depth)
     if [ "$searchResult" != "" ]; then
         if [ "$docs" != "" ]; then
             docs="${docs}\n$searchResult"
@@ -20,7 +20,7 @@ for depth in $(seq 0 $maxDepth); do
         fi
     fi
 done
-docs=$docs$(fd $filetypeCommand --min-depth $(( $maxDepth + 1 )))
+docs=$docs$(fd -I $filetypeCommand --min-depth $(( $maxDepth + 1 )))
 
 file=$(printf "$docs" | rofi -i -dmenu -p  "Documents:" -no-custom)
 if [ "$file" != "" ]; then
