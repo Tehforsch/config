@@ -1,4 +1,4 @@
 alias tl="task default"
-alias ta="task add"
+alias ta="$scripts/addTask.sh"
 alias tc="task context"
 alias tui="taskwarrior-tui"

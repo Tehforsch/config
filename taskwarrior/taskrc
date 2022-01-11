@@ -14,6 +14,12 @@ report.default.labels=id,due,tags,proj,desc,urg
 report.default.sort=urgency+\/,project
 report.default.filter=status:pending -maybe
 
+# Default report
+report.allProjects.columns=project
+report.allProjects.labels=project
+report.allProjects.sort=project
+report.allProjects.filter=status:pending -maybe
+
 # Context setup
 context.phd.read=project:phd
 context.personal.read=project.not:phd
