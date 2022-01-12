@@ -27,14 +27,3 @@
                                            (lsp-session-folder->servers (lsp-session))))
                               "Workspace symbol"
                               "#"))
-
-(defun surround-symbol-with-generic-type ()
-  "Surround the symbol at point in <> and begin typing in front. Useful for adding generics."
-  (interactive)
-  (evil-insert nil nil nil) ; Enter insert at first so that this whole function becomes a single action which will be repeatable with . / undoable with u
-  (let* ((text-object (evil-inner-symbol))
-         (start (car text-object))
-         (end (car (cdr text-object))))
-    (evil-surround-region start end nil ?>)))
-
-(setq lsp-rust-analyzer-proc-macro-enable t)
