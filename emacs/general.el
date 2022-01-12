@@ -127,7 +127,6 @@
     "ep" 'previous-error
     "f" 'rustic-format-buffer
     "h" 'toggle-lsp-ui-sideline-show-hover
-    "g" 'surround-symbol-with-generic-type
     "r" 'lsp-rename
     "p" 'lsp-rust-find-parent-module
     "s" 'helm-lsp-workspace-all-symbols

@@ -87,6 +87,14 @@
 (define-key evil-normal-state-map "ga" 'append-end-of-symbol)
 (define-key evil-normal-state-map "gi" 'insert-beginning-of-symbol)
 
+(defun goto-end-of-symbol ()
+  (interactive)
+  (apply #'evil-visual-char (evil-inner-symbol))
+  (evil-exit-visual-state)
+  (evil-backward-char))
+
+(define-key evil-normal-state-map "E" 'goto-end-of-symbol)
+
 ; Automatically go into insert mode when opening a terminal
 (defun enter-evil-insert-mode ()
   (evil-insert nil nil nil))
