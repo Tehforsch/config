@@ -209,7 +209,7 @@ mode "$resize" {
     bindsym Shift+L resize shrink   right 10 px or 10 ppt
 }
 
-set $launch Launch: [Q]uit i3, droid[K]am
+set $launch Launch: [Q]uit i3, [D]roidcam
 mode "$launch" {
     bindsym Escape mode "$i3"
     bindsym Tab mode "default"
