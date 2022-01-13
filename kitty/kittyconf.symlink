@@ -7,6 +7,7 @@ scrollback_lines 5000
 scrollback_pager_history_size 
 
 scrollback_pager nvim -c "set nonumber nolist showtabline=0 foldcolumn=0 laststatus=0" -c "autocmd TermOpen * normal G" -c "silent write! /tmp/kitty_scrollback_buffer | te head -c-1 /tmp/kitty_scrollback_buffer; rm /tmp/kitty_scrollback_buffer; cat"
+map ctrl+shift+e show_scrollback
 
 enable_audio_bell no
 
@@ -14,12 +15,12 @@ update_check_interval 0
 allow_remote_control yes
 
 map ctrl+Return combine : new_window_with_cwd : detach_window
-map ctrl+shift+j combine : scroll_line_down : scroll_line_down : scroll_line_down
-map ctrl+shift+k combine : scroll_line_up : scroll_line_up : scroll_line_up
 
-map ctrl+shift+e show_scrollback
-# scrollback_pager nvim -c "set ft=terminal" -
-# map kitty_mod+h launch --stdin-source=@screen_scrollback --stdin-add-formatting --type=overlay vim -c "normal G" -c "set nonumber nolist" -
+# Slightly lazy but I don't want to figure out how to
+# scroll n times
+map ctrl+shift+j combine : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down
+map ctrl+shift+k combine : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up
+
 
 # Gruvbox theme
 foreground            #ebdbb2
