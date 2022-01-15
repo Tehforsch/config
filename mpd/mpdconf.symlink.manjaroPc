@@ -9,5 +9,5 @@ db_file			"~/.mpd/database"
 audio_output {
         type            "pulse"
         name            "pulse audio"
-        device "alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-output"
+        sink            "alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-output"
     }
