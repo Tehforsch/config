@@ -96,7 +96,6 @@ mode "$i3" {
     bindsym y mode "$media"
     bindsym w mode "$workspace"
     bindsym 1 mode "default"; exec bash $scripts/runLastCommandInTerminalToTheRight.sh
-    bindsym Shift+F12 move workspace "100:game"
     bindsym Shift+p exec setxkbmap de nodeadkeys; mode "$passthrough"
 }
 
@@ -123,6 +122,7 @@ mode "$workspace" {
     bindsym Return mode "default"
     bindsym Tab mode "default"
     bindsym F9 mode "$i3"
+    bindsym Shift+F12 move workspace "100:game"
     bindsym asciicircum workspace back_and_forth; mode "default"
     # Have Output changing commands here too
     bindsym Shift+H move workspace to output left
