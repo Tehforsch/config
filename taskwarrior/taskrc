@@ -28,9 +28,8 @@ urgency.due.coefficient = 30
 urgency.user.tag.maybe.coefficient = -100.0
 urgency.user.tag.ita.coefficient = -10.0
 urgency.user.tag.spree.coefficient = 8.0
-urgency.user.project.todo.coefficient = 20.0
-urgency.user.project.routine.coefficient = -3.0
 
+urgency.user.project.todo.coefficient = 20.0
 urgency.user.project.routine.coefficient = 5.0
 urgency.user.project.phd.orga.coefficient = 5.0
 urgency.user.project.phd.voronoiSwim.coefficient = -3.0
