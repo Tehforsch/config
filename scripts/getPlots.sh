@@ -5,3 +5,7 @@ if [[ $sysName == "bwfor" ]]; then
 elif [[ $sysName == "supermuc" ]]; then
     rsync -rv $supermucWork/$simName/pics .
 fi
+if [[ $? != 0 ]]; then
+    echo "FAILED TO COPY FILES - IS SSHFS MOUNTED?"
+    exit 1
+fi
