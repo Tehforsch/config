@@ -363,6 +363,8 @@ assign [class="dota2"] 100:game
 assign [class="terraria"] 100:game
 assign [class="csgo_linux64"] 100:game
 
+exec i3-msg workspace 21:a
+
 # Set background to black
 exec_always --no-startup-id xsetroot -solid "$inactiveBg"
 exec_always --no-startup-id sleep 3 && $scripts/startup.sh
@@ -372,7 +374,6 @@ exec --no-startup-id seafile-applet
 exec --no-startup-id sleep 3 && redshift -l 49.40768:8.69079
 exec --no-startup-id sleep 5 && mpd
 exec --no-startup-id sleep 6 && mpdas
-exec sleep 10; i3-msg workspace 3:todo; kitty --hold --detach taskwarrior-tui; i3-msg mode "default"
 exec bash $scripts/syncRepos.sh
 exec /opt/urserver/urserver --daemon
 exec gpaste-client start
