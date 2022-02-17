@@ -363,6 +363,8 @@ assign [class="dota2"] 100:game
 assign [class="terraria"] 100:game
 assign [class="csgo_linux64"] 100:game
 
+exec i3-msg workspace 21:a
+
 # Set background to black
 exec_always --no-startup-id xsetroot -solid "$inactiveBg"
 exec_always --no-startup-id sleep 3 && $scripts/startup.sh
