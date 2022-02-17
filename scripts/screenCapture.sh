@@ -1,8 +1,8 @@
 #!/bin/bash
 sleep 0.1
 if [[ $# == 0 ]]; then
-    geom=$(xrectsel)
-    echo "$geom" >> ~/.playground/sc
+    # geom=$(xrectsel)
+    geom="2557x1438+0+1"
     pat='([0-9]+)x([0-9]+)\+([0-9]+)\+([0-9]+)'
     [[ "$geom" =~ $pat ]]
     xSize="${BASH_REMATCH[1]}"
@@ -17,7 +17,7 @@ if [[ $# == 0 ]]; then
         ySize=$(($ySize + 1))
     fi
     mkdir -p ~/.screenCaptures
-    outputFile=~/.screenCaptures/$(date +%Y-%m-%d-%H-%M-%S).mkv
+    outputFile=~/.screenCaptures/$(date +%Y-%m-%d-%H-%M-%S).mp4
     ffmpeg -f x11grab -video_size ${xSize}x${ySize} -framerate 30 -i :0.0+${xOff},${yOff} -preset ultrafast -crf 18 -pix_fmt yuv420p $outputFile
 else
     killall ffmpeg
