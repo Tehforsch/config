@@ -8,7 +8,7 @@ configuration {
 
 @theme "gruvbox-dark-hard"
 listview {
-	lines: 40;
+	lines: 35;
 }
 
 window {
