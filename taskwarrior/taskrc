@@ -32,7 +32,10 @@ urgency.user.tag.spree.coefficient = 8.0
 urgency.user.project.todo.coefficient = 20.0
 urgency.user.project.routine.coefficient = 5.0
 urgency.user.project.phd.orga.coefficient = 5.0
+urgency.user.project.phd.paper.coefficient = 3.0
 urgency.user.project.phd.voronoiSwim.coefficient = -3.0
+
+urgency.age.coefficient = 40.0
 
 # taskwarrior-tui setup - mostly the defaults for reference
 uda.taskwarrior-tui.keyconfig.quit=q
