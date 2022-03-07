@@ -35,6 +35,7 @@
     "fq" 'evil-save-modified-and-close
     "g" '(:which-key "Magit")
     "gb" 'magit-blame
+    "gl" 'magit-log-buffer-file
     "gs" 'magit-status
     "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
     "h" 'selectrum-repeat
