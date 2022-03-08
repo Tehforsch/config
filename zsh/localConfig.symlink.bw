@@ -7,4 +7,6 @@ export PATH=$PATH:$HOME/projects/neovim/install/usr/local/bin
 export VIMEXE=$HOME/projects/neovim/install/usr/local/bin/nvim
 source ~/.cargo/env
 export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
+export scripts=/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/config/scripts/
 export WORK=/gpfs/bwfor/home/hd/hd_hd/hd_hp240/work/
+export bob=~/projects/bob/target/release/bob
