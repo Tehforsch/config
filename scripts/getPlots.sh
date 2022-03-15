@@ -1,5 +1,6 @@
 sysName="$1"
-simName=$(basename $(realpath .))
+simName=$(realpath --relative-to ~/projects/phd/work/ .)
+echo $simName
 if [[ $sysName == "bwfor" ]]; then
     rsync -rv $bwforWork/$simName/pics .
 elif [[ $sysName == "supermuc" ]]; then
