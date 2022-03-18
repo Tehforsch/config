@@ -12,4 +12,5 @@ path=$(realpath --relative-to "$simFolder" "$1")
 target="$workFolder/$path"
 mkdir -p $(dirname "$target")
 echo "Running in $target"
-$bob start "$delete$1" "$target"
+echo bob start $delete$1 $target
+exec bob start $delete$1 $target
