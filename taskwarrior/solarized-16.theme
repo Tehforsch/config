@@ -60,8 +60,8 @@ color.active=color9
 color.recurring=color4
 color.scheduled=
 color.until=
-color.blocked=color0 on color14
-color.blocking=color15 on color0
+color.blocked=color8
+color.blocking=color2
 
 # Project
 color.project.none=
@@ -77,8 +77,8 @@ color.tag.none=
 color.tagged=
 
 # Due
-color.due=color3
-color.due.today=color1
+color.due=color10
+color.due.today=color3
 color.overdue=color9
 
 # Report: burndown
