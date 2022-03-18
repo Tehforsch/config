@@ -7,4 +7,3 @@ export bwforWork="/mnt/sshfs/bwforWork"
 export supermucProjects="/mnt/sshfs/supermucProjects"
 export supermucWork="/mnt/sshfs/supermucWork"
 export WORK=/home/toni/projects/phd/work/
-export bob=/home/toni/.cargo/bin/bob
