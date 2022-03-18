@@ -298,8 +298,6 @@ mode "$gameLaunch" {
 set $game Game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
     bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
-    bindsym F10; exec bash $scripts/timer/repeat.sh
-    bindsym Shift+F10; exec bash $scripts/timer/killTimers.sh
 }
 
 set $media Media: [b]lack, [m]usic, [o]:streams
