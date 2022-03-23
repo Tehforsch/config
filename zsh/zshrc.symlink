@@ -3,50 +3,13 @@ source $CONFIG/zsh/setSystemName.sh
 source $CONFIG/zsh/completionSettings.sh
 source $CONFIG/zsh/readline.sh
 source $CONFIG/zsh/history.sh
-
-# Fzf settings
-source ~/.fzf.zsh
-# Use fd for fzf
-export FZF_DEFAULT_COMMAND="fd --follow"
-export FZF_CTRL_T_COMMAND="fd --follow -I"
-
-# Source aliases at the end because, for some inexplicable reason, the git plugin of oh-my-zsh sets its own aliases (WHY?!) and overwrites some of mine.
-# Aliases and machine-local aliases
+source $CONFIG/zsh/fzf.sh
 source "$HOME/.aliases"
 
 if [[ -a "$HOME/.localAliases" ]]; then
     source "$HOME/.localAliases"
 fi
 
-source $CONFIG/fzf/widgets.zsh
-
-# Vim mode
-bindkey -v
-export KEYTIMEOUT=1
-# function zle-line-init zle-keymap-select {
-    # VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-    # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
-    # zle reset-prompt
-# }
-# zle -N zle-line-init
-# zle -N zle-keymap-select
-
-bindkey '^P' up-history
-bindkey '^N' down-history
-
-# backspace and ^h working even after
-# returning from command mode
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
-
-# Push current command to stack and pop it after another command has been entered
-bindkey '^q' push-line
-
-source "$CONFIG/dirAwareHistory/history.zsh"
-source "$CONFIG/dirAwareHistory/widget.zsh"
 bindkey '^r' fzf-dir-aware-history-widget
 # bindkey '^r' fzf-history-widget
 bindkey '^f' fzf-cd-home-widget
