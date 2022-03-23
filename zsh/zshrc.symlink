@@ -1,45 +1,17 @@
-source $HOME/projects/config/zsh/paths.sh
-source $CONFIG/zsh/setSystemName.sh
-source $CONFIG/zsh/completionSettings.sh
-source $CONFIG/zsh/readline.sh
-source $CONFIG/zsh/history.sh
-source $CONFIG/zsh/fzf.sh
+source "$HOME/projects/config/zsh/paths.sh"
+source "$CONFIG/zsh/setSystemName.sh"
+source "$CONFIG/zsh/completionSettings.sh"
+source "$CONFIG/zsh/readline.sh"
+source "$CONFIG/zsh/history.sh"
+source "$CONFIG/zsh/fzf.sh"
+source "$CONFIG/zsh/launch.sh"
+source "$CONFIG/zsh/prompt.sh"
+source "$CONFIG/zsh/zshCdWidget.sh"
 source "$HOME/.aliases"
 
 if [[ -a "$HOME/.localAliases" ]]; then
     source "$HOME/.localAliases"
 fi
 
-bindkey '^r' fzf-dir-aware-history-widget
-# bindkey '^r' fzf-history-widget
-bindkey '^f' fzf-cd-home-widget
-bindkey '^v' fzf-cd-widget
-bindkey '^T' fzf-file-widget
-# Binding to close the terminal with a process running in it without killing the process
-bindkey -s '^u' 'bg && disown && kitty @ close-window\n'
-# bind C-h to run de command && exit instead of command, detaching the process
-bindkey -s '^h' '^ade ^e\n'
-# bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
-bindkey -s '^g' '^ade ^e&& exit\n'
-
-bindkey '^l' insert-last-word
-
-source "$CONFIG/zsh/zshCdWidget.zsh"
-bindkey '^o' super-dir-widget
-
-export EDITOR="vim"
-bindkey '^e' edit-command-line
 
 ulimit -c unlimited
-
-export ANDROID_SDK_ROOT=~/.android/Sdk
-function launch {
-    nohup $1 >/dev/null 2>/dev/null & disown
-}
-source ~/projects/config/scripts/copyAbsolutePath.sh
-
-# Make tab completion be more like ls -la
-zstyle ':completion:*' file-list all
-
-precmd() { print "" }
-PROMPT=$'%B%F{3}%/%f%b \n%# '

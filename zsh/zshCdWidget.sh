@@ -4,3 +4,5 @@ super-dir-widget () {
     zle .accept-line
 }
 zle -N super-dir-widget
+
+bindkey '^o' super-dir-widget

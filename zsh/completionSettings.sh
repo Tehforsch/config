@@ -17,3 +17,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 # Disable "do you wish to see all ... possibilities?" prompt
 LISTMAX=0
+
+# Make tab completion be more like ls -la
+zstyle ':completion:*' file-list all
