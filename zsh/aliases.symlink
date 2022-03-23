@@ -1,4 +1,4 @@
-alias l="exa"
+alias l="exa -la"
 alias dlc="$CONFIG/scripts/copyLastDownload.sh"
 alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
 
