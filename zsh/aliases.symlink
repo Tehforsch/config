@@ -1,58 +1,45 @@
-alias de="~/projects/config/scripts/runDetached.sh"
-alias di="kitty +kitten diff"
-alias dlc='$CONFIG/scripts/copyLastDownload.sh'
-alias dls='ls -la --sort=time --reverse'
+alias dlc="$CONFIG/scripts/copyLastDownload.sh"
 alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
-alias fin='python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/finances'
-alias ga='git add'
+
 alias g="git"
-alias gc='git commit'
-alias gd='git diff'
-alias gdcc='git diff --color-words'
-alias gdc='git diff --staged' # show diff between index and HEAD
-alias gdh='git log --follow -p --'
-alias gp='git push'
-alias gpu='git pull'
-alias gs='git status' # This shadows ghostscript - I don't care
-alias gsu='git submodule update --recursive --remote'
-alias gr='git reset'
+alias ga="git add"
+alias gc="git commit"
+alias gd="git diff"
+alias gdcc="git diff --color-words"
+alias gdc="git diff --staged # show diff between index and HEAD"
+alias gdh="git log --follow -p --"
+alias gp="git push"
+alias gpu="git pull"
+alias gs="git status # This shadows ghostscript - I dont care"
+alias gsu="git submodule update --recursive --remote"
+alias gr="git reset"
+alias ggr="$CONFIG/scripts/gitGrep.sh"
 alias co="git checkout"
-alias tim="kitty +kitten icat"
+
 alias im="gpicview"
+
 alias ka="killall"
-alias l='ls -alFh --color=auto'
-alias pdfl='pdflatex --interaction=nonstopmode -shell-escape'
-alias pac="sudo pacman"
+alias shut="sudo shutdown -h 0"
+
 alias pmb="pamac build --no-confirm"
 alias pms="pamac search -a"
-alias python='python3'
-alias rmf='rm -rf'
-alias runrust="$CONFIG/scripts/runRust.sh"
-alias runlatex='$CONFIG/scripts/latexLayout.sh'
-alias runpython='$CONFIG/scripts/pythonLayout.sh'
-alias shut='sudo shutdown -h 0'
-alias timer='$CONFIG/scripts/timer/timer.sh'
-alias timerAt='$CONFIG/scripts/timer/timerAt.sh'
-alias old="$CONFIG/scripts/openLastTouchedFileInDir.sh"
+
+alias timer="$CONFIG/scripts/timer/timer.sh"
+alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
+
 alias addmusic="bash ~/music/addMusic.sh"
-alias triggerbob="~/projects/config/scripts/triggerBob.sh"
-alias triggerarepo="~/projects/config/scripts/triggerArepo.sh"
-alias showsnap="~/projects/phd/tmp/samplePlot/showSnapshot.sh"
-alias sim="source ~/projects/config/scripts/cdSimDirs.sh sim"
-alias run="source ~/projects/config/scripts/cdSimDirs.sh run"
+
 alias pybob="python3 ~/projects/pybob/main.py"
-alias showjobs="bash ~/projects/config/scripts/showJobs.sh"
-alias inkscapeexport="inkscape --export-area-drawing --export-type=png --export-dpi=1800"
-alias canibuy="bash ~/resource/finances/showBudget"
-alias openanki="~/projects/pundit/scripts/openAnkiDatabase.sh"
-alias f="rga-fzf"
-alias pf="emacsclient -c -n \$(pundit ~/notes find)"
-alias cheat="~/projects/config/scripts/getCommandHelp.sh"
-alias ls="exa"
-alias l="exa -la"
-alias ggr="$CONFIG/scripts/gitGrep.sh"
+alias testbob="cargo run --release --manifest-path ~/projects/bob/Cargo.toml"
+alias getbwfor="$scripts/getPlots.sh bwfor && bob replot ."
+alias getsupermuc="$scripts/getPlots.sh supermuc && bob replot ."
+
 alias work="bash ~/projects/config/scripts/setWorkFolder.sh"
 alias w="source ~/projects/config/scripts/getWorkFolder.sh"
+
+alias fin="python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/finances"
+alias canibuy="bash ~/resource/finances/showBudget"
+
 alias cb="cargo build"
 alias cbr="cargo build --release"
 alias cr="cargo run"
@@ -60,14 +47,7 @@ alias crr="cargo run --release"
 alias ct="cargo test"
 alias ctr="cargo test --release"
 alias ci="cargo install --path ."
-alias testbob="cargo run --release --manifest-path ~/projects/bob/Cargo.toml"
-alias replot="bob replot ."
-alias getbwfor="$scripts/getPlots.sh bwfor && bob replot ."
-alias getsupermuc="$scripts/getPlots.sh supermuc && bob replot ."
+
 alias start="$scripts/startSim.sh"
 alias copy="rsync --archive --stats --progress --human-readable"
-alias weather="curl wttr.in/Heidelberg"
 alias kp="$scripts/killProcess.sh"
-alias slice="$scripts/showSlice.sh"
-alias pg="ps aux | grep"
-alias copy="rsync --archive --stats --progress --human-readable"
