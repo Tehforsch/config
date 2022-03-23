@@ -10,3 +10,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 # Enable auto completion for special directories like . and ..
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' menu select
+
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="true"
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Disable "do you wish to see all ... possibilities?" prompt
+LISTMAX=0

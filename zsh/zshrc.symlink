@@ -1,27 +1,8 @@
 source $HOME/projects/config/zsh/paths.sh
 source $CONFIG/zsh/setSystemName.sh
-source $CONFIG/zsh/completionSettings.zsh
-
-# Reduce timeout after going to normal mode
-export KEYTIMEOUT=1
-
-# This will make ctrl-w delete only part of a path, not entire paths
-WORDCHARS=''
-
-# Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-# Disable "do you wish to see all ... possibilities?" prompt
-LISTMAX=0
-
-# Remove duplicates
-setopt HIST_IGNORE_ALL_DUPS
-# Allow sharing of history
-setopt append_history
-setopt share_history
-setopt inc_append_history
-
+source $CONFIG/zsh/completionSettings.sh
+source $CONFIG/zsh/readline.sh
+source $CONFIG/zsh/history.sh
 
 # Fzf settings
 source ~/.fzf.zsh
