@@ -1,38 +1,12 @@
-# This sets some paths such as where the CONFIG folder lies. Makes it easier to use on other machines without getting confused
-systemName=$(cat $HOME/.systemName)
-if [[ -a "$HOME/.localConfig" ]]; then
-    source "$HOME/.localConfig"
-fi
+source $HOME/projects/config/zsh/paths.sh
+source $CONFIG/zsh/setSystemName.sh
+source $CONFIG/zsh/completionSettings.zsh
 
 # Reduce timeout after going to normal mode
 export KEYTIMEOUT=1
 
-## default folders folder
-export CONFIG=$HOME/projects/config
-export config=$CONFIG
-export PROJECTS=$HOME/projects
-export projects=$PROJECTS
-export scripts=$CONFIG/scripts
-export GPG_TTY=$(tty)
-export BROWSER=/usr/bin/firefox
-
-DISABLE_AUTO_UPDATE=true
-
-# load zgen
-source "$CONFIG/zgen/zgen.zsh"
-# if the init scipt doesn't exist
-if ! zgen saved; then
-    echo "Creating a zgen save"
-    zgen oh-my-zsh
-    # plugins
-    # zgen oh-my-zsh plugins/git
-    # zgen load zsh-users/zsh-completions src
-    # theme
-    # save all to init script
-    zgen save
-fi
-
-plugins=()
+# This will make ctrl-w delete only part of a path, not entire paths
+WORDCHARS=''
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -40,9 +14,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 # Disable "do you wish to see all ... possibilities?" prompt
 LISTMAX=0
-
-# Enable auto completion for special directories like . and ..
-zstyle ':completion:*' special-dirs true
 
 # Remove duplicates
 setopt HIST_IGNORE_ALL_DUPS
@@ -52,16 +23,11 @@ setopt share_history
 setopt inc_append_history
 
 
-# Magically make converting utf-8 buffers to string and then printing them work
-export PYTHONIOENCODING="utf-8"
-export PYTHONHASHSEED=0 # The things they make me do for productivity
-
-# Fd settings
+# Fzf settings
 source ~/.fzf.zsh
 # Use fd for fzf
 export FZF_DEFAULT_COMMAND="fd --follow"
 export FZF_CTRL_T_COMMAND="fd --follow -I"
-# export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
 
 # Source aliases at the end because, for some inexplicable reason, the git plugin of oh-my-zsh sets its own aliases (WHY?!) and overwrites some of mine.
 # Aliases and machine-local aliases
@@ -71,55 +37,7 @@ if [[ -a "$HOME/.localAliases" ]]; then
     source "$HOME/.localAliases"
 fi
 
-# FZF settings that i want in my version control
-# ALT-C - cd into the selected directory
-fzf-cd-home-widget() {
-  local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d '.*' ~"}"
-  setopt localoptions pipefail no_aliases 2> /dev/null
-  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
-  if [[ -z "$dir" ]]; then
-    zle redisplay
-    return 0
-  fi
-  cd "$dir"
-  unset dir # ensure this doesn't end up appearing in prompt expansion
-  local ret=$?
-  zle fzf-redraw-prompt
-  return $ret
-}
-zle     -N    fzf-cd-home-widget
-
-fzf-cd-widget() {
-  local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d -I "}"
-  setopt localoptions pipefail no_aliases 2> /dev/null
-  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
-  if [[ -z "$dir" ]]; then
-    zle redisplay
-    return 0
-  fi
-  cd "$dir"
-  unset dir # ensure this doesn't end up appearing in prompt expansion
-  local ret=$?
-  zle fzf-redraw-prompt
-  return $ret
-}
-zle     -N    fzf-cd-widget
-export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-export FZF_DEFAULT_OPTS="--ansi"
-
-rga-fzf() {
-	RG_PREFIX="rga --files-with-matches"
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	$scripts/openFile.sh "$file"
-}
+source $CONFIG/fzf/widgets.zsh
 
 # Vim mode
 bindkey -v
@@ -129,7 +47,7 @@ export KEYTIMEOUT=1
     # RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
     # zle reset-prompt
 # }
-zle -N zle-line-init
+# zle -N zle-line-init
 # zle -N zle-keymap-select
 
 bindkey '^P' up-history
