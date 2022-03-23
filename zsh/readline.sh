@@ -24,10 +24,6 @@ bindkey '^q' push-line
 
 # Binding to close the terminal with a process running in it without killing the process
 bindkey -s '^u' 'bg && disown && kitty @ close-window\n'
-# bind C-h to run de command && exit instead of command, detaching the process
-bindkey -s '^h' '^ade ^e\n'
-# bind C-g to run de command && exit instead of command, detaching the process and killing the terminal
-bindkey -s '^g' '^ade ^e&& exit\n'
 
 bindkey '^l' insert-last-word
 

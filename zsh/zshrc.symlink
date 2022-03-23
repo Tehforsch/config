@@ -4,9 +4,9 @@ source "$CONFIG/zsh/completionSettings.sh"
 source "$CONFIG/zsh/readline.sh"
 source "$CONFIG/zsh/history.sh"
 source "$CONFIG/zsh/fzf.sh"
-source "$CONFIG/zsh/launch.sh"
 source "$CONFIG/zsh/prompt.sh"
 source "$CONFIG/zsh/zshCdWidget.sh"
+source "$CONFIG/zsh/launchWidget.sh"
 source "$HOME/.aliases"
 
 if [[ -a "$HOME/.localAliases" ]]; then
