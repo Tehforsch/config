@@ -29,3 +29,6 @@ bindkey '^l' insert-last-word
 
 export EDITOR="vim"
 bindkey '^e' edit-command-line
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
