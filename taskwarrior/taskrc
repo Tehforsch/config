@@ -26,7 +26,7 @@ context.personal.read=project.not:phd
 # Urgency settings
 urgency.due.coefficient = 100
 urgency.user.tag.maybe.coefficient = -100.0
-urgency.user.tag.ita.coefficient = -10.0
+urgency.user.tag.ita.coefficient = -50.0
 urgency.user.tag.spree.coefficient = 8.0
 
 urgency.user.project.todo.coefficient = 20.0
