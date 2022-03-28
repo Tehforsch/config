@@ -1,3 +1,4 @@
+autoload -U compinit; compinit
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu         # show completion menu on successive tab press
