@@ -5,6 +5,4 @@ export SAVEHIST=1000000
 
 # Remove duplicates
 setopt HIST_IGNORE_ALL_DUPS
-# Allow sharing of history
-setopt share_history
 setopt inc_append_history
