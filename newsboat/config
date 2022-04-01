@@ -39,3 +39,6 @@ highlight article "https?://[^ ]+" color2 default underline
 highlight article "\\[[0-9]+\\]" color2 default bold
 highlight article "\\[image\\ [0-9]+\\]" color2 default bold
 highlight feedlist "^─.*$" color6 color6 bold
+
+auto-reload yes
+reload-threads 20

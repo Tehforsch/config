@@ -1,13 +1,30 @@
-https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw
-https://www.youtube.com/feeds/videos.xml?channel_id=UC5jRwTUqG15l-BcqQHbVFtA
-https://www.youtube.com/feeds/videos.xml?channel_id=UCqiKFGkSZwrbMSfkkd2CQGg
-https://www.youtube.com/feeds/videos.xml?channel_id=UCv1WDP5EiipMQ__C4Cg6aow
-https://www.youtube.com/feeds/videos.xml?channel_id=UChcmKGMMMemwb291yVEtXHA
-https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2MGuhIaOP6YLpUx106kTQw
+"query:Articles:tags # \"articles\""
+"query:Videos:tags # \"videos\""
 
-https://hnrss.org/newest?points=300
-https://xkcd.com/rss.xml
-https://this-week-in-rust.org/rss.xml
-https://gamedev.rs/rss.xml
-https://www.to-rss.xyz/wikipedia/current_events/
+# Adam Ondra
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw videos !hidden
+# Mellow
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5jRwTUqG15l-BcqQHbVFtA videos !hidden
+# Emil Abrahamsson
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqiKFGkSZwrbMSfkkd2CQGg videos !hidden
+# Dave Mc Leod
+https://www.youtube.com/feeds/videos.xml?channel_id=UChcmKGMMMemwb291yVEtXHA videos !hidden
+# Wedge climbing
+https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ videos !hidden
+# IFSC
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2MGuhIaOP6YLpUx106kTQw videos !hidden
+# Jung Naiv
+https://www.youtube.com/feeds/videos.xml?channel_id=UCv1WDP5EiipMQ__C4Cg6aow videos !hidden
+
+https://hnrss.org/newest?points=300 articles !hidden
+https://xkcd.com/rss.xml articles !hidden
+https://this-week-in-rust.org/rss.xml articles !hidden
+https://gamedev.rs/rss.xml articles !hidden
+https://www.to-rss.xyz/wikipedia/current_events/ articles !hidden
+
+https://tonipeter.de/redditRss/climbing.xml articles !hidden
+https://tonipeter.de/redditRss/dota2.xml articles !hidden
+https://tonipeter.de/redditRss/chess.xml articles !hidden
+https://tonipeter.de/redditRss/bouldering.xml articles !hidden
+https://tonipeter.de/redditRss/climbing.xml articles !hidden
+https://tonipeter.de/redditRss/climbharder.xml articles !hidden
