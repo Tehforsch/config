@@ -215,6 +215,7 @@ mode "$launch" {
     bindsym Tab mode "default"
     bindsym F9 mode "$i3"
     bindsym a exec kitty --detach --hold taskwarrior-tui; mode "default"
+    bindsym b exec blueman-manager
     bindsym c exec firefox; mode "default"
     bindsym d mode "$document"
     bindsym e exec emacsclient -c -n; mode "default"
