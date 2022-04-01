@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ~/.play
-nohup /usr/bin/firefox "$@" 2>&1 > /dev/null &
+nohup /usr/bin/firefox "$@" >/dev/null 2>&1 &
