@@ -9,8 +9,8 @@ if [[ $systemName == "manjaro" ]]; then
     second=eDP1
 elif [[ $systemName == "manjaroPc" ]]; then
     main=DP-0
-    second=HDMI-0
-    xrandr --output DP-0 --primary --auto --output HDMI-0 --auto --right-of DP-0
+    second=DP2
+    xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0
     exit 0
 elif [[ $systemName == "ita" ]]; then
     main=DP2

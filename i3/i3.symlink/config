@@ -35,6 +35,7 @@ bar {
     output eDP1
     output eDP-1
     output DP-1-3
+    output DVI-D-0
     strip_workspace_numbers yes
     status_command i3status
 }
@@ -341,21 +342,22 @@ mode "$findMusic" {
 }
 
 # Assign workspaces to outputs
-workspace 1:chat output HDMI-0
-workspace 2:music output HDMI-0
-workspace 3:todo output HDMI-0
-workspace 4:notes output HDMI-0
-workspace 5:mail output HDMI-0
-workspace 6:zotero output HDMI-0
+workspace 1:chat output DVI-D-0
+workspace 2:music output DVI-D-0
+workspace 3:todo output DVI-D-0
+workspace 4:notes output DVI-D-0
+workspace 5:mail output DVI-D-0
+workspace 6:zotero output DVI-D-0
 
-workspace 21:a output DP-0
-workspace 22:s output DP-0
-workspace 23:d output DP-0
-workspace 24:f output DP-0
-workspace 25:g output DP-0
+workspace 21:a output HDMI-0
+workspace 22:s output HDMI-0
+workspace 23:d output HDMI-0
+workspace 24:f output HDMI-0
+workspace 25:g output HDMI-0
 
-workspace 21:y output HDMI-0
-workspace 22:x output HDMI-0
+workspace 100:game output DVI-D-0
+workspace 21:y output DVI-D-0
+workspace 22:x output DVI-D-0
 
 # Assign programs to workspace
 assign [class="dota2"] 100:game
