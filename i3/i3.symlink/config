@@ -379,4 +379,5 @@ exec --no-startup-id task context none
 exec bash $scripts/syncRepos.sh
 exec /opt/urserver/urserver --daemon
 exec gpaste-client start
+exec_always $scripts/lowerVolume.sh
 exec_always $scripts/updatePankit.sh
