@@ -27,3 +27,6 @@
                                            (lsp-session-folder->servers (lsp-session))))
                               "Workspace symbol"
                               "#"))
+
+; Ive had lots of problems with these - check this again in a few versions?
+(setq lsp-rust-analyzer-diagnostics-enable nil)
