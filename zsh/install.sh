@@ -1,1 +1,3 @@
-chsh -s /bin/zsh
+if [[ $SHELL != "/usr/bin/zsh" ]]; then
+    chsh -s /bin/zsh
+fi
