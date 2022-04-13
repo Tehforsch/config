@@ -28,6 +28,8 @@ bindkey -s '^u' 'bg && disown && kitty @ close-window\n'
 bindkey '^l' insert-last-word
 
 export EDITOR="vim"
+autoload edit-command-line
+zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 bindkey "^[[1;5C" forward-word
