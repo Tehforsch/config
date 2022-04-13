@@ -9,7 +9,7 @@ function make_symlink {
     name="$HOME/$2"
     mkdir -p $(dirname "$name")
     echo "$target\t\t -> $name"
-    ln -fs "$target" "$name"
+    ln -s "$target" "$name"
 }
 
 # The good, following the XDG_CONFIG_DIR structure
@@ -25,6 +25,7 @@ make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc.symlink .config/zathura/zathurarc
+make_symlink mimetypes/mimeapps.list .config/mimeapps.list
 
 # The EVIL, polluting my home directory
 make_symlink alsa/asoundrc .asoundrc
