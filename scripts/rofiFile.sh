@@ -1,8 +1,6 @@
 #!/bin/bash
 cd ~
 docs=""
-command=$1
-shift # Filetypes are now the only remaining arguments
 # Put the lower-depth results on top of the list
 maxDepth=3 # we cant do this for all the depths because the query will take too long for it to be fun
 filetypeCommand=""
@@ -24,5 +22,5 @@ docs=$docs$(fd -I $filetypeCommand --min-depth $(( $maxDepth + 1 )))
 
 file=$(printf "$docs" | rofi -i -dmenu -p  "Documents:" -no-custom)
 if [ "$file" != "" ]; then
-    $command "$file"
+    xdg-open "$file"
 fi
