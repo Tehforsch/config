@@ -55,3 +55,5 @@ alias kp="$scripts/killProcess.sh"
 alias cat="bat"
 
 alias cp='cp -v'
+
+alias o="xdg-open"
