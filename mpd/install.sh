@@ -1,1 +1,1 @@
-mkdir ~/.mpd
+mkdir ~/.local/share/mpd
