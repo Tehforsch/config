@@ -25,3 +25,4 @@ make_symlink i3/i3status.conf .config/i3status/config
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink mypy/mypy.ini .config/mypy/config
+make_symlink nushell/config.nu .config/nushell/config.nu
