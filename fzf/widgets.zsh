@@ -45,5 +45,5 @@ rga-fzf() {
                                 --preview-window="70%:wrap"
 	)" &&
 	echo "opening $file" &&
-	$scripts/openFile.sh "$file"
+	xdg-open "$file"
 }
