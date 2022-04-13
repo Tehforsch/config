@@ -53,3 +53,5 @@ alias start="$scripts/startSim.sh"
 alias copy="rsync --archive --stats --progress --human-readable"
 alias kp="$scripts/killProcess.sh"
 alias cat="bat"
+
+alias cp='cp -v'
