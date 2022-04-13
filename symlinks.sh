@@ -26,3 +26,4 @@ make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink mypy/mypy.ini .config/mypy/config
 make_symlink nushell/config.nu .config/nushell/config.nu
+make_symlink rofi/config.rasi .config/rofi/config.rasi
