@@ -3,6 +3,7 @@ if [[ -z $SYSTEM_NAME ]]; then
     echo "Environment variable SYSTEM_NAME not set (this should be done by bootstrap or setSystemName.sh)"
     exit 1
 fi
+
 function make_symlink {
     target="$CONFIG/$1"
     name="$HOME/$2"

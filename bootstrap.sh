@@ -13,13 +13,15 @@ echo $SYSTEM_NAME > $HOME/.config/systemName/name
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd)
 
+$DOTFILES_ROOT/symlinks.sh
+
 for installer in $(find "$DOTFILES_ROOT/" -name "install.sh"); do
-    echo $installer
-    info "Running '${installer}'"
-    bash -c "${installer}" >> ~/installLog
+    echo "Running '${installer}'"
+    "${installer}"
     if [[ $? ]]; then
-        success "successfully ran $installer"
+        echo "successfully ran $installer"
     else
-        fail "failed to run $installer"
+        echo "failed to run $installer"
+        exit 1
     fi
 done
