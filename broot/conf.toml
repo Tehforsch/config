@@ -1,11 +1,53 @@
-quit_on_last_cancel = true
+modal = true
 
 [[verbs]]
-name = "line_down"
+key = "enter"
+execution = ":cd"
+
+[[verbs]]
 key = "ctrl-j"
 execution = ":line_down"
 
 [[verbs]]
-name = "line_up"
 key = "ctrl-k"
 execution = ":line_up"
+
+[[verbs]]
+key = "ctrl-h"
+execution = ":panel_left"
+
+[[verbs]]
+key = "ctrl-l"
+execution = ":panel_right"
+
+[[verbs]]
+key = "ctrl-u"
+execution = ":input_clear"
+
+[[verbs]]
+key = "ctrl-o"
+execution = ":parent"
+
+[[verbs]]
+key = "i"
+execution = ":mode_input"
+
+[[verbs]]
+key = "f"
+execution = ":toggle_files"
+
+[[verbs]]
+key = "ctrl-p"
+execution = ":print_path"
+
+[[verbs]]
+key = "p"
+execution = ":previous_dir"
+
+[[verbs]]
+key = "n"
+execution = ":next_dir"
+
+[[verbs]]
+key = "z"
+execution = ":toggle_hidden"
