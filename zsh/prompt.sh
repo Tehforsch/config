@@ -18,8 +18,16 @@ function get_git_info()
     fi
 }
 
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    # remote session - append hostname and change color of path
+    hostname="%B%F{1}(%m)%f%b "
+else
+    hostname=""
+fi
+
 setopt prompt_subst
 
 precmd() { print "" }
 
-PROMPT=$'%B%F{4}%~%f%b $(get_git_info)\n> '
+PROMPT=$'%B%F{4}%~%f%b $hostname$(get_git_info)\n> '
