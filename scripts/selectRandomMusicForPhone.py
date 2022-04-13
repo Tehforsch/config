@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import shutil
 from pathlib import Path
 import random
