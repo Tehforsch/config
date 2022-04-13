@@ -24,7 +24,7 @@ make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
-make_symlink zathura/zathurarc.symlink .config/zathura/zathurarc
+make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink mimetypes/mimeapps.list .config/mimeapps.list
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
 
