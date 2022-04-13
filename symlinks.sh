@@ -26,6 +26,7 @@ make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc.symlink .config/zathura/zathurarc
 make_symlink mimetypes/mimeapps.list .config/mimeapps.list
+make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
 
 # The EVIL, polluting my home directory
 make_symlink alsa/asoundrc .asoundrc

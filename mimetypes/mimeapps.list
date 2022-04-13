@@ -1,0 +1,29 @@
+[Default Applications]
+application/epub+zip=gpicview.desktop
+application/epub=zathura.desktop
+application/pdf=zathura.desktop
+application/postscript=okularApplication_ghostview.desktop;
+application/x-bittorrent=deluge.desktop
+application/x-extension-htm=userapp-firefox.desktop
+application/x-extension-html=userapp-firefox.desktop
+application/x-extension-shtml=userapp-firefox.desktop
+application/x-extension-xht=userapp-firefox.desktop
+application/x-extension-xhtml=userapp-firefox.desktop
+application/x-shellscript=userapp-emacsclient --create-frame --alternate-editor=""-AEYNE1.desktop
+application/xhtml+xml=userapp-firefox.desktop
+image/jpeg=gpicview.desktop
+image/png=gpicview.desktop
+image/svg+xml=org.inkscape.Inkscape.desktop;
+image/vnd.djvu+multipage=org.pwmt.zathura-djvu.desktop;
+message/rfc822=userapp-Thunderbird.desktop
+text/html=firefox.desktop
+text/plain=mousepad.desktop
+text/x-log=userapp-emacsclient --create-frame --alternate-editor=""-TNE4D1.desktop
+video/mp4=vlc.desktop
+video/webm=vlc.desktop
+x-scheme-handler/chrome=userapp-firefox.desktop
+x-scheme-handler/ftp=userapp-firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/mailto=userapp-Thunderbird.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-LH24U0.desktop
