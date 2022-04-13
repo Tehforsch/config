@@ -8,11 +8,13 @@ source "$CONFIG/zsh/prompt.sh"
 source "$CONFIG/zsh/zshCdWidget.sh"
 source "$CONFIG/zsh/launchWidget.sh"
 source "$CONFIG/zsh/broot.sh"
-source "$HOME/.aliases"
+source "$CONFIG/zsh/aliases.sh"
 
-if [[ -a "$HOME/.localAliases" ]]; then
-    source "$HOME/.localAliases"
+localConfig="$CONFIG/zsh/localConfig/${SYSTEM_NAME}.sh"
+if [[ ! -a "$localConfig" ]]; then
+    localConfig="$CONFIG/zsh/localConfig/default.sh"
 fi
+source "$localConfig"
 
 
 ulimit -c unlimited

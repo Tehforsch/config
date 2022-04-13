@@ -31,3 +31,4 @@ make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink vim/init.vim .vimrc
 make_symlink zathura/zathurarc.symlink .config/zathura/zathurarc
+make_symlink zsh/zshrc.sh .zshrc

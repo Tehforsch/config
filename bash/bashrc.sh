@@ -1,26 +1,12 @@
 PATH=$PATH:$HOME/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
+export CONFIG=$HOME/projects/config
 # Load aliases
-source "$HOME/.localConfig"
-source "$HOME/.aliases"
-source "$HOME/.localAliases"
+source "$CONFIG/zsh/localConfigs/bw.sh"
+source "$CONFIG/zsh/aliases.sh"
 # Load nice solarized dircolors
-eval $(dircolors ~/.dir_colors)
+eval $(dircolors "$CONFIG/bash/dirColors.sh")
 
 PS1="\n\[\033[01;33;40m\]\u\[\033[01;36;40m\]@\h \[\033[01;35;40m\]\w\[\e[0m\]\n\[\033[01;34;40m\] %\[\e[0m\] "
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Use fd for fzf
-# export FZF_DEFAULT_COMMAND="fd --follow"
-# export FZF_CTRL_T_COMMAND="fd --follow -I"
-export FZF_DEFAULT_COMMAND="find * -type f"
-export FZF_CTRL_T_COMMAND="find * -type f"
-# export FZF_ALT_C_COMMAND="fd --type directory '' $HOME"
-# Show a preview of the file while using Ctrl-T (mostly because its cool)
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export PATH=$PATH:~/.fd:~/.bin
-export WS=/lustre/cray/ws8/ws/
-export WS9=/lustre/cray/ws9/0/ws/
 
 #Avoid duplicates in history
 export HISTCONTROL=ignoredups:erasedups  
@@ -30,17 +16,6 @@ shopt -s histappend
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r;history -a; $PROMPT_COMMAND"
 
-export PYTHONDONTWRITEBYTECODE="1"
-
-export BASELIB_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/baselib
-export N3DLIB_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/n3dlib
-export EAS3IOMOD_DIR=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3iomod
-
-export EAS3_BASELIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/baselib
-export EAS3_N3DLIB=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/n3dlib
-export EAS3_EAS3IOMOD=/zhome/academic/HLRS/hlrs/hpctpete/projects/ns3d/eas3/eas3iomod
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/Compiler/18.0.2.199/compilers_and_libraries_2018.2.199/linux/compiler/lib/intel64_lin
-
 # Hopefully map Ctrl-w to remove only until last slash or so (like in zsh)
 stty werase undef
 bind '\C-w:unix-filename-rubout'
@@ -48,5 +23,3 @@ export TERM='xterm-256color'
 source ~/modules.sh
 
 export HDF5_DISABLE_VERSION_CHECK=2
-
-export PYTHONHASHSEED=0 # The things they make me do for productivity

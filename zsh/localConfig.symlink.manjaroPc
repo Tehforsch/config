@@ -1,9 +1,0 @@
-export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:~/.local/bin
-source /usr/share/nvm/init-nvm.sh
-export PATH=$PATH:/home/toni/.nvm/versions/node/v15.6.0/bin
-export PATH=$PATH:/opt/texlive/2021/bin/x86_64-linux/
-export bwforWork="/mnt/sshfs/bwforWork"
-export supermucProjects="/mnt/sshfs/supermucProjects"
-export supermucWork="/mnt/sshfs/supermucWork"
-export WORK=/home/toni/projects/phd/work/
