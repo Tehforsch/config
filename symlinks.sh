@@ -12,15 +12,9 @@ function make_symlink {
     ln -fs "$target" "$name"
 }
 
-make_symlink alsa/asoundrc .asoundrc
-make_symlink bash/bashrc.sh .bashrc
-make_symlink bash/inputrc.sh .inputrc
+# The good, following the XDG_CONFIG_DIR structure
 make_symlink beets/config.yaml .config/beets/config.yaml
-make_symlink cargo/config.toml .cargo/config
-make_symlink emacs/emacs.el .emacs.d/init.el
-make_symlink git/gitignoreGlobal.conf .gitignoreGlobal
-make_symlink git/gitconfig.conf .gitconfig
-make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
+make_symlink git/gitignoreGlobal.conf ~/.config/git/gitignoreGlobal.conf
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/i3status.conf .config/i3status/config
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
@@ -30,6 +24,15 @@ make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
-make_symlink vim/init.vim .vimrc
 make_symlink zathura/zathurarc.symlink .config/zathura/zathurarc
+
+# The EVIL, polluting my home directory
+make_symlink alsa/asoundrc .asoundrc
+make_symlink bash/bashrc.sh .bashrc
+make_symlink bash/inputrc.sh .inputrc
+make_symlink cargo/config.toml .cargo/config
+make_symlink emacs/emacs.el .emacs.d/init.el
+make_symlink git/gitconfig.conf .gitconfig
+make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
+make_symlink vim/init.vim .vimrc
 make_symlink zsh/zshrc.sh .zshrc
