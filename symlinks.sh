@@ -28,3 +28,5 @@ make_symlink mypy/mypy.ini .config/mypy/config
 make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
+make_symlink vim/init.vim .config/nvim/init.vim
+make_symlink vim/init.vim .vimrc

@@ -81,9 +81,6 @@
 " copy/paste to system clipboard
     set clipboard=unnamedplus
 
-" Repeat the last macro (or last recorded macro) with .
-    source ~/.vim/repeatMacro.vim
-
 " Paste over visual selections without yanking them
     xnoremap p pgvy
 
@@ -98,15 +95,6 @@
 " Don't yank when deleting single letter
     nnoremap x "_x
 
-" Proper paragraph motion which ignores whitespace in the delimiting lines
-    source ~/.vim/paragraphMotion.vim
-    nnoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
-    onoremap <silent> } :<C-U>call ParagraphMove( 1, 0, v:count)<CR>
-    vnoremap <silent> } :<C-U>call ParagraphMove( 1, 1, v:count)<CR>
-    nnoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
-    onoremap <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
-    vnoremap <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
-  
 " moving around, searching and patterns
     " Highlight search while typing
     set incsearch
