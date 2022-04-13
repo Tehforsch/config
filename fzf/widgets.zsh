@@ -11,7 +11,7 @@ fzf-cd-home-widget() {
     cd "$dir"
     unset dir # ensure this doesn't end up appearing in prompt expansion
     local ret=$?
-    zle fzf-redraw-prompt
+    zle reset-prompt
     return $ret
 }
 zle     -N    fzf-cd-home-widget
@@ -27,7 +27,7 @@ fzf-cd-widget() {
     cd "$dir"
     unset dir # ensure this doesn't end up appearing in prompt expansion
     local ret=$?
-    zle fzf-redraw-prompt
+    zle reset-prompt
     return $ret
 }
 zle     -N    fzf-cd-widget
