@@ -35,6 +35,7 @@ bar {
     output eDP1
     output eDP-1
     output DP-1-3
+    output DVI-D-0
     strip_workspace_numbers yes
     status_command i3status
 }
@@ -141,32 +142,32 @@ mode "$workspace" {
     bindsym g workspace "25:g"
     bindsym y workspace "21:y"
     bindsym x workspace "22:x"
-    bindsym Shift+c move container to workspace "1:chat"
-    bindsym Shift+v move container to workspace "2:music"
-    bindsym Shift+b move container to workspace "3:todo"
-    bindsym Shift+n move container to workspace "4:notes"
-    bindsym Shift+m move container to workspace "5:mail"
-    bindsym Shift+z move container to workspace "6:zotero"
-    bindsym Shift+a move container to workspace "21:a"
-    bindsym Shift+s move container to workspace "22:s"
-    bindsym Shift+d move container to workspace "23:d"
-    bindsym Shift+f move container to workspace "24:f"
-    bindsym Shift+g move container to workspace "25:g"
-    bindsym Shift+y move container to workspace "21:y"
-    bindsym Shift+x move container to workspace "22:x"
-    bindsym Ctrl+c move container to workspace "1:chat"; workspace "1:chat"
-    bindsym Ctrl+v move container to workspace "2:music"; workspace "2:music"
-    bindsym Ctrl+b move container to workspace "3:todo"; workspace "3:todo"
-    bindsym Ctrl+n move container to workspace "4:notes"; workspace "4:notes"
-    bindsym Ctrl+m move container to workspace "5:mail"; workspace "5:mail"
-    bindsym Ctrl+z move container to workspace "6:zotero"; workspace "6:zotero"
-    bindsym Ctrl+a move container to workspace "21:a"; workspace "21:a"
-    bindsym Ctrl+s move container to workspace "22:s"; workspace "22:s"
-    bindsym Ctrl+d move container to workspace "23:d"; workspace "23:d"
-    bindsym Ctrl+f move container to workspace "24:f"; workspace "24:f"; workspace "24:f"; workspace "24:f"
-    bindsym Ctrl+g move container to workspace "25:g"; workspace "25:g"
-    bindsym Ctrl+y move container to workspace "21:y"; workspace "21:y"
-    bindsym Ctrl+x move container to workspace "22:x"; workspace "22:x"
+    bindsym Ctrl+c move container to workspace "1:chat"
+    bindsym Ctrl+v move container to workspace "2:music"
+    bindsym Ctrl+b move container to workspace "3:todo"
+    bindsym Ctrl+n move container to workspace "4:notes"
+    bindsym Ctrl+m move container to workspace "5:mail"
+    bindsym Ctrl+z move container to workspace "6:zotero"
+    bindsym Ctrl+a move container to workspace "21:a"
+    bindsym Ctrl+s move container to workspace "22:s"
+    bindsym Ctrl+d move container to workspace "23:d"
+    bindsym Ctrl+f move container to workspace "24:f"
+    bindsym Ctrl+g move container to workspace "25:g"
+    bindsym Ctrl+y move container to workspace "21:y"
+    bindsym Ctrl+x move container to workspace "22:x"
+    bindsym Shift+c move container to workspace "1:chat"; workspace "1:chat"
+    bindsym Shift+v move container to workspace "2:music"; workspace "2:music"
+    bindsym Shift+b move container to workspace "3:todo"; workspace "3:todo"
+    bindsym Shift+n move container to workspace "4:notes"; workspace "4:notes"
+    bindsym Shift+m move container to workspace "5:mail"; workspace "5:mail"
+    bindsym Shift+z move container to workspace "6:zotero"; workspace "6:zotero"
+    bindsym Shift+a move container to workspace "21:a"; workspace "21:a"
+    bindsym Shift+s move container to workspace "22:s"; workspace "22:s"
+    bindsym Shift+d move container to workspace "23:d"; workspace "23:d"
+    bindsym Shift+f move container to workspace "24:f"; workspace "24:f"; workspace "24:f"; workspace "24:f"
+    bindsym Shift+g move container to workspace "25:g"; workspace "25:g"
+    bindsym Shift+y move container to workspace "21:y"; workspace "21:y"
+    bindsym Shift+x move container to workspace "22:x"; workspace "22:x"
     bindsym p scratchpad show
     bindsym Shift+P move scratchpad
     bindsym r mode "$rename"
@@ -341,21 +342,22 @@ mode "$findMusic" {
 }
 
 # Assign workspaces to outputs
-workspace 1:chat output HDMI-0
-workspace 2:music output HDMI-0
-workspace 3:todo output HDMI-0
-workspace 4:notes output HDMI-0
-workspace 5:mail output HDMI-0
-workspace 6:zotero output HDMI-0
+workspace 1:chat output DVI-D-0
+workspace 2:music output DVI-D-0
+workspace 3:todo output DVI-D-0
+workspace 4:notes output DVI-D-0
+workspace 5:mail output DVI-D-0
+workspace 6:zotero output DVI-D-0
 
-workspace 21:a output DP-0
-workspace 22:s output DP-0
-workspace 23:d output DP-0
-workspace 24:f output DP-0
-workspace 25:g output DP-0
+workspace 21:a output HDMI-0
+workspace 22:s output HDMI-0
+workspace 23:d output HDMI-0
+workspace 24:f output HDMI-0
+workspace 25:g output HDMI-0
 
-workspace 21:y output HDMI-0
-workspace 22:x output HDMI-0
+workspace 100:game output DVI-D-0
+workspace 21:y output DVI-D-0
+workspace 22:x output DVI-D-0
 
 # Assign programs to workspace
 assign [class="dota2"] 100:game
@@ -377,4 +379,5 @@ exec --no-startup-id task context none
 exec bash $scripts/syncRepos.sh
 exec /opt/urserver/urserver --daemon
 exec gpaste-client start
+exec_always $scripts/lowerVolume.sh
 exec_always $scripts/updatePankit.sh

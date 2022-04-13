@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<!-- <layout onLaunch="launch" onVolumeUp="volume_up" onVolumeDown="volume_down" onResume="play" onPause="pause" color="#1DD761"> -->
+	<row color="#3333bb">
+		<button icon="vdown" ontap="volumeDown" />
+		<button icon="vup" ontap="volumeUp" />
+	</row>
+    <row color="#A40000">
+      <button icon="rwd" onTap="videoRewind" />
+      <button icon="playpause" onTap="videoPlayPause" />
+      <button icon="ff" onTap="videoForward" />
+    </row>
+    <row color="#1DD761">
+      <button icon="previous" onTap="musicPrevious" />
+      <button id="p" icon="play" onTap="musicPlayPause" />
+      <button icon="next" onTap="musicNext" />
+    </row>
+</layout>
