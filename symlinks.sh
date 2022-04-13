@@ -1,10 +1,13 @@
 #!/bin/zsh
+if [[ -z $SYSTEM_NAME ]]; then
+    echo "Environment variable SYSTEM_NAME not set (this should be done by bootstrap or setSystemName.sh)"
+    exit 1
+fi
 function make_symlink {
     target="$CONFIG/$1"
     name="$HOME/$2"
     mkdir -p $(dirname "$name")
-    echo "$target"
-    echo "$name"
+    echo "$target\t\t -> $name"
     ln -fs "$target" "$name"
 }
 
@@ -20,4 +23,4 @@ make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/i3status.conf .config/i3status/config
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
-make_symlink mpd/${systemName}.conf .config/mpd/mpd.conf
+make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
