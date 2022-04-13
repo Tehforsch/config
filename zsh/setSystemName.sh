@@ -1,5 +1,4 @@
-# This sets some paths such as where the CONFIG folder lies. Makes it easier to use on other machines without getting confused
-systemName=$(cat $HOME/.systemName)
+export SYSTEM_NAME=$(cat ~/.config/systemName/name)
 if [[ -a "$HOME/.localConfig" ]]; then
     source "$HOME/.localConfig"
 fi

@@ -1,5 +1,3 @@
-todo
-vim/vim.symlink/undodir
 ssh/ssh.symlink/id_rsa
 ssh/ssh.symlink/id_rsa.pub
 ssh/ssh.symlink/known_hosts
@@ -8,8 +6,3 @@ redshift/*
 vim/vim.symlink/autoload
 cargo/cargo.symlink/.package-cache
 cargo/cargo.symlink/registry/
-xmonad/xmonad.symlink/xmonad-x86_64-linux
-xmonad/xmonad.symlink/xmonad.errors
-xmonad/xmonad.symlink/xmonad.hi
-xmonad/xmonad.symlink/xmonad.state
-todoBot/apiToken

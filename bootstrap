@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-# update submodules
 if [ $# -eq 0 ]; then
    echo "Need system name as input"
    exit 1
