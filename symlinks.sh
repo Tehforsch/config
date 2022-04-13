@@ -30,3 +30,4 @@ make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink vim/init.vim .vimrc
+make_symlink zathura/zathurarc.symlink .config/zathura/zathurarc
