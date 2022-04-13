@@ -1,0 +1,11 @@
+quit_on_last_cancel = true
+
+[[verbs]]
+name = "line_down"
+key = "ctrl-j"
+execution = ":line_down"
+
+[[verbs]]
+name = "line_up"
+key = "ctrl-k"
+execution = ":line_up"
