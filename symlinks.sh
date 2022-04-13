@@ -1,14 +1,4 @@
 #!/bin/zsh
-if [ $# -eq 0 ]; then
-   echo "Need system name as input"
-   exit 1
-fi
-
-SYSTEM_NAME=$1
-
-mkdir -p "$HOME/.config/systemName/"
-echo $SYSTEM_NAME > $HOME/.config/systemName/name
-
 function make_symlink {
     target="$CONFIG/$1"
     name="$HOME/$2"

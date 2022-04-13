@@ -8,7 +8,7 @@ export PYTHONPATH=$PYTHONPATH:/home/toni/projects/arepy/python
 export CSCOPE_EDITOR="nvim"
 export DIR_AREPO="/home/toni/projects/arepo"
 
-export systemName="ita"export PATH=$PATH:~/.cargo-target/release
+export PATH=$PATH:~/.cargo-target/release
 export PATH=$PATH:/opt/texlive/2021/bin/x86_64-linux/
 export WORK=/home/toni/projects/phd/work/
 export supermucProjects="/mnt/sshfs/supermucProjects"
