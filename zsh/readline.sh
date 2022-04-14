@@ -27,6 +27,9 @@ bindkey -s '^u' 'bg && disown && kitty @ close-window\n'
 
 bindkey '^l' insert-last-word
 
+# Make zsh autocomplete even when the cursor is directly in front of a string
+bindkey '^i' expand-or-complete-prefix
+
 export EDITOR="vim"
 autoload edit-command-line
 zle -N edit-command-line
