@@ -37,3 +37,6 @@ bindkey '^e' edit-command-line
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+# Make delete key delete in vim mode
+bindkey -a '^[[3~' delete-char
