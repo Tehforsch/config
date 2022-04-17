@@ -8,4 +8,8 @@ export supermucProjects="/mnt/sshfs/supermucProjects"
 export supermucWork="/mnt/sshfs/supermucWork"
 export bwforWork="/mnt/sshfs/bwforWork"
 
+
+# Disables creation of the worlds most annoying directory: __pycache__
+export PYTHONDONTWRITEBYTECODE="1"
+
 source ~/projects/config/taskwarrior/aliases
