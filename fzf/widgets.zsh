@@ -17,7 +17,12 @@ fzf-cd-home-widget() {
 zle     -N    fzf-cd-home-widget
 
 fzf-cd-widget() {
-    local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d -I "}"
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == "true" ]]; then
+        searchDir=$(git rev-parse --show-toplevel)
+    else
+        searchDir=$(pwd)
+    fi
+    local cmd="${FZF_ALT_C_COMMAND:-"command fd -t d -I . "$searchDir""}"
     setopt localoptions pipefail no_aliases 2> /dev/null
     local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
     if [[ -z "$dir" ]]; then
