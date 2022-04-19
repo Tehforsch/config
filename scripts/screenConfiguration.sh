@@ -2,7 +2,8 @@
 xset -dpms
 xset s off
 
-echo "$SYSTEM_NAME"
+SYSTEM_NAME=$(cat ~/.systemName)
+echo $SYSTEM_NAME
 if [[ $SYSTEM_NAME == "manjaro" ]]; then
     echo "a"
     main=DP2
