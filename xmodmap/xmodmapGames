@@ -15,6 +15,7 @@ keycode 53 = x X braceright braceright braceright braceright
 keycode 28 = t T dollar dollar dollar dollar
 keycode 60 = period colon period period period period
 keycode 12 = 3 underscore underscore underscore underscore underscore
+keycode 133 = l l l l
 
 
 clear shift
