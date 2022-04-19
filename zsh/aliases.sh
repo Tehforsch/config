@@ -38,7 +38,6 @@ alias getsupermuc="$scripts/getPlots.sh supermuc && bob replot ."
 alias work="bash ~/projects/config/scripts/setWorkFolder.sh"
 alias w="source ~/projects/config/scripts/getWorkFolder.sh"
 
-alias fin="python3 $PROJECTS/financeTracker/main.py ~/resource/finances/data/finances"
 alias canibuy="bash ~/resource/finances/showBudget"
 
 alias cb="cargo build"

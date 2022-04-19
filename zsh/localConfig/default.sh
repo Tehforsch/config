@@ -13,3 +13,4 @@ export bwforWork="/mnt/sshfs/bwforWork"
 export PYTHONDONTWRITEBYTECODE="1"
 
 source ~/projects/config/taskwarrior/aliases
+source ~/projects/config/hledger/config.zsh
