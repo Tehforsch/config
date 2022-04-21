@@ -54,6 +54,7 @@
 (load-from-config "visualSettings.el")
 (load-from-config "formatting.el")
 (load-from-config "modeLine.el")
+(load-from-config "headerLine.el")
 
 (load-from-config "punditSettings.el")
 (load-from-config "rpundit.el")
