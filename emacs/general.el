@@ -6,7 +6,7 @@
   :prefix ",")
 
 (general-define-key
- :states '(normal visual emacs motion treemacs)
+ :states '(normal visual emacs motion)
  :keymaps 'override
  :prefix "SPC"
     "!" 'start-terminal-in-pwd
@@ -78,7 +78,6 @@
     "pf" 'projectile-switch-project
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
-    "t" 'treemacs-toggle-only-current-project
     "u" '(:which-key "Undo")
     "ut" 'undo-tree-visualize
     "w" 'save-buffer

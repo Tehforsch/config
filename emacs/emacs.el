@@ -29,8 +29,6 @@
 (load-from-config "fileAssociations.el")
 (load-from-config "helm.el")
 
-(load-from-config "treemacs.el")
-
 ; Specific languages
 (load-from-config "rust.el")
 (load-from-config "c.el")
