@@ -47,3 +47,4 @@
 
 ; the previous variant using selectrum suddenly stopped working during package upgrade and until selectrum/consult fixes their issues concerning everything lsp, i'll just use this
 (use-package helm-xref)
+(setq lsp-headerline-breadcrumb-enable nil)
