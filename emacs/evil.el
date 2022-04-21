@@ -95,6 +95,8 @@
 (use-package undo-tree)
 (global-undo-tree-mode)
 (evil-set-undo-system 'undo-tree)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 ; Make sure we cant repeat undo / repeat with .
 (evil-declare-abort-repeat 'evil-undo)
