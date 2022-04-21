@@ -21,3 +21,5 @@
      (file-relative-name buffer-file-name (projectile-project-root)))))
 
 (add-hook 'find-file-hook #'my-proj-relative-buf-name)
+
+(setq projectile-current-project-on-switch 'keep)
