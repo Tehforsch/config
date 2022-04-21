@@ -1,6 +1,6 @@
 ; Needed for evil collection?
 (setq evil-want-keybinding nil)
-(setq evil-want-integration nil)
+(setq evil-want-integration t)
 
 (setq evil-want-C-u-delete t)
 (setq evil-want-C-u-scroll t)
