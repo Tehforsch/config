@@ -5,14 +5,28 @@ article-sort-order date
 feed-sort-order articlecount-asc
 
 bind-key j down feedlist
+bind-key s down feedlist
 bind-key k up feedlist
+bind-key w up feedlist
+
 bind-key j next articlelist
+bind-key s next articlelist
 bind-key k prev articlelist
+bind-key w prev articlelist
+
 bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
-bind-key j down article
-bind-key k up article
+
+bind-key j next article
+bind-key s next article
+bind-key k prev article
+bind-key w prev article
 bind-key b bookmark
+
+bind-key e open feedlist
+bind-key e open articlelist
+bind-key e open-in-browser article
+
 bind-key d delete-article
 
 bind-key ESC quit
