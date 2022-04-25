@@ -40,6 +40,7 @@
 ; Completion
 (load-from-config "company.el")
 
+(load-from-config "mouse.el")
 (load-from-config "miscSettings.el")
 
 (load-from-config "orgMode.el")
