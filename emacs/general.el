@@ -22,7 +22,7 @@
     "bn" '((lambda () (interactive) (projectile-next-project-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
     "bs" 'evil-save-modified-and-close
     "e" '(:which-key "Emacs")
-    "eR" '((lambda () (interactive) (load-file "~/.emacs")) :which-key "Reload emacs config")
+    "eR" '((lambda () (interactive) (load-file "~/projects/config/emacs/emacs.el")) :which-key "Reload emacs config")
     "f" '(:which-key "File")
     "fA" '(:which-key "Autosave")
     "fAd" 'ediff-current-file
