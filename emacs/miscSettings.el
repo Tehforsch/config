@@ -42,3 +42,6 @@
 (use-package glsl-mode)
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+
+; always automatically revert buffers
+(global-auto-revert-mode 1)
