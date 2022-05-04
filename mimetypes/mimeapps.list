@@ -11,6 +11,7 @@ application/x-extension-html=userapp-firefox.desktop
 application/x-extension-shtml=userapp-firefox.desktop
 application/x-extension-xht=userapp-firefox.desktop
 application/x-extension-xhtml=userapp-firefox.desktop
+application/x-hdf=hdfview.desktop
 application/x-shellscript=emacsclient.desktop
 application/x-theme=emacsclient.desktop
 application/x-yaml=emacsclient.desktop
