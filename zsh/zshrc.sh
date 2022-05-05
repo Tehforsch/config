@@ -9,6 +9,7 @@ source "$CONFIG/zsh/zshCdWidget.sh"
 source "$CONFIG/zsh/launchWidget.sh"
 source "$CONFIG/zsh/broot.sh"
 source "$CONFIG/zsh/aliases.sh"
+source "$CONFIG/zsh/dirStack.sh"
 
 localConfig="$CONFIG/zsh/localConfig/${SYSTEM_NAME}.sh"
 if [[ ! -a "$localConfig" ]]; then
@@ -18,3 +19,5 @@ source "$localConfig"
 
 
 ulimit -c unlimited
+
+export PATH=$PATH:/opt/texlive/2021/bin/x86_64-linux

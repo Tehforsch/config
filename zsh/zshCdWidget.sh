@@ -12,4 +12,4 @@ up-directory() {
 
 zle -N up-directory
 
-bindkey '^o' up-directory
+bindkey '^j' up-directory
