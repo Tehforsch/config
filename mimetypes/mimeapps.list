@@ -1,5 +1,4 @@
 [Default Applications]
-application/epub+zip=gpicview.desktop
 application/epub=zathura.desktop
 application/pdf=zathura.desktop
 application/postscript=okularApplication_ghostview.desktop;
