@@ -57,7 +57,7 @@ _dir_stack=()
 zle -N goto_next_in_dir_history
 zle -N goto_prev_in_dir_history
 
-bindkey '^o' goto_next_in_dir_history
+bindkey '^k' goto_next_in_dir_history
 # ITS 2022 AND I STILL CANT BIND ctrl+i IN THE TERMINAL BECAUSE ITS THE SAME THING AS TAB
 # WHY ARE WE STILL USING TECHNOLOGY FROM THE FUCKING 50s
-bindkey '^k' goto_prev_in_dir_history
+bindkey '^j' goto_prev_in_dir_history

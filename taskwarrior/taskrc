@@ -14,10 +14,14 @@ report.default.labels=id,due,tags,proj,desc,urg
 report.default.sort=urgency+\/,project
 report.default.filter=status:pending -maybe
 
-# Default report
 report.allProjects.columns=project
 report.allProjects.labels=project
 report.allProjects.sort=project
+
+report.oldest.columns=id,modified,due,tags,project,description,urgency
+report.oldest.labels=id,modified,due,tags,proj,desc,urg
+report.oldest.sort=modified-
+report.oldest.filter=status:pending -CHILD
 
 # Context setup
 context.phd.read=project:phd
