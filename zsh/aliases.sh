@@ -33,8 +33,8 @@ alias addmusic="bash ~/music/addMusic.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
 alias testbob="cargo run --release --manifest-path ~/projects/bob/Cargo.toml"
-alias getbwfor="$scripts/getPlots.sh bwfor && bob replot ."
-alias getsupermuc="$scripts/getPlots.sh supermuc && bob replot ."
+alias getbwfor="$scripts/getPlots.sh bwfor && pybob . replot"
+alias getsupermuc="$scripts/getPlots.sh supermuc && pybob . replot"
 
 alias work="bash ~/projects/config/scripts/setWorkFolder.sh"
 alias w="source ~/projects/config/scripts/getWorkFolder.sh"
