@@ -6,7 +6,7 @@ for (( i=0; i<${#otp}; i++ )); do
     xdotool key "${otp:$i:1}"
 done
 xdotool key return
-sleep 2
+sleep 3
 pw=$(cat ~/.ssh/bwfor)
 for line in $pw; do
     xdotool key $line
