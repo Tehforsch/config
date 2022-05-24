@@ -31,7 +31,7 @@
 (load-from-config "expandRegion.el")
 
 (load-from-config "magit.el")
-(load-from-config "gitGutter.el")
+(load-from-config "diffHl.el")
 
 ; Specific languages
 (load-from-config "rust.el")
