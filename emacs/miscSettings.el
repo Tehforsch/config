@@ -45,3 +45,6 @@
 
 ; always automatically revert buffers
 (global-auto-revert-mode 1)
+
+; Do not scroll beyond buffer extents
+(setq scroll-conservatively 101)
