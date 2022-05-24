@@ -3,9 +3,9 @@
 
 (setq better-jumper-use-evil-jump-advice t)
 (setq better-jumper-context 'window)
-(setq better-jumper-add-jump-behavior 'replace)
+(setq better-jumper-add-jump-behavior 'append)
 
-;; (add-hook 'find-file-hook 'better-jumper-set-jump)
+(add-hook 'find-file-hook 'better-jumper-set-jump)
 
 (with-eval-after-load 'evil-maps
   (define-key evil-motion-state-map (kbd "C-o") 'better-jumper-jump-backward)
