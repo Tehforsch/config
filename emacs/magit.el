@@ -10,3 +10,6 @@
 (define-key magit-status-mode-map (kbd "SPC") nil)
 (define-key magit-blame-mode-map (kbd "SPC") nil)
 (define-key magit-blame-read-only-mode-map (kbd "SPC") nil)
+
+; Make diffs prettier
+(setq magit-diff-refine-hunk (quote all))
