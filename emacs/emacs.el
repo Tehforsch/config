@@ -19,15 +19,19 @@
 (load-from-config "evil.el")
 (load-from-config "evilCollection.el")
 (load-from-config "evilArgs.el")
+(load-from-config "evilMatchit.el")
 (load-from-config "betterJumper.el")
 (load-from-config "selectrum.el")
 (load-from-config "consult.el")
 (load-from-config "marginalia.el")
 (load-from-config "evilNumbers.el")
 (load-from-config "projectile.el")
-(load-from-config "magit.el")
 (load-from-config "fileAssociations.el")
 (load-from-config "helm.el")
+(load-from-config "expandRegion.el")
+
+(load-from-config "magit.el")
+(load-from-config "gitGutter.el")
 
 ; Specific languages
 (load-from-config "rust.el")

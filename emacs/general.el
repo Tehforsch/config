@@ -37,6 +37,10 @@
     "gb" 'magit-blame
     "gl" 'magit-log-buffer-file
     "gs" 'magit-status
+    "ga" 'git-gutter:stage-hunk
+    "gx" 'git-gutter:revert-hunk
+    "gj" 'git-gutter:next-hunk
+    "gk" 'git-gutter:previous-hunk
     "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
     "h" 'selectrum-repeat
     "o" '(:which-key "Org")
