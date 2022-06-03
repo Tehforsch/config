@@ -34,6 +34,8 @@ make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink mimetypes/mimeapps.list .config/mimeapps.list
+
+# The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
 make_symlink mimetypes/emacsclient.desktop .local/share/applications/emacsclient.desktop
 make_symlink mimetypes/hdfview.desktop .local/share/applications/hdfview.desktop
