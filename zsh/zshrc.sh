@@ -7,7 +7,6 @@ source "$CONFIG/zsh/fzf.sh"
 source "$CONFIG/zsh/prompt.sh"
 source "$CONFIG/zsh/zshCdWidget.sh"
 source "$CONFIG/zsh/launchWidget.sh"
-source "$CONFIG/zsh/broot.sh"
 source "$CONFIG/zsh/aliases.sh"
 source "$CONFIG/zsh/dirStack.sh"
 
