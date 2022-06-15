@@ -31,6 +31,7 @@ context.personal.read=project.not:phd
 urgency.due.coefficient = 100
 urgency.user.tag.maybe.coefficient = -100.0
 urgency.user.tag.somewhere.coefficient = -50.0
+urgency.user.tag.home.coefficient = 50.0
 urgency.user.tag.spree.coefficient = 8.0
 
 urgency.user.project.todo.coefficient = 20.0
