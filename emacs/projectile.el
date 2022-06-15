@@ -23,3 +23,7 @@
 (add-hook 'find-file-hook #'my-proj-relative-buf-name)
 
 (setq projectile-current-project-on-switch 'keep)
+
+(defun open-project-alongside-terminal ()
+  (projectile-switch-project)
+  (start-terminal-in-projectile-folder))
