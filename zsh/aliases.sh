@@ -17,6 +17,7 @@ alias gsu="git submodule update --recursive --remote"
 alias gr="git reset"
 alias ggr="$CONFIG/scripts/gitGrep.sh"
 alias co="git checkout"
+alias gpf="git push --force-with-lease"
 
 alias im="gpicview"
 
