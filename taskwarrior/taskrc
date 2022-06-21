@@ -71,4 +71,7 @@ uda.taskwarrior-tui.keyconfig.previous-tab=[
 
 report.next.filter=status:pending
 
+report.fzf.filter=status:pending
+report.fzf.columns=id,description.truncated
+
 weekstart=monday

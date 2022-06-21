@@ -1,0 +1,5 @@
+#compdef task
+local taskId=$(task rc.context=none fzf 2> /dev/null | tail -n +4 | head -n -2 | fzf --with-nth=2.. | sed "s/^ *//" | cut -d " " -f 1)
+# zle reset-prompt
+compadd $taskId
+return 0

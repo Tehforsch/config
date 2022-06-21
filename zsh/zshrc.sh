@@ -1,4 +1,5 @@
 source "$HOME/projects/config/zsh/paths.sh"
+export fpath=($CONFIG/zsh/completions/ $fpath)
 source "$CONFIG/zsh/setSystemName.sh"
 source "$CONFIG/zsh/completionSettings.sh"
 source "$CONFIG/zsh/readline.sh"
