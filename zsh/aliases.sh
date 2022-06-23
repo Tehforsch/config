@@ -34,6 +34,7 @@ alias addmusic="bash ~/music/addMusic.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
 alias testbob="cargo run --release --manifest-path ~/projects/bob/Cargo.toml"
+alias copybob="$scripts/copyPybob.sh"
 alias getbwfor="$scripts/getPlots.sh bwfor && pybob . replot --only-new"
 alias getsupermuc="$scripts/getPlots.sh supermuc && pybob . replot --only-new"
 
