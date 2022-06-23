@@ -1,8 +1,8 @@
 PATH=$PATH:$HOME/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export CONFIG=$HOME/projects/config
 # Load aliases
-source "$CONFIG/zsh/localConfigs/bw.sh"
 source "$CONFIG/zsh/aliases.sh"
+source "$CONFIG/zsh/localConfig/bw.sh"
 # Load nice solarized dircolors
 eval $(dircolors "$CONFIG/bash/dirColors.sh")
 
