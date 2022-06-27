@@ -6,6 +6,7 @@ cd "$pybobDir"
 while [[ 1 ]]; do
     sleep 1
     if [[ -a "$copyRequestFile" ]]; then
+        echo "Copy requested"
         for f in $(git diff --name-only) $(git ls-files --others --exclude-standard); do
             echo $f
             cp "$pybobDir/$f" "$pybobRemoteDir/$f"
