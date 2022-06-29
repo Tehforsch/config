@@ -3,4 +3,4 @@ if [[ $# -gt 0 ]]; then
 else
     pngs="*.png"
 fi
-cat $pngs | ffmpeg -c:v libx264 -f image2pipe -i - output.mp4
+cat $pngs | ffmpeg -f image2pipe -i - output.mp4
