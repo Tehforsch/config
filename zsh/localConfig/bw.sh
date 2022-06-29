@@ -18,6 +18,7 @@ alias loadpython='module load devel/python_intel/3.6'
 # alias vim='$HOME/projects/vimPool/openExistingInstance.sh'
 alias ag='grep -R'
 unalias e
+unalias cat
 alias e="vim"
 alias sb="sbatch"
 alias sc="scancel"
@@ -27,3 +28,4 @@ alias l="ls -lah --color=auto"
 alias ls="ls"
 alias interactive="srun --partition=single --ntasks=3 --time=2:00:00 --pty /bin/bash"
 alias pybob="$HOME/projects/config/scripts/pybobRequest.sh"
+alias oldpybob="python3 $HOME/projects/pybob/main.py"

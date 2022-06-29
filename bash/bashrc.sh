@@ -1,5 +1,6 @@
 PATH=$PATH:$HOME/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export CONFIG=$HOME/projects/config
+export scripts="$CONFIG/scripts"
 # Load aliases
 source "$CONFIG/zsh/aliases.sh"
 source "$CONFIG/zsh/localConfig/bw.sh"
