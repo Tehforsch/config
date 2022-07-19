@@ -11,13 +11,13 @@ local script = libs.script;
 
 --@help Volume up
 actions.volumeUp = function ()
-	script.default("/home/toni/projects/config/scripts/changeVolume.sh 1");
+	script.default("pactl set-sink-volume @DEFAULT_SINK@ +4%");
 end
 
 
 --@help Volume down
 actions.volumeDown = function ()
-	script.default("/home/toni/projects/config/scripts/changeVolume.sh 0");
+	script.default("pactl set-sink-volume @DEFAULT_SINK@ -4%");
 end
 
 --@help Toggle playback state
