@@ -6,3 +6,4 @@ redshift/*
 vim/vim.symlink/autoload
 cargo/cargo.symlink/.package-cache
 cargo/cargo.symlink/registry/
+powersettings/xfce4-power-manager.xml
