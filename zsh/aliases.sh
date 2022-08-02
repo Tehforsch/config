@@ -12,13 +12,14 @@ alias gdc="git diff --staged"
 alias gdh="git log --follow -p --"
 alias gp="git push"
 alias gpu="git pull"
-alias gs="git status --short"
+alias gs="git status --short --branch"
 alias gss="git status"
 alias gsu="git submodule update --recursive --remote"
 alias gr="git reset"
 alias ggr="$CONFIG/scripts/gitGrep.sh"
 alias co="git checkout"
 alias gpf="git push --force-with-lease"
+alias gl="git log"
 
 alias im="gpicview"
 
@@ -61,3 +62,5 @@ alias cat="bat"
 alias cp='cp -v'
 
 alias o="xdg-open"
+
+alias mk="make -j 16"
