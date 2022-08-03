@@ -24,6 +24,11 @@
 (use-package frames-only-mode)
 (frames-only-mode)
 
+(add-hook 'before-save-hook 'check-file-exists-before-saving)
+(defun check-file-exists-before-saving ()
+  (when (and (buffer-file-name)  (not (file-exists-p (buffer-file-name))))
+    (error "File does not exist. Beware.")))
+
 (defun save-file-and-run-last-command-in-terminal-to-the-right ()
   (interactive)
   (save-buffer)
