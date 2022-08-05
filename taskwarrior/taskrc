@@ -20,7 +20,7 @@ report.allProjects.sort=project
 
 report.oldest.columns=id,modified,due,tags,project,description,urgency
 report.oldest.labels=id,modified,due,tags,proj,desc,urg
-report.oldest.sort=modified-
+report.oldest.sort=entry-
 report.oldest.filter=status:pending -CHILD
 
 # Context setup
