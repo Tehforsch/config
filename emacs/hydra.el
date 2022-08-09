@@ -8,7 +8,9 @@
     ("h" centaur-tabs-backward-group)
     ("l" centaur-tabs-forward-group)
     ("d" kill-this-buffer)
-    ("D" centaur-tabs-kill-all-buffers-in-current-group)
+    ("D" centaur-tabs-kill-other-buffers-in-current-group)
+    ("J" centaur-tabs-select-end-tab)
+    ("K" centaur-tabs-select-beg-tab)
 )
 
 (defhydra hydra-journal-personal ()

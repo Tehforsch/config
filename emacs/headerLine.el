@@ -4,7 +4,7 @@
 (defun get-header-line-file-content ()
   (if (projectile-project-p)
       (concat
-       (with-face 'header-line-projectile (concat "[" (projectile-project-name) "] ")) (f-relative (buffer-file-name) (projectile-project-root)))
+       (with-face 'header-line-projectile (concat "[" (projectile-project-name) "] ")))
     (abbreviate-file-name buffer-file-name))
   )
 

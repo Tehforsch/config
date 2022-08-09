@@ -29,3 +29,5 @@
 (load-theme 'gruvbox-dark-hard t)
 
 (fringe-mode '(0 . 0))
+
+(use-package all-the-icons)
