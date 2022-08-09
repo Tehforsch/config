@@ -3,7 +3,12 @@
     "Switch buffer"
     ("n" switch-to-next-buffer)
     ("p" switch-to-prev-buffer)
+    ("k" centaur-tabs-backward)
+    ("j" centaur-tabs-forward)
+    ("h" centaur-tabs-backward-group)
+    ("l" centaur-tabs-forward-group)
     ("d" kill-this-buffer)
+    ("D" centaur-tabs-kill-all-buffers-in-current-group)
 )
 
 (defhydra hydra-journal-personal ()

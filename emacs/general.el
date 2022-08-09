@@ -12,14 +12,21 @@
     "!" 'start-terminal-in-pwd
     "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
     "x" 'execute-extended-command
-    "b" '(:which-key "Buffer")
+    "k" '((lambda () (interactive) (centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
+    "j" '((lambda () (interactive) (centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
+    "b" '(:which-key "Buffer/Tab controls")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
     "bf" 'switch-to-buffer
     "bF" 'projectile-switch-to-buffer
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
-    "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer (transient)")
-    "bp" '((lambda () (interactive) (projectile-previous-project-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer (transient)")
-    "bn" '((lambda () (interactive) (projectile-next-project-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer (transient)")
+    "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer")
+    "bD" '((lambda () (interactive) (centaur-tabs-kill-all-buffers-in-current-group) (hydra-switch-buffer/body)) :which-key "Delete all buffers in group")
+    "bp" '((lambda () (interactive) (switch-to-previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer")
+    "bn" '((lambda () (interactive) (switch-to-next-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer")
+    "bk" '((lambda () (interactive) (centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
+    "bj" '((lambda () (interactive) (centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
+    "bh" '((lambda () (interactive) (centaur-tabs-backward-group) (hydra-switch-buffer/body)) :which-key "Previous tab group")
+    "bl" '((lambda () (interactive) (centaur-tabs-forward-group) (hydra-switch-buffer/body)) :which-key "Next tab group")
     "bs" 'evil-save-modified-and-close
     "e" '(:which-key "Emacs")
     "eR" '((lambda () (interactive) (load-file "~/projects/config/emacs/emacs.el")) :which-key "Reload emacs config")
