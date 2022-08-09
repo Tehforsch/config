@@ -21,7 +21,8 @@ alias co="git checkout"
 alias gpf="git push --force-with-lease"
 alias gl="git log"
 
-alias im="gpicview"
+alias im="feh --scale-down"
+alias imt="kitty +kitten icat"
 
 alias ka="killall"
 alias shut="sudo shutdown -h 0"
