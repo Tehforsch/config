@@ -40,6 +40,7 @@
 (load-from-config "latex.el")
 (load-from-config "gnuplot.el")
 (load-from-config "yaml.el")
+(load-from-config "wgsl-mode.el")
 
 ; Completion
 (load-from-config "company.el")
