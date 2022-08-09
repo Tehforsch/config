@@ -1,8 +1,8 @@
 (use-package hydra)
 (defhydra hydra-switch-buffer ()
     "Switch buffer"
-    ("n" switch-to-next-buffer)
-    ("p" switch-to-prev-buffer)
+    ("n" next-buffer)
+    ("p" previous-buffer)
     ("k" centaur-tabs-backward)
     ("j" centaur-tabs-forward)
     ("h" centaur-tabs-backward-group)

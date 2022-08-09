@@ -21,8 +21,8 @@
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer")
     "bD" '((lambda () (interactive) (centaur-tabs-kill-other-buffers-in-current-group) (hydra-switch-buffer/body)) :which-key "Delete all buffers in group")
-    "bp" '((lambda () (interactive) (switch-to-previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer")
-    "bn" '((lambda () (interactive) (switch-to-next-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer")
+    "bp" '((lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer")
+    "bn" '((lambda () (interactive) (next-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer")
     "bk" '((lambda () (interactive) (centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
     "bj" '((lambda () (interactive) (centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
     "bh" '((lambda () (interactive) (centaur-tabs-backward-group) (hydra-switch-buffer/body)) :which-key "Previous tab group")
