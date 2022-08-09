@@ -31,7 +31,6 @@
     (setq org-ref-pdf-directory "~/resource/papers")
     (setq bibtex-completion-bibliography bibliography-file)
     (require 'doi-utils)
-    (require 'org-ref-pdf)
     (require 'org-ref-url-utils)
     (require 'org-ref-bibtex)
     (require 'org-ref-latex)
