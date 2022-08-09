@@ -16,8 +16,8 @@
     "j" '((lambda () (interactive) (centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
     "b" '(:which-key "Buffer/Tab controls")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "bf" 'switch-to-buffer
-    "bF" 'projectile-switch-to-buffer
+    "bf" 'projectile-switch-to-buffer
+    "bF" 'switch-to-buffer
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer")
     "bD" '((lambda () (interactive) (centaur-tabs-kill-other-buffers-in-current-group) (hydra-switch-buffer/body)) :which-key "Delete all buffers in group")
