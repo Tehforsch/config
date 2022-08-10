@@ -46,10 +46,6 @@
     "gb" 'magit-blame
     "gl" 'magit-log-buffer-file
     "gs" 'magit-status
-    "ga" 'diff-hl-stage-current-hunk
-    "gx" 'diff-hl-revert-hunk
-    "gj" 'diff-hl-next-hunk
-    "gk" 'diff-hl-previous-hunk
     "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
     "h" 'selectrum-repeat
     "o" '(:which-key "Org")
