@@ -1,25 +1,27 @@
-(use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  (centaur-tabs-group-by-projectile-project)
-  (centaur-tabs-headline-match)
-  (setq centaur-tabs-style "alternate"
-        centaur-tabs-height 32
-        centaur-tabs-set-icons t
-        centaur-tabs-set-modified-marker nil
-        centaur-tabs-show-navigation-buttons nil
-        ; Hide markers
-        centaur-tabs-show-new-tab-button nil
-        centaur-tabs-set-close-button nil
-        ; Show modified files
-        centaur-tabs-set-modified-marker t
-        ; Periodic boundary conditions within a project
-        centaur-tabs-cycle-scope 'tabs
-        )
-  )
+(use-package centaur-tabs)
 
-(setq centaur-tabs-style "alternate")
+(setq centaur-tabs-style "chamfer"
+    centaur-tabs-height 16
+    centaur-tabs-set-icons t
+    centaur-tabs-left-edge-margin ""
+    centaur-tabs-right-edge-margin ""
+    centaur-tabs-icon-scale-factor 1.0
+    centaur-tabs-set-modified-marker nil
+    centaur-tabs-show-navigation-buttons nil
+    ; Hide markers
+    centaur-tabs-show-new-tab-button nil
+    centaur-tabs-set-close-button nil
+    ; Show modified files
+    centaur-tabs-set-modified-marker t
+    ; Periodic boundary conditions within a project
+    centaur-tabs-cycle-scope 'tabs
+    )
+
+(centaur-tabs-group-by-projectile-project)
+
+(centaur-tabs-change-fonts "Source Code Pro" 128)
+
+(centaur-tabs-headline-match)
 
 (defun centaur-tabs-hide-tab (x)
   "Do no to show buffer X in tabs."
@@ -52,3 +54,6 @@
      (and (string-prefix-p "magit" name)
 	  (not (file-name-extension name)))
      )))
+
+
+(centaur-tabs-mode t)

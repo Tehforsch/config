@@ -8,9 +8,6 @@
 )
 (global-display-line-numbers-mode +1)
 
-; Font size
-(set-face-attribute 'default nil :height 130)
-
 ; Hide menu bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -25,9 +22,12 @@
 
 ; Theme
 (use-package gruvbox-theme)
-; Color theme: srcery
 (load-theme 'gruvbox-dark-hard t)
 
 (fringe-mode '(0 . 0))
 
 (use-package all-the-icons)
+
+; Font
+(set-frame-font "Source Code Pro 14" nil t)
+(set-face-attribute 'default nil :height 130)
