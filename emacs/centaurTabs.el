@@ -57,3 +57,10 @@
 
 
 (centaur-tabs-mode t)
+
+(defun reload-centaur-tabs ()
+    (interactive)
+    (centaur-tabs-mode 0) (centaur-tabs-mode 1))
+
+; I hope that this will prevent centaur tabs sometimes being in a weird state
+(add-hook 'find-file-hook 'reload-centaur-tabs)
