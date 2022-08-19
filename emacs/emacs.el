@@ -41,6 +41,8 @@
 (load-from-config "yaml.el")
 (load-from-config "wgsl-mode.el")
 
+(load-from-config "tree-sitter.el")
+
 ; Completion
 (load-from-config "company.el")
 
