@@ -19,3 +19,9 @@
 (add-to-list 'exec-path latex-bin-folder)
 
 (use-package tex :ensure auctex)
+
+; A desperate attempt to disable the prettified subscript/superscript in latex
+(setq tex-fontify-script nil)
+(setq font-latex-fontify-script nil)
+(setq tex-font-script-display (quote (-0.0 0.0)))
+(setq tex-suscript-height-ratio 1.0)

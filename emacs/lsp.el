@@ -48,3 +48,7 @@
 ; the previous variant using selectrum suddenly stopped working during package upgrade and until selectrum/consult fixes their issues concerning everything lsp, i'll just use this
 (use-package helm-xref)
 (setq lsp-headerline-breadcrumb-enable nil)
+
+; Emacs-side performance improvements
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
