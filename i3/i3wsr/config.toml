@@ -1,0 +1,12 @@
+[general]
+separator = " "
+
+[aliases]
+"kitty" = ""
+# "firefox" = "f"
+"Emacs" = "🖹"
+TelegramDesktop = ""
+firefox = ""
+Termite = ""
+Thunderbird = ""
+Zathura = ""
