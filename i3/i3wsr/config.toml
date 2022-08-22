@@ -1,11 +1,15 @@
 [general]
 separator = " "
+default_icon = ""
 
-[aliases]
+[options]
+no_names = true
+
+[icons]
 "kitty" = ""
-# "firefox" = "f"
-"Emacs" = "🖹"
+"Emacs" = ""
 TelegramDesktop = ""
 firefox = ""
 Thunderbird = ""
 Zathura = ""
+default_icon = "💀"
