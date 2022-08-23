@@ -40,6 +40,7 @@ make_symlink powersettings/xfce4-power-manager.xml .config/xfce4/xfconf/xfce-per
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
 make_symlink mimetypes/emacsclient.desktop .local/share/applications/emacsclient.desktop
 make_symlink mimetypes/hdfview.desktop .local/share/applications/hdfview.desktop
+make_symlink zsh/openPdf.sh .local/bin/pdf
 
 # The EVIL, polluting my home directory
 make_symlink alsa/asoundrc .asoundrc
