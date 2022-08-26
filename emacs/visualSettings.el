@@ -29,5 +29,5 @@
 (use-package all-the-icons)
 
 ; Font
-(set-frame-font "Inconsolata 12" nil t)
-(set-face-attribute 'default nil :height 120)
+(set-frame-font "Inconsolata 14" nil t)
+(set-face-attribute 'default nil :height 140)
