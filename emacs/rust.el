@@ -30,3 +30,10 @@
 
 ; Ive had lots of problems with these - check this again in a few versions?
 (setq lsp-rust-analyzer-diagnostics-enable nil)
+
+(defun set-lsp-rust-feature ()
+  (interactive)
+  (let ((feature (read-from-minibuffer "feature: ")))
+    (message feature)
+    (setq lsp-rust-features (vector feature))
+    (lsp-restart-workspace)))
