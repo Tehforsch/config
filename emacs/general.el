@@ -142,6 +142,7 @@
     "p" 'lsp-rust-find-parent-module
     "s" 'helm-lsp-workspace-all-symbols
     "x" 'helm-lsp-code-actions
+    "g" 'insert-generic-after-symbol
 )
 
 

@@ -30,6 +30,7 @@
 
 ; Ive had lots of problems with these - check this again in a few versions?
 (setq lsp-rust-analyzer-diagnostics-enable nil)
+(setq lsp-rust-features [])
 
 (defun set-lsp-rust-feature ()
   (interactive)
@@ -37,3 +38,12 @@
     (message feature)
     (setq lsp-rust-features (vector feature))
     (lsp-restart-workspace)))
+
+(defun insert-generic-after-symbol ()
+  (interactive)
+  (apply #'evil-visual-char (evil-inner-symbol))
+  (evil-backward-char)
+  (evil-append nil nil nil)
+  (insert "<>")
+  (left-char 1))
+
