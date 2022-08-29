@@ -25,6 +25,7 @@ make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bat/config .config/bat/config
 make_symlink git/gitignoreGlobal.conf .config/git/gitignoreGlobal.conf
 make_symlink i3/i3.conf .config/i3/config
+make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
 make_symlink i3/i3status.conf .config/i3status/config
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
