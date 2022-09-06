@@ -22,6 +22,7 @@ function make_symlink {
 
 # The good, following the XDG_CONFIG_DIR structure
 make_symlink beets/config.yaml .config/beets/config.yaml
+make_symlink bacon/prefs.toml .config/bacon/prefs.toml
 make_symlink bat/config .config/bat/config
 make_symlink git/gitignoreGlobal.conf .config/git/gitignoreGlobal.conf
 make_symlink i3/i3.conf .config/i3/config
