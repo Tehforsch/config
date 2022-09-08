@@ -25,9 +25,10 @@ report.oldest.filter=status:pending -CHILD
 
 # Context setup
 context.phd.read=project:phd
-context.personal.read=project.not:phd
+context.personal.read=project.not:phd and project.not:tenet
 context.tng.read=project:phd.tng
 context.paper.read=project:phd.paper
+context.tenet.read=project:tenet
 
 # Urgency settings
 urgency.due.coefficient = 100
