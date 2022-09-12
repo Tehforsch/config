@@ -1,1 +1,2 @@
-systemctl --user enable emacs.service
+systemctl enable --user emacs
+systemctl start --user emacs
