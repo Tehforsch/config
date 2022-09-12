@@ -11,8 +11,6 @@
 
 (add-hook 'rustic-mode-hook #'company-mode)
 
-(define-key rustic-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-
 (setq lsp-auto-execute-action nil)
 
 (use-package helm-lsp)
