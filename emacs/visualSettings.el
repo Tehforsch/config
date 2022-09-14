@@ -28,11 +28,11 @@
 
 (use-package all-the-icons)
 
-; Font
 (if (> (display-pixel-height) 1080)
     (progn
-        (set-frame-font "Inconsolata 14" nil t)
-        (set-face-attribute 'default nil :height 140))
+        (add-to-list 'default-frame-alist
+                    '(font . "Inconsolata 13")))
     (progn
-        (set-frame-font "Inconsolata 13" nil t)
-        (set-face-attribute 'default nil :height 130)))
+        (add-to-list 'default-frame-alist
+                    '(font . "Inconsolata 14"))))
+

@@ -12,7 +12,7 @@
                         company-files ; Filenames etc.
                         company-elisp))
 
-(setq company-idle-delay 0.1)
+(setq company-idle-delay 0.25)
 (setq company-tooltip-maximum-width 500)
 (setq company-tooltip-maximum-height 500)
 (setq company-tooltip-limit 30)
