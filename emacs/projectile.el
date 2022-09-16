@@ -7,7 +7,7 @@
 (setq projectile-project-search-path '("~/projects/"))
 (projectile-discover-projects-in-search-path)
 
-(defun smart-list-files ()
+(defun smart-list-files (&optional arg)
     "Call `projectile-find-file' if in projectile project, otherwise fall back to `find-file'."
     (interactive)
     (if (projectile-project-p)
@@ -27,3 +27,5 @@
 (defun open-project-alongside-terminal ()
   (projectile-switch-project)
   (start-terminal-in-projectile-folder))
+
+(setq find-directory-functions 'smart-list-files)

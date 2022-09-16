@@ -5,8 +5,6 @@
 (define-key evil-insert-state-map (kbd "C-k") 'helm-previous-line)
 ; (define-key helm-map (kbd "C-k") 'helm-previous-line)
 
-(setq find-directory-functions 'helm-find-files-1)
-
 (defun helm-xref-format-candidate-relative-path (file line summary)
   "Same as `helm-xref-format-candidate-full-path', but display path relative to projectile root."
   (let ((file (file-relative-name file (projectile-project-root))))
