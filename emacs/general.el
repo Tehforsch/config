@@ -157,6 +157,7 @@
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
+(define-key evil-normal-state-map "gp" 'lsp-goto-implementation)
 (define-key evil-normal-state-map "gt" 'lsp-goto-type-definition)
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)

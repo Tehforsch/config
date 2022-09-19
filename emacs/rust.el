@@ -34,8 +34,14 @@
   (interactive)
   (let ((feature (read-from-minibuffer "feature: ")))
     (message feature)
+    (setq lsp-rust-no-default-features t)
     (setq lsp-rust-features (vector feature))
     (lsp-restart-workspace)))
+
+(defun set-lsp-rust-no-default-features ()
+  (interactive)
+  (setq lsp-rust-no-default-features t)
+  (lsp-restart-workspace))
 
 (defun insert-generic-after-symbol ()
   (interactive)
