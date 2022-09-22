@@ -155,6 +155,15 @@
     "r" 'lsp-rename
 )
 
+(mode-leader-def '(normal visual) 'c-mode-map
+    "el" 'consult-lsp-diagnostics
+    "en" 'next-error
+    "ep" 'previous-error
+    "h" 'toggle-lsp-ui-sideline-show-hover
+    "r" 'lsp-rename
+    "s" 'helm-lsp-workspace-all-symbols
+    "x" 'helm-lsp-code-actions
+)
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (define-key evil-normal-state-map "gp" 'lsp-goto-implementation)
