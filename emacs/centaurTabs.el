@@ -49,6 +49,8 @@
      (string-prefix-p "*scratch*" name)
      (string-prefix-p "*rust-analyzer*" name)
      (string-prefix-p "*rust-analyzer::stderr*" name)
+     (string-prefix-p "*pyls*" name)
+     (string-prefix-p "*pyls::stderr*" name)
 
      ;; Is not magit buffer.
      (and (string-prefix-p "magit" name)
