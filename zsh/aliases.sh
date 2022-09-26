@@ -55,6 +55,7 @@ alias ct="cargo test"
 alias ctr="cargo test --release"
 alias ci="cargo install --path ."
 alias cc="cargo check"
+alias cdo="cargo doc --no-deps --open -p"
 
 alias start="$scripts/startSim.sh"
 alias copy="rsync --archive --stats --progress --human-readable"
