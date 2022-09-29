@@ -1,12 +1,8 @@
-Host bwprod
-    HostName bwfor.cluster.uni-mannheim.de
-    User hd_hp240
-    ForwardX11 yes
-Host bwdev
-    HostName bwforcluster-dev.bwservices.uni-heidelberg.de
-    User hd_hp240
-    ForwardX11 yes
 Host helix
+    HostName helix.bwservices.uni-heidelberg.de
+    User hd_hp240
+    ForwardX11 no
+Host bwprod
     HostName helix.bwservices.uni-heidelberg.de
     User hd_hp240
     ForwardX11 no
