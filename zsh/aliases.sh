@@ -41,6 +41,7 @@ alias copybob="$scripts/copyPybob.sh"
 alias getbwfor="$scripts/getPlots.sh bwfor && pybob replot  --only-new ."
 alias getsupermuc="$scripts/getPlots.sh supermuc && pybob . replot --only-new"
 alias plot="$scripts/runPlotRemote.sh"
+alias replot="$scripts/replotRemote.sh"
 
 alias work="bash ~/projects/config/scripts/setWorkFolder.sh"
 alias w="source ~/projects/config/scripts/getWorkFolder.sh"
