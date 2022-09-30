@@ -1,8 +1,9 @@
 #!/bin/bash
 while true; do
     soundPlaying=$(pacmd list-sink-inputs | grep -c "RUNNING") 
-    criticalProgramsRunning=$(pgrep pacman | wc -l) 
-    if [[ $soundPlaying -ge 1 || "$critcalProgramsRunning" -ge 1 ]]; then
+    pacmanRunning=$(pgrep pacman | wc -l) 
+    scpRunning=$(pgrep scp | wc -l) 
+    if [[ $soundPlaying -ge 1 || "$pacmanRunning" -ge 1 || "$scpRunning" -ge 1 ]]; then
         echo disabled
         xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s true
     else
