@@ -42,6 +42,7 @@
 (load-from-config "wgsl-mode.el")
 
 (load-from-config "tree-sitter.el")
+(load-from-config "folding.el")
 
 ; Completion
 (load-from-config "company.el")
