@@ -1,7 +1,7 @@
 #!/bin/bash
 # Select song from a specific album and a specific artist. This is always called
 # after any album selection
-if [ $1 == "--preselect" ]; then
+if [ "$1" == "--preselect" ]; then
     songIndex=$2
     shift; shift
 else
