@@ -11,7 +11,11 @@ if [[ $SYSTEM_NAME == "manjaro" ]]; then
 elif [[ $SYSTEM_NAME == "manjaroPc" ]]; then
     main=DP-0
     second=DP2
-    xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0
+    if [[ $1 == "" ]]; then
+        xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0
+    else
+        xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --off
+    fi
     exit 0
 elif [[ $SYSTEM_NAME == "ita" ]]; then
     # try both because this is ridiculously inconsistent
