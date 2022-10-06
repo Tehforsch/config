@@ -270,7 +270,7 @@ alias gr = git reset
 alias ggr = ~/projects/config/scripts/gitGrep.sh
 alias co = git checkout
 
-alias im = gpicview
+alias im = feh
 
 alias ka = killall
 alias shut = sudo shutdown -h 0
@@ -306,4 +306,4 @@ alias start = $scripts/startSim.sh
 alias copy = rsync --archive --stats --progress --human-readable
 alias kp = $scripts/killProcess.sh
 
-alias l = ls -la
+alias l = ls
