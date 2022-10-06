@@ -72,3 +72,5 @@ alias mk="make -j 16"
 alias mpi="~/projects/raxiom/scripts/runMpi.sh"
 alias loc="~/projects/raxiom/scripts/runLocal.sh"
 alias mpigdb="~/projects/raxiom/scripts/runGdb.sh"
+
+alias mb="make build -j 12"
