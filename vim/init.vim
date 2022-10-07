@@ -76,7 +76,6 @@
     " It opens the same file in two split windows to the right of the current window and scrolls down
     " as many lines as my main monitor can fit so that I can see as much as possible of the tab
     " at once.
-    nnoremap <F10> :vert new %<CR>:vert new %<CR><C-w>l52jzt<C-w>l106jzt
 
 " copy/paste to system clipboard
     set clipboard=unnamedplus

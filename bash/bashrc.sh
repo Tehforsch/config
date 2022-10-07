@@ -1,4 +1,9 @@
-PATH=$PATH:$HOME/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
+PATH=$PATH:$HOME/.bin
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/projects/ninja
+PATH=$HOME/projects/cpython:$PATH
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/projects/libffi/lib64
+HDF5_VERSION="1.12.2"
 export CONFIG=$HOME/projects/config
 export scripts="$CONFIG/scripts"
 # Load aliases
@@ -24,3 +29,6 @@ export TERM='xterm-256color'
 source ~/modules.sh
 
 export HDF5_DISABLE_VERSION_CHECK=2
+. "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
