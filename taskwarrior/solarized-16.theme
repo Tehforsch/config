@@ -41,7 +41,7 @@
 #
 # Taskwarrior solarized-dark-256 theme created by Stefan A. Keel.
 
-rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
+rule.precedence.color=deleted,completed,blocked,active,overdue,scheduled,due.today,project.
 
 # General decoration
 color.label=
@@ -64,7 +64,35 @@ color.blocked=color8
 color.blocking=color2
 
 # Project
-color.project.none=
+color.project.none=bold color5
+color.project.raxiom=color6
+color.project.phd=color10
+
+
+color.project.anki=color5
+color.project.books=color5
+color.project.chords=color5
+color.project.config=color5
+color.project.cooking=color5
+color.project.finances=color5
+color.project.groceries=color5
+color.project.guitar=color5
+color.project.life=color5
+color.project.medical=color5
+color.project.misc=color5
+color.project.movies=color5
+color.project.orga=color5
+color.project.potentialPresents=color5
+color.project.presents=color5
+color.project.projects=color5
+color.project.routine=color5
+color.project.sokobrane=color5
+color.project.striputary=color5
+color.project.stuttgart=color5
+color.project.todo=color5
+color.project.wanderung=color5
+color.project.website=color5
+color.project.wohnung=color5
 
 # Priority
 color.uda.priority.H=bold color0
@@ -77,8 +105,7 @@ color.tag.none=
 color.tagged=
 
 # Due
-color.due=color10
-color.due.today=color3
+color.due.today=color11
 color.overdue=color9
 
 # Report: burndown
