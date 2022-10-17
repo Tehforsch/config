@@ -36,3 +36,6 @@
         (add-to-list 'default-frame-alist
                     '(font . "Inconsolata 14"))))
 
+
+(global-hl-line-mode 1)
+(set-face-background hl-line-face "gray16")
