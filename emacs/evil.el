@@ -117,3 +117,8 @@
 ; what I most closely associate this setting with - makes w and the word
 ; text objects work on camel case words
 (global-subword-mode +1)
+
+(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+(define-key evil-visual-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+(define-key evil-visual-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
