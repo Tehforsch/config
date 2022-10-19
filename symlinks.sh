@@ -34,7 +34,6 @@ make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink mypy/mypy.ini .config/mypy/config
 make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink rofi/config.rasi .config/rofi/config.rasi
-make_symlink taskwarrior/taskrc .config/taskwarrior/taskrc
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink mimetypes/mimeapps.list .config/mimeapps.list
@@ -56,4 +55,5 @@ make_symlink emacs/emacs.el .emacs.d/init.el
 make_symlink git/gitconfig.conf .gitconfig
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
 make_symlink vim/init.vim .vimrc
+make_symlink taskwarrior/taskrc .taskrc
 make_symlink zsh/zshrc.sh .zshrc
