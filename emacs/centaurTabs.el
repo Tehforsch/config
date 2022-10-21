@@ -6,7 +6,6 @@
     centaur-tabs-left-edge-margin ""
     centaur-tabs-right-edge-margin ""
     centaur-tabs-icon-scale-factor 1.0
-    centaur-tabs-set-modified-marker nil
     centaur-tabs-show-navigation-buttons nil
     ; Hide markers
     centaur-tabs-show-new-tab-button nil
@@ -46,6 +45,7 @@
      (string-prefix-p "*Help" name)
      (string-prefix-p "*mybuf" name)
      (string-prefix-p "*Messages*" name)
+     (string-prefix-p "*Warnings*" name)
      (string-prefix-p "*scratch*" name)
      (string-prefix-p "*rust-analyzer*" name)
      (string-prefix-p "*rust-analyzer::stderr*" name)
@@ -66,3 +66,23 @@
 
 ; I hope that this will prevent centaur tabs sometimes being in a weird state
 (add-hook 'find-file-hook 'reload-centaur-tabs)
+
+(defun my-centaur-tabs-forward ()
+    (interactive)
+    (setq centaur-tabs--buffer-show-groups nil)
+    (centaur-tabs-forward))
+
+(defun my-centaur-tabs-backward ()
+    (interactive)
+    (setq centaur-tabs--buffer-show-groups nil)
+    (centaur-tabs-backward))
+
+(defun my-centaur-tabs-forward-group ()
+    (interactive)
+    (setq centaur-tabs--buffer-show-groups t)
+    (centaur-tabs-backward-group))
+
+(defun my-centaur-tabs-backward-group ()
+    (interactive)
+    (setq centaur-tabs--buffer-show-groups t)
+    (centaur-tabs-backward-group))
