@@ -16,8 +16,10 @@ function make_symlink {
     target="$CONFIG/$1"
     name="$HOME/$2"
     mkdir -p $(dirname "$name")
-    echo "$target\t\t -> $name"
-    ln -s "$target" "$name"
+    if [[ ! -a "$name" ]]; then
+        echo "$target\t\t -> $name"
+        ln -s "$target" "$name"
+    fi
 }
 
 # The good, following the XDG_CONFIG_DIR structure
@@ -45,6 +47,7 @@ make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
 make_symlink mimetypes/emacsclient.desktop .local/share/applications/emacsclient.desktop
 make_symlink mimetypes/hdfview.desktop .local/share/applications/hdfview.desktop
 make_symlink zsh/openPdf.sh .local/bin/pdf
+make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/taskwarrior/system.conf
 
 # The EVIL, polluting my home directory
 make_symlink alsa/asoundrc .asoundrc
@@ -56,4 +59,5 @@ make_symlink git/gitconfig.conf .gitconfig
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
 make_symlink vim/init.vim .vimrc
 make_symlink taskwarrior/taskrc .taskrc
+make_symlink ssh/config .ssh/config
 make_symlink zsh/zshrc.sh .zshrc
