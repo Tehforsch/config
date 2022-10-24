@@ -12,11 +12,12 @@
     "!" 'start-terminal-in-pwd
     "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
     "x" 'execute-extended-command
-    "k" '((lambda () (interactive) (centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
-    "j" '((lambda () (interactive) (centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
-    "K" '((lambda () (interactive) (centaur-tabs-backward-group) (hydra-switch-buffer/body)) :which-key "Previous tab group")
-    "J" '((lambda () (interactive) (centaur-tabs-forward-group) (hydra-switch-buffer/body)) :which-key "Next tab group")
+    "k" '((lambda () (interactive) (my-centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
+    "j" '((lambda () (interactive) (my-centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
+    "K" '((lambda () (interactive) (my-centaur-tabs-backward-group) (hydra-switch-buffer/body)) :which-key "Previous tab group")
+    "J" '((lambda () (interactive) (my-centaur-tabs-forward-group) (hydra-switch-buffer/body)) :which-key "Next tab group")
     "b" '(:which-key "Buffer/Tab controls")
+    "bt" '((lambda () (interactive) (centaur-tabs-toggle-groups) (hydra-switch-buffer/body)) :which-key "Toggle group/tab display")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
     "bf" 'projectile-switch-to-buffer
     "bF" 'switch-to-buffer
@@ -25,10 +26,10 @@
     "bD" '((lambda () (interactive) (centaur-tabs-kill-other-buffers-in-current-group) (hydra-switch-buffer/body)) :which-key "Delete all buffers in group")
     "bp" '((lambda () (interactive) (previous-buffer) (hydra-switch-buffer/body)) :which-key "Previous buffer")
     "bn" '((lambda () (interactive) (next-buffer) (hydra-switch-buffer/body)) :which-key "Next buffer")
-    "bk" '((lambda () (interactive) (centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
-    "bj" '((lambda () (interactive) (centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
-    "bK" '((lambda () (interactive) (centaur-tabs-backward-group) (hydra-switch-buffer/body)) :which-key "Previous tab group")
-    "bJ" '((lambda () (interactive) (centaur-tabs-forward-group) (hydra-switch-buffer/body)) :which-key "Next tab group")
+    "bk" '((lambda () (interactive) (my-centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
+    "bj" '((lambda () (interactive) (my-centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
+    "bK" '((lambda () (interactive) (my-centaur-tabs-backward-group) (hydra-switch-buffer/body)) :which-key "Previous tab group")
+    "bJ" '((lambda () (interactive) (my-centaur-tabs-forward-group) (hydra-switch-buffer/body)) :which-key "Next tab group")
     "bl" '((lambda () (interactive) (centaur-tabs-select-end-tab) (hydra-switch-buffer/body)) :which-key "Select the first tab")
     "bh" '((lambda () (interactive) (centaur-tabs-select-beg-tab) (hydra-switch-buffer/body)) :which-key "Select the last tab")
     "bs" 'evil-save-modified-and-close

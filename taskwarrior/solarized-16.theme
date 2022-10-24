@@ -105,7 +105,7 @@ color.tag.none=
 color.tagged=
 
 # Due
-color.due.today=color11
+color.due.today=underline
 color.overdue=color9
 
 # Report: burndown
