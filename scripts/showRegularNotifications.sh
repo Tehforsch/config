@@ -1,4 +1,4 @@
 while true; do
     sleep 3600
-    notify-send "move" -h string:x-canonical-private-synchronous:anything -t 5000
+    notify-send "move" -t 10000 --urgency=critical
 done
