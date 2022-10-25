@@ -39,3 +39,8 @@
 
 (global-hl-line-mode 1)
 (set-face-background hl-line-face "gray16")
+
+; Allow temporarily increasing font size, which is nice sometimes
+(use-package default-text-scale)
+(define-key evil-normal-state-map (kbd "C-*") 'default-text-scale-increase)
+(define-key evil-normal-state-map (kbd "C-_") 'default-text-scale-decrease)
