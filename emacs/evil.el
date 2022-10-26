@@ -97,6 +97,8 @@
 (evil-set-undo-system 'undo-tree)
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+; The following is there to make sure that undo-tree is still enabled, even though Ctrl+Shift+- (the default undo key) is bound to something else (I bound this to font size decrease in visualSettings.el)
+(with-eval-after-load 'undo-tree (defun undo-tree-overridden-undo-bindings-p () nil))
 
 ; Make sure we cant repeat undo / repeat with .
 (evil-declare-abort-repeat 'evil-undo)
