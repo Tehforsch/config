@@ -41,13 +41,14 @@ make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink mimetypes/mimeapps.list .config/mimeapps.list
 make_symlink powersettings/xfce4-power-manager.xml .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 make_symlink emacs/emacs.service .config/systemd/user/default.target.wants/emacs.service
+make_symlink taskwarrior/taskrc .config/task/taskrc
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
 make_symlink mimetypes/emacsclient.desktop .local/share/applications/emacsclient.desktop
 make_symlink mimetypes/hdfview.desktop .local/share/applications/hdfview.desktop
 make_symlink zsh/openPdf.sh .local/bin/pdf
-make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/taskwarrior/system.conf
+make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 
 # The EVIL, polluting my home directory
 make_symlink alsa/asoundrc .asoundrc
@@ -58,6 +59,5 @@ make_symlink emacs/emacs.el .emacs.d/init.el
 make_symlink git/gitconfig.conf .gitconfig
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
 make_symlink vim/init.vim .vimrc
-make_symlink taskwarrior/taskrc .taskrc
 make_symlink ssh/config .ssh/config
 make_symlink zsh/zshrc.sh .zshrc

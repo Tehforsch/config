@@ -1,9 +1,11 @@
 # Task server setup
-taskd.ca=\/home\/toni\/.task\/ca.cert.pem
-taskd.certificate=\/home\/toni\/.task\/toni.cert.pem
-taskd.key=\/home\/toni\/.task\/toni.key.pem
+taskd.ca=$XDG_DATA_HOME/task/ca.cert.pem
+taskd.certificate=$XDG_DATA_HOME/task/toni.cert.pem
+taskd.key=$XDG_DATA_HOME/task/toni.key.pem
 taskd.server=h2513905.stratoserver.net:53589
 taskd.credentials=Public/toni/ba2d4286-aadc-4f76-9a54-74908b07151c
+
+data.location=$XDG_DATA_HOME/task/
 
 # Color Theme
 include /home/toni/projects/config/taskwarrior/solarized-16.theme
@@ -86,4 +88,4 @@ report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
 
-include /home/toni/.config/taskwarrior/system.conf
+include $XDG_CONFIG_HOME/task/system.conf

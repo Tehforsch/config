@@ -5,3 +5,5 @@ export projects=$PROJECTS
 export scripts=$CONFIG/scripts
 export BROWSER=/usr/bin/firefox
 export PATH=$PATH:~/.local/bin
+export XDG_CONFIG_HOME=$(realpath ~/.config)
+export XDG_DATA_HOME=$(realpath ~/.local/share)
