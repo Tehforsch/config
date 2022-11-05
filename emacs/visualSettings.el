@@ -44,3 +44,7 @@
 (use-package default-text-scale)
 (define-key evil-normal-state-map (kbd "C-*") 'default-text-scale-increase)
 (define-key evil-normal-state-map (kbd "C-_") 'default-text-scale-decrease)
+
+(use-package rainbow-delimiters)
+(add-hook 'rustic-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'emacs-lisp-mode 'rainbow-delimiters-mode)
