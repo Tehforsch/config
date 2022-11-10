@@ -39,7 +39,7 @@ make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink mimetypes/mimeapps.list .config/mimeapps.list
-make_symlink powersettings/xfce4-power-manager.xml .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
+make_symlink powersettings/${SYSTEM_NAME}.xml .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 make_symlink emacs/emacs.service .config/systemd/user/default.target.wants/emacs.service
 make_symlink taskwarrior/taskrc .config/task/taskrc
 make_symlink taskwarrior/hooks .local/share/task/hooks
