@@ -37,6 +37,7 @@ alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
 alias addmusic="bash ~/music/addMusic.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
+alias pyplot="python3 ~/projects/pybob/main.py plot ."
 alias testbob="cargo run --release --manifest-path ~/projects/bob/Cargo.toml"
 alias copybob="$scripts/copyPybob.sh"
 alias getbwfor="$scripts/getPlots.sh bwfor && pybob replot  --only-new ."
