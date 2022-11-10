@@ -89,3 +89,4 @@ report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
 
 include $XDG_CONFIG_HOME/task/system.conf
+news.version=2.6.0
