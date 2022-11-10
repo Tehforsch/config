@@ -48,3 +48,4 @@
 (use-package rainbow-delimiters)
 (add-hook 'rustic-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'emacs-lisp-mode 'rainbow-delimiters-mode)
+(add-hook 'python-mode 'rainbow-delimiters-mode)
