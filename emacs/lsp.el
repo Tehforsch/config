@@ -22,7 +22,8 @@
       lsp-ui-peek-enable t
       lsp-ui-sideline-enable t
       lsp-ui-imenu-enable t
-      lsp-ui-flycheck-enable nil)
+      lsp-ui-flycheck-enable nil
+      lsp-ui-doc-max-height 30)
 (setq lsp-signature-auto-activate nil)
 (setq lsp-eldoc-enable-hover nil)
 
