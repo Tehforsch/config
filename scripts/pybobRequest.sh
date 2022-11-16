@@ -11,4 +11,4 @@ while [ -a "$copyRequestFile" ]; do
     sleep 0.1
 done
 echo ""
-python3 "$pybobFolder/main.py" --post $@
+~/projects/cpython/python "$pybobFolder/main.py" --post $@

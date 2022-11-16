@@ -27,7 +27,7 @@ alias interactive="srun --partition=single --ntasks=3 --time=2:00:00 --pty /bin/
 alias pybob="$HOME/projects/config/scripts/pybobRequest.sh"
 alias oldpybob="python $HOME/projects/pybob/main.py"
 unalias pyplot
-alias pyplot="~/projects/cpython/python ~/projects/pybob/main.py plot ."
+alias pyplot="~/projects/cpython/python ~/projects/pybob/main.py --post plot ."
 
 export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/hd/hd_hd/hd_hp240/projects/gmp/lib
