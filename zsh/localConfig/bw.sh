@@ -26,6 +26,8 @@ alias ls="ls"
 alias interactive="srun --partition=single --ntasks=3 --time=2:00:00 --pty /bin/bash"
 alias pybob="$HOME/projects/config/scripts/pybobRequest.sh"
 alias oldpybob="python $HOME/projects/pybob/main.py"
+unalias pyplot
+alias pyplot="~/projects/cpython/python ~/projects/pybob/main.py plot ."
 
 export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/hd/hd_hd/hd_hp240/projects/gmp/lib
@@ -33,3 +35,4 @@ export GMPDIR=$HOME/projects/gmp/
 export HWLOC_DIR=$HOME/projects/hwloc/
 export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export LIBCLANG_PATH=$HOME/projects/libclang/llvm-project/build/lib
+
