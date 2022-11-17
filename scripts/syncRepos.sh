@@ -8,5 +8,5 @@ while [[ 1 ]]; do
     cd /home/$USER/pictures
     ./update.sh
     task sync
-    sleep 3600
+    sleep 600
 done
