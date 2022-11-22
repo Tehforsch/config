@@ -55,7 +55,7 @@ make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 make_symlink alsa/asoundrc .asoundrc
 make_symlink bash/bashrc.sh .bashrc
 make_symlink bash/inputrc.sh .inputrc
-make_symlink cargo/config.toml .cargo/config
+make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config
 make_symlink emacs/emacs.el .emacs.d/init.el
 make_symlink git/gitconfig.conf .gitconfig
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
