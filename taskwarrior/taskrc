@@ -90,3 +90,6 @@ report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +P
 
 include $XDG_CONFIG_HOME/task/system.conf
 news.version=2.6.0
+
+# Do not show "there are more urgent tasks" message
+nag=
