@@ -13,9 +13,13 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UChcmKGMMMemwb291yVEtXHA vid
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ videos !hidden
 # Stefano Ghisolfi
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtKpjSIjJFS4CZiPhbdHFQA videos !hidden
+# Rick Beato
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJquYOG5EL82sKTfH9aMA9Q videos !hidden
+
 
 https://hnrss.org/newest?points=400 articles !hidden
 https://xkcd.com/rss.xml articles !hidden
 https://this-week-in-rust.org/rss.xml articles !hidden
 https://gamedev.rs/rss.xml articles !hidden
 https://www.to-rss.xyz/wikipedia/current_events/ articles !hidden
+https://blog.rust-lang.org/feed.xml articles !hidden
