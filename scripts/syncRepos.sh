@@ -1,5 +1,6 @@
 while [[ 1 ]]; do
     echo "Syncing"
+    task sync
     cd /home/$USER/notes
     ./update.sh
     cd /home/$USER/music
@@ -7,6 +8,7 @@ while [[ 1 ]]; do
     mpc update
     cd /home/$USER/pictures
     ./update.sh
-    task sync
+    cd /home/$USER/finances
+    ./update.sh
     sleep 600
 done
