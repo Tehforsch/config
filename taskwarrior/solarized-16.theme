@@ -93,6 +93,7 @@ color.project.todo=color5
 color.project.wanderung=color5
 color.project.website=color5
 color.project.wohnung=color5
+color.project.read=color12
 
 # Priority
 color.uda.priority.H=bold color0
