@@ -9,7 +9,7 @@ for filetype in "$@"; do
 done
 
 for depth in $(seq 0 $maxDepth); do
-    searchResult=$(fd -I $filetypeCommand --exact-depth $depth)
+    searchResult=$(fd -LI $filetypeCommand --exact-depth $depth)
     if [ "$searchResult" != "" ]; then
         if [ "$docs" != "" ]; then
             docs="${docs}\n$searchResult"
