@@ -53,3 +53,26 @@
 
 ; Do not scroll beyond buffer extents
 (setq scroll-conservatively 101)
+
+; Weird indentation or spaces after the line cause a warning in makefiles
+; which I can't be bothered to think about right now
+(setq makefile-warn-suspicious-lines nil)
+
+; Make evil searches center the screen on the result
+(defadvice
+    evil-search-forward
+    (after evil-search-forward-recenter activate)
+    (recenter))
+(ad-activate 'evil-search-forward)
+
+(defadvice
+    evil-search-next
+    (after evil-search-next-recenter activate)
+    (recenter))
+(ad-activate 'evil-search-next)
+
+(defadvice
+    evil-search-previous
+    (after evil-search-previous-recenter activate)
+    (recenter))
+(ad-activate 'evil-search-previous)
