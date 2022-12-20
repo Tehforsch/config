@@ -56,3 +56,11 @@ highlight feedlist "^─.*$" color6 color6 bold
 
 auto-reload yes
 reload-threads 20
+
+ignore-mode "display"
+
+ignore-article "https://hnrss.org/newest?points=200" "title =~ \"apple\""
+ignore-article "https://hnrss.org/newest?points=200" "title =~ \"twitter\""
+ignore-article "https://hnrss.org/newest?points=200" "title =~ \"react\""
+
+ignore-article "https://jung-naiv.podigee.io/feed/mp3" "title =~ \"WIRTSCHAFTSBRIEFING\""
