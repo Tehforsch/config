@@ -62,3 +62,7 @@ make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.
 make_symlink vim/init.vim .vimrc
 make_symlink ssh/config .ssh/config
 make_symlink zsh/zshrc.sh .zshrc
+
+if [[ ${SYSTEM_NAME} = manjaroPc ]]; then
+    make_symlink scripts/showRegularNotifications.sh .local/share/showRegularNotifications.sh
+fi
