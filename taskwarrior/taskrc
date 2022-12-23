@@ -94,3 +94,6 @@ news.version=2.6.0
 
 # Do not show "there are more urgent tasks" message
 nag=
+
+# Do not ask about what to do with the template task when modifying a recurring task
+recurrence.confirmation=no
