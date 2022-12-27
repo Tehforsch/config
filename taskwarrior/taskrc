@@ -45,7 +45,7 @@ urgency.user.project.phd.orga.coefficient = 2.0
 urgency.user.project.phd.paper.coefficient = 10.0
 urgency.user.tag.next.coefficient = 400.0
 urgency.user.project.raxiom.coefficient = -20.0
-urgency.user.project.read.coefficient = -50.0
+urgency.user.project.read.coefficient = -150.0
 
 urgency.age.coefficient = 10.0
 urgency.blocked.coefficient = -40.0
