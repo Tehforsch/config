@@ -53,3 +53,9 @@
 ; Emacs-side performance improvements
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+; Save files after rename actions
+(add-hook 'lsp-after-apply-edits-hook
+          (lambda (operation)
+            (when (eq operation 'rename)
+              (save-buffer))))
