@@ -10,7 +10,7 @@
  :keymaps 'override
  :prefix "SPC"
     "!" 'start-terminal-in-pwd
-    "." '((lambda () (interactive) (load-file buffer-file-name)) :which-key "Load this file")
+    "." 'eval-buffer
     "x" 'execute-extended-command
     "k" '((lambda () (interactive) (my-centaur-tabs-backward) (hydra-switch-buffer/body)) :which-key "Previous tab")
     "j" '((lambda () (interactive) (my-centaur-tabs-forward) (hydra-switch-buffer/body)) :which-key "Next tab")
