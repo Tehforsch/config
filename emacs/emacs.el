@@ -12,9 +12,10 @@
 
 (load-from-config "loadGeneral.el")
 
+(load-from-config "flymake.el")
+(load-from-config "eldoc.el")
 ; Language support
-(load-from-config "flycheck.el")
-(load-from-config "lsp.el")
+(load-from-config "eglot.el")
 
 (load-from-config "evil.el")
 (load-from-config "evilCollection.el")
@@ -39,16 +40,12 @@
 (load-from-config "rust.el")
 (load-from-config "c.el")
 (load-from-config "python.el")
-(load-from-config "latex.el")
 (load-from-config "gnuplot.el")
 (load-from-config "yaml.el")
 (load-from-config "wgsl-mode.el")
 
 (load-from-config "tree-sitter.el")
 (load-from-config "folding.el")
-
-; Completion
-;; (load-from-config "company.el")
 
 (load-from-config "mouse.el")
 (load-from-config "miscSettings.el")
@@ -67,6 +64,8 @@
 
 (load-from-config "punditSettings.el")
 (load-from-config "rpundit.el")
+
+(load-from-config "latex.el")
 
 (load-from-config "screenshot.el")
 

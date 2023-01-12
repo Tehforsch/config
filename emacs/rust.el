@@ -1,32 +1,7 @@
-(use-package rustic)
+(use-package rust-mode)
+
 (setenv "PATH" (concat (getenv "PATH") ":/home/toni/.cargo/bin"))
 (setq exec-path (append exec-path '("/home/toni/.cargo/bin")))
-(setq rustic-rustfmt-bin "/usr/bin/rustfmt")
-(setq rustic-format-on-save nil)
-(setq rustic-format-display-method 'ignore); Don't show rustfmt buffer
-
-(add-hook 'rustic-mode-hook 'flycheck-mode)
-(setq rustic-lsp-server 'rust-analyzer)
-(setq rustic-analyzer-command '("rustup run nightly rust-analyzer"))
-
-(setq lsp-auto-execute-action nil)
-
-; Ive had lots of problems with these - check this again in a few versions?
-(setq lsp-rust-analyzer-diagnostics-enable nil)
-(setq lsp-rust-features [])
-
-(defun set-lsp-rust-feature ()
-  (interactive)
-  (let ((feature (read-from-minibuffer "feature: ")))
-    (message feature)
-    (setq lsp-rust-no-default-features t)
-    (setq lsp-rust-features (vector feature))
-    (lsp-restart-workspace)))
-
-(defun set-lsp-rust-no-default-features ()
-  (interactive)
-  (setq lsp-rust-no-default-features t)
-  (lsp-restart-workspace))
 
 (defun insert-generic-after-symbol ()
   (interactive)
@@ -36,3 +11,5 @@
   (insert "<>")
   (left-char 1))
 
+
+(add-hook 'rust-mode-hook 'eglot-ensure)

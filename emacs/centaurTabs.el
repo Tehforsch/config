@@ -50,6 +50,9 @@
      (string-prefix-p "*pyls*" name)
      (string-prefix-p "*pyls::stderr*" name)
      (string-prefix-p "*Shell Command Output*" name)
+     (string-prefix-p "*Async-native-compile-log*" name)
+     (string-prefix-p "*Flymake" name)
+     (string-prefix-p "*EGLOT" name)
 
      ;; Is not magit buffer.
      (and (string-prefix-p "magit" name)

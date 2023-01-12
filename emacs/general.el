@@ -111,12 +111,11 @@
 (mode-leader-def '(normal visual) 'global-map
     "en" 'next-error
     "ep" 'previous-error
-    "el" 'consult-lsp-diagnostics
-    "s" 'consult-lsp-symbols
-    "S" 'consult-lsp-file-symbols
-    "f" 'rustic-format-buffer
-    "r" 'lsp-rename
-    "x" 'lsp-execute-code-action
+    "el" 'my-flymake-show-project-diagnostics
+    "s" 'consult-eglot-symbols
+    "f" 'eglot-format-buffer
+    "r" 'eglot-rename
+    "x" 'eglot-code-actions
     "a" 'consult-line
 )
 
@@ -132,11 +131,11 @@
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
-(define-key evil-normal-state-map "gp" 'lsp-goto-implementation)
-(define-key evil-normal-state-map "gt" 'lsp-goto-type-definition)
+(define-key evil-normal-state-map "gp" 'eglot-find-implementation)
+(define-key evil-normal-state-map "gt" 'eglot-find-typeDefinition)
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)
-(define-key evil-normal-state-map "gh" 'lsp-ui-doc-show)
+(define-key evil-normal-state-map "gh" 'eldoc-box-eglot-help-at-point)
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
