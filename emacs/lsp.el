@@ -57,3 +57,11 @@
           (lambda (operation)
             (when (eq operation 'rename)
               (save-buffer))))
+
+(setq lsp-completion-provider :none)
+
+(defun corfu-lsp-setup ()
+  (interactive)
+  (setq-local completion-styles '(orderless)
+              completion-category-defaults nil))
+(add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)

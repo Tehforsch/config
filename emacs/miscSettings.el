@@ -21,8 +21,8 @@
     (use-package erefactor)
     (erefactor-highlight-mode nil))
 
-(use-package frames-only-mode)
-(frames-only-mode)
+;; (use-package frames-only-mode)
+;; (frames-only-mode)
 
 (add-hook 'before-save-hook 'check-file-exists-before-saving)
 (defun check-file-exists-before-saving ()
