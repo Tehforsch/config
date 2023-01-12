@@ -21,13 +21,16 @@
 (load-from-config "evilArgs.el")
 (load-from-config "evilMatchit.el")
 (load-from-config "betterJumper.el")
-(load-from-config "selectrum.el")
+
+(load-from-config "vertico.el")
+(load-from-config "orderless.el")
 (load-from-config "consult.el")
 (load-from-config "marginalia.el")
+(load-from-config "corfu.el")
+
 (load-from-config "evilNumbers.el")
 (load-from-config "projectile.el")
 (load-from-config "fileAssociations.el")
-(load-from-config "helm.el")
 (load-from-config "expandRegion.el")
 
 (load-from-config "magit.el")
@@ -45,7 +48,7 @@
 (load-from-config "folding.el")
 
 ; Completion
-(load-from-config "company.el")
+;; (load-from-config "company.el")
 
 (load-from-config "mouse.el")
 (load-from-config "miscSettings.el")

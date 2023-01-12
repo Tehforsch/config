@@ -50,7 +50,8 @@
     "gl" 'magit-log-buffer-file
     "gs" 'magit-status
     "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
-    "h" 'selectrum-repeat
+    "h" 'vertico-repeat
+    "H" 'vertico-repeat-select
     "o" '(:which-key "Org")
     "oc" '(:which-key "Citations/Bibliography")
     "oca" 'crossref-add-bibtex-entry
@@ -107,25 +108,16 @@
     "^" 'evil-switch-to-windows-last-buffer
 )
 
-(mode-leader-def '(normal visual) 'emacs-lisp-mode-map
+(mode-leader-def '(normal visual) 'global-map
     "en" 'next-error
     "ep" 'previous-error
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
-)
-
-(mode-leader-def '(normal visual) 'c-mode-map
-    "en" 'next-error
-    "ep" 'previous-error
-    "s" 'consult-lsp-workspace-all-symbols
-    "x" 'helm-lsp-workspace-all-symbols
-)
-
-(mode-leader-def '(normal visual) 'fortran-mode-map
-    "en" 'next-error
-    "ep" 'previous-error
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
+    "el" 'consult-lsp-diagnostics
+    "s" 'consult-lsp-symbols
+    "S" 'consult-lsp-file-symbols
+    "f" 'rustic-format-buffer
+    "r" 'lsp-rename
+    "x" 'lsp-execute-code-action
+    "a" 'consult-line
 )
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
@@ -134,37 +126,10 @@
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
     "d" 'rust-dbg-wrap-or-unwrap
-    "el" 'consult-lsp-diagnostics
-    "en" 'next-error
-    "ep" 'previous-error
-    "f" 'rustic-format-buffer
-    "h" 'toggle-lsp-ui-sideline-show-hover
-    "r" 'lsp-rename
     "p" 'lsp-rust-find-parent-module
-    "s" 'helm-lsp-workspace-all-symbols
-    "x" 'helm-lsp-code-actions
     "g" 'insert-generic-after-symbol
 )
 
-
-(mode-leader-def '(normal visual) 'python-mode-map
-    "en" 'next-error
-    "ep" 'previous-error
-    "d" 'python-insert-debug-trace
-    "h" 'hs-hide-all
-    "s" 'hs-show-all
-    "r" 'lsp-rename
-)
-
-(mode-leader-def '(normal visual) 'c-mode-map
-    "el" 'consult-lsp-diagnostics
-    "en" 'next-error
-    "ep" 'previous-error
-    "h" 'toggle-lsp-ui-sideline-show-hover
-    "r" 'lsp-rename
-    "s" 'helm-lsp-workspace-all-symbols
-    "x" 'helm-lsp-code-actions
-)
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (define-key evil-normal-state-map "gp" 'lsp-goto-implementation)

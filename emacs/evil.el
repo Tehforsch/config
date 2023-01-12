@@ -124,3 +124,8 @@
 (define-key evil-visual-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
 (define-key evil-visual-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+
+; Required so that I can bind C-k in other places and actually get the behavior I want
+(define-key evil-insert-state-map (kbd "C-k") nil)
+; Required so that I can bind C-p in other places and actually get the behavior I want
+(define-key evil-insert-state-map (kbd "C-p") nil)
