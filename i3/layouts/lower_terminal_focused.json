@@ -1,0 +1,103 @@
+[
+{
+	"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"marks": [],
+		"percent": 1,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splith",
+			"marks": [],
+			"percent": 1,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "normal",
+				"floating": "auto_off",
+				"layout": "splith",
+				"marks": [],
+				"percent": 1,
+				"type": "con",
+				"nodes": [
+				{
+					"border": "pixel",
+					"current_border_width": 3,
+					"floating": "auto_off",
+					"geometry": {
+						"height": 756,
+						"width": 816,
+						"x": 0,
+						"y": 0
+					},
+					"marks": [],
+					"name": "src/sweep/tests.rs - GNU Emacs at tonipc",
+					"percent": 0.6,
+					"swallows": [
+					{
+						"instance": "^emacs$"
+					}
+					],
+					"type": "con"
+				},
+				{
+					"border": "normal",
+					"floating": "auto_off",
+					"layout": "stacked",
+					"marks": [],
+					"percent": 0.4,
+					"type": "con",
+					"nodes": [
+					{
+						"border": "pixel",
+						"current_border_width": 3,
+						"floating": "auto_off",
+						"geometry": {
+							"height": 1398,
+							"width": 1274,
+							"x": 0,
+							"y": 0
+						},
+						"marks": [],
+						"name": "bacon",
+						"percent": 0.5,
+						"swallows": [
+						{
+							"instance": "^kitty$"
+						}
+						],
+						"type": "con"
+					},
+					{
+						"border": "pixel",
+						"current_border_width": 3,
+						"floating": "auto_off",
+						"geometry": {
+							"height": 1398,
+							"width": 1274,
+							"x": 0,
+							"y": 0
+						},
+						"marks": [],
+						"name": "~/projects/raxiom",
+						"percent": 0.5,
+						"swallows": [
+						{
+							"instance": "^kitty$"
+						}
+						],
+						"type": "con"
+					}
+					]
+				}
+				]
+			}
+			]
+		}
+		]
+}
+]
