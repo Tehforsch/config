@@ -19,8 +19,8 @@
     "b" '(:which-key "Buffer/Tab controls")
     "bt" '((lambda () (interactive) (centaur-tabs-toggle-groups) (hydra-switch-buffer/body)) :which-key "Toggle group/tab display")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "bf" 'projectile-switch-to-buffer
-    "bF" 'switch-to-buffer
+    "bf" 'consult-project-buffer
+    "bF" 'consult-buffer
     ; When deleting or moving to next/previous buffer stay in buffer switching mode
     "bd" '((lambda () (interactive) (kill-this-buffer) (hydra-switch-buffer/body)) :which-key "Delete buffer")
     "bD" '((lambda () (interactive) (centaur-tabs-kill-other-buffers-in-current-group) (hydra-switch-buffer/body)) :which-key "Delete all buffers in group")
@@ -105,8 +105,14 @@
     "WK" 'evil-window-move-very-top
     "WL" 'evil-window-move-far-right
     "Wo" 'delete-other-windows
+    "Wf" 'make-frame-quit-window
     "^" 'evil-switch-to-windows-last-buffer
 )
+
+(defun make-frame-quit-window ()
+  (interactive)
+ (make-frame)
+ (quit-window))
 
 (mode-leader-def '(normal visual) 'global-map
     "en" 'next-error
@@ -118,6 +124,8 @@
     "r" 'lsp-rename
     "x" 'lsp-execute-code-action
     "a" 'consult-line
+    "A" 'consult-line-multi
+    "i" 'consult-imenu-multi
 )
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
