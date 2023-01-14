@@ -28,6 +28,7 @@
 (load-from-config "consult.el")
 (load-from-config "marginalia.el")
 (load-from-config "corfu.el")
+(load-from-config "embark.el")
 
 (load-from-config "evilNumbers.el")
 (load-from-config "projectile.el")

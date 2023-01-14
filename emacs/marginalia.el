@@ -12,3 +12,5 @@
   ;; Must be in the :init section of use-package such that the mode gets
   ;; enabled right away. Note that this forces loading the package.
   (marginalia-mode))
+
+(add-to-list 'marginalia-prompt-categories '("Find file" . file))
