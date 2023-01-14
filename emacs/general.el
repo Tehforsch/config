@@ -18,7 +18,7 @@
     "J" '((lambda () (interactive) (my-centaur-tabs-forward-group) (toggle-transient-buffer)) :which-key "Next tab group")
     "b" 'toggle-transient-buffer
     "e" '(:which-key "Emacs")
-    "eR" '((lambda () (interactive) (load-file "~/projects/config/emacs/emacs.el")) :which-key "Reload emacs config")
+    "eR" '((lambda () (interactive) (load-file "~/projects/config/emacs/init.el")) :which-key "Reload emacs config")
     "f" '(:which-key "File")
     "fA" '(:which-key "Autosave")
     "fAd" 'ediff-current-file
