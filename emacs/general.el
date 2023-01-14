@@ -76,9 +76,10 @@
     "pf" 'projectile-switch-project
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
+    "s" 'save-buffer
     "u" '(:which-key "Undo")
     "ut" 'undo-tree-visualize
-    "w" 'save-buffer
+    "w" 'toggle-transient-window
     "^" 'evil-switch-to-windows-last-buffer
 )
 
@@ -111,8 +112,6 @@
     "g" 'insert-generic-after-symbol
 )
 
-
-(define-key evil-normal-state-map (kbd "C-w") #'toggle-transient-window)
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (define-key evil-normal-state-map "gp" 'eglot-find-implementation)
