@@ -65,8 +65,6 @@
     "onep" 'org-latex-export-to-pdf
     "onp" '(:which-key "Papers")
     "onpf" 'rpundit-find-paper
-    "onR" 'pundit-rename-this-note
-    "oti" 'capture-inbox-task
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'consult-ripgrep
