@@ -89,6 +89,7 @@
     "pS" 'projectile-save-project-buffers
     "pR" 'projectile-discover-projects-in-search-path
     "pf" 'projectile-switch-project
+    "q" 'quit-window
     "r" 'save-file-and-run-last-command-in-terminal-to-the-right
     "R" 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
     "u" '(:which-key "Undo")
