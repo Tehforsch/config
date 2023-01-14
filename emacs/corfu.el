@@ -20,6 +20,8 @@
 
 (define-key corfu-map (kbd "C-j") 'corfu-next)
 (define-key corfu-map (kbd "C-k") 'corfu-previous)
+(define-key corfu-map (kbd "<down>") 'corfu-next)
+(define-key corfu-map (kbd "<up>") 'corfu-previous)
 (define-key corfu-map (kbd "RET") 'corfu-complete)
 (define-key corfu-map (kbd "C-p") 'corfu-next)
 (define-key corfu-map (kbd "C-S-k") 'corfu-popupinfo-scroll-down)

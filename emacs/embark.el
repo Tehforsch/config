@@ -21,6 +21,9 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+; Recommended for embark, but also I like this more in general
+(setq y-or-n-p-map t)
+
 ; Make sure projectile-find-file opens files in subdirectories properly
 (define-advice projectile-find-file (:around (orig-fn &optional arg) fix-dir)
   "Sets the default-directory to the projectile-project-root."
