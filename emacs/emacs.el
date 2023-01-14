@@ -56,7 +56,7 @@
 (load-from-config "orgMode.el")
 (load-from-config "autosaveAndLock.el")
 (load-from-config "terminal.el")
-(load-from-config "hydra.el")
+(load-from-config "hercules.el")
 (load-from-config "symlinks.el")
 (load-from-config "whichFunc.el")
 (load-from-config "whichKey.el")
