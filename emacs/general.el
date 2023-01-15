@@ -120,6 +120,7 @@
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
+(define-key global-map (kbd "C-<return>") 'start-terminal-in-pwd)
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()
