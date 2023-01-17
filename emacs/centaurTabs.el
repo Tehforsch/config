@@ -2,6 +2,7 @@
 
 (setq centaur-tabs-style "chamfer"
     centaur-tabs-height 16
+    centaur-tabs-bar-height 16
     centaur-tabs-set-icons t
     centaur-tabs-left-edge-margin ""
     centaur-tabs-right-edge-margin ""
