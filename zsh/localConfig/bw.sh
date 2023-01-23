@@ -20,14 +20,16 @@ alias e="vim"
 alias sb="sbatch"
 alias sc="scancel"
 alias sq="squeue"
-alias bu="make build -j 16"
+alias mb="make build -j 16"
 alias l="ls -lah --color=auto"
 alias ls="ls"
 alias interactive="srun --partition=single --ntasks=3 --time=2:00:00 --pty /bin/bash"
-alias pybob="$HOME/projects/config/scripts/pybobRequest.sh"
-alias oldpybob="python $HOME/projects/pybob/main.py"
+alias refreshpybob="$HOME/projects/config/scripts/pybobRequest.sh"
+alias pybob="python $HOME/projects/pybob/main.py"
 unalias pyplot
-alias pyplot="~/projects/cpython/python ~/projects/pybob/main.py --post plot ."
+alias plot="~/projects/cpython/python ~/projects/pybob/main.py --hide plot ."
+alias refreshplot="$HOME/projects/config/scripts/pybobRequest.sh --hide plot ."
+alias vim="~/projects/vimbuild/bin/vim"
 
 export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/hd/hd_hd/hd_hp240/projects/gmp/lib
