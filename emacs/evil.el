@@ -124,3 +124,7 @@
 (define-key evil-insert-state-map (kbd "C-k") nil)
 ; Required so that I can bind C-p in other places and actually get the behavior I want
 (define-key evil-insert-state-map (kbd "C-p") nil)
+
+; No idea why this was necessary suddenly
+(add-hook 'rustic-mode-hook 
+    (lambda () (setq evil-shift-width 4)))
