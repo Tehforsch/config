@@ -72,15 +72,19 @@
 (setq dabbrev-case-fold-search nil)
 
 ; Define commands to quickly insert/append before/after the current symbol
-(defun append-end-of-symbol ()
+(defun append-end-of-symbol (&optional text)
   (interactive)
   (goto-char (nth 1 (evil-inner-symbol)))
-  (evil-insert nil nil nil))
+  (if (eq text nil)
+      (evil-insert nil nil nil)
+      (insert text)))
 
-(defun insert-beginning-of-symbol ()
+(defun insert-beginning-of-symbol (&optional text)
   (interactive)
   (goto-char (nth 0 (evil-inner-symbol)))
-  (evil-insert nil nil nil))
+  (if (eq text nil)
+      (evil-insert nil nil nil)
+      (insert text)))
 
 (define-key evil-normal-state-map "ga" 'append-end-of-symbol)
 (define-key evil-normal-state-map "gi" 'insert-beginning-of-symbol)

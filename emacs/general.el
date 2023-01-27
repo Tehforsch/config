@@ -108,6 +108,7 @@
     "d" 'rust-dbg-wrap-or-unwrap
     "p" 'lsp-rust-find-parent-module
     "g" 'insert-generic-after-symbol
+    "G" 'wrap-symbol-in-generic
 )
 
 
