@@ -1,7 +1,10 @@
 (use-package lsp-mode
-    :hook ((python-mode . lsp)
-           (c-mode . lsp)
-           (lsp-mode . lsp-enable-which-key-integration)))
+  :hook ((python-mode . lsp)
+         (c-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :init   (defun my/lsp-mode-setup-completion ()
+            (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+                  '(orderless))))
 
 (setq lsp-lens-enable nil)
 (setq lsp-enable-symbol-highlighting nil)
@@ -62,6 +65,6 @@
 
 (defun corfu-lsp-setup ()
   (interactive)
-  (setq-local completion-styles '(orderless)
+  (setq-local completion-styles '(orderless partial-completion basic)
               completion-category-defaults nil))
 (add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)

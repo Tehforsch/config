@@ -9,6 +9,7 @@
   (corfu-popupinfo-direction '(left))
   (corfu-echo-documentation nil)
   (corfu-on-exact-match nil)
+  (corfu-count 20)
 
   :init
   (global-corfu-mode)
