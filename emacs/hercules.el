@@ -21,6 +21,8 @@
 
 (hercules-def
  :toggle-funs #'toggle-transient-buffer
+ ; Make sure we dont stay in transient mode with these minibuffer popups
+ :hide-funs '(consult-buffer consult-project-buffer)
  :keymap 'transient-buffer-map
  :transient t)
 
