@@ -8,7 +8,7 @@
   (corfu-popupinfo-delay 0.0)
   (corfu-popupinfo-direction '(left))
   (corfu-echo-documentation nil)
-  (corfu-on-exact-match nil)
+  (corfu-on-exact-match t)
   (corfu-count 20)
 
   :init
