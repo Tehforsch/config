@@ -1,14 +1,7 @@
-;; (general-create-definer global-leader-def
-;;   :keymaps 'override
-;;   :prefix "SPC")
-
-(general-create-definer mode-leader-def
-  :prefix ",")
-
 (general-define-key
- :states '(normal visual emacs motion)
- :keymaps 'override
- :prefix "SPC"
+    :states '(normal visual emacs motion)
+    :keymaps 'override
+    :prefix "SPC"
     "!" 'start-terminal-in-pwd
     "." 'eval-buffer
     "x" 'execute-extended-command
@@ -81,10 +74,8 @@
     "^" 'evil-switch-to-windows-last-buffer
 )
 
-(defun make-frame-delete-window ()
-  (interactive)
- (make-frame)
- (delete-window))
+(general-create-definer mode-leader-def
+    :prefix ",")
 
 (mode-leader-def '(normal visual) 'global-map
     "en" 'next-error
@@ -105,11 +96,20 @@
 )
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
-    "d" 'rust-dbg-wrap-or-unwrap
     "p" 'lsp-rust-find-parent-module
-    "g" 'insert-generic-after-symbol
-    "G" 'wrap-symbol-in-generic
 )
+
+(general-create-definer smart-text-insert-leader-def
+    :prefix "ü")
+
+(smart-text-insert-leader-def '(normal visual) 'global-map
+    "f" 'wrap-symbol-in-function-call)
+
+(smart-text-insert-leader-def '(normal visual) 'rustic-map
+    "d" 'rust-dbg-wrap-or-unwrap
+    "g" 'insert-generic-after-symbol
+    "a" 'wrap-symbol-in-generic)
+
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
@@ -133,3 +133,8 @@
     (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)
+
+(defun make-frame-delete-window ()
+    (interactive)
+    (make-frame)
+    (delete-window))
