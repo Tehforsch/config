@@ -93,6 +93,7 @@
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
     "r" 'erefactor-rename-symbol-in-buffer
+    "f" 'elisp-autofmt-buffer
 )
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
