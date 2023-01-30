@@ -18,6 +18,7 @@ import XMonad.Actions.Navigation2D
 import XMonad.Util.Run
 import XMonad.Actions.CycleWindows
 
+import XMonad.Layout.WindowNavigation
 
 import qualified XMonad.StackSet as W
 
@@ -26,6 +27,8 @@ import qualified Data.Map as M
 myScriptFolder = "~/projects/config/scripts/"
 
 myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
+
+myLayout = windowNavigation (Tall 1 (3/100) (1/2))
 
 myXmobarPP = def
     { ppSep             = magenta " • "
@@ -59,6 +62,7 @@ myConfig = def
     , modMask = mod4Mask
     , focusFollowsMouse = False
     , workspaces = myWorkspaces
+    , layoutHook = myLayout 
     }
   `additionalKeysP`
     [
@@ -83,8 +87,10 @@ defaultMode = makeMode "" []
 normalMode :: Mode
 normalMode = makeMode "Normal"
   [
-    ("j", windows W.focusDown),
-    ("k", windows W.focusUp),
+    ("h", sendMessage $ Go L),
+    ("j", sendMessage $ Go D),
+    ("k", sendMessage $ Go U),
+    ("l", sendMessage $ Go R),
     ("f", windows W.swapMaster),
     ("m", windows W.focusMaster),
     ("S-j", windows W.swapDown),
