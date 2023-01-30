@@ -131,4 +131,5 @@
 (add-hook 'rustic-mode-hook 
     (lambda () (setq evil-shift-width 4)))
 
+; An attempt to fix the 'could not assert ownership over selection: CLIPBOARD' error i get sometimes when yanking/deleting
 (fset 'evil-visual-update-x-selection 'ignore)
