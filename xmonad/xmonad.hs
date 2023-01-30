@@ -25,52 +25,53 @@ import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
 
-bgColor = "#1d2021"
-activeBgColor = "#484848"
-activeFontColor = "#ebdbb2"
-activeBorderColor = "#ebdbb2"
-inactiveBgColor = "#1d2021"
-inactiveFontColor = "#928374"
-activeWindowBorderColor = "#928374"
+myActiveBgColor = "#484848"
+myActiveBorderColor = "#ebdbb2"
+myActiveFontColor = "#ebdbb2"
+myActiveWindowBorderColor = "#928374"
+myBgColor = "#1d2021"
+myInactiveBgColor = "#1d2021"
+myInactiveBorderColor = "#1d2021"
+myInactiveFontColor = "#928374"
 
 
 myScriptFolder = "~/projects/config/scripts/"
 
 myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
 
-myTabConfig = def { inactiveBorderColor = inactiveBgColor
-                  , activeTextColor =activeFontColor }
+myTabConfig = def { inactiveBorderColor = myInactiveBgColor
+                  , activeTextColor = myActiveFontColor }
 
 myLayout = windowNavigation (toggleLayouts (windowNavigation (tabbed shrinkText myTabConfig)) (tiled ||| tiled ||| Mirror tiled))
 
 tiled = (Tall 1 (3/100) (1/2))
 
+myHidePP :: String -> String
+myHidePP s = ""
+
+makeWorkspaceTitle color = color . (wrap "[        "  "        ]")
+
 myXmobarPP = def
-    { ppSep             = magenta " • "
+    {
+      ppSep             = inactive "   •   "
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
-    , ppHidden          = white . wrap " " ""
-    , ppHiddenNoWindows = lowWhite . wrap " " ""
-    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
+    , ppCurrent         = makeWorkspaceTitle active
+    , ppHidden          = makeWorkspaceTitle inactive
+    , ppVisible         = myHidePP
+    , ppHiddenNoWindows = myHidePP
+    , ppOrder           = \[ws, l, _, wins] -> [ws,  wins]
     , ppExtras          = [logMode]
     }
   where
-    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
-    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
 
     -- | Windows should have *some* title, which should not not exceed a
     -- sane length.
     ppWindow :: String -> String
     ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
 
-    blue, lowWhite, magenta, red, white, yellow :: String -> String
-    magenta  = xmobarColor "#ff79c6" ""
-    blue     = xmobarColor "#bd93f9" ""
-    white    = xmobarColor "#f8f8f2" ""
-    yellow   = xmobarColor "#f1fa8c" ""
-    red      = xmobarColor "#ff5555" ""
-    lowWhite = xmobarColor "#bbbbbb" ""
+    active, inactive:: String -> String
+    active  = xmobarColor myActiveFontColor ""
+    inactive = xmobarColor myInactiveFontColor ""
 
 myConfig = def 
     { terminal = "kitty"
@@ -78,6 +79,8 @@ myConfig = def
     , focusFollowsMouse = False
     , workspaces = myWorkspaces
     , layoutHook = myLayout 
+    , focusedBorderColor = myActiveBorderColor
+    , normalBorderColor = myInactiveBorderColor
     }
   `additionalKeysP`
     [
@@ -157,6 +160,7 @@ launchMode = makeMode "Launch"
     ("S-n", spawnAndExitMode "kitty -o font_size=20 newsboat -u $config/newsboat/urls -C $config/newsboat/config"),
     ("S-p", spawnAndExitMode "gpaste-client ui"),
     ("S-s", spawnAndExitMode "flameshot gui"),
+    ("S-r", spawnAndExitMode "xmonad --recompile && xmonad --restart"),
     ("<F11>", runScriptAndExitMode "screenCapture.sh")
   ]
 
