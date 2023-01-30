@@ -17,18 +17,33 @@ import XMonad.Actions.Navigation2D
 
 import XMonad.Util.Run
 import XMonad.Actions.CycleWindows
-
+import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.WindowNavigation
+import XMonad.Layout.Tabbed
 
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
 
+bgColor = "#1d2021"
+activeBgColor = "#484848"
+activeFontColor = "#ebdbb2"
+activeBorderColor = "#ebdbb2"
+inactiveBgColor = "#1d2021"
+inactiveFontColor = "#928374"
+activeWindowBorderColor = "#928374"
+
+
 myScriptFolder = "~/projects/config/scripts/"
 
 myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
 
-myLayout = windowNavigation (Tall 1 (3/100) (1/2))
+myTabConfig = def { inactiveBorderColor = inactiveBgColor
+                  , activeTextColor =activeFontColor }
+
+myLayout = windowNavigation (toggleLayouts (windowNavigation (tabbed shrinkText myTabConfig)) (tiled ||| tiled ||| Mirror tiled))
+
+tiled = (Tall 1 (3/100) (1/2))
 
 myXmobarPP = def
     { ppSep             = magenta " • "
@@ -98,6 +113,8 @@ normalMode = makeMode "Normal"
     ("s", setMode "Launch"),
     ("w", setMode "Workspace"),
     ("y", setMode "Media"),
+    ("o", setMode "Layout"),
+    ("e", sendMessage ToggleLayout),
     ("q", kill)
   ]
 
@@ -106,6 +123,20 @@ spawnAndExitMode s = spawn s *> exitModeAndClearLabel
 runScript s = spawn ("bash " ++ myScriptFolder ++ s)
 
 runScriptAndExitMode s = runScript s *> exitModeAndClearLabel
+
+workspaceMode :: Mode
+workspaceMode = makeMode "Workspace"
+  [(workspace, windows $ W.greedyView workspace) | workspace <- myWorkspaces]
+
+layoutMode :: Mode
+layoutMode = makeMode "Layout"
+  [
+    ("j", sendMessage NextLayout),
+    ("e", sendMessage ToggleLayout),
+    ("f", sendMessage $ JumpToLayout "Tabbed Simplest"),
+    ("v", sendMessage $ JumpToLayout "Tall"),
+    ("h", sendMessage $ JumpToLayout "Mirror Tall")
+  ]
 
 launchMode :: Mode
 launchMode = makeMode "Launch"
@@ -128,10 +159,6 @@ launchMode = makeMode "Launch"
     ("S-s", spawnAndExitMode "flameshot gui"),
     ("<F11>", runScriptAndExitMode "screenCapture.sh")
   ]
-
-workspaceMode :: Mode
-workspaceMode = makeMode "Workspace"
-  [(workspace, windows $ W.greedyView workspace) | workspace <- myWorkspaces]
 
 mediaMode :: Mode
 mediaMode = makeMode "Media"
@@ -167,7 +194,7 @@ findMusicMode = makeMode "Find Music"
 
 main :: IO ()
 main = xmonad $ ewmhFullscreen $ ewmh
-  $ modal [normalMode, launchMode, defaultMode, workspaceMode, mediaMode, findMusicMode]
+  $ modal [normalMode, launchMode, defaultMode, workspaceMode, mediaMode, findMusicMode, layoutMode]
   $ withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
   $ myConfig
 
