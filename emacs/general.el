@@ -133,8 +133,3 @@
     (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)
-
-(defun make-frame-delete-window ()
-    (interactive)
-    (make-frame)
-    (delete-window))

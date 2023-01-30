@@ -130,3 +130,5 @@
 ; No idea why this was necessary suddenly
 (add-hook 'rustic-mode-hook 
     (lambda () (setq evil-shift-width 4)))
+
+(fset 'evil-visual-update-x-selection 'ignore)
