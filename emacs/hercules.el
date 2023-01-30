@@ -4,15 +4,11 @@
   :prefix-map 'transient-buffer-map
     "n" #'next-buffer
     "p" #'previous-buffer
-    "k" #'my-centaur-tabs-backward
-    "j" #'my-centaur-tabs-forward
-    "K" #'my-centaur-tabs-backward-group
-    "J" #'my-centaur-tabs-forward-group
+    "k" #'tabbar-backward-tab
+    "j" #'tabbar-forward-tab
+    "K" #'tabbar-backward-group
+    "J" #'tabbar-forward-group
     "d" #'kill-this-buffer
-    "D" #'centaur-tabs-kill-other-buffers-in-current-group
-    "l" #'centaur-tabs-select-end-tab
-    "h" #'centaur-tabs-select-beg-tab
-    "t" #'centaur-tabs-toggle-groups
     "m" #'((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
     "f" 'consult-project-buffer
     "F" 'consult-buffer

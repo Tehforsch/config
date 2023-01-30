@@ -5,10 +5,10 @@
     "!" 'start-terminal-in-pwd
     "." 'eval-buffer
     "x" 'execute-extended-command
-    "k" '((lambda () (interactive) (my-centaur-tabs-backward) (toggle-transient-buffer)) :which-key "Previous tab")
-    "j" '((lambda () (interactive) (my-centaur-tabs-forward) (toggle-transient-buffer)) :which-key "Next tab")
-    "K" '((lambda () (interactive) (my-centaur-tabs-backward-group) (toggle-transient-buffer)) :which-key "Previous tab group")
-    "J" '((lambda () (interactive) (my-centaur-tabs-forward-group) (toggle-transient-buffer)) :which-key "Next tab group")
+    "k" '((lambda () (interactive) (tabbar-backward-tab) (toggle-transient-buffer)) :which-key "Previous tab")
+    "j" '((lambda () (interactive) (tabbar-forward-tab) (toggle-transient-buffer)) :which-key "Next tab")
+    "K" '((lambda () (interactive) (tabbar-backward-group) (toggle-transient-buffer)) :which-key "Previous tab group")
+    "J" '((lambda () (interactive) (tabbar-forward-group) (toggle-transient-buffer)) :which-key "Next tab group")
     "b" 'toggle-transient-buffer
     "e" '(:which-key "Emacs")
     "eR" '((lambda () (interactive) (load-file "~/projects/config/emacs/init.el")) :which-key "Reload emacs config")
