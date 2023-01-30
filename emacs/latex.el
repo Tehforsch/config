@@ -15,7 +15,8 @@
 
 (setq latex-bin-folder "/opt/texlive/2021/bin/x86_64-linux/")
 
-(setenv "PATH" (concat (getenv "PATH") (s-concat ":" latex-bin-folder)))
+(setenv "PATH"
+  (concat (getenv "PATH") (s-concat ":" latex-bin-folder)))
 (add-to-list 'exec-path latex-bin-folder)
 
 (use-package tex :ensure auctex)

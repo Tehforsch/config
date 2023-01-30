@@ -5,12 +5,20 @@
   (evil-normal-state))
 
 (flycheck-define-checker
-    python-mypy ""
-    :command ("mypy"
-              source-original)
-    :error-patterns
-    ((error line-start (file-name) ":" line ": error:" (message) line-end))
-    :modes python-mode)
+  python-mypy
+  ""
+  :command ("mypy" source-original)
+  :error-patterns
+  (
+    (error
+      line-start
+      (file-name)
+      ":"
+      line
+      ": error:"
+      (message)
+      line-end))
+  :modes python-mode)
 
 (add-to-list 'flycheck-checkers 'python-mypy t)
 

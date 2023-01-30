@@ -1,10 +1,13 @@
 ;; Enable richer annotations using the Marginalia package
-(use-package marginalia
+(use-package
+  marginalia
   :ensure t
   ;; Either bind `marginalia-cycle` globally or only in the minibuffer
-  :bind (("M-A" . marginalia-cycle)
-         :map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+  :bind
+  (("M-A" . marginalia-cycle)
+    :map
+    minibuffer-local-map
+    ("M-A" . marginalia-cycle))
 
   ;; The :init configuration is always executed (Not lazy!)
   :init

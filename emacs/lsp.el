@@ -1,10 +1,16 @@
-(use-package lsp-mode
-  :hook ((python-mode . lsp)
-         (c-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :init   (defun my/lsp-mode-setup-completion ()
-            (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-                  '(orderless))))
+(use-package
+  lsp-mode
+  :hook
+  ((python-mode . lsp)
+    (c-mode . lsp)
+    (lsp-mode . lsp-enable-which-key-integration))
+  :init
+  (defun my/lsp-mode-setup-completion ()
+    (setf
+      (alist-get
+        'styles
+        (alist-get 'lsp-capf completion-category-defaults))
+      '(orderless))))
 
 (setq lsp-lens-enable nil)
 (setq lsp-enable-symbol-highlighting nil)
@@ -21,31 +27,32 @@
 
 (use-package lsp-ui)
 
-(setq lsp-ui-doc-enable nil
-      lsp-ui-peek-enable t
-      lsp-ui-sideline-enable t
-      lsp-ui-imenu-enable t
-      lsp-ui-flycheck-enable nil
-      lsp-ui-doc-max-height 30)
+(setq
+  lsp-ui-doc-enable nil
+  lsp-ui-peek-enable t
+  lsp-ui-sideline-enable t
+  lsp-ui-imenu-enable t
+  lsp-ui-flycheck-enable nil
+  lsp-ui-doc-max-height 30)
 (setq lsp-signature-auto-activate nil)
 (setq lsp-eldoc-enable-hover nil)
 
 
 (setq lsp-ui-sideline-show-diagnostics nil) ; dont show diagnostics messages in sideline
 (setq lsp-ui-sideline-show-hover nil) ; show hover messages in sideline
-(setq lsp-ui-sideline-show-code-actions nil); show code actions in sideline
+(setq lsp-ui-sideline-show-code-actions nil) ; show code actions in sideline
 (setq lsp-ui-sideline-delay 0)
 
 
 (defun toggle-lsp-ui-sideline-show-hover ()
   (interactive)
   (if lsp-ui-sideline-show-hover
-      (progn
-        (setq lsp-ui-sideline-show-hover nil)
-        (message "Show hover OFF"))
-      (progn
-        (setq lsp-ui-sideline-show-hover t)
-        (message "Show hover ON"))))
+    (progn
+      (setq lsp-ui-sideline-show-hover nil)
+      (message "Show hover OFF"))
+    (progn
+      (setq lsp-ui-sideline-show-hover t)
+      (message "Show hover ON"))))
 
 (setq lsp-response-timeout 4) ; Longer wait times than 4 seconds usually means it just won't respond anyways and i'd rather not wait for a long time
 
@@ -56,17 +63,19 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 ; Save files after rename actions
-(add-hook 'lsp-after-apply-edits-hook
-          (lambda (operation)
-            (when (eq operation 'rename)
-              (save-buffer))))
+(add-hook
+  'lsp-after-apply-edits-hook
+  (lambda (operation)
+    (when (eq operation 'rename)
+      (save-buffer))))
 
 (setq lsp-completion-provider :none)
 
 (defun corfu-lsp-setup ()
   (interactive)
-  (setq-local completion-styles '(orderless partial-completion basic)
-              completion-category-defaults nil
-              completion-at-point-functions '(cape-dabbrev+lsp+file)))
+  (setq-local
+    completion-styles '(orderless partial-completion basic)
+    completion-category-defaults nil
+    completion-at-point-functions '(cape-dabbrev+lsp+file)))
 
 (add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)

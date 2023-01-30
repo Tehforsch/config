@@ -1,3 +1,1 @@
-(use-package which-func
-  :config
-  (which-function-mode t))
+(use-package which-func :config (which-function-mode t))

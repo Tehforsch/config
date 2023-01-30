@@ -1,11 +1,10 @@
 ; Show line numbers
 (add-hook 'prog-mode-hook 'column-number-mode)
 (defun enable-line-numbers ()
-    (setq display-line-numbers t))
+  (setq display-line-numbers t))
 (if (< emacs-major-version 26)
-    (add-hook 'prog-mode-hook 'linum-mode)
-    (add-hook 'prog-mode-hook 'enable-line-numbers)
-)
+  (add-hook 'prog-mode-hook 'linum-mode)
+  (add-hook 'prog-mode-hook 'enable-line-numbers))
 (global-display-line-numbers-mode +1)
 
 ; Hide menu bar
@@ -29,12 +28,10 @@
 (use-package all-the-icons)
 
 (if (> (display-pixel-height) 1080)
-    (progn
-        (add-to-list 'default-frame-alist
-                    '(font . "Inconsolata 13")))
-    (progn
-        (add-to-list 'default-frame-alist
-                    '(font . "Inconsolata 14"))))
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Inconsolata 13")))
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Inconsolata 14"))))
 
 
 (global-hl-line-mode 1)
@@ -42,8 +39,14 @@
 
 ; Allow temporarily increasing font size, which is nice sometimes
 (use-package default-text-scale)
-(define-key evil-normal-state-map (kbd "C-*") 'default-text-scale-increase)
-(define-key evil-normal-state-map (kbd "C-_") 'default-text-scale-decrease)
+(define-key
+  evil-normal-state-map
+  (kbd "C-*")
+  'default-text-scale-increase)
+(define-key
+  evil-normal-state-map
+  (kbd "C-_")
+  'default-text-scale-decrease)
 
 (use-package rainbow-delimiters)
 (add-hook 'rustic-mode-hook 'rainbow-delimiters-mode)
@@ -56,6 +59,6 @@
 
 
 (defun make-frame-delete-window ()
-    (interactive)
-    (make-frame)
-    (delete-window))
+  (interactive)
+  (make-frame)
+  (delete-window))

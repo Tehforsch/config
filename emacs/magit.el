@@ -3,8 +3,10 @@
 (setq evil-magit-use-y-for-yank t)
 
 (general-define-key
-   :keymaps 'transient-base-map
-   "<escape>" 'transient-quit-one)
+  :keymaps
+  'transient-base-map
+  "<escape>"
+  'transient-quit-one)
 
 ; Unbind space so that general leader still works.
 (define-key magit-status-mode-map (kbd "SPC") nil)

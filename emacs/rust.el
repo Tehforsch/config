@@ -3,7 +3,7 @@
 (setq exec-path (append exec-path '("/home/toni/.cargo/bin")))
 (setq rustic-rustfmt-bin "/usr/bin/rustfmt")
 (setq rustic-format-on-save nil)
-(setq rustic-format-display-method 'ignore); Don't show rustfmt buffer
+(setq rustic-format-display-method 'ignore) ; Don't show rustfmt buffer
 
 (add-hook 'rustic-mode-hook 'flycheck-mode)
 (setq rustic-lsp-server 'rust-analyzer)
@@ -39,25 +39,27 @@
 (defun wrap-symbol-in-generic ()
   (interactive)
   (evil-insert nil nil nil)
-  (let* ((region (evil-inner-symbol))
-         (start (nth 0 region))
-         (end (nth 1 region)))
+  (let*
+    (
+      (region (evil-inner-symbol))
+      (start (nth 0 region))
+      (end (nth 1 region)))
     (goto-char end)
     (insert ">")
     (goto-char start)
     (insert "<")
-    (goto-char start)
-    ))
+    (goto-char start)))
 
 (defun wrap-symbol-in-function-call ()
   (interactive)
   (evil-insert nil nil nil)
-  (let* ((region (evil-inner-symbol))
-         (start (nth 0 region))
-         (end (nth 1 region)))
+  (let*
+    (
+      (region (evil-inner-symbol))
+      (start (nth 0 region))
+      (end (nth 1 region)))
     (goto-char end)
     (insert ")")
     (goto-char start)
     (insert "(")
-    (goto-char start)
-    ))
+    (goto-char start)))

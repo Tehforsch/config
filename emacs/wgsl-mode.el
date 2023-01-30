@@ -25,77 +25,132 @@
 (require 'cc-fonts)
 
 (defconst wgsl-keywords-regexp
-  (rx (seq (group (or "struct" "fn" "var" "let" "ptr" "type")) (or space "<"))))
+  (rx
+    (seq
+      (group (or "struct" "fn" "var" "let" "ptr" "type"))
+      (or space "<"))))
 
 (defconst wgsl-keywords-regexp2
-  (rx (seq (group (or "if" "else" "elseif"
-                      "switch" "case" "default" "break" "fallthrough"
-                      "loop" "continuing"  "continue"
-                      "return" "for"))
-           (or space "<" "(" ";" "{"))))
+  (rx
+    (seq
+      (group
+        (or "if"
+          "else"
+          "elseif"
+          "switch"
+          "case"
+          "default"
+          "break"
+          "fallthrough"
+          "loop"
+          "continuing"
+          "continue"
+          "return"
+          "for"))
+      (or space "<" "(" ";" "{"))))
 
 (defconst wgsl-attributes-regexp
-  (rx (seq
-       (or "[[" "," space)
-       (group (or "builtin" "block" "location" "group" "binding" "stage" "workgroup_size" "access"
-                  "stride"))
-       (or "]]" "("))))
+  (rx
+    (seq
+      (or "[[" "," space)
+      (group
+        (or "builtin"
+          "block"
+          "location"
+          "group"
+          "binding"
+          "stage"
+          "workgroup_size"
+          "access"
+          "stride"))
+      (or "]]" "("))))
 
 (defconst wgsl-storage-classes-regexp
-  (rx (seq "<"
-           (* (not ?>))
-           (group (or "in" "out" "function" "private" "workgroup" "uniform"
-                      "storage" "handle"))
-           (or ">" ","))))
+  (rx
+    (seq
+      "<" (* (not ?>))
+      (group
+        (or "in"
+          "out"
+          "function"
+          "private"
+          "workgroup"
+          "uniform"
+          "storage"
+          "handle"))
+      (or ">" ","))))
 
 (defconst wgsl-builtins-regexp
-  (rx (seq
-       symbol-start
-       (group (or "vertex_index"
-                  "instance_index"
-                  "position"
-                  "frag_coord"
-                  "front_facing"
-                  "frag_depth"
-                  "local_invocation_id"
-                  "local_invocation_index"
-                  "global_invocation_id"
-                  "workgroup_id"
-                  "workgroup_size"
-                  "sample_index"
-                  "sample_mask_in"
-                  "sample_mask_out"))
-       symbol-end)))
+  (rx
+    (seq
+      symbol-start
+      (group
+        (or "vertex_index"
+          "instance_index"
+          "position"
+          "frag_coord"
+          "front_facing"
+          "frag_depth"
+          "local_invocation_id"
+          "local_invocation_index"
+          "global_invocation_id"
+          "workgroup_id"
+          "workgroup_size"
+          "sample_index"
+          "sample_mask_in"
+          "sample_mask_out"))
+      symbol-end)))
 
 (defconst wgsl-constants-regexp
-  (rx (seq symbol-start
-           (group (or "compute" "vertex" "fragment" "read" "write" "read_write"))
-           symbol-end)))
+  (rx
+    (seq
+      symbol-start
+      (group
+        (or "compute"
+          "vertex"
+          "fragment"
+          "read"
+          "write"
+          "read_write"))
+      symbol-end)))
 
 (defconst wgsl-scalar-types-regexp
   (rx (or "f32" "u32" "i32" "bool" "void")))
 
 (defconst wgsl-types-regexp
-  (rx symbol-start
-      (or (regexp wgsl-scalar-types-regexp)
-          (seq "vec" (or "2" "3" "4"))
-          (seq "mat" (or "2" "3" "4") "x" (or "2" "3" "4"))
-          (seq "array")
-          (seq "texture"
-               (or "" "_storage" "_depth")
-               (opt "_multisampled")
-               (or "_1d" "_2d" "_3d" "_cube")
-               (opt "_array")))
-      symbol-end))
+  (rx
+    symbol-start
+    (or (regexp wgsl-scalar-types-regexp)
+      (seq "vec" (or "2" "3" "4"))
+      (seq "mat" (or "2" "3" "4") "x" (or "2" "3" "4"))
+      (seq "array")
+      (seq
+        "texture"
+        (or "" "_storage" "_depth")
+        (opt "_multisampled")
+        (or "_1d" "_2d" "_3d" "_cube")
+        (opt "_array")))
+    symbol-end))
 
 (defconst wgsl-variable-name-regexp
-  (rx (seq (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) (or ":" "="))))
+  (rx
+    (seq
+      (group (regexp "[a-zA-Z][0-9a-zA-Z_]*"))
+      (* space)
+      (or ":" "="))))
 
 (defconst wgsl-function-name-regexp
-  (rx (seq "fn" (+ space) (group (regexp "[a-zA-Z][0-9a-zA-Z_]*")) (* space) "(")))
+  (rx
+    (seq
+      "fn"
+      (+ space)
+      (group (regexp "[a-zA-Z][0-9a-zA-Z_]*"))
+      (* space)
+      "(")))
 
 (defconst wgsl-font-lock-keywords
-  `((,wgsl-builtins-regexp 1 font-lock-builtin-face)
+  `
+  ((,wgsl-builtins-regexp 1 font-lock-builtin-face)
     (,wgsl-constants-regexp 1 font-lock-constant-face)
     (,wgsl-storage-classes-regexp 1 font-lock-constant-face)
     (,wgsl-types-regexp . font-lock-type-face)
@@ -106,14 +161,18 @@
     (,wgsl-function-name-regexp 1 font-lock-function-name-face)))
 
 ;;;###autoload
-(define-derived-mode wgsl-mode c++-mode "WGSL"
+(define-derived-mode
+  wgsl-mode
+  c++-mode
+  "WGSL"
   "Major mode for WGSL source"
   (add-to-list 'c-offsets-alist '(access-label . 0))
   (font-lock-remove-keywords 'wgsl-mode c++-font-lock-keywords-3)
   (font-lock-add-keywords nil wgsl-font-lock-keywords))
 
 ;;;###autoload
-(progn (add-to-list 'auto-mode-alist '("\\.wgsl\\'" . wgsl-mode)))
+(progn
+  (add-to-list 'auto-mode-alist '("\\.wgsl\\'" . wgsl-mode)))
 
 (provide 'wgsl-mode)
 ;;; wgsl-mode.el ends here

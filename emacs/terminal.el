@@ -6,4 +6,5 @@
   (interactive)
   (let ((project-folder (projectile-project-root)))
     (message project-folder)
-    (start-process "kitty-process" "kitty-buffer" "kitty" (s-concat "-d=" project-folder))))
+    (start-process "kitty-process" "kitty-buffer" "kitty"
+      (s-concat "-d=" project-folder))))

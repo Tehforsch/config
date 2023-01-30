@@ -74,43 +74,37 @@
     "^" 'evil-switch-to-windows-last-buffer
 )
 
-(general-create-definer mode-leader-def
-    :prefix ",")
+(general-create-definer mode-leader-def :prefix ",")
 
 (mode-leader-def '(normal visual) 'global-map
-    "en" 'next-error
-    "ep" 'previous-error
-    "el" 'consult-lsp-diagnostics
-    "s" 'consult-lsp-symbols
-    "S" 'consult-lsp-file-symbols
-    "f" 'rustic-format-buffer
-    "r" 'lsp-rename
-    "x" 'lsp-execute-code-action
-    "a" 'consult-line
-    "A" 'consult-line-multi
-    "i" 'consult-imenu-multi
-)
+  "en" 'next-error
+  "ep" 'previous-error
+  "el" 'consult-lsp-diagnostics
+  "s" 'consult-lsp-symbols
+  "S" 'consult-lsp-file-symbols
+  "f" 'rustic-format-buffer
+  "r" 'lsp-rename
+  "x" 'lsp-execute-code-action
+  "a" 'consult-line
+  "A" 'consult-line-multi
+  "i" 'consult-imenu-multi)
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
-    "r" 'erefactor-rename-symbol-in-buffer
-    "f" 'elisp-autofmt-buffer
-)
+  "r" 'erefactor-rename-symbol-in-buffer
+  "f" 'elisp-autofmt-buffer)
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
-    "p" 'lsp-rust-find-parent-module
-)
+  "p" 'lsp-rust-find-parent-module)
 
-(general-create-definer smart-text-insert-leader-def
-    :prefix "ü")
+(general-create-definer smart-text-insert-leader-def :prefix "ü")
 
 (smart-text-insert-leader-def '(normal visual) 'global-map
-    "f" 'wrap-symbol-in-function-call)
+  "f" 'wrap-symbol-in-function-call)
 
 (smart-text-insert-leader-def '(normal visual) 'rustic-map
-    "d" 'rust-dbg-wrap-or-unwrap
-    "g" 'insert-generic-after-symbol
-    "a" 'wrap-symbol-in-generic)
-
+  "d" 'rust-dbg-wrap-or-unwrap
+  "g" 'insert-generic-after-symbol
+  "a" 'wrap-symbol-in-generic)
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
@@ -126,11 +120,11 @@
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()
-    (define-key evil-normal-state-map "gl" 'org-open-at-point))
+  (define-key evil-normal-state-map "gl" 'org-open-at-point))
 
 (add-hook 'org-mode-hook 'add-org-mode-motion-keys)
 
 (defun add-term-mode-motion-keys ()
-    (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob))
+  (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)

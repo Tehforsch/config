@@ -18,9 +18,11 @@ Depends upon `import` from ImageMagick."
   (interactive)
   (unless (file-directory-p pic-folder)
     (make-directory pic-folder))
-  (let* ((dest
-           (format-time-string (concat pic-folder "screen_%Y%m%d_%H%M%S.png")))
-         )
+  (let*
+    (
+      (dest
+        (format-time-string
+          (concat pic-folder "screen_%Y%m%d_%H%M%S.png"))))
     (shell-command (concat screenshot-command " " dest))
     (message pic-folder)
     (message dest)
@@ -50,12 +52,15 @@ images in the current buffer."
 `insert-screenshot/redisplay-images' is non-nil, redisplay
 images in the current buffer."
   (interactive)
-  (let ((img (link-file-path-at-point))
-        (percent (read-number "Resize to what percentage of current size? ")))
+  (let
+    (
+      (img (link-file-path-at-point))
+      (percent
+        (read-number "Resize to what percentage of current size? ")))
     (start-process "mogrify" nil "/usr/bin/mogrify"
-                   "-resize"
-                   (format "%s%%" percent)
-                   img)
+      "-resize"
+      (format "%s%%" percent)
+      img)
     (when edit-image/redisplay-images
       (org-remove-inline-images)
       (org-display-inline-images))))

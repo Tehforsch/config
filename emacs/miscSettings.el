@@ -2,46 +2,61 @@
 (setq large-file-warning-threshold nil)
 
 ; Don't loop over buffers that are not associated with a file
-(add-to-list 'default-frame-alist '(buffer-predicate . buffer-file-name))
+(add-to-list
+  'default-frame-alist
+  '(buffer-predicate . buffer-file-name))
 
 ; Focus help buffer automatically when using help functions and allow escaping them with escape
 ;; (evil-set-initial-state 'help-mode 'motion)
 (setq help-window-select t)
-(add-hook 'help-mode-hook
-    (lambda () (evil-define-key 'normal help-mode-map [escape] 'kill-buffer-and-window)))
+(add-hook
+  'help-mode-hook
+  (lambda ()
+    (evil-define-key
+      'normal
+      help-mode-map
+      [escape]
+      'kill-buffer-and-window)))
 
 ; Turn on hideshow by default
 (add-hook 'c-mode-hook 'hs-minor-mode)
 
 ; Immediately debug when any lisp error occurs
 (setq debug-on-error nil)
-(defun lisp-debug-settings () 
+(defun lisp-debug-settings ()
   (interactive)
-    (setq debug-on-error t)
-    (setq pp-escape-newlines nil)
-    (use-package erefactor)
-    (erefactor-highlight-mode nil))
+  (setq debug-on-error t)
+  (setq pp-escape-newlines nil)
+  (use-package erefactor)
+  (erefactor-highlight-mode nil))
 
 ;; (use-package frames-only-mode)
 ;; (frames-only-mode)
 
 (add-hook 'before-save-hook 'check-file-exists-before-saving)
 (defun check-file-exists-before-saving ()
-  (when (and (buffer-file-name)  (not (file-exists-p (buffer-file-name))))
+  (when
+    (and (buffer-file-name) (not (file-exists-p (buffer-file-name))))
     (error "File does not exist. Beware.")))
 
 (defun save-file-and-run-last-command-in-terminal-to-the-right ()
   (interactive)
   (save-buffer)
-  (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh"))
+  (shell-command
+    "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh"))
 
-(defun save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back ()
+(defun
+  save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back
+  ()
   (interactive)
   (save-buffer)
-  (shell-command "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh 0"))
+  (shell-command
+    "~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh 0"))
 
-(evil-declare-abort-repeat 'save-file-and-run-last-command-in-terminal-to-the-right)
-(evil-declare-abort-repeat 'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back)
+(evil-declare-abort-repeat
+  'save-file-and-run-last-command-in-terminal-to-the-right)
+(evil-declare-abort-repeat
+  'save-file-and-run-last-command-in-terminal-to-the-right-no-switch-back)
 
 (setq xref-search-program 'ripgrep)
 
@@ -60,20 +75,16 @@
 (setq makefile-warn-suspicious-lines nil)
 
 ; Make evil searches center the screen on the result
-(defadvice
-    evil-search-forward
-    (after evil-search-forward-recenter activate)
-    (recenter))
+(defadvice evil-search-forward
+  (after evil-search-forward-recenter activate)
+  (recenter))
 (ad-activate 'evil-search-forward)
 
-(defadvice
-    evil-search-next
-    (after evil-search-next-recenter activate)
-    (recenter))
+(defadvice evil-search-next (after evil-search-next-recenter activate)
+  (recenter))
 (ad-activate 'evil-search-next)
 
-(defadvice
-    evil-search-previous
-    (after evil-search-previous-recenter activate)
-    (recenter))
+(defadvice evil-search-previous
+  (after evil-search-previous-recenter activate)
+  (recenter))
 (ad-activate 'evil-search-previous)

@@ -12,4 +12,3 @@
   (setq-local comment-end "")
   (setq-local comment-style 'indent))
 (add-hook 'c-mode-hook 'comment-c-mode-hook)
-
