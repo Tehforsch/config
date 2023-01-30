@@ -59,24 +59,24 @@ myConfig = def
       ("M-S-k"  , spawn "rofi -show run")
     ]
 
+makeMode label layout = mode label (mkKeysEz (layout ++ [("<Tab>" , exitMode), ("<F9>" , setMode "Normal")]))
+
 normalMode :: Mode
-normalMode = mode "Normal" $ mkKeysEz
+normalMode = makeMode "Normal"
   [
-    ("<Tab>" , exitMode),
-    ("<F9>" , setMode "Normal"),
-    ("j", windows W.focusUp)
-  , ("k", windows W.focusDown)
-  , ("s", setMode "Launch")
-  , ("q", kill)
+    ("j", windows W.focusUp),
+    ("k", windows W.focusDown),
+    ("j", windows W.focusUp),
+    ("k", windows W.focusDown),
+    ("s", setMode "Launch"),
+    ("q", kill)
   ]
 
 spawnAndExitLaunchMode s = spawn s *> exitMode
 
 launchMode :: Mode
-launchMode = mode "Launch" $ mkKeysEz
+launchMode = makeMode "Launch"
   [ 
-    ("<F9>" , setMode "Normal"),
-    ("<Tab>" , exitMode),
     ("a", spawnAndExitLaunchMode "kitty --detach --hold taskwarrior-tui"),
     ("b", spawnAndExitLaunchMode "exec $scripts/bwfor.sh"),
     ("c", spawnAndExitLaunchMode "firefox"),

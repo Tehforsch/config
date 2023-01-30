@@ -43,6 +43,8 @@ make_symlink powersettings/${SYSTEM_NAME}.xml .config/xfce4/xfconf/xfce-perchann
 make_symlink emacs/emacs.service .config/systemd/user/default.target.wants/emacs.service
 make_symlink taskwarrior/taskrc .config/task/taskrc
 make_symlink taskwarrior/hooks .local/share/task/hooks
+make_symlink xmonad/xmonad.hs .config/xmonad/xmonad.hs
+make_symlink xmonad/xmobarrc .xmobarrc
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
