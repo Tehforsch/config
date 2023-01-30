@@ -16,10 +16,14 @@ import XMonad.Util.Loggers
 import XMonad.Actions.Navigation2D
 
 import XMonad.Util.Run
+import XMonad.Actions.CycleWindows
+
 
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
+
+myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
 
 myXmobarPP = def
     { ppSep             = magenta " • "
@@ -29,7 +33,7 @@ myXmobarPP = def
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    , ppExtras          = [logMode]
     }
   where
     formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
@@ -52,6 +56,7 @@ myConfig = def
     { terminal = "kitty"
     , modMask = mod4Mask
     , focusFollowsMouse = False
+    , workspaces = myWorkspaces
     }
   `additionalKeysP`
     [
@@ -59,20 +64,34 @@ myConfig = def
       ("M-S-k"  , spawn "rofi -show run")
     ]
 
-makeMode label layout = mode label (mkKeysEz (layout ++ [("<Tab>" , exitMode), ("<F9>" , setMode "Normal")]))
+makeMode label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
+                                    (layout ++
+                                     [
+                                      ("<Escape>", exitModeAndClearLabel),
+                                      ("<Tab>" , exitModeAndClearLabel),
+                                      ("<F9>" , setMode "Normal")
+                                     ]
+                                    ))
+
+exitModeAndClearLabel = setMode "" *> exitMode
+
+defaultMode :: Mode
+defaultMode = makeMode "" []
 
 normalMode :: Mode
 normalMode = makeMode "Normal"
   [
-    ("j", windows W.focusUp),
-    ("k", windows W.focusDown),
-    ("j", windows W.focusUp),
-    ("k", windows W.focusDown),
+    ("j", windows W.focusDown),
+    ("k", windows W.focusUp),
+    ("f", windows W.focusMaster),
+    ("S-J", rotFocusedDown),
+    ("S-K", rotFocusedUp),
     ("s", setMode "Launch"),
+    ("w", setMode "Workspace"),
     ("q", kill)
   ]
 
-spawnAndExitLaunchMode s = spawn s *> exitMode
+spawnAndExitLaunchMode s = spawn s *> exitModeAndClearLabel
 
 launchMode :: Mode
 launchMode = makeMode "Launch"
@@ -96,9 +115,13 @@ launchMode = makeMode "Launch"
     ("<F11>", spawnAndExitLaunchMode "bash /home/toni/projects/config/scripts/screenCapture.sh")
   ]
 
+workspaceMode :: Mode
+workspaceMode = makeMode "Workspace"
+  [(workspace, windows $ W.greedyView workspace) | workspace <- myWorkspaces]
+
 main :: IO ()
 main = xmonad $ ewmhFullscreen $ ewmh
-  $ modal [normalMode, launchMode]
+  $ modal [normalMode, launchMode, defaultMode, workspaceMode]
   $ withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
   $ myConfig
 
