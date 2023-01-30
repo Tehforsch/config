@@ -21,7 +21,7 @@
       :box '(:line-width 5 :color "#3c3836" :style nil))
     (set-face-attribute 'tabbar-selected nil
       :background "#3c3836"
-      :foreground "#fe8019"
+      :foreground "#fabd2f"
       :box '(:line-width 5 :color "#3c3836" :style nil))
     (set-face-attribute 'tabbar-highlight nil
       :background "white"
