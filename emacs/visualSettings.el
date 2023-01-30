@@ -54,10 +54,6 @@
 (add-hook 'python-mode 'rainbow-delimiters-mode)
 
 
-;; (use-package frames-only-mode)
-;; (frames-only-mode)
-
-
 (defun make-frame-delete-window ()
   (interactive)
   (make-frame)
