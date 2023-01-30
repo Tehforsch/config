@@ -52,8 +52,8 @@ TABSET is the tab set used to choose the appropriate buttons."
       ((eq major-mode 'dired-mode)
         "emacs")
       (t
-        "user"))
-    (find-git-dir (buffer-file-name (current-buffer)))))
+        (find-git-dir (buffer-file-name (current-buffer)))))))
+
 (setq tabbar-buffer-groups-function 'git-tabbar-buffer-groups)
 
 (defun find-git-dir (dir)
