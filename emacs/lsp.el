@@ -66,5 +66,7 @@
 (defun corfu-lsp-setup ()
   (interactive)
   (setq-local completion-styles '(orderless partial-completion basic)
-              completion-category-defaults nil))
+              completion-category-defaults nil
+              completion-at-point-functions '(cape-dabbrev+lsp+file)))
+
 (add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)
