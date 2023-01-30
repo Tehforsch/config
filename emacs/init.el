@@ -72,4 +72,6 @@
 
 (load-from-config "screenshot.el")
 
+(load-from-config "temp.el")
+
 (load-from-config "general.el")
