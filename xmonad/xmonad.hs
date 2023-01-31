@@ -87,10 +87,10 @@ myConfig = def
       ("<F9>"  , setMode "Normal")
     ]
 
-makeMode label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
+makeMode parent label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
                                     (layout ++
                                      [
-                                      ("<Escape>", exitModeAndClearLabel),
+                                      ("<Escape>", parent),
                                       ("<Tab>" , exitModeAndClearLabel),
                                       ("<F9>" , setMode "Normal")
                                      ]
@@ -99,10 +99,10 @@ makeMode label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
 exitModeAndClearLabel = setMode "" *> exitMode
 
 defaultMode :: Mode
-defaultMode = makeMode "" []
+defaultMode = makeMode (setMode "") "" []
 
 normalMode :: Mode
-normalMode = makeMode "Normal"
+normalMode = makeMode (setMode "") "Normal"
   [
     ("h", sendMessage $ Go L),
     ("j", sendMessage $ Go D),
@@ -131,7 +131,7 @@ runScript s = spawn ("bash " ++ myScriptFolder ++ s)
 runScriptAndExitMode s = runScript s *> exitModeAndClearLabel
 
 workspaceMode :: Mode
-workspaceMode = makeMode "Workspace"
+workspaceMode = makeMode (setMode "Normal") "Workspace"
   (
     [(workspace, windows $ W.greedyView workspace) | workspace <- myWorkspaces]
     ++ 
@@ -145,7 +145,7 @@ workspaceMode = makeMode "Workspace"
   )
 
 layoutMode :: Mode
-layoutMode = makeMode "Layout"
+layoutMode = makeMode (setMode "Normal") "Layout"
   [
     ("j", sendMessage NextLayout),
     ("e", sendMessage ToggleLayout),
@@ -155,7 +155,7 @@ layoutMode = makeMode "Layout"
   ]
 
 launchMode :: Mode
-launchMode = makeMode "Launch"
+launchMode = makeMode (setMode "Normal") "Launch"
   [ 
     ("a", spawnAndExitMode "kitty --detach --hold taskwarrior-tui"),
     ("b", runScriptAndExitMode "bwfor.sh"),
@@ -178,7 +178,7 @@ launchMode = makeMode "Launch"
   ]
 
 mediaMode :: Mode
-mediaMode = makeMode "Media"
+mediaMode = makeMode (setMode "Normal") "Media"
   [
     ("a", spawn "mpc prev"),
     ("d", spawn "mpc next"),
@@ -198,7 +198,7 @@ mediaMode = makeMode "Media"
   ]
 
 findMusicMode :: Mode
-findMusicMode = makeMode "Find Music"
+findMusicMode = makeMode (setMode "Media") "Find Music"
   [
     ("k", runScriptAndExitMode "musicSelection/artist.sh"),
     ("a", runScriptAndExitMode "musicSelection/album.sh"),
