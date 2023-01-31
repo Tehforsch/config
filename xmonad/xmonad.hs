@@ -21,6 +21,9 @@ import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Tabbed
 
+import XMonad.Hooks.DynamicIcons
+import XMonad.Util.ClickableWorkspaces
+
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
@@ -33,7 +36,6 @@ myBgColor = "#1d2021"
 myInactiveBgColor = "#1d2021"
 myInactiveBorderColor = "#1d2021"
 myInactiveFontColor = "#928374"
-
 
 myScriptFolder = "~/projects/config/scripts/"
 
@@ -73,6 +75,16 @@ myXmobarPP = def
     active  = xmobarColor myActiveFontColor ""
     inactive = xmobarColor myInactiveFontColor ""
 
+myIcons :: Query [String]
+myIcons = composeAll
+  [ className =? "discord" --> appIcon "abc"
+  , className =? "Discord" --> appIcon "abc"
+  , className =? "Firefox" --> appIcon "abc"
+  , className =? "Spotify" <||> className =? "spotify" --> appIcon "def"
+  ]
+
+myIconConfig = def{ iconConfigIcons = myIcons, iconConfigFmt = iconsFmtAppend concat }
+
 myConfig = def 
     { terminal = "kitty"
     , modMask = mod4Mask
@@ -98,16 +110,17 @@ makeMode parent label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
 
 exitModeAndClearLabel = setMode "" *> exitMode
 
-defaultMode :: Mode
-defaultMode = makeMode (setMode "") "" []
-
 normalMode :: Mode
-normalMode = makeMode (setMode "") "Normal"
+normalMode = makeMode exitMode "Normal"
   [
     ("h", sendMessage $ Go L),
     ("j", sendMessage $ Go D),
     ("k", sendMessage $ Go U),
     ("l", sendMessage $ Go R),
+    ("a", sendMessage $ Go L),
+    ("d", sendMessage $ Go R),
+    ("Shift+a", sendMessage $ Move L),
+    ("Shift+d", sendMessage $ Move R),
     ("Shift+h", sendMessage $ Move L),
     ("Shift+j", sendMessage $ Move D),
     ("Shift+k", sendMessage $ Move U),
@@ -209,9 +222,12 @@ findMusicMode = makeMode (setMode "Media") "Find Music"
     ("S-r", runScript "musicSelection/quarantineAlbum.sh --random")
   ]
 
+-- myBar = (statusBarProp "xmobar" (clickablePP myXmobarPP))
+myBar = (statusBarProp "xmobar" (pure myXmobarPP))
+
 main :: IO ()
 main = xmonad $ ewmhFullscreen $ ewmh
-  $ modal [normalMode, launchMode, defaultMode, workspaceMode, mediaMode, findMusicMode, layoutMode]
-  $ withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+  $ modal [normalMode, launchMode, workspaceMode, mediaMode, findMusicMode, layoutMode]
+  $ withEasySB myBar defToggleStrutsKey
   $ myConfig
 
