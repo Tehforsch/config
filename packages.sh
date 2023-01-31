@@ -5,5 +5,7 @@ clang lld
 ttf-inconsolata
 emacs-nativecomp git-delta the-silver-searcher python-lsp-server mypy python-black python-pyflakes python-pandas
 
+ttf-sourcecodepro-nerd
+
 AUR:
 seafile zoom texlive-full

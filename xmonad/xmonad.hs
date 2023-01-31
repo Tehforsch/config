@@ -41,14 +41,14 @@ myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
 myTabConfig = def { inactiveBorderColor = myInactiveBgColor
                   , activeTextColor = myActiveFontColor }
 
-myLayout = windowNavigation (toggleLayouts (windowNavigation (avoidStruts (tabbed shrinkText myTabConfig))) (tiled ||| tiled ||| Mirror tiled ||| Full))
+myLayout = avoidStruts (windowNavigation (toggleLayouts (windowNavigation (avoidStruts (tabbed shrinkText myTabConfig))) (tiled ||| tiled ||| Mirror tiled ||| Full)))
 
 tiled = (Tall 1 (3/100) (1/2))
 
 myHidePP :: String -> String
 myHidePP s = ""
 
-makeWorkspaceTitle color = color . (wrap "[        "  "        ]")
+makeWorkspaceTitle color = color . (wrap "[  "  "  ]")
 
 myXmobarPP = def
     {
@@ -66,12 +66,26 @@ myXmobarPP = def
     active  = xmobarColor myActiveFontColor ""
     inactive = xmobarColor myInactiveFontColor ""
 
+myAppIcon s = appIcon (" <fn=1>" ++ s ++ "</fn> ")
+
 myIcons :: Query [String]
 myIcons = composeAll
-  [ className =? "discord" --> appIcon "abc"
-  , className =? "Discord" --> appIcon "abc"
-  , className =? "Firefox" --> appIcon "abc"
-  , className =? "Spotify" <||> className =? "spotify" --> appIcon "def"
+  [
+    className =? "kitty" --> myAppIcon "\61728"
+    , className =? "Emacs" --> myAppIcon "\61788"
+    , className =? "TelegramDesktop" --> myAppIcon "\62150"
+    , className =? "firefox" --> myAppIcon "\62057"
+    , className =? "Thunderbird" --> myAppIcon "\61664"
+    , className =? "thunderbird" --> myAppIcon "\61664"
+    , className =? "Zathura" --> myAppIcon "\61889"
+    , className =? "default_icon" --> myAppIcon "💀"
+    , className =? "feh" --> myAppIcon "\61502"
+    , className =? "Pavucontrol" --> myAppIcon "🎧"
+    , className =? "Zotero" --> myAppIcon "Z"
+    , className =? "pcmanfm" --> myAppIcon "🖿"
+    , className =? "Pcmanfm" --> myAppIcon "🖿"
+    , className =? "Spotify" --> myAppIcon "\61884"
+    , className =? "spotify" --> myAppIcon "\61884"
   ]
 
 myIconConfig = def{ iconConfigIcons = myIcons, iconConfigFmt = iconsFmtAppend concat }
@@ -220,8 +234,7 @@ findMusicMode = makeMode (setMode "Media") "Find Music"
     ("S-r", runScript "musicSelection/quarantineAlbum.sh --random")
   ]
 
--- myBar = (statusBarProp "xmobar" (clickablePP myXmobarPP))
-myBar = statusBarProp "xmobar ~/projects/config/xmonad/xmobarrc" (pure myXmobarPP)
+myBar = statusBarProp "xmobar ~/projects/config/xmonad/xmobarrc" (clickablePP =<< dynamicIconsPP myIconConfig myXmobarPP)
 
 main :: IO ()
 main = xmonad $ ewmhFullscreen . ewmh
