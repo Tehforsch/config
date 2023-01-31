@@ -15,24 +15,18 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.ClickableWorkspaces
+import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Run
 import XMonad.Util.Ungrab
 import XMonad.Config.Desktop
+import XMobarConfig
+import Colors
 
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
-
-myActiveBgColor = "#484848"
-myActiveBorderColor = "#ebdbb2"
-myActiveFontColor = "#ebdbb2"
-myActiveWindowBorderColor = "#928374"
-myBgColor = "#1d2021"
-myInactiveBgColor = "#1d2021"
-myInactiveBorderColor = "#1d2021"
-myInactiveFontColor = "#928374"
 
 myScriptFolder = "~/projects/config/scripts/"
 
@@ -41,54 +35,9 @@ myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
 myTabConfig = def { inactiveBorderColor = myInactiveBgColor
                   , activeTextColor = myActiveFontColor }
 
-myLayout = avoidStruts (windowNavigation (toggleLayouts (windowNavigation (avoidStruts (tabbed shrinkText myTabConfig))) (tiled ||| tiled ||| Mirror tiled ||| Full)))
+myLayout = avoidStruts $ toggleLayouts (tabbed shrinkText myTabConfig) $ smartBorders $ windowNavigation (tiled ||| tiled ||| Mirror tiled ||| Full)
 
 tiled = (Tall 1 (3/100) (1/2))
-
-myHidePP :: String -> String
-myHidePP s = ""
-
-makeWorkspaceTitle color = color . (wrap "[  "  "  ]")
-
-myXmobarPP = def
-    {
-      ppSep             = inactive "   •   "
-    , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = makeWorkspaceTitle active
-    , ppHidden          = makeWorkspaceTitle inactive
-    , ppVisible         = myHidePP
-    , ppHiddenNoWindows = myHidePP
-    , ppOrder           = \[ws, l, _, wins] -> [ws,  wins]
-    , ppExtras          = [logMode]
-    }
-  where
-    active, inactive:: String -> String
-    active  = xmobarColor myActiveFontColor ""
-    inactive = xmobarColor myInactiveFontColor ""
-
-myAppIcon s = appIcon (" <fn=1>" ++ s ++ "</fn> ")
-
-myIcons :: Query [String]
-myIcons = composeAll
-  [
-    className =? "kitty" --> myAppIcon "\61728"
-    , className =? "Emacs" --> myAppIcon "\61788"
-    , className =? "TelegramDesktop" --> myAppIcon "\62150"
-    , className =? "firefox" --> myAppIcon "\62057"
-    , className =? "Thunderbird" --> myAppIcon "\61664"
-    , className =? "thunderbird" --> myAppIcon "\61664"
-    , className =? "Zathura" --> myAppIcon "\61889"
-    , className =? "default_icon" --> myAppIcon "💀"
-    , className =? "feh" --> myAppIcon "\61502"
-    , className =? "Pavucontrol" --> myAppIcon "🎧"
-    , className =? "Zotero" --> myAppIcon "Z"
-    , className =? "pcmanfm" --> myAppIcon "🖿"
-    , className =? "Pcmanfm" --> myAppIcon "🖿"
-    , className =? "Spotify" --> myAppIcon "\61884"
-    , className =? "spotify" --> myAppIcon "\61884"
-  ]
-
-myIconConfig = def{ iconConfigIcons = myIcons, iconConfigFmt = iconsFmtAppend concat }
 
 myConfig = def 
     { terminal = "kitty"
@@ -119,10 +68,17 @@ makeMode parent label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
 
 exitModeAndClearLabel = setMode "" *> exitMode
 
+spawnAndExitMode s = spawn s *> exitModeAndClearLabel
+
+runScript s = spawn ("bash " ++ myScriptFolder ++ s)
+
+runScriptAndExitMode s = runScript s *> exitModeAndClearLabel
+
 normalMode :: Mode
 normalMode = makeMode exitMode "Normal"
   [
     ("^", toggleWS),
+    ("0", sendMessage ToggleStruts),
     ("h", sendMessage $ Go L),
     ("j", sendMessage $ Go D),
     ("k", sendMessage $ Go U),
@@ -146,12 +102,6 @@ normalMode = makeMode exitMode "Normal"
     ("e", sendMessage ToggleLayout),
     ("q", kill)
   ]
-
-spawnAndExitMode s = spawn s *> exitModeAndClearLabel
-
-runScript s = spawn ("bash " ++ myScriptFolder ++ s)
-
-runScriptAndExitMode s = runScript s *> exitModeAndClearLabel
 
 workspaceMode :: Mode
 workspaceMode = makeMode (setMode "Normal") "Workspace"
@@ -233,8 +183,6 @@ findMusicMode = makeMode (setMode "Media") "Find Music"
     ("S-a", runScriptAndExitMode "musicSelection/quarantineAlbum.sh"),
     ("S-r", runScript "musicSelection/quarantineAlbum.sh --random")
   ]
-
-myBar = statusBarProp "xmobar ~/projects/config/xmonad/xmobarrc" (clickablePP =<< dynamicIconsPP myIconConfig myXmobarPP)
 
 main :: IO ()
 main = xmonad $ ewmhFullscreen . ewmh

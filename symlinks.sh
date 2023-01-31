@@ -44,6 +44,8 @@ make_symlink emacs/emacs.service .config/systemd/user/default.target.wants/emacs
 make_symlink taskwarrior/taskrc .config/task/taskrc
 make_symlink taskwarrior/hooks .local/share/task/hooks
 make_symlink xmonad/xmonad.hs .config/xmonad/xmonad.hs
+make_symlink xmonad/lib/XMobarConfig.hs .config/xmonad/lib/XMobarConfig.hs
+make_symlink xmonad/lib/Colors.hs .config/xmonad/lib/Colors.hs
 make_symlink xmonad/xmobarrc .xmobarrc
 
 # The weird
