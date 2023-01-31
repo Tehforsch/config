@@ -3,14 +3,7 @@ Config { overrideRedirect = False
        , bgColor  = "#1d2021"
        , fgColor  = "#f8f8f2"
        , position = BottomW L 100
-       , commands = [ Run Alsa "default" "Master"
-                        [ "--template", "<volumestatus>"
-                        , "--suffix"  , "True"
-                        , "--"
-                        , "--on", ""
-                        ]
-                    , Run XMonadLog
-                    ]
+       , commands = [ Run XMonadLog]
        , sepChar  = "%"
        , alignSep = "}{"
        , template = "%XMonadLog%"

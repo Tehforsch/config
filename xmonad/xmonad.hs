@@ -7,6 +7,8 @@ import XMonad.Hooks.DynamicIcons
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.Modal
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.Tabbed
@@ -17,6 +19,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Run
 import XMonad.Util.Ungrab
+import XMonad.Config.Desktop
 
 import qualified XMonad.StackSet as W
 
@@ -38,7 +41,7 @@ myWorkspaces = ["a","s","d","f","g","y","x","c","m"]
 myTabConfig = def { inactiveBorderColor = myInactiveBgColor
                   , activeTextColor = myActiveFontColor }
 
-myLayout = windowNavigation (toggleLayouts (windowNavigation (tabbed shrinkText myTabConfig)) (tiled ||| tiled ||| Mirror tiled))
+myLayout = windowNavigation (toggleLayouts (windowNavigation (avoidStruts (tabbed shrinkText myTabConfig))) (tiled ||| tiled ||| Mirror tiled ||| Full))
 
 tiled = (Tall 1 (3/100) (1/2))
 
@@ -59,12 +62,6 @@ myXmobarPP = def
     , ppExtras          = [logMode]
     }
   where
-
-    -- | Windows should have *some* title, which should not not exceed a
-    -- sane length.
-    ppWindow :: String -> String
-    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
-
     active, inactive:: String -> String
     active  = xmobarColor myActiveFontColor ""
     inactive = xmobarColor myInactiveFontColor ""
@@ -84,9 +81,13 @@ myConfig = def
     , modMask = mod4Mask
     , focusFollowsMouse = False
     , workspaces = myWorkspaces
-    , layoutHook = myLayout 
+    , layoutHook =  myLayout 
     , focusedBorderColor = myActiveBorderColor
     , normalBorderColor = myInactiveBorderColor
+    , manageHook = composeOne [
+        isFullscreen -?> doFullFloat
+    ]
+    , startupHook = runScript "startup.sh"
     }
   `additionalKeysP`
     [
@@ -158,9 +159,10 @@ layoutMode = makeMode (setMode "Normal") "Layout"
   [
     ("j", sendMessage NextLayout),
     ("e", sendMessage ToggleLayout),
-    ("f", sendMessage $ JumpToLayout "Tabbed Simplest"),
+    ("e", sendMessage $ JumpToLayout "Tabbed Simplest"),
     ("v", sendMessage $ JumpToLayout "Tall"),
-    ("h", sendMessage $ JumpToLayout "Mirror Tall")
+    ("h", sendMessage $ JumpToLayout "Mirror Tall"),
+    ("f", sendMessage $ JumpToLayout "Full")
   ]
 
 launchMode :: Mode
@@ -219,11 +221,12 @@ findMusicMode = makeMode (setMode "Media") "Find Music"
   ]
 
 -- myBar = (statusBarProp "xmobar" (clickablePP myXmobarPP))
-myBar = (statusBarProp "xmobar" (pure myXmobarPP))
+myBar = statusBarProp "xmobar ~/projects/config/xmonad/xmobarrc" (pure myXmobarPP)
 
 main :: IO ()
-main = xmonad $ ewmhFullscreen $ ewmh
+main = xmonad $ ewmhFullscreen . ewmh
   $ modal [normalMode, launchMode, workspaceMode, mediaMode, findMusicMode, layoutMode]
-  $ withEasySB myBar defToggleStrutsKey
+  $ withSB myBar
+  $ docks
   $ myConfig
 
