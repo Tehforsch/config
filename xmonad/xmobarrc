@@ -3,7 +3,7 @@ Config { overrideRedirect = False
        , additionalFonts     = ["xft:SauceCodePro Nerd Font Mono:size=35"]
        , bgColor  = "#1d2021"
        , fgColor  = "#f8f8f2"
-       , position = BottomW L 100
+       , position = BottomW L 90
        , commands = [ Run UnsafeXMonadLog]
        , sepChar  = "%"
        , alignSep = "}{"

@@ -1,11 +1,13 @@
 xdotool key --clearmodifiers F9
 xdotool key --clearmodifiers l
-xdotool key --clearmodifiers Return
+xdotool key --clearmodifiers Escape
 sleep 0.01;
 xdotool key --clearmodifiers ctrl+p
 xdotool key --clearmodifiers Return
 if [[ $# == 0 ]]; then
-    xdotool key --clearmodifiers F9
-    xdotool key --clearmodifiers h
-    xdotool key --clearmodifiers Return
+    xdotool key F9
+    sleep 0.1
+    xdotool key h
+    sleep 0.1
+    xdotool key Tab
 fi

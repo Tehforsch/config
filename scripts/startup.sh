@@ -1,3 +1,5 @@
+scripts=~/projects/config/scripts
+trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --alpha 0 --tint 0x1d2021 --height 35 &
 sleep 3 && $scripts/screenConfiguration.sh &
 sleep 3 && $scripts/keyboardConfiguration.sh &
 sleep 3 && $scripts/disableAcceleration.sh &
