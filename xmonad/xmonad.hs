@@ -84,8 +84,7 @@ myConfig = def
     }
   `additionalKeysP`
     [
-      ("<F9>"  , setMode "Normal"),
-      ("M-S-k"  , spawn "rofi -show run")
+      ("<F9>"  , setMode "Normal")
     ]
 
 makeMode label layout = modeWithExit "<XF86ModeLock>" label (mkKeysEz
@@ -109,6 +108,10 @@ normalMode = makeMode "Normal"
     ("j", sendMessage $ Go D),
     ("k", sendMessage $ Go U),
     ("l", sendMessage $ Go R),
+    ("Shift+h", sendMessage $ Move L),
+    ("Shift+j", sendMessage $ Move D),
+    ("Shift+k", sendMessage $ Move U),
+    ("Shift+l", sendMessage $ Move R),
     ("f", windows W.swapMaster),
     ("m", windows W.focusMaster),
     ("S-j", windows W.swapDown),
@@ -129,7 +132,17 @@ runScriptAndExitMode s = runScript s *> exitModeAndClearLabel
 
 workspaceMode :: Mode
 workspaceMode = makeMode "Workspace"
-  [(workspace, windows $ W.greedyView workspace) | workspace <- myWorkspaces]
+  (
+    [(workspace, windows $ W.greedyView workspace) | workspace <- myWorkspaces]
+    ++ 
+    [(("C-" ++ workspace), windows $ W.shift workspace) | workspace <- myWorkspaces]
+    ++ 
+    [(("S-" ++ workspace), (windows $ W.shift workspace) *> (windows $ W.greedyView workspace)) | workspace <- myWorkspaces]
+    ++
+    [
+      ("q", kill)
+    ]
+  )
 
 layoutMode :: Mode
 layoutMode = makeMode "Layout"
