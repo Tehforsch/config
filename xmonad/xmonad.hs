@@ -1,28 +1,22 @@
 import XMonad
 
-import XMonad.Hooks.Modal
-
+import XMonad.Actions.CycleWS
+import XMonad.Actions.CycleWindows
+import XMonad.Actions.Navigation2D
+import XMonad.Hooks.DynamicIcons
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.Modal
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-
-import XMonad.Hooks.EwmhDesktops
-
-import XMonad.Util.EZConfig
-import XMonad.Util.Ungrab
-
-import XMonad.Util.Loggers
-
-import XMonad.Actions.Navigation2D
-
-import XMonad.Util.Run
-import XMonad.Actions.CycleWindows
+import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.WindowNavigation
-import XMonad.Layout.Tabbed
-
-import XMonad.Hooks.DynamicIcons
 import XMonad.Util.ClickableWorkspaces
+import XMonad.Util.EZConfig
+import XMonad.Util.Loggers
+import XMonad.Util.Run
+import XMonad.Util.Ungrab
 
 import qualified XMonad.StackSet as W
 
@@ -113,6 +107,7 @@ exitModeAndClearLabel = setMode "" *> exitMode
 normalMode :: Mode
 normalMode = makeMode exitMode "Normal"
   [
+    ("^", toggleWS),
     ("h", sendMessage $ Go L),
     ("j", sendMessage $ Go D),
     ("k", sendMessage $ Go U),
@@ -153,6 +148,7 @@ workspaceMode = makeMode (setMode "Normal") "Workspace"
     [(("S-" ++ workspace), (windows $ W.shift workspace) *> (windows $ W.greedyView workspace)) | workspace <- myWorkspaces]
     ++
     [
+      ("^", toggleWS),
       ("q", kill)
     ]
   )
