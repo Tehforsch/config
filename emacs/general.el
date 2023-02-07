@@ -99,13 +99,11 @@
 (general-create-definer smart-text-insert-leader-def :prefix "ü")
 
 (smart-text-insert-leader-def '(normal visual) 'global-map
-  "f" 'wrap-symbol-in-function-call)
-
-(smart-text-insert-leader-def '(normal visual) 'rustic-map
+  "f" 'wrap-symbol-in-function-call
   "d" 'rust-dbg-wrap-or-unwrap
   "g" 'insert-generic-after-symbol
-  "a" 'wrap-symbol-in-generic)
-
+  "a" 'wrap-symbol-in-generic
+  )
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (define-key evil-normal-state-map "gp" 'lsp-goto-implementation)
