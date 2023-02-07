@@ -35,31 +35,3 @@
   (append-end-of-symbol "<>")
   (left-char 1)
   (evil-repeat-stop))
-
-(defun wrap-symbol-in-generic ()
-  (interactive)
-  (evil-insert nil nil nil)
-  (let*
-    (
-      (region (evil-inner-symbol))
-      (start (nth 0 region))
-      (end (nth 1 region)))
-    (goto-char end)
-    (insert ">")
-    (goto-char start)
-    (insert "<")
-    (goto-char start)))
-
-(defun wrap-symbol-in-function-call ()
-  (interactive)
-  (evil-insert nil nil nil)
-  (let*
-    (
-      (region (evil-inner-symbol))
-      (start (nth 0 region))
-      (end (nth 1 region)))
-    (goto-char end)
-    (insert ")")
-    (goto-char start)
-    (insert "(")
-    (goto-char start)))

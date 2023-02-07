@@ -94,15 +94,8 @@
   "f" 'elisp-autofmt-buffer)
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
-  "p" 'lsp-rust-find-parent-module)
-
-(general-create-definer smart-text-insert-leader-def :prefix "ü")
-
-(smart-text-insert-leader-def '(normal visual) 'global-map
-  "f" 'wrap-symbol-in-function-call
-  "d" 'rust-dbg-wrap-or-unwrap
+  "p" 'lsp-rust-find-parent-module
   "g" 'insert-generic-after-symbol
-  "a" 'wrap-symbol-in-generic
   )
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
