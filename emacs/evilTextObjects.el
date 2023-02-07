@@ -18,7 +18,7 @@
     "Select inner function."
     (evil-select-inner-object 'evil-defun beg end type count)
 )
-; Bind it to both possible keys
+; Bind it to both possible keys. Note that this will possibly be overwritten by tree-sitter-text-objects
 (define-key evil-inner-text-objects-map "f" 'evil-inner-function)
 (define-key evil-outer-text-objects-map "f" 'evil-inner-function)
 
