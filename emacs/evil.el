@@ -76,9 +76,6 @@
 (define-key evil-normal-state-map [escape] 'keyboard-quit-when-not-recording-macro)
 (define-key evil-visual-state-map [escape] 'keyboard-quit-when-not-recording-macro)
 
-; I never write html so this is a saner default for me instead of adding tags
-(setq-default evil-surround-pairs-alist (push '(?< . ("<" . ">")) evil-surround-pairs-alist))
-
 ; Not really an evil setting but since it works with evil, this file is
 ; what I most closely associate this setting with - makes w and the word
 ; text objects work on camel case words
