@@ -17,6 +17,8 @@
 (load-from-config "lsp.el")
 
 (load-from-config "evil.el")
+(load-from-config "evilSurround.el")
+(load-from-config "evilTextObjects.el")
 (load-from-config "evilCollection.el")
 (load-from-config "evilArgs.el")
 (load-from-config "evilMatchit.el")
@@ -51,9 +53,6 @@
 
 (load-from-config "tree-sitter.el")
 (load-from-config "folding.el")
-
-; Completion
-;; (load-from-config "company.el")
 
 (load-from-config "mouse.el")
 (load-from-config "miscSettings.el")
