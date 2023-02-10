@@ -53,6 +53,7 @@ make_symlink newsboat/urls .config/newsboat/urls
 make_symlink git/gitconfig.conf .config/git/config
 make_symlink alsa/asoundrc .config/alsa/asoundrc
 make_symlink vim/init.vim .config/vim/vimrc
+make_symlink cargo/${SYSTEM_NAME}.toml .local/share/cargo/config.toml # ...
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
@@ -63,7 +64,6 @@ make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc
-make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config
 make_symlink emacs/init.el .emacs.d/init.el
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
 make_symlink ssh/config .ssh/config

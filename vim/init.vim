@@ -31,10 +31,6 @@ endif
 "mappings
     " Use space as leader key
     let mapleader = "\<Space>"
-    " Map <Leader>t to fzf fuzzy search plugin 
-    nnoremap <silent> <leader>t :Files<cr>
-    " Map <Leader>b to fzf fuzzy search plugin for buffers
-    nnoremap <silent> <leader>b :call fzf#vim#buffers('', {'down': '40%'})<cr>
     " Map single quote to apostrophe in normal mode (jump to exact mark)
     nnoremap ' `
     " Map # which searches backwards for the current word under the cursor to exact mark jumping
@@ -95,9 +91,6 @@ endif
     " gitgutter hunk staging and undo
     nmap <Leader>ha <Plug>(GitGutterStageHunk)
     nmap <Leader>hu <Plug>(GitGutterUndoHunk)
-    " " Map <Leader>f to fzf fuzzy search for symbols in file
-    " nnoremap <silent> <leader>t :call fzf#vim#files('',
-  " \ {'source': 'fd --follow --type file', 'down': '40%'})<cr>
 
 
 " mappings - misc
@@ -275,9 +268,6 @@ endif
     Plug 'rust-lang/rust.vim'
     " Ag
     Plug 'brookhong/ag.vim'
-    " Fzf-Vim
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
     " LSP
     Plug 'morhetz/gruvbox'
 

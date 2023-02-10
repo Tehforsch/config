@@ -30,5 +30,3 @@ source ~/modules.sh
 
 export HDF5_DISABLE_VERSION_CHECK=2
 . "$HOME/.cargo/env"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

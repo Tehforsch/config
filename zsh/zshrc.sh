@@ -24,4 +24,4 @@ export PATH=$PATH:/opt/texlive/2021/bin/x86_64-linux
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/projects/config/fzf/fzf.zsh

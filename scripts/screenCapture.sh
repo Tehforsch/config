@@ -2,7 +2,6 @@
 sleep 0.1
 if [[ $# == 0 ]]; then
     geom=$(xrectsel)
-    echo "$geom" >> ~/.playground/sc
     pat='([0-9]+)x([0-9]+)\+([0-9]+)\+([0-9]+)'
     [[ "$geom" =~ $pat ]]
     xSize="${BASH_REMATCH[1]}"
