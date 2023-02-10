@@ -74,3 +74,5 @@ alias loc="~/projects/raxiom/scripts/runLocal.sh"
 alias mpigdb="~/projects/raxiom/scripts/runGdb.sh"
 
 alias mb="make build -j 12"
+
+alias wget="wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""

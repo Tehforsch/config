@@ -19,3 +19,5 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export ANDROID_HOME="$XDG_DATA_HOME"/android
+export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYGVIMRC'
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'

@@ -26,7 +26,6 @@ function make_symlink {
 make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bacon/prefs.toml .config/bacon/prefs.toml
 make_symlink bat/config .config/bat/config
-make_symlink git/gitignoreGlobal.conf .config/git/gitignoreGlobal.conf
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
@@ -53,6 +52,7 @@ make_symlink newsboat/config .config/newsboat/config
 make_symlink newsboat/urls .config/newsboat/urls
 make_symlink git/gitconfig.conf .config/git/config
 make_symlink alsa/asoundrc .config/alsa/asoundrc
+make_symlink vim/init.vim .config/vim/vimrc
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
@@ -66,5 +66,4 @@ make_symlink bash/bashrc.sh .bashrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config
 make_symlink emacs/init.el .emacs.d/init.el
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
-make_symlink vim/init.vim .vimrc
 make_symlink ssh/config .ssh/config
