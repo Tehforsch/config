@@ -16,4 +16,3 @@ bash $scripts/syncRepos.sh &
 gpaste-client start &
 $scripts/refreshNewsboat.sh &
 $scripts/lowerVolume.sh &
-$scripts/updatePankit.sh &

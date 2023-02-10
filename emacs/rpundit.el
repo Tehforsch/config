@@ -216,28 +216,6 @@
     'rpundit/after-term-handle-exit-open-file))
 
 ;;;###autoload
-(defun rpundit-get-new-anki-note ()
-  "Add a new anki note entry in the current note"
-  (interactive)
-  (rpundit/start
-    rpundit/directory
-    (s-concat "pankit-get-note " rpundit/anki-collection)
-    'rpundit/after-term-handle-exit-get-anki-note))
-
-;;;###autoload
-(defun rpundit-get-new-anki-note-check-file-for-model-and-deck ()
-  "Add a new anki note entry in the current note. Let pundit figure out the model and deck if there are any already used in the current file."
-  (interactive)
-  (rpundit/start
-    rpundit/directory
-    (s-concat
-      "pankit-get-note "
-      rpundit/anki-collection
-      " "
-      (buffer-file-name))
-    'rpundit/after-term-handle-exit-get-anki-note))
-
-;;;###autoload
 (defun rpundit-journal-previous (journal-name)
   "Open the journal entry before the current one"
   (rpundit/journal-command
