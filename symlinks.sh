@@ -46,7 +46,8 @@ make_symlink taskwarrior/hooks .local/share/task/hooks
 make_symlink xmonad/xmonad.hs .config/xmonad/xmonad.hs
 make_symlink xmonad/lib/XMobarConfig.hs .config/xmonad/lib/XMobarConfig.hs
 make_symlink xmonad/lib/Colors.hs .config/xmonad/lib/Colors.hs
-make_symlink xmonad/xmobarrc .xmobarrc
+make_symlink xmonad/xmobarrc .config/xmonad/xmobarrc
+make_symlink zsh/zshrc.sh .config/zsh/.zshrc # requires ZDOTDIR to be set
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
@@ -65,7 +66,6 @@ make_symlink git/gitconfig.conf .gitconfig
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
 make_symlink vim/init.vim .vimrc
 make_symlink ssh/config .ssh/config
-make_symlink zsh/zshrc.sh .zshrc
 
 if [[ ${SYSTEM_NAME} = manjaroPc ]]; then
     make_symlink scripts/showRegularNotifications.sh .local/share/showRegularNotifications.sh

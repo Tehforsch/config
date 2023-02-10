@@ -19,6 +19,6 @@ index=$(echo "$result" | rofi -i -dmenu -p "Game:" -no-custom -format 'i')
 if [[ $? == 0 ]]; then
     index=$((index + 1))
     appid=$(echo "$appids" | sed "${index}q;d")
-    steam steam://rungameid/$appid
+    $CONFIG/scripts/runSteam.sh steam://rungameid/$appid
 fi
 

@@ -1,4 +1,6 @@
-export HISTFILE=~/.zsh_history
+mkdir -p $(dirname "$HISTFILE")
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
+
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export SAVEHIST=1000000
