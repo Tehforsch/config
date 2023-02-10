@@ -47,7 +47,12 @@ make_symlink xmonad/xmonad.hs .config/xmonad/xmonad.hs
 make_symlink xmonad/lib/XMobarConfig.hs .config/xmonad/lib/XMobarConfig.hs
 make_symlink xmonad/lib/Colors.hs .config/xmonad/lib/Colors.hs
 make_symlink xmonad/xmobarrc .config/xmonad/xmobarrc
-make_symlink zsh/zshrc.sh .config/zsh/.zshrc # requires ZDOTDIR to be set
+make_symlink zsh/zshrc.sh .config/zsh/.zshrc # ZDOTDIR
+make_symlink bash/inputrc.sh .config/readline/inputrc # INPUTRC
+make_symlink newsboat/config .config/newsboat/config
+make_symlink newsboat/urls .config/newsboat/urls
+make_symlink git/gitconfig.conf .config/git/config
+make_symlink alsa/asoundrc .config/alsa/asoundrc
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
@@ -57,16 +62,9 @@ make_symlink zsh/openPdf.sh .local/bin/pdf
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 
 # The EVIL, polluting my home directory
-make_symlink alsa/asoundrc .asoundrc
 make_symlink bash/bashrc.sh .bashrc
-make_symlink bash/inputrc.sh .inputrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config
 make_symlink emacs/init.el .emacs.d/init.el
-make_symlink git/gitconfig.conf .gitconfig
 make_symlink gnuplot/gnuplot.conf .gnuplot # supports XDG starting at version 5.5 which is not on manjaro stable
 make_symlink vim/init.vim .vimrc
 make_symlink ssh/config .ssh/config
-
-if [[ ${SYSTEM_NAME} = manjaroPc ]]; then
-    make_symlink scripts/showRegularNotifications.sh .local/share/showRegularNotifications.sh
-fi

@@ -3,4 +3,19 @@ export XDG_DATA_HOME=$(realpath ~/.local/share)
 export XDG_STATE_HOME=$(realpath ~/.local/state)
 export ZDOTDIR="$HOME/.config/zsh"
 
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+
 export WINEPREFIX="$XDG_DATA_HOME"/wine
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export POETRY_HOME="$XDG_DATA_HOME"/poetry
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export MYPY_CACHE_DIR="$XDG_CACHE_HOME"/mypy
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export ANDROID_HOME="$XDG_DATA_HOME"/android
