@@ -9,11 +9,17 @@
 (setq rustic-lsp-server 'rust-analyzer)
 (setq rustic-analyzer-command '("rustup run nightly rust-analyzer"))
 
+
 (setq lsp-auto-execute-action nil)
 
 ; Ive had lots of problems with these - check this again in a few versions?
+; This might look confusing, but the usual, good diagnostics I get are actually from
+; rustics cargo check flycheck backend, as far as I can tell
 (setq lsp-rust-analyzer-diagnostics-enable nil)
 (setq lsp-rust-features [])
+
+; I had problems when this was set to the default which included --all-features for some reason
+(setq rustic-cargo-check-arguments "")
 
 (defun set-lsp-rust-feature ()
   (interactive)
