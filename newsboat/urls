@@ -11,6 +11,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UChcmKGMMMemwb291yVEtXHA vid
 
 
 https://hnrss.org/newest?points=300 articles !hidden
+https://lobste.rs/rss articles !hidden
 https://xkcd.com/rss.xml articles !hidden
 https://this-week-in-rust.org/rss.xml articles !hidden
 https://gamedev.rs/rss.xml articles !hidden

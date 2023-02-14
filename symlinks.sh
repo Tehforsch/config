@@ -53,7 +53,7 @@ make_symlink newsboat/urls .config/newsboat/urls
 make_symlink git/gitconfig.conf .config/git/config
 make_symlink alsa/asoundrc .config/alsa/asoundrc
 make_symlink vim/init.vim .config/vim/vimrc
-make_symlink cargo/${SYSTEM_NAME}.toml .local/share/cargo/config.toml # ...
+make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop

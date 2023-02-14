@@ -18,7 +18,11 @@ export MYPY_CACHE_DIR="$XDG_CACHE_HOME"/mypy
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+# Setting this to XDG_DATE_HOME is utterly broken in virtually anything except the main rust toolchains where it works - no program respects this shit :(
+export CARGO_HOME="$HOME/.cargo"
+export RUSTUP_HOME="$HOME/.rustup"
+
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYGVIMRC'
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
