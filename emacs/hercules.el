@@ -46,6 +46,21 @@
  :keymap 'transient-window-map
  :transient t)
 
+(general-def 
+  :prefix-map 'transient-error-map
+  "n" 'next-error
+  "p" 'previous-error
+  "l" 'consult-lsp-diagnostics
+  "x" 'lsp-execute-code-action
+  )
+
+(hercules-def
+ :toggle-funs #'toggle-transient-error
+ :hide-funs '(consult-lsp-diagnostics lsp-execute-code-action)
+ :keymap 'transient-error-map
+ :transient t)
+
+
 (general-def
     :prefix-map 'transient-journal-map-personal 
     "t" #'((lambda () (interactive) (rpundit-journal-today "journal")) :which-key "Today")

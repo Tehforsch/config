@@ -77,9 +77,7 @@
 (general-create-definer mode-leader-def :prefix ",")
 
 (mode-leader-def '(normal visual) 'global-map
-  "en" 'next-error
-  "ep" 'previous-error
-  "el" 'consult-lsp-diagnostics
+  "e" 'toggle-transient-error
   "s" 'consult-lsp-symbols
   "S" 'consult-lsp-file-symbols
   "f" 'rustic-format-buffer
