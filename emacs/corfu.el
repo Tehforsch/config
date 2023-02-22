@@ -32,6 +32,8 @@
 (define-key evil-insert-state-map (kbd "C-SPC") 'corfu-insert-separator)
 
 (define-key global-map (kbd "C-p") 'completion-at-point)
+(define-key global-map (kbd "<tab>") 'cape-dabbrev)
+(define-key corfu-map (kbd "C-p") 'cape-dabbrev)
 
 (setq-local completion-styles '(orderless basic))
 
