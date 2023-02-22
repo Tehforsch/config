@@ -22,7 +22,7 @@ alias gl="git log"
 alias gdm="git diff ORIG_HEAD MERGE_HEAD"
 alias gri="git rebase -i"
 
-alias im="feh --scale-down"
+alias im="viewnior"
 alias imt="kitty +kitten icat"
 
 alias ka="killall"
