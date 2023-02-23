@@ -10,8 +10,8 @@
     "J" #'tabbar-forward-group
     "d" #'kill-this-buffer
     "m" #'((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "go to *Messages* buffer")
-    "f" 'consult-project-buffer
-    "F" 'consult-buffer
+    "f" 'consult-buffer
+    "F" 'consult-project-buffer
     "s" 'evil-save-modified-and-close
 )
 
