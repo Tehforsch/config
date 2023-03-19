@@ -3,10 +3,9 @@
 (use-package
   evil-surround
   :config
-  ; Remap s to surround instead of ys. I'll have to get used to not use s to replace characters 
-  (evil-define-key 'normal evil-surround-mode-map "s" 'evil-surround-region)
+
   ; Remap S as an alternative to s
-  (evil-define-key 'normal 'global-map (kbd "S") 'evil-substitute)
+  (evil-define-key 'normal 'global-map (kbd "S") 'evil-surround-region)
   )
 
 
