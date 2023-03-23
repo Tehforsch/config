@@ -22,6 +22,13 @@ alias gl="git log"
 alias gdm="git diff ORIG_HEAD MERGE_HEAD"
 alias gri="git rebase -i"
 
+alias glo="forgit::log"
+alias gd="forgit::diff"
+alias ga="forgit::add"
+alias cof="forgit::checkout::file"
+alias cob="forgit::checkout::branch"
+alias grh="forgit::reset::head"
+
 alias im="viewnior"
 alias imt="kitty +kitten icat"
 

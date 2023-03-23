@@ -10,3 +10,5 @@ bindkey '^r' fzf-history-widget
 bindkey '^f' fzf-cd-home-widget
 bindkey '^v' fzf-cd-widget
 bindkey '^T' fzf-file-widget
+
+source $CONFIG/zsh/forgit/forgit.plugin.zsh
