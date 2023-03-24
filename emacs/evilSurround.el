@@ -4,8 +4,8 @@
   evil-surround
   :config
 
-  ; Remap S as an alternative to s
-  (evil-define-key 'normal 'global-map (kbd "S") 'evil-surround-region)
+  (evil-define-key 'normal 'global-map (kbd "s") 'evil-surround-region)
+  (evil-define-key 'normal 'global-map (kbd "S") 'evil-substitute)
   )
 
 
@@ -24,6 +24,19 @@
   (embrace-build-help "generic<" ">"))
 
 
-; I never write html so this is a saner default for me instead of adding tags
-(setq-default evil-surround-pairs-alist
-  (push '(?< . ("<" . ">")) evil-surround-pairs-alist))
+;; ; I never write html so this is a saner default for me instead of adding tags
+;; (setq-default evil-surround-pairs-alist
+;;   (push '(?< . ("<" . ">")) evil-surround-pairs-alist))
+
+(with-eval-after-load 'evil-surround
+      (evil-add-to-alist
+       'evil-surround-pairs-alist
+       ?< '("<" . ">")
+       ?& '("&" . "")
+       ?r '("&" . "")
+       ?* '("*" . "")))
+
+; Embrace should not handle these keys because we want evil surround to do it.
+(push ?& evil-embrace-evil-surround-keys)
+(push ?r evil-embrace-evil-surround-keys)
+(push ?* evil-embrace-evil-surround-keys)
