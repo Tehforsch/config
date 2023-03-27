@@ -93,7 +93,6 @@
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
   "p" 'lsp-rust-find-parent-module
-  "g" 'insert-generic-after-symbol
   )
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
@@ -117,3 +116,12 @@
   (evil-local-set-key 'insert (kbd "<escape>") 'term-kill-subjob))
 
 (add-hook 'term-mode-hook 'add-term-mode-motion-keys)
+
+(general-add-hook 'after-init-hook
+                    (lambda (&rest _)
+                      (when-let ((messages-buffer (get-buffer "*Messages*")))
+                        (with-current-buffer messages-buffer
+                          (evil-normalize-keymaps))))
+                    nil
+                    nil
+                    t)

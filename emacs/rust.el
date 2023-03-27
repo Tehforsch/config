@@ -33,11 +33,3 @@
   (interactive)
   (setq lsp-rust-no-default-features t)
   (lsp-restart-workspace))
-
-(defun insert-generic-after-symbol ()
-  (interactive)
-  (evil-repeat-start)
-  (evil-insert nil nil nil)
-  (append-end-of-symbol "<>")
-  (left-char 1)
-  (evil-repeat-stop))

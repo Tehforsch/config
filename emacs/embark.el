@@ -1,6 +1,3 @@
-(use-package embark)
-
-
 (use-package embark
   :ensure t
 

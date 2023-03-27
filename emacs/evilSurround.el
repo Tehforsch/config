@@ -1,42 +1,67 @@
-(use-package embrace)
-(use-package evil-embrace)
 (use-package
   evil-surround
   :config
 
-  (evil-define-key 'normal 'global-map (kbd "s") 'evil-surround-region)
+  (evil-define-key
+    'normal
+    'global-map
+    (kbd "s")
+    'evil-surround-region)
   (evil-define-key 'normal 'global-map (kbd "S") 'evil-substitute)
-  )
+  (global-evil-surround-mode 1)
+  (add-hook 'evil-surround-mode-hook 'add-rust-surround-pairs)
+  (add-hook 'rustic-mode-hook 'add-rust-surround-pairs))
 
+(defun add-surround-pairs ()
+  (evil-add-to-alist
+    'evil-surround-pairs-alist
+    ?\( '("(" . ")")
+    ?\) '("(" . ")")
+    ?\[ '("[" . "]")
+    ?\] '("[" . "]")
+    ?\{ '("{" . "}")
+    ?\{ '("{" . "}")
+    ))
 
-(global-evil-surround-mode 1)
-(evil-embrace-enable-evil-surround-integration)
+(defun add-rust-surround-pairs ()
+  (evil-add-to-alist
+    'evil-surround-pairs-alist
+    ?& '("&" . "")
+    ?r '("&" . "")
+    ?* '("*" . "")
+    ?g 'evil-surround-read-generic
+    ?G 'evil-surround-read-appended-generic
+    ?t 'evil-surround-read-turbofish))
 
-(defun my-embrace-with-generic ()
-  (let ((fname (read-string "Generic: ")))
-    (cons (format "%s<" (or fname "")) ">")))
+(defun evil-surround-read-generic ()
+  "Read a surrounding generic from the minibuffer"
+  (let*
+    (
+      (input
+        (evil-surround-read-from-minibuffer
+          "generic: "
+          ""
+          evil-surround-read-tag-map)))
+    (cons (format "%s<" (or input "")) ">")))
 
-(embrace-add-pair-regexp
-  ?g
-  "\\(\\w\\|\\s_\\)+?<"
-  ">"
-  'my-embrace-with-generic
-  (embrace-build-help "generic<" ">"))
+(defun evil-surround-read-appended-generic ()
+  "Read an appended generic from the minibuffer"
+  (let*
+    (
+      (input
+        (evil-surround-read-from-minibuffer
+          "generic: "
+          ""
+          evil-surround-read-tag-map)))
+    (cons "" (format "<%s>" (or input "")))))
 
-
-;; ; I never write html so this is a saner default for me instead of adding tags
-;; (setq-default evil-surround-pairs-alist
-;;   (push '(?< . ("<" . ">")) evil-surround-pairs-alist))
-
-(with-eval-after-load 'evil-surround
-      (evil-add-to-alist
-       'evil-surround-pairs-alist
-       ?< '("<" . ">")
-       ?& '("&" . "")
-       ?r '("&" . "")
-       ?* '("*" . "")))
-
-; Embrace should not handle these keys because we want evil surround to do it.
-(push ?& evil-embrace-evil-surround-keys)
-(push ?r evil-embrace-evil-surround-keys)
-(push ?* evil-embrace-evil-surround-keys)
+(defun evil-surround-read-turbofish ()
+  "Read an appended turbofish from the minibuffer"
+  (let*
+    (
+      (input
+        (evil-surround-read-from-minibuffer
+          "turbofish: "
+          ""
+          evil-surround-read-tag-map)))
+    (cons "" (format "::<%s>" (or input "")))))

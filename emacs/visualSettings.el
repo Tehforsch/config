@@ -58,3 +58,7 @@
   (interactive)
   (make-frame)
   (delete-window))
+
+; This allows flycheck error messages to be shown without opening a new frame which is very annoying
+; Hopefully it won't break anything
+(setq max-mini-window-height 1.0)
