@@ -68,6 +68,7 @@
 (load-from-config "formatting.el")
 (load-from-config "modeLine.el")
 (load-from-config "tabbar.el")
+(load-from-config "helpful.el")
 
 (load-from-config "punditSettings.el")
 (load-from-config "rpundit.el")
