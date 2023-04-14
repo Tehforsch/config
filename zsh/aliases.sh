@@ -69,6 +69,8 @@ alias cdo="cargo doc --no-deps --open"
 alias cdoc="cargo doc --no-deps --open -p"
 alias rb="source $scripts/toggleRustBacktrace.sh"
 
+alias flame="$scripts/flamegraphRunningProcess.sh"
+
 alias start="$scripts/startSim.sh"
 alias copy="rsync --archive --stats --progress --human-readable"
 alias kp="$scripts/killProcess.sh"
