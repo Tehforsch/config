@@ -80,7 +80,6 @@
   "e" 'toggle-transient-error
   "s" 'consult-lsp-symbols
   "S" 'consult-lsp-file-symbols
-  "f" 'rustic-format-buffer
   "r" 'lsp-rename
   "x" 'lsp-execute-code-action
   "a" 'consult-line
@@ -93,7 +92,12 @@
 
 (mode-leader-def '(normal visual) 'rustic-mode-map
   "p" 'lsp-rust-find-parent-module
-  )
+  "f" 'rustic-format-buffer)
+
+(mode-leader-def '(normal visual) 'python-mode-map
+  "f" 'python-black-buffer)
+
+
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
 (define-key evil-normal-state-map "gp" 'lsp-goto-implementation)
