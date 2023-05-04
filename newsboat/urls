@@ -20,20 +20,21 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ vid
 https://www.youtube.com/feeds/videos.xml?channel_id=UCMQzIsi7kwz1_xZjqNhz9kw videos !hidden
 # IFSC
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2MGuhIaOP6YLpUx106kTQw videos !hidden
+# Will Bosi
+https://www.youtube.com/feeds/videos.xml?channel_id=UCu0Xag_M94EXfxTM632yGYg videos !hidden
 
 
 
 
-
-https://hnrss.org/newest?points=300 articles !hidden
+https://hnrss.org/newest?points=500 articles !hidden
 https://xkcd.com/rss.xml articles !hidden
 https://this-week-in-rust.org/rss.xml articles !hidden
 https://gamedev.rs/rss.xml articles !hidden
 https://www.to-rss.xyz/wikipedia/current_events/ articles !hidden
 https://blog.rust-lang.org/feed.xml articles !hidden
 https://aella.substack.com/feed articles !hidden
+https://www.lesswrong.com/feed.xml?view=curated-rss articles !hidden
 
 https://lexfridman.com/feed/podcast/ podcasts !hidden
 https://jung-naiv.podigee.io/feed/mp3 podcasts !hidden
-https://feeds.megaphone.fm/ONTSA9438041057 podcasts !hidden
 https://pitchfork.com/rss/reviews/best/albums/
