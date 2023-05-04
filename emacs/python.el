@@ -30,3 +30,8 @@
 (setq-default lsp-pyls-configuration-sources ["pycodestyle"])
 
 (setq lsp-pyls-disable-warning t)
+
+(add-hook 'python-mode-hook
+    (lambda ()
+       (setq indent-tabs-mode nil)
+       (setq tab-width 4)))

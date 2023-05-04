@@ -87,6 +87,7 @@
 (define-key evil-insert-state-map (kbd "C-p") nil)
 
 ; No idea why this was necessary suddenly
+(setq evil-shift-width 4)
 (add-hook 'rustic-mode-hook 
     (lambda () (setq evil-shift-width 4)))
 
