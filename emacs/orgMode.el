@@ -28,3 +28,8 @@
 ; Make org-open-at-point open the link in the same window
 (setq org-link-frame-setup
   (cons (cons 'file 'find-file) org-link-frame-setup))
+
+(defun my--wrap-lines ()
+  (setq truncate-lines nil))
+
+(add-hook 'org-mode-hook 'my--wrap-lines)

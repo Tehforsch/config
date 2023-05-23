@@ -41,6 +41,7 @@
 (load-from-config "magit.el")
 
 ; Specific languages
+(load-from-config "indent.el")
 (load-from-config "elisp-autofmt.el")
 (load-from-config "rust.el")
 (load-from-config "c.el")

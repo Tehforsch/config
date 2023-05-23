@@ -70,6 +70,7 @@
 ; Weird indentation or spaces after the line cause a warning in makefiles
 ; which I can't be bothered to think about right now
 (setq makefile-warn-suspicious-lines nil)
+(defun makefile-warn-suspicious-lines () ())
 
 ; Make evil searches center the screen on the result
 (defadvice evil-search-forward

@@ -2,15 +2,19 @@
   evil-surround
   :config
 
-  (evil-define-key
-    'normal
-    'global-map
-    (kbd "s")
-    'evil-surround-region)
-  (evil-define-key 'normal 'global-map (kbd "S") 'evil-substitute)
   (global-evil-surround-mode 1)
   (add-hook 'evil-surround-mode-hook 'add-rust-surround-pairs)
   (add-hook 'rustic-mode-hook 'add-rust-surround-pairs))
+
+(defun my-swap-surround-and-replace ()
+  (interactive)
+  (if (not (member major-mode evil-collection-mode-list))
+      (progn
+        (evil-local-set-key 'normal (kbd "s") 'evil-surround-region)
+        (evil-local-set-key 'normal (kbd "S") 'evil-substitute))
+    ))
+
+(add-hook 'find-file-hook 'my-swap-surround-and-replace)
 
 (defun add-surround-pairs ()
   (evil-add-to-alist
