@@ -8,6 +8,9 @@
     (package-install (cadr (assq 'org package-archive-contents))))
   :config)
 
+(use-package org-modern)
+(with-eval-after-load 'org (global-org-modern-mode))
+
 (setq org-format-latex-options
   (plist-put org-format-latex-options :scale 1.6))
 (setq org-startup-with-latex-preview t)

@@ -16,6 +16,7 @@
 (setq lsp-enable-symbol-highlighting nil)
 (setq lsp-enable-on-type-formatting nil)
 (setq lsp-modeline-code-actions-enable nil)
+(setq lsp-modeline-diagnostics-enable nil)
 
 ;; (setq lsp-auto-guess-root t) ; This disables the message when opening a new project but I'm not sure its trustworthy?
 
@@ -38,7 +39,7 @@
 (setq lsp-eldoc-enable-hover nil)
 
 
-(setq lsp-ui-sideline-show-diagnostics nil) ; dont show diagnostics messages in sideline
+(setq lsp-ui-sideline-show-diagnostics t)
 (setq lsp-ui-sideline-show-hover nil) ; show hover messages in sideline
 (setq lsp-ui-sideline-show-code-actions nil) ; show code actions in sideline
 (setq lsp-ui-sideline-delay 0)
@@ -53,6 +54,16 @@
     (progn
       (setq lsp-ui-sideline-show-hover t)
       (message "Show hover ON"))))
+
+(defun toggle-lsp-ui-sideline-show-diagnostics ()
+  (interactive)
+  (if lsp-ui-sideline-show-diagnostics
+    (progn
+      (setq lsp-ui-sideline-show-diagnostics nil)
+      (message "Show diagnostics OFF"))
+    (progn
+      (setq lsp-ui-sideline-show-diagnostics t)
+      (message "Show diagnostics ON"))))
 
 (setq lsp-response-timeout 4) ; Longer wait times than 4 seconds usually means it just won't respond anyways and i'd rather not wait for a long time
 

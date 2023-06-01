@@ -52,11 +52,12 @@
   "p" 'previous-error
   "l" 'consult-lsp-diagnostics
   "x" 'lsp-execute-code-action
+  "s" 'toggle-lsp-ui-sideline-show-diagnostics
   )
 
 (hercules-def
  :toggle-funs #'toggle-transient-error
- :hide-funs '(consult-lsp-diagnostics lsp-execute-code-action)
+ :hide-funs '(consult-lsp-diagnostics lsp-execute-code-action toggle-lsp-ui-sideline-show-diagnostics)
  :keymap 'transient-error-map
  :transient t)
 

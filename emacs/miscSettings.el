@@ -86,3 +86,6 @@
   (after evil-search-previous-recenter activate)
   (recenter))
 (ad-activate 'evil-search-previous)
+
+; Maybe this disables the annoying TAGS file shit which sometimes happens during completion
+(setq tags-revert-without-query t)

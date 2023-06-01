@@ -7,6 +7,7 @@
   (corfu-preview-current nil)
   (corfu-popupinfo-delay 0.0)
   (corfu-popupinfo-direction '(left))
+  (corfu-popupinfo-max-height 1000)
   (corfu-echo-documentation nil)
   (corfu-on-exact-match t)
   (corfu-count 20)

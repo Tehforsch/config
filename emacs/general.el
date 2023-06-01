@@ -100,6 +100,7 @@
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
+(define-key evil-normal-state-map "gD" 'xref-find-definitions-other-frame)
 (define-key evil-normal-state-map "gp" 'lsp-goto-implementation)
 (define-key evil-normal-state-map "gt" 'lsp-goto-type-definition)
 (setq xref-prompt-for-identifier nil)
@@ -108,7 +109,7 @@
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
-(define-key global-map (kbd "C-<return>") 'start-terminal-in-pwd)
+(define-key global-map (kbd "C-<return>") 'make-frame)
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()
