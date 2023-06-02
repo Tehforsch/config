@@ -4,6 +4,8 @@ alias dlc="$CONFIG/scripts/copyLastDownload.sh"
 alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
 
 alias g="git"
+alias ga="git add"
+alias gd="git diff"
 alias gc="git commit"
 alias gdn="git diff --color-words --no-ext-diff"
 alias gdc="git diff --staged"
