@@ -1,6 +1,7 @@
 "query:Articles:tags # \"articles\""
 "query:Videos:tags # \"videos\""
 "query:Podcasts:tags # \"podcasts\""
+"query:Music:tags # \"new music\""
 
 # # Adam Ondra
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw videos !hidden
@@ -33,4 +34,6 @@ https://www.lesswrong.com/feed.xml?view=curated-rss articles !hidden
 
 https://lexfridman.com/feed/podcast/ podcasts !hidden
 https://jung-naiv.podigee.io/feed/mp3 podcasts !hidden
-https://pitchfork.com/rss/reviews/best/albums/
+
+https://pitchfork.com/rss/reviews/best/albums/ music !hidden
+https://muspy.com/feed?id=zprzsh9e7e2v5j3ehlzulwaaovqlah music !hidden
