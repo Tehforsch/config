@@ -1,7 +1,7 @@
 "query:Articles:tags # \"articles\""
 "query:Videos:tags # \"videos\""
 "query:Podcasts:tags # \"podcasts\""
-"query:Music:tags # \"new music\""
+"query:Music:tags # \"music\""
 
 # # Adam Ondra
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw videos !hidden
