@@ -10,6 +10,28 @@
 (load-from-config "packageSetup.el")
 ; (package-refresh-contents)
 
+
+
+; So since evil removed the following function, virtually all of my packages broke
+; while I tried to reinstall. I don't understand how emacs package management works,
+; but my best guess is that it just doesn't.
+; This is my best attempt at a fix because I just want to start emacs and have it working
+(defun evil-add-to-alist (list-var key val &rest elements)
+    "Add the assocation of KEY and VAL to the value of LIST-VAR.
+    If the list already contains an entry for KEY, update that entry;
+    otherwise add at the end of the list."
+      (let ((tail (symbol-value list-var)))
+            (while (and tail (not (equal (car-safe (car-safe tail)) key)))
+                         (setq tail (cdr tail)))
+                (if tail
+                          (setcar tail (cons key val))
+                                (set list-var (append (symbol-value list-var)
+                                                                                  (list (cons key val)))))
+                    (if elements
+                              (with-no-warnings
+                                          (apply #'evil-add-to-alist list-var elements))
+                                    (symbol-value list-var))))
+
 (load-from-config "loadGeneral.el")
 
 ; Language support

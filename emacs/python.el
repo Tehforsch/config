@@ -35,3 +35,5 @@
     (lambda ()
        (setq indent-tabs-mode nil)
        (setq tab-width 4)))
+
+(setq flycheck-flake8-maximum-line-length 160)
