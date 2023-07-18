@@ -94,3 +94,5 @@ alias wget="wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""
 
 alias copy="xclip -selection clipboard"
 alias paste="xsel --clipboard"
+
+alias helper="python3 ~/projects/helpers/main.py"
