@@ -1,5 +1,5 @@
 # Set touchpad acceleration
-for id in $(seq 15 20); do
+for id in $(seq 11 20); do
     xinput set-prop $id "libinput Accel Speed" -0.0
 done
 # Disable acceleration for mouse
