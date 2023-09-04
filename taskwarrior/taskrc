@@ -96,3 +96,4 @@ news.version=2.6.0
 nag=
 
 # Do not ask about what to do with the template task when modifying a recurring task
+context=phd
