@@ -12,6 +12,7 @@
 (define-and-bind-text-object "$" "\\$" "\\$" "evil-inner-dollar" "evil-outer-dollar")
 ; between pipe characters:
 (define-and-bind-text-object "|" "|" "|" "evil-inner-pipe" "evil-outer-pipe")
+(define-and-bind-text-object "l" "^" "$" "evil-inner-line" "evil-outer-line")
 
 ; Define a "defun" Emacs Evil text object (https://github.com/emacs-evil/evil/issues/874) and bind it to f
 (evil-define-text-object evil-inner-function (count &optional beg end type)
@@ -27,4 +28,4 @@
 (define-key evil-outer-text-objects-map "s" 'evil-inner-symbol)
 ; Bind the sentence thing to "S" instead, in case I might need it
 (define-key evil-inner-text-objects-map "S" 'evil-inner-sentence)
-(define-key evil-outer-text-objects-map "S" 'evil-inner-sentence)
+   (define-key evil-outer-text-objects-map "S" 'evil-inner-sentence)

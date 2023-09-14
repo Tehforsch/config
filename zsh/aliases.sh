@@ -5,8 +5,9 @@ alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
 
 alias g="git"
 alias ga="git add"
-alias gc="git commit"
 alias gd="git diff"
+alias gc="git commit"
+alias gca="git commit --amend"
 alias gdn="git diff --color-words --no-ext-diff"
 alias gdc="git diff --staged"
 alias gdh="git log --follow -p --"
@@ -67,12 +68,13 @@ alias ci="cargo install --path ."
 alias cc="cargo clippy"
 alias cdo="cargo doc --no-deps --open"
 alias cdoc="cargo doc --no-deps --open -p"
+alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb="source $scripts/toggleRustBacktrace.sh"
 
 alias flame="$scripts/flamegraphRunningProcess.sh"
 
 alias start="$scripts/startSim.sh"
-alias copy="rsync --archive --stats --progress --human-readable"
+alias transfer="rsync --archive --stats --progress --human-readable"
 alias kp="$scripts/killProcess.sh"
 alias cat="bat"
 
@@ -89,3 +91,8 @@ alias mpigdb="~/projects/raxiom/scripts/runGdb.sh"
 alias mb="make build -j 12"
 
 alias wget="wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""
+
+alias copy="xclip -selection clipboard"
+alias paste="xsel --clipboard"
+
+alias helper="python3 ~/projects/helpers/main.py"

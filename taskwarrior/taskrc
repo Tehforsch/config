@@ -31,13 +31,14 @@ context.personal.read=project.not:phd and project.not:raxiom
 context.tng.read=project:phd.tng
 context.paper.read=project:phd.paper
 context.raxiom.read=project:raxiom
+context.next.read=+next
 
 # Urgency settings
-urgency.due.coefficient = 100
+urgency.due.coefficient = 500
 urgency.user.tag.maybe.coefficient = -100.0
 urgency.user.tag.somewhere.coefficient = -50.0
 urgency.user.tag.home.coefficient = 50.0
-urgency.user.tag.spree.coefficient = 8.0
+urgency.user.tag.spree.coefficient = 2.0
 
 urgency.user.project.todo.coefficient = 20.0
 urgency.user.project.routine.coefficient = 5.0
@@ -96,4 +97,4 @@ news.version=2.6.0
 nag=
 
 # Do not ask about what to do with the template task when modifying a recurring task
-recurrence.confirmation=no
+context=next
