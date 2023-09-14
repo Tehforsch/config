@@ -268,8 +268,8 @@ endif
     Plug 'rust-lang/rust.vim'
     " Ag
     Plug 'brookhong/ag.vim'
-    " LSP
     Plug 'morhetz/gruvbox'
+    Plug 'powerman/vim-plugin-AnsiEsc'
 
     call plug#end()
 
