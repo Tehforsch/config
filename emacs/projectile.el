@@ -13,7 +13,7 @@
   (interactive)
   (if (projectile-project-p)
     (projectile-find-file)
-    (find-file ".")))
+    (consult-find)))
 
 ; Make the name of the file in the status bar relative to projectile path
 (defun my-proj-relative-buf-name ()
