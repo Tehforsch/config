@@ -2,13 +2,16 @@ PATH=$PATH:$HOME/.bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/projects/ninja
 PATH=$HOME/projects/cpython:$PATH
+
+SYSTEM_NAME=$(cat $HOME/.config/systemName/name)
+
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/projects/libffi/lib64
 HDF5_VERSION="1.12.2"
 export CONFIG=$HOME/projects/config
 export scripts="$CONFIG/scripts"
 # Load aliases
 source "$CONFIG/zsh/aliases.sh"
-source "$CONFIG/zsh/localConfig/bw.sh"
+source "$CONFIG/zsh/localConfig/${SYSTEM_NAME}.sh"
 # Load nice solarized dircolors
 eval $(dircolors "$CONFIG/bash/dirColors.sh")
 

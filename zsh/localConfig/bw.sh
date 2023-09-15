@@ -30,6 +30,7 @@ unalias pyplot
 alias plot="~/projects/cpython/python ~/projects/pybob/main.py --hide plot ."
 alias refreshplot="$HOME/projects/config/scripts/pybobRequest.sh --hide plot ."
 alias vim="~/projects/vimbuild/bin/vim"
+alias show="~/projects/config/scripts/showJobOutput.sh"
 
 export PATH=$PATH:/gpfs/bwfor/home/hd/hd_hd/hd_hp240/projects/gitAnnex/git-annex.linux
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/hd/hd_hd/hd_hp240/projects/gmp/lib
