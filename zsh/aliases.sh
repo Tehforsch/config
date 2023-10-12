@@ -98,3 +98,5 @@ alias paste="xsel --clipboard"
 alias helper="python3 ~/projects/helpers/main.py"
 
 alias y="yazi"
+
+alias pl="python3 ~/projects/pl/main.py"
