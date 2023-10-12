@@ -27,10 +27,10 @@ report.oldest.filter=status:pending -CHILD
 
 # Context setup
 context.phd.read=project:phd
-context.personal.read=project.not:phd and project.not:raxiom
+context.personal.read=project.not:phd
 context.tng.read=project:phd.tng
 context.paper.read=project:phd.paper
-context.raxiom.read=project:raxiom
+context.rsweep.read=project:phd.rsweep
 context.next.read=+next
 
 # Urgency settings
@@ -39,13 +39,14 @@ urgency.user.tag.maybe.coefficient = -100.0
 urgency.user.tag.somewhere.coefficient = -50.0
 urgency.user.tag.home.coefficient = 50.0
 urgency.user.tag.spree.coefficient = 2.0
+urgency.user.tag.now.coefficient = 1000.0
 
 urgency.user.project.todo.coefficient = 20.0
 urgency.user.project.routine.coefficient = 5.0
 urgency.user.project.phd.orga.coefficient = 2.0
 urgency.user.project.phd.paper.coefficient = 10.0
 urgency.user.tag.next.coefficient = 400.0
-urgency.user.project.raxiom.coefficient = -20.0
+urgency.user.project.phd.rsweep.coefficient = -20.0
 urgency.user.project.read.coefficient = -150.0
 
 urgency.age.coefficient = 10.0
@@ -95,6 +96,3 @@ news.version=2.6.0
 
 # Do not show "there are more urgent tasks" message
 nag=
-
-# Do not ask about what to do with the template task when modifying a recurring task
-context=next
