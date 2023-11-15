@@ -1,6 +1,6 @@
 #!/bin/bash
 # Exactly not how it should be done but my phone cant possibly be part of my workflow
-sleep 0.1
+sleep 0.8
 otp=$(oathtool --totp --base32 $(cat ~/.ssh/bwfor2fa))
 for (( i=0; i<${#otp}; i++ )); do
     xdotool key "${otp:$i:1}"
