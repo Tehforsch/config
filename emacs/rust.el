@@ -21,6 +21,7 @@
 
 ; I had problems when this was set to the default which included --all-features for some reason
 (setq rustic-cargo-check-arguments "")
+(setq rustic-cargo-check-exec-command "build")
 
 (defun set-lsp-rust-feature ()
   (interactive)
