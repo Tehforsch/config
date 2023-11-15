@@ -10,6 +10,13 @@ keycode 53 = x X braceright braceright braceright braceright
 keycode 28 = t T ampersand ampersand ampersand ampersand
 keycode 12 = 3 ampersand ampersand ampersand ampersand ampersand
 
+! remap things i sometimes accidentally press which i never want
+! alt-gr + 1 makes a weird one
+keycode 10 = 1 exclam 1 1 1 1
+keycode 10 = 1 exclam 1 1 1 1
+keycode 42 = g G g g g g
+keycode 43 = h H h h h h
+
 
 clear shift
 clear Mod1
