@@ -1,6 +1,7 @@
 #!/bin/bash
 while true; do
-    soundPlaying=$(pacmd list-sink-inputs | grep -c "RUNNING") 
+    soundPlaying=$(pactl list | grep -c "RUNNING") 
+    echo $soundPlaying
     pacmanRunning=$(pgrep pacman | wc -l) 
     scpRunning=$(pgrep scp | wc -l) 
     if [[ $soundPlaying -ge 1 || "$pacmanRunning" -ge 1 || "$scpRunning" -ge 1 ]]; then
