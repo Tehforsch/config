@@ -61,6 +61,7 @@ make_symlink mimetypes/emacsclient.desktop .local/share/applications/emacsclient
 make_symlink mimetypes/hdfview.desktop .local/share/applications/hdfview.desktop
 make_symlink zsh/openPdf.sh .local/bin/pdf
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
+make_symlink wireplumber/51-alsa-disable.lua .config/wireplumber/main.lua.d/51-alsa-disable.lua
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc
