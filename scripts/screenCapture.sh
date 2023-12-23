@@ -19,7 +19,7 @@ if [[ $# == 0 ]]; then
     mkdir -p $SCREENCAPTURES_DIR
     echo $SCREENCAPTURES_DIR
     outputFile="$SCREENCAPTURES_DIR/$(date +%Y-%m-%d-%H-%M-%S).mp4"
-    ffmpeg -f x11grab -video_size ${xSize}x${ySize} -framerate 30 -i :0.0+${xOff},${yOff} -preset ultrafast -crf 18 -pix_fmt yuv420p $outputFile
+    ffmpeg -f x11grab -video_size ${xSize}x${ySize} -framerate 60 -i :0.0+${xOff},${yOff} -preset ultrafast -crf 18 -pix_fmt yuv420p $outputFile
 else
     killall ffmpeg
 fi
