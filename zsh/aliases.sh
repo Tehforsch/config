@@ -25,6 +25,8 @@ alias gri="git rebase -i"
 alias gsw="git switch"
 alias rs="git restore"
 
+alias agg="rga-fzf"
+
 alias glo="forgit::log"
 alias gdf="forgit::diff"
 alias gaf="forgit::add"
