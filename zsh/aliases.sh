@@ -40,8 +40,7 @@ alias imt="kitty +kitten icat"
 alias ka="killall"
 alias shut="sudo shutdown -h 0"
 
-alias pmb="pamac build --no-confirm"
-alias pms="pamac search -a"
+alias pms="yay -Ss"
 
 alias timer="$CONFIG/scripts/timer/timer.sh"
 alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
