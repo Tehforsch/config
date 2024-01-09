@@ -1,0 +1,25 @@
+Config(
+    keybinds: [
+        Keybind(
+            command: Execute("st -e htop"),
+            modifier: ["Mod4", "Shift"],
+            key: Key("x"),
+        ),
+        Keybind(
+            command: Executes(["st -e htop", "st -e bpytop"]),
+            modifier: ["Mod4", "Shift"],
+            key: Keys(["x", "m"]),
+        ),
+        Keybind(
+            command: Chord([
+                Keybind(
+                    command: Execute("st -e htop"),
+                    modifier: ["Mod4"],
+                    key: Key("c"),
+                ),
+            ]),
+            modifier: ["Mod4"],
+            key: Key("c"),
+        ),
+    ]
+)
