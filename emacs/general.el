@@ -84,7 +84,11 @@
   "x" 'lsp-execute-code-action
   "a" 'consult-line
   "A" 'consult-line-multi
-  "i" 'consult-imenu-multi)
+  "i" 'consult-imenu-multi
+  "f" 'evil-toggle-fold
+  "O" 'evil-open-folds
+  "C" 'evil-open-folds
+  )
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
   "r" 'erefactor-rename-symbol-in-buffer
@@ -110,6 +114,10 @@
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
 (define-key global-map (kbd "C-<return>") 'make-frame)
+
+(define-key evil-normal-state-map ",t" 'evil-toggle-fold)
+(define-key evil-normal-state-map ",O" 'evil-open-folds)
+(define-key evil-normal-state-map ",C" 'evil-close-folds)
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()

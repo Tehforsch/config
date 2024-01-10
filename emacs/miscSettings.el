@@ -66,6 +66,8 @@
 
 ; Do not scroll beyond buffer extents
 (setq scroll-conservatively 101)
+; Keep a few lines in sight
+(setq scroll-margin 10)
 
 ; Weird indentation or spaces after the line cause a warning in makefiles
 ; which I can't be bothered to think about right now
