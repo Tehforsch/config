@@ -25,6 +25,8 @@ alias gri="git rebase -i"
 alias gsw="git switch"
 alias rs="git restore"
 
+alias agg="rga-fzf"
+
 alias glo="forgit::log"
 alias gdf="forgit::diff"
 alias gaf="forgit::add"
@@ -38,8 +40,7 @@ alias imt="kitty +kitten icat"
 alias ka="killall"
 alias shut="sudo shutdown -h 0"
 
-alias pmb="pamac build --no-confirm"
-alias pms="pamac search -a"
+alias pms="yay -Ss"
 
 alias timer="$CONFIG/scripts/timer/timer.sh"
 alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
@@ -98,3 +99,5 @@ alias paste="xsel --clipboard"
 alias helper="python3 ~/projects/helpers/main.py"
 
 alias y="yazi"
+
+alias pl="python3 ~/projects/pl/main.py"

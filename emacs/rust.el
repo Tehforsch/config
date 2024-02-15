@@ -1,6 +1,7 @@
 (use-package rustic)
 (setenv "PATH" (concat (getenv "PATH") ":/home/toni/.cargo/bin"))
 (setq exec-path (append exec-path '("/home/toni/.cargo/bin")))
+(setq exec-path (append exec-path '("/usr/lib/llvm15/bin")))
 (setq rustic-rustfmt-bin "/home/toni/.cargo/bin/rustfmt")
 (setq rustic-format-on-save nil)
 (setq rustic-format-display-method 'ignore) ; Don't show rustfmt buffer
@@ -20,6 +21,7 @@
 
 ; I had problems when this was set to the default which included --all-features for some reason
 (setq rustic-cargo-check-arguments "")
+(setq rustic-cargo-check-exec-command "build")
 
 (defun set-lsp-rust-feature ()
   (interactive)

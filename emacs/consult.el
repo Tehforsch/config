@@ -13,3 +13,12 @@
 ; Make xref show xrefs and xref show definitions use completion-at-point / consult
 (setq xref-show-xrefs-function 'consult-xref)
 (setq xref-show-definitions-function 'consult-xref)
+
+(setq consult-async-min-input 0)
+(setq consult-async-input-debounce 0.01)
+(setq consult-async-input-throttle 0.10)
+
+
+(setq consult-buffer-filter
+  '("\\` "
+    "\\`\\*.*\\*\\'"))

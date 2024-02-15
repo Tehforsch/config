@@ -1,3 +1,4 @@
+mkdir ~/.local/state/zsh
 sudo ln -s $(realpath $CONFIG/zsh/zshenv) /etc/zsh/zshenv
 
 if [[ $SHELL != "/usr/bin/zsh" ]]; then

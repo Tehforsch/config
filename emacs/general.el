@@ -10,12 +10,17 @@
     "K" '((lambda () (interactive) (tabbar-backward-group) (toggle-transient-buffer)) :which-key "Previous tab group")
     "J" '((lambda () (interactive) (tabbar-forward-group) (toggle-transient-buffer)) :which-key "Next tab group")
     "b" 'toggle-transient-buffer
+    "c" '(:which-key "Consult")
+    "cm" 'consult-kmacro
+    "cM" 'consult-global-mark
+    "cp" 'consult-yank-from-kill-ring
     "e" '(:which-key "Emacs")
     "eR" '((lambda () (interactive) (load-file "~/projects/config/emacs/init.el")) :which-key "Reload emacs config")
     "f" '(:which-key "File")
     "fA" '(:which-key "Autosave")
     "fAd" 'ediff-current-file
     "fAr" 'recover-this-file
+    "fb" 'consult-project-buffer
     "fs" 'save-buffer
     "fo" 'projectile-find-other-file
     "ff" 'smart-list-files
@@ -78,13 +83,16 @@
 
 (mode-leader-def '(normal visual) 'global-map
   "e" 'toggle-transient-error
-  "s" 'consult-lsp-symbols
-  "S" 'consult-lsp-file-symbols
+  "s" 'consult-lsp-file-symbols
+  "S" 'consult-lsp-symbols
   "r" 'lsp-rename
   "x" 'lsp-execute-code-action
   "a" 'consult-line
   "A" 'consult-line-multi
-  "i" 'consult-imenu-multi)
+  "f" 'evil-toggle-fold
+  "O" 'evil-open-folds
+  "C" 'evil-open-folds
+  )
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
   "r" 'erefactor-rename-symbol-in-buffer
@@ -110,6 +118,10 @@
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
 (define-key global-map (kbd "C-<return>") 'make-frame)
+
+(define-key evil-normal-state-map ",t" 'evil-toggle-fold)
+(define-key evil-normal-state-map ",O" 'evil-open-folds)
+(define-key evil-normal-state-map ",C" 'evil-close-folds)
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()

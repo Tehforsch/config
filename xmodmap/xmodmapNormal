@@ -8,7 +8,14 @@ keycode 46 = l L percent percent percent percent
 keycode 52 = y Y braceleft braceleft braceleft braceleft
 keycode 53 = x X braceright braceright braceright braceright
 keycode 28 = t T ampersand ampersand ampersand ampersand
+keycode 10 = 1 exclam less less less less
+keycode 11 = 2 quotedbl greater greater greater greater
 keycode 12 = 3 ampersand ampersand ampersand ampersand ampersand
+keycode 13 = 4 dollar apostrophe apostrophe apostrophe apostrophe
+
+! remap things i sometimes accidentally press which i never want
+keycode 42 = g G g g g g
+keycode 43 = h H h h h h
 
 
 clear shift

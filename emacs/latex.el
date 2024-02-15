@@ -1,9 +1,8 @@
 (use-package evil-tex)
-(defun my-reset-paragraph-variables ()
-  (interactive)
-  (kill-local-variable 'paragraph-start)
-  (kill-local-variable 'paragraph-separate))
 
+; God i hate this shit
+(advice-add 'LaTeX-set-paragraph-start :override
+            (lambda () ()))
 
 (defun set-display-line-numbers ()
   (interactive)

@@ -1,5 +1,1 @@
-community/extra:
-firefox thunderbird telegram-desktop mpd mpc pavucontrol blueman pulseaudio-bluetooth xfce4-power-manager vlc bat exa kitty openssh clang lld ttf-inconsolata emacs-nativecomp git-delta python-lsp-server mypy python-black python-pyflakes python-pandas ttf-sourcecodepro-nerd syncthing task rofi inkscape avidemux-qt
-
-AUR:
-zoom texlive-full spotify i3wsr
+firefox thunderbird telegram-desktop mpd mpc pavucontrol blueman xfce4-power-manager vlc bat exa kitty openssh clang lld ttf-inconsolata emacs-nativecomp git-delta python-lsp-server mypy python-black python-pyflakes python-pandas ttf-sourcecodepro-nerd syncthing task rofi inkscape avidemux-qt zsh vim fd strace ripgrep reaper the_silver_searcher mold newsboat

@@ -101,3 +101,18 @@
 (load-from-config "temp.el")
 
 (load-from-config "general.el")
+
+
+(use-package quelpa
+  :ensure)
+
+(use-package quelpa-use-package
+  :demand
+  :config
+  (quelpa-use-package-activate-advice))
+
+
+(use-package typst-ts-mode
+  :quelpa (typst-ts-mode :fetcher git :url "https://git.sr.ht/~meow_king/typst-ts-mode" :branch "main")
+  :custom
+  (typst-ts-mode-watch-options "--open"))

@@ -1,9 +1,11 @@
 #!/bin/bash
 while true; do
-    soundPlaying=$(pacmd list-sink-inputs | grep -c "RUNNING") 
+    soundPlaying=$(pactl list | grep -c "RUNNING") 
     pacmanRunning=$(pgrep pacman | wc -l) 
     scpRunning=$(pgrep scp | wc -l) 
-    if [[ $soundPlaying -ge 1 || "$pacmanRunning" -ge 1 || "$scpRunning" -ge 1 ]]; then
+    reaperRunning=$(pgrep -x reaper | wc -l)
+    echo $soundPlaying $pacmanRunning $scpRunning $reaperRunning
+    if [[ $soundPlaying -ge 1 || "$pacmanRunning" -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 ]]; then
         echo disabled
         xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s true
     else

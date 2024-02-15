@@ -31,6 +31,8 @@ bind-key d delete-article
 
 bind-key ESC quit
 
+macro d delete-article; delete-article; delete-article; delete-article; delete-article;delete-article; delete-article; delete-article; delete-article; delete-article;delete-article; delete-article; delete-article; delete-article; delete-article
+
 unbind-key mark-feed-read
 
 browser "~/projects/config/newsboat/browser.sh"

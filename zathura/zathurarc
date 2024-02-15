@@ -1,4 +1,4 @@
-set default-bg "#1d2021"
+set default-bg "#4d4041"
 set statusbar-bg "#1d2021"
 set statusbar-fg "#ebdbb2"
 
@@ -9,9 +9,8 @@ set notification-warning-fg     "#ebdbb2"
 set notification-bg             "#1d2021"
 set notification-fg             "#ebdbb2"
 
-set recolor false
-set recolor-darkcolor "#ebdbb2"
-set recolor-lightcolor "#1d2021"
+set recolor-darkcolor "#0b0b02"
+set recolor-lightcolor "#9d9091"
 map j scroll half-down
 map k scroll half-up
 map J scroll full-down
