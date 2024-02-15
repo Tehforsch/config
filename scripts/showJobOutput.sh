@@ -1,2 +1,2 @@
 id=$1
-tail -f $(scontrol show job $id | grep StdOut | sed s/"   StdOut="/""/)
+tail -n 100 -f $(scontrol show job $id | grep StdOut | sed s/"   StdOut="/""/)
