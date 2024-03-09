@@ -33,6 +33,9 @@ let keyboardLayout = pkgs.writeText "xkb-layout" ''
     keycode 62 = F9
     keycode 64 = F9
 
+    remove lock = Caps_Lock
+    keycode 66 = Escape NoSymbol Escape
+
     ! Disable middle mouse button paste 
     pointer = 1 2 3 4 5 6 7 8 9
 '';
@@ -56,6 +59,15 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    dejavu_fonts
+    noto-fonts
+    hack-font
+    inconsolata
+  ];
+
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -96,6 +108,11 @@ in
         i3lock
       ];
     };
+  };
+
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
   };
 
   # Configure console keymap
