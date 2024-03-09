@@ -4,6 +4,39 @@
 
 { config, pkgs, ... }:
 
+let keyboardLayout = pkgs.writeText "xkb-layout" ''
+    keycode 38 = a A bracketleft bracketleft bracketleft braceleft 
+    keycode 39 = s S parenleft parenleft parenleft parenleft 
+    keycode 40 = d D parenright parenright parenright parenright 
+    keycode 41 = f F bracketright bracketright bracketright braceright 
+    keycode 25 = w W slash slash slash slash
+    keycode 27 = r R backslash backslash backslash backslash
+    keycode 46 = l L percent percent percent percent
+    keycode 52 = y Y braceleft braceleft braceleft braceleft
+    keycode 53 = x X braceright braceright braceright braceright
+    keycode 28 = t T ampersand ampersand ampersand ampersand
+    keycode 10 = 1 exclam less less less less
+    keycode 11 = 2 quotedbl greater greater greater greater
+    keycode 12 = 3 ampersand ampersand ampersand ampersand ampersand
+    keycode 13 = 4 dollar apostrophe apostrophe apostrophe apostrophe
+
+    ! remap things i sometimes accidentally press which i never want
+    keycode 42 = g G g g g g
+    keycode 43 = h H h h h h
+
+
+    clear shift
+    clear Mod1
+    ! keycode 62 = Super_L
+    clear control
+    add control = Control_L
+    keycode 62 = F9
+    keycode 64 = F9
+
+    ! Disable middle mouse button paste 
+    pointer = 1 2 3 4 5 6 7 8 9
+'';
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -42,11 +75,17 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+
   # Configure keymap in X11
   services.xserver = {
     enable = true;
     desktopManager = { xterm.enable = false; };
-    displayManager = { defaultSession = "none+i3"; };
+    displayManager = { 
+      defaultSession = "none+i3"; 
+      sessionCommands = ''
+        ${pkgs.xorg.xmodmap}/bin/xmodmap ${keyboardLayout}
+      '';
+    };
     layout = "de";
     xkbVariant = "nodeadkeys";
     windowManager.i3 = {
@@ -90,11 +129,15 @@
     isNormalUser = true;
     description = "toni";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       kitty
       firefox
       git
-    #  thunderbird
+      thunderbird
+      emacs
+      fd
+      zsh
     ];
   };
 
@@ -115,6 +158,8 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
+
+  programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
