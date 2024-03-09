@@ -155,8 +155,11 @@ in
       emacs
       fd
       zsh
+      openssh
     ];
   };
+
+  # services.openssh = { enable = true; };
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
