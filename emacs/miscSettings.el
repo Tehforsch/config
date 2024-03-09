@@ -91,3 +91,9 @@
 
 ; Maybe this disables the annoying TAGS file shit which sometimes happens during completion
 (setq tags-revert-without-query t)
+
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+                           '((vertical-scroll-bars . nil)
+                             (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
