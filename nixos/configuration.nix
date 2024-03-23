@@ -100,6 +100,7 @@
       gcc
       light
       oath-toolkit
+      ag
     ];
   };
 
