@@ -97,3 +97,5 @@
                            '((vertical-scroll-bars . nil)
                              (horizontal-scroll-bars . nil))))
 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
+; What the fuck is this^
+(setq ring-bell-function 'ignore)
