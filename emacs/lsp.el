@@ -90,3 +90,5 @@
     completion-at-point-functions '(lsp-completion-at-point corfu-dabbrev)))
 
 (add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)
+
+(setq lsp-enable-snippet nil)
