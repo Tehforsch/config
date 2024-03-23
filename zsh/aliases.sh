@@ -101,3 +101,6 @@ alias helper="python3 ~/projects/helpers/main.py"
 alias y="yazi"
 
 alias pl="python3 ~/projects/pl/main.py"
+
+alias nixsw="sudo nixos-rebuild switch --flake ~/projects/config/nixos"
+alias nixb="sudo nixos-rebuild build --flake ~/projects/config/nixos"
