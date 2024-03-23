@@ -114,3 +114,6 @@ alias pbron="pybob replot . --only-new"
 
 alias journ="$CONFIG/scripts/journal_entry.sh"
 alias journy="$CONFIG/scripts/journal_entry.sh yesterday"
+
+alias nixsw="sudo nixos-rebuild switch --flake ~/projects/config/nixos"
+alias nixb="sudo nixos-rebuild build --flake ~/projects/config/nixos"
