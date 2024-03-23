@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  nix.nixPath = ["/home/toni/projects/config/nixos/"];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -100,7 +101,8 @@
       gcc
       light
       oath-toolkit
-      ag
+      silver-searcher
+      ripgrep
     ];
   };
 
