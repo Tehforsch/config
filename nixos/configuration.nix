@@ -58,6 +58,15 @@
     defaultEditor = true;
   };
 
+  services.actkbd = {
+    enable = true;
+      bindings = [
+        { keys = [ 232 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
+        { keys = [ 233 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
+      ];
+  };
+
+
   # Configure console keymap
   console.keyMap = "de-latin1-nodeadkeys";
 
@@ -77,7 +86,7 @@
   users.users.toni = {
     isNormalUser = true;
     description = "toni";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       kitty
@@ -85,12 +94,18 @@
       git
       thunderbird
       emacs
-      fd
-      zsh
       openssh
       rustup
+      fd
+      zsh
       eza
       fzf
+      bat
+      telegram-desktop
+      rofi
+      gcc
+      light
+      oath-toolkit
     ];
   };
 
@@ -128,5 +143,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11";
-
 }
