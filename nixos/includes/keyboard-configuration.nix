@@ -1,44 +1,8 @@
 { config, pkgs, ... }:
 
-let keyboardLayout = pkgs.writeText "xkb-layout" ''
-    keycode 38 = a A bracketleft bracketleft bracketleft braceleft 
-    keycode 39 = s S parenleft parenleft parenleft parenleft 
-    keycode 40 = d D parenright parenright parenright parenright 
-    keycode 41 = f F bracketright bracketright bracketright braceright 
-    keycode 25 = w W slash slash slash slash
-    keycode 27 = r R backslash backslash backslash backslash
-    keycode 46 = l L percent percent percent percent
-    keycode 52 = y Y braceleft braceleft braceleft braceleft
-    keycode 53 = x X braceright braceright braceright braceright
-    keycode 28 = t T ampersand ampersand ampersand ampersand
-    keycode 10 = 1 exclam less less less less
-    keycode 11 = 2 quotedbl greater greater greater greater
-    keycode 12 = 3 ampersand ampersand ampersand ampersand ampersand
-    keycode 13 = 4 dollar apostrophe apostrophe apostrophe apostrophe
-
-    ! remap things i sometimes accidentally press which i never want
-    keycode 42 = g G g g g g
-    keycode 43 = h H h h h h
-
-
-    clear shift
-    clear Mod1
-    ! keycode 62 = Super_L
-    clear control
-    add control = Control_L
-    keycode 62 = F9
-    keycode 64 = F9
-
-    remove lock = Caps_Lock
-    keycode 66 = Escape NoSymbol Escape
-
-    ! Disable middle mouse button paste 
-    pointer = 1 2 3 4 5 6 7 8 9
-'';
-in
 {
   services.xserver.displayManager.sessionCommands =
     ''
-    ${pkgs.xorg.xmodmap}/bin/xmodmap ${keyboardLayout}
+    ${pkgs.xorg.xmodmap}/bin/xmodmap /home/toni/projects/config/xmodmap/xmodmapNormal
     '';
 }
