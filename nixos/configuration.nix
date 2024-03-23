@@ -42,7 +42,7 @@
       defaultSession = "none+i3"; 
     };
     layout = "de";
-    xkbVariant = "nodeadkeys";
+    xkb.variant = "nodeadkeys";
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
