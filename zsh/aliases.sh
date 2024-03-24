@@ -72,6 +72,14 @@ alias cdoc="cargo doc --no-deps --open -p"
 alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb="source $scripts/toggleRustBacktrace.sh"
 
+alias bb="cargo build --features bevy/dynamic_linking"
+alias br="cargo run --features bevy/dynamic_linking"
+alias bt="cargo test --features bevy/dynamic_linking"
+
+alias bbr="cargo build --release --features bevy/dynamic_linking"
+alias brr="cargo run --release --features bevy/dynamic_linking"
+alias btr="cargo test --release --features bevy/dynamic_linking"
+
 alias flame="$scripts/flamegraphRunningProcess.sh"
 
 alias start="$scripts/startSim.sh"
@@ -101,3 +109,5 @@ alias helper="python3 ~/projects/helpers/main.py"
 alias y="yazi"
 
 alias pl="python3 ~/projects/pl/main.py"
+
+alias pbron="pybob replot . --only-new"
