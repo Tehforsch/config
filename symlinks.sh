@@ -57,7 +57,8 @@ make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 make_symlink leftwm/config.ron .config/leftwm/config.ron
 make_symlink leftwm/lefthk.ron .config/lefthk/config.ron
 # make_symlink leftwm/startup_script.desktop .config/autostart/startup_script.desktop
-make_symlink sxhkd/sxhkdrc .config/sxhkd/sxhkdrc
+# make_symlink sxhkd/sxhkdrc .config/sxhkd/sxhkdrc
+make_symlink audio/jack-reaper.conf .config/pipewire/jack.conf.d/10-reaper.conf
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
@@ -65,7 +66,6 @@ make_symlink mimetypes/emacsclient.desktop .local/share/applications/emacsclient
 make_symlink mimetypes/hdfview.desktop .local/share/applications/hdfview.desktop
 make_symlink zsh/openPdf.sh .local/bin/pdf
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
-make_symlink wireplumber/51-alsa-disable-music-mode.lua .config/wireplumber/main.lua.d/51-alsa-disable.lua
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc
