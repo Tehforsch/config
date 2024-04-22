@@ -16,6 +16,7 @@ keycode 28 = t T dollar dollar dollar dollar
 keycode 60 = period colon period period period period
 keycode 12 = 3 underscore underscore underscore underscore underscore
 keycode 133 = l l l l
+keycode 94 = 9 9 9 9
 
 
 clear shift
