@@ -1,0 +1,10 @@
+[Unit]
+Description=Personal journal
+
+[Service]
+Type=simple
+ExecStart=/home/toni/.cargo/bin/journal
+WorkingDirectory=/home/toni/
+
+[Install]
+WantedBy=default.target

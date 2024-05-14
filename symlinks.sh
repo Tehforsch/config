@@ -59,6 +59,8 @@ make_symlink leftwm/lefthk.ron .config/lefthk/config.ron
 # make_symlink leftwm/startup_script.desktop .config/autostart/startup_script.desktop
 # make_symlink sxhkd/sxhkdrc .config/sxhkd/sxhkdrc
 make_symlink audio/jack-reaper.conf .config/pipewire/jack.conf.d/10-reaper.conf
+make_symlink journal/journal.service .config/systemd/user/default.target.wants/journal.service
+make_symlink journal/journal.service .config/systemd/user/journal.service
 
 # The weird
 make_symlink mimetypes/zathura.desktop .local/share/applications/zathura.desktop
