@@ -122,6 +122,7 @@
 (define-key evil-normal-state-map ",t" 'evil-toggle-fold)
 (define-key evil-normal-state-map ",O" 'evil-open-folds)
 (define-key evil-normal-state-map ",C" 'evil-close-folds)
+(define-key evil-normal-state-map ",d" 'lsp-rust-analyzer-open-external-docs)
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()

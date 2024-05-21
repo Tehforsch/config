@@ -1,0 +1,54 @@
+<!DOCTYPE patchbay>
+<patchbay name="amp_mode" version="0.6.3">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX7"/>
+   <input node="REAPER" port="REAPER:in8"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PCM2902 Audio Codec Analog Stereo" port="USB Audio CODEC:capture_FL"/>
+   <input node="REAPER" port="REAPER:in11"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX4"/>
+   <input node="REAPER" port="REAPER:in5"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX8"/>
+   <input node="REAPER" port="REAPER:in9"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX0"/>
+   <input node="REAPER" port="REAPER:in1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX9"/>
+   <input node="REAPER" port="REAPER:in10"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX2"/>
+   <input node="REAPER" port="REAPER:in3"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX6"/>
+   <input node="REAPER" port="REAPER:in7"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PCM2902 Audio Codec Analog Stereo" port="USB Audio CODEC:capture_FR"/>
+   <input node="REAPER" port="REAPER:in13"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX5"/>
+   <input node="REAPER" port="REAPER:in6"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX3"/>
+   <input node="REAPER" port="REAPER:in4"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Pro" port="UMC1820:capture_AUX1"/>
+   <input node="REAPER" port="REAPER:in2"/>
+  </item>
+ </items>
+</patchbay>
+

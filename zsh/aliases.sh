@@ -111,3 +111,6 @@ alias y="yazi"
 alias pl="python3 ~/projects/pl/main.py"
 
 alias pbron="pybob replot . --only-new"
+
+alias journ="$CONFIG/scripts/journal_entry.sh"
+alias journy="$CONFIG/scripts/journal_entry.sh yesterday"
