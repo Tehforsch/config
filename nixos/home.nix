@@ -35,6 +35,8 @@
       unp
       steam
       redshift
+      pavucontrol
+      pulseaudio # for pactl etc? even though i have pipewire
   ];
 
   home.file = {
