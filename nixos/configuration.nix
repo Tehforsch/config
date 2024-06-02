@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  nix.nixPath = ["/home/toni/projects/config/nixos/"];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -28,15 +27,16 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-
   # Configure keymap in X11
+  services.displayManager.defaultSession = "none+i3"; 
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "toni";
+
   services.xserver = {
+    desktopManager.xterm.enable = false;
     enable = true;
-    desktopManager = { xterm.enable = false; };
-    displayManager = { 
-      defaultSession = "none+i3"; 
-    };
-    layout = "de";
+    xkb.layout = "de";
     xkb.variant = "nodeadkeys";
     windowManager.i3 = {
       enable = true;
@@ -83,27 +83,12 @@
     description = "toni";
     extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      kitty
-      firefox
-      git
-      thunderbird
-      emacs
-      openssh
-      rustup
-      fd
-      zsh
-      eza
-      fzf
-      bat
-      telegram-desktop
-      rofi
-      gcc
-      light
-      oath-toolkit
-      silver-searcher
-      ripgrep
-    ];
+  };
+  services.syncthing = {
+    enable = true;
+    user = "toni";
+    dataDir = "/home/toni/Syncthing";
+    configDir = "/home/toni/.config/syncthing";   # Folder for Syncthing's settings and keys
   };
 
   fonts.packages = with pkgs; [
@@ -114,16 +99,14 @@
     inconsolata
   ];
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "toni";
-
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.pulseaudio = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -133,6 +116,8 @@
   ];
 
   programs.zsh.enable = true;
+  programs.nm-applet.enable = true;
+  programs.openvpn3.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
