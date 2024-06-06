@@ -15,7 +15,6 @@
           { networking.hostName = "framework"; }
           ./configuration.nix
           ./hardware-framework.nix
-          ./keyboard-configuration.nix
         ];
       };
       pc = nixpkgs.lib.nixosSystem {
@@ -24,7 +23,7 @@
           { networking.hostName = "pc"; }
           ./configuration.nix
           ./hardware-pc.nix
-          ./keyboard-configuration.nix
+          ./custom-pc.nix
         ];
       };
     };
