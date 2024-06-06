@@ -6,7 +6,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "toniframework"; # Define your hostname.
+  networking.hostName = "framework"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
