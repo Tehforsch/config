@@ -141,6 +141,17 @@
   ];
   users.groups.keyd = {};
 
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "Hyprland";
+        user = "toni";
+      };
+      default_session = initial_session;
+    };
+  };
+
   programs.zsh.enable = true;
   programs.nm-applet.enable = true;
   programs.openvpn3.enable = true;
