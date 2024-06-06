@@ -13,6 +13,3 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 
 # Disables creation of the worlds most annoying directory: __pycache__
 export PYTHONDONTWRITEBYTECODE="1"
-
-source ~/projects/config/taskwarrior/aliases
-source ~/projects/config/hledger/config.zsh
