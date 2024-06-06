@@ -1,9 +1,0 @@
-Like a caveman, I used
-xfce4-power-manager
-to set suspend/display off timer
-
-and
-
-exec_always --no-startup-id sleep 5 && $scripts/disablePowerSavingWhenSoundIsPlaying.sh
-
-in i3.conf
