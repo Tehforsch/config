@@ -9,7 +9,7 @@
 
   outputs = inputs@{ self, nixpkgs, ... }: {
     nixosConfigurations = {
-      toniframework = nixpkgs.lib.nixosSystem {
+      framework = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
