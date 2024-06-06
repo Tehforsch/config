@@ -23,6 +23,7 @@ make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
 make_symlink i3/i3status.conf .config/i3status/config
+make_symlink hyprland/hyprland.conf .config/hypr/hyprland.conf
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi
@@ -32,6 +33,7 @@ make_symlink emacs/emacs.service .config/systemd/user/default.target.wants/emacs
 make_symlink taskwarrior/taskrc .config/task/taskrc
 make_symlink taskwarrior/hooks .local/share/task/hooks
 make_symlink zsh/zshrc.sh .config/zsh/.zshrc # ZDOTDIR
+make_symlink zsh/zshenv .zshenv
 make_symlink bash/inputrc.sh .config/readline/inputrc # INPUTRC
 make_symlink newsboat/config .config/newsboat/config
 make_symlink newsboat/urls .config/newsboat/urls
@@ -40,6 +42,7 @@ make_symlink vim/init.vim .config/vim/vimrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 make_symlink audio/jack-reaper.conf .config/pipewire/jack.conf.d/10-reaper.conf
 make_symlink wireplumber/51-alsa-disable-music-mode.lua .config/wireplumber/main.lua.d/51-alsa-disable.lua
+make_symlink keyd/app.conf .config/keyd/app.conf
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf

@@ -27,26 +27,11 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.displayManager.defaultSession = "none+i3"; 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "toni";
 
-  services.xserver = {
-    desktopManager.xterm.enable = false;
-    enable = true;
-    xkb.layout = "de";
-    xkb.variant = "nodeadkeys";
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-      ];
-    };
-  };
+  programs.hyprland.enable = true;
 
   services.emacs = {
     enable = true;
@@ -81,7 +66,7 @@
   users.users.toni = {
     isNormalUser = true;
     description = "toni";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "keyd" ];
     shell = pkgs.zsh;
   };
   services.syncthing = {
@@ -99,17 +84,11 @@
     inconsolata
   ];
 
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.pulseaudio = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -141,7 +120,14 @@
     pavucontrol
     pulseaudio # for pactl etc? even though i have pipewire
     killall
+    keyd
   ];
+  
+  services.keyd.enable = true;
+  systemd.services.keyd.serviceConfig.CapabilityBoundingSet = [
+    "CAP_SETGID"
+  ];
+  users.groups.keyd = {};
 
   programs.zsh.enable = true;
   programs.nm-applet.enable = true;
