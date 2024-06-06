@@ -70,7 +70,7 @@ alias cc="cargo clippy"
 alias cdo="cargo doc --no-deps --open"
 alias cdoc="cargo doc --no-deps --open -p"
 alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
-alias rb="source $scripts/toggleRustBacktrace.sh"
+alias rb="if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi"
 
 alias flame="$scripts/flamegraphRunningProcess.sh"
 
