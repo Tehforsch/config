@@ -37,6 +37,7 @@
       redshift
       pavucontrol
       pulseaudio # for pactl etc? even though i have pipewire
+      killall
   ];
 
   home.file = {
