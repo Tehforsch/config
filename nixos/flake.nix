@@ -13,11 +13,11 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      toniframework = nixpkgs.lib.nixosSystem {
+      toni = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./hardware-configuration.nix
+          ./hardware-framework.nix
           ./keyboard-configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
