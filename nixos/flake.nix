@@ -17,6 +17,14 @@
           ./keyboard-configuration.nix
         ];
       };
+      pc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./hardware-pc.nix
+          ./keyboard-configuration.nix
+        ];
+      };
     };
   };
 }
