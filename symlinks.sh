@@ -1,16 +1,10 @@
 #!/bin/zsh
-if [[ -z $SYSTEM_NAME ]]; then
-    echo "Environment variable SYSTEM_NAME not set (this should be done by bootstrap or setSystemName.sh)"
-    exit 1
-fi
 if [[ -z $HOME ]]; then
     echo "Environment variable HOME not set."
     exit 2
 fi
-if [[ -z $CONFIG ]]; then
-    echo "Environment variable CONFIG not set."
-    exit 3
-fi
+SYSTEM_NAME=$(hostname)
+CONFIG=$HOME/projects/config
 
 function make_symlink {
     target="$CONFIG/$1"
