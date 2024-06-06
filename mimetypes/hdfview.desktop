@@ -1,9 +1,0 @@
-[Desktop Entry]
-Terminal=false
-Icon=libreoffice-math
-Type=Application
-Categories=Application;Utility;
-Exec=hdfview %f
-MimeType=application/hdf
-Name=hdfview
-Comment=hdfview

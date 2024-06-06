@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Startup
-GenericName=Startup
-Exec=/home/toni/projects/config/leftwm/startup.sh
-Terminal=false
-Type=Applcation
-StartupNotify=false
-X-GNOME-Autostart-enabled=true

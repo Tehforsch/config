@@ -1,9 +1,0 @@
-[Desktop Entry]
-Terminal=false
-Icon=libreoffice-math
-Type=Application
-Categories=Application;Utility;
-Exec=emacsclient -c -n %f
-MimeType=application/toml;application/x-desktop;application/xml;application/x-shellscript;application/x-theme;application/x-yaml;audio/x-wav;image/png;text/plain;text/x-emacs-lisp;text/x-lua;text/x-matlab;text/x-python
-Name=emacsclient
-Comment=emacsclient
