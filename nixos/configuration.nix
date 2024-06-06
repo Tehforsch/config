@@ -113,6 +113,34 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    kitty
+    firefox
+    git
+    thunderbird
+    emacs
+    openssh
+    rustup
+    fd
+    zsh
+    eza
+    fzf
+    bat
+    telegram-desktop
+    rofi
+    gcc
+    light
+    oath-toolkit
+    silver-searcher
+    qbittorrent
+    ripgrep
+    openvpn
+    syncthing
+    unp
+    steam
+    redshift
+    pavucontrol
+    pulseaudio # for pactl etc? even though i have pipewire
+    killall
   ];
 
   programs.zsh.enable = true;
