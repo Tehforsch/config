@@ -121,6 +121,7 @@
     pulseaudio # for pactl etc? even though i have pipewire
     killall
     keyd
+    waybar
   ];
   
   services.keyd.enable = true;

@@ -24,6 +24,7 @@ make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
 make_symlink i3/i3status.conf .config/i3status/config
 make_symlink hyprland/hyprland.conf .config/hypr/hyprland.conf
+make_symlink hyprland/waybar.jsonc .config/waybar/config.jsonc
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi
@@ -42,7 +43,6 @@ make_symlink vim/init.vim .config/vim/vimrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 make_symlink audio/jack-reaper.conf .config/pipewire/jack.conf.d/10-reaper.conf
 make_symlink wireplumber/51-alsa-disable-music-mode.lua .config/wireplumber/main.lua.d/51-alsa-disable.lua
-make_symlink keyd/app.conf .config/keyd/app.conf
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
