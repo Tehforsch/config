@@ -124,6 +124,14 @@
   ];
   
   services.keyd.enable = true;
+  environment.etc."keyd/default.conf".source = ../keyd/default.conf;
+  # https://github.com/rvaiya/keyd/issues/723
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
+  '';
   systemd.services.keyd.serviceConfig.CapabilityBoundingSet = [
     "CAP_SETGID"
   ];
