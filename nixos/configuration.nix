@@ -121,8 +121,9 @@
     pulseaudio # for pactl etc? even though i have pipewire
     killall
     keyd
-    waybar
   ];
+  
+  programs.waybar.enable = true;
   
   services.keyd.enable = true;
   environment.etc."keyd/default.conf".source = ../keyd/default.conf;
