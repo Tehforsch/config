@@ -25,6 +25,7 @@ make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
 make_symlink i3/i3status.conf .config/i3status/config
 make_symlink hyprland/hyprland.conf .config/hypr/hyprland.conf
 make_symlink hyprland/waybar.jsonc .config/waybar/config.jsonc
+make_symlink hyprland/hyprland-autoname-workspaces-config.toml .config/hyprland-autoname-workspaces/config.toml
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi

@@ -82,6 +82,7 @@
     noto-fonts
     hack-font
     inconsolata
+    font-awesome
   ];
 
   # Allow unfree packages
@@ -121,6 +122,7 @@
     pulseaudio # for pactl etc? even though i have pipewire
     killall
     keyd
+    hyprland-autoname-workspaces
   ];
   
   programs.waybar.enable = true;
