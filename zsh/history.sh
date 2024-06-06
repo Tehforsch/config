@@ -1,5 +1,6 @@
-mkdir -p $(dirname "$HISTFILE")
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
+
+mkdir -p $(dirname "$HISTFILE")
 
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
