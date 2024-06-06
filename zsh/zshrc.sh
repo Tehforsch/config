@@ -1,7 +1,6 @@
 source "$HOME/projects/config/zsh/zshenv"
 source "$HOME/projects/config/zsh/paths.sh"
 export fpath=($CONFIG/zsh/completions/ $fpath)
-source "$CONFIG/zsh/setSystemName.sh"
 source "$CONFIG/zsh/completionSettings.sh"
 source "$CONFIG/zsh/readline.sh"
 source "$CONFIG/zsh/history.sh"
@@ -12,7 +11,7 @@ source "$CONFIG/zsh/launchWidget.sh"
 source "$CONFIG/zsh/aliases.sh"
 source "$CONFIG/zsh/dirStack.sh"
 
-localConfig="$CONFIG/zsh/localConfig/${SYSTEM_NAME}.sh"
+localConfig="$CONFIG/zsh/localConfig/$(hostname).sh"
 if [[ ! -a "$localConfig" ]]; then
     localConfig="$CONFIG/zsh/localConfig/default.sh"
 fi

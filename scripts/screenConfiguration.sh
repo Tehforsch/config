@@ -2,7 +2,7 @@
 xset -dpms
 xset s off
 
-SYSTEM_NAME=$(cat ~/.config/systemName/name)
+SYSTEM_NAME=$(hostname)
 echo $SYSTEM_NAME
 if [[ $SYSTEM_NAME == "manjaro" ]]; then
     echo "a"
