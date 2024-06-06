@@ -96,6 +96,7 @@
     firefox
     git
     thunderbird
+    vlc
     emacs
     openssh
     rustup
