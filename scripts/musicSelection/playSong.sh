@@ -1,4 +1,3 @@
-#!/bin/bash
 if [ "$1" == "--queue" ]; then
     queue=1
     shift

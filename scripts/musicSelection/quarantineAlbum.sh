@@ -1,5 +1,3 @@
-#!/bin/bash
-
 quarantinedAlbums=$(cat ~/music/quarantine)
 outputSeparator="\t"
 if [[ $# == 1 ]]; then
