@@ -106,7 +106,8 @@
     fzf
     bat
     telegram-desktop
-    rofi
+    signal-desktop
+    rofi-wayland
     gcc
     light
     oath-toolkit
@@ -123,6 +124,10 @@
     killall
     keyd
     hyprland-autoname-workspaces
+    mpd
+    mpc-cli
+    libnotify
+    mako # notification server
   ];
   
   programs.waybar.enable = true;
@@ -141,6 +146,7 @@
   ];
   users.groups.keyd = {};
 
+
   services.greetd = {
     enable = true;
     settings = rec {
@@ -150,6 +156,25 @@
       };
       default_session = initial_session;
     };
+  };
+
+  services.mpd = {
+    enable = true;
+    user = "toni";
+    musicDirectory = "/home/toni/music";
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "MPD output"
+      }
+    '';
+    startWhenNeeded =
+      true; # systemd feature: only start MPD service upon connection to its socket
+  };
+  systemd.services.mpd.environment = {
+    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+    XDG_RUNTIME_DIR =
+      "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
   };
 
   programs.zsh.enable = true;
