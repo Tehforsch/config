@@ -95,7 +95,6 @@
     kitty
     firefox
     git
-    thunderbird
     vlc
     emacs
     openssh
@@ -128,8 +127,12 @@
     mpc-cli
     libnotify
     mako # notification server
+    #for screenshots
+    grim swappy slurp
+    thunderbird
+    newsboat
   ];
-  
+
   programs.waybar.enable = true;
   
   services.keyd.enable = true;
