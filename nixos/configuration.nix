@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, journal, ... }:
 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -124,6 +124,7 @@
     thunderbird
     newsboat
     zathura
+    journal.packages.x86_64-linux.journal
   ];
 
   services.mpd = {

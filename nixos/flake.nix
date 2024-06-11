@@ -5,9 +5,12 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    journal = {
+      url = "git+ssh://git@github.com/tehforsch/journal.git";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs@{ self, nixpkgs, journal, ... }: {
     nixosConfigurations = {
       framework = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -21,6 +24,7 @@
         ];
       };
       pc = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit journal; };
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "pc"; }
