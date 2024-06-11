@@ -26,3 +26,10 @@ I want to use it but configuring hotkeys the way I want to has been hard with le
 ## xmonad
 cant shift windows to the right/left
 the fucking mode doesnt go away in the bottom
+
+## hyprland
+I had various issues so I'll probably wait for a while before I switch to it. Activating hyprland.nix and removing i3.nix should switch back.
+- Mouse cursor randomly vanished
+- Freeze (https://github.com/hyprwm/Hyprland/issues/2789, Issue is closed but I don't think the problem is fixed. Never buying an nvidia graphics card again)
+- I didn't like my status bar. The display was ugly compared to i3wsr + i3status. I don't think hyprland-automate-workspace-names is as good as it will be if I just wait a little.
+- Emacs didn't focus ( https://github.com/hyprwm/Hyprland/discussions/1793 )
