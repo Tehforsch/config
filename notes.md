@@ -20,9 +20,11 @@ custom evil surrounds cannot be repeated with . (function, generic, ...)
 
 magit doesnt work at all anymore
 
-## leftwm
-I want to use it but configuring hotkeys the way I want to has been hard with lefthk/sxhkd. The main problem is that I don't have good visual feedback for my modes which makes it zero fun. I also couldnt find a way to go "back a mode/chord" (instead of exiting it all together) in sxhkd. Try this again in a year or so when lefthk has matured? Find out whether anything has changed first
-
-## xmonad
-cant shift windows to the right/left
-the fucking mode doesnt go away in the bottom
+## hyprland
+I had various issues so I'll probably wait for a while before I switch to it. Activating hyprland.nix and removing i3.nix should switch back.
+- Mouse cursor randomly vanished
+- Freeze (https://github.com/hyprwm/Hyprland/issues/2789, Issue is closed but I don't think the problem is fixed. Never buying an nvidia graphics card again)
+- I didn't like my status bar. The display was ugly compared to i3wsr + i3status. I don't think hyprland-automate-workspace-names is as good as it will be if I just wait a little.
+- Emacs didn't focus ( https://github.com/hyprwm/Hyprland/discussions/1793 )
+- waybar used a lot of CPU and weirdly lagged if I moused over the workspace names. Yikes
+- I didn't like the fullscreen toggle. i3 toggles to tabbed mode so I see the window in fullscreen but it doesn't send a "fullscreen mode" event to the window as hyprland does. This means maximizing a browser, for example, would randomly move around and re-render items in hyprland whereas in i3 it just instantly makes the window bigger which is what I want.
