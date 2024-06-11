@@ -22,7 +22,7 @@
         // "disable-scroll": true,
         // "all-outputs": true,
         // "warp-on-scroll": false,
-        "format": "{name}",
+        "format": "{name}       ",
     },
     "tray": {
         // "icon-size": 21,
