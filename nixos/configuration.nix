@@ -127,6 +127,13 @@
     journal.packages.x86_64-linux.journal
   ];
 
+  systemd.services.journal = {
+    enable = true;
+    serviceConfig = {
+      ExecStart = "${journal.packages.x86_64-linux.journal}/bin/journal";
+    };
+  };
+
   services.mpd = {
     enable = true;
     user = "toni";
