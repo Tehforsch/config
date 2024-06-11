@@ -1,3 +1,4 @@
 #!/bin/sh
-cd ~/.play
-nohup /usr/bin/firefox "$@" >/dev/null 2>&1 &
+mkdir -p ~/.playground/newsboatcache
+cd ~/.playground/newsboatcache
+nohup firefox "$@" >/dev/null 2>&1 &
