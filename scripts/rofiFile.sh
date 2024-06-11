@@ -1,4 +1,3 @@
-#!/bin/bash
 cd ~
 docs=""
 # Put the lower-depth results on top of the list

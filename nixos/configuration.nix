@@ -26,11 +26,12 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  # Configure console keymap
+  console.keyMap = "de-latin1-nodeadkeys";
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "toni";
-
-  programs.hyprland.enable = true;
 
   services.emacs = {
     enable = true;
@@ -45,9 +46,6 @@
       ];
   };
 
-
-  # Configure console keymap
-  console.keyMap = "de-latin1-nodeadkeys";
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -106,7 +104,6 @@
     bat
     telegram-desktop
     signal-desktop
-    rofi-wayland
     gcc
     light
     oath-toolkit
@@ -121,45 +118,13 @@
     pavucontrol
     pulseaudio # for pactl etc? even though i have pipewire
     killall
-    keyd
-    hyprland-autoname-workspaces
     mpd
     mpc-cli
     libnotify
-    mako # notification server
-    #for screenshots
-    grim swappy slurp
     thunderbird
     newsboat
+    zathura
   ];
-
-  programs.waybar.enable = true;
-  
-  services.keyd.enable = true;
-  environment.etc."keyd/default.conf".source = ../keyd/default.conf;
-  # https://github.com/rvaiya/keyd/issues/723
-  environment.etc."libinput/local-overrides.quirks".text = ''
-    [Serial Keyboards]
-    MatchUdevType=keyboard
-    MatchName=keyd virtual keyboard
-    AttrKeyboardIntegration=internal
-  '';
-  systemd.services.keyd.serviceConfig.CapabilityBoundingSet = [
-    "CAP_SETGID"
-  ];
-  users.groups.keyd = {};
-
-
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "Hyprland";
-        user = "toni";
-      };
-      default_session = initial_session;
-    };
-  };
 
   services.mpd = {
     enable = true;
