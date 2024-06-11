@@ -14,6 +14,7 @@
         modules = [
           { networking.hostName = "framework"; }
           ./configuration.nix
+          ./keyboard-configuration.nix
           # ./hyprland.nix
           ./i3.nix
           ./hardware-framework.nix
@@ -24,6 +25,7 @@
         modules = [
           { networking.hostName = "pc"; }
           ./configuration.nix
+          ./keyboard-configuration.nix
           # ./hyprland.nix
           ./i3.nix
           ./hardware-pc.nix
