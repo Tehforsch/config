@@ -66,12 +66,6 @@
     extraGroups = [ "networkmanager" "wheel" "video" "input" "keyd" ];
     shell = pkgs.zsh;
   };
-  services.syncthing = {
-    enable = true;
-    user = "toni";
-    dataDir = "/home/toni/Syncthing";
-    configDir = "/home/toni/.config/syncthing";   # Folder for Syncthing's settings and keys
-  };
 
   fonts.packages = with pkgs; [
     jetbrains-mono
