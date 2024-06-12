@@ -44,6 +44,7 @@ make_symlink vim/init.vim .config/vim/vimrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 make_symlink audio/jack-reaper.conf .config/pipewire/jack.conf.d/10-reaper.conf
 make_symlink wireplumber/51-alsa-disable-music-mode.lua .config/wireplumber/main.lua.d/51-alsa-disable.lua
+make_symlink flameshot/flameshot.ini .config/flameshot/flameshot.ini
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
