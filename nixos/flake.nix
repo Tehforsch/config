@@ -26,6 +26,7 @@
           # ./hyprland.nix
           ./i3.nix
           ./hardware-framework.nix
+          ./redshift.nix
         ];
       };
       pc = nixpkgs.lib.nixosSystem {
@@ -39,6 +40,7 @@
           ./i3.nix
           ./hardware-pc.nix
           ./custom-pc.nix
+          ./redshift.nix
         ];
       };
     };
