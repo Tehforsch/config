@@ -141,7 +141,7 @@
     };
   };
 
-  systemd.user.services.i3wsr = {
+  systemd.services.i3wsr = {
     enable = true;
     description = "i3wsr";
     wantedBy = [ "default.target" ];
