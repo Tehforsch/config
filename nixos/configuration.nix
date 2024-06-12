@@ -129,6 +129,11 @@
 
   systemd.services.journal = {
     enable = true;
+    description = "journal webserver";
+    unitConfig = {
+      Type = "simple";
+    };
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
     };
