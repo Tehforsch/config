@@ -125,19 +125,30 @@
     zathura
     rustup
     flameshot
+    i3wsr
     xorg.xmodmap
+    xdotool
   ];
 
   systemd.services.journal = {
     enable = true;
     description = "journal webserver";
-    unitConfig = {
-      Type = "simple";
-    };
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "default.target" ];
     serviceConfig = {
+      Type = "simple";
       ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
     };
+  };
+
+  systemd.user.services.i3wsr = {
+    enable = true;
+    description = "i3wsr";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "i3wsr";
+    };
+    path = [ pkgs.i3 ]; # The i3ipc library on which i3wsr depends needs this in path to call `i3 --get-socketpath`
   };
 
   services.mpd = {
