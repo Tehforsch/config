@@ -18,16 +18,18 @@
     user = "toni";
     dataDir = "/home/toni/.local/share/syncthing";
     configDir = "/home/toni/.config/syncthing";
-    overrideDevices =
-      true; # overrides any devices added or deleted through the WebUI
-    overrideFolders =
-      true; # overrides any folders added or deleted through the WebUI
+    overrideDevices = true;
+    overrideFolders = true;
     settings = {
       devices = otherDevices;
       folders = {
-        "music" = { # Name of folder in Syncthing, also the folder ID
-          path = "/home/toni/music"; # Which folder to add to Syncthing
-          devices = others; # Which devices to share the folder with
+        "music" = {
+          path = "/home/toni/music";
+          devices = others;
+        };
+        "resource" = {
+          path = "/home/toni/resource";
+          devices = others;
         };
       };
     };
