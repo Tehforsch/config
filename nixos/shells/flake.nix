@@ -1,5 +1,7 @@
+# For now, I have rustup in my path anyways, so this is more an
+# illustration how to do this in general.
 {
-  description = "Rust stable dev shell";
+  description = "My dev shells";
 
   inputs = {
     nixpkgs.url      = "github:NixOS/nixpkgs/nixos-unstable";

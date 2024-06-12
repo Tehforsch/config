@@ -123,6 +123,7 @@
     thunderbird
     newsboat
     zathura
+    rustup
     inputs.journal.packages.x86_64-linux.journal
   ];
 

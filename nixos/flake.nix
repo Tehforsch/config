@@ -25,7 +25,6 @@
           ./keyboard-configuration.nix
           # ./hyprland.nix
           ./i3.nix
-          ./rust.nix
           ./hardware-framework.nix
         ];
       };
@@ -38,7 +37,6 @@
           ./keyboard-configuration.nix
           # ./hyprland.nix
           ./i3.nix
-          ./rust.nix
           ./hardware-pc.nix
           ./custom-pc.nix
         ];
