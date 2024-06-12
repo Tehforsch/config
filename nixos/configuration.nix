@@ -124,6 +124,9 @@
     newsboat
     zathura
     rustup
+    flameshot
+    xorg.xmodmap
+
     inputs.journal.packages.x86_64-linux.journal
   ];
 
