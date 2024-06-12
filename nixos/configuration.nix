@@ -1,4 +1,4 @@
-{ config, pkgs, journal, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -96,7 +96,6 @@
     vlc
     emacs
     openssh
-    rustup
     fd
     zsh
     eza
@@ -124,13 +123,13 @@
     thunderbird
     newsboat
     zathura
-    journal.packages.x86_64-linux.journal
+    inputs.journal.packages.x86_64-linux.journal
   ];
 
   systemd.services.journal = {
     enable = true;
     serviceConfig = {
-      ExecStart = "${journal.packages.x86_64-linux.journal}/bin/journal";
+      ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
     };
   };
 

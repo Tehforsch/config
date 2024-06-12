@@ -117,3 +117,6 @@ alias journy="$CONFIG/scripts/journal_entry.sh yesterday"
 
 alias nixsw="sudo -u toni nixos-rebuild switch --flake ~/projects/config/nixos" # The sudo -u toni ensures that I can use ssh keys from my normal user while sudoing to clone private repos
 alias nixb="nixos-rebuild build --flake ~/projects/config/nixos"
+
+alias rust_stable="nix develop ~/projects/config/nixos/shells/#rust_stable -c zsh"
+alias rust_nightly="nix develop ~/projects/config/nixos/shells/#rust_nightly -c zsh"

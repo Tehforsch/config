@@ -8,11 +8,16 @@
     journal = {
       url = "git+ssh://git@github.com/tehforsch/journal.git";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, journal, ... }: {
+  outputs = inputs@{ self, nixpkgs, ... }: {
     nixosConfigurations = {
       framework = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "framework"; }
@@ -20,11 +25,12 @@
           ./keyboard-configuration.nix
           # ./hyprland.nix
           ./i3.nix
+          ./rust.nix
           ./hardware-framework.nix
         ];
       };
       pc = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit journal; };
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "pc"; }
@@ -32,6 +38,7 @@
           ./keyboard-configuration.nix
           # ./hyprland.nix
           ./i3.nix
+          ./rust.nix
           ./hardware-pc.nix
           ./custom-pc.nix
         ];
