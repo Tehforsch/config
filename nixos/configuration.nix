@@ -119,6 +119,7 @@
     killall
     mpd
     mpc-cli
+    mpdas
     libnotify
     thunderbird
     newsboat
@@ -130,7 +131,7 @@
     xdotool
   ];
 
-  systemd.services.journal = {
+  systemd.user.services.journal = {
     enable = true;
     description = "journal webserver";
     wantedBy = [ "default.target" ];
@@ -146,7 +147,7 @@
     wantedBy = [ "default.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "i3wsr";
+      ExecStart = "${pkgs.i3wsr}/bin/i3wsr";
     };
     path = [ pkgs.i3 ]; # The i3ipc library on which i3wsr depends needs this in path to call `i3 --get-socketpath`
   };
@@ -168,6 +169,27 @@
     # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
     XDG_RUNTIME_DIR =
       "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
+  };
+
+  systemd.user.services.mpdas = {
+    description = "mpdas last.fm scrobbler";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.mpdas}/bin/mpdas -c /home/toni/resource/keys/mpdasrc";
+      Type = "simple";
+    };
+  };
+
+  systemd.timers.refreshNewsboat = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "refreshNewsboat.service" ];
+    timerConfig.OnCalendar = "hourly";
+  };
+  systemd.services.refreshNewsboat = {
+    serviceConfig.Type = "oneshot";
+    script = ''
+        ${pkgs.newsboat}/bin/newsboat -u /home/toni/projects/config/newsboat/urls -C /home/toni/projects/config/newsboat/config -x reload
+      '';
   };
 
   programs.zsh.enable = true;
