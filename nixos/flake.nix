@@ -21,6 +21,7 @@
         # ./hyprland.nix
         ./i3.nix
         ./redshift.nix
+        ./syncthing.nix
     ];
     in
       {
