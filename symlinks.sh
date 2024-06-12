@@ -32,7 +32,6 @@ make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc .config/zathura/zathurarc
-make_symlink emacs/emacs.service .config/systemd/user/default.target.wants/emacs.service
 make_symlink taskwarrior/taskrc .config/task/taskrc
 make_symlink taskwarrior/hooks .local/share/task/hooks
 make_symlink zsh/zshrc.sh .config/zsh/.zshrc # ZDOTDIR
