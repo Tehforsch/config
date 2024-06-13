@@ -105,6 +105,9 @@
 (mode-leader-def '(normal visual) 'python-mode-map
   "f" 'python-black-buffer)
 
+(mode-leader-def '(normal visual) 'nix-mode-map
+  "f" 'nix-mode-format)
+
 
 
 (define-key evil-normal-state-map "gd" 'xref-find-definitions)
