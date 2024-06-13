@@ -1,2 +1,10 @@
+(use-package lsp-nix
+  :ensure lsp-mode
+  :after (lsp-mode)
+  :demand t
+  :custom
+  (lsp-nix-nil-formatter ["nixpkgs-fmt"]))
+
 (use-package nix-mode
-  :mode "\\.nix\\'")
+  :hook (nix-mode . lsp-deferred)
+  :ensure t)
