@@ -156,6 +156,7 @@
       serviceConfig = {
         Type = "simple";
         ExecStart = "${i3wsr-starter.outPath}";
+        Restart = "always";
       };
       path = with pkgs; [
         i3
