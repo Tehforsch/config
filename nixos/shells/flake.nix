@@ -32,6 +32,13 @@
             cmake
           ];
         };
+        devShells.python = with pkgs; mkShell {
+          buildInputs = [
+            (python3.withPackages (p: with p; [
+              numpy
+            ]))
+          ];
+        };
       }
     );
 }
