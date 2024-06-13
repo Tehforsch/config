@@ -11,7 +11,8 @@
         id = "2ZVVCCZ-J4R4CMX-YIX52JY-U6ONU3O-E5HAED3-PWMR53C-763SVVJ-JJGS3AL";
       };
     };
-    otherDevices = (pkgs.lib.filterAttrs (k: v: k != config.networking.hostName) allDevices);
+    otherDevices =
+      (pkgs.lib.filterAttrs (k: v: k != config.networking.hostName) allDevices);
     others = builtins.attrNames otherDevices;
   in {
     enable = true;

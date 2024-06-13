@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,12 +40,19 @@
 
   services.actkbd = {
     enable = true;
-      bindings = [
-        { keys = [ 232 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
-        { keys = [ 233 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
-      ];
+    bindings = [
+      {
+        keys = [ 232 ];
+        events = [ "key" ];
+        command = "/run/current-system/sw/bin/light -U 10";
+      }
+      {
+        keys = [ 233 ];
+        events = [ "key" ];
+        command = "/run/current-system/sw/bin/light -A 10";
+      }
+    ];
   };
-
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -123,6 +130,7 @@
     i3wsr
     xorg.xmodmap
     xdotool
+    nil
   ];
 
   systemd.user.services.journal = {
@@ -143,7 +151,9 @@
       Type = "simple";
       ExecStart = "${pkgs.i3wsr}/bin/i3wsr";
     };
-    path = [ pkgs.i3 ]; # The i3ipc library on which i3wsr depends needs this in path to call `i3 --get-socketpath`
+    path = [
+      pkgs.i3
+    ]; # The i3ipc library on which i3wsr depends needs this in path to call `i3 --get-socketpath`
   };
 
   services.mpd = {
@@ -152,8 +162,8 @@
     musicDirectory = "/home/toni/music";
     extraConfig = ''
       audio_output {
-        type "pipewire"
-        name "MPD output"
+      type "pipewire"
+      name "MPD output"
       }
     '';
     startWhenNeeded =
@@ -182,8 +192,8 @@
   systemd.services.refreshNewsboat = {
     serviceConfig.Type = "oneshot";
     script = ''
-        ${pkgs.newsboat}/bin/newsboat -u /home/toni/projects/config/newsboat/urls -C /home/toni/projects/config/newsboat/config -x reload
-      '';
+      ${pkgs.newsboat}/bin/newsboat -u /home/toni/projects/config/newsboat/urls -C /home/toni/projects/config/newsboat/config -x reload
+    '';
   };
 
   programs.zsh.enable = true;

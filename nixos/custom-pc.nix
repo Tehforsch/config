@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    reaper
-    steam
-  ];
+  environment.systemPackages = with pkgs; [ reaper steam ];
 
   # Enable OpenGL
   hardware.opengl = {
@@ -14,7 +11,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;

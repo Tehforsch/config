@@ -1,8 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }:
-{
+{ config, lib, pkgs, modulesPath, ... }: {
   programs.hyprland.enable = true;
   programs.waybar.enable = true;
-  
+
   services.keyd.enable = true;
   environment.etc."keyd/default.conf".source = ../keyd/default.conf;
   # https://github.com/rvaiya/keyd/issues/723
@@ -12,11 +11,8 @@
     MatchName=keyd virtual keyboard
     AttrKeyboardIntegration=internal
   '';
-  systemd.services.keyd.serviceConfig.CapabilityBoundingSet = [
-    "CAP_SETGID"
-  ];
-  users.groups.keyd = {};
-
+  systemd.services.keyd.serviceConfig.CapabilityBoundingSet = [ "CAP_SETGID" ];
+  users.groups.keyd = { };
 
   services.greetd = {
     enable = true;
@@ -35,6 +31,8 @@
     hyprland-autoname-workspaces
     mako # notification server
     #for screenshots
-    grim swappy slurp
+    grim
+    swappy
+    slurp
   ];
 }
