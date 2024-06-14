@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  # This gave me an unbootable kernel for some reason.
+  # First check if I can make the UMC low-latency without this
+  # If I can, remove musnix altogether
+  # musnix.enable = true;
+
   environment.systemPackages = with pkgs; [ reaper steam ];
 
   # Enable OpenGL
@@ -29,5 +34,15 @@
   ];
   services.pipewire = {
     jack.enable = true;
+
+    extraConfig.pipewire."92-low-latency" = {
+      context.properties = {
+        default.clock.rate = 48000;
+        default.clock.quantum = 32;
+        default.clock.min-quantum = 32;
+        default.clock.max-quantum = 32;
+      };
+    };
+
   };
 }

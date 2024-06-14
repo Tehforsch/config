@@ -8,6 +8,7 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    musnix  = { url = "github:musnix/musnix"; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -32,7 +33,8 @@
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [ { networking.hostName = "pc"; } ./hardware-pc.nix ./custom-pc.nix ]
+          [ { networking.hostName = "pc"; } ./hardware-pc.nix ./custom-pc.nix
+                     inputs.musnix.nixosModules.musnix ]
           ++ modules;
       };
     };

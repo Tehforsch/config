@@ -102,6 +102,24 @@
         "url": "ssh://git@github.com/tehforsch/journal.git"
       }
     },
+    "musnix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1717893947,
+        "narHash": "sha256-gUIaYP1fv0L/2fjDbaBirxC4rShkQC6eRJX9pJa0OtI=",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "e7b2b8952e0d810c1f1c989b52056a0eb4b2fd5f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "musnix",
+        "repo": "musnix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1705099185,
@@ -120,6 +138,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1717786204,
+        "narHash": "sha256-4q0s6m0GUcN7q+Y2DqD27iLvbcd1G50T2lv08kKxkSI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "051f920625ab5aabe37c920346e3e69d7d34400e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1716948383,
         "narHash": "sha256-SzDKxseEcHR5KzPXLwsemyTR/kaM9whxeiJohbL04rs=",
         "owner": "NixOS",
@@ -137,7 +171,8 @@
     "root": {
       "inputs": {
         "journal": "journal",
-        "nixpkgs": "nixpkgs_2",
+        "musnix": "musnix",
+        "nixpkgs": "nixpkgs_3",
         "rust-overlay": "rust-overlay_2"
       }
     },
