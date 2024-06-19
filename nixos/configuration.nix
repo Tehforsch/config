@@ -131,6 +131,7 @@
     xorg.xmodmap
     xdotool
     nil
+    taskwarrior
   ];
 
   systemd.user.services.journal = {

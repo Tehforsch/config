@@ -10,6 +10,7 @@ source "$CONFIG/zsh/zshCdWidget.sh"
 source "$CONFIG/zsh/launchWidget.sh"
 source "$CONFIG/zsh/aliases.sh"
 source "$CONFIG/zsh/dirStack.sh"
+source "$CONFIG/taskwarrior/aliases"
 
 localConfig="$CONFIG/zsh/localConfig/$(hostname).sh"
 if [[ ! -a "$localConfig" ]]; then
