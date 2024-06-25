@@ -1,4 +1,3 @@
-#!/bin/bash
 set -e
 
 downloadDir="$HOME/downloads"

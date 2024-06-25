@@ -132,6 +132,9 @@
     xdotool
     nil
     taskwarrior
+    mumble
+    zip
+    unzip
   ];
 
   systemd.user.services.journal = {
