@@ -36,11 +36,7 @@ Host vera
     HostName vera01.bc.rzg.mpg.de
     User tpeter
     ProxyCommand ssh -W %h:%p gatezero.mpcdf.mpg.de 2>/dev/null
-    GSSAPIAuthentication yes
-    GSSAPIDelegateCredentials yes
 Host gatezero.mpcdf.mpg.de
     User tpeter
-    GSSAPIAuthentication yes
-    GSSAPIDelegateCredentials yes
     ControlMaster auto
     ControlPath ~/.ssh/control:%h:%p:%r
