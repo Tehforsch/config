@@ -91,6 +91,7 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    delta
     kitty
     firefox
     git
