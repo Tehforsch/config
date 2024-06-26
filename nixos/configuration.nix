@@ -136,6 +136,8 @@
     mumble
     zip
     unzip
+    mold
+    htop
   ];
 
   systemd.user.services.journal = {

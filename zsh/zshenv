@@ -10,8 +10,6 @@ export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export POETRY_HOME="$XDG_DATA_HOME"/poetry
-export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export MYPY_CACHE_DIR="$XDG_CACHE_HOME"/mypy
