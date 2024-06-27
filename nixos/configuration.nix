@@ -138,6 +138,7 @@
     unzip
     mold
     htop
+    pcmanfm
   ];
 
   systemd.user.services.journal = {
