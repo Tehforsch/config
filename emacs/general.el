@@ -48,21 +48,7 @@
     "ol" '(:which-key "Latex")
     "oll" 'org-toggle-latex-fragment
     "olL" '((lambda () (interactive) (org-latex-preview 16)) :which-key "Clear all latex fragments")
-    "oj" '(:which-key "Journal")
-    "ojp" 'toggle-transient-journal-map-personal
-    "ojw" 'toggle-transient-journal-map-work
     "oL" 'org-toggle-link-display
-    "on" '(:which-key "Notes")
-    "ona" 'rpundit-append-link
-    "onb" 'rpundit-find-backlinks
-    "one" '(:which-key "Export notes")
-    "onf" 'rpundit-find
-    "onk" 'rpundit-get-new-anki-note-check-file-for-model-and-deck
-    "ong" 'rpundit-graph-find
-    "oni" 'rpundit-insert-link
-    "onep" 'org-latex-export-to-pdf
-    "onp" '(:which-key "Papers")
-    "onpf" 'rpundit-find-paper
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'consult-ripgrep

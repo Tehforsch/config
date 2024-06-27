@@ -94,11 +94,6 @@
 (load-from-config "tabbar.el")
 (load-from-config "helpful.el")
 
-(load-from-config "punditSettings.el")
-(load-from-config "rpundit.el")
-
-(load-from-config "screenshot.el")
-
 (load-from-config "temp.el")
 
 (load-from-config "general.el")
