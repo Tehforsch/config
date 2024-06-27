@@ -1,54 +1,56 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    # Developer stuff
+    kitty
+    zsh
     vim
     git
     delta
-    kitty
-    firefox
     git
-    vlc
     emacs
-    openssh
     fd
-    zsh
     eza
     fzf
     bat
-    telegram-desktop
-    signal-desktop
-    gcc
-    light
-    oath-toolkit
-    silver-searcher
-    qbittorrent
-    ripgrep
-    openvpn
-    syncthing
+    silver-searcher # ag
+    ripgrep # rg
     unp
-    steam
-    redshift
-    pavucontrol
-    pulseaudio # for pactl etc? even though i have pipewire
     killall
-    mpd
-    mpc-cli
-    mpdas
-    libnotify
-    thunderbird
-    newsboat
-    zathura
-    rustup
-    flameshot
-    xorg.xmodmap
-    xdotool
     nil
-    taskwarrior
-    mumble
     zip
     unzip
     mold
     htop
+    rustup # Keeping this here for convenience, although dev shells can substitute this well
+
+    # Network stuff
+    oath-toolkit
+    openvpn
+    openssh
+
+    # User applications
+    firefox
+    vlc
     pcmanfm
+    telegram-desktop
+    signal-desktop
+    syncthing
+    steam
+    thunderbird
+    redshift
+    newsboat
+    zathura
+    flameshot
+    taskwarrior
+    mumble
+
+    # Sound + Music
+    pavucontrol
+    pulseaudio # for pactl etc? even though i have pipewire
+    mpd
+    mpc-cli
+    mpdas
+    libnotify
   ];
 }

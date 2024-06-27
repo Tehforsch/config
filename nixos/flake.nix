@@ -27,7 +27,7 @@
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [ { networking.hostName = "framework"; } ./hardware-framework.nix ]
+          [ { networking.hostName = "framework"; } ./hardware-framework.nix ./custom-framework.nix ]
           ++ modules;
       };
       pc = nixpkgs.lib.nixosSystem {

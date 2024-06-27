@@ -14,7 +14,12 @@
   };
   services.displayManager = { defaultSession = "none+i3"; };
 
-  environment.systemPackages = with pkgs; [ rofi i3wsr ];
+  environment.systemPackages = with pkgs; [
+    rofi
+    i3wsr
+    xdotool # For the runCommandInTerminalToTheRight.sh script
+    xorg.xmodmap
+  ];
 
   # This can probably be done much easier but I couldnt figure out how to
   # and it was a nice way to explore some of nix's capabilities
