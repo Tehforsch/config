@@ -88,59 +88,6 @@
 
   nixpkgs.config.pulseaudio = true;
 
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    delta
-    kitty
-    firefox
-    git
-    vlc
-    emacs
-    openssh
-    fd
-    zsh
-    eza
-    fzf
-    bat
-    telegram-desktop
-    signal-desktop
-    gcc
-    light
-    oath-toolkit
-    silver-searcher
-    qbittorrent
-    ripgrep
-    openvpn
-    syncthing
-    unp
-    steam
-    redshift
-    pavucontrol
-    pulseaudio # for pactl etc? even though i have pipewire
-    killall
-    mpd
-    mpc-cli
-    mpdas
-    libnotify
-    thunderbird
-    newsboat
-    zathura
-    rustup
-    flameshot
-    i3wsr
-    xorg.xmodmap
-    xdotool
-    nil
-    taskwarrior
-    mumble
-    zip
-    unzip
-    mold
-    htop
-    pcmanfm
-  ];
-
   systemd.user.services.journal = {
     enable = true;
     description = "journal webserver";
@@ -151,75 +98,54 @@
     };
   };
 
-  # This can probably be done much easier but I couldnt figure out how to
-  # and it was a nice way to explore some of nix's capabilities
-  systemd.user.services.i3wsr =
-    let i3wsr-starter = pkgs.writeShellScript "i3wsr-starter" ''
-      I3SOCK=$(${pkgs.i3}/bin/i3 --get-socketpath) ${pkgs.i3wsr}/bin/i3wsr
-    ''; in
-    {
-      enable = true;
-      description = "i3wsr";
-      wantedBy = [ "default.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${i3wsr-starter.outPath}";
-        Restart = "always";
-      };
-      path = with pkgs; [
-        i3
-        i3wsr-starter
-      ]; 
-    };
+  services.mpd = {
+    enable = true;
+    user = "toni";
+    musicDirectory = "/home/toni/music";
+    extraConfig = ''
+      audio_output {
+      type "pipewire"
+      name "MPD output"
+      }
+    '';
+    startWhenNeeded =
+      true; # systemd feature: only start MPD service upon connection to its socket
+  };
+  systemd.services.mpd.environment = {
+    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+    XDG_RUNTIME_DIR =
+      "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
+  };
 
-    services.mpd = {
-      enable = true;
-      user = "toni";
-      musicDirectory = "/home/toni/music";
-      extraConfig = ''
-        audio_output {
-        type "pipewire"
-        name "MPD output"
-        }
-      '';
-      startWhenNeeded =
-        true; # systemd feature: only start MPD service upon connection to its socket
+  systemd.user.services.mpdas = {
+    description = "mpdas last.fm scrobbler";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.mpdas}/bin/mpdas -c /home/toni/resource/keys/mpdasrc";
+      Type = "simple";
     };
-    systemd.services.mpd.environment = {
-      # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-      XDG_RUNTIME_DIR =
-        "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
-    };
+  };
 
-    systemd.user.services.mpdas = {
-      description = "mpdas last.fm scrobbler";
-      wantedBy = [ "default.target" ];
-      serviceConfig = {
-        ExecStart = "${pkgs.mpdas}/bin/mpdas -c /home/toni/resource/keys/mpdasrc";
-        Type = "simple";
-      };
-    };
+  systemd.timers.refreshNewsboat = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "refreshNewsboat.service" ];
+    timerConfig.OnCalendar = "hourly";
+  };
+  systemd.services.refreshNewsboat = {
+    serviceConfig.Type = "oneshot";
+    script = ''
+      ${pkgs.newsboat}/bin/newsboat -u /home/toni/projects/config/newsboat/urls -C /home/toni/projects/config/newsboat/config -x reload
+    '';
+  };
 
-    systemd.timers.refreshNewsboat = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "refreshNewsboat.service" ];
-      timerConfig.OnCalendar = "hourly";
-    };
-    systemd.services.refreshNewsboat = {
-      serviceConfig.Type = "oneshot";
-      script = ''
-        ${pkgs.newsboat}/bin/newsboat -u /home/toni/projects/config/newsboat/urls -C /home/toni/projects/config/newsboat/config -x reload
-      '';
-    };
+  programs.zsh.enable = true;
+  programs.nm-applet.enable = true;
+  programs.openvpn3.enable = true;
 
-    programs.zsh.enable = true;
-    programs.nm-applet.enable = true;
-    programs.openvpn3.enable = true;
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
 
-    # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
-
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "23.11";
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "23.11";
 }

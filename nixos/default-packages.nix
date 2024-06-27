@@ -1,0 +1,54 @@
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    delta
+    kitty
+    firefox
+    git
+    vlc
+    emacs
+    openssh
+    fd
+    zsh
+    eza
+    fzf
+    bat
+    telegram-desktop
+    signal-desktop
+    gcc
+    light
+    oath-toolkit
+    silver-searcher
+    qbittorrent
+    ripgrep
+    openvpn
+    syncthing
+    unp
+    steam
+    redshift
+    pavucontrol
+    pulseaudio # for pactl etc? even though i have pipewire
+    killall
+    mpd
+    mpc-cli
+    mpdas
+    libnotify
+    thunderbird
+    newsboat
+    zathura
+    rustup
+    flameshot
+    xorg.xmodmap
+    xdotool
+    nil
+    taskwarrior
+    mumble
+    zip
+    unzip
+    mold
+    htop
+    pcmanfm
+  ];
+}

@@ -15,6 +15,7 @@
     nixosConfigurations = let
       modules = [
         ./configuration.nix
+        ./default-packages.nix
         ./keyboard-configuration.nix
         # ./hyprland.nix
         ./i3.nix
