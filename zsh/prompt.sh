@@ -26,8 +26,17 @@ else
     hostname=""
 fi
 
+if [[ $SHLVL -gt 1 ]]; then
+    shell_name=${name/-env/}
+    nix_shell_info=" %F{green}[$shell_name]%f"
+else 
+    nix_shell_info=""
+fi
+
+
+
 setopt prompt_subst
 
 precmd() { print "" }
 
-PROMPT=$'%B%F{4}%~%f%b $hostname$(get_git_info)\n> '
+PROMPT=$'%B%F{4}%~%f%b $hostname$(get_git_info)$nix_shell_info\n> '

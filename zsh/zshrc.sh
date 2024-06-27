@@ -1,6 +1,5 @@
 source "$HOME/projects/config/zsh/zshenv"
 source "$HOME/projects/config/zsh/paths.sh"
-export fpath=($CONFIG/zsh/completions/ $fpath)
 source "$CONFIG/zsh/completionSettings.sh"
 source "$CONFIG/zsh/readline.sh"
 source "$CONFIG/zsh/history.sh"

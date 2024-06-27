@@ -1,8 +1,10 @@
 export XDG_CONFIG_HOME=$(realpath ~/.config)
 export XDG_DATA_HOME=$(realpath ~/.local/share)
 export XDG_STATE_HOME=$(realpath ~/.local/state)
+export XDG_CACHE_HOME=$(realpath ~/.cache)
 
 export ZDOTDIR="$HOME/.config/zsh"
+export ZSH_COMPDUMP=$XDG_CACHE_HOME/.zcompdump-$HOST
 
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
