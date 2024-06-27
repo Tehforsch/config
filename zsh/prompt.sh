@@ -29,6 +29,10 @@ fi
 if [[ $SHLVL -gt 1 ]]; then
     shell_name=${name/-env/}
     nix_shell_info=" %F{green}[$shell_name]%f"
+    if [[ $SHLVL -gt 2 ]]; then
+        (( remaining_shell_count= $SHLVL - 2 ))
+        nix_shell_info=" %F{green}[$shell_name+$remaining_shell_count]%f"
+    fi
 else 
     nix_shell_info=""
 fi
