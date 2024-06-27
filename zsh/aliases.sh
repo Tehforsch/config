@@ -91,6 +91,8 @@ alias cp='cp -v'
 
 alias o="xdg-open"
 
+alias pdf="zathura"
+
 alias mk="make -j 16"
 
 alias mpi="~/projects/raxiom/scripts/runMpi.sh"
