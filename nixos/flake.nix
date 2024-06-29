@@ -21,6 +21,7 @@
         ./i3.nix
         ./redshift.nix
         ./syncthing.nix
+        ./power-management.nix
       ];
     in {
       framework = nixpkgs.lib.nixosSystem {
