@@ -22,7 +22,7 @@ make_symlink bat/config .config/bat/config
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
-make_symlink i3/i3status.conf .config/i3status/config
+make_symlink i3/i3status_${SYSTEM_NAME}.conf .config/i3status/config
 make_symlink hyprland/hyprland.conf .config/hypr/hyprland.conf
 make_symlink hyprland/waybar.jsonc .config/waybar/config.jsonc
 make_symlink hyprland/waybar-style.css .config/waybar/style.css
