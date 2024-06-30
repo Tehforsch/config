@@ -23,6 +23,7 @@
     mold
     htop
     rustup # Keeping this here for convenience, although dev shells can substitute this well
+    gcc
 
     # Network stuff
     oath-toolkit

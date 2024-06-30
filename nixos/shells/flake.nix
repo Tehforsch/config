@@ -10,26 +10,56 @@
   };
 
   outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        overlays = [ (import rust-overlay) ];
-        pkgs = import nixpkgs { inherit system overlays; };
-      in {
-        devShells.rust_stable = with pkgs;
-          mkShell {
-            buildInputs = [ pkg-config rust-bin.beta.latest.default cmake ];
-          };
-        devShells.rust_nightly = with pkgs;
-          mkShell {
-            buildInputs = [
-              pkg-config
-              (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
-              cmake
-            ];
-          };
-        devShells.python = with pkgs;
-          mkShell {
-            buildInputs = [ (python3.withPackages (p: with p; [ numpy ])) ];
-          };
-      });
+  flake-utils.lib.eachDefaultSystem (system:
+  let
+    overlays = [ (import rust-overlay) ];
+    pkgs = import nixpkgs { inherit system overlays; };
+    stable = pkgs.rust-bin.beta.latest.default;
+    nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default));
+  in {
+    devShells = with pkgs; {
+      rust_stable = mkShell {
+        buildInputs = [ pkg-config cmake stable ];
+      };
+      rust_nightly = mkShell {
+        buildInputs = [ pkg-config nightly cmake ];
+      };
+      bevy = mkShell {
+        packages = ([
+          stable
+          # Bevy
+          pkg-config
+          alsa-lib
+          vulkan-tools
+          vulkan-headers
+          vulkan-loader
+          vulkan-validation-layers
+          udev
+          clang
+          lld
+          # If on x11
+          xorg.libX11
+          xorg.libX11
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXrandr
+          libxkbcommon
+          # If on wayland
+          # libxkbcommon
+          # wayland
+        ]);
+        shellHook = ''
+          export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
+            alsaLib
+            udev
+            vulkan-loader
+            libxkbcommon
+          ]}"
+        '';
+      };
+      python = mkShell {
+        buildInputs = [ (python3.withPackages (p: with p; [ numpy ])) ];
+      };
+    };
+  });
 }
