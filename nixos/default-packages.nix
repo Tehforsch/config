@@ -24,6 +24,7 @@
     htop
     rustup # Keeping this here for convenience, although dev shells can substitute this well
     gcc
+    gnumake
 
     # Network stuff
     oath-toolkit
@@ -53,5 +54,9 @@
     mpc-cli
     mpdas
     libnotify
+
+    docker
+    docker-compose
+    zoom-us
   ];
 }

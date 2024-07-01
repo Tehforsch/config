@@ -54,7 +54,7 @@
   users.users.toni = {
     isNormalUser = true;
     description = "toni";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "keyd" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "keyd" "audio" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -99,6 +99,17 @@
     # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
     XDG_RUNTIME_DIR =
       "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
+  };
+
+  virtualisation = {
+    # podman = {
+    #   enable = true;
+    #   # Create a `docker` alias for podman, to use it as a drop-in replacement
+    #   dockerCompat = true;
+    #   # Required for containers under podman-compose to be able to talk to each other.
+    #   defaultNetwork.settings.dns_enabled = true;
+    # };
+    docker.enable = true;
   };
 
   systemd.user.services.mpdas = {
