@@ -19,7 +19,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 ; Recommended for embark, but also I like this more in general
-(setq y-or-n-p-map t)
+(setq y-or-n-p-use-read-key t)
 
 ; Make sure projectile-find-file opens files in subdirectories properly
 (define-advice projectile-find-file (:around (orig-fn &optional arg) fix-dir)

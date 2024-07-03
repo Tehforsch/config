@@ -8,15 +8,9 @@ if [[ $SYSTEM_NAME == "manjaro" ]]; then
     echo "a"
     main=DP2
     second=eDP1
-elif [[ $SYSTEM_NAME == "manjaroPc" ]]; then
-    main=DP-0
-    second=DP2
-    if [[ $1 == "" ]]; then
-        xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-0
-    else
-        xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --off
-    fi
-    exit 0
+elif [[ $SYSTEM_NAME == "pc" ]]; then
+    main=HDMI-0
+    second=DP-1
 elif [[ $SYSTEM_NAME == "ita" ]]; then
     # try both because this is ridiculously inconsistent
     main=DP2

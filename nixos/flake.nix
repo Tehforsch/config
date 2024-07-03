@@ -39,6 +39,14 @@
                      inputs.musnix.nixosModules.musnix ]
           ++ modules;
       };
+      gb = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules =
+          [ { networking.hostName = "gb"; } ./hardware-pc.nix ./custom-pc.nix ./gb.nix
+                     ]
+          ++ modules;
+      };
     };
   };
 }

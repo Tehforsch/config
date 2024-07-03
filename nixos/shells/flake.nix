@@ -58,7 +58,7 @@
         '';
       };
       python = mkShell {
-        buildInputs = [ (python3.withPackages (p: with p; [ numpy ])) ];
+        buildInputs = [ (python3.withPackages (p: with p; [ numpy pyyaml ])) ];
       };
     };
   });
