@@ -57,6 +57,23 @@
           ]}"
         '';
       };
+      scanner = mkShell {
+        nativeBuildInputs = with pkgs.buildPackages; [
+          file
+          libpcap
+          hiredis
+          cmake
+          libnet
+          curl
+          redis
+          pkg-config
+          zlib
+          cmake
+          glib
+          json-glib
+          gnutls
+        ];
+      };
       python = mkShell {
         buildInputs = [ (python3.withPackages (p: with p; [ numpy pyyaml ])) ];
       };
