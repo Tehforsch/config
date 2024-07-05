@@ -22,7 +22,7 @@ alias gpf="git push --force-with-lease"
 alias gl="git log --ext-diff"
 alias gdm="git diff ORIG_HEAD MERGE_HEAD --ext-diff"
 alias gri="git rebase -i"
-alias gsw="git switch"
+alias sw="git switch"
 alias rs="git restore"
 
 alias agg="rga-fzf"
