@@ -11,10 +11,13 @@
     musnix  = { url = "github:musnix/musnix"; };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs@{ self, nixpkgs, ... }: rec {
     nixosConfigurations = let
       modules = [
+        ./basic.nix
         ./configuration.nix
+        ./sound.nix
+        ./services.nix
         ./default-packages.nix
         ./keyboard-configuration.nix
         # ./hyprland.nix
@@ -36,17 +39,25 @@
         system = "x86_64-linux";
         modules =
           [ { networking.hostName = "pc"; } ./hardware-pc.nix ./custom-pc.nix
-                     inputs.musnix.nixosModules.musnix ]
+          inputs.musnix.nixosModules.musnix ]
           ++ modules;
       };
-      gb = nixpkgs.lib.nixosSystem {
+      rpi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [ { networking.hostName = "gb"; } ./hardware-pc.nix ./custom-pc.nix ./gb.nix
-                     ]
-          ++ modules;
+          [
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            { networking.hostName = "rpi"; } ./basic.nix ./syncthing.nix
+            {
+              nixpkgs.config.allowUnsupportedSystem = true;
+              nixpkgs.hostPlatform.system = "aarch64-linux";
+              nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
+              # ... extra configs as above
+            }
+          ];
       };
     };
+    images.rpi = nixosConfigurations.rpi.config.system.build.sdImage;
   };
 }
