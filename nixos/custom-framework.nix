@@ -32,4 +32,6 @@
       CPU_MAX_PERF_ON_BAT = 50;
     };
   };
+
+  services.fwupd.enable = true;
 }
