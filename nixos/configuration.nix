@@ -33,4 +33,5 @@
 
   programs.nm-applet.enable = true;
   programs.openvpn3.enable = true;
+  services.mullvad-vpn.enable = true;
 }
