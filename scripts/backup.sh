@@ -1,6 +1,7 @@
-mkdir /run/media/extHdd/backup
+exthdd=/mnt/extHdd/
+dir=$exthdd/backup
+mkdir $dir
 # borg init -e repokey /run/media/extHdd/backup
 
-folder="/run/media/extHdd/backup"
 date=$(date -I)
-borg create -v "${folder}::$date" ~/resource ~/projects ~/.local/mail "/home/toni/.local/share/Anki2/User 1/collection.anki2"
+borg create -v "${dir}::$date" ~/resource $exthdd/pictures

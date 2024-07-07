@@ -6,7 +6,7 @@
   # If I can, remove musnix altogether
   # musnix.enable = true;
 
-  environment.systemPackages = with pkgs; [ reaper steam ];
+  environment.systemPackages = with pkgs; [ reaper steam borgbackup ];
 
   # Enable OpenGL
   hardware.opengl = {
