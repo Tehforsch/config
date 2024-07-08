@@ -17,7 +17,6 @@
         ./basic.nix
         ./configuration.nix
         ./sound.nix
-        ./services.nix
         ./default-packages.nix
         ./keyboard-configuration.nix
         # ./hyprland.nix
@@ -31,6 +30,7 @@
       ];
       only_personal = [
         ./syncthing.nix
+        ./services.nix
       ];
     in {
       pc = nixpkgs.lib.nixosSystem {

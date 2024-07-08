@@ -1,17 +1,5 @@
 { config, pkgs, inputs, ... }:
-
 {
-
-  systemd.user.services.journal = {
-    enable = true;
-    description = "journal webserver";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
-    };
-  };
-
   services.mpd = {
     enable = true;
     user = "toni";
@@ -40,6 +28,16 @@
     };
   };
 
+  systemd.user.services.journal = {
+    enable = true;
+    description = "journal webserver";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
+    };
+  };
+
   systemd.timers.refreshNewsboat = {
     wantedBy = [ "timers.target" ];
     partOf = [ "refreshNewsboat.service" ];
@@ -52,9 +50,5 @@
     '';
   };
 
-  services.emacs = {
-    enable = true;
-    defaultEditor = true;
-  };
-
+  services.mullvad-vpn.enable = true;
 }
