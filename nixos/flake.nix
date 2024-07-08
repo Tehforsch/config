@@ -23,8 +23,14 @@
         # ./hyprland.nix
         ./i3.nix
         ./redshift.nix
-        ./syncthing.nix
         ./power-management.nix
+      ];
+      only_work = [
+        ./work.nix
+        ./yubikey.nix
+      ];
+      only_personal = [
+        ./syncthing.nix
       ];
     in {
       pc = nixpkgs.lib.nixosSystem {
@@ -35,10 +41,9 @@
             { networking.hostName = "pc"; }
             ./hardware-pc.nix
             ./custom-pc.nix 
-            ./yubikey.nix
             inputs.musnix.nixosModules.musnix
           ]
-          ++ modules;
+          ++ modules ++ only_work ++ only_personal;
       };
       framework = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -50,7 +55,7 @@
             ./hardware-framework.nix
             ./custom-framework.nix
           ]
-          ++ modules;
+          ++ modules ++ only_personal;
       };
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -62,7 +67,7 @@
             ./hardware-thinkpad.nix
             ./custom-thinkpad.nix
           ]
-          ++ modules;
+          ++ modules ++ only_work;
       };
       rpi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
