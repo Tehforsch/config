@@ -31,15 +31,24 @@
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [ { networking.hostName = "framework"; } ./hardware-framework.nix ./custom-framework.nix ]
+          [
+            { networking.hostName = "framework"; }
+            ./hardware-framework.nix
+            ./custom-framework.nix
+          ]
           ++ modules;
       };
       pc = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [ { networking.hostName = "pc"; } ./hardware-pc.nix ./custom-pc.nix
-          inputs.musnix.nixosModules.musnix ]
+          [
+            { networking.hostName = "pc"; }
+            ./hardware-pc.nix
+            ./custom-pc.nix 
+            ./yubikey.nix
+            inputs.musnix.nixosModules.musnix
+          ]
           ++ modules;
       };
       rpi = nixpkgs.lib.nixosSystem {
