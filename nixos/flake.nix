@@ -27,17 +27,6 @@
         ./power-management.nix
       ];
     in {
-      framework = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules =
-          [
-            { networking.hostName = "framework"; }
-            ./hardware-framework.nix
-            ./custom-framework.nix
-          ]
-          ++ modules;
-      };
       pc = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
@@ -48,6 +37,30 @@
             ./custom-pc.nix 
             ./yubikey.nix
             inputs.musnix.nixosModules.musnix
+          ]
+          ++ modules;
+      };
+      framework = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules =
+          [
+            { networking.hostName = "framework"; }
+            ./laptop.nix
+            ./hardware-framework.nix
+            ./custom-framework.nix
+          ]
+          ++ modules;
+      };
+      thinkpad = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules =
+          [
+            { networking.hostName = "thinkpad"; }
+            ./laptop.nix
+            ./hardware-thinkpad.nix
+            ./custom-thinkpad.nix
           ]
           ++ modules;
       };
