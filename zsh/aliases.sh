@@ -23,7 +23,7 @@ alias gl="git log --ext-diff"
 alias gdm="git diff ORIG_HEAD MERGE_HEAD --ext-diff"
 alias gri="git rebase -i"
 alias sw="git switch"
-alias rs="git restore"
+alias re="git restore"
 
 alias agg="rga-fzf"
 
