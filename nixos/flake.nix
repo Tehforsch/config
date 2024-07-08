@@ -41,6 +41,7 @@
             { networking.hostName = "pc"; }
             ./hardware-pc.nix
             ./custom-pc.nix 
+            ./unifiedremote.nix
             inputs.musnix.nixosModules.musnix
           ]
           ++ modules ++ only_work ++ only_personal;
