@@ -16,7 +16,13 @@ function make_symlink {
     target="$CONFIG/$1"
     name="$HOME/$2"
     mkdir -p $(dirname "$name")
-    if [[ ! -a "$name" ]]; then
+    if [[ -L "$name" ]]; then
+        if [[ $(readlink -f "$name") != $target ]]; then
+            echo "Deleting previously existing symlink: $target"
+            rm $name
+            ln -s "$target" "$name"
+        fi
+    elif [[ ! -a "$name" ]]; then
         echo "$target\t\t -> $name"
         ln -s "$target" "$name"
     fi
