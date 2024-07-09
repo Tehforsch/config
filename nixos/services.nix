@@ -31,7 +31,6 @@
   systemd.user.services.journal = {
     enable = true;
     description = "journal webserver";
-    wantedBy = [ "default.target" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";

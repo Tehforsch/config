@@ -114,8 +114,8 @@ alias pl="python3 ~/projects/pl/main.py"
 
 alias pbron="pybob replot . --only-new"
 
-alias journ="$CONFIG/scripts/journal_entry.sh"
-alias journy="$CONFIG/scripts/journal_entry.sh yesterday"
+alias journ="systemctl start --user journal; $CONFIG/scripts/journal_entry.sh"
+alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard; $CONFIG/scripts/journal_entry.sh yesterday"
 
 alias nixsw="sudo -u toni nixos-rebuild switch --flake ~/projects/config/nixos" # The sudo -u toni ensures that I can use ssh keys from my normal user while sudoing to clone private repos
 alias nixb="nixos-rebuild build --flake ~/projects/config/nixos"
