@@ -3,20 +3,24 @@
 "query:Podcasts:tags # \"podcasts\""
 "query:Music:tags # \"music\""
 
-# # # Adam Ondra
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw videos !hidden
-# # # Mellow
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC5jRwTUqG15l-BcqQHbVFtA videos !hidden
-# # # Shawn Raboutou
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCWaC58KxHxyCgZVl4cRDxSg videos !hidden
-# # Alex Megos
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCL3Kl-rgMHFdGvGFU2Z_Enw videos !hidden
-# # Emil Abrahammson
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCqiKFGkSZwrbMSfkkd2CQGg videos !hidden
-# # Wedge
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ videos !hidden
-# # Will Bosi
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCu0Xag_M94EXfxTM632yGYg videos !hidden
+# Adam Ondra
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw videos !hidden
+# Mellow
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5jRwTUqG15l-BcqQHbVFtA videos !hidden
+# Shawn Raboutou
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWaC58KxHxyCgZVl4cRDxSg videos !hidden
+# Alex Megos
+https://www.youtube.com/feeds/videos.xml?channel_id=UCL3Kl-rgMHFdGvGFU2Z_Enw videos !hidden
+# Emil Abrahammson
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqiKFGkSZwrbMSfkkd2CQGg videos !hidden
+# Wedge
+https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ videos !hidden
+# Will Bosi
+https://www.youtube.com/feeds/videos.xml?channel_id=UCu0Xag_M94EXfxTM632yGYg videos !hidden
+# Daniel Naroditsky
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHP9CdeguNUI-_nBv_UXBhw videos !hidden
+# We say things
+https://www.youtube.com/feeds/videos.xml?channel_id=UC20bQQhVzceuQMn8zJL2i-A videos !hidden
 
 
 
