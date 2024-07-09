@@ -6,7 +6,12 @@
   # If I can, remove musnix altogether
   # musnix.enable = true;
 
-  environment.systemPackages = with pkgs; [ reaper steam borgbackup ];
+  environment.systemPackages = with pkgs; [
+    reaper
+    steam
+    borgbackup
+    anki
+  ];
 
   # Enable OpenGL
   hardware.opengl = {
