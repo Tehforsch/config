@@ -30,6 +30,7 @@
     oath-toolkit
     openvpn
     openssh
+    openconnect
 
     # User applications
     firefox
