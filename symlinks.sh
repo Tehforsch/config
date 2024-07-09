@@ -3,7 +3,13 @@ if [[ -z $HOME ]]; then
     echo "Environment variable HOME not set."
     exit 2
 fi
-SYSTEM_NAME=$(hostname)
+if [[ $# == 1 ]]; then
+    SYSTEM_NAME=$1
+else
+    SYSTEM_NAME=$(hostname)
+fi
+echo "Setting symlinks for $SYSTEM_NAME"
+
 CONFIG=$HOME/projects/config
 
 function make_symlink {
