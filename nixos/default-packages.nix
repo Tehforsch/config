@@ -37,17 +37,12 @@
     firefox
     vlc
     pcmanfm
-    telegram-desktop
-    signal-desktop
     syncthing
     steam
     thunderbird
     redshift
-    newsboat
     zathura
     flameshot
-    taskwarrior
-    mumble
     usbutils
 
     # Sound + Music

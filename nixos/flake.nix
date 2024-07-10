@@ -29,6 +29,7 @@
         ./yubikey.nix
       ];
       only_personal = [
+        ./personal-packages.nix
         ./syncthing.nix
         ./services.nix
       ];
