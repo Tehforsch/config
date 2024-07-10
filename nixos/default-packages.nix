@@ -47,6 +47,7 @@
     flameshot
     taskwarrior
     mumble
+    usbutils
 
     # Sound + Music
     pavucontrol
