@@ -31,6 +31,7 @@
     openvpn
     openssh
     openconnect
+    openssl
 
     # User applications
     firefox
