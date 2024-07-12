@@ -43,6 +43,7 @@
     redshift
     zathura
     flameshot
+    nomacs
     usbutils
     dunst # notification daemon
 
