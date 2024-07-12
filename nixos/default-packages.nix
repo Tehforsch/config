@@ -44,6 +44,7 @@
     zathura
     flameshot
     usbutils
+    dunst # notification daemon
 
     # Sound + Music
     pavucontrol

@@ -31,6 +31,7 @@ function make_symlink {
 # The good, following the XDG_CONFIG_DIR structure
 make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bat/config .config/bat/config
+make_symlink dunst/dunstrc .config/dunst/dunstrc
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
