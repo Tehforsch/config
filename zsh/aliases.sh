@@ -17,13 +17,13 @@ alias gs="git status"
 alias gsu="git submodule update --recursive --remote"
 alias gr="git reset"
 alias ggr="$CONFIG/scripts/gitGrep.sh"
-alias co="git checkout"
+alias co="git restore"
 alias gpf="git push --force-with-lease"
 alias gl="git log --ext-diff"
 alias gdm="git diff ORIG_HEAD MERGE_HEAD --ext-diff"
 alias gri="git rebase -i"
-alias sw="git switch"
-alias re="git restore"
+alias gb="git switch"
+alias cob="git switch"
 
 alias agg="rga-fzf"
 
@@ -115,7 +115,7 @@ alias pl="python3 ~/projects/pl/main.py"
 alias pbron="pybob replot . --only-new"
 
 alias journ="systemctl start --user journal; $CONFIG/scripts/journal_entry.sh"
-alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard; $CONFIG/scripts/journal_entry.sh yesterday"
+alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard&; $CONFIG/scripts/journal_entry.sh yesterday"
 
 alias nixsw="sudo -u toni nixos-rebuild switch --flake ~/projects/config/nixos" # The sudo -u toni ensures that I can use ssh keys from my normal user while sudoing to clone private repos
 alias nixb="nixos-rebuild build --flake ~/projects/config/nixos"
