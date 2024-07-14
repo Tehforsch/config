@@ -26,9 +26,8 @@
     gcc
     gnumake
     pkg-config
-    python3
     ruff
-    python-lsp-server
+    (python3.withPackages (p: with p; [ numpy python-lsp-server ]))
 
     # Network stuff
     oath-toolkit
