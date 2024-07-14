@@ -25,6 +25,7 @@
     rustup # Keeping this here for convenience, although dev shells can substitute this well
     gcc
     gnumake
+    pkg-config
 
     # Network stuff
     oath-toolkit
@@ -54,6 +55,7 @@
     mpc-cli
     mpdas
     libnotify
+    alsa-lib
 
     docker
     docker-compose
