@@ -5,3 +5,13 @@ function shell {
         echo "Need an argument."
     fi
 }
+
+function dev {
+    if [[ "$#" -eq 2 ]]; then
+        nix develop "$1"#$2 -c zsh
+    elif [[ "$#" -eq 1 ]]; then
+        nix develop "$1" -c zsh
+    else 
+        nix develop . -c zsh
+    fi
+}
