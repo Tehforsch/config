@@ -26,6 +26,9 @@
     gcc
     gnumake
     pkg-config
+    python3
+    ruff
+    python-lsp-server
 
     # Network stuff
     oath-toolkit
