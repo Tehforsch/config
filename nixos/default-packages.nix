@@ -14,7 +14,8 @@
     fzf
     bat
     silver-searcher # ag
-    ripgrep # rg
+    ripgrep
+    ripgrep-all
     unp
     killall
     nil
