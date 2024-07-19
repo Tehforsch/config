@@ -1,4 +1,3 @@
-#!/bin/zsh
 xset -dpms
 xset s off
 
