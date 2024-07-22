@@ -56,6 +56,8 @@ alias btr="cargo test --release --features bevy/dynamic_linking"
 
 alias flame="$scripts/flamegraphRunningProcess.sh"
 
+alias top="btop"
+
 alias cp='cp -v'
 
 alias im="nomacs"

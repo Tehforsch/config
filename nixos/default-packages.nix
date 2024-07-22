@@ -31,6 +31,8 @@
     ruff
     (python3.withPackages (p: with p; [ numpy python-lsp-server ]))
     meld
+    btop
+    jq
 
     # Network stuff
     oath-toolkit
