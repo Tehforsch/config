@@ -1,12 +1,9 @@
 { pkgs, ... }:
 {
-  # systemd.sleep.extraConfig = ''
-  #   IdleActionSec=300s
-  #   IdleAction=suspend
-  # '';
-
-  services.logind.extraConfig = ''
-    IdleActionSec=30s
-    IdleAction=suspend
-  '';
+  services.xserver.xautolock = {
+    enable = true;
+    locker = "${pkgs.systemd}/bin/systemctl suspend";
+    nowlocker = "${pkgs.systemd}/bin/systemctl suspend";
+    time = 1000;
+  };
 }

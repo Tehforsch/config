@@ -26,9 +26,11 @@
     rustup # Keeping this here for convenience, although dev shells can substitute this well
     gcc
     gnumake
+    cmake
     pkg-config
     ruff
     (python3.withPackages (p: with p; [ numpy python-lsp-server ]))
+    meld
 
     # Network stuff
     oath-toolkit
@@ -50,6 +52,7 @@
     nomacs
     usbutils
     dunst # notification daemon
+    ffmpeg
 
     # Sound + Music
     pavucontrol

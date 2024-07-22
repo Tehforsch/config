@@ -11,6 +11,7 @@
     steam
     borgbackup
     anki
+    beets
   ];
 
   hardware.graphics = {

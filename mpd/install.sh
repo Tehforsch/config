@@ -1,1 +1,0 @@
-mkdir ~/.local/share/mpd
