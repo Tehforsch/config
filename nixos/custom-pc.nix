@@ -28,6 +28,10 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Without this setting, resuming after suspend would result in a
+    # black screen and no graphical output whatsoever.
+    powerManagement.enable = true;
   };
 
   security.pam.loginLimits = [
