@@ -58,6 +58,7 @@
     dunst # notification daemon
     ffmpeg
     spotify
+    discord
 
     # Sound + Music
     pavucontrol
