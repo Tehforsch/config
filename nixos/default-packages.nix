@@ -25,6 +25,8 @@
     htop
     rustup # Keeping this here for convenience, although dev shells can substitute this well
     gcc
+    clang
+    libclang
     gnumake
     cmake
     pkg-config
@@ -55,6 +57,7 @@
     usbutils
     dunst # notification daemon
     ffmpeg
+    spotify
 
     # Sound + Music
     pavucontrol
