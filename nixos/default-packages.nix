@@ -35,6 +35,7 @@
     meld
     btop
     jq
+    direnv
 
     # Network stuff
     oath-toolkit
@@ -73,4 +74,6 @@
     docker-compose
     zoom-us
   ];
+
+  programs.direnv.enable = true;
 }

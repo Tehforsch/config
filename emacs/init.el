@@ -60,6 +60,8 @@
 (load-from-config "fileAssociations.el")
 (load-from-config "expandRegion.el")
 
+(load-from-config "direnv.el")
+
 (load-from-config "magit.el")
 
 ; Specific languages
