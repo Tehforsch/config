@@ -1,72 +1,40 @@
-(use-package tree-sitter)
-(use-package tree-sitter-langs)
-(add-hook 'rustic-mode-hook 'tree-sitter-mode)
-(add-hook 'rustic-mode-hook 'tree-sitter-hl-mode)
-(add-to-list
-  'tree-sitter-major-mode-language-alist
-  '(rustic-mode . rust))
+(require 'treesit)
 
+; Shoutout to https://github.com/bitspook/spookmax.d for this. Don't know why I couldn't
+; find any other solution for emacs to actually find the installed grammars despite
+; adding it with (emacsWithPackages ...) in the nixos config
+(let ((nix-treesit-lib-path
+       (expand-file-name
+        "lib"
+        (string-replace
+         "\"" ""
+         (string-trim
+          (shell-command-to-string
+           "nix eval nixpkgs#emacsPackages.treesit-grammars.with-all-grammars.outPath")))))) 
+  (setf treesit-extra-load-path (list nix-treesit-lib-path)))
+
+(use-package treesit-auto)
+(global-treesit-auto-mode)
+(delete 'rust treesit-auto-langs)
+
+(setq treesit-font-lock-level 4)
+
+; Everytime I check this again virtually none of the textobjects work for me :|
 (use-package evil-textobj-tree-sitter :ensure t)
 
-;;;###autoload
-; Adapted version of evil-textobj-tree-sitter-get-textobj which only returns a text object if
-; Point is contained within the text object region
-(defmacro my-evil-textobj-tree-sitter-get-textobj (group &optional query)
-  (declare (debug t) (indent defun))
-  (let* ((groups (if (eq (type-of group) 'string)
-                     (list group)
-                   group))
-         (funsymbol (intern (concat "evil-textobj-tree-sitter-function--"
-                                    (mapconcat 'identity groups "-"))))
-         (interned-groups (mapcar #'intern groups)))
-    `(evil-define-text-object ,funsymbol
-       ;; rest argument is named because of compiler warning `argument _ not left unused`
-       (count &rest unused)
-       (let ((range (evil-textobj-tree-sitter--range count ',interned-groups ,query)))
-         ; Only actually return a range when point is contained within in
-         (if (and (and (not (eq range nil)) (>= (point) (car range))) (<= (point) (cdr range)))
-             (evil-range (car range)
-                         (cdr range))
-           (message (concat "No '" ,group "' text object found")))))))
+(define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
+(define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
 
+(define-key evil-outer-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "class.outer"))
+(define-key evil-inner-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "class.inner"))
 
+; Overwrite this to make sure even rustic mode gets the message that
+;we are using builtin treesitter
+(defun  evil-textobj-tree-sitter--use-builtin-treesitter () t)
 
-(add-hook 'tree-sitter-mode-hook 'my-setup-evil-tree-sitter-textobjs)
-
-(defun my-setup-evil-tree-sitter-textobjs ()
-    (define-key evil-outer-text-objects-map "f" (my-evil-textobj-tree-sitter-get-textobj "function.outer"))
-    (define-key evil-inner-text-objects-map "f" (my-evil-textobj-tree-sitter-get-textobj "function.inner"))
-
-    (define-key evil-inner-text-objects-map "c" (my-evil-textobj-tree-sitter-get-textobj "comment.outer"))
-    (define-key evil-outer-text-objects-map "c" (my-evil-textobj-tree-sitter-get-textobj "comment.outer"))
-
-    (define-key evil-inner-text-objects-map "o" (my-evil-textobj-tree-sitter-get-textobj "class.outer"))
-    (define-key evil-outer-text-objects-map "o" (my-evil-textobj-tree-sitter-get-textobj "class.outer"))
-
-    ; These are very buggy at the moment. Not activating them
-    ;; (define-key evil-inner-text-objects-map "a" (my-evil-textobj-tree-sitter-get-textobj "parameter.inner"))
-    ;; (define-key evil-outer-text-objects-map "a" (my-evil-textobj-tree-sitter-get-textobj "parameter.outer"))
-
-    ;; (define-key evil-inner-text-objects-map "o" (my-evil-textobj-tree-sitter-get-textobj "call.inner"))
-    ;; (define-key evil-outer-text-objects-map "o" (my-evil-textobj-tree-sitter-get-textobj "call.outer"))
-
-    ;; You can also bind multiple items and we will match the first one we can find
-    ;; (define-key evil-outer-text-objects-map "a" (my-evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer")))
-
-    ;; Goto start of next function
-    (define-key evil-normal-state-map (kbd "]f") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer")))
-    ;; Goto start of previous function
-    (define-key evil-normal-state-map (kbd "[f") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
-    ;; Goto end of next function
-    (define-key evil-normal-state-map (kbd "]F") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
-    ;; Goto end of previous function
-    (define-key evil-normal-state-map (kbd "[F") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer" t t)))
-)
+;; Goto start of next function
+(define-key evil-normal-state-map
+            (kbd "]f")
+            (lambda ()
+              (interactive)
+              (evil-textobj-tree-sitter-goto-textobj "parameters.outer")))

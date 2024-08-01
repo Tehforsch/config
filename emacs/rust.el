@@ -1,4 +1,28 @@
-(use-package rustic)
+; Install maintained fork
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+(package-refresh-contents)
+
+(use-package quelpa-use-package
+  :ensure t)
+
+
+
+(use-package rust-mode
+  :ensure t
+  :init
+  (setq rust-mode-treesitter-derive t))
+
+(use-package rustic
+  :quelpa (rustic :fetcher github
+                  :repo "emacs-rustic/rustic"))
+
+
+
+
+
+
 (setenv "PATH" (concat (getenv "PATH") ":/home/toni/.cargo/bin"))
 (setq exec-path (append exec-path '("/home/toni/.cargo/bin")))
 (setq exec-path (append exec-path '("/usr/lib/llvm15/bin")))

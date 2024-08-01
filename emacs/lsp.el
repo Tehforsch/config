@@ -17,14 +17,9 @@
 (setq lsp-enable-on-type-formatting nil)
 (setq lsp-modeline-code-actions-enable nil)
 (setq lsp-modeline-diagnostics-enable nil)
+(setq lsp-auto-execute-action nil)
 
 ;; (setq lsp-auto-guess-root t) ; This disables the message when opening a new project but I'm not sure its trustworthy?
-
-;; (use-package lsp-ui)
-
-;; (use-package ccls
-;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;;          (lambda () (require 'ccls) (lsp))))
 
 (use-package lsp-ui)
 

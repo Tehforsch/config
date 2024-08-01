@@ -36,6 +36,8 @@
     btop
     jq
     direnv
+    tree-sitter
+    (emacsWithPackages (ps: with ps; [ treesit-grammars.with-all-grammars ]))
 
     # Network stuff
     oath-toolkit

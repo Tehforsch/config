@@ -22,13 +22,13 @@
 
   virtualisation = {
     # podman = {
-    #   enable = true;
-    #   # Create a `docker` alias for podman, to use it as a drop-in replacement
-    #   dockerCompat = true;
-    #   # Required for containers under podman-compose to be able to talk to each other.
-    #   defaultNetwork.settings.dns_enabled = true;
-    # };
-    docker.enable = true;
+      #   enable = true;
+      #   # Create a `docker` alias for podman, to use it as a drop-in replacement
+      #   dockerCompat = true;
+      #   # Required for containers under podman-compose to be able to talk to each other.
+      #   defaultNetwork.settings.dns_enabled = true;
+      # };
+      docker.enable = true;
   };
 
   programs.nm-applet.enable = true;
@@ -39,4 +39,7 @@
     defaultEditor = true;
   };
 
+  services.emacs.package = with pkgs; (
+    emacsWithPackages (ps: with ps; [ treesit-grammars.with-all-grammars ])
+  );
 }
