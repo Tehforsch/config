@@ -1,0 +1,61 @@
+theme = "gruvbox"
+
+[editor]
+middle-click-paste = false
+scroll-lines = 7
+line-number = "relative"
+gutters = ["diagnostics"]
+auto-completion = false
+auto-format = false
+
+
+[keys.normal]
+V = ["select_mode", "extend_to_line_bounds"]
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+"0" = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+"C-e" = "toggle_comments"
+"%" = "match_brackets"
+esc = "collapse_selection"
+r = ["collapse_selection", "replace"]
+
+"C-m" = "expand_selection"
+"C-n" = "shrink_selection"
+"C-j" = "select_next_sibling"
+"C-k" = "select_prev_sibling"
+
+[keys.select]
+"{" = ["extend_to_line_bounds", "goto_prev_paragraph"]
+"}" = ["extend_to_line_bounds", "goto_next_paragraph"]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+k = ["extend_line_up", "extend_to_line_bounds"]
+j = ["extend_line_down", "extend_to_line_bounds"]
+d = ["yank_main_selection_to_clipboard", "delete_selection"]
+# y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
+# Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_start", "collapse_selection", "normal_mode"]
+p = "replace_selections_with_clipboard"
+P = "paste_clipboard_before"
+
+C-e = "toggle_comments"
+
+[keys.normal.space]
+s = ":write"
+x = "command_palette"
+
+[keys.normal.space.l]
+x = "code_action"
+
+[keys.normal.","]
+f = ":format"
+"," = "keep_primary_selection"
+
+[keys.normal.","."e"]
+l = "diagnostics_picker"
+n = "goto_next_diag"
+p = "goto_prev_diag"

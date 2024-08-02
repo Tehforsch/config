@@ -38,6 +38,7 @@
     direnv
     tree-sitter
     (emacsWithPackages (ps: with ps; [ treesit-grammars.with-all-grammars ]))
+    helix
 
     # Network stuff
     oath-toolkit
