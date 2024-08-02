@@ -36,6 +36,7 @@
     btop
     jq
     direnv
+    nushell
 
     # Network stuff
     oath-toolkit

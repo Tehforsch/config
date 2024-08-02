@@ -58,6 +58,8 @@ make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 make_symlink flameshot/flameshot.ini .config/flameshot/flameshot.ini
 make_symlink btop/btop.conf .config/btop/btop.conf
 make_symlink helix/config.toml .config/helix/config.toml
+make_symlink nushell/config.nu .config/nushell/config.nu
+make_symlink nushell/env.nu .config/nushell/env.nu
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
