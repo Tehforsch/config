@@ -76,6 +76,7 @@
 (load-from-config "yaml.el")
 (load-from-config "wgsl-mode.el")
 (load-from-config "nix.el")
+(use-package "nushell-mode")
 
 (load-from-config "tree-sitter.el")
 (load-from-config "folding.el")
