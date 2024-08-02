@@ -4,6 +4,8 @@ use piper to set DPI to 3000
 
 # Annoying things
 ## emacs
+the native treesit (as opposed to tree-sitter plugins) looks worse than tree-sitter. i implemented the necessary changes to nixos etc on the "add-native-tree-sitter" branch, if i ever wanna check that out again
+
 consult lsp symbols is super slow and ugly. why is it much faster and nicer looking if i do consult lsp symbols file ?
 
 would prefer if i could run cape-dabbrev immediately when no lsp matches are found. CANNOT find out how to do this and suggest not researching it anymore in the future. find a fucking work around if you want but dont try
