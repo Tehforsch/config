@@ -29,7 +29,7 @@
 
 (if (> (display-pixel-height) 1080)
   (progn
-    (add-to-list 'default-frame-alist '(font . "Inconsolata 13")))
+    (add-to-list 'default-frame-alist '(font . "Inconsolata 14")))
   (progn
     (add-to-list 'default-frame-alist '(font . "Inconsolata 14"))))
 
