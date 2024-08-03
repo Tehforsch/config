@@ -1,7 +1,8 @@
 function get_git_info()
 {
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == "true" ]]; then
-        branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+        branch=$(git describe --contains --all)
+        # branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
         if [[ $(git diff --stat) == '' ]]; then
             color="6"
             dirtyString=""
