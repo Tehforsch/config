@@ -37,6 +37,8 @@
     jq
     direnv
     nushell
+    inkscape
+    xrectsel
 
     # Network stuff
     oath-toolkit
@@ -58,7 +60,7 @@
     nomacs
     usbutils
     dunst # notification daemon
-    ffmpeg
+    (ffmpeg.override { withXcb = true; })
     spotify
     discord
 

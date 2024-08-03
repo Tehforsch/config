@@ -1,4 +1,3 @@
-#!/bin/bash
 sleep 0.1
 if [[ $# == 0 ]]; then
     geom=$(xrectsel)
