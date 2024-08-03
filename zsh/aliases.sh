@@ -23,20 +23,8 @@ alias gl="git log --ext-diff"
 alias gdm="git diff ORIG_HEAD MERGE_HEAD --ext-diff"
 alias gri="git rebase -i"
 alias gre="git rebase"
-alias gw="non_shitty_git_switch"
+alias gw="git switch"
 alias gb="git branch"
-
-function non_shitty_git_switch {
-    # Find out if the target exists as a branch
-    git show-ref --verify --quiet "refs/heads/$1"
-    if [[ $? == 0 ]]; then
-        # Do not detach HEAD
-        git switch "$1"
-    else
-        # Detach HEAD
-        git switch -d "$1"
-    fi
-}
 
 alias glf="forgit::log"
 alias gdf="forgit::diff"
