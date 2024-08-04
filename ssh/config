@@ -4,7 +4,7 @@ Host helix
     ForwardX11 no
 Host bwprod
     HostName helix.bwservices.uni-heidelberg.de
-    ProxyCommand ssh ita nc %h %p
+    # ProxyCommand ssh ita nc %h %p
     User hd_hp240
     ForwardX11 no
 Host binac
