@@ -14,7 +14,9 @@
   let
     overlays = [ (import rust-overlay) ];
     pkgs = import nixpkgs { inherit system overlays; };
-    stable = pkgs.rust-bin.beta.latest.default;
+    stable = pkgs.rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" ];
+    };
     nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default));
   in {
     devShells = with pkgs; {
@@ -25,7 +27,11 @@
         buildInputs = [ pkg-config nightly cmake ];
       };
       bevy = mkShell {
-        packages = ([
+        buildInputs = ([
+          clang
+          lld
+        ]);
+        nativeBuildInputs = ([
           stable
           # Bevy
           pkg-config
@@ -35,8 +41,6 @@
           vulkan-loader
           vulkan-validation-layers
           udev
-          clang
-          lld
           # If on x11
           xorg.libX11
           xorg.libX11
@@ -50,7 +54,7 @@
         ]);
         shellHook = ''
           export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
-            alsaLib
+            alsa-lib
             udev
             vulkan-loader
             libxkbcommon
