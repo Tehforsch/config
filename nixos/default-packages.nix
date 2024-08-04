@@ -31,7 +31,7 @@
     cmake
     pkg-config
     ruff
-    (python3.withPackages (p: with p; [ numpy python-lsp-server ]))
+    (python3.withPackages (p: with p; [ numpy python-lsp-server pyyaml ]))
     meld
     btop
     jq
