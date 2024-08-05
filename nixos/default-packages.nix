@@ -21,11 +21,8 @@
     nil
     zip
     unzip
-    mold
     htop
-    rustup # Keeping this here for convenience, although dev shells can substitute this well
     gcc
-    clang
     libclang
     gnumake
     cmake
@@ -39,6 +36,8 @@
     nushell
     inkscape
     xrectsel
+    mold-wrapped
+    clang
 
     # Network stuff
     oath-toolkit

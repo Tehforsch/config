@@ -62,7 +62,9 @@
         '';
       };
       scanner = mkShell {
+        packages = [ pkgs.clang pkgs.mold-wrapped ];
         nativeBuildInputs = with pkgs.buildPackages; [
+          stable
           file
           libpcap
           hiredis
