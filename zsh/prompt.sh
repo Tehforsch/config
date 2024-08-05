@@ -1,8 +1,6 @@
 function get_git_info()
 {
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == "true" ]]; then
-        branch=$(git describe --contains --all)
-        # branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
         if [[ $(git diff --stat) == '' ]]; then
             color="6"
             dirtyString=""
@@ -10,11 +8,23 @@ function get_git_info()
             color="11"
             dirtyString="*"
         fi
-        if [[ $branch == "" ]];
+        exit=$(git symbolic-ref -q HEAD 2> /dev/null)
+        if  [[ $? == 0 ]] ; then
+            # If we're at a branch, call it by the branch name
+            branchinfo=$(git rev-parse --abbrev-ref HEAD)
+            branchColor=$color
+        else
+            # If HEAD is detached, describe it
+            desc=$(git describe --contains --all)
+            commit=$(git rev-parse --short HEAD)
+            color=1
+            branchinfo="$commit = $desc"
+        fi
+        if [[ $branchinfo == "" ]];
         then
             :
         else
-            echo '%F{'${color}'}('${dirtyString}${branch}')%f'
+            echo '%F{'${color}'}('${dirtyString}${branchinfo}'%F{'${color}'})%f'
         fi
     fi
 }
