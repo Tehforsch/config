@@ -15,16 +15,18 @@
     overlays = [ (import rust-overlay) ];
     pkgs = import nixpkgs { inherit system overlays; };
     stable = pkgs.rust-bin.stable.latest.default.override {
-      extensions = [ "rust-src" ];
+      extensions = [ "rust-src" "rust-analyzer" ];
     };
-    nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default));
+    nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)).override {
+      extensions = [ "rust-src" "rust-analyzer" ];
+    };
   in {
     devShells = with pkgs; {
       rust_stable = mkShell {
-        buildInputs = [ pkg-config cmake stable ];
+        buildInputs = [ pkg-config cmake stable clang ];
       };
       rust_nightly = mkShell {
-        buildInputs = [ pkg-config nightly cmake ];
+        buildInputs = [ pkg-config nightly cmake clang ];
       };
       bevy = mkShell {
         buildInputs = ([
