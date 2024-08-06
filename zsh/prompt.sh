@@ -8,11 +8,20 @@ function get_git_info()
             color="11"
             dirtyString="*"
         fi
+        # Are we at a detached HEAD?
         exit=$(git symbolic-ref -q HEAD 2> /dev/null)
         if  [[ $? == 0 ]] ; then
-            # If we're at a branch, call it by the branch name
-            branchinfo=$(git rev-parse --abbrev-ref HEAD)
-            branchColor=$color
+            # Check first if HEAD exists ... in empty repos
+            # it does not
+            git rev-parse -q --git-ref HEAD &> /dev/null
+            if  [[ $? == 0 ]] ; then
+                # HEAD exists - check if it's a branch
+                # If we're at a branch, call it by the branch name
+                branchinfo=$(git rev-parse --abbrev-ref HEAD)
+            else
+                branchinfo="new repository"
+                color=4
+            fi
         else
             # If HEAD is detached, describe it
             desc=$(git describe --contains --all)

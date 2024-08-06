@@ -24,6 +24,7 @@ alias gdm="git diff ORIG_HEAD MERGE_HEAD --ext-diff"
 alias gri="git rebase -i"
 alias gre="git rebase"
 alias gw="git switch"
+alias gw="git switch --detach"
 alias gb="git branch"
 
 alias glf="forgit::log"
