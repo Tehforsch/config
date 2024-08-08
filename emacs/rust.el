@@ -8,7 +8,6 @@
 
 (add-hook 'rustic-mode-hook 'flycheck-mode)
 (setq rustic-lsp-server 'rust-analyzer)
-(setq rustic-analyzer-command '("rustup run nightly rust-analyzer"))
 
 
 (setq lsp-auto-execute-action nil)

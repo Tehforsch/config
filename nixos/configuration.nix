@@ -18,6 +18,7 @@
     hack-font
     inconsolata
     font-awesome
+    barlow
   ];
 
   virtualisation = {
