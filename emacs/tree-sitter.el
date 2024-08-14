@@ -5,6 +5,10 @@
 (add-to-list
   'tree-sitter-major-mode-language-alist
   '(rustic-mode . rust))
+(add-hook 'python-mode-hook 'tree-sitter-mode)
+(add-hook 'python-mode-hook 'tree-sitter-hl-mode)
+(add-hook 'c-mode-hook 'tree-sitter-mode)
+(add-hook 'c-mode-hook 'tree-sitter-hl-mode)
 
 (use-package evil-textobj-tree-sitter :ensure t)
 
@@ -52,21 +56,28 @@
 
     ;; You can also bind multiple items and we will match the first one we can find
     ;; (define-key evil-outer-text-objects-map "a" (my-evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer")))
-
-    ;; Goto start of next function
-    (define-key evil-normal-state-map (kbd "]f") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer")))
-    ;; Goto start of previous function
-    (define-key evil-normal-state-map (kbd "[f") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
-    ;; Goto end of next function
-    (define-key evil-normal-state-map (kbd "]F") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
-    ;; Goto end of previous function
-    (define-key evil-normal-state-map (kbd "[F") (lambda ()
-                                                    (interactive)
-                                                    (evil-textobj-tree-sitter-goto-textobj "function.outer" t t)))
 )
+
+(defun goto-start-next-function ()
+  (interactive)
+  (if tree-sitter-mode
+    (evil-textobj-tree-sitter-goto-textobj "function.outer")
+    (beginning-of-defun)))
+
+(defun goto-start-previous-function ()
+  (interactive)
+  (if tree-sitter-mode
+    (evil-textobj-tree-sitter-goto-textobj "function.outer" t)
+    (beginning-of-defun)))
+
+(defun goto-end-next-function ()
+  (interactive)
+  (if tree-sitter-mode
+    (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)
+    (end-of-defun)))
+
+(defun goto-end-previous-function ()
+  (interactive)
+  (if tree-sitter-mode
+    (evil-textobj-tree-sitter-goto-textobj "function.outer" t t)
+    (end-of-defun)))

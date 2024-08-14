@@ -87,7 +87,8 @@
 (mode-leader-def '(normal visual) 'rustic-mode-map
   "p" 'lsp-rust-find-parent-module
   "f" 'lsp-format-buffer
-  "c" 'lsp-rust-analyzer-open-cargo-toml)
+  "c" 'lsp-rust-analyzer-open-cargo-toml
+  "d" 'lsp-rust-analyzer-open-external-docs)
 
 (mode-leader-def '(normal visual) 'python-mode-map
   "f" 'python-black-buffer)
@@ -107,9 +108,27 @@
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
-(define-key global-map (kbd "C-<return>") 'make-frame)
+(general-create-definer motion-leader-def :prefix "z")
+(motion-leader-def '(normal visual) 'global-map
+  "e" 'toggle-transient-error
+  "s" 'consult-lsp-file-symbols
+  "S" 'consult-lsp-symbols
+  "r" 'lsp-rename
+  "x" 'lsp-execute-code-action
+  "a" 'consult-line
+  "A" 'consult-line-multi
+  "t" 'toggle-fold-eol
+  "O" 'ts-fold-open-all
+  "C" 'ts-fold-close-all
+  )
 
-(define-key evil-normal-state-map ",d" 'lsp-rust-analyzer-open-external-docs)
+(general-define-key
+    :states '(normal visual emacs motion)
+    "(" 'goto-start-previous-function
+    ")" 'goto-end-next-function
+    )
+
+(define-key global-map (kbd "C-<return>") 'make-frame)
 
 (define-key evil-normal-state-map (kbd "<tab>") 'toggle-fold-eol)
 

@@ -28,4 +28,4 @@
 (define-key evil-outer-text-objects-map "s" 'evil-inner-symbol)
 ; Bind the sentence thing to "S" instead, in case I might need it
 (define-key evil-inner-text-objects-map "S" 'evil-inner-sentence)
-   (define-key evil-outer-text-objects-map "S" 'evil-inner-sentence)
+(define-key evil-outer-text-objects-map "S" 'evil-inner-sentence)
