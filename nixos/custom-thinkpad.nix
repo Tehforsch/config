@@ -1,3 +1,4 @@
 { pkgs, ... }:
 {
+  hardware.enableAllFirmware = true;
 }
