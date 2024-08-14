@@ -75,9 +75,9 @@
   "x" 'lsp-execute-code-action
   "a" 'consult-line
   "A" 'consult-line-multi
-  "f" 'evil-toggle-fold
-  "O" 'evil-open-folds
-  "C" 'evil-open-folds
+  "t" 'toggle-fold-eol
+  "O" 'ts-fold-open-all
+  "C" 'ts-fold-close-all
   )
 
 (mode-leader-def '(normal visual) 'emacs-lisp-mode-map
@@ -109,10 +109,9 @@
 
 (define-key global-map (kbd "C-<return>") 'make-frame)
 
-(define-key evil-normal-state-map ",t" 'evil-toggle-fold)
-(define-key evil-normal-state-map ",O" 'evil-open-folds)
-(define-key evil-normal-state-map ",C" 'evil-close-folds)
 (define-key evil-normal-state-map ",d" 'lsp-rust-analyzer-open-external-docs)
+
+(define-key evil-normal-state-map (kbd "<tab>") 'toggle-fold-eol)
 
 ; Org-mode hotkeys
 (defun add-org-mode-motion-keys ()
