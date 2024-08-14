@@ -27,6 +27,12 @@ alias gw="git switch"
 alias gwd="git switch --detach"
 alias gb="git branch"
 
+function checkout_pr() {
+    # $1 is the PR number.
+    git fetch origin pull/$1/head:pull-request-$1
+    git switch pull-request-$1
+}
+
 alias glf="forgit::log"
 alias gdf="forgit::diff"
 alias gdcf="forgit::diff --cached"
