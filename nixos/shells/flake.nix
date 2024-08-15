@@ -20,6 +20,25 @@
     nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)).override {
       extensions = [ "rust-src" "rust-analyzer" ];
     };
+    makeScannerShell = (rustToolChain: pkgs.mkShell {
+        packages = [ pkgs.clang pkgs.mold-wrapped ];
+        nativeBuildInputs = with pkgs.buildPackages; [
+          rustToolChain
+          file
+          libpcap
+          hiredis
+          cmake
+          libnet
+          curl
+          redis
+          pkg-config
+          zlib
+          cmake
+          glib
+          json-glib
+          gnutls
+        ];
+    });
   in {
     devShells = with pkgs; {
       rust_stable = mkShell {
@@ -28,6 +47,8 @@
       rust_nightly = mkShell {
         buildInputs = [ pkg-config nightly cmake clang ];
       };
+      scanner = makeScannerShell stable;
+      scannerNightly = makeScannerShell nightly;
       bevy = mkShell {
         buildInputs = ([
           clang
@@ -62,25 +83,6 @@
             libxkbcommon
           ]}"
         '';
-      };
-      scanner = mkShell {
-        packages = [ pkgs.clang pkgs.mold-wrapped ];
-        nativeBuildInputs = with pkgs.buildPackages; [
-          stable
-          file
-          libpcap
-          hiredis
-          cmake
-          libnet
-          curl
-          redis
-          pkg-config
-          zlib
-          cmake
-          glib
-          json-glib
-          gnutls
-        ];
       };
       python = mkShell {
         buildInputs = [ (python3.withPackages (p: with p; [ numpy pyyaml ])) ];
