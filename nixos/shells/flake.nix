@@ -49,6 +49,10 @@
       };
       scanner = makeScannerShell stable;
       scannerNightly = makeScannerShell nightly;
+      diman = mkShell {
+        buildInputs = [ pkg-config cmake nightly clang libclang hdf5 mpi ];
+        shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
+      };
       bevy = mkShell {
         buildInputs = ([
           clang
