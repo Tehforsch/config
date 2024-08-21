@@ -90,3 +90,5 @@ alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/d
 alias addmusic="bash ~/music/addMusic.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
+
+alias scannerctl="cargo run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
