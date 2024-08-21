@@ -44,6 +44,7 @@
     openvpn
     openssh
     openconnect
+    networkmanager-openconnect
     openssl
 
     # User applications
