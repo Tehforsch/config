@@ -38,6 +38,9 @@
     xrectsel
     mold-wrapped
     clang
+    # This is nice for new projects and diving through external libraries where
+    # direnv doesn't really work.
+    rustup
 
     # Network stuff
     oath-toolkit
@@ -50,7 +53,7 @@
     # User applications
     firefox
     vlc
-    pcmanfm
+    nautilus
     syncthing
     steam
     thunderbird
@@ -63,6 +66,7 @@
     (ffmpeg.override { withXcb = true; })
     spotify
     discord
+    telegram-desktop
 
     # Sound + Music
     pavucontrol
