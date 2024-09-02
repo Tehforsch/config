@@ -8,7 +8,7 @@ def get_files(path: Path):
     return [path / f for f in os.listdir(path)]
 
 def is_movie(path: Path):
-    return path.suffix == ".MP4"
+    return path.suffix == ".MP4" or path.suffix == ".MOV"
 
 def is_pic(path: Path):
     return path.suffix == ".JPG"
@@ -47,6 +47,8 @@ def get_existing(dir_name):
         climber_attempt = s[-1]
         name = "".join(s[0:-1])
         g = search("([a-zA-Z]+)([0-9]+)", climber_attempt)
+        if g is None:
+            continue
         climber = g.groups()[0]
         attempt = g.groups()[1]
         existing.append((name, climber, attempt))
@@ -74,18 +76,18 @@ def get_climber_name(dir_name):
         climber = climber[0].upper() + climber[1:]
     return climber
     
-def get_attempt(dir_name):
+def get_attempt(dir_name, boulder_name, climber_name):
     existing = get_existing(dir_name)
     if existing == []:
         index = 1
     else:
-        index = max(int(x[2]) for x in existing) + 1
+        index = max((int(x[2]) for x in existing if x[0] == boulder_name and x[1] == climber_name), default=0) + 1
     return f"{index:02}"
     
 def get_new_name(dir_name, suffix):
     boulder_name = get_boulder_name(dir_name)
     climber_name = get_climber_name(dir_name)
-    attempt = get_attempt(dir_name)
+    attempt = get_attempt(dir_name, boulder_name, climber_name)
     return f"{boulder_name}{climber_name}{attempt}{suffix}"
     
 def handle_all(paths, dir_name, view):
