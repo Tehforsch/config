@@ -117,7 +117,6 @@
   "x" 'lsp-execute-code-action
   "a" 'consult-line
   "A" 'consult-line-multi
-  "t" 'toggle-fold-eol
   "O" 'ts-fold-open-all
   "C" 'ts-fold-close-all
   )
