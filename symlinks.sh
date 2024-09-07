@@ -56,7 +56,6 @@ make_symlink git/gitconfig.conf .config/git/config
 make_symlink vim/init.vim .config/vim/vimrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
 make_symlink flameshot/flameshot.ini .config/flameshot/flameshot.ini
-make_symlink btop/btop.conf .config/btop/btop.conf
 make_symlink helix/config.toml .config/helix/config.toml
 make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink nushell/env.nu .config/nushell/env.nu
