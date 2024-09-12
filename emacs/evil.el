@@ -67,6 +67,9 @@
 ; Make sure we cant repeat undo / repeat with .
 (evil-declare-abort-repeat 'evil-undo)
 (evil-declare-abort-repeat 'evil-redo)
+(evil-declare-abort-repeat 'completion-at-point)
+(evil-declare-abort-repeat 'goto-start-next-function)
+(evil-declare-abort-repeat 'goto-start-prev-function)
 
 ; Make sure pressing escape does not cancel macro recording
 (defun keyboard-quit-when-not-recording-macro ()

@@ -124,7 +124,7 @@
 (general-define-key
     :states '(normal visual emacs motion)
     "(" 'goto-start-previous-function
-    ")" 'goto-end-next-function
+    ")" 'goto-start-next-function
     )
 
 (define-key global-map (kbd "C-<return>") 'make-frame)
