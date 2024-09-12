@@ -68,7 +68,10 @@
 (general-create-definer mode-leader-def :prefix ",")
 
 (mode-leader-def '(normal visual) 'global-map
-  "e" 'toggle-transient-error
+  "en" 'next-error
+  "ep" 'previous-error
+  "el" 'consult-lsp-diagnostics
+  "es" 'toggle-lsp-ui-sideline-show-diagnostics
   "s" 'consult-lsp-file-symbols
   "S" 'consult-lsp-symbols
   "r" 'lsp-rename

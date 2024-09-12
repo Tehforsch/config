@@ -45,18 +45,3 @@
  :toggle-funs #'toggle-transient-window
  :keymap 'transient-window-map
  :transient t)
-
-(general-def 
-  :prefix-map 'transient-error-map
-  "n" 'next-error
-  "p" 'previous-error
-  "l" 'consult-lsp-diagnostics
-  "x" 'lsp-execute-code-action
-  "s" 'toggle-lsp-ui-sideline-show-diagnostics
-  )
-
-(hercules-def
- :toggle-funs #'toggle-transient-error
- :hide-funs '(consult-lsp-diagnostics lsp-execute-code-action toggle-lsp-ui-sideline-show-diagnostics)
- :keymap 'transient-error-map
- :transient t)
