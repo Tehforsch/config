@@ -1,15 +1,14 @@
 (use-package corfu
   :custom
-  (corfu-cycle nil)                ;; Enable cycling for `corfu-next/previous'
-  (corfu-auto nil)                 ;; Enable auto completion
-  (corfu-quit-at-boundary nil)
-  (corfu-quit-no-match nil)
-  (corfu-preview-current nil)
+  ;; (corfu-cycle nil)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto nil)                 
+  ;; (corfu-quit-at-boundary nil)
+  ;; (corfu-quit-no-match nil)
+  ;; (corfu-preview-current nil)
   (corfu-popupinfo-delay 0.0)
   (corfu-popupinfo-direction '(left))
   (corfu-popupinfo-max-height 1000)
-  (corfu-echo-documentation nil)
-  (corfu-on-exact-match t)
+  (corfu-on-exact-match nil)
   (corfu-count 20)
 
   :init
