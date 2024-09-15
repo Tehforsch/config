@@ -49,6 +49,6 @@
 
 ; This hides the signature of the functions in the completion window. I'm not super happy with this, ideally i'd
 ; like them to be in the corfu-popupinfo doc window, but for now this is fine
-(setq lsp-completion-show-detail nil)
+;; (setq lsp-completion-show-detail nil)
 
-(setq lsp-diagnostic-clean-after-change nil)
+;; (setq lsp-diagnostic-clean-after-change nil)
