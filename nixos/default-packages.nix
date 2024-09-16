@@ -66,6 +66,7 @@
     spotify
     discord
     telegram-desktop
+    arandr
 
     # Sound + Music
     pavucontrol
