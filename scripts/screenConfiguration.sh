@@ -8,8 +8,8 @@ if [[ $SYSTEM_NAME == "manjaro" ]]; then
     main=DP2
     second=eDP1
 elif [[ $SYSTEM_NAME == "pc" ]]; then
-    main=DVI-D-0
-    second=HDMI-0
+    second=DVI-D-0
+    main=HDMI-0
 elif [[ $SYSTEM_NAME == "thinkpad" ]]; then
     main=DP-2
     second=eDP1
@@ -17,5 +17,5 @@ else
     main=DP2
     second=DP1-3
 fi
-echo xrandr --output $main --primary --auto --output $second --auto --left-of $main
-xrandr --output $main --primary --auto --output $second --auto --left-of $main
+echo xrandr --output $main --primary --auto --output $second --auto --right-of $main
+xrandr --output $main --primary --auto --output $second --auto --right-of $main
