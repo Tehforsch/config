@@ -70,7 +70,8 @@ alias cp='cp -v'
 alias im="nomacs"
 alias pdf="zathura"
 
-alias nixsw="sudo -u toni nixos-rebuild switch --flake ~/projects/config/nixos" # The sudo -u toni ensures that I can use ssh keys from my normal user while sudoing to clone private repos
+# I used to have this as "sudo -u toni", in order to ensure I can use normal user ssh keys to clone private repos. However this has stopped working
+alias nixsw="sudo nixos-rebuild switch --flake ~/projects/config/nixos"
 alias nixb="nixos-rebuild build --flake ~/projects/config/nixos"
 
 alias transfer="rsync --archive --stats --progress --human-readable"

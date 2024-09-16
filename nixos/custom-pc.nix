@@ -32,6 +32,7 @@
     # Without this setting, resuming after suspend would result in a
     # black screen and no graphical output whatsoever.
     powerManagement.enable = true;
+    open = false;
   };
 
   security.pam.loginLimits = [
