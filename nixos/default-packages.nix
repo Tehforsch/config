@@ -40,6 +40,7 @@
     # This is nice for new projects and diving through external libraries where
     # direnv doesn't really work.
     rustup
+    dust
 
     # Network stuff
     oath-toolkit
@@ -67,6 +68,8 @@
     discord
     telegram-desktop
     arandr
+    gimp
+    dconf-editor
 
     # Sound + Music
     pavucontrol

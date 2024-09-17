@@ -39,5 +39,4 @@
     enable = true;
     defaultEditor = true;
   };
-
 }
