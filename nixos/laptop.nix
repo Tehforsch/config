@@ -29,8 +29,13 @@
 
   services.fwupd.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    bluez
+    bluez-tools
+    telegram-desktop
+  ];
+
   services.blueman.enable = true;
-  environment.systemPackages = with pkgs; [bluez bluez-tools];
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

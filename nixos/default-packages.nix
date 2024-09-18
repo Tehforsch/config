@@ -66,7 +66,6 @@
     (ffmpeg.override { withXcb = true; })
     spotify
     discord
-    telegram-desktop
     arandr
     gimp
     dconf-editor
