@@ -69,6 +69,7 @@
     arandr
     gimp
     dconf-editor
+    telegram-desktop
 
     # Sound + Music
     pavucontrol
