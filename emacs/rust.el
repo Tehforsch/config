@@ -34,3 +34,9 @@
   (interactive)
   (setq lsp-rust-no-default-features t)
   (lsp-restart-workspace))
+
+(defun set-lsp-rust-default-features ()
+  (interactive)
+  (setq lsp-rust-features nil)
+  (setq lsp-rust-no-default-features nil)
+  (lsp-restart-workspace))
