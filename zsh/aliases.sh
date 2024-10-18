@@ -47,6 +47,15 @@ alias cr="cargo run"
 alias crr="cargo run --release"
 alias ct="cargo test"
 alias ctl="cargo test --lib"
+
+function ctn() {
+    cargo test $@ -- --nocapture
+}
+
+function ctln() {
+    cargo test --lib $@ -- --nocapture
+}
+
 alias ctr="cargo test --release"
 alias ci="cargo install --path ."
 alias cc="cargo clippy"
@@ -54,6 +63,12 @@ alias cdo="cargo doc --no-deps --open"
 alias cdoc="cargo doc --no-deps --open -p"
 alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb='if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi'
+
+function init_envrc() {
+    cwd=$(basename $(pwd))
+    echo "use flake ~/projects/config/nixos/shells#rust_stable\nexport CARGO_BUILD_TARGET_DIR=/mnt/extHdd/.cargo-target/$cwd" > .envrc;
+    direnv allow
+}
 
 alias bb="cargo build --features bevy/dynamic_linking"
 alias br="cargo run --features bevy/dynamic_linking"
