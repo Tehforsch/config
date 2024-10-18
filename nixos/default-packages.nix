@@ -53,7 +53,7 @@
     # User applications
     firefox
     vlc
-    nautilus
+    thunar
     syncthing
     steam
     thunderbird
@@ -70,6 +70,8 @@
     gimp
     dconf-editor
     telegram-desktop
+    xfce.tumbler
+    ffmpegthumbnailer
 
     # Sound + Music
     pavucontrol
