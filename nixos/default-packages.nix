@@ -41,6 +41,8 @@
     # direnv doesn't really work.
     rustup
     dust
+    uv
+    ruff
 
     # Network stuff
     oath-toolkit
@@ -53,7 +55,7 @@
     # User applications
     firefox
     vlc
-    thunar
+    xfce.thunar
     syncthing
     steam
     thunderbird
