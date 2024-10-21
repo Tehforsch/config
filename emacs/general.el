@@ -108,6 +108,7 @@
 (setq xref-prompt-for-identifier nil)
 (define-key evil-normal-state-map "gr" 'xref-find-references)
 (define-key evil-normal-state-map "gh" 'lsp-ui-doc-show)
+(define-key evil-normal-state-map "gH" 'lsp-rust-analyzer-open-external-docs)
 (define-key evil-normal-state-map "g^" 'beginning-of-defun)
 (define-key evil-normal-state-map "g$" 'end-of-defun)
 
