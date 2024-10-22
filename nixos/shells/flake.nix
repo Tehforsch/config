@@ -91,6 +91,16 @@
       python = mkShell {
         buildInputs = [ (python3.withPackages (p: with p; [ numpy pyyaml ])) ];
       };
+      uv = mkShell {
+        nativeBuildInputs = ([
+          uv
+        ]);
+        shellHook = ''
+          export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
+            pkgs.libxcrypt-legacy
+          ]}"
+        '';
+      };
     };
   });
 }
