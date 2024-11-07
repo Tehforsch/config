@@ -65,7 +65,7 @@
       (setq lsp-ui-sideline-show-diagnostics t)
       (message "Show diagnostics ON"))))
 
-(setq lsp-response-timeout 4) ; Longer wait times than 4 seconds usually means it just won't respond anyways and i'd rather not wait for a long time
+(setq lsp-response-timeout 15) ; Longer wait times than 4 seconds usually means it just won't respond anyways and i'd rather not wait for a long time
 
 (setq lsp-headerline-breadcrumb-enable nil)
 
