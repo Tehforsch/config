@@ -33,6 +33,7 @@
     bluez
     bluez-tools
     telegram-desktop
+    bluetuith
   ];
 
   services.blueman.enable = true;
@@ -47,5 +48,10 @@
       Experimental = "true";
       KernelExperimental = "true";
     };
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
   };
 }
