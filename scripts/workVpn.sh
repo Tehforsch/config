@@ -1,4 +1,5 @@
-if [[ $(hostname) == thinkpad ]]; then
+if [[ $(hostname) == thinkpad  || $(hostname) == framework ]]; then
+    echo "Hi"
     sudo openconnect vpn.greenbone.net --protocol=gp
 else
     nmcli con up id "Greenbone VPN"
