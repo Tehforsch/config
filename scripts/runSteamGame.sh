@@ -1,6 +1,7 @@
 result=""
-libraryPath="/run/media/extHdd/steam/steamapps/"
+libraryPath="/home/toni/.local/share/Steam/steamapps"
 for f in $(fd -t f appmanifest "$libraryPath" --max-depth 1); do
+    echo $f
     id=$(basename "$f" | sed "s/appmanifest_//" | sed "s/.acf//")
     name=$(cat "$f" | grep "name")
     name=${name:10:100}
@@ -19,6 +20,6 @@ index=$(echo "$result" | rofi -i -dmenu -p "Game:" -no-custom -format 'i')
 if [[ $? == 0 ]]; then
     index=$((index + 1))
     appid=$(echo "$appids" | sed "${index}q;d")
-    $CONFIG/scripts/runSteam.sh steam://rungameid/$appid
+    ~/projects/config/scripts/runSteam.sh steam://rungameid/$appid
 fi
 
