@@ -1,0 +1,1 @@
+cargo test --lib && cargo test --features experimental --lib
