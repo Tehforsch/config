@@ -26,6 +26,7 @@ alias gre="git rebase"
 alias gw="git switch"
 alias gwd="git switch --detach"
 alias gb="git branch"
+alias gcp="git cherry-pick"
 
 function checkout_pr() {
     # $1 is the PR number.
@@ -48,6 +49,11 @@ alias crr="cargo run --release"
 alias ct="cargo test"
 alias ctl="cargo test --lib"
 
+alias cc="cargo check"
+alias ccl="cargo check --lib"
+
+alias clip="cargo clippy"
+
 function ctn() {
     cargo test $@ -- --nocapture
 }
@@ -58,7 +64,6 @@ function ctln() {
 
 alias ctr="cargo test --release"
 alias ci="cargo install --path ."
-alias cc="cargo clippy"
 alias cdo="cargo doc --no-deps --open"
 alias cdoc="cargo doc --no-deps --open -p"
 alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
@@ -77,6 +82,12 @@ alias bt="cargo test --features bevy/dynamic_linking"
 alias bbr="cargo build --release --features bevy/dynamic_linking"
 alias brr="cargo run --release --features bevy/dynamic_linking"
 alias btr="cargo test --release --features bevy/dynamic_linking"
+
+function tou() {
+    p="$1"
+    mkdir -p $(dirname $p)
+    touch $p
+}
 
 alias flame="$scripts/flamegraphRunningProcess.sh"
 
