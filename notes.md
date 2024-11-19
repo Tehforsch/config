@@ -30,3 +30,7 @@ I had various issues so I'll probably wait for a while before I switch to it. Ac
 - Emacs didn't focus ( https://github.com/hyprwm/Hyprland/discussions/1793 )
 - waybar used a lot of CPU and weirdly lagged if I moused over the workspace names. Yikes
 - I didn't like the fullscreen toggle. i3 toggles to tabbed mode so I see the window in fullscreen but it doesn't send a "fullscreen mode" event to the window as hyprland does. This means maximizing a browser, for example, would randomly move around and re-render items in hyprland whereas in i3 it just instantly makes the window bigger which is what I want.
+
+## email
+i dont like thunderbird. tried some other stuff:
+himalaya: literally crashed on me while trying to send an email (index out of bounds) which wasnt very inspiring. setup was annoying because the versions werent clear and the syntax on the github repo did not actually correspond to what the cargo install-ed binary used. had to go through the wizard.
