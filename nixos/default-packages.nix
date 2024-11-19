@@ -74,6 +74,7 @@
     telegram-desktop
     xfce.tumbler
     ffmpegthumbnailer
+    betterbird
 
     # Sound + Music
     pavucontrol
