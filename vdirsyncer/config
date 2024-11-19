@@ -4,7 +4,7 @@ status_path = "~/.local/state/vdirsyncer/status/"
 [pair contacts]
 a = "personal_contacts_local"
 b = "personal_contacts_remote"
-collections = ["contacts"]
+collections = ["from a"]
 
 [storage personal_contacts_local]
 type = "filesystem"
