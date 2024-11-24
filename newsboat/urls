@@ -1,35 +1,11 @@
 "query:Articles:tags # \"articles\""
-"query:Videos:tags # \"videos\""
-"query:Podcasts:tags # \"podcasts\""
 "query:Music:tags # \"music\""
 
-# Adam Ondra
-https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw videos !hidden
-# Mellow
-https://www.youtube.com/feeds/videos.xml?channel_id=UC5jRwTUqG15l-BcqQHbVFtA videos !hidden
-# Shawn Raboutou
-https://www.youtube.com/feeds/videos.xml?channel_id=UCWaC58KxHxyCgZVl4cRDxSg videos !hidden
-# Alex Megos
-https://www.youtube.com/feeds/videos.xml?channel_id=UCL3Kl-rgMHFdGvGFU2Z_Enw videos !hidden
-# Emil Abrahammson
-https://www.youtube.com/feeds/videos.xml?channel_id=UCqiKFGkSZwrbMSfkkd2CQGg videos !hidden
-# Wedge
-https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ videos !hidden
-# Will Bosi
-https://www.youtube.com/feeds/videos.xml?channel_id=UCu0Xag_M94EXfxTM632yGYg videos !hidden
-# Tension Climbing
-https://www.youtube.com/feeds/videos.xml?channel_id=UCes1HC9b15MBUR5PaWd-Iqw videos !hidden
-
-
-
-https://hnrss.org/newest?points=500 articles !hidden
-https://xkcd.com/rss.xml articles !hidden
 https://this-week-in-rust.org/rss.xml articles !hidden
 https://gamedev.rs/rss.xml articles !hidden
 # https://www.to-rss.xyz/wikipedia/current_events/ articles !hidden
 https://blog.rust-lang.org/feed.xml articles !hidden
 https://smallcultfollowing.com/babysteps//index.xml articles !hidden
 https://without.boats/index.xml articles !hidden
-https://rss.art19.com/sean-carrolls-mindscape podcasts !hidden
 
 https://muspy.com/feed?id=zprzsh9e7e2v5j3ehlzulwaaovqlah music !hidden
