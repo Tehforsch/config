@@ -6,5 +6,6 @@
     mumble
     khal
     vdirsyncer
+    taskwarrior
   ];
 }
