@@ -26,11 +26,11 @@ report.oldest.sort=entry-
 report.oldest.filter=status:pending -CHILD
 
 # Context setup
-context.phd.read=project:phd
-context.personal.read=project.not:phd
-context.tng.read=project:phd.tng
-context.paper.read=project:phd.paper
-context.rsweep.read=project:phd.rsweep
+context.work.read=project:work
+context.personal.read=project.not:work
+context.tng.read=project:work.tng
+context.paper.read=project:work.paper
+context.rsweep.read=project:work.rsweep
 context.next.read=+next
 
 # Urgency settings
@@ -43,10 +43,10 @@ urgency.user.tag.now.coefficient = 1000.0
 
 urgency.user.project.todo.coefficient = 20.0
 urgency.user.project.routine.coefficient = 5.0
-urgency.user.project.phd.orga.coefficient = 2.0
-urgency.user.project.phd.paper.coefficient = 10.0
+urgency.user.project.work.orga.coefficient = 2.0
+urgency.user.project.work.paper.coefficient = 10.0
 urgency.user.tag.next.coefficient = 400.0
-urgency.user.project.phd.rsweep.coefficient = -20.0
+urgency.user.project.work.rsweep.coefficient = -20.0
 urgency.user.project.read.coefficient = -150.0
 
 urgency.age.coefficient = 10.0

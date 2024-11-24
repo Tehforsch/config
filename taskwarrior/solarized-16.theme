@@ -66,7 +66,7 @@ color.blocking=color2
 # Project
 color.project.none=bold color5
 color.project.raxiom=color6
-color.project.phd=color10
+color.project.work=color10
 
 
 color.project.anki=color5
