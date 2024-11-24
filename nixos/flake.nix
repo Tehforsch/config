@@ -3,12 +3,11 @@
 
   inputs = {
     nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
-    journal = { url = "git+ssh://git@github.com/tehforsch/journal.git"; };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    musnix  = { url = "github:musnix/musnix"; };
+    journal = { url = "github:tehforsch/journal"; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: rec {
@@ -23,6 +22,8 @@
         ./i3.nix
         ./redshift.nix
         ./power-management.nix
+      ];
+      workstation = [
       ];
       only_work = [
         ./work.nix
@@ -57,7 +58,7 @@
             ./hardware-framework.nix
             ./custom-framework.nix
           ]
-          ++ modules ++ only_personal;
+          ++ modules ++ only_personal ++ only_work;
       };
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -70,6 +71,18 @@
             ./custom-thinkpad.nix
           ]
           ++ modules ++ only_work;
+      };
+      netcup = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules =
+          [
+            ./hardware-netcup.nix
+            ./basic.nix
+            ./default-packages.nix
+            ./keyboard-configuration.nix
+            ./custom-netcup.nix
+          ];
       };
       rpi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
