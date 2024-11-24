@@ -52,7 +52,6 @@
 (load-from-config "marginalia.el")
 (load-from-config "company.el")
 (load-from-config "corfu.el")
-(load-from-config "cape.el")
 (load-from-config "embark.el")
 
 (load-from-config "evilNumbers.el")

@@ -4,13 +4,7 @@
   ((python-mode . lsp)
     (c-mode . lsp)
     (lsp-mode . lsp-enable-which-key-integration))
-  :init
-  (defun my/lsp-mode-setup-completion ()
-    (setf
-      (alist-get
-        'styles
-        (alist-get 'lsp-capf completion-category-defaults))
-      '(orderless))))
+  )
 
 (setq lsp-lens-enable nil)
 (setq lsp-enable-symbol-highlighting nil)
@@ -79,16 +73,5 @@
   (lambda (operation)
     (when (eq operation 'rename)
       (save-buffer))))
-
-(setq lsp-completion-provider :none)
-
-(defun corfu-lsp-setup ()
-  (interactive)
-  (setq-local
-    completion-styles '(orderless partial-completion basic)
-    completion-category-defaults nil
-    completion-at-point-functions '(lsp-completion-at-point corfu-dabbrev)))
-
-(add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)
 
 (setq lsp-enable-snippet nil)
