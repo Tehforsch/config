@@ -90,8 +90,7 @@
 (mode-leader-def '(normal visual) 'rustic-mode-map
   "p" 'lsp-rust-find-parent-module
   "f" 'lsp-format-buffer
-  "c" 'lsp-rust-analyzer-open-cargo-toml
-  "d" 'lsp-rust-analyzer-open-external-docs)
+  "c" 'lsp-rust-analyzer-open-cargo-toml)
 
 (mode-leader-def '(normal visual) 'python-mode-map
   "f" 'python-black-buffer)
