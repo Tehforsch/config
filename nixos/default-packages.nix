@@ -75,7 +75,8 @@
     xfce.tumbler
     ffmpegthumbnailer
     betterbird
-    keepass
+    keepassxc
+    xclip
 
     # Sound + Music
     pavucontrol

@@ -35,7 +35,10 @@ function checkout_pr() {
 }
 
 function 2fa() {
-    oathtool -b --totp $(cat ~/resource/keys/2fa/$1 )
+    key=$(oathtool -b --totp $(cat ~/resource/keys/2fa/$1 ))
+    echo $key
+
+    echo -n "$key" | xclip -selection clipboard
 }
 
 alias glf="forgit::log"
