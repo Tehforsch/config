@@ -34,6 +34,10 @@ function checkout_pr() {
     git switch pull-request-$1
 }
 
+function 2fa() {
+    oathtool -b --totp $(cat ~/resource/keys/2fa/$1 )
+}
+
 alias glf="forgit::log"
 alias gdf="forgit::diff"
 alias gdcf="forgit::diff --cached"
