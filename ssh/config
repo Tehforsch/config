@@ -40,3 +40,6 @@ Host gatezero.mpcdf.mpg.de
     User tpeter
     ControlMaster auto
     ControlPath ~/.ssh/control:%h:%p:%r
+Host netcup
+    HostName v2202411242091296475.happysrv.de
+    User toni
