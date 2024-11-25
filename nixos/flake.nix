@@ -45,7 +45,6 @@
             ./custom-pc.nix 
             ./unifiedremote.nix
             ./mullvad.nix
-            inputs.musnix.nixosModules.musnix
           ]
           ++ modules ++ only_work ++ only_personal;
       };
