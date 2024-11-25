@@ -1,34 +1,34 @@
 [general]
 status_path = "~/.local/state/vdirsyncer/status/"
 
-[pair contacts]
-a = "personal_contacts_local"
-b = "personal_contacts_remote"
-collections = ["from a"]
-
 [storage personal_contacts_local]
 type = "filesystem"
 path = "~/.local/share/dav/contacts/personal"
 fileext = ".vcf"
-
-[storage personal_contacts_remote]
-type = "carddav"
-url = "https://nx39116.your-storageshare.de/"
-username = "toni"
-password.fetch = ["command", "~/projects/config/scripts/getNextcloudPw.sh"]
-
-[pair personal_calendar]
-a = "personal_calendar_local"
-b = "personal_calendar_remote"
-collections = ["from a", "from b"]
 
 [storage personal_calendar_local]
 type = "filesystem"
 path = "~/.local/share/dav/calendar/personal/"
 fileext = ".ics"
 
+[storage personal_contacts_remote]
+type = "carddav"
+url = "http://v2202411242091296475.happysrv.de:5232"
+username = "toni"
+password.fetch = ["command", "~/projects/config/scripts/getRadicalePw.sh"]
+
 [storage personal_calendar_remote]
 type = "caldav"
-url = "https://nx39116.your-storageshare.de/"
+url = "http://v2202411242091296475.happysrv.de:5232"
 username = "toni"
-password.fetch = ["command", "~/projects/config/scripts/getNextcloudPw.sh"]
+password.fetch = ["command", "~/projects/config/scripts/getRadicalePw.sh"]
+
+[pair contacts]
+a = "personal_contacts_local"
+b = "personal_contacts_remote"
+collections = ["from a"]
+
+[pair personal_calendar]
+a = "personal_calendar_local"
+b = "personal_calendar_remote"
+collections = ["from a", "from b"]
