@@ -13,7 +13,9 @@
   outputs = inputs@{ self, nixpkgs, ... }: rec {
     nixosConfigurations = let
       modules = [
+        ./desktop-device.nix
         ./basic.nix
+        ./ssh.nix
         ./configuration.nix
         ./sound.nix
         ./default-packages.nix
@@ -22,8 +24,6 @@
         ./i3.nix
         ./redshift.nix
         ./power-management.nix
-      ];
-      workstation = [
       ];
       only_work = [
         ./work.nix
@@ -44,6 +44,7 @@
             ./hardware-pc.nix
             ./custom-pc.nix 
             ./unifiedremote.nix
+            ./mullvad.nix
             inputs.musnix.nixosModules.musnix
           ]
           ++ modules ++ only_work ++ only_personal;
@@ -80,6 +81,7 @@
             { networking.hostName = "netcup"; }
             ./hardware-netcup.nix
             ./basic.nix
+            ./ssh.nix
             ./default-packages.nix
             ./keyboard-configuration.nix
             ./custom-netcup.nix
