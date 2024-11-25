@@ -41,11 +41,12 @@
 #
 # Taskwarrior solarized-dark-256 theme created by Stefan A. Keel.
 
-rule.precedence.color=deleted,completed,blocked,active,overdue,scheduled,due.today,project.
+rule.precedence.color=deleted,completed,blocked,active,overdue,scheduled,due.today,project,tag.
 
-# General decoration
-color.label=
-color.label.sort=
+# This sets the default fallback color very uglily
+color.tag.none=color12
+
+# # General decoration
 color.alternate=on color16
 color.header=color2
 color.footnote=color2
@@ -53,9 +54,10 @@ color.warning=color7 on color3
 color.error=color2
 color.debug=color3
 
-# Task state
+# # Task state
 color.completed=
 color.deleted=
+color.pending=color12
 color.active=color9
 color.recurring=color4
 color.scheduled=
@@ -63,49 +65,45 @@ color.until=
 color.blocked=color8
 color.blocking=color2
 
-# Project
-color.project.none=bold color5
-color.project.raxiom=color6
+
+# # Project
+# color.project.*=color12
 color.project.work=color10
 
 
-color.project.anki=color5
-color.project.books=color5
-color.project.chords=color5
-color.project.config=color5
-color.project.cooking=color5
-color.project.finances=color5
-color.project.groceries=color5
-color.project.guitar=color5
-color.project.life=color5
-color.project.medical=color5
-color.project.misc=color5
-color.project.movies=color5
-color.project.orga=color5
-color.project.potentialPresents=color5
-color.project.presents=color5
-color.project.projects=color5
-color.project.routine=color5
-color.project.sokobrane=color5
-color.project.striputary=color5
-color.project.stuttgart=color5
-color.project.todo=color5
-color.project.wanderung=color5
-color.project.website=color5
-color.project.wohnung=color5
-color.project.diman=color5
-color.project.job=color5
-color.project.read=color12
+# color.project.anki=color12
+# color.project.books=color12
+# color.project.chords=color12
+# color.project.config=color12
+# color.project.cooking=color12
+# color.project.finances=color12
+# color.project.groceries=color12
+# color.project.guitar=color12
+# color.project.life=color12
+# color.project.medical=color12
+# color.project.misc=color12
+# color.project.movies=color12
+# color.project.orga=color12
+# color.project.potentialPresents=color12
+# color.project.presents=color12
+# color.project.projects=color12
+# color.project.routine=color12
+# color.project.sokobrane=color12
+# color.project.striputary=color12
+# color.project.stuttgart=color12
+# color.project.todo=color12
+# color.project.wanderung=color12
+# color.project.website=color12
+# color.project.wohnung=color12
+# color.project.diman=color12
+# color.project.job=color12
+# color.project.move=color12
+# color.project.read=color12
 
 # Priority
 color.uda.priority.H=bold color0
 color.uda.priority.M=bold color11
 color.uda.priority.L=bold color14
-
-# Tags
-color.tag.next=
-color.tag.none=
-color.tagged=
 
 # Due
 color.due.today=underline
