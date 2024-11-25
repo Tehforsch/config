@@ -77,6 +77,7 @@
         system = "x86_64-linux";
         modules =
           [
+            { networking.hostName = "netcup"; }
             ./hardware-netcup.nix
             ./basic.nix
             ./default-packages.nix
