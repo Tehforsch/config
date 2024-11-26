@@ -16,7 +16,6 @@
         ./desktop-device.nix
         ./basic.nix
         ./ssh.nix
-        ./configuration.nix
         ./sound.nix
         ./default-packages.nix
         ./keyboard-configuration.nix
