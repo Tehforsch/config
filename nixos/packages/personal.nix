@@ -7,5 +7,6 @@
     khal
     vdirsyncer
     taskwarrior
+    steam
   ];
 }

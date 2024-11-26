@@ -82,7 +82,6 @@
           basic ++ [
             { networking.hostName = "netcup"; }
             ./ssh.nix
-            ./packages/desktop_device.nix
             ./keyboard_configuration.nix
             ./hardware/netcup.nix
             ./custom/netcup.nix
