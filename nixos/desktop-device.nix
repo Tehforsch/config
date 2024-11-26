@@ -4,6 +4,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # We need this in order to be able to build images for the rasperry pi
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "toni";

@@ -90,17 +90,23 @@
         system = "x86_64-linux";
         modules =
           [
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            { networking.hostName = "rpi"; } ./basic.nix ./syncthing.nix
+            { networking.hostName = "rpi"; }
             {
               nixpkgs.config.allowUnsupportedSystem = true;
               nixpkgs.hostPlatform.system = "aarch64-linux";
-              nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
-              # ... extra configs as above
+              nixpkgs.buildPlatform.system = "x86_64-linux";
             }
+            ./basic.nix
+            ./syncthing.nix
           ];
       };
     };
-    images.rpi = nixosConfigurations.rpi.config.system.build.sdImage;
+    images = {
+      rpi = (self.nixosConfigurations.rpi.extendModules {
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        ];
+      }).config.system.build.sdImage;
+    };
   };
 }
