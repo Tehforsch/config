@@ -12,24 +12,28 @@
 
   outputs = inputs@{ self, nixpkgs, ... }: rec {
     nixosConfigurations = let
-      modules = [
-        ./desktop-device.nix
+      basic = [
         ./basic.nix
+        ./packages/basic.nix
+        ./users.nix
+        ./keyboard_configuration.nix
         ./ssh.nix
+      ];
+      desktop_device = basic ++ [
+        ./desktop_device.nix
         ./sound.nix
-        ./default-packages.nix
-        ./keyboard-configuration.nix
+        ./packages/desktop_device.nix
         # ./hyprland.nix
         ./i3.nix
         ./redshift.nix
-        ./power-management.nix
+        ./power_management.nix
       ];
       only_work = [
         ./work.nix
         ./yubikey.nix
       ];
       only_personal = [
-        ./personal-packages.nix
+        ./packages/personal.nix
         ./syncthing.nix
         ./services.nix
       ];
@@ -40,12 +44,12 @@
         modules =
           [
             { networking.hostName = "pc"; }
-            ./hardware-pc.nix
-            ./custom-pc.nix 
+            ./hardware/pc.nix
+            ./custom/pc.nix 
             ./unifiedremote.nix
             ./mullvad.nix
           ]
-          ++ modules ++ only_work ++ only_personal;
+          ++ desktop_device ++ only_work ++ only_personal;
       };
       framework = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -54,10 +58,10 @@
           [
             { networking.hostName = "framework"; }
             ./laptop.nix
-            ./hardware-framework.nix
-            ./custom-framework.nix
+            ./hardware/framework.nix
+            ./custom/framework.nix
           ]
-          ++ modules ++ only_personal ++ only_work;
+          ++ desktop_device ++ only_personal ++ only_work;
       };
       thinkpad = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -66,32 +70,31 @@
           [
             { networking.hostName = "thinkpad"; }
             ./laptop.nix
-            ./hardware-thinkpad.nix
-            ./custom-thinkpad.nix
+            ./hardware/thinkpad.nix
+            ./custom/thinkpad.nix
           ]
-          ++ modules ++ only_work;
+          ++ desktop_device ++ only_work;
       };
       netcup = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [
+          basic ++ [
             { networking.hostName = "netcup"; }
-            ./hardware-netcup.nix
-            ./basic.nix
             ./ssh.nix
-            ./default-packages.nix
-            ./keyboard-configuration.nix
-            ./custom-netcup.nix
+            ./packages/desktop_device.nix
+            ./keyboard_configuration.nix
+            ./hardware/netcup.nix
+            ./custom/netcup.nix
           ];
       };
       rpi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules =
-          [
+          basic ++ [
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            { networking.hostName = "rpi"; } ./basic.nix ./syncthing.nix
+            { networking.hostName = "rpi"; } ./syncthing.nix
             {
               nixpkgs.config.allowUnsupportedSystem = true;
               nixpkgs.hostPlatform.system = "aarch64-linux";
