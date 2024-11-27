@@ -28,78 +28,62 @@
         ./redshift.nix
         ./power_management.nix
       ];
-      only_work = [
+      work = [
         ./work.nix
         ./yubikey.nix
       ];
-      only_personal = [
+      personal = [
         ./packages/personal.nix
         ./syncthing.nix
         ./services.nix
       ];
+      make_system = args@{ hostname, ... }: (
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = basic ++ args.modules ++ [
+            { networking.hostName = hostname; }
+            ./hardware/${hostname}.nix
+            ./custom/${hostname}.nix
+          ];
+        }
+      );
     in {
-      pc = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
+      pc = make_system {
+        hostname = "pc";
         modules =
           [
-            { networking.hostName = "pc"; }
-            ./hardware/pc.nix
-            ./custom/pc.nix 
             ./unifiedremote.nix
             ./mullvad.nix
           ]
-          ++ desktop_device ++ only_work ++ only_personal;
+          ++ desktop_device ++ work ++ personal;
       };
-      framework = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
+      framework = make_system {
+        hostname = "framework";
         modules =
           [
-            { networking.hostName = "framework"; }
             ./laptop.nix
-            ./hardware/framework.nix
-            ./custom/framework.nix
           ]
-          ++ desktop_device ++ only_personal ++ only_work;
+          ++ desktop_device ++ work ++ personal;
       };
-      thinkpad = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
+      thinkpad = make_system {
+        hostname = "thinkpad";
         modules =
           [
-            { networking.hostName = "thinkpad"; }
             ./laptop.nix
-            ./hardware/thinkpad.nix
-            ./custom/thinkpad.nix
           ]
-          ++ desktop_device ++ only_work;
+          ++ desktop_device ++ work;
       };
-      netcup = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules =
-          basic ++ [
-            { networking.hostName = "netcup"; }
-            ./ssh.nix
-            ./keyboard_configuration.nix
-            ./hardware/netcup.nix
-            ./custom/netcup.nix
-          ];
+      netcup = make_system {
+        hostname = "netcup";
+        modules = [];
       };
-      rpi = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
+      rpi = make_system {
+        hostname = "rpi";
         modules =
-          basic ++ [
+          [
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            { networking.hostName = "rpi"; } ./syncthing.nix
-            {
-              nixpkgs.config.allowUnsupportedSystem = true;
-              nixpkgs.hostPlatform.system = "aarch64-linux";
-              nixpkgs.buildPlatform.system = "x86_64-linux"; #If you build on x86 other wise changes this.
-              # ... extra configs as above
-            }
+            ./syncthing.nix
           ];
       };
     };
