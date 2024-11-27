@@ -82,11 +82,16 @@
         hostname = "rpi";
         modules =
           [
-            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
             ./syncthing.nix
           ];
       };
     };
-    images.rpi = nixosConfigurations.rpi.config.system.build.sdImage;
+    images = {
+      rpi = (self.nixosConfigurations.rpi.extendModules {
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        ];
+      }).config.system.build.sdImage;
+    };
   };
 }
