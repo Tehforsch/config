@@ -1,0 +1,3 @@
+! Not even passthrough mode is strict enough to think
+! that capslock is ever a good idea.
+keycode 66 = Escape NoSymbol Escape
