@@ -75,6 +75,7 @@
 (load-from-config "yaml.el")
 (load-from-config "wgsl-mode.el")
 (load-from-config "nix.el")
+(load-from-config "lua.el")
 
 (load-from-config "tree-sitter.el")
 (load-from-config "folding.el")
