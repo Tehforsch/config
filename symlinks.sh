@@ -25,6 +25,8 @@ function make_symlink {
     elif [[ ! -a "$name" ]]; then
         echo "$target\t\t -> $name"
         ln -s "$target" "$name"
+    else
+        echo "File already exists: $name"
     fi
 }
 
@@ -69,3 +71,5 @@ make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 make_symlink bash/bashrc.sh .bashrc
 make_symlink emacs/init.el .emacs.d/init.el
 make_symlink ssh/config .ssh/config
+
+bash ./reaper/makeReaperSymlinks.sh
