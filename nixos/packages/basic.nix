@@ -22,6 +22,7 @@
     cmake
     pkg-config
     jq
+    wget
   ];
 
   programs.direnv.enable = true;

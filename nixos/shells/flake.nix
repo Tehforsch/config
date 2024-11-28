@@ -1,7 +1,5 @@
-# For now, I have rustup in my path anyways, so this is more an
-# illustration how to do this in general.
 {
-  description = "My dev shells";
+  description = "Dev shells";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -51,6 +49,10 @@
       scannerNightly = makeScannerShell nightly;
       diman = mkShell {
         buildInputs = [ pkg-config cmake nightly clang libclang hdf5 mpi ];
+        shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
+      };
+      striputary = mkShell {
+        buildInputs = [ pkg-config cmake nightly clang libclang dbus ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
       bevy = mkShell {
