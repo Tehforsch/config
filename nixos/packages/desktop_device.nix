@@ -23,6 +23,7 @@
     keepassxc
     inkscape
     gimp
+    libreoffice
     xfce.thunar
     zathura
     nomacs

@@ -10,6 +10,7 @@ local global = { -- applies both to main and midi
         ["<C-s>"] = "SaveProject",
 
         ["<return>"] = "StartStop",
+        ["<SPC>"] = "StartStop",
         ["R"] = "ToggleRecord",
 
         ["@"] = "PlayMacro",
@@ -65,7 +66,7 @@ local global = { -- applies both to main and midi
                ["a"] = "ExplodeTakesInAcrossTracks"
             } },
         } },
-        ["<SPC>"] = { "+leader commands", {
+        [","] = { "+leader commands", {
             ["o"] = { "+options", {
                 ["l"] = "ToggleLoop",
                 ["m"] = "ToggleMetronome",

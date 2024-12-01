@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     journal = { url = "github:tehforsch/journal"; };
+    musnix = { url = "github:musnix/musnix"; };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: rec {
@@ -55,6 +56,8 @@
           [
             ./unifiedremote.nix
             ./mullvad.nix
+            ./music_production.nix
+            inputs.musnix.nixosModules.musnix
           ]
           ++ desktop_device ++ work ++ personal;
       };
