@@ -78,7 +78,7 @@ return {
     CloseFxChains = "_S&M_WNCLS4",
     CloseProject = 40860,
     CloseWindow = { 2, midiCommand = true },
-    ColorTrack = { 40360, prefixRepetitionCount = true },
+    ColorTrack = { 40357, prefixRepetitionCount = true },
     ColorTrackGradient = "_SWS_TRACKGRAD",
     ColorTrackWithTrackAbove = "_SWS_COLTRACKPREV",
     ColorTrackWithTrackBelow = "_SWS_COLTRACKNEXT",

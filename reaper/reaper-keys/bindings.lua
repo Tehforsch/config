@@ -7,6 +7,7 @@ local global = { -- applies both to main and midi
         ["<C-r>"] = "Redo",
         ["u"] = "Undo",
         ["<C-z>"] = "Undo",
+        ["<C-s>"] = "SaveProject",
 
         ["<return>"] = "StartStop",
         ["R"] = "ToggleRecord",
@@ -26,6 +27,7 @@ local global = { -- applies both to main and midi
 
         ["t"] = { "track", {
             ["a"] = "ArmTracks",
+            ["c"] = "ColorTrack",
             ["d"] = "CutTrack",
             ["m"] = "ToggleMute",
             ["n"] = "InsertTrackBelow",
