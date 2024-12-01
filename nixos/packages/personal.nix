@@ -8,5 +8,6 @@
     vdirsyncer
     taskwarrior
     steam
+    qpwgraph
   ];
 }

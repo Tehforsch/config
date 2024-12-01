@@ -17,22 +17,25 @@ local global = { -- applies both to main and midi
         ["v"] = "SetModeVisualTimeline",
         ["V"] = "SetModeVisualTrack",
 
+        ["<HOME>"] = "ProjectStart",
+        ["<DEL>"] = "DeleteItem",
+
         ["i"] = { "+insert", {
             ["f"] = "InsertMediaFile",
-            ["t"] = "InsertTrackBelow",
-            ["T"] = "InsertTrackFromTemplate",
         } },
 
         ["t"] = { "track", {
             ["a"] = "ArmTracks",
             ["d"] = "CutTrack",
             ["m"] = "ToggleMute",
+            ["n"] = "InsertTrackBelow",
+            ["N"] = "InsertTrackFromTemplate",
+            ["p"] = "Paste",
+            ["P"] = "PasteAbove",
+            ["r"] = "RenameTrack",
             ["s"] = "ToggleSolo",
             ["y"] = "CopyTrack",
             ["z"] = "ZoomTrackSelection",
-            ["r"] = "RenameTrack",
-            ["p"] = "Paste",
-            ["P"] = "PasteAbove",
             ["<TAB>"] = "MakeFolder",
             ["<C-h>"] = "NudgeTrackPanLeft",
             ["<C-l>"] = "NudgeTrackPanRight",
@@ -73,6 +76,7 @@ local global = { -- applies both to main and midi
                 ["v"] = "ToggleLoopSelectionFollowsTimeSelection",
                 ["x"] = "ToggleAutoCrossfade",
                 ["z"] = "TogglePlaybackAutoScroll",
+                ["r"] = "ToggleLoop",
             } },
             v = { "+view", {
                 [","] = "ShowPreferences",
