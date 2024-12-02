@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     journal = { url = "github:tehforsch/journal"; };
+    moody = { url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git"; };
     musnix = { url = "github:musnix/musnix"; };
   };
 
