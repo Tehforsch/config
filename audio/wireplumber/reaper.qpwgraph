@@ -1,0 +1,82 @@
+<!DOCTYPE patchbay>
+<patchbay name="reaper" version="0.7.5">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX3"/>
+   <input node="REAPER" port="REAPER:in4"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX7"/>
+   <input node="REAPER" port="REAPER:in8"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out5"/>
+   <input node="UMC1820 Multichannel" port="UMC1820:playback_AUX4"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out2"/>
+   <input node="PCM2902 Audio Codec Analog Stereo" port="USB Audio CODEC:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX5"/>
+   <input node="REAPER" port="REAPER:in6"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out1"/>
+   <input node="PCM2902 Audio Codec Analog Stereo" port="USB Audio CODEC:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX4"/>
+   <input node="REAPER" port="REAPER:in5"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out3"/>
+   <input node="UMC1820 Multichannel" port="UMC1820:playback_AUX2"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-midi">
+   <output node="Midi-Bridge" port="UMC1820:UMC1820 MIDI 1"/>
+   <input node="REAPER" port="REAPER:MIDI Input 3"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX1"/>
+   <input node="REAPER" port="REAPER:in2"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out7"/>
+   <input node="UMC1820 Multichannel" port="UMC1820:playback_AUX6"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX2"/>
+   <input node="REAPER" port="REAPER:in3"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-midi">
+   <output node="REAPER" port="REAPER:MIDI Output 3"/>
+   <input node="Midi-Bridge" port="UMC1820:UMC1820 MIDI 1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX0"/>
+   <input node="REAPER" port="REAPER:in1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out4"/>
+   <input node="UMC1820 Multichannel" port="UMC1820:playback_AUX3"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="UMC1820 Multichannel" port="UMC1820:capture_AUX6"/>
+   <input node="REAPER" port="REAPER:in7"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-midi">
+   <output node="Midi-Bridge" port="eDrumIn BLACK:eDrumIn BLACK MIDI 1"/>
+   <input node="REAPER" port="REAPER:MIDI Input 2"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out8"/>
+   <input node="UMC1820 Multichannel" port="UMC1820:playback_AUX7"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="REAPER" port="REAPER:out6"/>
+   <input node="UMC1820 Multichannel" port="UMC1820:playback_AUX5"/>
+  </item>
+ </items>
+</patchbay>
+

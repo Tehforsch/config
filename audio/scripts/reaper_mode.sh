@@ -11,7 +11,8 @@ if [ "$1" == "music" ] || [ "$1" == "amp" ] ; then
     pactl set-card-profile alsa_card.usb-BEHRINGER_UMC1820_F62F2AF7-00 pro-audio
 fi
 
-HOME=/home/toni /home/toni/projects/config/audio/scripts/wireplumber_mode.sh $1
-sleep 1
+# HOME=/home/toni /home/toni/projects/config/audio/scripts/wireplumber_mode.sh $1
+sleep 0.3
+qpwgraph -a -x /home/toni/projects/config/audio/wireplumber/reaper.qpwgraph
 PIPEWIRE_QUANTUM=64/48000 reaper
 
