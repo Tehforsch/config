@@ -20,10 +20,16 @@ local global = { -- applies both to main and midi
         ["V"] = "SetModeVisualTrack",
 
         ["<HOME>"] = "ProjectStart",
+
         ["<DEL>"] = "DeleteItem",
 
         ["i"] = { "+insert", {
             ["f"] = "InsertMediaFile",
+        } },
+
+        ["m"] = { "+mark", {
+            ["d"] = "DeleteMarkNearCursor",
+            ["a"] = "AddMark",
         } },
 
         ["t"] = { "track", {
@@ -138,6 +144,8 @@ local global = { -- applies both to main and midi
 
 ---@type Definition
 local main = {
+    ["<DEL>"] = "DeleteItem",
+
     track_motion = {
         ["G"] = "LastTrack",
         ["gg"] = "FirstTrack",
@@ -185,6 +193,7 @@ local main = {
 
 ---@type Definition
 local midi = {
+    ["<DEL>"] = "DeleteNote",
     timeline_selector = {
         ["s"] = "SelectedNotes",
     },

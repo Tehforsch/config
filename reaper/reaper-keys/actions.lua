@@ -206,6 +206,8 @@ return {
     MarkedTimelinePosition = { lib.marks.recallMarkedTimelinePosition, registerAction = true },
     MarkedTracks = { lib.marks.recallMarkedTracks, registerAction = true },
     Mark = { lib.marks.save, registerAction = true },
+    AddMark = 40171,
+    DeleteMarkNearCursor = 40613,
     MatchedTrackBackward = { "MatchTrackNameBackward", "ScrollToSelectedTracks" },
     MatchedTrackForward = { "MatchTrackNameForward", "ScrollToSelectedTracks" },
     MatchTrackNameBackward = lib.matchTrackNameBackward,

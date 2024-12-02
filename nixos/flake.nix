@@ -54,10 +54,10 @@
         hostname = "pc";
         modules =
           [
+            inputs.musnix.nixosModules.musnix
+            ./music_production.nix
             ./unifiedremote.nix
             ./mullvad.nix
-            ./music_production.nix
-            inputs.musnix.nixosModules.musnix
           ]
           ++ desktop_device ++ work ++ personal;
       };
