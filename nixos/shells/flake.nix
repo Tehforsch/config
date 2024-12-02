@@ -55,6 +55,10 @@
         buildInputs = [ pkg-config cmake nightly clang libclang dbus ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
+      subsweep = mkShell {
+        buildInputs = [ pkg-config cmake nightly clang libclang hdf5 mpi ];
+        shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
+      };
       bevy = mkShell {
         buildInputs = ([
           clang
