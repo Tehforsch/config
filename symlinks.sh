@@ -72,5 +72,3 @@ make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 make_symlink bash/bashrc.sh .bashrc
 make_symlink emacs/init.el .emacs.d/init.el
 make_symlink ssh/config .ssh/config
-
-bash ./reaper/makeReaperSymlinks.sh
