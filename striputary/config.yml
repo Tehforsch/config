@@ -1,0 +1,3 @@
+output_dir: /mnt/extHdd/striputaryOut 
+service: spotify_native
+sound_server: pipewire
