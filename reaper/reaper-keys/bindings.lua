@@ -23,13 +23,21 @@ local global = { -- applies both to main and midi
 
         ["<DEL>"] = "DeleteItem",
 
+
+        ["S"] = "SplitItemsUnderMouseCursor",
+
         ["i"] = { "+insert", {
             ["f"] = "InsertMediaFile",
+            ["r"] = "AddSectionTimeSeletion",
         } },
 
         ["m"] = { "+mark", {
             ["d"] = "DeleteMarkNearCursor",
             ["a"] = "AddMark",
+        } },
+
+        ["g"] = { "track", {
+            ["j"] = "GoToJump",
         } },
 
         ["t"] = { "track", {
@@ -101,6 +109,7 @@ local global = { -- applies both to main and midi
                 ["s"] = "ShowScaleFinder",
                 ["t"] = "ShowTrackManager",
                 ["v"] = "ShowVirtualMidiKeyboard",
+                ["w"] = "ShowWiringDiagram",
             } },
             ["e"] = { "+envelopes", {
                 ["t"] = "ToggleShowSelectedEnvelope",
