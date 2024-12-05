@@ -52,8 +52,29 @@
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
       striputary = mkShell {
-        buildInputs = [ pkg-config cmake nightly clang libclang dbus ];
-        shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
+        buildInputs = [ pkg-config cmake nightly clang libclang dbus alsa-lib
+
+          # If on x11
+          xorg.libX11
+          xorg.libX11
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXrandr
+          libxkbcommon
+
+                      ];
+        shellHook = ''
+          export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
+            alsa-lib
+            udev
+            vulkan-loader
+            xorg.libX11
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXrandr
+            libxkbcommon
+          ]}"
+        '';
       };
       subsweep = mkShell {
         buildInputs = [ pkg-config cmake nightly clang libclang hdf5 mpi ];
