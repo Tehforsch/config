@@ -9,5 +9,7 @@
     taskwarrior
     steam
     qpwgraph
+    wireshark
   ];
+  programs.wireshark.enable = true;
 }
