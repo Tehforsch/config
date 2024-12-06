@@ -1,7 +1,5 @@
 # This is a little shitty, but it does the job
-read -p "root pw: " -s rootpw
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ssh-add ~/.ssh/id_rsa
-branch=$(git rev-parse --abbrev-ref HEAD)
-echo $rootpw | ssh -A netcup ~/projects/config/scripts/netcupBuild.sh $branch
+nixos-rebuild switch --target-host netcup --build-host netcup --use-remote-sudo --flake $config/nixos/#netcup
