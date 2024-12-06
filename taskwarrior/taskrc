@@ -43,14 +43,13 @@ urgency.user.tag.now.coefficient = 1000.0
 
 urgency.user.project.todo.coefficient = 20.0
 urgency.user.project.routine.coefficient = 5.0
-urgency.user.project.work.orga.coefficient = 2.0
-urgency.user.project.work.paper.coefficient = 10.0
 urgency.user.tag.next.coefficient = 400.0
-urgency.user.project.work.rsweep.coefficient = -20.0
 urgency.user.project.read.coefficient = -150.0
+urgency.user.project.move.coefficient = 10.0
 
 urgency.age.coefficient = 10.0
-urgency.blocked.coefficient = -40.0
+urgency.blocked.coefficient = -100.0
+urgency.blocking.coefficient = 30.0
 
 # taskwarrior-tui setup - mostly the defaults for reference
 uda.taskwarrior-tui.keyconfig.quit=q
