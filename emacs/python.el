@@ -22,8 +22,6 @@
 
 (add-to-list 'flycheck-checkers 'python-mypy t)
 
-(setq lsp-pyls-server-command "/home/toni/.local/bin/pylsp")
-
 (use-package python-black)
 (setq python-black-extra-args '("-l" "160"))
 
