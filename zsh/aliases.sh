@@ -107,6 +107,14 @@ alias pdf="zathura"
 alias nixsw="sudo nixos-rebuild switch --flake ~/projects/config/nixos"
 alias nixb="nixos-rebuild build --flake ~/projects/config/nixos"
 
+function ns() {
+    nix shell "nixpkgs#$1"
+}
+
+function nsr() {
+    nix shell "nixpkgs#$1" -c "$1"
+}
+
 alias transfer="rsync --archive --stats --progress --human-readable"
 alias dlc="$CONFIG/scripts/copyLastDownload.sh"
 alias kp="$scripts/killProcess.sh"
