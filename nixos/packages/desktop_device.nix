@@ -28,6 +28,7 @@
     zathura
     nomacs
     zoom-us
+    numbat
 
     # Utilities
     usbutils
