@@ -23,7 +23,7 @@
     description = "mpdas last.fm scrobbler";
     wantedBy = [ "default.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.mpdas}/bin/mpdas -c /home/toni/resource/keys/mpdasrc";
+      ExecStart = "${pkgs.mpdas}/bin/mpdas -c /home/toni/resource/keys/pw/mpdasrc";
       Type = "simple";
     };
   };
@@ -42,6 +42,7 @@
     partOf = [ "refreshNewsboat.service" ];
     timerConfig.OnCalendar = "hourly";
   };
+
   systemd.services.refreshNewsboat = {
     serviceConfig.Type = "oneshot";
     script = ''
@@ -49,5 +50,13 @@
     '';
   };
 
-  # services.mullvad-vpn.enable = true;
+  systemd.user.services.calendarReminder = {
+    enable = true;
+    description = "calendar reminders";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send ${pkgs.vdirsyncer}/bin/vdirsyncer";
+    };
+  };
 }

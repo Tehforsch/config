@@ -10,6 +10,7 @@
     # Programming languages
     uv
     ruff
+    python312Packages.python-lsp-server
     rustup # This is nice for new projects and diving through external libraries where direnv doesn't really work.
     nil # language server for nix
 
