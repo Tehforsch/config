@@ -29,6 +29,7 @@
         ./i3.nix
         ./redshift.nix
         ./power_management.nix
+        ./syncthing.nix
       ];
       work = [
         ./work.nix
@@ -36,7 +37,6 @@
       ];
       personal = [
         ./packages/personal.nix
-        ./syncthing.nix
         ./services.nix
       ];
       make_system = args@{ hostname, ... }: (

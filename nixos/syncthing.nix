@@ -7,6 +7,9 @@
       "framework" = {
         id = "MTF6SQC-HYLYCWI-FBWMX3P-UDKCVUN-XTTG5IA-FJYD4VB-MWPXZGJ-FJAD6QY";
       };
+      "thinkpad" = {
+        id = "ELRICBF-E6JIB37-TXDE65R-4EYY5QY-3SE27FW-YVEVUJT-YSOC5ZP-WEHPUQL";
+      };
       "rpi" = {
         id = "2ZVVCCZ-J4R4CMX-YIX52JY-U6ONU3O-E5HAED3-PWMR53C-763SVVJ-JJGS3AL";
       };
