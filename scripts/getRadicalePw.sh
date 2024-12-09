@@ -1,2 +1,2 @@
 #!/run/current-system/sw/bin/bash
-cat ~/resource/keys/radicale
+cat ~/resource/keys/pw/radicale
