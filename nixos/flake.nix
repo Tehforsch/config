@@ -9,6 +9,7 @@
     };
     journal = { url = "github:tehforsch/journal"; };
     moody = { url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git"; };
+    personalbot = { url = "git+ssh://git@github.com/tehforsch/personalbot.git"; };
     musnix = { url = "github:musnix/musnix"; };
   };
 
@@ -42,7 +43,6 @@
       make_system = args@{ hostname, ... }: (
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
           modules = basic ++ args.modules ++ [
             { networking.hostName = hostname; }
             ./hardware/${hostname}.nix
@@ -50,8 +50,13 @@
           ];
         }
       );
+      make_x86_system = {hostname, modules}: make_system {
+        hostname = hostname;
+        modules = modules;
+        system = "x86_64-linux";
+      };
     in {
-      pc = make_system {
+      pc = make_x86_system {
         hostname = "pc";
         modules =
           [
@@ -62,7 +67,7 @@
           ]
           ++ desktop_device ++ work ++ personal;
       };
-      framework = make_system {
+      framework = make_x86_system {
         hostname = "framework";
         modules =
           [
@@ -70,7 +75,7 @@
           ]
           ++ desktop_device ++ work ++ personal;
       };
-      thinkpad = make_system {
+      thinkpad = make_x86_system {
         hostname = "thinkpad";
         modules =
           [
@@ -78,12 +83,13 @@
           ]
           ++ desktop_device ++ work;
       };
-      netcup = make_system {
+      netcup = make_x86_system {
         hostname = "netcup";
         modules = [];
       };
       rpi = make_system {
         hostname = "rpi";
+        system = "aarch64-linux";
         modules =
           [
             ./syncthing.nix
@@ -91,11 +97,11 @@
       };
     };
     images = {
-      rpi = (nixosConfigurations.rpi.extendModules {
-        modules = [
-          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-        ];
-      }).config.system.build.sdImage;
+        rpi = (nixosConfigurations.rpi.extendModules {
+            modules = [
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            ];
+        }).config.system.build.sdImage;
     };
   };
 }

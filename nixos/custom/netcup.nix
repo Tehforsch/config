@@ -23,4 +23,13 @@
       ExecStart = "${inputs.moody.packages.x86_64-linux.default}/bin/python ${inputs.moody.packages.x86_64-linux.default}/lib/python3.12/site-packages/main.py";
     };
   };
+
+  systemd.user.services.personalbot = {
+    enable = true;
+    description = "personalbot";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${inputs.personalbot.packages.x86_64-linux.default}/bin/python ${inputs.personalbot.packages.x86_64-linux.default}/lib/python3.12/site-packages/main.py";
+    };
+  };
 }

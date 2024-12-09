@@ -187,6 +187,43 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1733581040,
+        "narHash": "sha256-Qn3nPMSopRQJgmvHzVqPcE3I03zJyl8cSbgnnltfFDY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "22c3f2cf41a0e70184334a958e6b124fb0ce3e01",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "personalbot": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5",
+        "pyproject-build-systems": "pyproject-build-systems_2",
+        "pyproject-nix": "pyproject-nix_2",
+        "uv2nix": "uv2nix_2"
+      },
+      "locked": {
+        "lastModified": 1733781901,
+        "narHash": "sha256-IZF77c33QQbEz8GT/VE54sPP+Ras4wylQ0zYqTeibdo=",
+        "ref": "refs/heads/main",
+        "rev": "fac2c20d5c1ced4666637b096057c43d3a25772f",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/personalbot.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/personalbot.git"
+      }
+    },
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
@@ -216,6 +253,35 @@
         "type": "github"
       }
     },
+    "pyproject-build-systems_2": {
+      "inputs": {
+        "nixpkgs": [
+          "personalbot",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "personalbot",
+          "pyproject-nix"
+        ],
+        "uv2nix": [
+          "personalbot",
+          "uv2nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733628997,
+        "narHash": "sha256-brzCRGaUUnye+i1Xua2TxGYog1LRwDn9fNS/s/pym4Q=",
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "rev": "d7f1157ecc005714e2e853bf06ef9daec79fa43d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "type": "github"
+      }
+    },
     "pyproject-nix": {
       "inputs": {
         "nixpkgs": [
@@ -237,12 +303,34 @@
         "type": "github"
       }
     },
+    "pyproject-nix_2": {
+      "inputs": {
+        "nixpkgs": [
+          "personalbot",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733540292,
+        "narHash": "sha256-UAW/Rs8hx6ai+lAv2c0fP21NXi3SWuJO9p0DNiEYS90=",
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "rev": "e2393999b79ea26c1d399f8fcc34db4a01665e9b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "journal": "journal",
         "moody": "moody",
         "musnix": "musnix",
         "nixpkgs": "nixpkgs_4",
+        "personalbot": "personalbot",
         "rust-overlay": "rust-overlay_2"
       }
     },
@@ -325,6 +413,31 @@
         "owner": "pyproject-nix",
         "repo": "uv2nix",
         "rev": "3614215065f1c828e5d5c1653af5cba078387a78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "type": "github"
+      }
+    },
+    "uv2nix_2": {
+      "inputs": {
+        "nixpkgs": [
+          "personalbot",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "personalbot",
+          "pyproject-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733705845,
+        "narHash": "sha256-x/He9xIxMcWeYzoIe45viKPxVmIV9DYftSK0YDvzU94=",
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "rev": "b7ba04e74c09307e994a15601ff66ad51b5be9e8",
         "type": "github"
       },
       "original": {
