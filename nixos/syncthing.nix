@@ -21,6 +21,8 @@
     configDir = "/home/toni/.config/syncthing";
     overrideDevices = true;
     overrideFolders = true;
+    key = "/home/toni/resource/keys/syncthing/${config.networking.hostName}/key.pem";
+    cert = "/home/toni/resource/keys/syncthing/${config.networking.hostName}/cert.pem";
     settings = {
       devices = otherDevices;
       folders = {
