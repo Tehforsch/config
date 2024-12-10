@@ -127,6 +127,11 @@ alias shut="sudo shutdown -h 0"
 alias timer="$CONFIG/scripts/timer/timer.sh"
 alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
 
+alias sys="systemctl"
+alias sus="systemctl --user"
+alias syj="journalctl -u"
+alias suj="journalctl --user -u"
+
 alias journ="systemctl start --user journal; $CONFIG/scripts/journal_entry.sh"
 alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard&; $CONFIG/scripts/journal_entry.sh yesterday"
 
