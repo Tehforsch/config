@@ -104,8 +104,11 @@ alias im="nomacs"
 alias pdf="zathura"
 
 # I used to have this as "sudo -u toni", in order to ensure I can use normal user ssh keys to clone private repos. However this has stopped working
-alias nixsw="sudo nixos-rebuild switch --flake ~/projects/config/nixos"
+alias nixsw="sudo -u toni nixos-rebuild switch --flake ~/projects/config/nixos"
 alias nixb="nixos-rebuild build --flake ~/projects/config/nixos"
+alias nixd="nix-store --delete"
+alias nixr="nix-store --roots --query"
+
 
 function ns() {
     nix shell "nixpkgs#$1"
