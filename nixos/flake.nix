@@ -40,8 +40,9 @@
         ./packages/personal.nix
         ./services.nix
       ];
-      make_system = args@{ hostname, ... }: (
+      make_system = args@{ hostname, system, ... }: (
         nixpkgs.lib.nixosSystem {
+          system = system;
           specialArgs = { inherit inputs; };
           modules = basic ++ args.modules ++ [
             { networking.hostName = hostname; }
@@ -50,13 +51,9 @@
           ];
         }
       );
-      make_x86_system = {hostname, modules}: make_system {
-        hostname = hostname;
-        modules = modules;
-        system = "x86_64-linux";
-      };
     in {
-      pc = make_x86_system {
+      pc = make_system {
+        system = "x86_64-linux";
         hostname = "pc";
         modules =
           [
@@ -67,7 +64,8 @@
           ]
           ++ desktop_device ++ work ++ personal;
       };
-      framework = make_x86_system {
+      framework = make_system {
+        system = "x86_64-linux";
         hostname = "framework";
         modules =
           [
@@ -75,7 +73,8 @@
           ]
           ++ desktop_device ++ work ++ personal;
       };
-      thinkpad = make_x86_system {
+      thinkpad = make_system {
+        system = "x86_64-linux";
         hostname = "thinkpad";
         modules =
           [
@@ -83,13 +82,14 @@
           ]
           ++ desktop_device ++ work;
       };
-      netcup = make_x86_system {
+      netcup = make_system {
+        system = "x86_64-linux";
         hostname = "netcup";
         modules = [];
       };
       rpi = make_system {
-        hostname = "rpi";
         system = "aarch64-linux";
+        hostname = "rpi";
         modules =
           [
             ./syncthing.nix
