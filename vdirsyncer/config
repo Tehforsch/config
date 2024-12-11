@@ -26,7 +26,7 @@ password.fetch = ["command", "~/projects/config/scripts/getRadicalePw.sh"]
 [pair contacts]
 a = "personal_contacts_local"
 b = "personal_contacts_remote"
-collections = ["from a"]
+collections = ["from a", "from b"]
 
 [pair personal_calendar]
 a = "personal_calendar_local"
