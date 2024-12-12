@@ -36,7 +36,11 @@ def get_event(line):
     date, *title = line.split(" ")
     title = " ".join(title)
     year, month, day, rest = date.split("-")
-    hour, minute = rest.split(":")
+    try:
+        hour, minute = rest.split(":")
+    except ValueError:
+        # all day event, pick a random time
+        hour, minute = (6, 0)
     date = datetime.datetime(year=int(year), month=int(month), day=int(day), hour=int(hour), minute=int(minute))
     return Event(date, title)
 
@@ -46,7 +50,7 @@ def get_events():
     cmd = khal_path + " list --day-format \"\" --format \"{start-date}-{start-time} {title}\""
     print(cmd)
     result = subprocess.check_output(cmd, shell=True).decode(sys.stdout.encoding)
-    return [get_event(line) for line in result.split("\n") if line != ""]
+    return [get_event(line) for line in result.split("\n") if line.strip() != ""]
 
 if __name__ == "__main__":
     events = get_events()
