@@ -12,6 +12,12 @@
     yabridgectl
   ];
 
+  # For reapers HTTP web interface
+  networking.firewall = {
+    allowedTCPPorts = [ 8080 ];
+    allowedUDPPorts = [ 8080 ];
+  };
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
