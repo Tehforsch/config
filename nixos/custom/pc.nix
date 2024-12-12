@@ -33,4 +33,15 @@
     open = false;
   };
 
+  services.paperless = {
+    user = "toni";
+    dataDir = "/home/toni/.local/share/paperless";
+    mediaDir = "/home/toni/resource/paperless";
+    consumptionDir = "/home/toni/downloads/paperless";
+    settings = {
+      PAPERLESS_ADMIN_USER = "toni";
+    };
+  };
 }
+
+
