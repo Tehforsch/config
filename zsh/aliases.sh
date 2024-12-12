@@ -134,8 +134,8 @@ alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
 
 alias sys="systemctl"
 alias sus="systemctl --user"
-alias syj="journalctl -u"
-alias suj="journalctl --user -u"
+alias syj="journalctl -xeu"
+alias suj="journalctl --user -xeu"
 
 alias journ="systemctl start --user journal; $CONFIG/scripts/journal_entry.sh"
 alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard&; $CONFIG/scripts/journal_entry.sh yesterday"
