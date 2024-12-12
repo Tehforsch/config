@@ -1,6 +1,14 @@
 # Mouse
 use piper to set DPI to 3000
 
+# Raspberry pi
+Flash basic image to SD (I tried many times to build a custom SD but the process always ended up consuming terabytes of memory, swapping and crashing).
+Attach a keyboard like a caveman, change the user passwd
+In the nixos config: Make sure initialPassword or hashedPassword is set for some user!
+Use deployNixos script to deploy the config to the rpi, dont build it locally (which is unsurprising). You might need to change the ssh config, since the user is probably "nixos", not "toni"
+Reboot the rpi when its done.
+Clone the config project and symlink files. Maybe syncthing has created a root-readable ~/.config dir, which is annoying. Delete it i guess
+
 
 # Annoying things
 ## emacs
