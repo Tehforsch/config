@@ -92,11 +92,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1733135683,
-        "narHash": "sha256-fikyezKzsQ9yE9PQk5nAVuyuotZ3ueRHHgNuNsTyGwg=",
+        "lastModified": 1734022018,
+        "narHash": "sha256-/ezovWWOgQImRTttzDMxvMhbFqhyskAI1spxWVtEgnQ=",
         "ref": "refs/heads/main",
-        "rev": "745572383634b11279d98a2b5db58af766e01632",
-        "revCount": 5,
+        "rev": "9a142fe976226ed9c3f21d02a0569cd1f37820d9",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/moodyTelegramBot.git"
       },
