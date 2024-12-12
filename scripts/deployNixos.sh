@@ -9,6 +9,12 @@ if [[ -d "$secrets_dir" ]]; then
     ssh $1 mkdir -p resource/keys/on_server/
     rsync -a "$secrets_dir"/ $1:resource/keys/on_server/
 fi
+syncthing_keys_dir="$HOME/resource/keys/syncthing/$1"
+if [[ -d "$syncthing_keys_dir" ]]; then
+    echo "Copying syncthing keys"
+    ssh $1 mkdir -p resource/keys/syncthing/$1
+    rsync -a "$syncthing_keys_dir"/ $1:resource/keys/syncthing/$1
+fi
 
 echo "Building nixos"
 nixos-rebuild switch --target-host $1 --build-host $1 --use-remote-sudo --flake $config/nixos/#$1 

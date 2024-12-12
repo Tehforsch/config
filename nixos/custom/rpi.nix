@@ -6,5 +6,5 @@
 
     nixpkgs.config.allowUnsupportedSystem = true;
 
-    users.users.toni.initialPassword = "abcdabcd";
+    security.polkit.enable = true;
 }
