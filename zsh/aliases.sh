@@ -133,9 +133,6 @@ alias timer="$CONFIG/scripts/timer/timer.sh"
 alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
 
 alias sys="systemctl"
-alias sus="systemctl --user"
-alias syj="journalctl -xeu"
-alias suj="journalctl --user -xeu"
 
 alias journ="systemctl start --user journal; $CONFIG/scripts/journal_entry.sh"
 alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard&; $CONFIG/scripts/journal_entry.sh yesterday"
@@ -145,5 +142,6 @@ alias addmusic="bash ~/music/addMusic.sh"
 alias pybob="python3 ~/projects/pybob/main.py"
 
 alias scannerctl="cargo run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias openvasd="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
 
 alias cal="vdirsyncer sync && ikhal"
