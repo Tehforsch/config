@@ -152,6 +152,7 @@ return {
     FitByPadding = { "OnlySelectItemsCrossingTimeAndTrackSelection", "FitSelectedItemsByPadding" },
     FitByStretching = { "OnlySelectItemsCrossingTimeAndTrackSelection", "FitSelectedItemsByStretching" },
     FitEnvelopePoints = "_BR_FIT_ENV_POINTS_TO_TIMESEL",
+    InsertEnvelopePointAtCursor = "_BR_ENV_POINT_MOUSE_CURSOR",
     FitSelectedItemsByLooping = 41386,
     FitSelectedItemsByPadding = 41385,
     FitSelectedItemsByStretching = 41206,

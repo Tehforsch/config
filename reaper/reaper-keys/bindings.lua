@@ -29,6 +29,7 @@ local global = { -- applies both to main and midi
         ["i"] = { "+insert", {
             ["f"] = "InsertMediaFile",
             ["r"] = "AddSectionTimeSeletion",
+            ["p"] = "InsertEnvelopePointAtCursor",
         } },
 
         ["m"] = { "+mark", {
@@ -69,6 +70,7 @@ local global = { -- applies both to main and midi
         ["s"] = { "+selected items", {
             ["j"] = "NextTake",
             ["k"] = "PrevTake",
+            ["g"] = "GlueItemsIgnoringTimeSelection",
             ["m"] = "ToggleMuteItem",
             ["s"] = "ToggleSoloItem",
             ["d"] = "DeleteActiveTake",
@@ -112,12 +114,15 @@ local global = { -- applies both to main and midi
                 ["w"] = "ShowWiringDiagram",
             } },
             ["e"] = { "+envelopes", {
-                ["t"] = "ToggleShowSelectedEnvelope",
                 ["T"] = "ToggleShowAllEnvelope",
                 ["a"] = "ToggleArmEnvelopes",
                 ["A"] = "ToggleArmAllEnvelopes",
                 ["d"] = "ClearEnvelope",
                 ["D"] = "ClearAllEnvelope",
+                ["t"] = { "+toggle envelope", {
+                    ["v"] = "ToggleVolumeEnvelope",
+                    ["p"] = "TogglePanEnvelope",
+                } },
             } },
             ["f"] = { "+fx", {
                 ["a"] = "AddFx",
