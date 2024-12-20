@@ -14,7 +14,8 @@ fi
 
 HOME=/home/toni /home/toni/projects/config/audio/scripts/wireplumber_mode.sh $1
 sleep 0.3
-PIPEWIRE_QUANTUM=64/48000 reaper &
+# 64 is also possible but why take the risk when I cant hear this part of the latency anyways
+PIPEWIRE_QUANTUM=128/48000 reaper &
 
 sleep 5
 

@@ -30,6 +30,7 @@
     nomacs
     zoom-us
     numbat
+    python3 # I sometimes want a REPL, so having this always there is nice
 
     # Utilities
     usbutils
