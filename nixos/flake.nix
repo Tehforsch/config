@@ -31,6 +31,7 @@
         ./redshift.nix
         ./power_management.nix
         ./syncthing.nix
+        ./mpd.nix
       ];
       work = [
         ./work.nix
