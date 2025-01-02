@@ -10,6 +10,7 @@
     wineWowPackages.stable
     yabridge
     yabridgectl
+    qbittorrent
   ];
 
   # For reapers HTTP web interface
@@ -40,6 +41,7 @@
   };
 
   services.paperless = {
+    enable = true;
     user = "toni";
     dataDir = "/home/toni/.local/share/paperless";
     mediaDir = "/home/toni/resource/paperless";

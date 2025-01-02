@@ -23,7 +23,8 @@
         soundPlaying=$(${pkgs.pulseaudio}/bin/pactl list | grep -c "RUNNING") 
         scpRunning=$(${pkgs.procps}/bin/pgrep scp | wc -l) 
         reaperRunning=$(${pkgs.procps}/bin/pgrep -x reaper | wc -l)
-        if [[ $soundPlaying -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 ]]; then
+        qbitTorrentRunning=$(${pkgs.procps}/bin/pgrep -x qbittorrent | wc -l)
+        if [[ $soundPlaying -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 || "$qbitTorrentRunning" -ge 1 ]]; then
             ${pkgs.xautolock}/bin/xautolock -restart
         fi
     '';
