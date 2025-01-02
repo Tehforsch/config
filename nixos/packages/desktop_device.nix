@@ -56,9 +56,7 @@
     # Sound + Music
     pavucontrol
     pulseaudio # needed for pactl etc. even though i have pipewire
-    mpd
     mpc-cli
-    mpdas
     libnotify
     alsa-lib
   ];
