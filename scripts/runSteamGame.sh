@@ -1,5 +1,5 @@
 result=""
-libraryPath="/home/toni/.local/share/Steam/steamapps"
+libraryPath="/mnt/extHdd/SteamLibrary/steamapps"
 for f in $(fd -t f appmanifest "$libraryPath" --max-depth 1); do
     echo $f
     id=$(basename "$f" | sed "s/appmanifest_//" | sed "s/.acf//")
