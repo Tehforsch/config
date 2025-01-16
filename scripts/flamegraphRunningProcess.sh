@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 folder="$(realpath $HOME/.local/share/tmp)/flamegraphs"
 mkdir -p "$folder"
 cd "$folder"
