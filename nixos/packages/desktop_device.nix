@@ -16,7 +16,7 @@
 
     # User applications
     firefox
-    betterbird
+    thunderbird
     vlc
     spotify
     discord
