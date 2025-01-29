@@ -5,7 +5,6 @@
     enable = true;
     rtcqs.enable = true;
   };
-  boot.kernelParams = [ "mitigations=off" ];
   security.pam.loginLimits = [
     { domain = "@audio"; item = "memlock"; type = "-"; value = "unlimited"; }
     { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
