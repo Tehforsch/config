@@ -7,7 +7,7 @@ khal_path = sys.argv[1]
 notify_send_path = sys.argv[2]
 vdirsyncer_path = sys.argv[3]
 
-REMINDER_INTERVALS = [9999999999999, 3600, 600]
+REMINDER_INTERVALS = [9999999999999, 3600, 600, 60]
 
 class Event:
     def __init__(self, datetime, title):
@@ -15,20 +15,21 @@ class Event:
         self.title = title
         self.reminders_sent = []
 
-    def send_notification(self):
-        message = f"{self.datetime.time()}: {self.title}"
+    def send_notification(self, delta):
+        minutes = delta.total_seconds() / 60
+        message = f"{self.datetime.time()} (in {minutes}): {self.title}"
         subprocess.check_output([notify_send_path, "--urgency=critical", "--expire-time=3600000", message])
 
-    def notify_if_today(self):
+    def notify_if_today(self, delta):
         today = datetime.datetime.now().date()
         if self.datetime.date() == today:
-            self.send_notification()
+            self.send_notification(delta)
 
     def notify_if_soon(self):
         delta = self.datetime - datetime.datetime.now()
         for (i, reminder_delta) in enumerate(REMINDER_INTERVALS):
             if i not in self.reminders_sent and delta.total_seconds() < reminder_delta:
-                self.notify_if_today()
+                self.notify_if_today(delta)
                 self.reminders_sent.append(i)
 
 
