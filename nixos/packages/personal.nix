@@ -7,7 +7,6 @@
     khal
     vdirsyncer
     taskwarrior
-    steam
     qpwgraph
     wireshark
   ];
