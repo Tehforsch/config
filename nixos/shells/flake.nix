@@ -18,6 +18,9 @@
     nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)).override {
       extensions = [ "rust-src" "rust-analyzer" ];
     };
+    oldNightly = (pkgs.rust-bin.nightly."2024-06-10").default.override {
+      extensions = [ "rust-src" "rust-analyzer" ];
+    };
     makeScannerShell = (rustToolChain: pkgs.mkShell {
         packages = [ pkgs.clang pkgs.mold-wrapped ];
         nativeBuildInputs = with pkgs.buildPackages; [
@@ -77,7 +80,7 @@
         '';
       };
       subsweep = mkShell {
-        buildInputs = [ pkg-config cmake nightly clang libclang hdf5 mpi ];
+        buildInputs = [ pkg-config cmake oldNightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
       bevy = mkShell {
