@@ -11,6 +11,11 @@ type = "filesystem"
 path = "~/.local/share/dav/calendar/personal/"
 fileext = ".ics"
 
+[storage work_calendar_local]
+type = "filesystem"
+path = "~/.local/share/dav/calendar/work/"
+fileext = ".ics"
+
 [storage personal_contacts_remote]
 type = "carddav"
 url = "http://v2202411242091296475.happysrv.de:5232"
@@ -23,6 +28,12 @@ url = "http://v2202411242091296475.happysrv.de:5232"
 username = "toni"
 password.fetch = ["command", "~/projects/config/scripts/getRadicalePw.sh"]
 
+[storage work_calendar_remote]
+type = "caldav"
+url = "https://dav.mailbox.org/caldav/Y2FsOi8vMC8zMDkz"
+username = "toni.peter@greenbone.net"
+password.fetch = ["command", "~/projects/config/scripts/getMailboxPw.sh"]
+
 [pair contacts]
 a = "personal_contacts_local"
 b = "personal_contacts_remote"
@@ -31,4 +42,9 @@ collections = ["from a", "from b"]
 [pair personal_calendar]
 a = "personal_calendar_local"
 b = "personal_calendar_remote"
+collections = ["from a", "from b"]
+
+[pair work_calendar]
+a = "work_calendar_local"
+b = "work_calendar_remote"
 collections = ["from a", "from b"]
