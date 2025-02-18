@@ -42,6 +42,7 @@ make_symlink hyprland/hyprland.conf .config/hypr/hyprland.conf
 make_symlink hyprland/waybar.jsonc .config/waybar/config.jsonc
 make_symlink hyprland/waybar-style.css .config/waybar/style.css
 make_symlink hyprland/hyprland-autoname-workspaces-config.toml .config/hyprland-autoname-workspaces/config.toml
+make_symlink keepassxc/keepassxc.ini .config/keepassxc/keepassxc.ini
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi
