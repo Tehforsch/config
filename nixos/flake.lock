@@ -211,11 +211,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1734041986,
-        "narHash": "sha256-FTa3nFWS1TvMdj6nxpmxyrnu1XnineUeoyjqkweQgM0=",
+        "lastModified": 1739878849,
+        "narHash": "sha256-O3ygO1XIib5xMkVcGTN/5TuPUohuiIe8lNXV9geG+Wk=",
         "ref": "refs/heads/main",
-        "rev": "2bd0a99bda92a5bc9019a1ab5b93fbe3a75c263d",
-        "revCount": 13,
+        "rev": "54df63faa8fc3e1ee8e29bed442851a6739a58f0",
+        "revCount": 16,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/personalbot.git"
       },

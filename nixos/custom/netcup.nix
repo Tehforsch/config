@@ -30,6 +30,8 @@
     serviceConfig = {
       Type = "simple";
       ExecStart = "${inputs.personalbot.packages.x86_64-linux.default}/bin/python ${inputs.personalbot.packages.x86_64-linux.default}/lib/python3.12/site-packages/main.py";
+      Restart = "on-failure";
     };
+
   };
 }
