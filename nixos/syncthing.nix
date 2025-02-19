@@ -32,10 +32,18 @@
         "music" = {
           path = "/home/toni/music";
           devices = others;
+          versioning = {
+            type = "simple";
+            params.keep = "2";
+          };
         };
         "resource" = {
           path = "/home/toni/resource";
           devices = others;
+          versioning = {
+            type = "simple";
+            params.keep = "10";
+          };
         };
       };
     };
