@@ -10,7 +10,6 @@
     bat
     eza
     fzf
-    silver-searcher # ag
     ripgrep
     unp
     killall
