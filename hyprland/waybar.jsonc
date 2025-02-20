@@ -10,10 +10,9 @@
         "hyprland/workspaces",
     ],
     "modules-center": [
-        "hyprland/window"
+        "hyprland/submap",
     ],
     "modules-right": [
-        "hyprland/submap",
         "battery",
         "tray"
     ],
