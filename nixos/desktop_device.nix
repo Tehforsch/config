@@ -32,5 +32,6 @@
   services.emacs = {
     enable = true;
     defaultEditor = true;
+    package = pkgs.emacs30;
   };
 }

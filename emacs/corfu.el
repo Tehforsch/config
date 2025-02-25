@@ -15,6 +15,10 @@
   (global-corfu-mode)
   (corfu-popupinfo-mode))
 
+; This is separate from corfu but part of completion, so lets put it here
+(global-completion-preview-mode)
+(setq completion-preview-minimum-symbol-length 2)
+
 (set-face-attribute 'corfu-popupinfo nil :height 150)
 (set-face-background 'corfu-popupinfo "gray15")
 

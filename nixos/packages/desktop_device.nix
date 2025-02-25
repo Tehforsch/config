@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [
     # Developer stuff
     kitty
-    emacs
+    emacs30
     meld
     mold-wrapped
 
