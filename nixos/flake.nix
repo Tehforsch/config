@@ -21,6 +21,7 @@
         ./users.nix
         ./keyboard_configuration.nix
         ./ssh.nix
+        ./garbage_collect.nix
       ];
       desktop_device = basic ++ [
         ./desktop_device.nix
@@ -71,6 +72,7 @@
         modules =
           [
             ./laptop.nix
+            # ./mullvad.nix
           ]
           ++ desktop_device ++ work ++ personal;
       };
