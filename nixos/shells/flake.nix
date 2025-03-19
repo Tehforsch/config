@@ -38,6 +38,7 @@
           glib
           json-glib
           gnutls
+          clang
         ];
     });
   in {
@@ -64,6 +65,7 @@
           xorg.libXi
           xorg.libXrandr
           libxkbcommon
+          fontconfig
 
                       ];
         shellHook = ''
@@ -76,6 +78,7 @@
             xorg.libXi
             xorg.libXrandr
             libxkbcommon
+            fontconfig
           ]}"
         '';
       };
