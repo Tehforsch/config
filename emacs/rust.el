@@ -1,12 +1,8 @@
 (use-package rustic)
-(setenv "PATH" (concat (getenv "PATH") ":/home/toni/.cargo/bin"))
-(setq exec-path (append exec-path '("/home/toni/.cargo/bin")))
-(setq exec-path (append exec-path '("/usr/lib/llvm15/bin")))
-(setq rustic-rustfmt-bin "/home/toni/.cargo/bin/rustfmt")
 (setq rustic-format-on-save nil)
 (setq rustic-format-display-method 'ignore) ; Don't show rustfmt buffer
 
-(add-hook 'rustic-mode-hook 'flycheck-mode)
+;; (add-hook 'rustic-mode-hook 'flycheck-mode)
 (setq rustic-lsp-server 'rust-analyzer)
 
 
@@ -16,11 +12,8 @@
 ; This might look confusing, but the usual, good diagnostics I get are actually from
 ; rustics cargo check flycheck backend, as far as I can tell
 (setq lsp-rust-analyzer-diagnostics-enable nil)
-(setq lsp-rust-features [])
 
-; I had problems when this was set to the default which included --all-features for some reason
-(setq rustic-cargo-check-arguments "")
-(setq rustic-cargo-check-exec-command "build")
+(setq lsp-rust-features [])
 
 (defun set-lsp-rust-feature ()
   (interactive)

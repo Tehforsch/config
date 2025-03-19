@@ -69,7 +69,6 @@
 (load-from-config "rust.el")
 (load-from-config "c.el")
 (load-from-config "python.el")
-(load-from-config "latex.el")
 (load-from-config "haskell.el")
 (load-from-config "gnuplot.el")
 (load-from-config "yaml.el")
