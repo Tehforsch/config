@@ -56,7 +56,7 @@
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
       striputary = mkShell {
-        buildInputs = [ pkg-config cmake nightly clang libclang dbus alsa-lib
+        buildInputs = [ pkg-config cmake stable clang libclang dbus alsa-lib
 
           # If on x11
           xorg.libX11
