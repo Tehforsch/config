@@ -22,6 +22,7 @@
     pkg-config
     jq
     wget
+    nix-search
   ];
 
   programs.direnv.enable = true;
