@@ -12,62 +12,62 @@
   let
     overlays = [ (import rust-overlay) ];
     pkgs = import nixpkgs { inherit system overlays; };
-    stable = pkgs.rust-bin.stable.latest.default.override {
+    rust_stable = pkgs.rust-bin.stable.latest.default.override {
       extensions = [ "rust-src" "rust-analyzer" ];
     };
-    nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)).override {
+    rust_nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)).override {
       extensions = [ "rust-src" "rust-analyzer" ];
     };
-    oldNightly = (pkgs.rust-bin.nightly."2024-06-10").default.override {
+    rust_oldNightly = (pkgs.rust-bin.nightly."2024-06-10").default.override {
       extensions = [ "rust-src" "rust-analyzer" ];
     };
     makeScannerShell = (rustToolChain: pkgs.mkShell {
-        packages = [ pkgs.clang pkgs.mold-wrapped ];
-        nativeBuildInputs = with pkgs.buildPackages; [
-          rustToolChain
-          file
-          libpcap
-          hiredis
-          cmake
-          libnet
-          curl
-          redis
-          pkg-config
-          zlib
-          cmake
-          glib
-          json-glib
-          gnutls
-          clang
-        ];
+      packages = [ pkgs.clang pkgs.mold-wrapped ];
+      nativeBuildInputs = with pkgs.buildPackages; [
+        rustToolChain
+        file
+        libpcap
+        hiredis
+        cmake
+        libnet
+        curl
+        redis
+        pkg-config
+        zlib
+        cmake
+        glib
+        json-glib
+        gnutls
+        clang
+      ];
     });
   in {
     devShells = with pkgs; {
       rust_stable = mkShell {
-        buildInputs = [ pkg-config cmake stable clang ];
+        buildInputs = [ pkg-config cmake rust_stable clang ];
       };
       rust_nightly = mkShell {
-        buildInputs = [ pkg-config nightly cmake clang ];
+        buildInputs = [ pkg-config rust_nightly cmake clang ];
       };
-      scanner = makeScannerShell stable;
-      scannerNightly = makeScannerShell nightly;
+      scanner = makeScannerShell rust_stable;
+      scannerNightly = makeScannerShell rust_nightly;
       diman = mkShell {
-        buildInputs = [ pkg-config cmake nightly clang libclang hdf5 mpi ];
+        buildInputs = [ pkg-config cmake rust_nightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
       striputary = mkShell {
-        buildInputs = [ pkg-config cmake stable clang libclang dbus alsa-lib
+        buildInputs = [ pkg-config cmake rust_stable clang libclang dbus alsa-lib
 
-          # If on x11
-          xorg.libX11
-          xorg.libX11
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXrandr
-          libxkbcommon
-          fontconfig
+        # If on x11
+        xorg.libX11
+        xorg.libX11
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXrandr
+        libxkbcommon
+        fontconfig
 
-                      ];
+        ];
         shellHook = ''
           export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
             alsa-lib
@@ -83,7 +83,7 @@
         '';
       };
       subsweep = mkShell {
-        buildInputs = [ pkg-config cmake oldNightly clang libclang hdf5 mpi ];
+        buildInputs = [ pkg-config cmake rust_oldNightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
       bevy = mkShell {
@@ -92,7 +92,7 @@
           lld
         ]);
         nativeBuildInputs = ([
-          stable
+          rust_stable
           # Bevy
           pkg-config
           alsa-lib
@@ -120,6 +120,31 @@
             libxkbcommon
           ]}"
         '';
+      };
+      tauri = mkShell {
+        nativeBuildInputs = with pkgs; [
+          pkg-config
+          gobject-introspection
+          cargo-tauri
+          nodejs
+          rust_stable
+          clang
+        ];
+
+        buildInputs = with pkgs; [
+          at-spi2-atk
+          atkmm
+          cairo
+          gdk-pixbuf
+          glib
+          gtk3
+          harfbuzz
+          librsvg
+          libsoup_3
+          pango
+          webkitgtk_4_1
+          openssl
+        ];
       };
       python = mkShell {
         buildInputs = [ (python3.withPackages (p: with p; [ numpy pyyaml ])) ];
