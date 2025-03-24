@@ -78,8 +78,13 @@ alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows
 alias rb='if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi'
 
 function init_envrc() {
+    if [[ $# == 1 ]]; then
+        shell_name="$1"
+    else
+        shell_name=rust_stable
+    fi
     cwd=$(basename $(pwd))
-    echo "use flake ~/projects/config/nixos/shells#rust_stable\nexport CARGO_BUILD_TARGET_DIR=/mnt/extHdd/.cargo-target/$cwd" > .envrc;
+    echo "use flake ~/projects/config/nixos/shells#$shell_name\nexport CARGO_BUILD_TARGET_DIR=/mnt/extHdd/.cargo-target/$cwd" > .envrc;
     direnv allow
 }
 
