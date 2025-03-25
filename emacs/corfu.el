@@ -16,7 +16,7 @@
   (corfu-popupinfo-mode))
 
 ; This is separate from corfu but part of completion, so lets put it here
-(global-completion-preview-mode)
+(add-hook 'rustic-mode 'completion-preview-mode)
 (setq completion-preview-minimum-symbol-length 1)
 
 (set-face-attribute 'corfu-popupinfo nil :height 150)

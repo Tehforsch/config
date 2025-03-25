@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ ... }:
 {
     nix.gc = {
         automatic = true;
