@@ -2,7 +2,6 @@
   lsp-mode
   :hook
   ((python-mode . lsp)
-    (c-mode . lsp)
     (lsp-mode . lsp-enable-which-key-integration))
   )
 

@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     reaper
-    steam
     borgbackup
     anki
     beets
