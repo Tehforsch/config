@@ -32,6 +32,7 @@
     numbat
     python3 # I sometimes want a REPL, so having this always there is nice
     obsidian
+    hotspot
 
     # Utilities
     usbutils
@@ -45,6 +46,7 @@
     flameshot
     xclip
     xrectsel
+    linuxKernel.packages.linux_zen.perf
 
     # Network stuff
     oath-toolkit

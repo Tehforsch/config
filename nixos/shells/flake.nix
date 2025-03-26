@@ -21,6 +21,13 @@
     rust_oldNightly = (pkgs.rust-bin.nightly."2024-06-10").default.override {
       extensions = [ "rust-src" "rust-analyzer" ];
     };
+    rust_wasm = pkgs.rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" "rust-analyzer" ];
+      targets = [ "wasm32-unknown-unknown" ];
+    };
+    makeBasicRustShell = (rustToolChain: pkgs.mkShell {
+        buildInputs = with pkgs; [ pkg-config cmake rustToolChain clang ];
+    });
     makeScannerShell = (rustToolChain: pkgs.mkShell {
       packages = [ pkgs.clang pkgs.mold-wrapped ];
       nativeBuildInputs = with pkgs.buildPackages; [
@@ -43,12 +50,9 @@
     });
   in {
     devShells = with pkgs; {
-      rust_stable = mkShell {
-        buildInputs = [ pkg-config cmake rust_stable clang ];
-      };
-      rust_nightly = mkShell {
-        buildInputs = [ pkg-config rust_nightly cmake clang ];
-      };
+      rust_stable = makeBasicRustShell rust_stable;
+      rust_nightly = makeBasicRustShell rust_nightly;
+      rust_wasm = makeBasicRustShell rust_wasm;
       scanner = makeScannerShell rust_stable;
       scannerNightly = makeScannerShell rust_nightly;
       diman = mkShell {
