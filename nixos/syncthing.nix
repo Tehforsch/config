@@ -14,9 +14,15 @@
         id = "6FDUQXS-YFYKBVT-KJXLPBF-53DJP4C-TMY7TQO-DQ44RJF-63R6XVI-L7XNAAC";
       };
     };
-    otherDevices =
-      (pkgs.lib.filterAttrs (k: v: k != config.networking.hostName) allDevices);
+    hostName = config.networking.hostName;
+    otherDevices = (pkgs.lib.filterAttrs (k: v: k != hostName) allDevices);
     others = builtins.attrNames otherDevices;
+    additionalFolders = (if (hostName == "framework" || hostName == "pc") then {
+      "movies" = {
+        path = "/home/toni/movies";
+        devices = if (hostName == "framework") then ["pc"] else ["framework"];
+      };
+    } else {});
   in {
     enable = true;
     user = "toni";
@@ -45,7 +51,7 @@
             params.keep = "10";
           };
         };
-      };
+      } // additionalFolders;
     };
   };
 }
