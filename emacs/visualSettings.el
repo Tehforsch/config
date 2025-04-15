@@ -21,7 +21,7 @@
 
 ; Theme
 (use-package gruvbox-theme)
-(load-theme 'gruvbox-dark-hard t)
+(load-theme 'gruvbox-light-medium t)
 
 (fringe-mode '(0 . 0))
 
@@ -29,13 +29,12 @@
 
 (if (> (display-pixel-height) 1080)
   (progn
-    (add-to-list 'default-frame-alist '(font . "Inconsolata 14")))
+    (add-to-list 'default-frame-alist '(font . "Inconsolata 20")))
   (progn
-    (add-to-list 'default-frame-alist '(font . "Inconsolata 14"))))
+    (add-to-list 'default-frame-alist '(font . "Inconsolata 20"))))
 
 
 (global-hl-line-mode 1)
-(set-face-background hl-line-face "gray16")
 
 ; Allow temporarily increasing font size, which is nice sometimes
 (use-package default-text-scale)
