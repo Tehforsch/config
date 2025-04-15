@@ -26,7 +26,7 @@
       targets = [ "wasm32-unknown-unknown" ];
     };
     makeBasicRustShell = (rustToolChain: pkgs.mkShell {
-        buildInputs = with pkgs; [ pkg-config cmake rustToolChain clang ];
+      buildInputs = with pkgs; [ pkg-config cmake rustToolChain clang ];
     });
     makeScannerShell = (rustToolChain: pkgs.mkShell {
       packages = [ pkgs.clang pkgs.mold-wrapped ];
@@ -125,14 +125,15 @@
           ]}"
         '';
       };
-      tauri = mkShell {
+      dioxus = mkShell {
         nativeBuildInputs = with pkgs; [
+          rust_wasm
+          dioxus-cli
           pkg-config
           gobject-introspection
-          cargo-tauri
           nodejs
-          rust_stable
           clang
+          wasm-bindgen-cli
         ];
 
         buildInputs = with pkgs; [
