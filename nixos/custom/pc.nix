@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     reaper
     borgbackup
-    anki
     beets
     wineWowPackages.stable
     yabridge
