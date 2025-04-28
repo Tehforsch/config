@@ -36,6 +36,7 @@
 (setq lsp-ui-sideline-show-hover nil) ; show hover messages in sideline
 (setq lsp-ui-sideline-show-code-actions nil) ; show code actions in sideline
 (setq lsp-ui-sideline-delay 0)
+(setq lsp-ui-sideline-diagnostic-max-lines 4)
 
 
 (defun toggle-lsp-ui-sideline-show-hover ()
