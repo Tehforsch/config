@@ -18,7 +18,7 @@ class Event:
     def send_notification(self, delta):
         minutes = delta.total_seconds() / 60
         message = f"{self.datetime.time()} (in {minutes}): {self.title}"
-        subprocess.check_output([notify_send_path, "--urgency=critical", "--expire-time=3600000", message])
+        subprocess.check_output([notify_send_path, "--expire-time=3600000", message])
 
     def notify_if_today(self, delta):
         today = datetime.datetime.now().date()
