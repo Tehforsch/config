@@ -65,6 +65,7 @@ make_symlink nushell/env.nu .config/nushell/env.nu
 make_symlink vdirsyncer/config .config/vdirsyncer/config
 make_symlink khal/config .config/khal/config
 make_symlink striputary/config.yml .config/striputary/config.yaml
+make_symlink qbittorrent/qBittorrent.conf .config/qBittorrent/qBittorrent.conf
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
