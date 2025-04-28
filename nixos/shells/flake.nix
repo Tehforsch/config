@@ -46,6 +46,7 @@
         json-glib
         gnutls
         clang
+        typos
       ];
     });
   in {
@@ -143,6 +144,7 @@
           gdk-pixbuf
           glib
           gtk3
+          xdotool
           harfbuzz
           librsvg
           libsoup_3
