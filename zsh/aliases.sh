@@ -4,6 +4,8 @@ alias cat="bat"
 alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
 alias agg="rga-fzf"
 
+alias c="check"
+
 alias g="git"
 alias ga="git add"
 alias gd="git diff"

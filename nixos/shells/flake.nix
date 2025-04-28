@@ -25,10 +25,21 @@
       extensions = [ "rust-src" "rust-analyzer" ];
       targets = [ "wasm32-unknown-unknown" ];
     };
-    makeBasicRustShell = (rustToolChain: pkgs.mkShell {
+    mkShellWithAliases = args: let
+      originalShellHook = args.shellHook or "";
+      customPath = ''export PATH="$PATH:$CONFIG/zsh/direnv_aliases/$(basename $(pwd))"'';
+      modifiedShellHook = ''
+        export PATH=${customPath}:$PATH
+        ${originalShellHook}
+      '';
+      modifiedArgs = args // {
+        shellHook = modifiedShellHook;
+      };
+      in pkgs.mkShell modifiedArgs;
+    makeBasicRustShell = (rustToolChain: mkShellWithAliases {
       buildInputs = with pkgs; [ pkg-config cmake rustToolChain clang ];
     });
-    makeScannerShell = (rustToolChain: pkgs.mkShell {
+    makeScannerShell = (rustToolChain: mkShellWithAliases {
       packages = [ pkgs.clang pkgs.mold-wrapped ];
       nativeBuildInputs = with pkgs.buildPackages; [
         rustToolChain
@@ -56,11 +67,11 @@
       rust_wasm = makeBasicRustShell rust_wasm;
       scanner = makeScannerShell rust_stable;
       scannerNightly = makeScannerShell rust_nightly;
-      diman = mkShell {
+      diman = mkShellWithAliases {
         buildInputs = [ pkg-config cmake rust_nightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
-      striputary = mkShell {
+      striputary = mkShellWithAliases {
         buildInputs = [ pkg-config cmake rust_stable clang libclang dbus alsa-lib
 
         # If on x11
@@ -87,11 +98,11 @@
           ]}"
         '';
       };
-      subsweep = mkShell {
+      subsweep = mkShellWithAliases {
         buildInputs = [ pkg-config cmake rust_oldNightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
-      bevy = mkShell {
+      bevy = mkShellWithAliases {
         buildInputs = ([
           clang
           lld
@@ -126,7 +137,7 @@
           ]}"
         '';
       };
-      dioxus = mkShell {
+      dioxus = mkShellWithAliases {
         nativeBuildInputs = with pkgs; [
           rust_wasm
           dioxus-cli
@@ -153,10 +164,10 @@
           openssl
         ];
       };
-      python = mkShell {
+      python = mkShellWithAliases {
         buildInputs = [ (python3.withPackages (p: with p; [ numpy pyyaml ])) ];
       };
-      uv = mkShell {
+      uv = mkShellWithAliases {
         nativeBuildInputs = ([
           uv
           ruff
