@@ -59,6 +59,7 @@ alias ctl="cargo test --lib"
 
 alias cc="cargo check"
 alias ccl="cargo check --lib"
+alias cctl="cargo check --lib --tests"
 
 alias clip="cargo clippy"
 alias cir="cargo insta review"
@@ -149,6 +150,7 @@ alias addmusic="bash ~/music/addMusic.sh"
 alias pybob="python3 ~/projects/pybob/main.py"
 
 alias scannerctl="cargo run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias scannerctl_release="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
 alias openvasd="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
 
 alias cal="vdirsyncer sync && ikhal"
