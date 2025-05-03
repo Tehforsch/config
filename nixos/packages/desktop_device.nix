@@ -34,6 +34,7 @@
     obsidian
     hotspot
     anki
+    evince # for editing pdf forms
 
     # Utilities
     usbutils

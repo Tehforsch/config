@@ -9,7 +9,6 @@
     yabridge
     yabridgectl
     qbittorrent
-    steam
   ];
 
   # For reapers HTTP web interface
