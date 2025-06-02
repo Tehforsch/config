@@ -7,7 +7,8 @@ khal_path = sys.argv[1]
 notify_send_path = sys.argv[2]
 vdirsyncer_path = sys.argv[3]
 
-REMINDER_INTERVALS = [9999999999999, 3600, 600, 60]
+REMINDER_INTERVALS = [9999999999999, 3600, 600]
+EVENT_PASSED_TRESHOLD = 300
 
 class Event:
     def __init__(self, datetime, title):
@@ -28,7 +29,7 @@ class Event:
     def notify_if_soon(self):
         delta = self.datetime - datetime.datetime.now()
         for (i, reminder_delta) in enumerate(REMINDER_INTERVALS):
-            if i not in self.reminders_sent and delta.total_seconds() < reminder_delta:
+            if i not in self.reminders_sent and delta.total_seconds() < reminder_delta and delta.total_seconds() > -EVENT_PASSED_TRESHOLD:
                 self.notify_if_today(delta)
                 self.reminders_sent.append(i)
 
