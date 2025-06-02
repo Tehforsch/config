@@ -12,6 +12,7 @@ keycode 10 = 1 exclam less less less less
 keycode 11 = 2 quotedbl greater greater greater greater
 keycode 12 = 3 ampersand ampersand ampersand ampersand ampersand
 keycode 13 = 4 dollar apostrophe apostrophe apostrophe apostrophe
+keycode 21 = grave grave grave grave
 
 ! remap things i sometimes accidentally press which i never want
 keycode 42 = g G g g g g
