@@ -1,0 +1,3 @@
+molt_file="$1"
+rust_file=$(dirname $1)/main.rs
+cargo run -- -i $rust_file $@
