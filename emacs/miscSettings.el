@@ -99,3 +99,5 @@
 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 ; What the fuck is this^
 (setq ring-bell-function 'ignore)
+
+(add-to-list 'auto-mode-alist '("\\.molt\\'" . rustic-mode))
