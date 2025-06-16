@@ -62,6 +62,7 @@
             inputs.musnix.nixosModules.musnix
             ./music_production.nix
             ./unifiedremote.nix
+            ./homebox.nix
             ./mullvad.nix
           ]
           ++ desktop_device ++ work ++ personal;
