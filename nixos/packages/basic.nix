@@ -23,6 +23,8 @@
     jq
     wget
     nix-search
+
+    nodejs_24
   ];
 
   programs.direnv.enable = true;

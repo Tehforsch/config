@@ -64,6 +64,8 @@
             ./unifiedremote.nix
             ./homebox.nix
             ./mullvad.nix
+            ./scanbd.nix
+            ./paperless.nix
           ]
           ++ desktop_device ++ work ++ personal;
       };
