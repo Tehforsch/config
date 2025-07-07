@@ -10,7 +10,7 @@
   };
   # This disables the default 20min suspend timer
   # even though I don't even have gdm?
-  services.xserver.displayManager.gdm.autoSuspend = false;
+  services.displayManager.gdm.autoSuspend = false;
 
   systemd.user.timers.restartXautolock = {
     wantedBy = [ "timers.target" ];
