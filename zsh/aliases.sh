@@ -76,7 +76,7 @@ function ctln() {
 }
 
 alias ctr="cargo test --release"
-alias ci="cargo install --path ."
+alias ci="cargo install --locked --path ."
 alias cdo="cargo doc --no-deps --open"
 alias cdoc="cargo doc --no-deps --open -p"
 alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
