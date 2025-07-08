@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
   services.pcscd.enable = true;
-  environment.systemPackages = with pkgs; [ yubioath-flutter ];
+  environment.systemPackages = with pkgs; [ yubikey-manager ];
 }
