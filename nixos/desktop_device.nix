@@ -26,6 +26,9 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-vpnc
+  ];
   programs.nm-applet.enable = true;
   programs.openvpn3.enable = true;
 
