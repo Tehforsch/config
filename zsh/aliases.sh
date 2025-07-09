@@ -123,7 +123,7 @@ function nixsw() {
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
     ssh-add ~/.ssh/id_rsa
-    sudo nixos-rebuild --max-jobs 8 --cores 4 --no-build-nix switch --flake ~/projects/config/nixos
+    sudo nixos-rebuild --max-jobs 8 --cores 4 switch --flake ~/projects/config/nixos
 }
 
 function ns() {
