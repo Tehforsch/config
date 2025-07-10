@@ -1,0 +1,28 @@
+{
+    "permissions": {
+        "allow": [
+            "Update(./*)",
+            "Write(./*)",
+            "MultiEdit(./*)",
+            "NotebookEdit(./*)",
+            "TodoWrite"
+            "Bash(cargo:*)",
+            "Bash(rg:*)",
+            "WebFetch(domain:docs.rs)",
+            "WebFetch(domain:lib.rs)"
+        ]
+    }
+    "hooks": {
+        "PostToolUse": [
+            {
+                "matcher": "Write|Edit|MultiEdit",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "cargo fmt"
+                    }
+                ]
+            }
+        ]
+    }
+}
