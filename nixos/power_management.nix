@@ -20,11 +20,17 @@
   systemd.user.services.restartXautolock = {
     serviceConfig.Type = "oneshot";
     script = ''
-        soundPlaying=$(${pkgs.pulseaudio}/bin/pactl list | grep -c "RUNNING") 
+        soundPlaying=$(${pkgs.pulseaudio}/bin/pactl list | grep "RUNNING" | wc -l) 
         scpRunning=$(${pkgs.procps}/bin/pgrep scp | wc -l) 
         reaperRunning=$(${pkgs.procps}/bin/pgrep -x reaper | wc -l)
         qbitTorrentRunning=$(${pkgs.procps}/bin/pgrep qbittorrent | wc -l)
-        if [[ $soundPlaying -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 || "$qbitTorrentRunning" -ge 1 ]]; then
+        if [ ! -f /home/toni/.local/state/keep_on ]; then
+            keepOnFileExists=0
+        else
+            keepOnFileExists=1
+        fi
+        if [[ $soundPlaying -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 || "$qbitTorrentRunning" -ge 1 || $keepOnFileExists -ge 1 ]]; then
+            echo $soundPlaying $scpRunning $reaperRunning $qbitTorrentRunning $keepOnFileExists
             ${pkgs.xautolock}/bin/xautolock -restart
         fi
     '';
