@@ -28,7 +28,8 @@
         ./sound.nix
         ./packages/desktop_device.nix
         # ./hyprland.nix
-        ./i3.nix
+        # ./i3.nix
+        ./sway.nix
         ./redshift.nix
         ./power_management.nix
         ./syncthing.nix

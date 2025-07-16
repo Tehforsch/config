@@ -1,0 +1,30 @@
+partial default alphanumeric_keys modifier_keys
+xkb_symbols "custom" {
+    include "de(nodeadkeys)"
+    
+    // Custom key remaps from xmodmap
+    key <AC01> { [ a, A, bracketleft, bracketleft ] }; // a
+    key <AC02> { [ s, S, parenleft, parenleft ] };     // s  
+    key <AC03> { [ d, D, parenright, parenright ] };   // d
+    key <AC04> { [ f, F, bracketright, bracketright ] }; // f
+    key <AD02> { [ w, W, slash, slash ] };              // w
+    key <AD04> { [ r, R, backslash, backslash ] };      // r
+    key <AC09> { [ l, L, percent, percent ] };          // l
+    key <AD06> { [ y, Y, braceleft, braceleft ] };      // y
+    key <AB02> { [ x, X, braceright, braceright ] };    // x
+    key <AD05> { [ t, T, ampersand, ampersand ] };      // t
+    key <AE01> { [ 1, exclam, less, less ] };           // 1
+    key <AE02> { [ 2, quotedbl, greater, greater ] };   // 2
+    key <AE03> { [ 3, section, ampersand, ampersand ] }; // 3 (using section for German layout)
+    key <AE04> { [ 4, dollar, apostrophe, apostrophe ] }; // 4
+    key <TLDE> { [ grave, grave, grave, grave ] };       // grave/tilde key
+    
+    // Disable accidentally pressed keys (map to themselves)
+    key <AC05> { [ g, G, g, g ] };                      // g
+    key <AC06> { [ h, H, h, h ] };                      // h
+    
+    // Modifier remaps
+    key <LALT> { [ F9 ] };                              // Left Alt -> F9
+    key <CAPS> { [ Escape ] };                          // Caps Lock -> Escape
+    
+};

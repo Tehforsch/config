@@ -1,0 +1,363 @@
+# paths
+set $config ~/projects/config
+set $scripts ~/projects/config/scripts
+
+set $bg #1d2021
+set $activeBg #484848
+set $activeFont #ebdbb2
+set $activeBorder #ebdbb2
+set $inactiveBg #1d2021
+set $inactiveFont #928374
+set $activeWindowBorder #928374
+set $inactiveBorder #333333
+
+include /home/toni/.config/sway/system.conf
+
+font pango: FontAwesome Sans Mono 16
+
+client.focused_inactive    $inactiveFont   $inactiveBorder            $inactiveFont
+client.unfocused           $inactiveFont   $inactiveBorder            $inactiveFont
+client.focused             $activeFont     $activeWindowBorder    $activeFont
+client.urgent              $activeFont     $activeWindowBorder    $activeFont
+
+bar {
+	colors {
+		background $bg
+		statusline #ffffff
+		separator  "#ff0000"
+		focused_workspace $activeBg $activeBg $activeFont
+		active_workspace  $activeBg $activeBg $activeFont
+		inactive_workspace $inactiveBg $inactiveBg $inactiveFont
+		urgent_workspace  $activeBg $activeBg $activeFont
+	}
+    separator_symbol "|"
+    output *
+    strip_workspace_numbers yes
+    status_command i3status
+    workspace_min_width 180
+}
+
+#Disable window titles
+# default_border pixel 1
+for_window [app_id="nomacs"] border normal
+for_window [app_id=".*"] border pixel 3
+for_window [class="nomacs"] border normal
+for_window [class="^.*"] border pixel 3
+
+# Enable floating mode (popup style) for some applications
+for_window [window_role="pop-up"] floating enable
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier Mod4
+ 
+# Behaviour
+focus_follows_mouse no
+focus_wrapping no
+mouse_warping none
+
+set $i3 normal
+bindsym F9 mode "$i3"
+bindsym Insert exec bash $scripts/keyboardPassthrough.sh; mode "$passthrough"
+
+mode "$i3" {
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym asciicircum workspace back_and_forth; mode "default"
+    bindsym Shift+Tab exec rofi -show window; mode "default"
+
+    bindsym a focus left
+    bindsym d focus right
+    bindsym Shift+a move left
+    bindsym Shift+d move right
+
+    bindsym h focus left
+    bindsym l focus right
+    bindsym Shift+h move left
+    bindsym Shift+l move right
+
+    bindsym j focus down
+    bindsym k focus up
+    bindsym Shift+j move down
+    bindsym Shift+k move up
+
+    bindsym q kill
+
+    bindsym e layout toggle splith tabbed
+    bindsym f floating toggle
+    bindsym minus split v
+    bindsym Shift+minus split h
+
+    bindsym r mode "$resize"
+    bindsym s mode "$launch"
+    bindsym y mode "$media"
+    bindsym w mode "$workspace"
+
+    bindsym 1 exec python3 $config/i3/switchWindow/focus.py 0; mode "default"
+    bindsym 2 exec python3 $config/i3/switchWindow/focus.py 1; mode "default"
+    bindsym 3 exec python3 $config/i3/switchWindow/focus.py 2; mode "default"
+    bindsym 4 exec python3 $config/i3/switchWindow/focus.py 3; mode "default"
+    bindsym Insert exec bash $scripts/keyboardPassthrough.sh; mode "$passthrough"
+}
+
+set $passthrough passthrough. Exit with Insert
+mode "$passthrough" {
+    bindsym Insert exec bash $scripts/keyboardConfiguration.sh exit; mode "default"
+}
+
+set $workspace workspace
+mode "$workspace" {
+    bindsym Escape mode "$i3"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym Shift+F12 move container to workspace number 100:[f12]
+    bindsym asciicircum workspace back_and_forth; mode "default"
+    # Have Output changing commands here too
+    bindsym Shift+H move workspace to output left
+    bindsym Shift+L move workspace to output right
+    bindsym q kill
+    bindsym c workspace number 41:[c]
+    bindsym v workspace number 42:[v]
+    bindsym b workspace number 43:[b]
+    bindsym n workspace number 44:[n]
+    bindsym m workspace number 45:[m]
+    bindsym z workspace number 46:[z]
+    bindsym a workspace number 21:[a]
+    bindsym s workspace number 22:[s]
+    bindsym d workspace number 23:[d]
+    bindsym f workspace number 24:[f]
+    bindsym g workspace number 25:[g]
+    bindsym y workspace number 31:[y]
+    bindsym x workspace number 32:[x]
+    bindsym Ctrl+c move container to workspace number 41:[c]
+    bindsym Ctrl+v move container to workspace number 42:[v]
+    bindsym Ctrl+b move container to workspace number 43:[b]
+    bindsym Ctrl+n move container to workspace number 44:[n]
+    bindsym Ctrl+m move container to workspace number 45:[m]
+    bindsym Ctrl+z move container to workspace number 46:[z]
+    bindsym Ctrl+a move container to workspace number 21:[a]
+    bindsym Ctrl+s move container to workspace number 22:[s]
+    bindsym Ctrl+d move container to workspace number 23:[d]
+    bindsym Ctrl+f move container to workspace number 24:[f]
+    bindsym Ctrl+g move container to workspace number 25:[g]
+    bindsym Ctrl+y move container to workspace number 31:[y]
+    bindsym Ctrl+x move container to workspace number 32:[x]
+    bindsym Shift+c move container to workspace number 41:[c]; workspace number 41:[c]
+    bindsym Shift+v move container to workspace number 42:[v]; workspace number 42:[v]
+    bindsym Shift+b move container to workspace number 43:[b]; workspace number 43:[b]
+    bindsym Shift+n move container to workspace number 44:[n]; workspace number 44:[n]
+    bindsym Shift+m move container to workspace number 45:[m]; workspace number 45:[m]
+    bindsym Shift+z move container to workspace number 46:[z]; workspace number 46:[z]
+    bindsym Shift+a move container to workspace number 21:[a]; workspace number 21:[a]
+    bindsym Shift+s move container to workspace number 22:[s]; workspace number 22:[s]
+    bindsym Shift+d move container to workspace number 23:[d]; workspace number 23:[d]
+    bindsym Shift+f move container to workspace number 24:[f]; workspace number 24:[f]
+    bindsym Shift+g move container to workspace number 25:[g]; workspace number 25:[g]
+    bindsym Shift+y move container to workspace number 31:[y]; workspace number 31:[y]
+    bindsym Shift+x move container to workspace number 32:[x]; workspace number 32:[x]
+    bindsym p scratchpad show; resize set 1820px 1000px; move position center
+    bindsym Shift+P move scratchpad
+    bindsym r mode "$rename"
+    bindsym 1 exec python3 $config/i3/switchWindow/focus.py 0; mode "default"
+    bindsym 2 exec python3 $config/i3/switchWindow/focus.py 1; mode "default"
+    bindsym 3 exec python3 $config/i3/switchWindow/focus.py 2; mode "default"
+    bindsym 4 exec python3 $config/i3/switchWindow/focus.py 3; mode "default"
+}
+
+set $rename rename
+mode "$rename" {
+    bindsym Escape mode "$workspace"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym c focus parent; move container to workspace number 41:[c]; workspace number 41:[c]; mode "$workspace"
+    bindsym v focus parent; move container to workspace number 42:[v]; workspace number 42:[v]; mode "$workspace"
+    bindsym b focus parent; move container to workspace number 43:[b]; workspace number 43:[b]; mode "$workspace"
+    bindsym n focus parent; move container to workspace number 44:[n]; workspace number 44:[n]; mode "$workspace"
+    bindsym m focus parent; move container to workspace number 45:[m]; workspace number 45:[m]; mode "$workspace"
+    bindsym z focus parent; move container to workspace number 46:[z]; workspace number 46:[z]; mode "$workspace"
+    bindsym a focus parent; move container to workspace number 21:[a]; workspace number 21:[a]; mode "$workspace"
+    bindsym s focus parent; move container to workspace number 22:[s]; workspace number 22:[s]; mode "$workspace"
+    bindsym d focus parent; move container to workspace number 23:[d]; workspace number 23:[d]; mode "$workspace"
+    bindsym f focus parent; move container to workspace number 24:[f]; workspace number 24:[f]; mode "$workspace"
+    bindsym g focus parent; move container to workspace number 25:[g]; workspace number 25:[g]; mode "$workspace"
+    bindsym y focus parent; move container to workspace number 31:[y]; workspace number 31:[y]; mode "$workspace"
+    bindsym x focus parent; move container to workspace number 32:[x]; workspace number 32:[x]; mode "$workspace"
+}
+
+set $resize resize
+mode "$resize" {
+    bindsym Escape mode "$i3"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym h resize grow left 10 px or 10 ppt
+    bindsym Shift+H resize shrink   left 10 px or 10 ppt
+    bindsym j resize grow down 10 px or 10 ppt
+    bindsym Shift+J resize shrink   down 10 px or 10 ppt
+    bindsym k resize grow up 10 px or 10 ppt
+    bindsym Shift+K resize shrink   up 10 px or 10 ppt
+    bindsym l resize grow right 10 px or 10 ppt
+    bindsym Shift+L resize shrink   right 10 px or 10 ppt
+}
+
+set $launch launch
+mode "$launch" {
+    bindsym Escape mode "$i3"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym c exec firefox; mode "default"
+    bindsym Shift+C exec firefox -p work; mode "default"
+    bindsym d mode "$document"
+    bindsym e exec emacsclient -c -n; mode "default"
+    bindsym f mode "$floating_launch"
+    bindsym g exec bash $scripts/runSteamGame.sh; mode "default"
+    bindsym m exec thunderbird -P default; mode "default"
+    bindsym Shift+M exec thunderbird -P work; mode "default"
+    bindsym a exec thunderbird -P default -calendar; mode "default"
+    bindsym Shift+A exec thunderbird -P work -calendar; mode "default"
+    bindsym n exec thunar; mode "default"
+    bindsym r exec bash $scripts/keyboardPassthrough.sh; exec $config/audio/scripts/reaper_mode.sh music; mode "$passthrough"
+    bindsym s exec rofi -show run; mode "default"
+    bindsym t exec Telegram; mode "default"
+    bindsym k exec kitty; mode "default"
+    bindsym Shift+K exec keepassxc; mode "default"
+    bindsym y exec bash $scripts/yubikey_otp.sh; mode "default"
+    bindsym o exec obsidian; mode "default"
+    bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
+    bindsym p exec bash $scripts/toggle_power_management.sh; mode "default"
+    bindsym Shift+N exec kitty -o font_size=20 newsboat; mode "default"
+    bindsym shift+R reload; mode "default"
+    bindsym --release Shift+S exec grim -g "$(slurp)" - | wl-copy; mode "default"
+    bindsym F5 exec bash $scripts/reset.sh; mode "default"
+    bindsym F11 exec bash $scripts/screenCapture.sh; mode "$screenRecord" 
+}
+
+for_window [title="float$"] floating enable
+for_window [title="float$"] resize set 1024px 768px
+for_window [title="float$"] move position center
+
+set $floating_launch floating launch
+mode "$floating_launch" {
+    bindsym Escape mode "$launch"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym n exec kitty --title="numbat float" numbat; mode "default"; 
+    bindsym p exec kitty --title="python float" python; mode "default"; 
+}
+
+set $timer timer [s]tart [k]ill
+mode "$timer" {
+    bindsym s exec bash $scripts/timer/startTimer.sh; mode "default"
+    bindsym k exec bash $scripts/timer/killTimers.sh; mode "default"
+    bindsym p exec bash $scripts/timer/timer.sh 1500; mode "default"
+    bindsym Escape mode "$launch"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+}
+
+set $screenRecord RECORDING
+mode "$screenRecord" {
+    bindsym F11 exec bash $scripts/screenCapture.sh 1; mode "default"
+}
+
+set $document open [p]dfs/epubs [i]mages
+mode "$document" {
+    bindsym i exec $scripts/rofiFile.sh png jpg jpeg gif; mode "default"
+    bindsym p exec $scripts/rofiFile.sh pdf epub djvu; mode "default"
+    bindsym Escape mode "$launch"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+}
+
+set $game game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
+mode "$game" {
+    bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
+}
+
+set $media media
+mode "$media" {
+    bindsym Escape mode "$i3"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+    bindsym a exec "mpc prev"
+    bindsym d exec "mpc next"
+    bindsym f exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4%
+    bindsym r exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4%
+    bindsym l exec bash $scripts/showLyrics.sh; mode "default"
+    bindsym s exec "mpc toggle"; mode "default"
+    bindsym m mode "$findMusic"
+    bindsym j exec mpc seek +10
+    bindsym k exec mpc seek -10
+    bindsym Shift+ssharp exec $scripts/musicSelection/showNotification.sh
+    bindsym Shift+F exec --no-startup-id mpc volume -5
+    bindsym Shift+R exec --no-startup-id mpc volume +5
+}
+
+set $findMusic [k]: artist, [a]lbum, [s]ong, [r]andom album, 
+mode "$findMusic" {
+    bindsym k exec bash $scripts/musicSelection/artist.sh; mode "default"
+    bindsym a exec bash $scripts/musicSelection/album.sh; mode "default"
+    bindsym s exec bash $scripts/musicSelection/song.sh; mode "default"
+    bindsym r exec bash $scripts/musicSelection/randomAlbum.sh
+    bindsym Shift+A exec bash $scripts/musicSelection/quarantineAlbum.sh; mode "default"
+    bindsym Shift+R exec bash $scripts/musicSelection/quarantineAlbum.sh --random
+    bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
+    bindsym Escape mode "$media"
+    bindsym Return mode "default"
+    bindsym Tab mode "default"
+    bindsym F9 mode "$i3"
+}
+
+# # Assign workspaces to outputs
+workspace "41:[c]" output $outputSecondary
+workspace "42:[v]" output $outputSecondary
+workspace "43:[b]" output $outputSecondary
+
+workspace "44:[n]" output $outputSecondary
+workspace "45:[m]" output $outputSecondary
+workspace "46:[z]" output $outputSecondary
+
+workspace "21:[a]" output $outputPrimary
+workspace "22:[s]" output $outputPrimary
+workspace "23:[d]" output $outputPrimary
+workspace "24:[f]" output $outputPrimary
+workspace "25:[g]" output $outputPrimary
+
+workspace "31:[y]" output $outputSecondary
+workspace "32:[x]" output $outputSecondary
+
+# Assign programs to workspace
+assign [class="dota2"] workspace number 100:[f12]
+
+bindsym F12 workspace number 100:[f12]; mode "$game"; exec $scripts/preGameHook.sh
+
+# Keyboard configuration for Wayland/Sway
+input type:keyboard {
+    xkb_layout custom
+}
+
+# Mouse/pointer configuration for Wayland/Sway
+input type:pointer {
+    accel_profile flat
+    pointer_accel 0
+}
+
+# Touchpad configuration
+input type:touchpad {
+    accel_profile flat
+    pointer_accel 0
+}
+
+# Wayland-specific output configuration - replace xsetroot
+output * bg $inactiveBg solid_color
+
+# Sway startup commands (replace exec_always with exec)
+exec sleep 3 && $scripts/screenConfiguration.sh
+exec sleep 4 && $scripts/keyboardConfiguration.sh
+exec sleep 3 && $scripts/disableAcceleration.sh
+exec sleep 3 && $scripts/clearCapslock.sh
