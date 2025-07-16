@@ -10,7 +10,7 @@ xkb_symbols "custom" {
     key <AD02> { [ w, W, slash, slash ] };              // w
     key <AD04> { [ r, R, backslash, backslash ] };      // r
     key <AC09> { [ l, L, percent, percent ] };          // l
-    key <AD06> { [ y, Y, braceleft, braceleft ] };      // y
+    key <AB01> { [ y, Y, braceleft, braceleft ] };      // y
     key <AB02> { [ x, X, braceright, braceright ] };    // x
     key <AD05> { [ t, T, ampersand, ampersand ] };      // t
     key <AE01> { [ 1, exclam, less, less ] };           // 1

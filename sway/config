@@ -344,7 +344,7 @@ input type:keyboard {
 # Mouse/pointer configuration for Wayland/Sway
 input type:pointer {
     accel_profile flat
-    pointer_accel 0
+    pointer_accel -0.55
 }
 
 # Touchpad configuration
