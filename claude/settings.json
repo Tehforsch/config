@@ -19,7 +19,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "cargo fmt"
+                        "command": "/home/toni/projects/config/scripts/run_cargo_fmt_in_rust_project.sh"
                     }
                 ]
             }
