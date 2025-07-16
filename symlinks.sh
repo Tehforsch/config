@@ -34,10 +34,14 @@ function make_symlink {
 make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bat/config .config/bat/config
 make_symlink dunst/dunstrc .config/dunst/dunstrc
+
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
 make_symlink i3/i3status_${SYSTEM_NAME}.conf .config/i3status/config
+make_symlink sway/config .config/sway/config
+make_symlink sway/system.conf .config/sway/system.conf
+
 make_symlink hyprland/hyprland.conf .config/hypr/hyprland.conf
 make_symlink hyprland/waybar.jsonc .config/waybar/config.jsonc
 make_symlink hyprland/waybar-style.css .config/waybar/style.css
@@ -75,3 +79,4 @@ make_symlink bash/bashrc.sh .bashrc
 make_symlink emacs/init.el .emacs.d/init.el
 make_symlink ssh/config .ssh/config
 make_symlink claude/settings.json .claude/settings.json
+make_symlink xkb/symbols/custom .config/xkb/symbols/custom
