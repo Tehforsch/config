@@ -27,8 +27,6 @@
         ./desktop_device.nix
         ./sound.nix
         ./packages/desktop_device.nix
-        # ./hyprland.nix
-        # ./i3.nix
         ./sway.nix
         ./redshift.nix
         ./power_management.nix
