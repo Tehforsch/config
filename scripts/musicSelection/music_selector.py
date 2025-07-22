@@ -102,8 +102,13 @@ class MusicSelector:
     def get_songs(self, artist: str, album: str) -> List[str]:
         """Get songs from a specific album by artist"""
         try:
-            songs = self.client.find("albumartist", artist, "album", album)
-            return [song.get('title', '') for song in songs if 'title' in song]
+            if artist is None and album is None:
+                songs = self.client.listallinfo()
+                random.shuffle(songs)
+                return [song.get('albumartist', '') + "\t" + song.get('title', '') for song in songs if 'title' in song]
+            else:
+                songs = self.client.find("albumartist", artist, "album", album)
+                return [song.get('title', '') for song in songs if 'title' in song]
         except mpd.CommandError as e:
             print(f"Error getting songs: {e}")
             return []
@@ -341,7 +346,7 @@ class MusicSelector:
             print("No songs found")
             return None
         
-        selected, queue_mode = self.rofi_select(songs, "Choose a song:", preselect_index)
+        selected, queue_mode = self.rofi_select(songs, "Choose a song:", preselect_index, use_column_formatting=True)
         if selected:
             return selected, queue_mode
         return None
@@ -441,6 +446,10 @@ def main():
     elif args.command == "playlist":
         # Show current playlist
         selector.show_playlist()
+
+    elif args.command == "song":
+        # Select from all songs
+        selector.select_song(None, None, None)
     
     else:
         # Default: album selection
