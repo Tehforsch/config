@@ -23,6 +23,7 @@
     jq
     wget
     nix-search
+    helix
 
     nodejs_24
   ];

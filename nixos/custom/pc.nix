@@ -38,7 +38,4 @@
     powerManagement.enable = true;
     open = false;
   };
-
-  hardware.sane.enable = true;
-  hardware.sane.drivers.scanSnap.enable = true;
 }

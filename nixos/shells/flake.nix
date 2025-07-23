@@ -58,7 +58,9 @@
         gnutls
         clang
         typos
+        libclang
       ];
+      shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
     });
   in {
     devShells = with pkgs; {
