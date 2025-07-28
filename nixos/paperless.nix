@@ -15,7 +15,7 @@
 
   hardware.sane.enable = true;
   hardware.sane.drivers.scanSnap.enable = true;
-  users.users.toni.extraGroups = [ "scanner" "lp" ];
+  users.users.toni.extraGroups = [ "scanner" "lp" "redis-paperless" ];
 
   # Disable sane-backends tests that hang
   nixpkgs.overlays = [
