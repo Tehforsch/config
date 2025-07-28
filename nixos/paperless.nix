@@ -9,6 +9,7 @@
     consumptionDirIsPublic = true;
     settings = {
       PAPERLESS_ADMIN_USER = "toni";
+      PAPERLESS_FILENAME_FORMAT="{{ title }}";
     };
   };
 
