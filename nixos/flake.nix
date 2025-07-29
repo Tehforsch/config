@@ -33,6 +33,7 @@
         ./power_management.nix
         ./syncthing.nix
         ./mpd.nix
+        ./oom_killer.nix
       ];
       work = [
         ./work.nix
