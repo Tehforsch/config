@@ -115,11 +115,15 @@ class MusicSelector:
 
     def play_song(self, artist: str, album: str, title: str, queue_mode: bool = False):
         """Play or queue a song"""
+        if album is not None:
+            albumfilter = ["album", album]
+        else:
+            albumfilter = []
         try:
             if not queue_mode:
                 # Clear playlist and add entire album
                 subprocess.run(["mpc", "clear"], check=True)
-                subprocess.run(["mpc", "findadd", "album", album, "albumartist", artist], check=True)
+                subprocess.run(["mpc", "findadd"] + albumfilter + ["albumartist", artist], check=True)
                 
                 # Find the song position in playlist
                 playlist = subprocess.run(["mpc", "playlist", "-f", "%title%"], 
@@ -135,7 +139,7 @@ class MusicSelector:
                     subprocess.run(["mpc", "play"], check=True)
             else:
                 # Queue the specific song
-                subprocess.run(["mpc", "findadd", "albumartist", artist, "album", album, "title", title], check=True)
+                subprocess.run(["mpc", "findadd", "albumartist", artist] + ["album", album] + ["title", title], check=True)
                 print(f"Queued:\n{artist}\n{album}\n{title}")
                 
         except subprocess.CalledProcessError as e:
@@ -449,7 +453,11 @@ def main():
 
     elif args.command == "song":
         # Select from all songs
-        selector.select_song(None, None, None)
+        song_result = selector.select_song(None, None, None)
+        if song_result:
+            res, song_queue_mode = song_result
+            artist, title = res.split("\t")
+            selector.play_song(artist, None, title, song_queue_mode)
     
     else:
         # Default: album selection
