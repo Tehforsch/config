@@ -5,10 +5,10 @@ SYSTEM_NAME=$(hostname)
 echo $SYSTEM_NAME
 
 orientation=right-of
-if [[ $SYSTEM_NAME == "manjaro" ]]; then
-    echo "a"
-    main=DP2
-    second=eDP1
+if [[ $SYSTEM_NAME == "framework" ]]; then
+    main=DP-2
+    second=eDP-1
+    orientation=left-of
 elif [[ $SYSTEM_NAME == "pc" ]]; then
     second=DVI-D-0
     main=HDMI-0
