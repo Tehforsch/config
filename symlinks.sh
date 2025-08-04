@@ -37,7 +37,7 @@ make_symlink dunst/dunstrc .config/dunst/dunstrc
 make_symlink sway/i3wsr/config.toml .config/i3wsr/config.toml
 make_symlink sway/i3status_${SYSTEM_NAME}.conf .config/i3status/config
 make_symlink sway/config .config/sway/config
-make_symlink sway/system.conf .config/sway/system.conf
+make_symlink sway/system_${SYSTEM_NAME}.conf .config/sway/system.conf
 make_symlink keepassxc/keepassxc.ini .config/keepassxc/keepassxc.ini
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
