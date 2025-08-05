@@ -17,4 +17,4 @@ if [[ -d "$syncthing_keys_dir" ]]; then
 fi
 
 echo "Building nixos"
-nixos-rebuild switch --target-host $1 --build-host $1 --use-remote-sudo --flake $config/nixos/#$1 
+nixos-rebuild switch --target-host $1 --build-host $1 --sudo --ask-sudo-password --flake $config/nixos/#$1 
