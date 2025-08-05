@@ -300,13 +300,13 @@ mode "$media" {
 
 set $findMusic [k]: artist, [a]lbum, [s]ong, [r]andom album, 
 mode "$findMusic" {
-    bindsym k exec bash $scripts/musicSelection/artist.sh; mode "default"
-    bindsym a exec bash $scripts/musicSelection/album.sh; mode "default"
-    bindsym s exec bash $scripts/musicSelection/song.sh; mode "default"
-    bindsym r exec bash $scripts/musicSelection/randomAlbum.sh
-    bindsym Shift+A exec bash $scripts/musicSelection/quarantineAlbum.sh; mode "default"
-    bindsym Shift+R exec bash $scripts/musicSelection/quarantineAlbum.sh --random
-    bindsym t exec bash $scripts/musicSelection/newSongThisAlbum.sh; mode "default"
+    bindsym k exec uv run $scripts/musicSelection/music_selector.py artist; mode "default"
+    bindsym a exec uv run $scripts/musicSelection/music_selector.py album; mode "default"
+    bindsym s exec uv run $scripts/musicSelection/music_selector.py song; mode "default"
+    bindsym r exec uv run $scripts/musicSelection/music_selector.py random
+    bindsym Shift+A exec uv run $scripts/musicSelection/music_selector.py quarantine; mode "default"
+    bindsym Shift+R exec uv run $scripts/musicSelection/music_selector.py random-quarantine; mode "default"
+    bindsym t exec uv run $scripts/musicSelection/music_selector.py playlist; mode "default"
     bindsym Escape mode "$media"
     bindsym Return mode "default"
     bindsym Tab mode "default"
