@@ -35,20 +35,6 @@
     "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
     "h" 'vertico-repeat
     "H" 'vertico-repeat-select
-    "o" '(:which-key "Org")
-    "oc" '(:which-key "Citations/Bibliography")
-    "oca" 'crossref-add-bibtex-entry
-    "oci" 'org-ref-insert-link
-    "oco" 'open-bibliography
-    "ocp" 'org-ref-open-pdf-at-point
-    "oi" '(:which-key "Image")
-    "ois" '((lambda () (interactive) (insert-screenshot "scrot -s")) :which-key "Screenshot")
-    "oiS" '((lambda () (interactive) (insert-screenshot "~/projects/config/scripts/captureScreenshot.sh")) :which-key "Screenshot with white taken as transparent.")
-    "oit" 'org-toggle-inline-images
-    "ol" '(:which-key "Latex")
-    "oll" 'org-toggle-latex-fragment
-    "olL" '((lambda () (interactive) (org-latex-preview 16)) :which-key "Clear all latex fragments")
-    "oL" 'org-toggle-link-display
     "p" '(:which-key "Project")
     "p!" 'start-terminal-in-projectile-folder
     "pa" 'consult-ripgrep
