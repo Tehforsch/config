@@ -28,7 +28,7 @@
         ./sound.nix
         ./packages/desktop_device.nix
         ./sway.nix
-        ./redshift.nix
+        ./gammastep.nix
         ./power_management.nix
         ./syncthing.nix
         ./mpd.nix
