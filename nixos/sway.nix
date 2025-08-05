@@ -47,7 +47,10 @@
   # and it was a nice way to explore some of nix's capabilities
   systemd.user.services.i3wsr =
     let i3wsr-starter = pkgs.writeShellScript "i3wsr-starter" ''
-      I3SOCK=$(${pkgs.sway}/bin/sway --get-socketpath) ${pkgs.i3wsr}/bin/i3wsr
+      # Important: sway --get-socketpath only returns the value
+      # of $SWAYSOCK, but this isn't set in systemd services.
+      export I3SOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(${pkgs.procps}/bin/pgrep -x sway).sock
+      ${pkgs.i3wsr}/bin/i3wsr
     ''; in
     {
       enable = true;
@@ -60,6 +63,7 @@
       };
       path = with pkgs; [
         i3wsr-starter
+        procps
       ]; 
     };
 
