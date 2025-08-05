@@ -6,11 +6,9 @@
       swaylock
       swayidle
       wl-clipboard
-      mako # notification daemon
-      alacritty # Recommended terminal emulator
-      dmenu # Dmenu is the default in the config but i recommend wofi since its wayland native
-      grim # Screenshot functionality
-      slurp # Screenshot functionality
+      mako
+      grim
+      slurp
     ];
     extraOptions = ["--unsupported-gpu"];
   };
@@ -66,5 +64,23 @@
         procps
       ]; 
     };
+
+    systemd.user.services.mako =
+      {
+        enable = true;
+        description = "mako";
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.mako}/bin/mako";
+          Restart = "always";
+        };
+        environment = {
+          WAYLAND_DISPLAY = "wayland-1";
+        };
+        path = with pkgs; [
+          mako
+        ]; 
+      };
 
 }
