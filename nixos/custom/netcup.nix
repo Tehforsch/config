@@ -6,7 +6,10 @@
 
   services.radicale = {
     enable = true;
-    settings.server.hosts = [ "0.0.0.0:5232" ];
+    settings = {
+      server.hosts = [ "0.0.0.0:5232" ];
+      auth.type = "none";
+    };
   };
   networking.firewall.allowedTCPPorts = [ 80 443 5232 ];
 
