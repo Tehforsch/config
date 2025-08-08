@@ -349,6 +349,7 @@ input type:pointer {
 
 # Touchpad configuration
 input type:touchpad {
+    tap enabled
     accel_profile flat
     pointer_accel 0
 }
