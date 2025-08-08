@@ -7,8 +7,7 @@
       swayidle
       wl-clipboard
       mako
-      grim
-      slurp
+      (flameshot.override { enableWlrSupport = true; })
     ];
     extraOptions = ["--unsupported-gpu"];
   };
@@ -24,7 +23,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    rofi
+    rofi-wayland
     wtype # Wayland alternative to xdotool
     i3wsr
     i3status # Status generator for swaybar
