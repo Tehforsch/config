@@ -101,3 +101,5 @@
 (setq ring-bell-function 'ignore)
 
 (add-to-list 'auto-mode-alist '("\\.molt\\'" . rustic-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . javascript-mode))
