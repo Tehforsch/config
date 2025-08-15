@@ -147,6 +147,16 @@
           ]}"
         '';
       };
+      guitar_practice = mkShellWithAliases {
+        nativeBuildInputs = with pkgs; [
+          rust_stable
+          sqlite
+          clang
+          libclang 
+          prettier
+        ];
+
+      };
       dioxus = mkShellWithAliases {
         nativeBuildInputs = with pkgs; [
           rust_wasm
