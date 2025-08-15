@@ -350,6 +350,9 @@ input type:pointer {
 # Touchpad configuration
 input type:touchpad {
     tap enabled
+    natural_scroll disabled
+    scroll_method two_finger
+    dwt enabled
     accel_profile flat
     pointer_accel 0
 }
