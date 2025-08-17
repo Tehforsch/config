@@ -228,6 +228,7 @@ mode "$launch" {
     bindsym o exec obsidian; mode "default"
     bindsym z exec zotero; exec rmdir ~/Desktop; mode "default"
     bindsym p exec bash $scripts/toggle_power_management.sh; mode "default"
+    bindsym Shift+P exec bash $scripts/toggle_power_button_led.sh; mode "default"
     bindsym Shift+N exec kitty -o font_size=20 newsboat; mode "default"
     bindsym shift+R reload; mode "default"
     bindsym --release Shift+S exec grim -g "$(slurp)" - | wl-copy; mode "default"
