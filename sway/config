@@ -33,7 +33,7 @@ bar {
     separator_symbol "|"
     output *
     strip_workspace_numbers yes
-    status_command i3status
+    status_command i3status-rs
     workspace_min_width 180
 }
 

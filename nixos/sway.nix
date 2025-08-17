@@ -26,7 +26,7 @@
     rofi-wayland
     wtype # Wayland alternative to xdotool
     i3wsr
-    i3status # Status generator for swaybar
+    i3status-rust
   ];
 
   # Enable polkit for authentication
