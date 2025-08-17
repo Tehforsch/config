@@ -1,5 +1,6 @@
 "query:Articles:tags # \"articles\""
 "query:Music:tags # \"music\""
+"query:Videos:tags # \"videos\""
 
 https://this-week-in-rust.org/rss.xml articles !hidden
 https://gamedev.rs/rss.xml articles !hidden
