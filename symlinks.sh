@@ -35,7 +35,7 @@ make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bat/config .config/bat/config
 make_symlink dunst/dunstrc .config/dunst/dunstrc
 make_symlink sway/i3wsr/config.toml .config/i3wsr/config.toml
-make_symlink sway/i3status_${SYSTEM_NAME}.conf .config/i3status/config
+make_symlink sway/i3status_${SYSTEM_NAME}.toml .config/i3status-rust/config.toml
 make_symlink sway/config .config/sway/config
 make_symlink sway/system_${SYSTEM_NAME}.conf .config/sway/system.conf
 make_symlink keepassxc/keepassxc.ini .config/keepassxc/keepassxc.ini

@@ -1,23 +1,42 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    xautolock
+    swayidle
+    wlr-randr # For wayland display management
   ];
-  services.xserver.xautolock = {
-    enable = true;
-    locker = "${pkgs.systemd}/bin/systemctl suspend -i";
-    time = 15;
-  };
+  
   # This disables the default 20min suspend timer
   # even though I don't even have gdm?
   services.displayManager.gdm.autoSuspend = false;
 
-  systemd.user.timers.restartXautolock = {
+  # Wayland-compatible power management with swayidle
+  systemd.user.services.swayidle-power-mgmt = {
+    wantedBy = [ "sway-session.target" ];
+    partOf = [ "sway-session.target" ];
+    after = [ "sway-session.target" ];
+    description = "Idle manager for Wayland - power management";
+    
+    serviceConfig = {
+      Type = "simple";
+      Restart = "on-failure";
+      RestartSec = "1";
+      ExecStart = "${pkgs.swayidle}/bin/swayidle -w timeout 900 '${pkgs.systemd}/bin/systemctl suspend'";
+    };
+    
+    environment = {
+      WAYLAND_DISPLAY = "wayland-1";
+      XDG_RUNTIME_DIR = "%t";
+    };
+  };
+
+  # Timer to check if we should disable power management
+  systemd.user.timers.check-power-management = {
     wantedBy = [ "timers.target" ];
-    partOf = [ "restartXautolock.service" ];
+    partOf = [ "check-power-management.service" ];
     timerConfig.OnCalendar = "minutely";
   };
-  systemd.user.services.restartXautolock = {
+  
+  systemd.user.services.check-power-management = {
     serviceConfig.Type = "oneshot";
     script = ''
         soundPlaying=$(${pkgs.pulseaudio}/bin/pactl list | grep "RUNNING" | wc -l) 
@@ -29,9 +48,9 @@
         else
             keepOnFileExists=1
         fi
+        
         if [[ $soundPlaying -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 || "$qbitTorrentRunning" -ge 1 || $keepOnFileExists -ge 1 ]]; then
-            echo $soundPlaying $scpRunning $reaperRunning $qbitTorrentRunning $keepOnFileExists
-            ${pkgs.xautolock}/bin/xautolock -restart
+            ${pkgs.systemd}/bin/systemctl --user restart swayidle-power-mgmt
         fi
     '';
   };

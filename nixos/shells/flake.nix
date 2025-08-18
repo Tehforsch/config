@@ -135,8 +135,8 @@
           xorg.libXrandr
           libxkbcommon
           # If on wayland
-          # libxkbcommon
-          # wayland
+          libxkbcommon
+          wayland
         ]);
         shellHook = ''
           export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
@@ -144,6 +144,7 @@
             udev
             vulkan-loader
             libxkbcommon
+            wayland
           ]}"
         '';
       };
@@ -154,8 +155,8 @@
           clang
           libclang 
           prettier
+          (python3.withPackages (p: with p; [ numpy matplotlib ]))
         ];
-
       };
       dioxus = mkShellWithAliases {
         nativeBuildInputs = with pkgs; [
