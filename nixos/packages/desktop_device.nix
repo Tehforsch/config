@@ -45,7 +45,6 @@
     ffmpegthumbnailer
     dust
     ripgrep-all
-    flameshot
     xclip
     xrectsel
     linuxKernel.packages.linux_zen.perf

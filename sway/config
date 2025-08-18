@@ -231,7 +231,7 @@ mode "$launch" {
     bindsym Shift+P exec bash $scripts/toggle_power_button_led.sh; mode "default"
     bindsym Shift+N exec kitty -o font_size=20 newsboat; mode "default"
     bindsym shift+R reload; mode "default"
-    bindsym --release Shift+S exec grim -g "$(slurp)" - | wl-copy; mode "default"
+    bindsym Shift+S exec flameshot gui; mode "default"
     bindsym F5 exec bash $scripts/reset.sh; mode "default"
     bindsym F11 exec bash $scripts/screenCapture.sh; mode "$screenRecord" 
 }

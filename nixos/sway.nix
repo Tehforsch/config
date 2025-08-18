@@ -5,7 +5,6 @@
     extraPackages = with pkgs; [
       swaylock
       swayidle
-      wl-clipboard
       mako
       (flameshot.override { enableWlrSupport = true; })
     ];
