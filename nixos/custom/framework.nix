@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
 
   environment.systemPackages = with pkgs; [ 
     fw-ectool
