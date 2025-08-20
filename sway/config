@@ -366,3 +366,4 @@ exec sleep 3 && $scripts/screenConfiguration.sh
 exec sleep 4 && $scripts/keyboardConfiguration.sh
 exec sleep 3 && $scripts/disableAcceleration.sh
 exec sleep 3 && $scripts/clearCapslock.sh
+exec systemctl --user import-environment # Fixes GTK application startup being slow?
