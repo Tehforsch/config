@@ -9,8 +9,8 @@ cargo fmt --check
 typos
 cargo test --all
 cargo test --all --features experimental
-cargo clippy -- -D warnings 
-cargo clippy --features experimental -- -D warnings  
+cargo clippy --all-targets -- -D warnings 
+cargo clippy --all-targets --features experimental -- -D warnings  
 
 set +e
 cd src
