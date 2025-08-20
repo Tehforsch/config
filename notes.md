@@ -42,3 +42,15 @@ I had various issues so I'll probably wait for a while before I switch to it. Ac
 ## email
 i dont like thunderbird. tried some other stuff:
 himalaya: literally crashed on me while trying to send an email (index out of bounds) which wasnt very inspiring. setup was annoying because the versions werent clear and the syntax on the github repo did not actually correspond to what the cargo install-ed binary used. had to go through the wizard.
+
+
+## thunderbird
+in config editor set
+mailnews.default_view_flags = 0
+to never use threaded
+In the Message List view, in the column header, on the far right open the context menu:
+At the very bottom is the option:
+-> "Apply current view to..."
+-> "Folder and its children..."
+-> Hover over an account
+-> In the next menu don't select a folder. Instead select the account name itself.
