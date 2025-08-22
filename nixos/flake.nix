@@ -100,6 +100,13 @@
             ./syncthing.nix
           ];
       };
+      rpi2 = make_system {
+        system = "aarch64-linux";
+        hostname = "rpi2";
+        modules =
+          [
+          ];
+      };
     };
     images = {
         rpi = (nixosConfigurations.rpi.extendModules {
