@@ -35,7 +35,7 @@
       modifiedArgs = args // {
         shellHook = modifiedShellHook;
       };
-      in pkgs.mkShell modifiedArgs;
+    in pkgs.mkShell modifiedArgs;
     makeBasicRustShell = (rustToolChain: mkShellWithAliases {
       buildInputs = with pkgs; [ pkg-config cmake rustToolChain clang ];
     });
@@ -112,41 +112,17 @@
         buildInputs = [ pkg-config cmake rust_oldNightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
-      bevy = mkShellWithAliases {
-        buildInputs = ([
-          clang
-          lld
-        ]);
-        nativeBuildInputs = ([
+      bevy = mkShellWithAliases rec {
+        nativeBuildInputs = [
+          clang pkg-config
           rust_stable
-          # Bevy
-          pkg-config
-          alsa-lib
-          vulkan-tools
-          vulkan-headers
-          vulkan-loader
-          vulkan-validation-layers
-          udev
-          # If on x11
-          xorg.libX11
-          xorg.libX11
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXrandr
-          libxkbcommon
-          # If on wayland
-          libxkbcommon
-          wayland
-        ]);
-        shellHook = ''
-          export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
-            alsa-lib
-            udev
-            vulkan-loader
-            libxkbcommon
-            wayland
-          ]}"
-        '';
+        ];
+        buildInputs = [
+          udev alsa-lib-with-plugins vulkan-loader
+          libxkbcommon wayland # To use the wayland feature
+        ];
+
+        LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
       };
       guitar_practice = mkShellWithAliases {
         nativeBuildInputs = with pkgs; [
