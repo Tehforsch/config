@@ -105,6 +105,7 @@
         hostname = "rpi2";
         modules =
           [
+            ./kodi.nix
           ];
       };
     };

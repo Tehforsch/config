@@ -8,4 +8,7 @@
 
     # Syncthing did not work without this.
     security.polkit.enable = true;
+    networking.networkmanager.enable = true;
+
+
 }
