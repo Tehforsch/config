@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if required tools are available
 if ! command -v ykman &> /dev/null; then
@@ -42,9 +42,11 @@ fi
 
 # Copy to clipboard
 if command -v wl-copy &> /dev/null; then
+    echo "$otp_code"
     echo -n "$otp_code" | wl-copy
     echo "OTP code for '$selected_account' copied to clipboard (Wayland)"
 elif command -v xclip &> /dev/null; then
+    echo "$otp_code"
     echo -n "$otp_code" | xclip -selection clipboard
     echo "OTP code for '$selected_account' copied to clipboard (X11)"
 fi
