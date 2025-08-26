@@ -72,4 +72,5 @@ make_symlink bash/bashrc.sh .bashrc
 make_symlink emacs/init.el .emacs.d/init.el
 make_symlink ssh/config .ssh/config
 make_symlink claude/settings.json .claude/settings.json
+make_symlink claude/CLAUDE.md .claude/CLAUDE.md
 make_symlink xkb/symbols/custom .config/xkb/symbols/custom
