@@ -123,6 +123,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1755330281,
+        "narHash": "sha256-aJHFJWP9AuI8jUGzI77LYcSlkA9wJnOIg4ZqftwNGXA=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "3dac8a872557e0ca8c083cdcfc2f218d18e113b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1705099185,
@@ -329,6 +344,7 @@
         "journal": "journal",
         "moody": "moody",
         "musnix": "musnix",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "personalbot": "personalbot",
         "rust-overlay": "rust-overlay_2"

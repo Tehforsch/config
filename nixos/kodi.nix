@@ -3,7 +3,7 @@
 
   services.displayManager.autoLogin = {
     enable = true;
-    user = "kodi";
+    user = "toni";
   };
   services.xserver = {
     enable = true;
@@ -16,9 +16,7 @@
     desktopManager.kodi.enable = true;
   };
 
-  users.users.kodi = {
-    isNormalUser = true;
-    description = "Kodi Media Center";
+  users.users.toni = {
     extraGroups = [ "audio" "video" ];
   };
 
@@ -31,8 +29,4 @@
     allowedTCPPorts = [ 8080 ];
     allowedUDPPorts = [ 8080 ];
   };
-
-  boot.kernelParams = [
-    "cma=128M"
-  ];
 }

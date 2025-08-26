@@ -11,6 +11,7 @@
     moody = { url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git"; };
     personalbot = { url = "git+ssh://git@github.com/tehforsch/personalbot.git"; };
     musnix = { url = "github:musnix/musnix"; };
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: rec {
