@@ -48,6 +48,7 @@
     xclip
     xrectsel
     linuxKernel.packages.linux_zen.perf
+    wl-clipboard-rs
 
     # Network stuff
     oath-toolkit
