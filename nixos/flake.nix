@@ -107,6 +107,7 @@
         modules =
           [
             ./kodi.nix
+            ./sound.nix
           ];
       };
     };

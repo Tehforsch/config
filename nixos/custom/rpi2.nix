@@ -31,5 +31,9 @@
       filter = lib.mkForce "*rpi-4-*.dtb";
     };
   };
-  boot.kernelParams = [ "snd_bcm2835.enable_hdmi=1" "snd_bcm2835.enable_headphones=1" ];
+  boot.kernelParams = [
+    "snd_bcm2835.enable_hdmi=1" # needed for CEC?
+    "snd_bcm2835.enable_headphones=1"
+    "hdmi_ignore_edid_audio=1"
+  ];
 }
