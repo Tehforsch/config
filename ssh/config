@@ -15,7 +15,7 @@ Host rpi
     User toni
 Host rpi2
     HostName rpi2
-    User toni
+    User root
 Host rpizero
     HostName 192.168.0.95
     User pi
