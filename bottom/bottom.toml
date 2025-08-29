@@ -1,0 +1,32 @@
+# Bottom configuration
+[flags]
+# Enable tree mode for processes by default
+tree = true
+
+# Layout configuration
+[[row]]
+  # Top row with two columns
+  [[row.child]]
+    type = "proc"
+    ratio = 70
+  [[row.child]]
+    type = "cpu"
+    ratio = 30
+
+[[row]]
+  # Second row with memory and network
+  [[row.child]]
+    type = "mem"
+    ratio = 50
+  [[row.child]]
+    type = "net"
+    ratio = 50
+
+[[row]]
+  # Bottom row with disk and temperature
+  [[row.child]]
+    type = "disk"
+    ratio = 50
+  [[row.child]]
+    type = "temp"
+    ratio = 50

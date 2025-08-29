@@ -161,3 +161,5 @@ alias cal="vdirsyncer sync && ikhal"
 alias mol="cargo run --manifest-path ~/projects/molt/Cargo.toml --"
 
 alias kill="kill -KILL"
+
+alias top="btm"

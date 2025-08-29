@@ -63,6 +63,7 @@ make_symlink khal/config .config/khal/config
 make_symlink striputary/config.yml .config/striputary/config.yaml
 make_symlink qbittorrent/qBittorrent.conf .config/qBittorrent/qBittorrent.conf
 make_symlink mako/config .config/mako/config
+make_symlink bottom/bottom.toml .config/bottom/bottom.toml
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf

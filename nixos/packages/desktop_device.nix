@@ -45,6 +45,7 @@
     # LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/run/current-system/sw/lib
     vulkan-loader
     wayland
+    wayland-protocols
 
     # Utilities
     usbutils
@@ -59,6 +60,7 @@
     xrectsel
     linuxKernel.packages.linux_zen.perf
     wl-clipboard-rs
+    bottom
 
     # Network stuff
     oath-toolkit
