@@ -114,12 +114,21 @@
       };
       bevy = mkShellWithAliases rec {
         nativeBuildInputs = [
-          clang pkg-config
+          clang
+          pkg-config
           rust_stable
         ];
         buildInputs = [
-          udev alsa-lib-with-plugins vulkan-loader
-          libxkbcommon wayland # To use the wayland feature
+          udev
+          alsa-lib-with-plugins
+          libxkbcommon
+          # These should technically be in here,
+          # but if I add them here, I'll get version
+          # mismatches in the wayland lib between the
+          # one referenced in my systems vulkan and the
+          # local one.
+          # vulkan-loader
+          # wayland
         ];
 
         LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
