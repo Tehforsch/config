@@ -94,4 +94,3 @@ news.version=2.6.0
 
 # Do not show "there are more urgent tasks" message
 nag=
-context=personal
