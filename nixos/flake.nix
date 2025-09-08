@@ -86,7 +86,7 @@
           [
             ./laptop.nix
           ]
-          ++ desktop_device ++ work;
+          ++ desktop_device ++ work ++ personal;
       };
       netcup = make_system {
         system = "x86_64-linux";

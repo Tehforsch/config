@@ -36,6 +36,7 @@
     anki
     evince # for editing pdf forms
     wdisplays
+    claude-code
 
     # Ever since wayland, I've had difficulties with some
     # bevy applications when I initialize their vulkan/wayland

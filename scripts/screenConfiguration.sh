@@ -16,6 +16,7 @@ elif [[ $SYSTEM_NAME == "pc" ]]; then
 elif [[ $SYSTEM_NAME == "thinkpad" ]]; then
     main=DP-2
     second=eDP1
+    orientation=left-of
 else
     main=DP2
     second=DP1-3
