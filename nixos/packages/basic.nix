@@ -25,6 +25,7 @@
     nix-search
     helix
     lsof
+    sd
 
     nodejs_24
   ];
