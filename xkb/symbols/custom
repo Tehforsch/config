@@ -18,6 +18,7 @@ xkb_symbols "custom" {
     
     // Modifier remaps
     key <LALT> { [ F9 ] };                              // Left Alt -> F9
+    key <RTSH> { [ F9, F9 ] };                        // Right Shift -> F9
     key <CAPS> { [ Escape ] };                          // Caps Lock -> Escape
     
 };

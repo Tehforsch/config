@@ -334,18 +334,17 @@ workspace "32:[x]" output $outputSecondary
 
 bindsym F12 workspace number 100:[f12]; mode "$game"; exec $scripts/preGameHook.sh
 
-# Keyboard configuration for Wayland/Sway
 input type:keyboard {
     xkb_layout custom
 }
 
-# Mouse/pointer configuration for Wayland/Sway
+# Mouse
 input type:pointer {
     accel_profile flat
     pointer_accel -0.55
 }
 
-# Touchpad configuration
+# Touchpad
 input type:touchpad {
     tap enabled
     natural_scroll disabled
