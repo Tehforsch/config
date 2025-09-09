@@ -1,14 +1,14 @@
 { config, pkgs, inputs, ... }:
-{
-  systemd.user.services.journal = {
-    enable = true;
-    description = "journal webserver";
+let
+  makeService = { execStart, description, enable ? true, wantedBy ? [ "default.target" ] }: {
+    inherit enable description wantedBy;
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
+      ExecStart = execStart;
     };
   };
-
+in
+{
   systemd.timers.refreshNewsboat = {
     wantedBy = [ "timers.target" ];
     partOf = [ "refreshNewsboat.service" ];
@@ -22,13 +22,18 @@
     '';
   };
 
-  systemd.user.services.calendarReminder = {
-    enable = true;
+  systemd.user.services.journal = makeService {
+    description = "journal webserver";
+    execStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
+  };
+
+  systemd.user.services.calendarReminder = makeService {
     description = "calendar reminders";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send ${pkgs.vdirsyncer}/bin/vdirsyncer";
-    };
+    execStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send ${pkgs.vdirsyncer}/bin/vdirsyncer";
+  };
+
+  systemd.user.services.flameshot = makeService {
+    description = "flameshot";
+    execStart = "${pkgs.flameshot}/bin/flameshot";
   };
 }
