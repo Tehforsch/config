@@ -63,6 +63,8 @@
     linuxKernel.packages.linux_zen.perf
     wl-clipboard-rs
     bottom
+    nh
+    bacon
 
     # Network stuff
     oath-toolkit

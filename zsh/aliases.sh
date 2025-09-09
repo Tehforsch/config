@@ -126,6 +126,14 @@ function nixsw() {
     sudo nixos-rebuild --max-jobs 8 --cores 4 switch --flake ~/projects/config/nixos
 }
 
+function nhswitch() {
+    sudo echo
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
+    ssh-add ~/.ssh/id_rsa
+    nh os switch ~/projects/config/nixos
+}
+
 function ns() {
     nix shell "nixpkgs#$1"
 }
