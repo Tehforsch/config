@@ -332,9 +332,6 @@ workspace "25:[g]" output $outputPrimary
 workspace "31:[y]" output $outputSecondary
 workspace "32:[x]" output $outputSecondary
 
-# Assign programs to workspace
-assign [class="dota2"] workspace number 100:[f12]
-
 bindsym F12 workspace number 100:[f12]; mode "$game"; exec $scripts/preGameHook.sh
 
 # Keyboard configuration for Wayland/Sway

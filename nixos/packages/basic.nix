@@ -24,6 +24,7 @@
     wget
     nix-search
     helix
+    lsof
 
     nodejs_24
   ];
