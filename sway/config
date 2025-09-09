@@ -57,7 +57,7 @@ mouse_warping none
 
 set $i3 normal
 bindsym F9 mode "$i3"
-bindsym Insert exec bash $scripts/keyboardPassthrough.sh; mode "$passthrough"
+bindsym Insert exec bash $scripts/setKeyboardLayout.sh passthrough; mode "$passthrough"
 
 mode "$i3" {
     bindsym Escape mode "default"
@@ -98,12 +98,12 @@ mode "$i3" {
     bindsym 2 exec python3 $config/i3/switchWindow/focus.py 1; mode "default"
     bindsym 3 exec python3 $config/i3/switchWindow/focus.py 2; mode "default"
     bindsym 4 exec python3 $config/i3/switchWindow/focus.py 3; mode "default"
-    bindsym Insert exec bash $scripts/keyboardPassthrough.sh; mode "$passthrough"
+    bindsym Insert exec bash $scripts/setKeyboardLayout.sh passthrough; mode "$passthrough"
 }
 
 set $passthrough passthrough. Exit with Insert
 mode "$passthrough" {
-    bindsym Insert exec bash $scripts/keyboardConfiguration.sh exit; mode "default"
+    bindsym Insert exec bash $scripts/setKeyboardLayout.sh custom; mode "default"
 }
 
 set $workspace workspace
@@ -219,7 +219,7 @@ mode "$launch" {
     bindsym a exec thunderbird -P default -calendar; mode "default"
     bindsym Shift+A exec thunderbird -P work -calendar; mode "default"
     bindsym n exec thunar; mode "default"
-    bindsym r exec bash $scripts/keyboardPassthrough.sh; exec $config/audio/scripts/reaper_mode.sh music; mode "$passthrough"
+    bindsym r exec bash $scripts/setKeyboardLayout.sh passthrough; exec $config/audio/scripts/reaper_mode.sh music; mode "$passthrough"
     bindsym s exec rofi -show run; mode "default"
     bindsym t exec Telegram; mode "default"
     bindsym k exec kitty; mode "default"
@@ -276,7 +276,7 @@ mode "$document" {
 
 set $game game mode. F12: Exit, Win+p: Record Screen, Win+P: stop recording
 mode "$game" {
-    bindsym F12 workspace back_and_forth; mode "default"; exec $scripts/postGameHook.sh
+    bindsym F12 workspace back_and_forth; mode "default"; exec bash $scripts/setKeyboardLayout.sh custom
 }
 
 set $media media
@@ -332,7 +332,7 @@ workspace "25:[g]" output $outputPrimary
 workspace "31:[y]" output $outputSecondary
 workspace "32:[x]" output $outputSecondary
 
-bindsym F12 workspace number 100:[f12]; mode "$game"; exec $scripts/preGameHook.sh
+bindsym F12 workspace number 100:[f12]; mode "$game"; exec bash $scripts/setKeyboardLayout.sh passthrough
 
 input type:keyboard {
     xkb_layout custom
@@ -359,7 +359,6 @@ output * bg $inactiveBg solid_color
 
 # Sway startup commands (replace exec_always with exec)
 exec sleep 3 && $scripts/screenConfiguration.sh
-exec sleep 4 && $scripts/keyboardConfiguration.sh
 exec sleep 3 && $scripts/disableAcceleration.sh
 exec sleep 3 && $scripts/clearCapslock.sh
 exec systemctl --user import-environment # Fixes GTK application startup being slow?
