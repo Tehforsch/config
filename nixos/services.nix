@@ -25,6 +25,7 @@ in
   systemd.user.services.journal = makeService {
     description = "journal webserver";
     execStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
+    wantedBy = [ ];
   };
 
   systemd.user.services.calendarReminder = makeService {
