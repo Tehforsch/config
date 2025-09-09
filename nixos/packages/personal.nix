@@ -6,7 +6,7 @@
     mumble
     khal
     vdirsyncer
-    taskwarrior
+    taskwarrior2
     qpwgraph
     wireshark
     qbittorrent
