@@ -119,16 +119,20 @@
           rust_stable
         ];
         buildInputs = [
+          pkg-config
+          alsa-lib
+          vulkan-tools
+          vulkan-headers
+          vulkan-loader
+          vulkan-validation-layers
           udev
-          alsa-lib-with-plugins
+          # If on x11
+          xorg.libX11
+          xorg.libX11
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXrandr
           libxkbcommon
-          # These should technically be in here,
-          # but if I add them here, I'll get version
-          # mismatches in the wayland lib between the
-          # one referenced in my systems vulkan and the
-          # local one.
-          # vulkan-loader
-          # wayland
         ];
 
         LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
@@ -140,7 +144,7 @@
           clang
           libclang 
           prettier
-          (python3.withPackages (p: with p; [ numpy matplotlib ]))
+          (python3.withPackages (p: with p; [ numpy matplotlib yaml ]))
         ];
       };
       dioxus = mkShellWithAliases {
