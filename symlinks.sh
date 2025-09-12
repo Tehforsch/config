@@ -34,10 +34,10 @@ function make_symlink {
 make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bat/config .config/bat/config
 make_symlink dunst/dunstrc .config/dunst/dunstrc
-make_symlink sway/i3wsr/config.toml .config/i3wsr/config.toml
-make_symlink sway/i3status_${SYSTEM_NAME}.toml .config/i3status-rust/config.toml
-make_symlink sway/config .config/sway/config
-make_symlink sway/system_${SYSTEM_NAME}.conf .config/sway/system.conf
+make_symlink i3/i3.conf .config/i3/config
+make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
+make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
+make_symlink i3/i3status_${SYSTEM_NAME}.conf .config/i3status/config
 make_symlink keepassxc/keepassxc.ini .config/keepassxc/keepassxc.ini
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
@@ -62,7 +62,6 @@ make_symlink vdirsyncer/config .config/vdirsyncer/config
 make_symlink khal/config .config/khal/config
 make_symlink striputary/config.yml .config/striputary/config.yaml
 make_symlink qbittorrent/qBittorrent.conf .config/qBittorrent/qBittorrent.conf
-make_symlink mako/config .config/mako/config
 make_symlink bottom/bottom.toml .config/bottom/bottom.toml
 
 # The weird

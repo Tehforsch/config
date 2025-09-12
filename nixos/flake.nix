@@ -28,8 +28,8 @@
         ./desktop_device.nix
         ./sound.nix
         ./packages/desktop_device.nix
-        ./sway.nix
-        ./gammastep.nix
+        ./i3.nix
+        ./redshift.nix
         ./power_management.nix
         ./syncthing.nix
         ./mpd.nix

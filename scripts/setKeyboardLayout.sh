@@ -5,5 +5,21 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+config=/home/toni/projects/config
 layout="$1"
-swaymsg input type:keyboard xkb_layout "$layout"
+
+case "$layout" in
+    "custom")
+        setxkbmap -layout de -variant nodeadkeys -option caps:escape
+        xmodmap $config/xmodmap/xmodmapNormal
+        ;;
+    "passthrough")
+        setxkbmap -layout de -variant nodeadkeys
+        xmodmap $config/xmodmap/xmodmapPassthrough
+        ;;
+    *)
+        echo "Unknown layout: $layout"
+        echo "Available layouts: custom, passthrough"
+        exit 1
+        ;;
+esac
