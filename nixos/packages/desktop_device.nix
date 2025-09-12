@@ -38,17 +38,6 @@
     wdisplays
     claude-code
 
-    # Ever since wayland, I've had difficulties with some
-    # bevy applications when I initialize their vulkan/wayland
-    # dependencies in a devshell instead of using a system-wide
-    # installation. I don't care enough to do this properly anymore
-    # since I already wasted hours on this, so here they are in my
-    # global installation. Add them with
-    # LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/run/current-system/sw/lib
-    vulkan-loader
-    wayland
-    wayland-protocols
-
     # Utilities
     usbutils
     dunst # notification daemon
@@ -61,10 +50,10 @@
     xclip
     xrectsel
     linuxKernel.packages.linux_zen.perf
-    wl-clipboard-rs
     bottom
     nh
     bacon
+    flameshot
 
     # Network stuff
     oath-toolkit

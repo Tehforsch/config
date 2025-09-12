@@ -1,0 +1,103 @@
+[
+{
+	"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"marks": [],
+		"percent": null,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "pixel",
+			"current_border_width": 3,
+			"floating": "auto_off",
+			"geometry": {
+				"height": 756,
+				"width": 816,
+				"x": 0,
+				"y": 0
+			},
+			"marks": [],
+			"name": "src/main.rs - GNU Emacs at tonipc",
+			"percent": 0.5,
+			"swallows": [
+			{
+				"instance": "^emacs$"
+			}
+			],
+			"type": "con"
+		},
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splitv",
+			"marks": [],
+			"percent": 0.5,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "normal",
+				"floating": "auto_off",
+				"layout": "splith",
+				"marks": [],
+				"percent": 0.5,
+				"type": "con",
+				"nodes": [
+				{
+					"border": "normal",
+					"floating": "auto_off",
+					"layout": "splith",
+					"marks": [],
+					"percent": 1,
+					"type": "con",
+					"nodes": [
+					{
+						"border": "pixel",
+						"current_border_width": 3,
+						"floating": "auto_off",
+						"geometry": {
+							"height": 1367,
+							"width": 2554,
+							"x": 0,
+							"y": 0
+						},
+						"marks": [],
+						"name": "~/projects/sokobrane",
+						"percent": 1,
+						"swallows": [
+						{
+							"instance": "^kitty$"
+						}
+						],
+						"type": "con"
+					}
+					]
+				}
+				]
+			},
+			{
+				"border": "pixel",
+				"current_border_width": 3,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 1367,
+					"width": 2554,
+					"x": 0,
+					"y": 0
+				},
+				"marks": [],
+				"name": "GitHub — Mozilla Firefox",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"instance": "^Navigator$"
+				}
+				],
+				"type": "con"
+			}
+			]
+		}
+		]
+}
+]
