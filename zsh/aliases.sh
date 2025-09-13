@@ -126,7 +126,7 @@ function nixsw() {
     sudo nixos-rebuild --max-jobs 8 --cores 4 switch --flake ~/projects/config/nixos
 }
 
-function nhswitch() {
+function nhsw() {
     sudo echo
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
