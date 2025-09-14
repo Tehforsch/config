@@ -24,5 +24,9 @@
                 ]
             }
         ]
+    },
+    "statusLine": {
+        "type": "command",
+        "command": "bash /home/toni/projects/config/scripts/statusline_script.sh"
     }
 }
