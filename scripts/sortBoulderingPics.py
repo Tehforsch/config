@@ -8,7 +8,7 @@ def get_files(path: Path):
     return [path / f for f in os.listdir(path)]
 
 def is_movie(path: Path):
-    return path.suffix == ".MP4" or path.suffix == ".MOV"
+    return path.suffix.lower() == ".mp4" or path.suffix.lower() == ".mov"
 
 def is_pic(path: Path):
     return path.suffix == ".JPG"
@@ -21,6 +21,7 @@ def view_photo(path: Path) -> None:
 
 
 def view_movie(path: Path):
+    print(path)
     args = ["vlc", str(path)]
     subprocess.check_call(args)
 
