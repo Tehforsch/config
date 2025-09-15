@@ -3,7 +3,7 @@
 
 export FORGIT_COPY_CMD='xclip -selection clipboard'
 export FORGIT_NO_ALIASES="1"
-export FORGIT_PAGER='delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}'
+export FORGIT_PAGER='delta -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}'
 
 forgit::error() { printf "%b[Error]%b %s\n" '\e[0;31m' '\e[0m' "$@" >&2; return 1; }
 forgit::warn() { printf "%b[Warn]%b %s\n" '\e[0;33m' '\e[0m' "$@" >&2; }
