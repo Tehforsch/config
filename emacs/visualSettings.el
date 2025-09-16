@@ -27,11 +27,11 @@
 
 (use-package all-the-icons)
 
-(if (> (display-pixel-height) 1080)
-  (progn
-    (add-to-list 'default-frame-alist '(font . "Inconsolata 14")))
-  (progn
-    (add-to-list 'default-frame-alist '(font . "Inconsolata 14"))))
+(cond
+  ((string= (system-name) "framework")
+   (add-to-list 'default-frame-alist '(font . "Inconsolata 20")))
+  (t
+   (add-to-list 'default-frame-alist '(font . "Inconsolata 14"))))
 
 
 (global-hl-line-mode 1)
