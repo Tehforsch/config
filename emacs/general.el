@@ -30,9 +30,12 @@
     "g" '(:which-key "Magit")
     "gb" 'magit-blame
     "gf" 'magit-find-file
-    "gl" 'magit-log-buffer-file
+    "gL" 'magit-log-buffer-file
     "gs" 'magit-status
-    "gr" '((lambda () (interactive) (magit-ediff-resolve (buffer-file-name))) :which-key "Resolve merge conflict in current file")
+    "gl" 'smerge-keep-lower
+    "gu" 'smerge-keep-upper
+    "gm" 'smerge-keep-base
+    "gn" 'smerge-vc-next-conflict
     "h" 'vertico-repeat
     "H" 'vertico-repeat-select
     "p" '(:which-key "Project")
