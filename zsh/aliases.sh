@@ -138,6 +138,10 @@ function ns() {
     nix shell "nixpkgs#$1"
 }
 
+function ns_unfree() {
+    NIXPKGS_ALLOW_UNFREE=1 nix shell --impure "nixpkgs#$1"
+}
+
 function nsr() {
     nix shell "nixpkgs#$1" -c "$1"
 }

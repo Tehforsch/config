@@ -54,6 +54,8 @@
     nh
     bacon
     flameshot
+    android-tools
+    scrcpy
 
     # Network stuff
     oath-toolkit
