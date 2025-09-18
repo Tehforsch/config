@@ -81,6 +81,9 @@
         buildInputs = [ pkg-config clang rust_nightly openssl ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
+      torga = mkShellWithAliases {
+        buildInputs = [ rust_stable clang ];
+      };
       striputary = mkShellWithAliases {
         buildInputs = [ pkg-config cmake rust_stable clang libclang dbus alsa-lib
 
