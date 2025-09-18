@@ -92,7 +92,6 @@
 (load-from-config "visualSettings.el")
 (load-from-config "formatting.el")
 (load-from-config "modeLine.el")
-(load-from-config "tabbar.el")
 (load-from-config "helpful.el")
 
 (load-from-config "temp.el")

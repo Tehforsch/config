@@ -19,6 +19,7 @@
     inconsolata
     font-awesome
     barlow
+    nerd-fonts.symbols-only
   ];
 
   virtualisation = {
