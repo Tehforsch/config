@@ -1,7 +1,7 @@
 # Bottom configuration
 [flags]
 # Enable tree mode for processes by default
-tree = true
+tree = false
 
 # Layout configuration
 [[row]]
