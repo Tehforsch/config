@@ -1,4 +1,4 @@
-show-read-feeds yes
+show-read-feeds no
 show-keymap-hint no
 
 article-sort-order date
@@ -66,3 +66,12 @@ ignore-article "https://hnrss.org/newest?points=200" "title =~ \"twitter\""
 ignore-article "https://hnrss.org/newest?points=200" "title =~ \"react\""
 
 ignore-article "https://jung-naiv.podigee.io/feed/mp3" "title =~ \"WIRTSCHAFTSBRIEFING\""
+
+# Miniflux integration
+urls-source "miniflux"
+miniflux-url "http://v2202411242091296475.happysrv.de:7000"
+miniflux-tokenfile "/home/toni/resource/keys/tokens/miniflux"
+
+# Show only feeds with tags
+always-display-description yes
+run-on-startup select-tag

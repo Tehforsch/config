@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+    <head>
+        <title>Miniflux</title>
+        <dateCreated>Tue, 23 Sep 2025 13:53:06 CEST</dateCreated>
+    </head>
+    <body>
+        <outline text="Programming">
+            <outline title="baby steps" text="baby steps" xmlUrl="https://smallcultfollowing.com/babysteps/index.xml" htmlUrl="https://smallcultfollowing.com/babysteps/" description="Recent content on baby steps" type="rss"></outline>
+            <outline title="Factorio Blog" text="Factorio Blog" xmlUrl="https://www.factorio.com/blog/rss" htmlUrl="https://www.factorio.com/" type="rss"></outline>
+            <outline title="matklad" text="matklad" xmlUrl="https://matklad.github.io/feed.xml" htmlUrl="https://matklad.github.io" description="Matklad&#39;s Arts&amp;Crafts" type="rss"></outline>
+            <outline title="mellow" text="mellow" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC5jRwTUqG15l-BcqQHbVFtA" htmlUrl="https://www.youtube.com/channel/UC5jRwTUqG15l-BcqQHbVFtA" type="rss"></outline>
+            <outline title="Rust Blog" text="Rust Blog" xmlUrl="https://blog.rust-lang.org/feed.xml" htmlUrl="https://blog.rust-lang.org/" description="Empowering everyone to build reliable and efficient software." type="rss"></outline>
+            <outline title="This Week in Rust" text="This Week in Rust" xmlUrl="https://this-week-in-rust.org/rss.xml" htmlUrl="https://this-week-in-rust.org/" type="rss"></outline>
+            <outline title="Without boats, dreams dry up" text="Without boats, dreams dry up" xmlUrl="https://without.boats/index.xml" htmlUrl="https://without.boats/" description="Recent content on Without boats, dreams dry up" type="rss"></outline>
+        </outline>
+        <outline text="Videos">
+            <outline title="Adam Ondra" text="Adam Ondra" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC8eNyF9eYwgr_K-Nl4gSHWw" htmlUrl="https://www.youtube.com/channel/UC8eNyF9eYwgr_K-Nl4gSHWw" type="rss"></outline>
+            <outline title="Shawn Raboutou" text="Shawn Raboutou" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCWaC58KxHxyCgZVl4cRDxSg" htmlUrl="https://www.youtube.com/channel/UCWaC58KxHxyCgZVl4cRDxSg" type="rss"></outline>
+            <outline title="Tension Climbing" text="Tension Climbing" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCes1HC9b15MBUR5PaWd-Iqw" htmlUrl="https://www.youtube.com/channel/UCes1HC9b15MBUR5PaWd-Iqw" type="rss"></outline>
+            <outline title="WEDGE CLIMBING" text="WEDGE CLIMBING" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCNgnwaDJMhONtRSoTIKRYQQ" htmlUrl="https://www.youtube.com/channel/UCNgnwaDJMhONtRSoTIKRYQQ" type="rss"></outline>
+            <outline title="William Bosi" text="William Bosi" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCu0Xag_M94EXfxTM632yGYg" htmlUrl="https://www.youtube.com/channel/UCu0Xag_M94EXfxTM632yGYg" type="rss"></outline>
+        </outline>
+    </body>
+</opml>

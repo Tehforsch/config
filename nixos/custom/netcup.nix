@@ -11,7 +11,6 @@
       auth.type = "none";
     };
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 5232 ];
 
   services.murmur = {
     enable = true;
@@ -35,6 +34,15 @@
       ExecStart = "${inputs.personalbot.packages.x86_64-linux.default}/bin/python ${inputs.personalbot.packages.x86_64-linux.default}/lib/python3.12/site-packages/main.py";
       Restart = "on-failure";
     };
+  };
+
+  services.miniflux = {
+    enable = true;
+    adminCredentialsFile = "/home/toni/resource/keys/on_server/miniflux";
+    config = {
+      LISTEN_ADDR = "0.0.0.0:7000";
+    };
 
   };
+  networking.firewall.allowedTCPPorts = [ 80 443 5232 7000 ];
 }
