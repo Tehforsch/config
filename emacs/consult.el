@@ -8,7 +8,7 @@
 
 (setq consult-project-root-function #'projectile-project-root)
 
-(setq consult-ripgrep-args "rg --hidden --color=never --path-separator / --smart-case --no-heading --line-number --line-buffered --null --sort=path")
+(setq consult-ripgrep-args "rg --color=never --path-separator / --smart-case --no-heading --line-number --line-buffered --null --sort=path")
 
 ; Make xref show xrefs and xref show definitions use completion-at-point / consult
 (setq xref-show-xrefs-function 'consult-xref)
