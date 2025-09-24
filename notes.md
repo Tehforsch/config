@@ -30,6 +30,15 @@ custom evil surrounds cannot be repeated with . (function, generic, ...)
 
 magit doesnt work at all anymore
 
+## wayland / sway
+had a ton of problems, so switched back
+- electron apps would be really slow sometimes
+- electron apps would be unclickable sometimes
+- screenshotting didnt work when a screen with fractional scaling was enabled.
+- gpu recognition didnt really work a lot of times
+- problems with bevy and vulkan libs although i solved them eventually by installing the appropriate packages globalls (probably nixos related)
+- really slow performance in bevy games (gpu related issues proably, but it happened on my framework which has an AMD)
+
 ## hyprland
 I had various issues so I'll probably wait for a while before I switch to it. Activating hyprland.nix and removing i3.nix should switch back.
 - Mouse cursor randomly vanished
