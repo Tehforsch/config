@@ -1,1 +1,2 @@
+cp --backup=numbered ~/.local/share/torga/state.json ~/resource/torga_bu/
 cargo run --bin torga-cli -- $@

@@ -65,7 +65,7 @@ alias ccl="cargo check --lib"
 alias cctl="cargo check --lib --tests"
 
 alias clip="cargo clippy"
-alias cir="cargo insta review"
+alias cir="cargo insta test --review"
 
 function ctn() {
     cargo test $@ -- --nocapture
