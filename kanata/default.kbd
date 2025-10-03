@@ -1,0 +1,106 @@
+(defcfg
+  process-unmapped-keys yes
+  rapid-event-delay 5
+  concurrent-tap-hold true
+  log-layer-changes false
+  danger-enable-cmd yes
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    z    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft y    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias
+  parenleft S-8
+  parenright S-9
+  braceleft RA-7
+  braceright RA-0
+  bracketleft RA-8
+  bracketright RA-9
+  pointyleft <
+  pointyright S-<
+  slash S-7
+  backslash RA--
+  ampersand S-6
+  colon S-.
+  underscore S-Slash
+  tilde RA-]
+  i3 S-F9 ;; See i3 config
+  F10_or_metalayer (tap-hold 0 200 F10 (layer-toggle meta-layer))
+)
+
+(defchordsv2
+  (i j) (layer-toggle special1) 30 first-release (passthrough)
+  (e f) (layer-toggle special2) 30 first-release (passthrough)
+  (u h) @i3 30 first-release (passthrough)
+  (r g) @i3 30 first-release (passthrough)
+)
+
+(deflayermap default
+  caps (tap-hold 0 200 esc lctl)
+  F10 @F10_or_metalayer
+  spc (tap-hold 0 300 spc (layer-toggle navigate))
+  tab (tap-hold-press 0 200 tab (layer-toggle i3))
+  lalt (layer-toggle noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
+)
+
+(deflayermap passthrough
+  caps (tap-hold 0 200 esc lctl)
+  F10 @F10_or_metalayer
+)
+
+(deflayermap meta-layer
+  r lrld ;; Reload config
+  p (layer-switch passthrough)
+  n (layer-switch default)
+)
+
+(deflayermap special1
+  s @parenleft
+  d @parenright
+  z @braceleft ;; actually this is y
+  x @braceright
+  a @bracketleft
+  f @bracketright
+  w @slash ;; /
+  r @backslash
+  q @tilde
+  e @colon
+  3 @ampersand
+  g @ampersand
+)
+
+(deflayermap special2
+  h left
+  j down
+  k up
+  l right
+  i enter
+)
+
+(deflayermap noop
+  ___ XX
+)
+
+
+(deflayermap navigate
+  k (mwheel-up 40 120)
+  j (mwheel-down 40 120)  
+  w (mwheel-up 40 120)
+  s (mwheel-down 40 120)
+)
+
+(deflayermap i3
+  a (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus left")
+  h (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus left")
+  d (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus right")
+  l (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus right")
+  e (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) layout toggle splith tabbed")
+  q (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) kill")
+  spc (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode i3Mode")
+  w (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode workspaceMode")
+)
