@@ -1,0 +1,90 @@
+(defcfg
+  process-unmapped-keys yes
+  rapid-event-delay 5
+  concurrent-tap-hold true
+)
+
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    z    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft y    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defchordsv2
+  (i j) (layer-toggle special1) 30 first-release ()
+  (e f) (layer-toggle special2) 30 first-release ()
+  (u h) @i3 30 first-release ()
+  (r g) @i3 30 first-release ()
+)
+
+(defalias
+  i3 F9
+)
+
+(deflayermap default
+  caps (tap-hold 0 200 esc lctl)
+  grv (tap-hold 0 200 grv (layer-toggle kanata))
+  spc (tap-hold 0 200 spc (layer-toggle navigate))
+  ;; semi (tap-hold 0 120 j (layer-toggle special1))
+  ;; i (tap-hold 0 120 i (layer-toggle special2))
+  lalt F9
+  rsft F9
+)
+
+(deflayermap kanata
+  r lrld
+)
+
+(defalias
+  parenleft S-8
+  parenright S-9
+  braceleft RA-7
+  braceright RA-0
+  bracketleft RA-8
+  bracketright RA-9
+  pointyleft <
+  pointyright S-<
+  slash S-7
+  backslash RA--
+  ampersand S-6
+  colon S-.
+  underscore S-Slash
+  ;; dot, dash, underscore, reference, 
+)
+
+(deflayermap special1
+  s @parenleft
+  d @parenright
+  z @braceleft ;; actually this is y
+  x @braceright
+  a @bracketleft
+  f @bracketright
+  w @slash ;; /
+  r @backslash
+  q .
+  e @colon
+  3 @ampersand
+  g @ampersand
+)
+
+(deflayermap special2
+  j @pointyleft
+  k @pointyright
+)
+
+
+(deflayermap no-ops
+  a a
+  ___ ∅
+)
+
+
+(deflayermap navigate
+  k (mwheel-up 40 120)
+  j (mwheel-down 40 120)  
+  w (mwheel-up 40 120)
+  s (mwheel-down 40 120)
+)
