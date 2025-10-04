@@ -19,44 +19,67 @@
   parenright S-9
   braceleft RA-7
   braceright RA-0
-  bracketleft RA-8
-  bracketright RA-9
   pointyleft <
   pointyright S-<
   slash S-7
   backslash RA--
-  ampersand S-6
   colon S-.
   underscore S-Slash
   tilde RA-]
-  i3 S-F9 ;; See i3 config
+  at RA-q
+  hashtag bksl
+  questionMark S--
+  backtick S-=
+  dot .
+  enterI3Mode S-F9 ;; See i3 config
   F10_or_metalayer (tap-hold 0 200 F10 (layer-toggle meta-layer))
 )
 
+(defoverrides
+  (lsft 3) (lsft 6) ;; Since I am not a lawyer I dont use the paragraph a lot but I sure use the & a lot.
+)
+
+
 (defchordsv2
-  (i j) (layer-toggle special1) 30 first-release (passthrough)
-  (e f) (layer-toggle special2) 30 first-release (passthrough)
-  (u h) @i3 30 first-release (passthrough)
-  (r g) @i3 30 first-release (passthrough)
+  (j f) (layer-toggle meta-layer) 40 first-release ()
+  (i j) (layer-toggle special1) 40 first-release (passthrough)
+  (e f) (layer-toggle navigate) 40 first-release (passthrough)
+  (spc tab) @enterI3Mode 100 first-release (passthrough)
+  (spc enter) @enterI3Mode 100 first-release (passthrough)
 )
 
 (deflayermap default
   caps (tap-hold 0 200 esc lctl)
-  F10 @F10_or_metalayer
-  spc (tap-hold 0 300 spc (layer-toggle navigate))
   tab (tap-hold-press 0 200 tab (layer-toggle i3))
+  enter (tap-hold-press 0 150 enter (layer-toggle i3))
   lalt (layer-toggle noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
+  ralt (layer-toggle ralt-noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
+  ;; lsft (layer-toggle lsft-mode) ;; Not sure if needed, but in order to remap S+some modifier key
+  Backslash (tap-hold 0 150 bksl (layer-toggle special2)) ;; # on the german kb
+  Semicolon @colon ;; ö on the german kb
+  Quote @underscore ;; ä on the german kb
+  BracketLeft @dot ;; ü on the german kb
+  Minus @questionMark ;; ß on the german kb
+  Equal S-= ;; replace (front?)tick with backtick. i dont know what the other tick is even for tbh
 )
 
 (deflayermap passthrough
   caps (tap-hold 0 200 esc lctl)
-  F10 @F10_or_metalayer
 )
 
 (deflayermap meta-layer
   r lrld ;; Reload config
   p (layer-switch passthrough)
   n (layer-switch default)
+  g (layer-switch german)
+)
+
+(deflayermap german
+  caps (tap-hold 0 200 esc lctl)
+)
+
+(deflayermap lsft-mode
+  Backslash S-Backslash
 )
 
 (deflayermap special1
@@ -64,30 +87,48 @@
   d @parenright
   z @braceleft ;; actually this is y
   x @braceright
-  a @bracketleft
-  f @bracketright
+  a BracketLeft
+  f BracketRight
   w @slash ;; /
   r @backslash
-  q @tilde
-  e @colon
-  3 @ampersand
-  g @ampersand
+  q @at
+  e @tilde
 )
 
 (deflayermap special2
-  h left
-  j down
-  k up
-  l right
-  i enter
+  a RA-<
+  s <
+  d S-<
+  f @hashtag
 )
 
 (deflayermap noop
   ___ XX
 )
 
+(deflayermap ralt-noop
+  q RA-q
+  e RA-e
+  < RA-<
+  w S-7
+  s S-8
+  d S-9
+  a RA-8
+  f RA-9
+  ___ XX
+)
+
 
 (deflayermap navigate
+  h left
+  j down
+  k up
+  l right
+  i enter
+  lsft (layer-toggle navigate-shift)
+)
+
+(deflayermap navigate-shift
   k (mwheel-up 40 120)
   j (mwheel-down 40 120)  
   w (mwheel-up 40 120)
@@ -96,11 +137,19 @@
 
 (deflayermap i3
   a (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus left")
-  h (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus left")
   d (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus right")
+  h (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus left")
   l (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus right")
   e (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) layout toggle splith tabbed")
   q (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) kill")
-  spc (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode i3Mode")
-  w (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode workspaceMode")
+  spc @enterI3Mode ;; for cases where i mispress the intial chord :D
+  lsft (layer-toggle i3-shift)
+  rsft (layer-toggle i3-shift)
+)
+
+(deflayermap i3-shift
+  a (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) move left")
+  h (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) move left")
+  d (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) move right")
+  l (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) move right")
 )
