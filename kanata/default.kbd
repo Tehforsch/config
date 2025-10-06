@@ -44,22 +44,22 @@
   (j f) (layer-toggle meta-layer) 40 first-release ()
   (i j) (layer-toggle special1) 40 first-release (passthrough)
   (e f) (layer-toggle navigate) 40 first-release (passthrough)
-  (spc tab) @enterI3Mode 100 first-release (passthrough)
-  (spc enter) @enterI3Mode 100 first-release (passthrough)
+  (spc tab) @enterI3Mode 100 first-release ()
+  (spc rsft) @enterI3Mode 100 first-release (passthrough)
+  (tab rsft) @enterI3Mode 100 first-release (passthrough)
 )
 
 (deflayermap default
   caps (tap-hold 0 200 esc lctl)
   tab (tap-hold-press 0 200 tab (layer-toggle i3))
-  enter (tap-hold-press 0 150 enter (layer-toggle i3))
+  rsft (tap-hold-press 0 150 rsft (layer-toggle i3))
   lalt (layer-toggle noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
   ralt (layer-toggle ralt-noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
-  ;; lsft (layer-toggle lsft-mode) ;; Not sure if needed, but in order to remap S+some modifier key
   Backslash (tap-hold 0 150 bksl (layer-toggle special2)) ;; # on the german kb
-  Semicolon @colon ;; ö on the german kb
-  Quote @underscore ;; ä on the german kb
-  BracketLeft @dot ;; ü on the german kb
-  Minus @questionMark ;; ß on the german kb
+  ;; Semicolon @colon ;; ö on the german kb
+  ;; Quote @underscore ;; ä on the german kb
+  ;; BracketLeft @dot ;; ü on the german kb
+  ;; Minus @questionMark ;; ß on the german kb
   Equal S-= ;; replace (front?)tick with backtick. i dont know what the other tick is even for tbh
 )
 
@@ -78,10 +78,6 @@
   caps (tap-hold 0 200 esc lctl)
 )
 
-(deflayermap lsft-mode
-  Backslash S-Backslash
-)
-
 (deflayermap special1
   s @parenleft
   d @parenright
@@ -93,6 +89,7 @@
   r @backslash
   q @at
   e @tilde
+  BracketRight @tilde
 )
 
 (deflayermap special2
@@ -115,7 +112,9 @@
   d S-9
   a RA-8
   f RA-9
-  ___ XX
+  z RA-7
+  x RA-0
+  BracketRight @tilde
 )
 
 
@@ -142,6 +141,11 @@
   l (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) focus right")
   e (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) layout toggle splith tabbed")
   q (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) kill")
+  w (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode workspaceMode")
+  s (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode launchMode")
+  b (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) workspace back_and_forth")
+  j (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) workspace next_on_output")
+  k (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) workspace prev_on_output")
   spc @enterI3Mode ;; for cases where i mispress the intial chord :D
   lsft (layer-toggle i3-shift)
   rsft (layer-toggle i3-shift)
