@@ -42,7 +42,19 @@
     config = {
       LISTEN_ADDR = "0.0.0.0:7000";
     };
-
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 5232 7000 ];
+
+  networking.firewall.allowedTCPPorts = [ 80 443 5232 7000 8337 ];
+
+
+  systemd.user.services.torga = {
+    enable = true;
+    description = "torga";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${inputs.torga.packages.x86_64-linux.torga-server}/bin/torga-server";
+      Restart = "on-failure";
+    };
+  };
+
 }

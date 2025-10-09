@@ -59,6 +59,7 @@
         clang
         typos
         libclang
+        net-snmp
       ];
       shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
     });

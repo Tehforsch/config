@@ -10,7 +10,6 @@
     qpwgraph
     wireshark
     qbittorrent
-    steam
   ];
   programs.wireshark.enable = true;
 }

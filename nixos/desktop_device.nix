@@ -43,4 +43,7 @@
     enable = true;
     enable32Bit = true;
   };
+
+  # Oh no
+  boot.kernelParams = ["mitigations=off"];
 }

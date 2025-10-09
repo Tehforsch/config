@@ -1,5 +1,10 @@
 { config, pkgs, inputs, ... }: {
   services.syncthing = let
+    phone = { 
+      "phone" = {
+        id = "G3YRYKG-CECAOIG-LICKKHB-2J7ZWX4-PSSQTVN-ITFKCPE-N4ABWM6-BP4QEQ2";
+      };
+    };
     allDevices = {
       "pc" = {
         id = "JSLUTYK-P6GZ22A-22CPQ7V-QWGNYVX-ILA6BB5-N2HWQP5-BIFO6ME-JYBOCQG";
@@ -13,10 +18,11 @@
       "rpi" = {
         id = "6FDUQXS-YFYKBVT-KJXLPBF-53DJP4C-TMY7TQO-DQ44RJF-63R6XVI-L7XNAAC";
       };
-    };
+    } // phone;
     hostName = config.networking.hostName;
     otherDevices = (pkgs.lib.filterAttrs (k: v: k != hostName) allDevices);
-    others = builtins.attrNames otherDevices;
+    otherDevicesWithoutPhone = (pkgs.lib.filterAttrs (k: v: (k != hostName && k != "phone")) allDevices);
+    othersWithoutPhone = builtins.attrNames otherDevicesWithoutPhone;
     additionalFolders = (if (hostName == "framework" || hostName == "pc") then {
       "movies" = {
         path = "/home/toni/movies";
@@ -37,7 +43,7 @@
       folders = {
         "music" = {
           path = "/home/toni/music";
-          devices = others;
+          devices = othersWithoutPhone;
           versioning = {
             type = "simple";
             params.keep = "2";
@@ -45,7 +51,34 @@
         };
         "resource" = {
           path = "/home/toni/resource";
-          devices = others;
+          devices = othersWithoutPhone;
+          versioning = {
+            type = "simple";
+            params.keep = "10";
+          };
+        };
+        "from_phone" = {
+          devices = ["phone"];
+          path = "/home/toni/resource/from_phone";
+          type = "receiveonly";
+          versioning = {
+            type = "simple";
+            params.keep = "10";
+          };
+        };
+        "to_phone" = {
+          devices = ["phone"];
+          path = "/home/toni/resource/to_phone";
+          type = "sendonly";
+          versioning = {
+            type = "simple";
+            params.keep = "10";
+          };
+        };
+        "keepass" = {
+          devices = ["phone"];
+          path = "/home/toni/resource/keys/keepass";
+          type = "sendonly";
           versioning = {
             type = "simple";
             params.keep = "10";

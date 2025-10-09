@@ -65,7 +65,7 @@ alias ccl="cargo check --lib"
 alias cctl="cargo check --lib --tests"
 
 alias clip="cargo clippy"
-alias cir="cargo insta review"
+alias cir="cargo insta test --review"
 
 function ctn() {
     cargo test $@ -- --nocapture
@@ -175,3 +175,7 @@ alias mol="cargo run --manifest-path ~/projects/molt/Cargo.toml --"
 alias kill="kill -KILL"
 
 alias top="btm"
+
+alias tt="torga-cli --data-path ~/.local/share/todo --config ~/.config/todo/torga.toml --api-key $(cat ~/resource/keys/torga/api_key) tui"
+
+alias notify="$CONFIG/scripts/notify.sh"

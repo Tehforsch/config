@@ -10,6 +10,7 @@
     journal = { url = "github:tehforsch/journal"; };
     moody = { url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git"; };
     personalbot = { url = "git+ssh://git@github.com/tehforsch/personalbot.git"; };
+    torga = { url = "git+ssh://git@github.com/tehforsch/todo.git"; };
     musnix = { url = "github:musnix/musnix"; };
     nixos-hardware.url = "github:nixos/nixos-hardware";
   };
@@ -34,6 +35,7 @@
         ./syncthing.nix
         ./mpd.nix
         ./oom_killer.nix
+        ./kanata.nix
       ];
       work = [
         ./work.nix

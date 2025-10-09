@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # Developer stuff
@@ -37,6 +37,8 @@
     evince # for editing pdf forms
     wdisplays
     claude-code
+
+    inputs.torga.packages.x86_64-linux.torga-cli
 
     # Utilities
     usbutils
