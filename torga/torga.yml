@@ -1,0 +1,40 @@
+custom_sort_modes: []
+sync:
+  server_url: "http://v2202411242091296475.happysrv.de:8337"
+hotkeys:
+  normal:
+    j: !Navigate Down
+    /: EnterSearch
+    f t: TagFilter
+    Down: !Navigate Down
+    q: Quit
+    f d: ToggleCompletionStatus
+    '?': EnterSearch
+    f p: ParentFilter
+    d: SetTaskDone
+    S-S: Sync
+    f w: ToggleWaiting
+    f /: EnterFilterSearch
+    s c: SortByCreatedAt
+    s d: SortByDueDate
+    a: AddTask
+    e: EditTask
+    Up: !Navigate Up
+    Esc: ClearSearchFilter
+    x: DeleteTask
+    k: !Navigate Up
+    p: ToggleDisplayStyle
+  task_dialog:
+    Enter: Confirm
+    Esc: Cancel
+    Tab: NextField
+    C-n: !SetTaskKind Normal
+    C-s: !SetTaskKind Snooze
+    C-r: !SetTaskKind Recur
+    C-p: !SetTaskKind Project
+    S-Tab: PreviousField
+  search:
+    Enter: Confirm
+    C-j: !Navigate Down
+    Esc: Cancel
+    C-k: !Navigate Up
