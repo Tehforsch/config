@@ -29,9 +29,11 @@
         else
             keepOnFileExists=1
         fi
+
+        echo $soundPlaying $scpRunning $reaperRunning $qbitTorrentRunning $keepOnFileExists
         
         if [[ $soundPlaying -ge 1 || "$scpRunning" -ge 1 || "$reaperRunning" -ge 1 || "$qbitTorrentRunning" -ge 1 || $keepOnFileExists -ge 1 ]]; then
-            ${pkgs.xautolock}/bin/xautolock -restart
+            systemctl --user restart xautolock.service
         fi
     '';
   };

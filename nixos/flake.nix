@@ -21,7 +21,6 @@
         ./basic.nix
         ./packages/basic.nix
         ./users.nix
-        ./keyboard_configuration.nix
         ./ssh.nix
         ./garbage_collect.nix
       ];

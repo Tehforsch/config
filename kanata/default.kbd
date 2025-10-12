@@ -146,6 +146,7 @@
   b (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) workspace back_and_forth")
   j (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) workspace next_on_output")
   k (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) workspace prev_on_output")
+  z (cmd bash -c "i3-msg --socket $(cat /tmp/i3-ipc.sock) mode media")
   spc @enterI3Mode ;; for cases where i mispress the intial chord :D
   lsft (layer-toggle i3-shift)
   rsft (layer-toggle i3-shift)

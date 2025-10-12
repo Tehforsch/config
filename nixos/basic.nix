@@ -9,6 +9,8 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  console.keyMap = "de-latin1-nodeadkeys";
+
   programs.zsh.enable = true;
 
   # Before changing this value read the documentation for this option

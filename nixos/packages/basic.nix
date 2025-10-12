@@ -22,12 +22,8 @@
     pkg-config
     jq
     wget
-    nix-search
-    helix
     lsof
     sd
-
-    nodejs_24
   ];
 
   programs.direnv.enable = true;
