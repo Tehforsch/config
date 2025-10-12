@@ -1,4 +1,21 @@
-custom_sort_modes: []
+sort_modes:
+- name: Created At
+  by_parent: {}
+  by_tag: {}
+  due: 0.1
+  created_at: 1.0
+- name: Due Date
+  by_parent: {}
+  by_tag: {}
+  due: 1.0
+  created_at: 0.1
+- name: Normal
+  by_parent:
+    sokobrane: 0.5
+  by_tag: {}
+  due: 1.0
+  created_at: 0.2
+default_sort_mode: Normal
 sync:
   server_url: "http://v2202411242091296475.happysrv.de:8337"
 hotkeys:
@@ -15,8 +32,9 @@ hotkeys:
     S-S: Sync
     f w: ToggleWaiting
     f /: EnterFilterSearch
-    s c: SortByCreatedAt
-    s d: SortByDueDate
+    s c: !SortBy Created At
+    s d: !SortBy Due Date
+    s n: !SortBy Normal
     a: AddTask
     e: EditTask
     Up: !Navigate Up
