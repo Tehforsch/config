@@ -38,7 +38,8 @@
     wdisplays
     claude-code
 
-    inputs.torga.packages.x86_64-linux.torga-cli
+    # Reactivate this once I dont rebuild this once every day
+    # inputs.torga.packages.x86_64-linux.torga-cli
 
     # Utilities
     usbutils

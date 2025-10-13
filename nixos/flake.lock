@@ -440,11 +440,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760236527,
-        "narHash": "sha256-h9+WEQtUIZaZMvA1pnbZbMM+5X39OFnW92Q8hNoToD0=",
+        "lastModified": 1760323082,
+        "narHash": "sha256-SKhC9tyt+gVgQHnZGMVPSdptlDYNqApT56JF5t8RwBY=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "a38dd7f462825c75ce8567816ae38c2e7d826bfa",
+        "rev": "c73e6874fe8dce0bab82c0387b510875f1eff9f8",
         "type": "github"
       },
       "original": {
@@ -490,11 +490,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1760269183,
-        "narHash": "sha256-m0ltCEvh6yPYNpttDwv2oTYCoL45SbwHbogVEHYqLA4=",
+        "lastModified": 1760349947,
+        "narHash": "sha256-3Iwh64xvCtYu3t9YPJH9zJfweB3O20Vx6p/8UnU7bcI=",
         "ref": "refs/heads/main",
-        "rev": "6dff47f454cea9d815119c4a9871d241cb71b80f",
-        "revCount": 150,
+        "rev": "79da4d503acbdc78acaee6c2f640a49665a052d2",
+        "revCount": 151,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/todo.git"
       },
