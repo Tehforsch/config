@@ -19,6 +19,8 @@
   parenright S-9
   braceleft RA-7
   braceright RA-0
+  bracketleft RA-8
+  bracketright RA-9
   pointyleft <
   pointyright S-<
   slash S-7
@@ -54,12 +56,8 @@
   tab (tap-hold-press 0 200 tab (layer-toggle i3))
   rsft (tap-hold-press 0 150 rsft (layer-toggle i3))
   lalt (layer-toggle noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
-  ralt (layer-toggle ralt-noop) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
+  ralt (layer-toggle special1) ;; I will turn this off eventually, but currently I mis-press this out of habit and its annoying.
   Backslash (tap-hold 0 150 bksl (layer-toggle special2)) ;; # on the german kb
-  ;; Semicolon @colon ;; ö on the german kb
-  ;; Quote @underscore ;; ä on the german kb
-  ;; BracketLeft @dot ;; ü on the german kb
-  ;; Minus @questionMark ;; ß on the german kb
   Equal S-= ;; replace (front?)tick with backtick. i dont know what the other tick is even for tbh
 )
 
@@ -83,13 +81,15 @@
   d @parenright
   z @braceleft ;; actually this is y
   x @braceright
-  a BracketLeft
-  f BracketRight
+  a @bracketleft
+  f @bracketright
   w @slash ;; /
-  r @backslash
+  r RA--
+  Minus RA--
   q @at
-  e @tilde
   BracketRight @tilde
+  e RA-e
+  < RA-<
 )
 
 (deflayermap special2
@@ -102,21 +102,6 @@
 (deflayermap noop
   ___ XX
 )
-
-(deflayermap ralt-noop
-  q RA-q
-  e RA-e
-  < RA-<
-  w S-7
-  s S-8
-  d S-9
-  a RA-8
-  f RA-9
-  z RA-7
-  x RA-0
-  BracketRight @tilde
-)
-
 
 (deflayermap navigate
   h left
