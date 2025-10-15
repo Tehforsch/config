@@ -176,6 +176,9 @@ alias kill="kill -KILL"
 
 alias top="btm"
 
-alias tt="torga-cli --data-path ~/.local/share/todo --config ~/.config/todo/torga.yml --api-key $(cat ~/resource/keys/torga/api_key) tui"
+function tt() {
+    api_key=$(cat ~/resource/keys/torga/api_key)
+    torga-cli --data-path ~/.local/share/todo --config ~/.config/todo/torga.yml --api-key $api_key tui
+}
 
 alias notify="$CONFIG/scripts/notify.sh"
