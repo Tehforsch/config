@@ -89,8 +89,13 @@ function init_envrc() {
         shell_name=rust_stable
     fi
     cwd=$(basename $(pwd))
-    echo "use flake ~/projects/config/nixos/shells#$shell_name\nexport CARGO_BUILD_TARGET_DIR=/mnt/extHdd/.cargo-target/$cwd" > .envrc;
+    echo "use flake ~/projects/config/nixos/shells#$shell_name" > .envrc;
     direnv allow
+}
+
+function init_project() {
+    init_envrc
+    $CONFIG/scripts/init_project.sh
 }
 
 alias bb="cargo build --features bevy/dynamic_linking"
