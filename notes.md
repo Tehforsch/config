@@ -63,3 +63,6 @@ At the very bottom is the option:
 -> "Folder and its children..."
 -> Hover over an account
 -> In the next menu don't select a folder. Instead select the account name itself.
+
+## kanata/xmodmap/keyboard
+i tried really hard to switch to a new cool config that is more ergonomic for my thumbs than my current l-alt remapped to capslock setup ... it didnt work. i had space+tab mapped to i3 mode (as a chordv2) and tab/rshift as a quick i3 hotkey (which is actually quite nice). i couldnt get used to it and the chord combo sucked. also tab would accidentally not trigger when i wanted it as an individual key if i typed too fast which is, ironically, quite triggering. switched back, but config is still there in git, i just reverted the commit
