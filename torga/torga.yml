@@ -12,7 +12,9 @@ sort_modes:
 - name: Normal
   by_parent:
     sokobrane: 0.5
-  by_tag: {}
+  by_tag:
+    spree: 10.0
+    defer: -10.0
   due: 1.0
   created_at: 0.2
 default_sort_mode: Normal
@@ -35,6 +37,8 @@ hotkeys:
     s c: !SortBy Created At
     s d: !SortBy Due Date
     s n: !SortBy Normal
+    t s: !ToggleTag spree
+    t d: !ToggleTag defer
     a: AddTask
     e: EditTask
     Up: !Navigate Up

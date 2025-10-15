@@ -2,7 +2,7 @@
   process-unmapped-keys yes
   rapid-event-delay 5
   concurrent-tap-hold true
-  log-layer-changes false
+  ;; log-layer-changes false
   danger-enable-cmd yes
 )
 
