@@ -20,7 +20,7 @@
   systemd.user.services.restartXautolock = {
     serviceConfig.Type = "oneshot";
     script = ''
-        soundPlaying=$(${pkgs.pulseaudio}/bin/pactl list | grep -c "RUNNING") 
+        soundPlaying=$(${pkgs.pulseaudio}/bin/pactl list | grep -c "RUNNING" || true) 
         scpRunning=$(${pkgs.procps}/bin/pgrep scp | wc -l) 
         reaperRunning=$(${pkgs.procps}/bin/pgrep -x reaper | wc -l)
         qbitTorrentRunning=$(${pkgs.procps}/bin/pgrep qbittorrent | wc -l)
