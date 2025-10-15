@@ -12,25 +12,12 @@
     steam
   ];
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  hardware.graphics.enable32Bit = true;
+
   # For reapers HTTP web interface
   networking.firewall = {
     allowedTCPPorts = [ 8080 ];
     allowedUDPPorts = [ 8080 ];
-  };
-
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    # Without this setting, resuming after suspend would result in a
-    # black screen and no graphical output whatsoever.
-    powerManagement.enable = true;
-    open = false;
   };
 }
