@@ -34,7 +34,6 @@
         ./syncthing.nix
         ./mpd.nix
         ./oom_killer.nix
-        ./kanata.nix
       ];
       work = [
         ./work.nix
