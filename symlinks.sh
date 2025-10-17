@@ -65,6 +65,8 @@ make_symlink striputary/config.yml .config/striputary/config.yaml
 make_symlink qbittorrent/qBittorrent.conf .config/qBittorrent/qBittorrent.conf
 make_symlink bottom/bottom.toml .config/bottom/bottom.toml
 make_symlink torga/torga.yml .config/todo/torga.yml
+make_symlink rmpc/config.ron .config/rmpc/config.ron
+make_symlink rmpc/theme.ron .config/rmpc/themes/default.ron
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
