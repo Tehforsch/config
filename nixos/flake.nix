@@ -89,26 +89,12 @@
           ]
           ++ desktop_device ++ work ++ personal;
       };
-      netcup = make_system {
-        system = "x86_64-linux";
-        hostname = "netcup";
-        modules = [];
-      };
       rpi = make_system {
         system = "aarch64-linux";
         hostname = "rpi";
         modules =
           [
             ./syncthing.nix
-          ];
-      };
-      rpi2 = make_system {
-        system = "aarch64-linux";
-        hostname = "rpi2";
-        modules =
-          [
-            ./kodi.nix
-            ./sound.nix
           ];
       };
     };

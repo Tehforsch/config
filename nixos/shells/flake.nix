@@ -116,6 +116,9 @@
         buildInputs = [ pkg-config cmake rust_oldNightly clang libclang hdf5 mpi ];
         shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
       };
+      website = mkShellWithAliases {
+        buildInputs = [ hugo ];
+      };
       bevy = mkShellWithAliases rec {
         nativeBuildInputs = [
           clang
