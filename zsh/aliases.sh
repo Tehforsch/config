@@ -95,7 +95,7 @@ function init_envrc() {
 
 function init_project() {
     init_envrc
-    $CONFIG/scripts/init_project.sh
+    $CONFIG/scripts/init_project.sh $@
 }
 
 alias bb="cargo build --features bevy/dynamic_linking"
@@ -181,9 +181,6 @@ alias kill="kill -KILL"
 
 alias top="btm"
 
-function tt() {
-    api_key=$(cat ~/resource/keys/torga/api_key)
-    torga-cli --data-path ~/.local/share/todo --config ~/.config/todo/torga.yml --api-key $api_key tui
-}
+alias tt="$CONFIG/scripts/run_torga.sh"
 
 alias notify="$CONFIG/scripts/notify.sh"
