@@ -1,2 +1,2 @@
 cp --backup=numbered ~/.local/share/torga/torga.sqlite ~/resource/torga_bu/
-cargo run --bin torga-cli -- $@
+cargo run --bin torga-cli -- "$@"
