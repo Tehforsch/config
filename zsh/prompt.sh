@@ -38,6 +38,15 @@ function get_git_info()
     fi
 }
 
+function get_exit_code()
+{
+    if [[ $EXIT_CODE != 0 ]]; then
+        echo -n '%F{red}'
+        echo -n " [$EXIT_CODE]"
+        echo -n '%f'
+    fi
+}
+
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     # remote session - append hostname and change color of path
@@ -61,6 +70,9 @@ fi
 
 setopt prompt_subst
 
-precmd() { print "" }
+precmd() { 
+    EXIT_CODE=$?
+    print "" 
+}
 
-PROMPT=$'%B%F{4}%~%f%b $hostname$(get_git_info)$nix_shell_info\n> '
+PROMPT=$'%B%F{4}%~%f%b $hostname$(get_git_info)$(get_exit_code)$nix_shell_info\n> '
