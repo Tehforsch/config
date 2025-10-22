@@ -46,16 +46,16 @@
     scrollbar: None,
     song_table_format: [
         (
+            prop: (kind: Property(Title),
+                default: (kind: Text("Unknown"))
+            ),
+            width: "50%",
+        ),
+        (
             prop: (kind: Property(Artist),
                 default: (kind: Text("Unknown"))
             ),
             width: "20%",
-        ),
-        (
-            prop: (kind: Property(Title),
-                default: (kind: Text("Unknown"))
-            ),
-            width: "35%",
         ),
         (
             prop: (kind: Property(Album), style: (fg: "white"),
@@ -67,7 +67,7 @@
             prop: (kind: Property(Duration),
                 default: (kind: Text("-"))
             ),
-            width: "15%",
+            width: "10%",
             alignment: Right,
         ),
     ],
@@ -77,7 +77,7 @@
         panes: [
             (
                 pane: Pane(Header),
-                size: "7",
+                size: "6",
             ),
             (
                 pane: Pane(TabContent),
