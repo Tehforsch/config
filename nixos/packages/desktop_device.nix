@@ -37,6 +37,7 @@
     wdisplays
     claude-code
     rmpc
+    sqlite
 
     # Reactivate this once I dont rebuild this once every day
     # inputs.torga.packages.x86_64-linux.torga-cli
@@ -60,6 +61,7 @@
     flameshot
     android-tools
     scrcpy
+    gvfs          # Virtual filesystem with MTP support
 
     # Network stuff
     oath-toolkit

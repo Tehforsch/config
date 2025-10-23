@@ -67,6 +67,7 @@
             ./homebox.nix
             ./mullvad.nix
             ./paperless.nix
+            ./android_mounting.nix
           ]
           ++ desktop_device ++ work ++ personal;
       };
