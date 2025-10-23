@@ -20,7 +20,7 @@ let
     };
     "phone" = {
       id = "G3YRYKG-CECAOIG-LICKKHB-2J7ZWX4-PSSQTVN-ITFKCPE-N4ABWM6-BP4QEQ2";
-      folders = [];
+      folders = ["phone"];
     };
   };
 
@@ -48,7 +48,7 @@ let
       path = "/home/toni/resource/phone";
       versioning = {
         type = "simple";
-        params.keep = "2";
+        params.keep = "1";
       };
     };
   };
