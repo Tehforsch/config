@@ -70,6 +70,11 @@ make_symlink rmpc/theme.ron .config/rmpc/themes/default.ron
 make_symlink mbsync/mbsyncrc .config/isyncrc
 make_symlink notmuch/config .notmuch-config
 make_symlink meli/config.toml .config/meli/config.toml
+make_symlink aerc/aerc.conf .config/aerc/aerc.conf
+make_symlink aerc/accounts.conf .config/aerc/accounts.conf
+make_symlink aerc/binds.conf .config/aerc/binds.conf
+make_symlink aerc/strato-query-map .config/aerc/strato-query-map
+make_symlink aerc/gmail-query-map .config/aerc/gmail-query-map
 
 # The weird
 make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf

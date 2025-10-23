@@ -1,0 +1,18 @@
+# Query map for Strato account
+# Maps folder names to notmuch queries
+
+INBOX=folder:strato/INBOX
+Sent=folder:strato/Sent or (from:mail@tonipeter.de and not folder:strato/INBOX)
+Drafts=folder:strato/Drafts
+Trash=folder:strato/Trash
+Spam=folder:strato/Spam or tag:spam
+Archive=folder:strato/Archive or (to:mail@tonipeter.de and not folder:strato/INBOX and not folder:strato/Sent and not folder:strato/Drafts and not folder:strato/Trash and not folder:strato/Spam)
+
+# All mail for this account
+All=to:mail@tonipeter.de or from:mail@tonipeter.de
+
+# Unread messages
+Unread=tag:unread and (to:mail@tonipeter.de or from:mail@tonipeter.de)
+
+# Flagged/starred messages  
+Flagged=tag:flagged and (to:mail@tonipeter.de or from:mail@tonipeter.de)

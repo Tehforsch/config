@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    aerc
+    notmuch
+    isync  # mbsync
+  ];
+
   # Enable mbsync systemd user service
   systemd.user.services.mbsync = {
     description = "Mailbox synchronization service";
@@ -7,7 +13,9 @@
     wants = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
+      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.mail/gmail";
       ExecStart = "${pkgs.isync}/bin/mbsync -a";
+      ExecStartPost = "${pkgs.notmuch}/bin/notmuch new";
     };
   };
 

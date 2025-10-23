@@ -1,35 +1,7 @@
-# mbsync configuration file for Strato mailbox
-# This will be symlinked to ~/.mbsyncrc
-
 Create Both
 Expunge Both
 SyncState *
 
-# Strato email account
-IMAPAccount strato
-Host imap.strato.de
-Port 993
-User mail@tonipeter.de
-# Store password securely using pass:
-PassCmd "cat ~/resource/keys/pw/strato_mail"
-TLSType IMAPS
-TLSVersions +1.2
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-IMAPStore strato-remote
-Account strato
-
-MaildirStore strato-local
-Path ~/.mail/strato/
-Inbox ~/.mail/strato/INBOX
-SubFolders Verbatim
-
-Channel strato
-Far :strato-remote:
-Near :strato-local:
-Patterns *
-
-# Gmail account (for importing old emails)
 IMAPAccount gmail
 Host imap.gmail.com
 Port 993
@@ -52,8 +24,8 @@ Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
 Patterns *
+Create Both
+Remove Both
 
-# Sync both accounts
 Group all
-Channel strato
 Channel gmail

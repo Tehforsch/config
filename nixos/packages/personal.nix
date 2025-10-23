@@ -10,7 +10,6 @@
     qpwgraph
     wireshark
     qbittorrent
-    isync  # mbsync
   ];
   programs.wireshark.enable = true;
 }

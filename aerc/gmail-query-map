@@ -1,0 +1,19 @@
+# Query map for Gmail account
+# Maps folder names to notmuch queries
+
+INBOX=folder:gmail/INBOX
+Sent=folder:gmail/"[Google Mail]/Sent Mail" or (from:tonipeter92@gmail.com and not folder:gmail/INBOX)
+Drafts=folder:gmail/"[Google Mail]/Drafts"
+Trash=folder:gmail/"[Google Mail]/Trash"
+Spam=folder:gmail/"[Google Mail]/Spam" or tag:spam
+Archive=folder:gmail/"[Google Mail]/All Mail"
+
+# Custom folders
+Github=folder:gmail/Github
+Shopping=folder:gmail/"Z - Shopping"
+
+# All mail for this account
+All=to:tonipeter92@gmail.com or from:tonipeter92@gmail.com
+
+# Unread messages
+Unread=tag:unread and (to:tonipeter92@gmail.com or from:tonipeter92@gmail.com)
