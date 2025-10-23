@@ -15,6 +15,7 @@ sort_modes:
   by_tag:
     spree: 10.0
     defer: -10.0
+    habit: 50.0
   due: 1.0
   created_at: 0.2
 default_sort_mode: Normal
