@@ -22,15 +22,42 @@ in
     '';
   };
 
+  systemd.user.timers.syncCalendars = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "syncCalendars.service" ];
+    timerConfig.OnCalendar = "*/15:00";
+  };
+
+  systemd.user.services.syncCalendars = {
+    serviceConfig.Type = "oneshot";
+    script = ''
+      yes | ${pkgs.vdirsyncer}/bin/vdirsyncer discover
+      ${pkgs.vdirsyncer}/bin/vdirsyncer sync
+    '';
+  };
+
+  systemd.user.timers.calendarReminder = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "calendarReminder.service" ];
+    timerConfig.OnCalendar = "minutely";
+  };
+
   systemd.user.services.journal = makeService {
     description = "journal webserver";
     execStart = "${inputs.journal.packages.x86_64-linux.default}/bin/journal";
     wantedBy = [ ];
   };
 
-  systemd.user.services.calendarReminder = makeService {
+  systemd.user.services.calendarReminder = {
+    enable = true;
     description = "calendar reminders";
-    execStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send ${pkgs.vdirsyncer}/bin/vdirsyncer";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send";
+      Restart = "always";
+      RestartSec = "10";
+    };
   };
 
   systemd.user.services.flameshot = makeService {
