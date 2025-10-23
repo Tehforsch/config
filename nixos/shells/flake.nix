@@ -140,6 +140,7 @@
           xorg.libXi
           xorg.libXrandr
           libxkbcommon
+          (python3.withPackages (p: with p; [ pyyaml ]))
         ];
 
         LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    jmtpfs
+    simple-mtpfs
   ];
 
   services.udev.extraRules = ''
