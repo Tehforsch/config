@@ -33,9 +33,9 @@ Patterns *
 IMAPAccount gmail
 Host imap.gmail.com
 Port 993
-User your-gmail@gmail.com
-# For Gmail, use an app password: https://support.google.com/accounts/answer/185833
-# PassCmd "pass Email/gmail"
+User tonipeter92@gmail.com
+# Using App password
+PassCmd "cat ~/resource/keys/pw/gmail"
 TLSType IMAPS
 TLSVersions +1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
