@@ -1,0 +1,20 @@
+[database]
+path=/home/toni/.mail
+
+[user]
+name=Toni Peter
+primary_email=mail@tonipeter.de
+other_email=tonipeter92@gmail.com
+
+[new]
+tags=unread;inbox;
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true
+
+[crypto]
+gpg_path=gpg
