@@ -24,7 +24,7 @@ in
 
   systemd.user.services.journal = makeService {
     description = "journal webserver";
-    execStart = "${inputs.journal.packages.x86_64-linux.journal}/bin/journal";
+    execStart = "${inputs.journal.packages.x86_64-linux.default}/bin/journal";
     wantedBy = [ ];
   };
 
