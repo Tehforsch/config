@@ -61,11 +61,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1761222775,
-        "narHash": "sha256-09kQg45EsOSMMzefCi8EiufIGXeiEeptKWb3KV8jDlE=",
+        "lastModified": 1761253468,
+        "narHash": "sha256-6SNW36xO5VIv6QYEIz3jf64+9D2gDipNtbHoTsZNPb8=",
         "owner": "tehforsch",
         "repo": "journal",
-        "rev": "adef115217f638b501068fa55f177e5688a3a377",
+        "rev": "c493dcd34b7fa610608b24a0e163fc4907666147",
         "type": "github"
       },
       "original": {
