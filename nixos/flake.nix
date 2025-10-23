@@ -43,6 +43,7 @@
       personal = [
         ./packages/personal.nix
         ./services.nix
+        ./mail.nix
       ];
       make_system = args@{ hostname, system, ... }: (
         nixpkgs.lib.nixosSystem {
