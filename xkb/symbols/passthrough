@@ -1,8 +1,0 @@
-partial default alphanumeric_keys modifier_keys
-xkb_symbols "passthrough" {
-    include "de(nodeadkeys)"
-    
-    // Only remap Caps Lock to Escape
-    key <CAPS> { [ Escape ] };
-    
-};
