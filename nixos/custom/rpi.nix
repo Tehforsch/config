@@ -14,17 +14,17 @@
     description = "personalbot";
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${inputs.personalbot.packages.x86_64-linux.default}/bin/python ${inputs.personalbot.packages.x86_64-linux.default}/lib/python3.12/site-packages/main.py";
+      ExecStart = "${inputs.personalbot.packages.aarch64-linux.default}/bin/python ${inputs.personalbot.packages.aarch64-linux.default}/lib/python3.12/site-packages/main.py";
       Restart = "on-failure";
     };
   };
 
-  systemd.user.services.moody = {
-    enable = true;
-    description = "moody";
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${inputs.moody.packages.x86_64-linux.default}/bin/python ${inputs.moody.packages.x86_64-linux.default}/lib/python3.12/site-packages/main.py";
-    };
-  };
+  # systemd.user.services.moody = {
+  #   enable = true;
+  #   description = "moody";
+  #   serviceConfig = {
+  #     Type = "simple";
+  #     ExecStart = "${inputs.moody.packages.aarch64-linux.default}/bin/python ${inputs.moody.packages.aarch64-linux.default}/lib/python3.12/site-packages/main.py";
+  #   };
+  # };
 }
