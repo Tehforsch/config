@@ -1,5 +1,5 @@
 [global]
 follow = mouse
-font = monospace 14
+font = monospace 8
 width = 500
 height = 100
