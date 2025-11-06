@@ -1,6 +1,0 @@
-alias tl="task default"
-alias ta="$scripts/addTask.sh"
-alias tc="task context"
-alias ts="task sync"
-alias tui="taskwarrior-tui"
-alias tax="task add proj:raxiom"

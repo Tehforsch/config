@@ -45,8 +45,6 @@ make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink vim/init.vim .config/nvim/init.vim
 make_symlink zathura/zathurarc .config/zathura/zathurarc
-make_symlink taskwarrior/taskrc .config/task/taskrc
-make_symlink taskwarrior/hooks .local/share/task/hooks
 make_symlink zsh/zshrc.sh .config/zsh/.zshrc # ZDOTDIR
 make_symlink zsh/zshenv .zshenv
 make_symlink bash/inputrc.sh .config/readline/inputrc # INPUTRC
@@ -75,9 +73,6 @@ make_symlink aerc/accounts.conf .config/aerc/accounts.conf
 make_symlink aerc/binds.conf .config/aerc/binds.conf
 make_symlink aerc/strato-query-map .config/aerc/strato-query-map
 make_symlink aerc/gmail-query-map .config/aerc/gmail-query-map
-
-# The weird
-make_symlink taskwarrior/${SYSTEM_NAME}.conf .config/task/system.conf
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc

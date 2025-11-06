@@ -9,7 +9,6 @@ source "$CONFIG/zsh/zshCdWidget.sh"
 source "$CONFIG/zsh/launchWidget.sh"
 source "$CONFIG/zsh/aliases.sh"
 source "$CONFIG/zsh/dirStack.sh"
-source "$CONFIG/taskwarrior/aliases"
 source "$CONFIG/zsh/custom.sh"
 
 localConfig="$CONFIG/zsh/localConfig/$(hostname).sh"
