@@ -24,8 +24,8 @@
     keepassxc
     inkscape
     gimp
-    xfce.thunar
     zathura
+    pcmanfm
     nomacs
     zoom-us
     numbat

@@ -21,6 +21,21 @@
     allowedUDPPorts = [ 8080 ];
   };
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    shares = {
+      media = {
+        path = "/home/toni/movies";
+        browseable = "yes";
+        "read only" = "yes";
+        "valid users" = "toni";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+
   systemd.services.copy-keepass-db = {
     description = "Copy KeePass database to phone directory";
     wantedBy = [ "multi-user.target" ];

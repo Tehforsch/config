@@ -1,0 +1,15 @@
+<sources>
+    <video>
+        <default pathversion="1"></default>
+        <source>
+            <name>Movies</name>
+            <path pathversion="1">smb://IP_ADDRESS/media/movies/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>TV Shows</name>
+            <path pathversion="1">smb://IP_ADDRESS/media/tv/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </video>
+</sources>

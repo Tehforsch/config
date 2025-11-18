@@ -1,0 +1,9 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+name = "Toni Peter"
+email = "mail@tonipeter.de"
+
+[ui]
+paginate = "never"
+default-command = "log"

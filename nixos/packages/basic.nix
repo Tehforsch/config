@@ -5,6 +5,7 @@
     zsh
     vim
     git
+    jujutsu
     delta
     fd
     bat

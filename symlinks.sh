@@ -48,8 +48,6 @@ make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink zsh/zshrc.sh .config/zsh/.zshrc # ZDOTDIR
 make_symlink zsh/zshenv .zshenv
 make_symlink bash/inputrc.sh .config/readline/inputrc # INPUTRC
-make_symlink newsboat/config .config/newsboat/config
-make_symlink newsboat/urls .config/newsboat/urls
 make_symlink git/gitconfig.conf .config/git/config
 make_symlink vim/init.vim .config/vim/vimrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
@@ -73,6 +71,7 @@ make_symlink aerc/accounts.conf .config/aerc/accounts.conf
 make_symlink aerc/binds.conf .config/aerc/binds.conf
 make_symlink aerc/strato-query-map .config/aerc/strato-query-map
 make_symlink aerc/gmail-query-map .config/aerc/gmail-query-map
+make_symlink jj/config.toml .config/jj/config.toml
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc

@@ -1,0 +1,22 @@
+<mediasources>
+    <video>
+        <source>
+            <name>Movies</name>
+            <path pathversion="1">smb://IP_ADDRESS/media/movies/</path>
+            <type>movies</type>
+            <scraper>metadata.themoviedb.org</scraper>
+            <settings>
+                <setting id="language" value="en" default="true"/>
+            </settings>
+        </source>
+        <source>
+            <name>TV Shows</name>
+            <path pathversion="1">smb://IP_ADDRESS/media/tv/</path>
+            <type>tvshows</type>
+            <scraper>metadata.tvdb.com</scraper>
+            <settings>
+                <setting id="language" value="en" default="true"/>
+            </settings>
+        </source>
+    </video>
+</mediasources>

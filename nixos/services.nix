@@ -9,23 +9,9 @@ let
   };
 in
 {
-  systemd.timers.refreshNewsboat = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "refreshNewsboat.service" ];
-    timerConfig.OnCalendar = "hourly";
-  };
-
-  systemd.services.refreshNewsboat = {
-    serviceConfig.Type = "oneshot";
-    script = ''
-      ${pkgs.newsboat}/bin/newsboat -u /home/toni/projects/config/newsboat/urls -C /home/toni/projects/config/newsboat/config -x reload
-    '';
-  };
-
   systemd.user.timers.syncCalendars = {
     wantedBy = [ "timers.target" ];
-    partOf = [ "syncCalendars.service" ];
-    timerConfig.OnCalendar = "*/15:00";
+    timerConfig.OnCalendar = "hourly";
   };
 
   systemd.user.services.syncCalendars = {
@@ -38,7 +24,6 @@ in
 
   systemd.user.timers.calendarReminder = {
     wantedBy = [ "timers.target" ];
-    partOf = [ "calendarReminder.service" ];
     timerConfig.OnCalendar = "minutely";
   };
 
