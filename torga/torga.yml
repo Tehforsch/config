@@ -40,6 +40,7 @@ hotkeys:
     s n: !SortBy Normal
     t s: !ToggleTag spree
     t d: !ToggleTag defer
+    t t: !ToggleTag today
     a: AddTask
     e: EditTask
     Up: !Navigate Up
