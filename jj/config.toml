@@ -6,4 +6,13 @@ email = "mail@tonipeter.de"
 
 [ui]
 paginate = "never"
-default-command = "log"
+default-command = ["status"]
+
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+
+[aliases]
+s = ["status"]
+l = ["log", "--limit", "20", "--reversed", "-r", "::@"]
+fetch = ["git", "fetch"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]

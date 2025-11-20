@@ -1,5 +1,39 @@
 function get_git_info()
 {
+    # Check for jj repository first
+    if jj root &> /dev/null; then
+        # Check if there are uncommitted changes
+        if [[ $(jj diff --stat 2>/dev/null) == '' ]]; then
+            color="6"
+            dirtyString=""
+        else
+            color="11"
+            dirtyString="*"
+        fi
+        
+        # Get the closest bookmark
+        closest_bookmark=$(jj log --no-pager -r "closest_bookmark(@-)" --no-graph -T 'local_bookmarks.join(" ")' 2>/dev/null | head -1)
+        if [[ -n "$closest_bookmark" ]]; then
+            # Count commits ahead and behind
+            ahead=$(jj log --no-pager -r "closest_bookmark(@-)..@-" --no-graph -T 'commit_id ++ "\n"' 2>/dev/null | wc -l)
+            behind=$(jj log --no-pager -r "@-..closest_bookmark(@-)" --no-graph -T 'commit_id ++ "\n"' 2>/dev/null | wc -l)
+            
+            # Build ahead/behind indicator
+            ahead_behind=""
+            if [[ $ahead -gt 0 && $behind -gt 0 ]]; then
+                ahead_behind=" ↑$ahead↓$behind"
+            elif [[ $ahead -gt 0 ]]; then
+                ahead_behind=" ↑$ahead"
+            elif [[ $behind -gt 0 ]]; then
+                ahead_behind=" ↓$behind"
+            fi
+            
+            echo '%F{'${color}'}('${dirtyString}${closest_bookmark}${ahead_behind}')%f'
+        fi
+        return
+    fi
+    
+    # Fall back to git if not a jj repository
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == "true" ]]; then
         if [[ $(git diff --stat) == '' ]]; then
             color="6"
