@@ -19,22 +19,46 @@ sort_modes:
   due: 1.0
   created_at: 0.2
 default_sort_mode: Normal
+filter_modes:
+- name: normal
+  filter:
+  - !Not
+    cond: IsDone
+  - !Not
+    cond: IsWaiting
+  - !Not
+    cond: IsProject
+- name: custom
+  filter:
+  - !Not
+    cond: IsDone
+  - !Not
+    cond: IsWaiting
+  - !Not
+    cond: IsProject
+  - !Not
+    cond: !HasTag defer
+- name: no_project
+  filter:
+  - !Not
+    cond: IsDone
+  - !Not
+    cond: IsWaiting
+  - !Not
+    cond: IsProject
+  - NoProject
+default_filter_mode: custom
 sync:
   server_url: "http://v2202411242091296475.happysrv.de:8337"
 hotkeys:
   normal:
     j: !Navigate Down
     /: EnterSearch
-    f t: TagFilter
     Down: !Navigate Down
     q: Quit
-    f d: ToggleCompletionStatus
     '?': EnterSearch
-    f p: ParentFilter
     d: SetTaskDone
     S-S: Sync
-    f w: ToggleWaiting
-    f /: EnterFilterSearch
     s c: !SortBy Created At
     s d: !SortBy Due Date
     s n: !SortBy Normal
@@ -48,6 +72,14 @@ hotkeys:
     x: DeleteTask
     k: !Navigate Up
     p: ToggleDisplayStyle
+    f /: EnterFilterSearch
+    f w: ToggleWaiting
+    f d: ToggleCompletionStatus
+    f t: TagFilter
+    f p: ParentFilter
+    f c: !FilterBy custom
+    f n: !FilterBy normal
+    f i: !FilterBy no_project
   task_dialog:
     Enter: Confirm
     Esc: Cancel
