@@ -3,12 +3,12 @@ function get_git_info()
     # Check for jj repository first
     if jj root &> /dev/null; then
         # Check if there are uncommitted changes
-        if [[ $(jj diff --stat 2>/dev/null) == '' ]]; then
-            color="6"
-            dirtyString=""
-        else
+        if jj diff --summary 2>/dev/null | grep -q .; then
             color="11"
             dirtyString="*"
+        else
+            color="6"
+            dirtyString=""
         fi
         
         # Get the closest bookmark
