@@ -25,6 +25,7 @@
     wget
     lsof
     sd
+    difftastic
   ];
 
   programs.direnv.enable = true;
