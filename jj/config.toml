@@ -16,3 +16,6 @@ s = ["status"]
 l = ["log", "--limit", "20", "--reversed", "-r", "::@"]
 fetch = ["git", "fetch"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+
+[template-aliases]
+'format_short_id(id)' = 'id.shortest()'
