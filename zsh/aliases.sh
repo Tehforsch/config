@@ -186,3 +186,7 @@ alias tt="$CONFIG/scripts/run_torga.sh"
 alias notify="$CONFIG/scripts/notify.sh"
 
 alias j="jj"
+alias js="jj status"
+alias jl="jj lo"
+alias jf="jj git fetch"
+alias jp="j git push"
