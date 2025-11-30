@@ -23,6 +23,17 @@
                     }
                 ]
             }
+        ],
+        "Stop": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "jj commit -m 'automatic commit'"
+                    }
+                ]
+            }
         ]
     },
     "statusLine": {
