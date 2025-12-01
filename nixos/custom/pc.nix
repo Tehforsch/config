@@ -24,7 +24,7 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    shares = {
+    settings = {
       media = {
         path = "/home/toni/movies";
         browseable = "yes";
