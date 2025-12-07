@@ -7,6 +7,8 @@ email = "mail@tonipeter.de"
 [ui]
 paginate = "never"
 default-command = ["l"]
+# While my tools don't integrate with the new ones
+conflict-marker-style = "git"
 
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
@@ -32,6 +34,7 @@ fetch = ["git", "fetch"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 sl = ["log", "-T", "builtin_log_compact ++ self.diff().files().map(|f| f.status() ++ ' ' ++ f.path()).join('\n')"]
+oplog = ["op", "log", "--reversed"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
