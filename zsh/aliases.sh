@@ -128,7 +128,14 @@ function nixsw() {
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
     ssh-add ~/.ssh/id_rsa
-    sudo nixos-rebuild --max-jobs 8 --cores 4 switch --flake ~/projects/config/nixos
+    if [[ $(hostname) == "pc" ]]; then
+        cores=12
+        jobs=24
+    else
+        cores=4
+        jobs=8
+    fi
+    sudo nixos-rebuild --max-jobs $jobs --cores $cores switch --flake ~/projects/config/nixos
 }
 
 function nhsw() {
