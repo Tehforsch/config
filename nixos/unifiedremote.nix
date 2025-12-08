@@ -15,7 +15,7 @@
     partOf = [ "graphical-session.target" ];
     after = [ "network.target" ];
     # These are needed by the remotes
-    path= with pkgs; [ mpc-cli pulseaudio ];
+    path= with pkgs; [ mpc pulseaudio ];
     serviceConfig = {
       Type = "forking";
       ExecStart = ''

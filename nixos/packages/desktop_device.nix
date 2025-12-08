@@ -54,7 +54,7 @@
     ripgrep-all
     xclip
     xrectsel
-    linuxKernel.packages.linux_zen.perf
+    perf
     bottom
     nh
     bacon
@@ -74,7 +74,7 @@
     # Sound + Music
     pavucontrol
     pulseaudio # needed for pactl etc. even though i have pipewire
-    mpc-cli
+    mpc
     libnotify
     alsa-lib
   ];
