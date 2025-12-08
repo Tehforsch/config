@@ -22,8 +22,15 @@ bindkey '^w' backward-kill-word
 # Push current command to stack and pop it after another command has been entered
 bindkey '^q' push-line
 
-# Binding to close the terminal with a process running in it without killing the process
-bindkey -s '^u' 'bg && disown && kitty @ close-window\n'
+# Delete path segment backward
+backward-kill-dir() {
+    local WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+    zle backward-kill-word
+    zle -f kill
+}
+
+zle -N backward-kill-dir
+bindkey '^u' backward-kill-dir
 
 bindkey '^l' insert-last-word
 
