@@ -1,0 +1,8 @@
+XDG_DESKTOP_DIR="$HOME/.local/share/xdg-garbage"
+XDG_DOWNLOAD_DIR="$HOME/downloads"
+XDG_TEMPLATES_DIR="$HOME/.local/share/xdg-garbage"
+XDG_PUBLICSHARE_DIR="$HOME/.local/share/xdg-garbage"
+XDG_DOCUMENTS_DIR="$HOME/.local/share/xdg-garbage"
+XDG_MUSIC_DIR="$HOME/music"
+XDG_PICTURES_DIR="$HOME/.local/share/xdg-garbage"
+XDG_VIDEOS_DIR="$HOME/.local/share/xdg-garbage"

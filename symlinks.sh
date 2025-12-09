@@ -31,6 +31,7 @@ function make_symlink {
 }
 
 # The good, following the XDG_CONFIG_DIR structure
+make_symlink xdg/user-dirs.dirs .config/user-dirs.dirs
 make_symlink beets/config.yaml .config/beets/config.yaml
 make_symlink bat/config .config/bat/config
 make_symlink dunst/dunstrc .config/dunst/dunstrc

@@ -24,6 +24,7 @@
         ./users.nix
         ./ssh.nix
         ./garbage_collect.nix
+        ./xdg.nix
       ];
       desktop_device = basic ++ [
         ./desktop_device.nix
