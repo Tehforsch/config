@@ -6,13 +6,16 @@
     xdg-user-dirs
   ];
 
-  systemd.user.services.xdg-user-dirs-update = {
-    description = "Update XDG user directories";
+  systemd.user.services.xdg-setup = {
+    description = "Setup XDG user directories and defaults";
     wantedBy = [ "default.target" ];
     after = [ "default.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update";
+      ExecStart = pkgs.writeShellScript "xdg-setup" ''
+        ${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update
+        ${pkgs.xdg-utils}/bin/xdg-mime default org.pwmt.zathura.desktop application/pdf
+      '';
     };
   };
 }

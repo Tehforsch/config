@@ -20,6 +20,9 @@
     font-awesome
     barlow
     nerd-fonts.symbols-only
+    source-sans
+    source-sans-pro
+    roboto
   ];
 
   virtualisation = {

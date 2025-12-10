@@ -8,6 +8,7 @@
     qpwgraph
     wireshark
     qbittorrent
+    typst
   ];
   programs.wireshark.enable = true;
 }
