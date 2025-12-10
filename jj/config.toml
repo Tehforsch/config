@@ -6,7 +6,7 @@ email = "mail@tonipeter.de"
 
 [ui]
 paginate = "never"
-default-command = ["l"]
+default-command = ["log", "--reversed"]
 # While my tools don't integrate with the new ones
 conflict-marker-style = "git"
 
@@ -27,7 +27,6 @@ conflict-marker-style = "git"
 'open()' = 'stack(mine() | @, 1)'
 
 [aliases]
-l = ["log", "--reversed", "--limit", "20"]
 stack = ["log", "-r", "stack(@)", "--reversed"]
 long = ["l", "-T", "builtin_log_detailed"]
 fetch = ["git", "fetch"]
