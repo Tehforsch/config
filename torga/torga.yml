@@ -20,7 +20,7 @@ sort_modes:
   created_at: 0.2
 default_sort_mode: Normal
 filter_modes:
-- name: normal
+- name: default
   filter:
   - !Not
     cond: IsDone
@@ -47,6 +47,13 @@ filter_modes:
   - !Not
     cond: IsProject
   - NoProject
+- name: now
+  filter:
+  - !Not
+    cond: IsDone
+  - !Not
+    cond: IsWaiting
+  - !HasTag now
 default_filter_mode: custom
 sync:
   server_url: "http://v2202411242091296475.happysrv.de:8337"
@@ -64,7 +71,7 @@ hotkeys:
     s n: !SortBy Normal
     t s: !ToggleTag spree
     t d: !ToggleTag defer
-    t t: !ToggleTag today
+    n: !ToggleTag now
     a: AddTask
     e: EditTask
     Up: !Navigate Up
@@ -74,12 +81,13 @@ hotkeys:
     p: ToggleDisplayStyle
     f /: EnterFilterSearch
     f w: ToggleWaiting
-    f d: ToggleCompletionStatus
+    f D: ToggleCompletionStatus
     f t: TagFilter
     f p: ParentFilter
     f c: !FilterBy custom
-    f n: !FilterBy normal
+    f d: !FilterBy default
     f i: !FilterBy no_project
+    f n: !FilterBy now
   task_dialog:
     Enter: Confirm
     Esc: Cancel
@@ -88,7 +96,7 @@ hotkeys:
     C-s: !SetTaskKind Snooze
     C-r: !SetTaskKind Recur
     C-p: !SetTaskKind Project
-    S-Tab: PreviousField
+    S-BackTab: PreviousField
   search:
     Enter: Confirm
     C-j: !Navigate Down
