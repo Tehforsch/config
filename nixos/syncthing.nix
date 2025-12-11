@@ -8,7 +8,7 @@ let
     };
     "framework" = {
       id = "MTF6SQC-HYLYCWI-FBWMX3P-UDKCVUN-XTTG5IA-FJYD4VB-MWPXZGJ-FJAD6QY";
-      folders = basicFolders ++ ["movies"];
+      folders = basicFolders;
     };
     "thinkpad" = {
       id = "ELRICBF-E6JIB37-TXDE65R-4EYY5QY-3SE27FW-YVEVUJT-YSOC5ZP-WEHPUQL";
