@@ -23,7 +23,7 @@
           },
           {
             "type": "command",
-            "command": "cd \"$CLAUDE_CWD\" && jj commit -m 'Agent: Temp save'"
+            "command": "jj commit -m 'Agent: Temp save'"
           }
         ]
       }
@@ -33,5 +33,5 @@
     "type": "command",
     "command": "bash /home/toni/projects/config/scripts/statusline_script.sh"
   },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": true
 }

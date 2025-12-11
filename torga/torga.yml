@@ -53,7 +53,9 @@ filter_modes:
     cond: IsDone
   - !Not
     cond: IsWaiting
-  - !HasTag now
+  - !Or
+    - !HasTag now
+    - !HasTag habit
 default_filter_mode: custom
 sync:
   server_url: "http://v2202411242091296475.happysrv.de:8337"
