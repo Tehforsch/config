@@ -6,7 +6,7 @@ email = "mail@tonipeter.de"
 
 [ui]
 paginate = "never"
-default-command = ["log", "--reversed"]
+default-command = ["log", "--reversed", "--limit", "50"]
 # While my tools don't integrate with the new ones
 conflict-marker-style = "git"
 
@@ -29,10 +29,10 @@ conflict-marker-style = "git"
 [aliases]
 stack = ["log", "-r", "stack(@)", "--reversed"]
 long = ["l", "-T", "builtin_log_detailed"]
+sl = ["log", "-T", "builtin_log_compact ++ self.diff().files().map(|f| f.status() ++ ' ' ++ f.path()).join('\n')"]
 fetch = ["git", "fetch"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
-sl = ["log", "-T", "builtin_log_compact ++ self.diff().files().map(|f| f.status() ++ ' ' ++ f.path()).join('\n')"]
 oplog = ["op", "log", "--reversed"]
 
 [template-aliases]

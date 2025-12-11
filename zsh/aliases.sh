@@ -7,31 +7,6 @@ alias agg="rga-fzf"
 
 alias c="check"
 
-alias g="git"
-alias ga="git add"
-alias gd="git diff"
-alias gc="git commit"
-alias gcm="git commit -m"
-alias gca="git commit --amend"
-alias gdc="git diff --staged"
-alias gdh="git log --follow -p --"
-alias gp="git push"
-alias gpu="git pull"
-alias gs="git status"
-alias gr="git reset"
-alias ggr="$CONFIG/scripts/gitGrep.sh"
-alias co="git restore"
-alias gpf="git push --force-with-lease"
-alias gl="git log --ext-diff"
-alias gdm="git diff ORIG_HEAD MERGE_HEAD --ext-diff"
-alias gri="git rebase -i"
-alias grim="git rebase -i main"
-alias gre="git rebase"
-alias gw="git switch"
-alias gwd="git switch --detach"
-alias gb="git branch"
-alias gcp="git cherry-pick"
-
 function checkout_pr() {
     # $1 is the PR number.
     git fetch origin pull/$1/head:pull-request-$1
@@ -44,14 +19,6 @@ function 2fa() {
 
     echo -n "$key" | xclip -selection clipboard
 }
-
-alias glf="forgit::log"
-alias gdf="forgit::diff"
-alias gdcf="forgit::diff --cached"
-alias gaf="forgit::add"
-alias grf="forgit::reset::head"
-alias cof="forgit::checkout::file"
-alias gwf="forgit::checkout::branch"
 
 alias cb="cargo build"
 alias cbr="cargo build --release"
@@ -200,3 +167,11 @@ alias jp="jj git push"
 alias jr="jj restore"
 alias jb="jj bookmark"
 alias jd="jj diff"
+
+alias glf="forgit::log"
+alias gdf="forgit::diff"
+alias gdcf="forgit::diff --cached"
+alias gaf="forgit::add"
+alias grf="forgit::reset::head"
+alias cof="forgit::checkout::file"
+alias gwf="forgit::checkout::branch"
