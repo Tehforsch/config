@@ -43,6 +43,11 @@ squash_agent = ["squash", "--from", "agent_temp()~roots(agent_temp())", "--into"
 'format_short_id(id)' = 'id.shortest()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
+[fix.tools.rustfmt]
+command = ["rustfmt"]
+patterns = ["glob:'**/*.rs'"]
+
+
 # absolute magic
 # [revsets]
 # # Prioritize the current bookmark
