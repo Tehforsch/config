@@ -115,6 +115,32 @@ bindkey -M emacs '^R' fzf-history-widget
 bindkey -M vicmd '^R' fzf-history-widget
 bindkey -M viins '^R' fzf-history-widget
 
+# CTRL-S - Insert selected jj revision change ID into the command line
+__fzf_jj_revisions() {
+  local cmd="jj log --no-graph -T 'change_id.short() ++ \" \" ++ description.first_line() ++ \"\n\"'"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local selection
+  selection=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-}" $(__fzfcmd) +m)
+  if [[ -z "$selection" ]]; then
+    return 0
+  fi
+  # Extract the change ID (first field)
+  local change_id="${selection%% *}"
+  echo -n "${change_id} "
+  return 0
+}
+
+fzf-jj-widget() {
+  LBUFFER="${LBUFFER}$(__fzf_jj_revisions)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-jj-widget
+bindkey -M emacs '^S' fzf-jj-widget
+bindkey -M vicmd '^S' fzf-jj-widget
+bindkey -M viins '^S' fzf-jj-widget
+
 } always {
   eval $__fzf_key_bindings_options
   'unset' '__fzf_key_bindings_options'
