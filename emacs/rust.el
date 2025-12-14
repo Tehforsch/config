@@ -6,8 +6,7 @@
 (setq rustic-format-on-save nil)
 (setq rustic-format-display-method 'ignore) ; Don't show rustfmt buffer
 ; I don't know which of the following too matters, tbh.
-(setq lsp-rust-analyzer-cargo-watch-args ["--target-dir" "target/analysis"])
-(setq flycheck-cargo-check-args ["--target-dir" "target/analysis"])
+(setq lsp-rust-analyzer-cargo-target-dir "target/ra")
 
 ; (add-hook 'rustic-mode-hook 'flycheck-mode)
 (setq rustic-lsp-server 'rust-analyzer)
