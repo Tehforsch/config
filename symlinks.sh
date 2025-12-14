@@ -45,6 +45,7 @@ make_symlink kitty/${SYSTEM_NAME}.conf .config/kitty/system.conf
 make_symlink mpd/${SYSTEM_NAME}.conf .config/mpd/mpd.conf
 make_symlink rofi/config.rasi .config/rofi/config.rasi
 make_symlink vim/init.vim .config/nvim/init.vim
+make_symlink nvim .config/nvim
 make_symlink zathura/zathurarc .config/zathura/zathurarc
 make_symlink zsh/zshrc.sh .config/zsh/.zshrc # ZDOTDIR
 make_symlink zsh/zshenv .zshenv

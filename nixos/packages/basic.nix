@@ -4,6 +4,7 @@
     # Developer stuff
     zsh
     vim
+    neovim
     git
     jujutsu
     delta
