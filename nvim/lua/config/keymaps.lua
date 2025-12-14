@@ -105,3 +105,8 @@ keymap("n", "<leader>eR", ":source $MYVIMRC<CR>", { desc = "Reload Neovim config
 
 -- Undo tree (SPC u)
 keymap("n", "<leader>ut", ":UndotreeToggle<CR>", { desc = "Toggle undo tree" })
+
+-- Search history (SPC h)
+keymap("n", "<leader>h", function()
+	require("telescope.builtin").resume()
+end, { desc = "Resume last search" })
