@@ -18,7 +18,6 @@ vim.g.maplocalleader = ","
 
 -- Load configuration modules
 require("config.options")
-require("config.keymaps")
 
 -- Set up lazy.nvim and load plugins
 require("lazy").setup("plugins", {
@@ -26,3 +25,6 @@ require("lazy").setup("plugins", {
     notify = false,
   },
 })
+
+-- Load keymaps after plugins are initialized
+require("config.keymaps")
