@@ -142,6 +142,7 @@ end, { desc = "Search symbols in file" })
 keymap("n", "<localleader>S", function()
 	require("telescope.builtin").lsp_dynamic_workspace_symbols()
 end, { desc = "Search symbols in workspace" })
+keymap("n", "<localleader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
 -- Emacs-style commands (SPC e)
 keymap("n", "<leader>eR", ":source $MYVIMRC<CR>", { desc = "Reload Neovim config" })
