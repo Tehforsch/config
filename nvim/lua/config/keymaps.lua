@@ -19,8 +19,30 @@ end, { desc = "Find file" })
 keymap("n", "<leader>bf", function()
 	require("telescope.builtin").buffers()
 end, { desc = "Switch buffer" })
-keymap("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-keymap("n", "<leader>bp", ":bprev<CR>", { desc = "Prev buffer" })
+
+-- Buffer navigation hydra
+local Hydra = require("hydra")
+Hydra({
+	name = "Buffer navigation",
+	mode = "n",
+	body = "<leader>b",
+	hint = [[
+ _n_: next   _p_: prev
+]],
+	config = {
+		color = "pink",
+		invoke_on_body = false,
+		hint = {
+			border = "rounded",
+			position = "bottom",
+		},
+	},
+	heads = {
+		{ "n", ":bnext<CR>", { desc = "next buffer" } },
+		{ "p", ":bprevious<CR>", { desc = "previous buffer" } },
+		{ "<Esc>", nil, { exit = true } },
+	},
+})
 
 keymap("n", "<leader>pf", function()
 	require("telescope").extensions.projects.projects()
