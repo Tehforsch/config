@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"nvim-telescope/telescope.nvim",
+		"nvimtools/hydra.nvim",
 	},
 	config = function()
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -26,9 +27,43 @@ return {
 			vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
 			vim.keymap.set({ "n", "v" }, "<localleader>x", vim.lsp.buf.code_action, opts)
 			vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 		end
+
+		vim.keymap.set("n", "<localleader>el", function()
+			require("telescope.builtin").diagnostics()
+		end, { desc = "List diagnostics" })
+
+		local Hydra = require("hydra")
+		Hydra({
+			name = "Diagnostics",
+			mode = "n",
+			body = "<localleader>e",
+			heads = {
+				{
+					"n",
+					function()
+						vim.diagnostic.goto_next()
+					end,
+					{ desc = "next diagnostic" },
+				},
+				{
+					"p",
+					function()
+						vim.diagnostic.goto_prev()
+					end,
+					{ desc = "prev diagnostic" },
+				},
+				{
+					"l",
+					function()
+						require("telescope.builtin").diagnostics()
+					end,
+					{ exit = true, desc = "list diagnostics" },
+				},
+				{ "q", nil, { exit = true, desc = "quit" } },
+				{ "<Esc>", nil, { exit = true, desc = "quit" } },
+			},
+		})
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
