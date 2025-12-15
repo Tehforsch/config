@@ -3,6 +3,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    "nvim-telescope/telescope.nvim",
   },
   config = function()
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -10,10 +11,18 @@ return {
     local on_attach = function(client, bufnr)
       local opts = { noremap = true, silent = true, buffer = bufnr }
 
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-      vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-      vim.keymap.set("n", "gp", vim.lsp.buf.implementation, opts)
+      vim.keymap.set("n", "gd", function()
+        require("telescope.builtin").lsp_definitions()
+      end, opts)
+      vim.keymap.set("n", "gr", function()
+        require("telescope.builtin").lsp_references()
+      end, opts)
+      vim.keymap.set("n", "gt", function()
+        require("telescope.builtin").lsp_type_definitions()
+      end, opts)
+      vim.keymap.set("n", "gp", function()
+        require("telescope.builtin").lsp_implementations()
+      end, opts)
       vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
       vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
@@ -56,6 +65,8 @@ return {
     vim.lsp.enable("rust_analyzer")
     vim.lsp.config.rust_analyzer = {
       cmd = { "rust-analyzer" },
+      capabilities = capabilities,
+      on_attach = on_attach,
       settings = {
         ["rust-analyzer"] = {
           cargo = {
@@ -79,6 +90,8 @@ return {
     vim.lsp.enable("lua_ls")
     vim.lsp.config.lua_ls = {
       cmd = { "lua-language-server" },
+      capabilities = capabilities,
+      on_attach = on_attach,
       settings = {
         Lua = {
           diagnostics = {

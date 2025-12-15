@@ -1,7 +1,8 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    -- Use master for now due to deprecated commands
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {

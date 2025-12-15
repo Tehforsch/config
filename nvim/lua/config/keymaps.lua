@@ -135,12 +135,12 @@ end, { desc = "Terminal in project root" })
 keymap("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
 keymap("n", "<leader>gb", ":Git blame<CR>", { desc = "Git blame" })
 
--- LSP/Consult commands (SPC c)
-keymap("n", "<leader>cs", function()
+-- Local leader LSP commands
+keymap("n", "<localleader>s", function()
 	require("telescope.builtin").lsp_document_symbols()
 end, { desc = "Search symbols in file" })
-keymap("n", "<leader>cS", function()
-	require("telescope.builtin").lsp_workspace_symbols()
+keymap("n", "<localleader>S", function()
+	require("telescope.builtin").lsp_dynamic_workspace_symbols()
 end, { desc = "Search symbols in workspace" })
 
 -- Emacs-style commands (SPC e)
