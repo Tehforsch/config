@@ -80,9 +80,7 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		vim.diagnostic.config({
-			virtual_text = {
-				prefix = "●",
-			},
+			virtual_text = false,
 			signs = {
 				text = {
 					[vim.diagnostic.severity.ERROR] = "✘",
@@ -101,6 +99,10 @@ return {
 				prefix = "",
 			},
 		})
+
+		vim.keymap.set("n", "<localleader>es", function()
+			vim.diagnostic.open_float(nil, { focusable = false, scope = "cursor" })
+		end, { desc = "Show diagnostic" })
 
 		vim.lsp.config("*", {
 			root_markers = { ".git" },
