@@ -27,6 +27,18 @@ return {
 			vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
 			vim.keymap.set({ "n", "v" }, "<localleader>x", vim.lsp.buf.code_action, opts)
 			vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts)
+
+			if vim.bo[bufnr].filetype == "rust" then
+				vim.keymap.set("n", "<localleader>p", function()
+					vim.lsp.buf_request(bufnr, "experimental/parentModule", vim.lsp.util.make_position_params(), function(_, result)
+						if not result or vim.tbl_isempty(result) then
+							vim.notify("No parent module found", vim.log.levels.INFO)
+							return
+						end
+						vim.lsp.util.jump_to_location(result[1], "utf-8")
+					end)
+				end, vim.tbl_extend("force", opts, { desc = "Go to parent module" }))
+			end
 		end
 
 		vim.keymap.set("n", "<localleader>el", function()
