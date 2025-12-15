@@ -28,6 +28,7 @@ return {
         { "<leader>f", group = "file" },
         { "<leader>p", group = "project" },
         { "<leader>g", group = "git" },
+        { "<leader>e", group = "editor" },
         { "<leader>u", group = "ui" },
         { "<leader>h", group = "history" },
         { "<localleader>", group = "local" },
