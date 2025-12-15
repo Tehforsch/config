@@ -2,7 +2,7 @@ alias l="exa -la"
 alias ls="exa -l"
 alias lt="exa --tree"
 alias cat="bat"
-alias e="$CONFIG/scripts/runEmacsClientInPwd.sh"
+alias e="$CONFIG/scripts/openVimInKitty.sh"
 alias agg="rga-fzf"
 
 alias c="check"
