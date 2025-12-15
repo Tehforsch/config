@@ -62,8 +62,6 @@ keymap("n", "<localleader>S", function()
 end, { desc = "Search symbols in workspace" })
 keymap("n", "<localleader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
-keymap("n", "<leader>ut", ":UndotreeToggle<CR>", { desc = "Toggle undo tree" })
-
 -- Search history (SPC h)
 keymap("n", "<leader>h", function()
 	require("telescope.builtin").resume()
