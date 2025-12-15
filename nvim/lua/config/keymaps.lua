@@ -13,7 +13,6 @@ keymap("x", "p", '"_dP', { desc = "Paste without yanking" })
 
 -- File operations (SPC f)
 keymap("n", "<leader>s", ":w<CR>", { desc = "Save file" })
-keymap("n", "<leader>fq", ":q<CR>", { desc = "Quit" })
 keymap("n", "<leader>ff", function()
 	require("telescope.builtin").find_files()
 end, { desc = "Find file" })
@@ -57,28 +56,30 @@ keymap("n", "<leader>fo", function()
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
 
-			pickers.new({}, {
-				prompt_title = "Select Alternate File",
-				finder = finders.new_table({
-					results = candidates,
-					entry_maker = function(entry)
-						return {
-							value = entry,
-							display = vim.fn.fnamemodify(entry, ":~:."),
-							ordinal = vim.fn.fnamemodify(entry, ":~:."),
-						}
+			pickers
+				.new({}, {
+					prompt_title = "Select Alternate File",
+					finder = finders.new_table({
+						results = candidates,
+						entry_maker = function(entry)
+							return {
+								value = entry,
+								display = vim.fn.fnamemodify(entry, ":~:."),
+								ordinal = vim.fn.fnamemodify(entry, ":~:."),
+							}
+						end,
+					}),
+					sorter = conf.generic_sorter({}),
+					attach_mappings = function(prompt_bufnr, map)
+						actions.select_default:replace(function()
+							actions.close(prompt_bufnr)
+							local selection = action_state.get_selected_entry()
+							vim.cmd("edit " .. selection.value)
+						end)
+						return true
 					end,
-				}),
-				sorter = conf.generic_sorter({}),
-				attach_mappings = function(prompt_bufnr, map)
-					actions.select_default:replace(function()
-						actions.close(prompt_bufnr)
-						local selection = action_state.get_selected_entry()
-						vim.cmd("edit " .. selection.value)
-					end)
-					return true
-				end,
-			}):find()
+				})
+				:find()
 		else
 			local target_file = name_without_ext .. "." .. table.concat(target_exts, "/")
 			print("Could not find " .. target_file)
