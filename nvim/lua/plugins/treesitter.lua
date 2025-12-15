@@ -51,26 +51,30 @@ return {
 						["ic"] = "@class.inner",
 						["aa"] = "@parameter.outer",
 						["ia"] = "@parameter.inner",
+						["as"] = "@variable.outer",
+						["is"] = "@variable.inner",
 					},
 				},
 				move = {
 					enable = true,
 					set_jumps = true,
 					goto_next_start = {
-						["]m"] = "@function.outer",
-						["]]"] = "@class.outer",
+						["]f"] = "@function.outer",
+						["]c"] = "@class.outer",
+						["L"] = "@parameter.inner",
 					},
 					goto_next_end = {
-						["]M"] = "@function.outer",
-						["]["] = "@class.outer",
+						["]F"] = "@function.outer",
+						["]C"] = "@class.outer",
 					},
 					goto_previous_start = {
-						["[m"] = "@function.outer",
-						["[["] = "@class.outer",
+						["[f"] = "@function.outer",
+						["[c"] = "@class.outer",
+						["H"] = "@parameter.inner",
 					},
 					goto_previous_end = {
-						["[M"] = "@function.outer",
-						["[]"] = "@class.outer",
+						["[F"] = "@function.outer",
+						["[C"] = "@class.outer",
 					},
 				},
 				swap = {
