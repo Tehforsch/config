@@ -27,6 +27,7 @@
     lsof
     sd
     difftastic
+    stylua
   ];
 
   programs.direnv.enable = true;
