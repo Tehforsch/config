@@ -35,3 +35,6 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.opt.showmode = false
 vim.opt.cmdheight = 1
+
+vim.opt.winbar = "%f %m"
+vim.opt.laststatus = 0
