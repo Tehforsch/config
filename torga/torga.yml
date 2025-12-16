@@ -20,7 +20,7 @@ sort_modes:
   created_at: 0.2
 default_sort_mode: Normal
 filter_modes:
-- name: default
+- name: all
   filter:
   - !Not
     cond: IsDone
@@ -28,7 +28,7 @@ filter_modes:
     cond: IsWaiting
   - !Not
     cond: IsProject
-- name: custom
+- name: default
   filter:
   - !Not
     cond: IsDone
@@ -56,12 +56,14 @@ filter_modes:
   - !Or
     - !HasTag now
     - !HasTag habit
-default_filter_mode: custom
+default_filter_mode: default
 sync:
   server_url: "http://v2202411242091296475.happysrv.de:8337"
 hotkeys:
   normal:
     j: !Navigate Down
+    g g: !Navigate Top
+    S-G: !Navigate Bottom
     /: EnterSearch
     Down: !Navigate Down
     q: Quit
@@ -86,7 +88,8 @@ hotkeys:
     f D: ToggleCompletionStatus
     f t: TagFilter
     f p: ParentFilter
-    f c: !FilterBy custom
+    h p: ToggleSelectedProject
+    f a: !FilterBy all
     f d: !FilterBy default
     f i: !FilterBy no_project
     f n: !FilterBy now
