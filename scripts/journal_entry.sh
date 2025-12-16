@@ -56,5 +56,5 @@ if [  ! -f $entry ]; then
     touch $entry
 fi
 mkdir -p $pics
-emacsclient -c -n $entry
+$scripts/openVimInKitty.sh $entry
 

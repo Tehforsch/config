@@ -35,12 +35,6 @@
   programs.nm-applet.enable = true;
   programs.openvpn3.enable = true;
 
-  services.emacs = {
-    enable = true;
-    defaultEditor = true;
-    package = pkgs.emacs30;
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
