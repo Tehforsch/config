@@ -6,7 +6,8 @@ email = "mail@tonipeter.de"
 
 [ui]
 paginate = "never"
-default-command = ["log", "--reversed", "--limit", "50"]
+default-command = ["log", "--reversed", "--limit", "50", "-r", "present(@) | ancestors(immutable_heads().., 2) | present(trunk())"]
+# default-command = ["log", "--reversed", "--limit", "50", "-r", "ancestors(trunk().., 2)"]
 # While my tools don't integrate with the new ones
 conflict-marker-style = "git"
 
@@ -38,6 +39,7 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 oplog = ["op", "log", "--reversed"]
 squash_agent = ["squash", "--from", "agent_temp()~roots(agent_temp())", "--into", "roots(agent_temp())", "-m", "Agent: Temp squashed", "--editor"]
+cherry = ["duplicate", "-A", "@-"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
