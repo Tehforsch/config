@@ -3,6 +3,7 @@ alias ls="exa -l"
 alias lt="exa --tree"
 alias cat="bat"
 alias e="$CONFIG/scripts/openVimInKitty.sh"
+alias vim="nvim"
 alias agg="rga-fzf"
 
 alias c="check"
