@@ -9,6 +9,13 @@ return {
 	config = function()
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+		vim.keymap.del("n", "grr", { buffer = false })
+		vim.keymap.del("n", "gra", { buffer = false })
+		vim.keymap.del("n", "grn", { buffer = false })
+		vim.keymap.del("n", "gri", { buffer = false })
+		vim.keymap.del("n", "grt", { buffer = false })
+		vim.keymap.del("x", "gra", { buffer = false })
+
 		local on_attach = function(client, bufnr)
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
