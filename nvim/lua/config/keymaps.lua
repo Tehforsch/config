@@ -1,8 +1,15 @@
 local keymap = vim.keymap.set
 
+local command_history = function()
+	require("telescope.builtin").command_history()
+end
+
 keymap("n", "<leader>^", "<C-^>", { desc = "Toggle to last buffer" })
 
 keymap("n", "<Esc>", ":noh<CR>", { desc = "Clear search highlighting" })
+
+keymap("n", "<leader>x", command_history, { desc = "Command history" })
+keymap("n", ":", command_history, { desc = "Command history" })
 
 keymap("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 keymap("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
