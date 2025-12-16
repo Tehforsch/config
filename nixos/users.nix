@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users.users.toni = {
     isNormalUser = true;
     description = "toni";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "keyd" "audio" "docker" "wireshark" ];
+    extraGroups = ["networkmanager" "wheel" "video" "input" "keyd" "audio" "docker" "wireshark"];
     shell = pkgs.zsh;
 
     # Useful for RPI install, for example.

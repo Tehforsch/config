@@ -1,16 +1,24 @@
-{ config, pkgs, inputs, ... }:
-let
-  makeService = { execStart, description, enable ? true, wantedBy ? [ "default.target" ] }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
+  makeService = {
+    execStart,
+    description,
+    enable ? true,
+    wantedBy ? ["default.target"],
+  }: {
     inherit enable description wantedBy;
     serviceConfig = {
       Type = "simple";
       ExecStart = execStart;
     };
   };
-in
-{
+in {
   systemd.user.timers.syncCalendars = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig.OnCalendar = "hourly";
   };
 
@@ -23,20 +31,20 @@ in
   };
 
   systemd.user.timers.calendarReminder = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig.OnCalendar = "minutely";
   };
 
   systemd.user.services.journal = makeService {
     description = "journal webserver";
     execStart = "${inputs.journal.packages.x86_64-linux.default}/bin/journal";
-    wantedBy = [ ];
+    wantedBy = [];
   };
 
   systemd.user.services.calendarReminder = {
     enable = true;
     description = "calendar reminders";
-    wantedBy = [ "default.target" ];
+    wantedBy = ["default.target"];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send";

@@ -1,5 +1,9 @@
-{ config, pkgs, inputs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -12,5 +16,4 @@
   };
 
   nixpkgs.config.pulseaudio = true;
-
 }

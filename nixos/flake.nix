@@ -2,21 +2,25 @@
   description = "nixos flake";
 
   inputs = {
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+    nixpkgs = {url = "github:NixOS/nixpkgs/nixos-unstable";};
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    journal = { url = "github:tehforsch/journal"; };
-    moody = { url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git"; };
-    personalbot = { url = "git+ssh://git@github.com/tehforsch/personalbot.git"; };
-    torga = { url = "git+ssh://git@github.com/tehforsch/todo.git"; };
-    mpd_rofi = { url = "github:tehforsch/mpd_rofi"; };
-    musnix = { url = "github:musnix/musnix"; };
+    journal = {url = "github:tehforsch/journal";};
+    moody = {url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git";};
+    personalbot = {url = "git+ssh://git@github.com/tehforsch/personalbot.git";};
+    torga = {url = "git+ssh://git@github.com/tehforsch/todo.git";};
+    mpd_rofi = {url = "github:tehforsch/mpd_rofi";};
+    musnix = {url = "github:musnix/musnix";};
     nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: rec {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    ...
+  }: rec {
     nixosConfigurations = let
       basic = [
         ./basic.nix
@@ -26,17 +30,19 @@
         ./garbage_collect.nix
         ./xdg.nix
       ];
-      desktop_device = basic ++ [
-        ./desktop_device.nix
-        ./sound.nix
-        ./packages/desktop_device.nix
-        ./i3.nix
-        ./redshift.nix
-        ./power_management.nix
-        ./syncthing.nix
-        ./mpd.nix
-        ./oom_killer.nix
-      ];
+      desktop_device =
+        basic
+        ++ [
+          ./desktop_device.nix
+          ./sound.nix
+          ./packages/desktop_device.nix
+          ./i3.nix
+          ./redshift.nix
+          ./power_management.nix
+          ./syncthing.nix
+          ./mpd.nix
+          ./oom_killer.nix
+        ];
       work = [
         ./work.nix
         ./yubikey.nix
@@ -46,15 +52,22 @@
         ./services.nix
         ./mail.nix
       ];
-      make_system = args@{ hostname, system, ... }: (
+      make_system = args @ {
+        hostname,
+        system,
+        ...
+      }: (
         nixpkgs.lib.nixosSystem {
           system = system;
-          specialArgs = { inherit inputs; };
-          modules = basic ++ args.modules ++ [
-            { networking.hostName = hostname; }
-            ./hardware/${hostname}.nix
-            ./custom/${hostname}.nix
-          ];
+          specialArgs = {inherit inputs;};
+          modules =
+            basic
+            ++ args.modules
+            ++ [
+              {networking.hostName = hostname;}
+              ./hardware/${hostname}.nix
+              ./custom/${hostname}.nix
+            ];
         }
       );
     in {
@@ -94,17 +107,17 @@
       rpi = make_system {
         system = "aarch64-linux";
         hostname = "rpi";
-        modules =
-          [
-            ./syncthing.nix
-          ];
+        modules = [
+          ./syncthing.nix
+        ];
       };
     };
     images = {
-        rpi = (nixosConfigurations.rpi.extendModules {
-            modules = [
+      rpi =
+        (nixosConfigurations.rpi.extendModules {
+          modules = [
             "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            ];
+          ];
         }).config.system.build.sdImage;
     };
   };

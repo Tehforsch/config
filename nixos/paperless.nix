@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   services.paperless = {
     enable = true;
     user = "toni";
@@ -9,13 +8,13 @@
     consumptionDirIsPublic = true;
     settings = {
       PAPERLESS_ADMIN_USER = "toni";
-      PAPERLESS_FILENAME_FORMAT="{{ title }}";
+      PAPERLESS_FILENAME_FORMAT = "{{ title }}";
     };
   };
 
   hardware.sane.enable = true;
   hardware.sane.drivers.scanSnap.enable = true;
-  users.users.toni.extraGroups = [ "scanner" "lp" "redis-paperless" ];
+  users.users.toni.extraGroups = ["scanner" "lp" "redis-paperless"];
 
   # Disable sane-backends tests that hang
   nixpkgs.overlays = [

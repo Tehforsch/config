@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.mpd = {
     enable = true;
     user = "toni";
@@ -15,13 +14,12 @@
   };
   systemd.services.mpd.environment = {
     # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-    XDG_RUNTIME_DIR =
-      "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
+    XDG_RUNTIME_DIR = "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
   };
 
   systemd.user.services.mpdas = {
     description = "mpdas last.fm scrobbler";
-    wantedBy = [ "default.target" ];
+    wantedBy = ["default.target"];
     serviceConfig = {
       ExecStart = "${pkgs.mpdas}/bin/mpdas -c /home/toni/resource/keys/pw/mpdasrc";
       Type = "simple";

@@ -1,21 +1,24 @@
-{ config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ urserver ];
+  config,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [urserver];
 
   networking.firewall = {
-    allowedTCPPorts = [ 9510 9512 ];
-    allowedUDPPorts = [ 9511 9512 ];
+    allowedTCPPorts = [9510 9512];
+    allowedUDPPorts = [9511 9512];
   };
 
   systemd.user.services.urserver = {
     description = ''
       Unified Remote server.
     '';
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    after = [ "network.target" ];
+    wantedBy = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
+    after = ["network.target"];
     # These are needed by the remotes
-    path= with pkgs; [ mpc pulseaudio ];
+    path = with pkgs; [mpc pulseaudio];
     serviceConfig = {
       Type = "forking";
       ExecStart = ''

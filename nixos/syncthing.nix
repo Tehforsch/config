@@ -1,5 +1,8 @@
-{ config, pkgs, ... }: 
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   basicFolders = ["music" "resource" "phone"];
   devices = {
     "pc" = {
@@ -54,10 +57,10 @@ let
   };
 
   # Derive which devices want each folder (excluding current device)
-  getDevicesForFolder = folderName: 
-    builtins.attrNames (pkgs.lib.filterAttrs 
-      (deviceName: deviceConfig: 
-        deviceName != hostName && builtins.elem folderName deviceConfig.folders) 
+  getDevicesForFolder = folderName:
+    builtins.attrNames (pkgs.lib.filterAttrs
+      (deviceName: deviceConfig:
+        deviceName != hostName && builtins.elem folderName deviceConfig.folders)
       devices);
 
   hostName = config.networking.hostName;
@@ -67,16 +70,19 @@ let
   enabledFolderConfigs = builtins.listToAttrs (
     map (folder: {
       name = folder;
-      value = folderConfigs.${folder} // {
-        devices = getDevicesForFolder folder;
-      };
-    }) enabledFolders
+      value =
+        folderConfigs.${folder}
+        // {
+          devices = getDevicesForFolder folder;
+        };
+    })
+    enabledFolders
   );
 
-  otherDevices = builtins.mapAttrs (name: device: { id = device.id; }) 
+  otherDevices =
+    builtins.mapAttrs (name: device: {id = device.id;})
     (builtins.removeAttrs devices [hostName]);
-in
-{
+in {
   services.syncthing = {
     enable = true;
     user = "toni";
