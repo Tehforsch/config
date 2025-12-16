@@ -32,6 +32,14 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
+					-- Enter to confirm completion (todo: remove duplication)
+					["<CR>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.confirm({ select = true })
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
 
 					-- Scroll documentation
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),

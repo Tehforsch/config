@@ -11,7 +11,6 @@
     uv
     ruff
     python312Packages.python-lsp-server
-    rustup # This is nice for new projects and diving through external libraries where direnv doesn't really work.
     nil # language server for nix
 
     # User applications
@@ -38,6 +37,8 @@
     claude-code
     rmpc
     sqlite
+    alejandra # nix formatter
+    prettier
 
     # Reactivate this once I dont rebuild this once every day
     # inputs.torga.packages.x86_64-linux.torga-cli

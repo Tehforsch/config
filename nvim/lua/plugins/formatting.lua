@@ -15,25 +15,12 @@ return {
 	opts = {
 		formatters_by_ft = {
 			rust = { "rustfmt" },
-			python = { "black" },
+			python = { "ruff_format" },
 			nix = { "alejandra" },
-			haskell = { "fourmolu" },
 			lua = { "stylua" },
-			c = { "clang_format" },
-			cpp = { "clang_format" },
 			yaml = { "prettier" },
 			json = { "prettier" },
 			markdown = { "prettier" },
-		},
-		formatters = {
-			rustfmt = {
-				command = "rustfmt",
-				args = { "--edition", "2021" },
-			},
-			clang_format = {
-				command = "clang-format",
-				args = { "-style=file" },
-			},
 		},
 		format_on_save = nil,
 	},
