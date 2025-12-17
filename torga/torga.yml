@@ -38,6 +38,19 @@ filter_modes:
     cond: IsProject
   - !Not
     cond: !HasTag defer
+- name: sokobrane
+  filter:
+  - !Not
+    cond: IsDone
+  - !Not
+    cond: IsWaiting
+  - !Not
+    cond: IsProject
+  - !Not
+    cond: !HasTag defer
+  - !Not
+    cond: !HasTag pr_open
+  - !InProject sokobrane
 - name: no_project
   filter:
   - !Not
@@ -75,6 +88,7 @@ hotkeys:
     s n: !SortBy Normal
     t s: !ToggleTag spree
     t d: !ToggleTag defer
+    t p: !ToggleTag pr_open
     n: !ToggleTag now
     a: AddTask
     e: EditTask
@@ -91,6 +105,7 @@ hotkeys:
     h p: ToggleSelectedProject
     f a: !FilterBy all
     f d: !FilterBy default
+    f s: !FilterBy sokobrane
     f i: !FilterBy no_project
     f n: !FilterBy now
   task_dialog:

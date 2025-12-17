@@ -32,14 +32,6 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-					-- Enter to confirm completion (todo: remove duplication)
-					["<CR>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.confirm({ select = true })
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
 
 					-- Scroll documentation
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -49,13 +41,46 @@ return {
 					["<C-e>"] = cmp.mapping.abort(),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
+					{
+						name = "nvim_lsp",
+                        -- Hide snippets in autocomletion
+						entry_filter = function(entry, ctx)
+							return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+						end,
+					},
 					{ name = "path" },
 				}, {
 					{ name = "buffer", keyword_length = 3 },
 				}),
 				completion = {
 					completeopt = "menu,menuone,noinsert",
+				},
+				sorting = {
+					comparators = {
+						cmp.config.compare.offset,
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						function(entry1, entry2)
+							local kind1 = entry1:get_kind()
+							local kind2 = entry2:get_kind()
+							local priority = {
+								[cmp.lsp.CompletionItemKind.Field] = 1,
+								[cmp.lsp.CompletionItemKind.Property] = 1,
+								[cmp.lsp.CompletionItemKind.EnumMember] = 1,
+								[cmp.lsp.CompletionItemKind.Method] = 2,
+								[cmp.lsp.CompletionItemKind.Function] = 2,
+							}
+							local p1 = priority[kind1] or 3
+							local p2 = priority[kind2] or 3
+							if p1 ~= p2 then
+								return p1 < p2
+							end
+						end,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
 				},
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
