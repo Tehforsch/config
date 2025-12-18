@@ -17,7 +17,9 @@ conflict-marker-style = "git"
 'user(x)' = 'author(x) | committer(x)'
 
 'agent_temp()' = 'agent_temp(@)'
-'agent_temp(x)' = "ancestors(@) & subject(exact:\"Agent: Temp save\")"
+'agent_temp(x)' = "ancestors(x) & subject(exact:\"Agent: Temp save\")"
+
+'non_roots(x)' = 'x ~ roots(x)'
 
 # https://github.com/jj-vcs/jj/discussions/5812#discussioncomment-12328051
 # stack(x, n) is the set of mutable commits reachable from 'x', with 'n'
@@ -37,8 +39,9 @@ sl = ["log", "-T", "builtin_log_compact ++ self.diff().files().map(|f| f.status(
 fetch = ["git", "fetch"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
+rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
 oplog = ["op", "log", "--reversed"]
-squash_agent = ["squash", "--from", "agent_temp()~roots(agent_temp())", "--into", "roots(agent_temp())", "-m", "Agent: Temp squashed", "--editor"]
+squash_agent = ["squash", "--from", "non_roots(agent_temp())", "--into", "roots(agent_temp())", "-m", "Agent: Temp squashed", "--editor"]
 cherry = ["duplicate", "-A", "@-"]
 
 [template-aliases]
