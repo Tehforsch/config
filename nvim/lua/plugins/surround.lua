@@ -23,6 +23,16 @@ return {
 					find = "&.-",
 					delete = "^(&)().-()()$",
 				},
+				["f"] = {
+					add = function()
+						local func_name = require("nvim-surround.config").get_input("Function name: ")
+						if func_name then
+							return { { func_name .. "(" }, { ")" } }
+						end
+					end,
+					find = "[%w_]+%b()",
+					delete = "^([%w_]+%()().-(%))()$",
+				},
 			},
 		})
 	end,
