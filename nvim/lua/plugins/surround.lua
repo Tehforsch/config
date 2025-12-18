@@ -17,6 +17,13 @@ return {
 				change = "cs",
 				change_line = "cS",
 			},
+			surrounds = {
+				["&"] = {
+					add = { "&", "" },
+					find = "&.-",
+					delete = "^(&)().-()()$",
+				},
+			},
 		})
 	end,
 }
