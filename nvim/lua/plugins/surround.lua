@@ -33,6 +33,16 @@ return {
 					find = "[%w_]+%b()",
 					delete = "^([%w_]+%()().-(%))()$",
 				},
+				["s"] = {
+					add = { "Some(", ")" },
+					find = "Some%b()",
+					delete = "^(Some%()().-(%))()$",
+				},
+				["o"] = {
+					add = { "Ok(", ")" },
+					find = "Ok%b()",
+					delete = "^(Ok%()().-(%))()$",
+				},
 			},
 		})
 	end,
