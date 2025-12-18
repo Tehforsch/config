@@ -14,6 +14,9 @@ keymap("n", ":", command_history, { desc = "Command history" })
 keymap("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 keymap("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
+keymap("n", "<C-o>", "<C-o>zzzv", { desc = "Jump back (centered)" })
+keymap("n", "<C-i>", "<C-i>zzzv", { desc = "Jump forward (centered)" })
+
 keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 keymap("x", "p", '"_dP', { desc = "Paste without yanking" })
@@ -60,8 +63,6 @@ end, { desc = "Switch project" })
 keymap("n", "<leader>pa", function()
 	require("telescope.builtin").live_grep()
 end, { desc = "Search in project" })
-
-keymap("n", "<leader>gb", ":Git blame<CR>", { desc = "Git blame" })
 
 keymap("n", "<localleader>s", function()
 	require("telescope.builtin").lsp_document_symbols()
