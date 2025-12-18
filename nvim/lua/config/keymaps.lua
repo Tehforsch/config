@@ -17,6 +17,9 @@ keymap("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 keymap("n", "<C-o>", "<C-o>zzzv", { desc = "Jump back (centered)" })
 keymap("n", "<C-i>", "<C-i>zzzv", { desc = "Jump forward (centered)" })
 
+keymap("n", "ga", "ea", { desc = "Append at end of word" })
+keymap("n", "gi", "bi", { desc = "Insert at beginning of word" })
+
 keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 keymap("x", "p", '"_dP', { desc = "Paste without yanking" })
