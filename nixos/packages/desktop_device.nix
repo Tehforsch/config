@@ -18,7 +18,7 @@
     vlc
     spotify
     discord
-    telegram-desktop
+    # telegram-desktop
     keepassxc
     inkscape
     gimp
