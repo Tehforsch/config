@@ -56,4 +56,8 @@
       KernelExperimental = "true";
     };
   };
+
+  environment.systemPackages = [
+    telegram-desktop
+  ];
 }
