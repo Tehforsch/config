@@ -37,6 +37,5 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.showmode = false
 vim.opt.cmdheight = 1
 
-vim.opt.winbar = "%{%v:lua.require('config.winbar').winbar()%}"
 vim.opt.laststatus = 0
 vim.opt.ruler = false
