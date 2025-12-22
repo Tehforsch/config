@@ -20,6 +20,16 @@ return {
 					prompt_prefix = "> ",
 					selection_caret = "> ",
 					path_display = { "truncate" },
+					layout_strategy = "horizontal",
+					layout_config = {
+						horizontal = {
+							preview_width = 0.6,
+							results_width = 0.4,
+						},
+						width = 0.95,
+						height = 0.90,
+						preview_cutoff = 120,
+					},
 					file_ignore_patterns = {
 						"node_modules",
 						".git/",
