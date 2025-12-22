@@ -40,6 +40,7 @@ return {
 						},
 						n = {
 							["q"] = actions.close,
+							["<Esc>"] = actions.close,
 						},
 					},
 					vimgrep_arguments = {
