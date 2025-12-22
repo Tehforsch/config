@@ -8,7 +8,9 @@ keymap("n", "<leader>^", "<C-^>", { desc = "Toggle to last buffer" })
 
 keymap("n", "<Esc>", ":noh<CR>", { desc = "Clear search highlighting" })
 
-keymap("n", "<leader>x", command_history, { desc = "Command history" })
+keymap("n", "<leader>x", function()
+	require("telescope.builtin").commands()
+end, { desc = "Commands" })
 keymap("n", ":", command_history, { desc = "Command history" })
 
 keymap("n", "n", "nzzzv", { desc = "Next search result (centered)" })
