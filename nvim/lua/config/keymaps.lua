@@ -67,12 +67,60 @@ end, { desc = "Switch project" })
 
 keymap("n", "<leader>pa", function()
 	local builtin = require("telescope.builtin")
+	local action_state = require("telescope.actions.state")
+	local actions = require("telescope.actions")
+	local conf = require("telescope.config").values
+
+	local ignore_enabled = true
+
+	local function toggle_ignore(prompt_bufnr)
+		local picker = action_state.get_current_picker(prompt_bufnr)
+		local prompt = picker:_get_prompt()
+
+		ignore_enabled = not ignore_enabled
+
+		actions.close(prompt_bufnr)
+
+		local additional_args = {}
+		if not ignore_enabled then
+			additional_args = { "--no-ignore", "--glob", "!.git/" }
+		end
+
+		builtin.live_grep({
+			default_text = prompt,
+			additional_args = function()
+				return additional_args
+			end,
+			attach_mappings = function(new_prompt_bufnr, map)
+				map("i", "<Space>", function()
+					local keys = vim.api.nvim_replace_termcodes(".*", true, false, true)
+					vim.api.nvim_feedkeys(keys, "n", false)
+				end)
+
+				map("n", "<C-i>", function()
+					toggle_ignore(new_prompt_bufnr)
+				end)
+				map("i", "<C-i>", function()
+					toggle_ignore(new_prompt_bufnr)
+				end)
+
+				return true
+			end,
+		})
+	end
 
 	builtin.live_grep({
 		attach_mappings = function(prompt_bufnr, map)
 			map("i", "<Space>", function()
 				local keys = vim.api.nvim_replace_termcodes(".*", true, false, true)
 				vim.api.nvim_feedkeys(keys, "n", false)
+			end)
+
+			map("n", "<C-i>", function()
+				toggle_ignore(prompt_bufnr)
+			end)
+			map("i", "<C-i>", function()
+				toggle_ignore(prompt_bufnr)
 			end)
 
 			return true

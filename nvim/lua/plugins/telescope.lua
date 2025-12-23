@@ -64,6 +64,10 @@ return {
 						"--hidden",
 						"--glob",
 						"!.git/",
+						"--glob",
+						"!*.svg",
+						"--glob",
+						"!*.lock",
 					},
 				},
 				pickers = {
