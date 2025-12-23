@@ -88,6 +88,10 @@ return {
 							},
 						},
 					},
+					diagnostics = {
+						severity_limit = "WARN",
+						severity_sort = "severity",
+					},
 				},
 				extensions = {
 					fzf = {
