@@ -37,12 +37,12 @@ return {
 
 			if vim.bo[bufnr].filetype == "rust" then
 				vim.keymap.set("n", "<localleader>p", function()
-					vim.lsp.buf_request(bufnr, "experimental/parentModule", vim.lsp.util.make_position_params(), function(_, result)
+					vim.lsp.buf_request(bufnr, "experimental/parentModule", vim.lsp.util.make_position_params(0, client.offset_encoding), function(_, result)
 						if not result or vim.tbl_isempty(result) then
 							vim.notify("No parent module found", vim.log.levels.INFO)
 							return
 						end
-						vim.lsp.util.jump_to_location(result[1], "utf-8")
+						vim.lsp.util.jump_to_location(result[1], client.offset_encoding)
 					end)
 				end, vim.tbl_extend("force", opts, { desc = "Go to parent module" }))
 			end
