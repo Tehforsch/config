@@ -66,7 +66,18 @@ keymap("n", "<leader>pf", function()
 end, { desc = "Switch project" })
 
 keymap("n", "<leader>pa", function()
-	require("telescope.builtin").live_grep()
+	local builtin = require("telescope.builtin")
+
+	builtin.live_grep({
+		attach_mappings = function(prompt_bufnr, map)
+			map("i", "<Space>", function()
+				local keys = vim.api.nvim_replace_termcodes(".*", true, false, true)
+				vim.api.nvim_feedkeys(keys, "n", false)
+			end)
+
+			return true
+		end,
+	})
 end, { desc = "Search in project" })
 
 keymap("n", "<localleader>s", function()
