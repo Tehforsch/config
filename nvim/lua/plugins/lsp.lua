@@ -161,5 +161,14 @@ return {
 				},
 			},
 		}
+
+		vim.lsp.enable("leanls")
+		vim.lsp.config.leanls = {
+			cmd = { "lean", "--server" },
+			filetypes = { "lean" },
+			root_markers = { "lakefile.lean", "lean-toolchain", "leanpkg.toml", ".git" },
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
 	end,
 }

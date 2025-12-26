@@ -101,6 +101,7 @@
         modules =
           [
             ./laptop.nix
+            ./mullvad.nix
           ]
           ++ desktop_device ++ work ++ personal;
       };

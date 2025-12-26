@@ -11,6 +11,7 @@
     ruff
     python312Packages.python-lsp-server
     nil # language server for nix
+    elan
 
     # User applications
     firefox
