@@ -39,3 +39,7 @@ vim.opt.cmdheight = 1
 
 vim.opt.laststatus = 0
 vim.opt.ruler = false
+
+vim.opt.wrap = true           -- Enable line wrapping
+vim.opt.linebreak = true      -- Wrap at word boundaries, not mid-word
+vim.opt.breakindent = true    -- Maintain indent when wrapping
