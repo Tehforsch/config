@@ -42,7 +42,7 @@ Hydra({
 	mode = "n",
 	body = "<leader>b",
 	hint = [[
- _n_: next   _p_: prev
+ _n_: next   _p_: prev   _d_: delete   _q_:quit
 ]],
 	config = {
 		color = "pink",
@@ -56,7 +56,9 @@ Hydra({
 	},
 	heads = {
 		{ "n", ":bnext<CR>", { desc = "next buffer" } },
+		{ "d", ":bd<CR>", { desc = "delete buffer" } },
 		{ "p", ":bprevious<CR>", { desc = "previous buffer" } },
+		{ "q", nil, { exit = true } },
 		{ "<Esc>", nil, { exit = true } },
 	},
 })
