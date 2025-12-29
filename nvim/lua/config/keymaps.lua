@@ -24,7 +24,6 @@ keymap("n", "gi", "bi", { desc = "Insert at beginning of word" })
 
 keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
-keymap("x", "p", '"_dP', { desc = "Paste without yanking" })
 
 keymap("n", "<leader>s", ":w<CR>", { desc = "Save file" })
 keymap("n", "<leader>ff", function()
