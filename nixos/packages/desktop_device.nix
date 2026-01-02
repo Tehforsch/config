@@ -38,6 +38,7 @@
     sqlite
     alejandra # nix formatter
     prettier
+    lean4
 
     # Reactivate this once I dont rebuild this once every day
     # inputs.torga.packages.x86_64-linux.torga-cli
