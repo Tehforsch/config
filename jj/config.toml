@@ -43,6 +43,7 @@ rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
 oplog = ["op", "log", "--reversed"]
 squash_agent = ["squash", "--from", "non_roots(agent_temp())", "--into", "roots(agent_temp())", "-m", "Agent: Temp squashed", "--editor"]
 cherry = ["duplicate", "-A", "@-"]
+log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'

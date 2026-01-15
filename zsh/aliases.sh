@@ -162,7 +162,7 @@ alias notify="$CONFIG/scripts/notify.sh"
 
 alias j="jj"
 alias js="jj squash"
-alias jw="jj stack"
+alias jw="jj log_hist"
 alias jf="jj git fetch"
 alias jp="jj git push"
 alias jr="jj restore"
