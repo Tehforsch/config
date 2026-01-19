@@ -110,6 +110,7 @@
         hostname = "rpi";
         modules = [
           ./syncthing.nix
+          ./blocky.nix
         ];
       };
     };
