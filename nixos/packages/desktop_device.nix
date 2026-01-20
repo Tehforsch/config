@@ -19,6 +19,7 @@
     vlc
     spotify
     discord
+    telegram-desktop
     keepassxc
     inkscape
     gimp
