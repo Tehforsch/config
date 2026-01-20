@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # Developer stuff
     kitty
@@ -49,7 +52,7 @@
     # Utilities
     usbutils
     dunst # notification daemon
-    (ffmpeg.override { withXcb = true; })
+    (ffmpeg.override {withXcb = true;})
     arandr
     xfce.tumbler
     ffmpegthumbnailer
@@ -64,7 +67,7 @@
     flameshot
     android-tools
     scrcpy
-    gvfs          # Virtual filesystem with MTP support
+    gvfs # Virtual filesystem with MTP support
 
     # Network stuff
     oath-toolkit
