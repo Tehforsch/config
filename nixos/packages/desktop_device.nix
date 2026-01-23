@@ -12,6 +12,7 @@
     python312Packages.python-lsp-server
     nil # language server for nix
 
+        steam
     # User applications
     firefox
     thunderbird
