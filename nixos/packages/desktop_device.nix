@@ -16,6 +16,7 @@
     nil # language server for nix
     elan
 
+        steam
     # User applications
     firefox
     thunderbird
