@@ -113,6 +113,13 @@
           ./blocky.nix
         ];
       };
+      netcup = make_system {
+        system = "x86_64-linux";
+        hostname = "netcup";
+        modules = [
+          ./ssl.nix
+        ];
+      };
     };
     images = {
       rpi =
