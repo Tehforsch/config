@@ -108,6 +108,8 @@ hotkeys:
     f s: !FilterBy sokobrane
     f i: !FilterBy no_project
     f n: !FilterBy now
+    u: Undo
+    C-r: Redo
   task_dialog:
     Enter: Confirm
     Esc: Cancel
