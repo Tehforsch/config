@@ -74,7 +74,7 @@
   services.calibre-web = {
     enable = true;
     listen = {
-      ip = "127.0.0.1";
+      ip = "0.0.0.0";
       port = 8083;
     };
     options = {
@@ -88,5 +88,5 @@
     });
   };
 
-  networking.firewall.allowedTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [80 443 5232 7000 8083 8337];
 }
