@@ -6,7 +6,7 @@
   services.radicale = {
     enable = true;
     settings = {
-      server.hosts = ["0.0.0.0:5232"];
+      server.hosts = ["127.0.0.1:5232"];
       auth.type = "none";
     };
   };
@@ -20,7 +20,7 @@
     enable = true;
     adminCredentialsFile = "/home/toni/resource/keys/on_server/miniflux";
     config = {
-      LISTEN_ADDR = "0.0.0.0:7000";
+      LISTEN_ADDR = "127.0.0.1:7000";
     };
   };
 
@@ -74,7 +74,7 @@
   services.calibre-web = {
     enable = true;
     listen = {
-      ip = "0.0.0.0";
+      ip = "127.0.0.1";
       port = 8083;
     };
     options = {
@@ -83,5 +83,5 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [80 443 5232 7000 8083 8337];
+  networking.firewall.allowedTCPPorts = [80 443];
 }
