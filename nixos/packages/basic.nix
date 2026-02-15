@@ -28,6 +28,7 @@
     sd
     difftastic
     stylua
+    sysz
   ];
 
   programs.direnv.enable = true;
