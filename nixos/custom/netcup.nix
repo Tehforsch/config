@@ -71,5 +71,17 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [80 443 5232 7000 8337];
+  services.calibre-web = {
+    enable = true;
+    listen = {
+      ip = "0.0.0.0";
+      port = 8083;
+    };
+    options = {
+      calibreLibrary = "/var/lib/calibre-web/library";
+      enableBookUploading = true;
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [80 443 5232 7000 8083 8337];
 }
