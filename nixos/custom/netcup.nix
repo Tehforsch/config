@@ -81,6 +81,11 @@
       calibreLibrary = "/var/lib/calibre-web/library";
       enableBookUploading = true;
     };
+    package = pkgs.calibre-web.overridePythonAttrs (old: {
+      dependencies =
+        old.dependencies
+        ++ [pkgs.python3Packages.jsonschema];
+    });
   };
 
   networking.firewall.allowedTCPPorts = [80 443];
