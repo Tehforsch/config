@@ -555,11 +555,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1770616737,
-        "narHash": "sha256-cun3gFMsHB3ojtvch8S5O1RawL0jnOolg4511BniPQ8=",
+        "lastModified": 1771140590,
+        "narHash": "sha256-ao6pvfTLjOd4P/nQbY+tNrWnTNiibFAXXtQfVdStYCo=",
         "ref": "refs/heads/main",
-        "rev": "2d724c888ba6ec6e1ea759079009eb7ff80c641a",
-        "revCount": 177,
+        "rev": "1bf272ed36b39cbc3a8e645c176c791574b50ade",
+        "revCount": 179,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/todo.git"
       },
