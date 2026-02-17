@@ -24,42 +24,6 @@
     };
   };
 
-  systemd.services.miniflux = {
-    wantedBy = pkgs.lib.mkForce [];
-  };
-
-  systemd.timers."miniflux-start" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "*-*-* 17:00:00";
-      Persistent = true;
-    };
-  };
-
-  systemd.services."miniflux-start" = {
-    description = "Start Miniflux RSS service";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.systemd}/bin/systemctl start miniflux.service";
-    };
-  };
-
-  systemd.timers."miniflux-stop" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "*-*-* 04:00:00";
-      Persistent = true;
-    };
-  };
-
-  systemd.services."miniflux-stop" = {
-    description = "Stop Miniflux RSS service";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.systemd}/bin/systemctl stop miniflux.service";
-    };
-  };
-
   systemd.user.services.torga = {
     enable = true;
     description = "torga";
