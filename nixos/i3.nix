@@ -22,7 +22,7 @@
     rofi
     i3wsr
     xdotool # For the runCommandInTerminalToTheRight.sh script
-    xorg.xmodmap
+    xmodmap
   ];
 
   # This can probably be done much easier but I couldnt figure out how to

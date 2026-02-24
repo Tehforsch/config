@@ -2,13 +2,15 @@
   services.mpd = {
     enable = true;
     user = "toni";
-    musicDirectory = "/home/toni/music";
-    extraConfig = ''
-      audio_output {
-      type "pipewire"
-      name "MPD output"
-      }
-    '';
+    settings = {
+      music_directory = "/home/toni/music";
+      audio_output = [
+        {
+          type = "pipewire";
+          name = "MPD output";
+        }
+      ];
+    };
     startWhenNeeded =
       true; # systemd feature: only start MPD service upon connection to its socket
   };

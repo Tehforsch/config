@@ -7,7 +7,7 @@
     # Developer stuff
     kitty
     meld
-    mold-wrapped
+    mold
 
     # Programming languages
     uv
@@ -54,7 +54,7 @@
     dunst # notification daemon
     (ffmpeg.override {withXcb = true;})
     arandr
-    xfce.tumbler
+    tumbler
     ffmpegthumbnailer
     dust
     ripgrep-all
