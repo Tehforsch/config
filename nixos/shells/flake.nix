@@ -89,11 +89,11 @@
         buildInputs = [ pkg-config cmake rust_stable clang libclang dbus alsa-lib
 
         # If on x11
-        xorg.libX11
-        xorg.libX11
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXrandr
+        libX11
+        libx11
+        libxcursor
+        libxi
+        libxrandr
         libxkbcommon
         fontconfig
 
@@ -103,10 +103,10 @@
             alsa-lib
             udev
             vulkan-loader
-            xorg.libX11
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXrandr
+            libx11
+            libxcursor
+            libxi
+            libxrandr
             libxkbcommon
             fontconfig
           ]}"
@@ -134,11 +134,11 @@
           vulkan-validation-layers
           udev
           # If on x11
-          xorg.libX11
-          xorg.libX11
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXrandr
+          libx11
+          libx11
+          libxcursor
+          libxi
+          libxrandr
           libxkbcommon
           (python3.withPackages (p: with p; [ pyyaml ]))
         ];
