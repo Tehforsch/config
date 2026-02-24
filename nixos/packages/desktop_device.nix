@@ -46,7 +46,7 @@
     sccache
 
     # Reactivate this once I dont rebuild this once every day
-    # inputs.torga.packages.x86_64-linux.torga-cli
+    inputs.torga.packages.x86_64-linux.torga-cli
     inputs.mpd_rofi.packages.x86_64-linux.default
 
     # Utilities
