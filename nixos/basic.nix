@@ -5,6 +5,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
   console.keyMap = "de-latin1-nodeadkeys";
 
   programs.zsh.enable = true;
