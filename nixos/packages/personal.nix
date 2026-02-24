@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     signal-desktop
     mumble
-    khal
     vdirsyncer
     qpwgraph
     wireshark

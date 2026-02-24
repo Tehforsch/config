@@ -41,13 +41,15 @@ in {
     wantedBy = [];
   };
 
-  systemd.user.services.calendarReminder = {
+  systemd.user.services.calendarReminder = let
+    python = pkgs.python3.withPackages (ps: [ps.icalendar ps.python-dateutil]);
+  in {
     enable = true;
     description = "calendar reminders";
     wantedBy = ["default.target"];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.python3}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.khal}/bin/khal ${pkgs.libnotify}/bin/notify-send";
+      ExecStart = "${python}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.libnotify}/bin/notify-send";
       Restart = "always";
       RestartSec = "10";
     };
