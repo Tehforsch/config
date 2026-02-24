@@ -4,8 +4,8 @@
   environment.systemPackages = with pkgs; [
     reaper
     borgbackup
-    beets
     wineWowPackages.stable
+    # beets
     yabridge
     yabridgectl
     qbittorrent
