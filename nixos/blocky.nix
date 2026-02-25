@@ -4,7 +4,7 @@
   services.blocky = {
     enable = true;
     settings = {
-      upstream.default = ["1.1.1.1" "1.0.0.1"];
+      upstream.default = ["192.168.178.1" "1.1.1.1" "1.0.0.1"];
 
       blocking = {
         blackLists = {
