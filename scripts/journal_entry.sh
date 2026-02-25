@@ -3,6 +3,12 @@ set -e
 
 JOURNAL_PATH=~/resource/journal
 
+# Process any images in the dump folder interactively
+if [ -d "$JOURNAL_PATH/dump" ] && [ "$(ls -A "$JOURNAL_PATH/dump" 2>/dev/null)" ]; then
+    echo "Found files in dump folder, launching interactive sorter..."
+    dump-sort
+fi
+
 # If no arguments provided, find the first day without an entry
 if [ $# -eq 0 ]; then
     # Start from 30 days ago and work forward to yesterday

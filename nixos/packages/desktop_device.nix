@@ -45,8 +45,8 @@
     lean4
     sccache
 
-    # Reactivate this once I dont rebuild this once every day
     inputs.torga.packages.x86_64-linux.torga-cli
+    inputs.journal.packages.x86_64-linux.dump-sort
     inputs.mpd_rofi.packages.x86_64-linux.default
 
     # Utilities
