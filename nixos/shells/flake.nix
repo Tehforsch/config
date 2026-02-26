@@ -40,7 +40,7 @@
       buildInputs = with pkgs; [ pkg-config cmake rustToolChain clang ];
     });
     makeScannerShell = (rustToolChain: mkShellWithAliases {
-      packages = [ pkgs.clang pkgs.mold-wrapped ];
+      packages = [ pkgs.clang pkgs.mold ];
       nativeBuildInputs = with pkgs.buildPackages; [
         rustToolChain
         file
@@ -60,6 +60,7 @@
         typos
         libclang
         net-snmp
+        capnproto
       ];
       shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
     });
