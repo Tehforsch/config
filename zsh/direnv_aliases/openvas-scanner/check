@@ -8,9 +8,9 @@ cd rust
 cargo fmt --check
 typos
 cargo test --all
-cargo test --all --features experimental
+cargo test --all --features native-rust-ssh
 cargo clippy --all-targets -- -D warnings 
-cargo clippy --all-targets --features experimental -- -D warnings  
+cargo clippy --all-targets --features native-rust-ssh -- -D warnings  
 
 set +e
 cd src
