@@ -124,6 +124,7 @@ return {
 		{ "<leader>gD", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
 		{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File history" },
 		{ "<leader>gH", "<cmd>DiffviewFileHistory<cr>", desc = "Branch history" },
+		{ "<leader>gm", "<cmd>DiffviewOpen -m<cr>", desc = "Open merge/conflicts" },
 		{ "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "Close diffview" },
 	},
 	opts = function()

@@ -45,6 +45,7 @@ squash_agent = ["squash", "--from", "non_roots(agent_temp())", "--into", "roots(
 cherry = ["duplicate", "-A", "@-"]
 log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed"]
 sh = ["show", "@-"]
+merge = ["resolve", "--tool", "nvim"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
@@ -53,6 +54,10 @@ sh = ["show", "@-"]
 [fix.tools.rustfmt]
 command = ["rustfmt"]
 patterns = ["glob:'**/*.rs'"]
+
+[merge-tools.nvim]
+program = "nvim"
+merge-args = ["-c", "DiffviewOpen -m"]
 
 
 # absolute magic
