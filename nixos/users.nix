@@ -2,7 +2,17 @@
   users.users.toni = {
     isNormalUser = true;
     description = "toni";
-    extraGroups = ["networkmanager" "wheel" "video" "input" "keyd" "audio" "docker" "wireshark"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "input"
+      "keyd"
+      "audio"
+      "docker"
+      "wireshark"
+      "dialout" # for permission to /dev/ttyUSBx
+    ];
     shell = pkgs.zsh;
 
     # Useful for RPI install, for example.
