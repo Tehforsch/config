@@ -5,6 +5,10 @@ default_icon = ""
 [options]
 no_names = true
 
+[aliases.name]
+".*vim.*" = "Vim"
+".*nvim.*" = "Vim"
+
 [icons]
 "kitty" = ""
 TelegramDesktop = ""
@@ -14,9 +18,17 @@ thunderbird = ""
 Zathura = ""
 default_icon = "💀"
 feh = ""
-Pavucontrol = "🎧"
+pavucontrol = "🎧"
 Zotero = "Z"
 pcmanfm = "🖿"
 Pcmanfm = "🖿"
 Spotify = ""
 spotify = ""
+KeePassXC = ""
+keepassxc = ""
+Gimp = ""
+gimp = ""
+Inkscape = ""
+inkscape = ""
+Vim = ""
+obsidian = ""
