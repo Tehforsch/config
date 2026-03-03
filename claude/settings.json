@@ -12,7 +12,18 @@
       "WebFetch(domain:lib.rs)"
     ]
   },
+  "model": "opus",
   "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jj commit -m 'Agent: Temp save'"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",
@@ -20,10 +31,6 @@
           {
             "type": "command",
             "command": "/home/toni/projects/config/scripts/run_cargo_fmt_in_rust_project.sh"
-          },
-          {
-            "type": "command",
-            "command": "jj commit -m 'Agent: Temp save'"
           }
         ]
       }
@@ -34,5 +41,5 @@
     "command": "bash /home/toni/projects/config/scripts/statusline_script.sh"
   },
   "alwaysThinkingEnabled": true,
-  "model": "opus"
+  "skipDangerousModePermissionPrompt": true
 }
