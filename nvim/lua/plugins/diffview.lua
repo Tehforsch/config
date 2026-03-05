@@ -115,6 +115,26 @@ local function diff_between_refs()
 		:find()
 end
 
+local function make_diff_keymaps(actions)
+	local nav = {
+		{ "n", "<localleader>fn", actions.select_next_entry, { desc = "Open the diff for the next file" } },
+		{ "n", "<localleader>fp", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
+		{ "n", "<localleader>f0", actions.select_first_entry, { desc = "Open the diff for the first file" } },
+		{ "n", "<localleader>f$", actions.select_last_entry, { desc = "Open the diff for the last file" } },
+		{ "n", "<localleader>vf", actions.focus_files, { desc = "Bring focus to the file panel" } },
+		{ "n", "<localleader>vt", actions.toggle_files, { desc = "Toggle the file panel." } },
+		{ "n", "<localleader>vc", actions.cycle_layout, { desc = "Cycle through available layouts." } },
+		{ "n", "<localleader>cn", actions.next_conflict, { desc = "Jump to the next conflict" } },
+		{ "n", "<localleader>cp", actions.prev_conflict, { desc = "Jump to the previous conflict" } },
+		{ "n", "<localleader>co", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
+		{ "n", "<localleader>ct", actions.conflict_choose("theirs"), { desc = "Choose the THEIRS version of a conflict" } },
+		{ "n", "<localleader>cb", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
+		{ "n", "<localleader>ca", actions.conflict_choose("all"), { desc = "Choose all the versions of a conflict" } },
+		{ "n", "<localleader>cx", actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
+	}
+	return nav
+end
+
 return {
 	"sindrets/diffview.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -129,6 +149,7 @@ return {
 	},
 	opts = function()
 		local actions = require("diffview.actions")
+		local keymaps = make_diff_keymaps(actions)
 		return {
 			enhanced_diff_hl = true,
 			view = {
@@ -137,24 +158,10 @@ return {
 				},
 			},
 			keymaps = {
-				view = {
-					-- The `view` bindings are active in the diff buffers, only when the current
-					-- tabpage is a Diffview.
-					{ "n", "<localleader>fn", actions.select_next_entry, { desc = "Open the diff for the next file" } },
-					{ "n", "<localleader>fp", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
-					{ "n", "<localleader>f0", actions.select_first_entry, { desc = "Open the diff for the first file" } },
-					{ "n", "<localleader>f$", actions.select_last_entry, { desc = "Open the diff for the last file" } },
-					{ "n", "<localleader>vf", actions.focus_files, { desc = "Bring focus to the file panel" } },
-					{ "n", "<localleader>vt", actions.toggle_files, { desc = "Toggle the file panel." } },
-					{ "n", "<localleader>vc", actions.cycle_layout, { desc = "Cycle through available layouts." } },
-					{ "n", "<localleader>cn", actions.next_conflict, { desc = "In the merge-tool: jump to the next conflict" } },
-					{ "n", "<localleader>cp", actions.prev_conflict, { desc = "In the merge-tool: jump to the previous conflict" } },
-					{ "n", "<localleader>co", actions.conflict_choose("ours"), { desc = "Choose the OURS version of a conflict" } },
-					{ "n", "<localleader>ct", actions.conflict_choose("theirs"), { desc = "Choose the THEIRS version of a conflict" } },
-					{ "n", "<localleader>cb", actions.conflict_choose("base"), { desc = "Choose the BASE version of a conflict" } },
-					{ "n", "<localleader>ca", actions.conflict_choose("all"), { desc = "Choose all the versions of a conflict" } },
-					{ "n", "<localleader>cx", actions.conflict_choose("none"), { desc = "Delete the conflict region" } },
-				},
+				view = keymaps,
+				diff2 = keymaps,
+				diff3 = keymaps,
+				diff4 = keymaps,
 				file_panel = {
 					{ "n", "j", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
 					{ "n", "<down>", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
