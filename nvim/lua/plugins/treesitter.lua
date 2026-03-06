@@ -6,6 +6,7 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function()
+		vim.treesitter.language.register("rust", "molt")
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 		require("nvim-treesitter.configs").setup({
