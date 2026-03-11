@@ -14,12 +14,12 @@
   },
   "model": "opus",
   "hooks": {
-    "Stop": [
+    "PostToolUse": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "jj commit -m 'Agent: Temp save'"
+            "command": "jj commit -m 'TEMP'"
           }
         ]
       }

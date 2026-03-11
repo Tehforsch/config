@@ -16,8 +16,8 @@ conflict-marker-style = "git"
 'active(rev)' = '(ancestors(rev) | descendants(rev)) ~ immutable()'
 'user(x)' = 'author(x) | committer(x)'
 
-'agent_temp()' = 'agent_temp(@)'
-'agent_temp(x)' = "ancestors(x) & subject(exact:\"Agent: Temp save\")"
+'temp()' = 'temp(@)'
+'temp(x)' = "ancestors(x) & subject(exact:\"TEMP\")"
 
 'non_roots(x)' = 'x ~ roots(x)'
 
@@ -41,7 +41,7 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
 oplog = ["op", "log", "--reversed"]
-squash_agent = ["squash", "--from", "non_roots(agent_temp())", "--into", "roots(agent_temp())", "-m", "Agent: Temp squashed", "--editor"]
+squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
 cherry = ["duplicate", "-A", "@-"]
 log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed"]
 sh = ["show", "@-"]
