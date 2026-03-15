@@ -14,7 +14,7 @@
   },
   "model": "opus",
   "hooks": {
-    "PostToolUse": [
+    "Stop": [
       {
         "hooks": [
           {

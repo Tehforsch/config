@@ -4,7 +4,6 @@ alias lt="exa --tree"
 alias cat="bat"
 alias e="$CONFIG/scripts/openVimInKitty.sh"
 alias vim="nvim"
-alias agg="rga-fzf"
 
 alias c="check"
 
@@ -27,6 +26,7 @@ alias cr="cargo run"
 alias crr="cargo run --release"
 alias ct="cargo test"
 alias ctl="cargo test --lib"
+alias cf="cargo fmt"
 
 alias cc="cargo check"
 alias ccl="cargo check --lib"

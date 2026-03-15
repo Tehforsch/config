@@ -47,6 +47,7 @@ log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed"]
 sh = ["show", "@-"]
 merge = ["resolve", "--tool", "nvim"]
 track = ["bookmark", "track", "--remote=origin"]
+ab = ["abandon"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
