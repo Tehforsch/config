@@ -46,6 +46,7 @@ cherry = ["duplicate", "-A", "@-"]
 log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed"]
 sh = ["show", "@-"]
 merge = ["resolve", "--tool", "nvim"]
+track = ["bookmark", "track", "--remote=origin"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
