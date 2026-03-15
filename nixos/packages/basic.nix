@@ -7,6 +7,7 @@
     neovim
     git
     jujutsu
+    jjui
     delta
     fd
     bat
