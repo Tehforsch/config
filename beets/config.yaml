@@ -5,6 +5,13 @@ plugins:
     mpdupdate
     fetchart
     embedart
+    chroma
+    musicbrainz
+musicbrainz:
+    host: musicbrainz.org
+    ratelimit: 1
+    ratelimit_interval: 1.0
+    searchlimit: 5
 import:
     move: yes
 ftintitle:

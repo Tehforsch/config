@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     reaper
     borgbackup
-    # beets
+    beets
     wineWow64Packages.stable
     yabridge
     yabridgectl
