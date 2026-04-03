@@ -82,6 +82,7 @@
             ./mullvad.nix
             ./paperless.nix
             ./android_mounting.nix
+            ./ollama.nix
           ]
           ++ desktop_device ++ work ++ personal;
       };

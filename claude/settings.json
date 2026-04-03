@@ -41,5 +41,6 @@
     "command": "bash /home/toni/projects/config/scripts/statusline_script.sh"
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true
 }
