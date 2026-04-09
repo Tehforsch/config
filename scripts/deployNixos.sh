@@ -17,4 +17,8 @@ if [[ -d "$syncthing_keys_dir" ]]; then
 fi
 
 echo "Building nixos"
-nixos-rebuild switch --target-host $1 --sudo --ask-sudo-password --flake $config/nixos/#$1
+build_host_args=()
+if [[ "$1" != "rpi" ]]; then
+    build_host_args=(--build-host $1)
+fi
+nixos-rebuild switch --target-host $1 "${build_host_args[@]}" --sudo --ask-sudo-password --flake $config/nixos/#$1
