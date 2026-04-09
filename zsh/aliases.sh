@@ -104,7 +104,7 @@ function nixsw() {
         cores=4
         jobs=8
     fi
-    sudo nixos-rebuild --max-jobs $jobs --cores $cores switch --flake ~/projects/config/nixos
+    sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild --max-jobs $jobs --cores $cores switch --flake ~/projects/config/nixos
 }
 
 function nhsw() {
