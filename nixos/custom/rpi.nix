@@ -17,7 +17,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${inputs.personalbot.packages.aarch64-linux.default}/bin/python ${inputs.personalbot.packages.aarch64-linux.default}/lib/python3.12/site-packages/main.py";
+      ExecStart = "${inputs.personalbot.packages.aarch64-linux.default}/bin/personalbot";
       Restart = "on-failure";
       User = "toni";
     };
