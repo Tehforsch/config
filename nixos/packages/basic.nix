@@ -30,6 +30,7 @@
     difftastic
     stylua
     sysz
+    hurl # Temporary
   ];
 
   programs.direnv.enable = true;
