@@ -6,7 +6,7 @@
       music_directory = "/home/toni/music";
       audio_output = [
         {
-          type = "pipewire";
+          type = "pulse";
           name = "MPD output";
         }
       ];
