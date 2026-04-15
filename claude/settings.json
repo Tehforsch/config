@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jj commit -m 'TEMP'"
+            "command": "[ \"$(jj log -r '@' --no-graph -T 'empty')\" = \"false\" ] && jj commit -m 'TEMP' || true"
           }
         ]
       }
