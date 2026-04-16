@@ -62,7 +62,35 @@ Hydra({
 })
 
 keymap("n", "<leader>pf", function()
-	require("telescope").extensions.projects.projects()
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local conf = require("telescope.config").values
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+
+	local projects_dir = vim.fn.expand("~/projects")
+	local dirs = vim.fn.globpath(projects_dir, "*", false, true)
+	dirs = vim.tbl_filter(function(d) return vim.fn.isdirectory(d) == 1 end, dirs)
+
+	pickers.new({}, {
+		prompt_title = "Projects",
+		finder = finders.new_table({
+			results = dirs,
+			entry_maker = function(entry)
+				return { value = entry, display = vim.fn.fnamemodify(entry, ":t"), ordinal = entry }
+			end,
+		}),
+		sorter = conf.generic_sorter({}),
+		attach_mappings = function(prompt_bufnr)
+			actions.select_default:replace(function()
+				actions.close(prompt_bufnr)
+				local selection = action_state.get_selected_entry()
+				vim.cmd.cd(selection.value)
+				require("telescope.builtin").find_files()
+			end)
+			return true
+		end,
+	}):find()
 end, { desc = "Switch project" })
 
 keymap("n", "<leader>pa", function()
