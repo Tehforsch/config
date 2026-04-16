@@ -5,6 +5,7 @@
     zsh
     vim
     neovim
+    tree-sitter
     git
     jujutsu
     jjui
