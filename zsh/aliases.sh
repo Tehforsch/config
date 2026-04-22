@@ -131,7 +131,7 @@ alias transfer="rsync --archive --stats --progress --human-readable"
 alias dlc="$CONFIG/scripts/copyLastDownload.sh"
 alias kp="$scripts/killProcess.sh"
 alias ka="killall"
-alias shut="sudo shutdown -h 0"
+alias shut="shutdown -h 0"
 
 alias timer="$CONFIG/scripts/timer/timer.sh"
 alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
