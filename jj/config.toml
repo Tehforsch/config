@@ -56,7 +56,8 @@ l = ["log", "--reversed"]
 
 
 [fix.tools.rustfmt]
-command = ["rustfmt"]
+enabled = false
+command = ["rustfmt", "--emit", "stdout"]
 patterns = ["glob:'**/*.rs'"]
 
 [merge-tools.nvim]
