@@ -12,7 +12,6 @@
       "WebFetch(domain:lib.rs)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "Stop": [
       {
