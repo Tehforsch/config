@@ -145,7 +145,7 @@
           nativeBuildInputs = [
             clang
             pkg-config
-            rust_stable
+            rust_wasm
           ];
           buildInputs = [
             pkg-config
