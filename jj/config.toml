@@ -6,12 +6,12 @@ email = "mail@tonipeter.de"
 
 [ui]
 paginate = "never"
-default-command = ["log", "--reversed", "--limit", "50", "-r", "present(@) | ancestors(immutable_heads().., 2) | present(trunk())"]
-# default-command = ["log", "--reversed", "--limit", "50", "-r", "ancestors(trunk().., 2)"]
+default-command = ["log", "--reversed", "-r", "ancestors(trunk().., 2)", "-T", "builtin_log_oneline"]
 # While my tools don't integrate with the new ones
 conflict-marker-style = "git"
 
 [revset-aliases]
+'default_log' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'active(rev)' = '(ancestors(rev) | descendants(rev)) ~ immutable()'
 'user(x)' = 'author(x) | committer(x)'
@@ -33,8 +33,9 @@ conflict-marker-style = "git"
 'open()' = 'stack(mine() | @, 1)'
 
 [aliases]
+d = ["log", "--reversed", "--limit", "50", "-T", "builtin_log_oneline ++ self.diff().stat()"]
 stack = ["log", "-r", "stack(@)", "--reversed"]
-long = ["l", "-T", "builtin_log_detailed"]
+long = ["log", "-T", "builtin_log_detailed"]
 sl = ["log", "-T", "builtin_log_compact ++ self.diff().files().map(|f| f.status() ++ ' ' ++ f.path()).join('\n')"]
 fetch = ["git", "fetch"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
@@ -43,15 +44,16 @@ rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
 oplog = ["op", "log", "--reversed"]
 squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
 cherry = ["duplicate", "-A", "@-"]
-log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed"]
-sh = ["show", "@-"]
+log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed", "-T", "builtin_log_oneline"]
 merge = ["resolve", "--tool", "nvim"]
 track = ["bookmark", "track", "--remote=origin"]
 ab = ["abandon"]
+l = ["log", "--reversed"]
 
 [template-aliases]
-'format_short_id(id)' = 'id.shortest()'
-'format_timestamp(timestamp)' = 'timestamp.ago()'
+# 'format_short_id(id)' = 'id.shortest()'
+# 'format_timestamp(timestamp)' = 'timestamp.ago()'
+
 
 [fix.tools.rustfmt]
 command = ["rustfmt"]
