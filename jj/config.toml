@@ -33,27 +33,27 @@ conflict-marker-style = "git"
 'open()' = 'stack(mine() | @, 1)'
 
 [aliases]
-d = ["log", "--reversed", "--limit", "50", "-T", "builtin_log_oneline ++ self.diff().stat()"]
-stack = ["log", "-r", "stack(@)", "--reversed"]
-long = ["log", "-T", "builtin_log_detailed"]
-sl = ["log", "-T", "builtin_log_compact ++ self.diff().files().map(|f| f.status() ++ ' ' ++ f.path()).join('\n')"]
-fetch = ["git", "fetch"]
+# Shorter abbreviations
+ab = ["abandon"]
+logr = ["log", "--reversed"]
+oplog = ["op", "log", "--reversed"]
+merge = ["resolve", "--tool", "nvim"]
+
+# Useful logs
+stack = ["logr", "-r", "stack(@)"]
+difflog = ["logr", "--limit", "50", "-T", "builtin_log_oneline ++ self.diff().stat()"]
+wip = ["logr", "-r", "all() & ~untracked_remote_bookmarks() & ~root()::trunk()"]
+latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
+
+# Other helpful aliases
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
-rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
-oplog = ["op", "log", "--reversed"]
-squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
-cherry = ["duplicate", "-A", "@-"]
-log_hist = ["log", "-r", "::@", "--limit", "30", "--reversed", "-T", "builtin_log_oneline"]
-merge = ["resolve", "--tool", "nvim"]
 track = ["bookmark", "track", "--remote=origin"]
-ab = ["abandon"]
-l = ["log", "--reversed"]
+squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
+rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
 
-[template-aliases]
-# 'format_short_id(id)' = 'id.shortest()'
-# 'format_timestamp(timestamp)' = 'timestamp.ago()'
-
+[templates]
+log = "builtin_log_oneline"
 
 [fix.tools.rustfmt]
 enabled = false
@@ -63,9 +63,3 @@ patterns = ["glob:'**/*.rs'"]
 [merge-tools.nvim]
 program = "nvim"
 merge-args = ["-c", "DiffviewOpen -m"]
-
-
-# absolute magic
-# [revsets]
-# # Prioritize the current bookmark
-# short-prefixes = "(main..@)::"
