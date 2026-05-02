@@ -6,7 +6,7 @@ email = "mail@tonipeter.de"
 
 [ui]
 paginate = "never"
-default-command = ["log", "--reversed", "-r", "ancestors(trunk().., 2)", "-T", "builtin_log_oneline"]
+default-command = ["logr"]
 # While my tools don't integrate with the new ones
 conflict-marker-style = "git"
 
@@ -19,6 +19,9 @@ conflict-marker-style = "git"
 'temp()' = 'temp(@)'
 'temp(x)' = "ancestors(x) & subject(exact:\"TEMP\")"
 
+'wip()' = 'wip(@)'
+'wip(x)' = "subject(glob:\"{wip*,WIP*}\")"
+
 'non_roots(x)' = 'x ~ roots(x)'
 
 # https://github.com/jj-vcs/jj/discussions/5812#discussioncomment-12328051
@@ -29,6 +32,7 @@ conflict-marker-style = "git"
 'stack()' = 'ancestors(reachable(@, mutable()), 2)'
 'stack(x)' = 'ancestors(reachable(x, mutable()), 2)'
 'stack(x, n)' = 'ancestors(reachable(x, mutable()), n)'
+'branch(x)' = 'stack(x, 1)'
 
 'open()' = 'stack(mine() | @, 1)'
 
@@ -42,7 +46,7 @@ merge = ["resolve", "--tool", "nvim"]
 # Useful logs
 stack = ["logr", "-r", "stack(@)"]
 difflog = ["logr", "--limit", "50", "-T", "builtin_log_oneline ++ self.diff().stat()"]
-wip = ["logr", "-r", "all() & ~untracked_remote_bookmarks() & ~root()::trunk()"]
+open = ["logr", "-r", "mutable() & (present(@) | ancestors(immutable_heads().., 2) | present(trunk()))"]
 latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
 
 # Other helpful aliases
@@ -51,6 +55,17 @@ retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 track = ["bookmark", "track", "--remote=origin"]
 squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
 rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
+
+# merged-bookmarks
+merged_bookmarks = ["bookmark", "list", "-r", "all() ~ mutable() ~ trunk()", "-T", "self.name() ++ ' '"]
+# struggled to use bookmark list for this one because
+# the revisions that some of these point to don't even show
+# up in `all()`. Wasn't sure how to fix that, so here we go with
+# jj log instead.
+# use this as:
+# jb track $(j merged_remote_bookmarks | sed "s/@origin//g") 
+# jb delete $(j merged_remote_bookmarks | sed "s/@origin//g") 
+merged_remote_bookmarks = ["log", "-r", "all() & remote_bookmarks() ~ mutable() ~ trunk()", "-T", "self.bookmarks().join(' ') ++ ' '", "--no-graph"]
 
 [templates]
 log = "builtin_log_oneline"
