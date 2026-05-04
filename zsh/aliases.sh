@@ -173,6 +173,10 @@ alias jds="jj diff --stat"
 alias jss="jj show @-"
 alias jrl="j resolve -l"
 
+function jgr() {
+    jj logr -r "description(substring:$1)"
+}
+
 alias glf="forgit::log"
 alias gdf="forgit::diff"
 alias gdcf="forgit::diff --cached"
