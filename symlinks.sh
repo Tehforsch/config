@@ -30,6 +30,13 @@ function make_symlink {
     fi
 }
 
+function copy {
+    target="$CONFIG/$1"
+    name="$HOME/$2"
+    mkdir -p $(dirname "$name")
+    cp $target $name
+}
+
 # The good, following the XDG_CONFIG_DIR structure
 make_symlink xdg/user-dirs.dirs .config/user-dirs.dirs
 make_symlink beets/config.yaml .config/beets/config.yaml
@@ -52,7 +59,6 @@ make_symlink bash/inputrc.sh .config/readline/inputrc # INPUTRC
 make_symlink git/gitconfig.conf .config/git/config
 make_symlink vim/init.vim .config/vim/vimrc
 make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
-make_symlink flameshot/flameshot.ini .config/flameshot/flameshot.ini
 make_symlink helix/config.toml .config/helix/config.toml
 make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink nushell/env.nu .config/nushell/env.nu
@@ -80,3 +86,6 @@ make_symlink ssh/config .ssh/config
 make_symlink claude/settings.json .claude/settings.json
 make_symlink claude/CLAUDE.md .claude/CLAUDE.md
 make_symlink xkb/symbols/custom .config/xkb/symbols/custom
+
+# The ANNOYING, combining useful config with state. Simply copy this
+copy flameshot/flameshot.ini .config/flameshot/flameshot.ini
