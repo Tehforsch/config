@@ -43,3 +43,9 @@ vim.opt.ruler = false
 vim.opt.wrap = true           -- Enable line wrapping
 vim.opt.linebreak = true      -- Wrap at word boundaries, not mid-word
 vim.opt.breakindent = true    -- Maintain indent when wrapping
+
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		vim.opt_local.formatoptions:remove("o")
+	end,
+})
