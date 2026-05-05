@@ -62,6 +62,21 @@
         '';
       };
     };
+    virtualHosts."rolf.tonipeter.de" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3001";
+        extraConfig = ''
+          client_max_body_size 200M;
+          proxy_read_timeout 300s;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
   };
 
   # Open firewall ports

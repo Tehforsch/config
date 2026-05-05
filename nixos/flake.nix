@@ -14,6 +14,7 @@
     mpd_rofi = {url = "github:tehforsch/mpd_rofi";};
     musnix = {url = "github:musnix/musnix";};
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    rolf.url = "git+ssh://git@github.com/tehforsch/Rolf.git?dir=deployment";
   };
 
   outputs = inputs @ {

@@ -164,6 +164,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_10": {
+      "locked": {
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1744536153,
@@ -278,16 +294,16 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1770197578,
-        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "lastModified": 1751274312,
+        "narHash": "sha256-/bVBlRpECLVzjV19t5KMdMFWSwKLtb5RyXdjz3LJT+g=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "rev": "50ab793786d9de88ee30ec4e4c24fb4236fc2674",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -413,6 +429,26 @@
         "type": "github"
       }
     },
+    "rolf": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_9"
+      },
+      "locked": {
+        "dir": "deployment",
+        "lastModified": 1778002937,
+        "narHash": "sha256-WV1aYAU4MVhEWXlFe4hXS/KPtqiFGCj8Fy6q3FQLLvU=",
+        "ref": "refs/heads/main",
+        "rev": "d939a89e766f0053e6991d00fc111ee5d7007750",
+        "revCount": 6,
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/Rolf.git"
+      },
+      "original": {
+        "dir": "deployment",
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/Rolf.git"
+      }
+    },
     "root": {
       "inputs": {
         "journal": "journal",
@@ -422,6 +458,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_7",
         "personalbot": "personalbot",
+        "rolf": "rolf",
         "rust-overlay": "rust-overlay_3",
         "torga": "torga"
       }
@@ -551,7 +588,7 @@
     "torga": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_9",
+        "nixpkgs": "nixpkgs_10",
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
