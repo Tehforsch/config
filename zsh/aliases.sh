@@ -162,19 +162,19 @@ alias tt="$CONFIG/scripts/run_torga.sh"
 alias notify="$CONFIG/scripts/notify.sh"
 
 alias j="jj"
-alias js="jj squash"
-alias jw="jj stack"
 alias jf="jj git fetch"
 alias jp="jj git push --tracked"
-alias jr="jj restore"
 alias jb="jj bookmark"
 alias jd="jj diff"
 alias jds="jj diff --stat"
-alias jss="jj show @-"
-alias jrl="j resolve -l"
+alias jn="jj new"
+alias js="jj squash"
 
-function jgr() {
-    jj logr -r "description(substring:$1)"
+# currently unused but might be useful if i decide to do this again
+function select_jj_rev() {
+    change_id=$(jj log | fzf --ansi --height 40% --reverse | awk "{print \$1}")
+    [ -z "$change_id" ] && exit 0
+    echo "$change_id"
 }
 
 alias glf="forgit::log"

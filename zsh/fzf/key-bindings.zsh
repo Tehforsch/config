@@ -117,7 +117,7 @@ bindkey -M viins '^R' fzf-history-widget
 
 # CTRL-S - Insert selected jj revision change ID into the command line
 __fzf_jj_revisions() {
-  local cmd="jj log --no-graph -T 'change_id.short() ++ \" \" ++ description.first_line() ++ \"\n\"'"
+  local cmd="jj select_from_revisions"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local selection
   selection=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-}" $(__fzfcmd) +m)

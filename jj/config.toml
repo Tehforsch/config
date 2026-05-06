@@ -10,6 +10,44 @@ default-command = ["logr"]
 # While my tools don't integrate with the new ones
 conflict-marker-style = "git"
 
+[template-aliases]
+'format_short_id(id)' = 'id.shortest()'
+# This is copied from the original definition of the template
+# in https://github.com/jj-vcs/jj/blob/f7def80cfae7fe779e1c196b29467480b31b2efa/cli/src/config/templates.toml#L138
+# but it swaps the change id and commit id around, to make it easier
+# for me to visually see the change id which is more useful than the
+# commit id
+'log_oneline' = 'log_oneline(self)'
+'log_oneline(commit)' = '''
+if(commit.root(),
+  format_root_commit(commit),
+  label(
+    separate(" ",
+      if(commit.current_working_copy(), "working_copy"),
+      if(commit.immutable(), "immutable", "mutable"),
+      if(commit.conflict(), "conflicted"),
+    ),
+    separate(" ",
+      commit.commit_id().short(),
+      format_short_signature_oneline(commit.author()),
+      format_timestamp(commit_timestamp(commit)),
+      pad_end(2, format_short_change_id_with_change_offset(commit)),
+      commit.bookmarks(),
+      commit.tags(),
+      commit.working_copies(),
+      format_commit_labels(commit),
+      if(config("ui.show-cryptographic-signatures").as_boolean(),
+        format_short_cryptographic_signature(commit.signature())
+      ),
+      if(commit.empty(), empty_commit_marker),
+      if(commit.description(),
+        commit.description().first_line(),
+        label(if(commit.empty(), "empty"), description_placeholder),
+      ),
+    ) ++ "\n",
+  )
+)
+'''
 [revset-aliases]
 'default_log' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
@@ -45,7 +83,7 @@ merge = ["resolve", "--tool", "nvim"]
 
 # Useful logs
 stack = ["logr", "-r", "stack(@)"]
-difflog = ["logr", "--limit", "50", "-T", "builtin_log_oneline ++ self.diff().stat()"]
+difflog = ["logr", "--limit", "50", "-T", "log_oneline ++ self.diff().stat()"]
 open = ["logr", "-r", "mutable() & (present(@) | ancestors(immutable_heads().., 2) | present(trunk()))"]
 latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
 
@@ -55,6 +93,10 @@ retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 track = ["bookmark", "track", "--remote=origin"]
 squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
 rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
+
+# A utility to allow quick selection of revisions via fzf. Triggered by
+# C-s in zsh and the nf alias
+select_from_revisions = ['log', '--no-graph', '-T', 'change_id.shortest() ++ " " ++ if(local_bookmarks, "[ " ++ local_bookmarks.join(", ") ++ " ] ", "") ++ description.first_line() ++ "\n"', "-r", "(default_log | bookmarks()) ~ empty()"]
 
 # merged-bookmarks
 merged_bookmarks = ["bookmark", "list", "-r", "all() ~ mutable() ~ trunk()", "-T", "self.name() ++ ' '"]
@@ -66,9 +108,10 @@ merged_bookmarks = ["bookmark", "list", "-r", "all() ~ mutable() ~ trunk()", "-T
 # jb track $(j merged_remote_bookmarks | sed "s/@origin//g") 
 # jb delete $(j merged_remote_bookmarks | sed "s/@origin//g") 
 merged_remote_bookmarks = ["log", "-r", "all() & remote_bookmarks() ~ mutable() ~ trunk()", "-T", "self.bookmarks().join(' ') ++ ' '", "--no-graph"]
+grep = ["util", "exec", "--", "bash", "-c", "jj log --reversed -r \"description(substring:$1)\"", ""]
 
 [templates]
-log = "builtin_log_oneline"
+log = "log_oneline"
 
 [fix.tools.rustfmt]
 enabled = false
