@@ -3,6 +3,11 @@ return {
 	event = "VeryLazy",
 	config = function()
 		require("Comment").setup({
+			pre_hook = function()
+				if vim.bo.filetype == "toml" then
+					return "# %s"
+				end
+			end,
 			toggler = {
 				line = "gcc",
 				block = "gbc",

@@ -46,6 +46,7 @@ vim.opt.breakindent = true    -- Maintain indent when wrapping
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
-		vim.opt_local.formatoptions:remove("o")
+		vim.opt_local.formatoptions:remove("o") -- don't auto-comment on 'o'/'O' in normal mode
+		vim.opt_local.formatoptions:append("r") -- do auto-comment on <Enter> in insert mode
 	end,
 })
