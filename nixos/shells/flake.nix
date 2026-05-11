@@ -174,7 +174,7 @@
             clang
             libclang
             prettier
-            (python3.withPackages (p: with p; [numpy matplotlib yaml]))
+            (python3.withPackages (p: with p; [numpy matplotlib pyyaml]))
           ];
         };
         dioxus = mkShellWithAliases {

@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    pipewire.jack
     reaper
     borgbackup
     beets
