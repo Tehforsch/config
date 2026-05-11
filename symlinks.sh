@@ -85,6 +85,7 @@ make_symlink bash/bashrc.sh .bashrc
 make_symlink ssh/config .ssh/config
 make_symlink claude/settings.json .claude/settings.json
 make_symlink claude/CLAUDE.md .claude/CLAUDE.md
+make_symlink pi/AGENTS.md .pi/agent/AGENTS.md
 make_symlink xkb/symbols/custom .config/xkb/symbols/custom
 
 # The ANNOYING, combining useful config with state. Simply copy this
