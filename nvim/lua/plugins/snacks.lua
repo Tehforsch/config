@@ -7,6 +7,11 @@ return {
 		picker = {
 			enabled = true,
 			ui_select = true,
+			sources = {
+				files = {
+					exclude = { "*.ogg", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.mp3", "*.wav", "*.flac", "*.svg" },
+				},
+			},
 			layout = {
 				layout = {
 					box = "vertical",
