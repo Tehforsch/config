@@ -3,8 +3,23 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
-		input = {
+		input = { enabled = true },
+		picker = {
 			enabled = true,
+			ui_select = true,
+			layout = {
+				layout = {
+					box = "vertical",
+					width = 0.95,
+					height = 0.92,
+					border = true,
+					title = "{title} {live} {flags}",
+					title_pos = "center",
+					{ win = "input", height = 1, border = "bottom" },
+					{ win = "list", height = 0.25, border = "none" },
+					{ win = "preview", title = "{preview}", border = "top" },
+				},
+			},
 		},
 	},
 }

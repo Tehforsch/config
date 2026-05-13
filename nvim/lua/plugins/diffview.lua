@@ -1,11 +1,5 @@
 local function diff_between_refs()
-	local pickers = require("telescope.pickers")
-	local finders = require("telescope.finders")
-	local conf = require("telescope.config").values
-	local actions = require("telescope.actions")
-	local action_state = require("telescope.actions.state")
-
-	local function get_git_refs()
+	local function get_refs()
 		local refs = { "HEAD", "HEAD~1", "HEAD~2", "HEAD~3" }
 		local handle = io.popen("git for-each-ref --format='%(refname:short)' refs/heads refs/remotes")
 		if handle then
@@ -14,105 +8,25 @@ local function diff_between_refs()
 			end
 			handle:close()
 		end
-		return refs
+		return vim.tbl_map(function(r) return { text = r } end, refs)
 	end
 
-	local first_ref = nil
-
-	local function select_first_ref(prompt_bufnr)
-		local selection = action_state.get_selected_entry()
-		if not selection then
-			return
-		end
-		first_ref = selection[1]
-		actions.close(prompt_bufnr)
-
-		pickers
-			.new({}, {
-				prompt_title = "Select Second Ref (comparing with " .. first_ref .. ")",
-				finder = finders.new_table({
-					results = get_git_refs(),
-				}),
-				sorter = conf.generic_sorter({}),
-				attach_mappings = function(prompt_bufnr2, map)
-					actions.select_default:replace(function()
-						local selection2 = action_state.get_selected_entry()
-						local picker = action_state.get_current_picker(prompt_bufnr2)
-						local prompt = picker:_get_prompt()
-						actions.close(prompt_bufnr2)
-
-						local second_ref
-						if selection2 then
-							second_ref = selection2[1]
-						elseif prompt and prompt ~= "" then
-							second_ref = prompt
-						else
-							return
-						end
-						vim.cmd("DiffviewOpen " .. first_ref .. ".." .. second_ref)
-					end)
-					return true
+	Snacks.picker.pick({
+		title = "Select First Ref",
+		items = get_refs(),
+		confirm = function(p1, item)
+			p1:close()
+			local first_ref = item.text
+			Snacks.picker.pick({
+				title = "Select Second Ref (vs " .. first_ref .. ")",
+				items = get_refs(),
+				confirm = function(p2, item2)
+					p2:close()
+					vim.cmd("DiffviewOpen " .. first_ref .. ".." .. item2.text)
 				end,
 			})
-			:find()
-	end
-
-	pickers
-		.new({}, {
-			prompt_title = "Select First Ref",
-			finder = finders.new_table({
-				results = get_git_refs(),
-			}),
-			sorter = conf.generic_sorter({}),
-			attach_mappings = function(prompt_bufnr, map)
-				actions.select_default:replace(function()
-					local selection = action_state.get_selected_entry()
-					local picker = action_state.get_current_picker(prompt_bufnr)
-					local prompt = picker:_get_prompt()
-
-					if selection then
-						first_ref = selection[1]
-					elseif prompt and prompt ~= "" then
-						first_ref = prompt
-					else
-						return
-					end
-
-					actions.close(prompt_bufnr)
-
-					pickers
-						.new({}, {
-							prompt_title = "Select Second Ref (comparing with " .. first_ref .. ")",
-							finder = finders.new_table({
-								results = get_git_refs(),
-							}),
-							sorter = conf.generic_sorter({}),
-							attach_mappings = function(prompt_bufnr2, map)
-								actions.select_default:replace(function()
-									local selection2 = action_state.get_selected_entry()
-									local picker2 = action_state.get_current_picker(prompt_bufnr2)
-									local prompt2 = picker2:_get_prompt()
-									actions.close(prompt_bufnr2)
-
-									local second_ref
-									if selection2 then
-										second_ref = selection2[1]
-									elseif prompt2 and prompt2 ~= "" then
-										second_ref = prompt2
-									else
-										return
-									end
-									vim.cmd("DiffviewOpen " .. first_ref .. ".." .. second_ref)
-								end)
-								return true
-							end,
-						})
-						:find()
-				end)
-				return true
-			end,
-		})
-		:find()
+		end,
+	})
 end
 
 local function make_diff_keymaps(actions)

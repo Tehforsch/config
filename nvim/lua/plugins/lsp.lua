@@ -3,7 +3,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"nvim-telescope/telescope.nvim",
 		"nvimtools/hydra.nvim",
 	},
 	config = function()
@@ -20,16 +19,16 @@ return {
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
 			vim.keymap.set("n", "gd", function()
-				require("telescope.builtin").lsp_definitions()
+				Snacks.picker.lsp_definitions()
 			end, opts)
 			vim.keymap.set("n", "gr", function()
-				require("telescope.builtin").lsp_references()
+				Snacks.picker.lsp_references()
 			end, opts)
 			vim.keymap.set("n", "gtt", function()
-				require("telescope.builtin").lsp_type_definitions()
+				Snacks.picker.lsp_type_definitions()
 			end, opts)
 			vim.keymap.set("n", "gti", function()
-				require("telescope.builtin").lsp_implementations()
+				Snacks.picker.lsp_implementations()
 			end, opts)
 			vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
 			vim.keymap.set({ "n", "v" }, "<localleader>x", vim.lsp.buf.code_action, opts)
@@ -49,7 +48,7 @@ return {
 		end
 
 		vim.keymap.set("n", "<localleader>el", function()
-			require("telescope.builtin").diagnostics()
+			Snacks.picker.diagnostics()
 		end, { desc = "List diagnostics" })
 
 		local Hydra = require("hydra")
@@ -75,7 +74,7 @@ return {
 				{
 					"l",
 					function()
-						require("telescope.builtin").diagnostics()
+						Snacks.picker.diagnostics()
 					end,
 					{ exit = true, desc = "list diagnostics" },
 				},

@@ -1,7 +1,7 @@
 local keymap = vim.keymap.set
 
 local command_history = function()
-	require("telescope.builtin").command_history()
+	Snacks.picker.command_history()
 end
 
 keymap("n", "<leader>^", "<C-^>", { desc = "Toggle to last buffer" })
@@ -9,7 +9,7 @@ keymap("n", "<leader>^", "<C-^>", { desc = "Toggle to last buffer" })
 keymap("n", "<Esc>", ":noh<CR>", { desc = "Clear search highlighting" })
 
 keymap("n", "<leader>x", function()
-	require("telescope.builtin").commands()
+	Snacks.picker.commands()
 end, { desc = "Commands" })
 
 keymap("n", "n", "nzzzv", { desc = "Next search result (centered)" })
@@ -26,11 +26,11 @@ keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 keymap("n", "<leader>s", ":w<CR>", { desc = "Save file" })
 keymap("n", "<leader>ff", function()
-	require("telescope.builtin").find_files()
+	Snacks.picker.files()
 end, { desc = "Find file" })
 
 keymap("n", "<leader>bf", function()
-	require("telescope.builtin").buffers()
+	Snacks.picker.buffers()
 end, { desc = "Switch buffer" })
 
 -- Buffer navigation hydra
@@ -62,109 +62,36 @@ Hydra({
 })
 
 keymap("n", "<leader>pf", function()
-	local pickers = require("telescope.pickers")
-	local finders = require("telescope.finders")
-	local conf = require("telescope.config").values
-	local actions = require("telescope.actions")
-	local action_state = require("telescope.actions.state")
-
 	local projects_dir = vim.fn.expand("~/projects")
 	local dirs = vim.fn.globpath(projects_dir, "*", false, true)
 	dirs = vim.tbl_filter(function(d) return vim.fn.isdirectory(d) == 1 end, dirs)
-
-	pickers.new({}, {
-		prompt_title = "Projects",
-		finder = finders.new_table({
-			results = dirs,
-			entry_maker = function(entry)
-				return { value = entry, display = vim.fn.fnamemodify(entry, ":t"), ordinal = entry }
-			end,
-		}),
-		sorter = conf.generic_sorter({}),
-		attach_mappings = function(prompt_bufnr)
-			actions.select_default:replace(function()
-				actions.close(prompt_bufnr)
-				local selection = action_state.get_selected_entry()
-				vim.cmd.cd(selection.value)
-				require("telescope.builtin").find_files()
-			end)
-			return true
+	Snacks.picker.pick({
+		title = "Projects",
+		format = "text",
+		layout = "select",
+		items = vim.tbl_map(function(d)
+			return { text = vim.fn.fnamemodify(d, ":t"), value = d }
+		end, dirs),
+		confirm = function(picker, item)
+			picker:close()
+			vim.cmd.cd(item.value)
+			Snacks.picker.files()
 		end,
-	}):find()
+	})
 end, { desc = "Switch project" })
 
 keymap("n", "<leader>pa", function()
-	local builtin = require("telescope.builtin")
-	local action_state = require("telescope.actions.state")
-	local actions = require("telescope.actions")
-	local conf = require("telescope.config").values
-
-	local ignore_enabled = true
-
-	local function toggle_ignore(prompt_bufnr)
-		local picker = action_state.get_current_picker(prompt_bufnr)
-		local prompt = picker:_get_prompt()
-
-		ignore_enabled = not ignore_enabled
-
-		actions.close(prompt_bufnr)
-
-		local additional_args = {}
-		if not ignore_enabled then
-			additional_args = { "--no-ignore", "--glob", "!.git/" }
-		end
-
-		builtin.live_grep({
-			default_text = prompt,
-			additional_args = function()
-				return additional_args
-			end,
-			attach_mappings = function(new_prompt_bufnr, map)
-				map("i", "<Space>", function()
-					local keys = vim.api.nvim_replace_termcodes(".*", true, false, true)
-					vim.api.nvim_feedkeys(keys, "n", false)
-				end)
-
-				map("n", "<C-i>", function()
-					toggle_ignore(new_prompt_bufnr)
-				end)
-				map("i", "<C-i>", function()
-					toggle_ignore(new_prompt_bufnr)
-				end)
-
-				return true
-			end,
-		})
-	end
-
-	builtin.live_grep({
-		attach_mappings = function(prompt_bufnr, map)
-			map("i", "<Space>", function()
-				local keys = vim.api.nvim_replace_termcodes(".*", true, false, true)
-				vim.api.nvim_feedkeys(keys, "n", false)
-			end)
-
-			map("n", "<C-i>", function()
-				toggle_ignore(prompt_bufnr)
-			end)
-			map("i", "<C-i>", function()
-				toggle_ignore(prompt_bufnr)
-			end)
-
-			return true
-		end,
-	})
+	Snacks.picker.grep()
 end, { desc = "Search in project" })
 
 keymap("n", "<localleader>s", function()
-	require("telescope.builtin").lsp_document_symbols()
+	Snacks.picker.lsp_symbols()
 end, { desc = "Search symbols in file" })
 keymap("n", "<localleader>S", function()
-	require("telescope.builtin").lsp_dynamic_workspace_symbols()
+	Snacks.picker.lsp_workspace_symbols()
 end, { desc = "Search symbols in workspace" })
 keymap("n", "<localleader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
--- Search history (SPC h)
 keymap("n", "<leader>h", function()
-	require("telescope.builtin").resume()
+	Snacks.picker.resume()
 end, { desc = "Resume last search" })
