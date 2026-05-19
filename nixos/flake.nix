@@ -15,6 +15,7 @@
     musnix = {url = "github:musnix/musnix";};
     nixos-hardware.url = "github:nixos/nixos-hardware";
     rolf.url = "git+ssh://git@github.com/tehforsch/Rolf.git?dir=deployment";
+    health_service_assistant.url = "git+ssh://git@github.com/tehforsch/health_service_assistant.git";
   };
 
   outputs = inputs @ {

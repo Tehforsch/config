@@ -100,5 +100,21 @@ in {
     };
   };
 
+  systemd.services.health_service_assistant = {
+    enable = true;
+    description = "health_service_assistant";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${inputs.health_service_assistant.packages.x86_64-linux.default}/bin/health_service_assistant";
+      WorkingDirectory = "/home/toni/resource/keys/on_server/health_service_assistant";
+      Restart = "on-failure";
+      RestartSec = 10;
+      User = "toni";
+    };
+  };
+
   networking.firewall.allowedTCPPorts = [80 443 5232 7000 8083 8337];
 }
