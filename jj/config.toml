@@ -17,6 +17,10 @@ conflict-marker-style = "git"
 # but it swaps the change id and commit id around, to make it easier
 # for me to visually see the change id which is more useful than the
 # commit id
+#
+# moreover, it especially highlights commits who are "active"
+# (i.e. in the ancestors of @), to make it easier to see what
+# I'm currently working with
 'log_oneline' = 'log_oneline(self)'
 'log_oneline(commit)' = '''
 if(commit.root(),
@@ -40,14 +44,20 @@ if(commit.root(),
         format_short_cryptographic_signature(commit.signature())
       ),
       if(commit.empty(), empty_commit_marker),
-      if(commit.description(),
+      show_active(commit, if(commit.description(),
         commit.description().first_line(),
         label(if(commit.empty(), "empty"), description_placeholder),
-      ),
+      )),
     ) ++ "\n",
   )
 )
 '''
+'show_active(commit, content)' = 'label(if(self.contained_in("ancestors(@)"), "active", "inactive"), content)'
+
+[colors]
+inactive = { fg = "ansi-color-245", bold = false }
+active = { fg = "default", bold = true }
+
 [revset-aliases]
 'default_log' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
@@ -91,6 +101,7 @@ latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 track = ["bookmark", "track", "--remote=origin"]
+untrack = ["bookmark", "untrack", "--remote=origin"]
 squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
 rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
 
