@@ -52,11 +52,26 @@ if(commit.root(),
   )
 )
 '''
-'show_active(commit, content)' = 'label(if(self.contained_in("ancestors(@)"), "active", "inactive"), content)'
+'show_active(commit, content)' = '''
+    label(
+        if(
+            self.contained_in("mutable()"), "mutable", "immutable"),
+            label(
+                if(
+                    self.contained_in("ancestors(@)"),
+                    "active",
+                    "inactive"
+                ), 
+            content
+        )
+    )
+'''
 
 [colors]
-inactive = { fg = "ansi-color-245", bold = false }
-active = { fg = "default", bold = true }
+inactive = { fg = "ansi-color-245" }
+active = { fg = "default" }
+mutable = { bold = true }
+immutable = { bold = false }
 
 [revset-aliases]
 'default_log' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
@@ -96,6 +111,7 @@ stack = ["logr", "-r", "stack(@)"]
 difflog = ["logr", "--limit", "50", "-T", "log_oneline ++ self.diff().stat()"]
 open = ["logr", "-r", "mutable() & (present(@) | ancestors(immutable_heads().., 2) | present(trunk()))"]
 latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
+context = ["logr", "-r", "stack(@, 15)"]
 
 # Other helpful aliases
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
