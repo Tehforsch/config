@@ -55,7 +55,7 @@
         };
       makeScannerShell = rustToolChain:
         mkShellWithAliases {
-          packages = [pkgs.clang pkgs.mold];
+          packages = with pkgs; [clang mold podman];
           nativeBuildInputs = with pkgs.buildPackages; [
             rustToolChain
             file
