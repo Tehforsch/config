@@ -37,7 +37,6 @@
     anki
     evince # for editing pdf forms
     wdisplays
-    claude-code
     rmpc
     sqlite
     alejandra # nix formatter
@@ -45,6 +44,7 @@
     lean4
     sccache
     nodejs
+    codex
 
     inputs.torga.packages.x86_64-linux.torga-cli
     inputs.journal.packages.x86_64-linux.dump-sort
