@@ -31,10 +31,17 @@ function make_copy {
     fi
 }
 
+function remove_symlink {
+    name="$HOME/$1"
+    if [ -L "$name" ]; then
+        rm "$name"
+    fi
+}
 
-make_symlink reaper/reaper-keys/actions.lua .config/REAPER/Scripts/reaper-keys/internal/definitions/actions.lua
-make_symlink reaper/reaper-keys/bindings.lua .config/REAPER/Scripts/reaper-keys/internal/definitions/bindings.lua
-make_symlink reaper/reaper-keys/config.lua .config/REAPER/Scripts/reaper-keys/internal/definitions/config.lua
+remove_symlink .config/REAPER/reaper-kb.ini
+remove_symlink .config/REAPER/Scripts/reaper-keys/internal/definitions/actions.lua
+remove_symlink .config/REAPER/Scripts/reaper-keys/internal/definitions/bindings.lua
+remove_symlink .config/REAPER/Scripts/reaper-keys/internal/definitions/config.lua
 
 cd "$CONFIG/reaper/config/symlinkable" || exit
 results=$(fd . -e ini) 
