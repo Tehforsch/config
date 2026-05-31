@@ -20,4 +20,4 @@ PIPEWIRE_QUANTUM=128/48000 pw-jack reaper &
 sleep 5
 
 
-qpwgraph -a -x /home/toni/projects/config/audio/wireplumber/reaper.qpwgraph
+qpwgraph -a -x /home/toni/projects/config/audio/wireplumber/reaper.qpwgraph -m
