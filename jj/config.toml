@@ -119,7 +119,7 @@ retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 track = ["bookmark", "track", "--remote=origin"]
 untrack = ["bookmark", "untrack", "--remote=origin"]
 squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
-rebase-all = ["rebase", "-p", "trunk()", "-s", "all:roots(trunk()..mutable())"]
+retrunk-all = ["rebase", "--destination", "trunk()", "--source", "roots(trunk()..mutable())"]
 
 # A utility to allow quick selection of revisions via fzf. Triggered by
 # C-s in zsh and the nf alias
