@@ -62,11 +62,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1779182140,
-        "narHash": "sha256-E152/umnMthUXWobNnkoQY/fq9Jm/XF+osSsIsRBgpc=",
+        "lastModified": 1780236955,
+        "narHash": "sha256-VCOSKylafdPYnC+1Ayz17ynE4xM4WpQb3OEdJJKcFEw=",
         "ref": "refs/heads/main",
-        "rev": "75663510f764c3a22fc379a4c0c350dd77fcdcdf",
-        "revCount": 2,
+        "rev": "0cbb33511a3ca20d7e48522f248341886b6a2c61",
+        "revCount": 3,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/health_service_assistant.git"
       },
