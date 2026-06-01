@@ -32,6 +32,7 @@
     stylua
     sysz
     hurl # Temporary
+    shellcheck
   ];
 
   programs.direnv.enable = true;
