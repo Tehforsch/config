@@ -98,6 +98,7 @@ immutable = { bold = false }
 'branch(x)' = 'stack(x, 1)'
 
 'open()' = 'stack(mine() | @, 1)'
+'select_from_revisions()' = 'ancestors((default_log | bookmarks()) ~ empty(), 10)'
 
 [aliases]
 # Shorter abbreviations
@@ -123,7 +124,7 @@ retrunk-all = ["rebase", "--destination", "trunk()", "--source", "roots(trunk().
 
 # A utility to allow quick selection of revisions via fzf. Triggered by
 # C-s in zsh and the nf alias
-select_from_revisions = ['log', '--no-graph', '-T', 'change_id.shortest() ++ " " ++ if(local_bookmarks, "[ " ++ local_bookmarks.join(", ") ++ " ] ", "") ++ description.first_line() ++ "\n"', "-r", "(default_log | bookmarks()) ~ empty()"]
+select_from_revisions = ['log', '--no-graph', '-T', 'change_id.shortest() ++ " " ++ if(local_bookmarks, "[ " ++ local_bookmarks.join(", ") ++ " ] ", "") ++ description.first_line() ++ "\n"', "-r", "select_from_revisions()"]
 
 # merged-bookmarks
 merged_bookmarks = ["bookmark", "list", "-r", "all() ~ mutable() ~ trunk()", "-T", "self.name() ++ ' '"]
