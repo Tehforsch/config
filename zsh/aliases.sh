@@ -169,12 +169,25 @@ alias jd="jj diff"
 alias jds="jj diff --stat"
 alias jn="jj new"
 alias js="jj squash"
+alias jtp="create_and_push_jj_bookmark"
 
 # currently unused but might be useful if i decide to do this again
 function select_jj_rev() {
     change_id=$(jj log | fzf --ansi --height 40% --reverse | awk "{print \$1}")
     [ -z "$change_id" ] && exit 0
     echo "$change_id"
+}
+
+function create_and_push_jj_bookmark() {
+    rev=$1
+    bookmark=$2
+    jj bookmark create $bookmark -r $rev
+    if [[ $? == 0 ]]; then
+        jj track $bookmark
+        jj git push --tracked
+    else
+        echo "Bookmark already exists: $bookmark"
+    fi
 }
 
 alias glf="forgit::log"
