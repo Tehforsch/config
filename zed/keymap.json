@@ -1,0 +1,73 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "space x": "command_palette::Toggle",
+      "space s": "workspace::Save",
+      "space f f": "file_finder::Toggle",
+      "space p f": ["projects::OpenRecent", { "create_new_window": false }],
+      "space p a": "pane::DeploySearch",
+      "space h": "tab_switcher::Toggle",
+      "space r": ["task::Rerun", { "reevaluate_context": false }],
+
+      "space b f": "tab_switcher::Toggle",
+      "space b n": "pane::ActivateNextItem",
+      "space b p": "pane::ActivatePreviousItem",
+      "space b d": ["pane::CloseActiveItem", { "close_pinned": false }],
+
+      "space j m": "tab_switcher::Toggle",
+      "space j f": "tab_switcher::Toggle",
+      "space j n": "pane::ActivateNextItem",
+      "space j p": "pane::ActivatePreviousItem",
+      "space j 1": ["pane::ActivateItem", 0],
+      "space j 2": ["pane::ActivateItem", 1],
+      "space j 3": ["pane::ActivateItem", 2],
+      "space j 4": ["pane::ActivateItem", 3],
+
+      "space g b": "git::Blame",
+      "space g d": "git::ReviewDiff",
+      "space g shift-d": "git::ReviewDiff",
+      "space g f": "git::OpenModifiedFiles",
+      "space g s": "git::OpenModifiedFiles",
+      "space g n": "editor::GoToHunk",
+      "space g p": "editor::GoToPreviousHunk",
+
+      "space c d": "diagnostics::Deploy",
+      "space u t": "workspace::ToggleBottomDock",
+
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      ", f": "editor::Format",
+      ", r": "editor::Rename",
+      ", s": "outline::Toggle",
+      ", shift-s": "project_symbols::Toggle",
+      ", x": "editor::ToggleCodeActions",
+      ", e l": "diagnostics::Deploy",
+      ", e s": ["editor::GoToDiagnostic", { "severity": { "min": "hint", "max": "error" } }],
+      ", e n": ["editor::GoToDiagnostic", { "severity": { "min": "hint", "max": "error" } }],
+      ", e p": ["editor::GoToPreviousDiagnostic", { "severity": { "min": "hint", "max": "error" } }],
+
+      "gd": "editor::GoToDefinition",
+      "gr": "editor::FindAllReferences",
+      "g t t": "editor::GoToTypeDefinition",
+      "g t i": "editor::GoToImplementation",
+      "g h": "editor::Hover",
+
+      "space /": ["editor::ToggleComments", { "advance_downwards": false }]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space ^": "pane::GoBack",
+      "ctrl-o": "pane::GoBack",
+      "ctrl-i": "pane::GoForward",
+      "escape": "editor::Cancel"
+    }
+  }
+]

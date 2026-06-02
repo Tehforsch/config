@@ -45,6 +45,7 @@
     sccache
     nodejs
     codex
+    zed-editor
 
     inputs.torga.packages.x86_64-linux.torga-cli
     inputs.journal.packages.x86_64-linux.dump-sort
