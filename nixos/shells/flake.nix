@@ -146,6 +146,9 @@
             clang
             pkg-config
             rust_wasm
+            trunk
+            rustup # for cross
+            cargo-about
           ];
           buildInputs = [
             pkg-config
