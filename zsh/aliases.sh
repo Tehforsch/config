@@ -4,6 +4,7 @@ alias lt="exa --tree"
 alias cat="bat"
 alias e="$CONFIG/scripts/openVimInKitty.sh"
 alias vim="nvim"
+alias codex="$CONFIG/scripts/start_codex.sh"
 
 alias c="check"
 
