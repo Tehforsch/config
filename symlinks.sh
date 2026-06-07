@@ -45,7 +45,7 @@ make_symlink dunst/dunstrc .config/dunst/dunstrc
 make_symlink i3/i3.conf .config/i3/config
 make_symlink i3/${SYSTEM_NAME}.conf .config/i3/system.conf
 make_symlink i3/i3wsr/config.toml .config/i3wsr/config.toml
-make_symlink i3/i3status_${SYSTEM_NAME}.conf .config/i3status/config
+make_symlink i3/i3status-rust/config.toml .config/i3status-rust/config.toml
 make_symlink keepassxc/keepassxc.ini .config/keepassxc/keepassxc.ini
 make_symlink kitty/kitty.conf .config/kitty/kitty.conf
 make_symlink kitty/${SYSTEM_NAME}.conf .config/kitty/system.conf

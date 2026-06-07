@@ -1,0 +1,65 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "gruvbox-dark"
+
+[theme.overrides]
+idle_bg = "#1d2021"
+idle_fg = "#ebdbb2"
+info_bg = "#458588"
+info_fg = "#ebdbb2"
+good_bg = "#98971a"
+good_fg = "#1d2021"
+warning_bg = "#d79921"
+warning_fg = "#1d2021"
+critical_bg = "#cc241d"
+critical_fg = "#ebdbb2"
+separator = "\ue0b2"
+separator_bg = "auto"
+separator_fg = "auto"
+
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "custom"
+command = "/home/toni/projects/config/scripts/focus_status.sh"
+json = true
+hide_when_empty = true
+interval = 30
+format = " $text "
+[[block.click]]
+button = "left"
+cmd = "/home/toni/projects/config/scripts/focus_mode.sh"
+
+[[block]]
+block = "custom"
+command = "/home/toni/projects/config/scripts/power_mgmt_status.sh"
+json = true
+hide_when_empty = true
+interval = 10
+format = " $text "
+
+[[block]]
+block = "custom"
+command = "/home/toni/projects/config/scripts/disk_space_status.sh"
+json = true
+hide_when_empty = true
+interval = 60
+format = " $icon $text "
+
+[[block]]
+block = "battery"
+driver = "sysfs"
+format = " $icon $percentage "
+charging_format = " $icon $percentage "
+full_format = " $icon $percentage "
+not_charging_format = " $icon $percentage "
+missing_format = ""
+warning = 30
+critical = 15
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%H:%M') "
