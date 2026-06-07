@@ -10,6 +10,7 @@
       "keyd"
       "audio"
       "docker"
+      "libvirtd"
       "wireshark"
       "dialout" # for permission to /dev/ttyUSBx
     ];

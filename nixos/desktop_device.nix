@@ -26,7 +26,16 @@
 
   virtualisation = {
     docker.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+      };
+    };
+    spiceUSBRedirection.enable = true;
   };
+
+  programs.virt-manager.enable = true;
 
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [
