@@ -12,6 +12,7 @@ shift 2
 
 state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/last_open"
 state_file="$state_dir/$program_name"
+focus_file="${XDG_STATE_HOME:-$HOME/.local/state}/focus_mode_until"
 now="$(date +%s)"
 limit_seconds=$((hours * 60 * 60))
 
@@ -38,6 +39,18 @@ format_elapsed() {
         printf "%d minutes" "$elapsed_minutes"
     fi
 }
+
+if [[ "$program_name" == "telegram" || "$program_name" == "thunderbird" ]]; then
+    if [[ -r "$focus_file" ]]; then
+        focus_until="$(<"$focus_file")"
+        if [[ "$focus_until" =~ ^[0-9]+$ && "$now" -lt "$focus_until" ]]; then
+            remaining=$((focus_until - now))
+            remaining_text="$(format_elapsed "$remaining")"
+            notify "Focus mode is active for another $remaining_text."
+            exit 0
+        fi
+    fi
+fi
 
 if [[ -r "$state_file" ]]; then
     last_opened="$(<"$state_file")"
