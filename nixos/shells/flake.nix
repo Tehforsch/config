@@ -35,6 +35,17 @@
         # targets = ["riscv32i-unknown-none-elf"];
         targets = ["riscv32imc-unknown-none-elf"];
       };
+      tracy_x11 = (pkgs.tracy.override {withWayland = false;}).overrideAttrs (old: {
+        buildInputs = old.buildInputs ++ (with pkgs; [
+          libglvnd
+          libx11
+          libxcursor
+          libxext
+          libxi
+          libxinerama
+          libxrandr
+        ]);
+      });
       mkShellWithAliases = args: let
         originalShellHook = args.shellHook or "";
         customPath = ''export PATH="$PATH:$CONFIG/zsh/direnv_aliases/$(basename $(pwd))"'';
@@ -149,6 +160,7 @@
             trunk
             rustup # for cross
             cargo-about
+            tracy_x11
           ];
           buildInputs = [
             pkg-config
@@ -158,11 +170,14 @@
             vulkan-loader
             vulkan-validation-layers
             udev
+            libglvnd
             # If on x11
             libx11
             libx11
             libxcursor
+            libxext
             libxi
+            libxinerama
             libxrandr
             libxkbcommon
             (python3.withPackages (p: with p; [pyyaml]))
