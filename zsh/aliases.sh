@@ -59,7 +59,6 @@ function init_envrc() {
     fi
     cwd=$(basename $(pwd))
     echo "use flake ~/projects/config/nixos/shells#$shell_name" > .envrc;
-    echo "RUSTC_WRAPPER=sccache" >> .envrc;
     direnv allow
 }
 

@@ -42,7 +42,6 @@
     alejandra # nix formatter
     prettier
     lean4
-    sccache
     nodejs
     codex
     zed-editor
