@@ -87,6 +87,7 @@
             libclang
             net-snmp
             capnproto
+            lychee
           ];
           shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
         };
