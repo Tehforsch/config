@@ -141,7 +141,7 @@ alias sys="sysz"
 alias journ="systemctl start --user journal; $CONFIG/scripts/journal_entry.sh"
 alias journy="systemctl start --user journal; firefox --new-tab localhost:8000/dashboard&; $CONFIG/scripts/journal_entry.sh yesterday"
 
-alias addmusic="bash ~/music/addMusic.sh"
+alias addmusic="bash $scripts/add_music.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
 
