@@ -2,30 +2,48 @@ Create Both
 Expunge Both
 SyncState *
 
-IMAPAccount gmail
-Host imap.gmail.com
+IMAPAccount posteo
+Host posteo.de
 Port 993
-User tonipeter92@gmail.com
-# Using App password
-PassCmd "cat ~/resource/keys/pw/gmail"
+User tonipeter@posteo.de
+PassCmd "cat ~/resource/keys/pw/posteo"
+AuthMechs LOGIN
 TLSType IMAPS
 TLSVersions +1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore gmail-remote
-Account gmail
+IMAPStore posteo-remote
+Account posteo
 
-MaildirStore gmail-local
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/INBOX
+MaildirStore posteo-local
+Path ~/.local/share/mail/posteo/
+Inbox ~/.local/share/mail/posteo/inbox
 SubFolders Verbatim
 
-Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
-Patterns *
-Create Both
-Remove Both
+Channel posteo-inbox
+Far :posteo-remote:INBOX
+Near :posteo-local:inbox
+Create Near
+
+Channel posteo-drafts
+Far :posteo-remote:Drafts
+Near :posteo-local:drafts
+Create Near
+
+Channel posteo-sent
+Far :posteo-remote:Sent
+Near :posteo-local:sent
+Create Near
+
+Channel posteo-deleted
+Far :posteo-remote:"Trash"
+Near :posteo-local:deleted
+Create Near
+
+Channel posteo-archive
+Far :posteo-remote:Archive
+Near :posteo-local:archive
+Create Near
 
 Group all
-Channel gmail
+Channels posteo-inbox posteo-drafts posteo-sent posteo-deleted posteo-archive

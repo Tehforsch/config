@@ -3,6 +3,7 @@
     aerc
     notmuch
     isync # mbsync
+    w3m # HTML mail rendering in aerc
   ];
 
   # Enable mbsync systemd user service
@@ -12,7 +13,7 @@
     wants = ["network-online.target"];
     serviceConfig = {
       Type = "oneshot";
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.mail/gmail";
+      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.local/share/mail/posteo";
       ExecStart = "${pkgs.isync}/bin/mbsync -a";
       ExecStartPost = "${pkgs.notmuch}/bin/notmuch new";
     };

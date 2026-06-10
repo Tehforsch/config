@@ -1,10 +1,10 @@
 [database]
-path=/home/toni/.mail
+path=/home/toni/.local/share/mail
 
 [user]
 name=Toni Peter
 primary_email=mail@tonipeter.de
-other_email=tonipeter92@gmail.com
+other_email=tonipeter@posteo.de;tonipeter92@gmail.com
 
 [new]
 tags=unread;inbox;
