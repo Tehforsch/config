@@ -10,4 +10,4 @@ case "$day_of_week" in
         ;;
 esac
 
-exec codex "$@"
+exec codex -c 'tui.notifications=false' "$@"
