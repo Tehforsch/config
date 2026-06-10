@@ -24,6 +24,33 @@ in {
     openFirewall = true;
   };
 
+  users.users.github-runner = {
+    isSystemUser = true;
+    group = "github-runner";
+  };
+  users.groups.github-runner = {};
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/github_runner/sokobrane 0700 github-runner github-runner -"
+  ];
+
+  services.github-runners.netcup = {
+    enable = true;
+    name = "netcup_sokobrane";
+    url = "https://github.com/tehforsch/sokobrane";
+    tokenFile = "/home/toni/resource/keys/on_server/github_runner/token";
+    tokenType = "access";
+    nodeRuntimes = ["node24"];
+    replace = true;
+    user = "github-runner";
+    group = "github-runner";
+    extraLabels = [
+      "nixos"
+      "x86_64-linux"
+    ];
+    workDir = "/var/lib/github_runner/sokobrane"; # the default /run/... is really small on netcup
+  };
+
   services.miniflux = {
     enable = true;
     adminCredentialsFile = "/home/toni/resource/keys/on_server/miniflux";
@@ -100,13 +127,13 @@ in {
   #     PrivateTmp = true;
   #   };
   # };
-  #
+
   systemd.services.health_service_assistant = {
     enable = true;
     description = "health_service_assistant";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    wantedBy = ["multi-user.target"];
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${inputs.health_service_assistant.packages.x86_64-linux.default}/bin/health_service_assistant";
