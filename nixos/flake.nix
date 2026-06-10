@@ -14,6 +14,10 @@
     mpd_rofi = {url = "github:tehforsch/mpd_rofi";};
     musnix = {url = "github:musnix/musnix";};
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    zsh-patina = {
+      url = "github:michel-kraemer/zsh-patina";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rolf.url = "git+ssh://git@github.com/tehforsch/Rolf.git?dir=deployment";
     health_service_assistant.url = "git+ssh://git@github.com/tehforsch/health_service_assistant.git";
   };

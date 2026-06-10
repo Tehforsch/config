@@ -49,6 +49,7 @@
     inputs.torga.packages.x86_64-linux.torga-cli
     inputs.journal.packages.x86_64-linux.dump-sort
     inputs.mpd_rofi.packages.x86_64-linux.default
+    inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Utilities
     usbutils
