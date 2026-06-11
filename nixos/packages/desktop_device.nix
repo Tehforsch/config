@@ -18,7 +18,6 @@
 
     # User applications
     firefox
-    thunderbird
     vlc
     spotify
     discord

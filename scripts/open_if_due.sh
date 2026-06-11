@@ -40,7 +40,7 @@ format_elapsed() {
     fi
 }
 
-if [[ "$program_name" == "telegram" || "$program_name" == "thunderbird" ]]; then
+if [[ "$program_name" == "telegram" || "$program_name" == "aerc" ]]; then
     if [[ -r "$focus_file" ]]; then
         focus_until="$(<"$focus_file")"
         if [[ "$focus_until" =~ ^[0-9]+$ && "$now" -lt "$focus_until" ]]; then

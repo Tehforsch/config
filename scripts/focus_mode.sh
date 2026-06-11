@@ -17,4 +17,4 @@ notify() {
 mkdir -p "$state_dir"
 printf "%s\n" "$focus_until" > "$focus_file"
 
-notify "Telegram and Thunderbird are blocked for 2 hours."
+notify "Blocked for 2 hours."
