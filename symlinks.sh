@@ -79,8 +79,6 @@ make_symlink aerc/binds.conf .config/aerc/binds.conf
 make_symlink aerc/strato-query-map .config/aerc/strato-query-map
 make_symlink aerc/gmail-query-map .config/aerc/gmail-query-map
 make_symlink jj/config.toml .config/jj/config.toml
-make_symlink zed/settings.json .config/zed/settings.json
-make_symlink zed/keymap.json .config/zed/keymap.json
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc
