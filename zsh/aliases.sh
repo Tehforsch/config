@@ -4,7 +4,25 @@ alias lt="exa --tree"
 alias cat="bat"
 alias e="$CONFIG/scripts/openVimInKitty.sh"
 alias vim="nvim"
-alias codex="$CONFIG/scripts/start_codex.sh"
+function codex() {
+    local day_of_week
+    day_of_week="$(date +%u)"
+
+    case "$day_of_week" in
+        2|4)
+            echo "Not starting codex on Tuesday or Thursday."
+            return 0
+            ;;
+    esac
+
+    local git_root
+    git_root="$(git rev-parse --show-toplevel 2>/dev/null)"
+    if [[ -n "$git_root" ]]; then
+        builtin cd "$git_root" || return
+    fi
+
+    command codex -c 'tui.notifications=false' "$@"
+}
 
 alias c="check"
 
