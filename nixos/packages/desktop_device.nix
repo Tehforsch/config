@@ -49,6 +49,8 @@
     inputs.mpd_rofi.packages.x86_64-linux.default
     inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+    khard
+
     # Utilities
     usbutils
     dunst # notification daemon
