@@ -11,7 +11,7 @@ def is_movie(path: Path):
     return path.suffix.lower() == ".mp4" or path.suffix.lower() == ".mov"
 
 def is_pic(path: Path):
-    return path.suffix == ".JPG"
+    return path.suffix.lower() in [".jpg", ".png", ".heic"]
 
 def view_photo(path: Path) -> None:
     tmpfile = Path("/tmp/previews") / path.name
