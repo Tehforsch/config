@@ -13,9 +13,7 @@
     wants = ["network-online.target"];
     serviceConfig = {
       Type = "oneshot";
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.local/share/mail/posteo";
-      ExecStart = "${pkgs.isync}/bin/mbsync -a";
-      ExecStartPost = "${pkgs.notmuch}/bin/notmuch new";
+      ExecStart = "/home/toni/projects/config/scripts/sync-mail.sh";
     };
   };
 

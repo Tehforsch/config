@@ -1,0 +1,107 @@
+# vim: ft=dosini
+#
+# Quiet local aerc theme. Keeps the terminal background and adds contrast for
+# navigation, message state, and old-address markers.
+
+*.default = true
+*.normal = true
+
+default.fg = #d6d7d9
+
+title.fg = #d6d7d9
+title.bg = #30343a
+title.bold = true
+
+border.fg = #3d444d
+border.bold = false
+
+tab.fg = #a8adb4
+tab.bg = #24282e
+tab.selected.fg = #f0f1f2
+tab.selected.bg = #3a414a
+tab.selected.bold = true
+
+statusline_default.fg = #c3c7cc
+statusline_default.bg = #2d333b
+statusline_error.fg = #f0f1f2
+statusline_error.bg = #8f4f56
+statusline_success.fg = #f0f1f2
+statusline_success.bg = #4f7f5f
+
+error.fg = #d86c74
+error.bold = true
+warning.fg = #d0a85c
+warning.bold = true
+success.fg = #6ea377
+success.bold = true
+
+msglist_default.fg = #c3c7cc
+msglist_unread.fg = #f0f1f2
+msglist_unread.bold = true
+msglist_read.fg = #9da3aa
+msglist_flagged.fg = #d0a85c
+msglist_flagged.bold = true
+msglist_deleted.dim = true
+msglist_marked.fg = #f0f1f2
+msglist_marked.bg = #53606d
+msglist_result.fg = #7ea6c8
+msglist_result.bold = true
+msglist_pill.fg = #f0f1f2
+msglist_pill.bg = #53606d
+msglist_*.selected.fg = #f0f1f2
+msglist_*.selected.bg = #3a414a
+msglist_*.selected.bold = true
+
+dirlist_default.fg = #aeb4bb
+dirlist_unread.fg = #7ea6c8
+dirlist_unread.bold = true
+dirlist_recent.fg = #6ea377
+dirlist_*.selected.fg = #f0f1f2
+dirlist_*.selected.bg = #3a414a
+dirlist_*.selected.bold = true
+
+completion_default.fg = #c3c7cc
+completion_default.bg = #24282e
+completion_default.selected.fg = #f0f1f2
+completion_default.selected.bg = #3a414a
+completion_description.fg = #8d949d
+completion_description.dim = true
+completion_pill.bg = #53606d
+
+selector_focused.fg = #f0f1f2
+selector_focused.bg = #3a414a
+selector_focused.bold = true
+selector_chooser.bold = true
+
+part_mimetype.fg = #7ea6c8
+part_filename.selected.fg = #f0f1f2
+part_filename.selected.bg = #3a414a
+
+[user]
+old-posteo.fg = #f0f1f2
+old-posteo.bg = #8f6a3a
+old-posteo.bold = true
+old-gmail.fg = #f0f1f2
+old-gmail.bg = #7a5e9a
+old-gmail.bold = true
+
+[viewer]
+*.default = true
+*.normal = true
+
+url.fg = #7ea6c8
+url.underline = true
+header.fg = #7ea6c8
+header.bold = true
+signature.fg = #8d949d
+signature.dim = true
+diff_meta.bold = true
+diff_chunk.fg = #7ea6c8
+diff_chunk_func.fg = #7ea6c8
+diff_chunk_func.bold = true
+diff_add.fg = #6ea377
+diff_del.fg = #d86c74
+quote_*.fg = #8d949d
+quote_*.dim = true
+quote_1.fg = #aeb4bb
+quote_1.dim = false

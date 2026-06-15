@@ -1,0 +1,12 @@
+# Query map for the Posteo-backed account.
+# Folder names match the local Maildir names from mbsync.
+
+inbox=folder:posteo/inbox
+drafts=folder:posteo/drafts
+sent=folder:posteo/sent
+deleted=folder:posteo/deleted
+archive=folder:posteo/archive
+
+old-addresses=tag:old-address
+old-posteo=tag:old-posteo
+old-gmail=tag:old-gmail

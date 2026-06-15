@@ -76,6 +76,8 @@ make_symlink meli/config.toml .config/meli/config.toml
 make_symlink aerc/aerc.conf .config/aerc/aerc.conf
 make_symlink aerc/accounts.conf .config/aerc/accounts.conf
 make_symlink aerc/binds.conf .config/aerc/binds.conf
+make_symlink aerc/stylesets/toni .config/aerc/stylesets/toni
+make_symlink aerc/posteo-query-map .config/aerc/posteo-query-map
 make_symlink aerc/strato-query-map .config/aerc/strato-query-map
 make_symlink aerc/gmail-query-map .config/aerc/gmail-query-map
 make_symlink jj/config.toml .config/jj/config.toml

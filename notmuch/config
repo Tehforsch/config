@@ -7,7 +7,7 @@ primary_email=mail@tonipeter.de
 other_email=tonipeter@posteo.de;tonipeter92@gmail.com
 
 [new]
-tags=unread;inbox;
+tags=unread;
 ignore=
 
 [search]
