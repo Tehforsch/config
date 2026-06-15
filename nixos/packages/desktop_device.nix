@@ -50,6 +50,7 @@
     inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     khard
+    khal
 
     # Utilities
     usbutils
