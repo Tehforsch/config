@@ -112,7 +112,7 @@ stack = ["logr", "-r", "stack(@)"]
 difflog = ["logr", "--limit", "50", "-T", "log_oneline ++ self.diff().stat()"]
 open = ["logr", "-r", "mutable() & (present(@) | ancestors(immutable_heads().., 2) | present(trunk()))"]
 latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
-context = ["logr", "-r", "stack(@, 15)"]
+context = ["logr", "-r", "stack(@, 30)"]
 
 # Other helpful aliases
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
