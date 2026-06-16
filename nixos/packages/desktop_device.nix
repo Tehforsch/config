@@ -41,7 +41,6 @@
     alejandra # nix formatter
     prettier
     lean4
-    nodejs
     codex
 
     inputs.torga.packages.x86_64-linux.torga-cli

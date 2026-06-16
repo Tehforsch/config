@@ -196,33 +196,6 @@
             (python3.withPackages (p: with p; [numpy matplotlib pyyaml]))
           ];
         };
-        dioxus = mkShellWithAliases {
-          nativeBuildInputs = with pkgs; [
-            rust_wasm
-            dioxus-cli
-            pkg-config
-            gobject-introspection
-            nodejs
-            clang
-            wasm-bindgen-cli
-          ];
-
-          buildInputs = with pkgs; [
-            at-spi2-atk
-            atkmm
-            cairo
-            gdk-pixbuf
-            glib
-            gtk3
-            xdotool
-            harfbuzz
-            librsvg
-            libsoup_3
-            pango
-            webkitgtk_4_1
-            openssl
-          ];
-        };
         embedded_c = mkShellWithAliases {
           buildInputs = [
             pkgs.platformio
