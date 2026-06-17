@@ -42,6 +42,14 @@ format = " $text "
 
 [[block]]
 block = "custom"
+command = "/home/toni/projects/config/scripts/vpn_status.sh"
+json = true
+hide_when_empty = true
+interval = 5
+format = " $text "
+
+[[block]]
+block = "custom"
 command = "/home/toni/projects/config/scripts/disk_space_status.sh"
 json = true
 hide_when_empty = true

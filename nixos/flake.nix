@@ -43,6 +43,7 @@
           ./sound.nix
           ./packages/desktop_device.nix
           ./i3.nix
+          ./vpn.nix
           ./redshift.nix
           ./power_management.nix
           ./syncthing.nix
