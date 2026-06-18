@@ -1,0 +1,13 @@
+# Query map for the mailbox.org-backed account.
+# Folder names match the local Maildir names from mbsync.
+
+inbox=folder:mailbox/inbox
+drafts=folder:mailbox/drafts
+sent=folder:mailbox/sent
+deleted=folder:mailbox/deleted
+archives=tag:work-archive
+spam=folder:mailbox/spam or tag:spam
+
+all=folder:mailbox
+unread=tag:unread and folder:mailbox
+flagged=tag:flagged and folder:mailbox

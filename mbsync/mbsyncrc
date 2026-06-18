@@ -45,5 +45,59 @@ Far :posteo-remote:Archive
 Near :posteo-local:archive
 Create Near
 
+IMAPAccount mailbox
+Host imap.mailbox.org
+Port 993
+User toni.peter@greenbone.net
+PassCmd "/home/toni/projects/config/scripts/getMailboxPw.sh"
+AuthMechs LOGIN
+TLSType IMAPS
+TLSVersions +1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore mailbox-remote
+Account mailbox
+
+MaildirStore mailbox-local
+Path ~/.local/share/mail/mailbox/
+Inbox ~/.local/share/mail/mailbox/inbox
+SubFolders Verbatim
+
+Channel mailbox-inbox
+Far :mailbox-remote:INBOX
+Near :mailbox-local:inbox
+Create Near
+
+Channel mailbox-drafts
+Far :mailbox-remote:Drafts
+Near :mailbox-local:drafts
+Create Near
+
+Channel mailbox-sent
+Far :mailbox-remote:Sent
+Near :mailbox-local:sent
+Create Near
+
+Channel mailbox-deleted
+Far :mailbox-remote:Trash
+Near :mailbox-local:deleted
+Create Near
+
+Channel mailbox-archive
+Far :mailbox-remote:Archives
+Near :mailbox-local:archive
+Create Near
+
+Channel mailbox-archives
+Far :mailbox-remote:Archives
+Near :mailbox-local:archive
+Patterns *
+Create Near
+
+Channel mailbox-spam
+Far :mailbox-remote:Junk
+Near :mailbox-local:spam
+Create Near
+
 Group all
-Channels posteo-inbox posteo-drafts posteo-sent posteo-deleted posteo-archive
+Channels posteo-inbox posteo-drafts posteo-sent posteo-deleted posteo-archive mailbox-inbox mailbox-drafts mailbox-sent mailbox-deleted mailbox-archive mailbox-archives mailbox-spam
