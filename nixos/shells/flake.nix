@@ -66,7 +66,7 @@
         };
       makeScannerShell = rustToolChain:
         mkShellWithAliases {
-          packages = with pkgs; [clang mold podman];
+          packages = with pkgs; [llvmPackages_19.clang-tools mold podman];
           nativeBuildInputs = with pkgs.buildPackages; [
             rustToolChain
             file
@@ -82,14 +82,14 @@
             glib
             json-glib
             gnutls
-            clang
+            llvmPackages_19.clang
             typos
-            libclang
+            llvmPackages_19.libclang
             net-snmp
             capnproto
             lychee
           ];
-          shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
+          shellHook = "export LIBCLANG_PATH=${pkgs.llvmPackages_19.libclang.lib}/lib";
         };
     in {
       devShells = with pkgs; {
