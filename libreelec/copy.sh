@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
 # Get the IP address of the main network interface
 PC_IP=$(ip a | grep -E 'inet 192\.168\.' | head -1 | awk '{print $2}' | cut -d'/' -f1)
@@ -10,18 +13,21 @@ fi
 
 echo "Using PC IP: $PC_IP"
 
+TMP_SOURCES=$(mktemp)
+TMP_MEDIASOURCES=$(mktemp)
+TMP_PASSWORDS=$(mktemp)
+trap 'rm -f "$TMP_SOURCES" "$TMP_MEDIASOURCES" "$TMP_PASSWORDS"' EXIT
+
 # Create sources.xml with dynamic IP
-sed "s/IP_ADDRESS/$PC_IP/g" sources.xml > /tmp/sources.xml
-scp /tmp/sources.xml rpi2:/storage/.kodi/userdata/sources.xml
-rm /tmp/sources.xml
+sed "s/IP_ADDRESS/$PC_IP/g" "$SCRIPT_DIR/sources.xml" > "$TMP_SOURCES"
+scp "$TMP_SOURCES" rpi2:/storage/.kodi/userdata/sources.xml
 
 # Create mediasources.xml with dynamic IP
-sed "s/IP_ADDRESS/$PC_IP/g" mediasources.xml > /tmp/mediasources.xml
-scp /tmp/mediasources.xml rpi2:/storage/.kodi/userdata/mediasources.xml
-rm /tmp/mediasources.xml
+sed "s/IP_ADDRESS/$PC_IP/g" "$SCRIPT_DIR/mediasources.xml" > "$TMP_MEDIASOURCES"
+scp "$TMP_MEDIASOURCES" rpi2:/storage/.kodi/userdata/mediasources.xml
 
 # Create passwords.xml with SMB credentials and dynamic IP
-cat > /tmp/passwords.xml << EOF
+cat > "$TMP_PASSWORDS" << EOF
 <passwords>
     <path>
         <from pathversion="1">smb://$PC_IP/</from>
@@ -30,5 +36,4 @@ cat > /tmp/passwords.xml << EOF
 </passwords>
 EOF
 
-scp /tmp/passwords.xml rpi2:/storage/.kodi/userdata/passwords.xml
-rm /tmp/passwords.xml
+scp "$TMP_PASSWORDS" rpi2:/storage/.kodi/userdata/passwords.xml
