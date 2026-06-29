@@ -98,7 +98,7 @@ immutable = { bold = false }
 'branch(x)' = 'stack(x, 1)'
 
 'open()' = 'stack(mine() | @, 1)'
-'select_from_revisions()' = 'ancestors((default_log | bookmarks()) ~ empty(), 10)'
+'select_from_revisions()' = 'ancestors((default_log | bookmarks()) ~ empty(), 1000)'
 
 [aliases]
 # Shorter abbreviations
