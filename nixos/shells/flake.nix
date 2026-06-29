@@ -36,15 +36,17 @@
         targets = ["riscv32imc-unknown-none-elf"];
       };
       tracy_x11 = (pkgs.tracy.override {withWayland = false;}).overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ (with pkgs; [
-          libglvnd
-          libx11
-          libxcursor
-          libxext
-          libxi
-          libxinerama
-          libxrandr
-        ]);
+        buildInputs =
+          old.buildInputs
+          ++ (with pkgs; [
+            libglvnd
+            libx11
+            libxcursor
+            libxext
+            libxi
+            libxinerama
+            libxrandr
+          ]);
       });
       mkShellWithAliases = args: let
         originalShellHook = args.shellHook or "";
@@ -66,7 +68,7 @@
         };
       makeScannerShell = rustToolChain:
         mkShellWithAliases {
-          packages = with pkgs; [llvmPackages_19.clang-tools mold podman];
+          packages = with pkgs; [llvmPackages_19.clang-tools llvmPackages_19.clang mold podman];
           nativeBuildInputs = with pkgs.buildPackages; [
             rustToolChain
             file
@@ -164,6 +166,7 @@
             tracy_x11
           ];
           buildInputs = [
+            wayland
             pkg-config
             alsa-lib
             vulkan-tools
