@@ -18,6 +18,8 @@
     rustup # nice to have sometimes for release building etc, although i use shells for this
     clang
 
+    steam
+
     # User applications
     firefox
     vlc
@@ -72,6 +74,7 @@
     nh
     bacon
     flameshot
+    brightnessctl
     android-tools
     scrcpy
     gvfs # Virtual filesystem with MTP support
