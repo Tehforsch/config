@@ -23,6 +23,13 @@ icons = "awesome4"
 
 [[block]]
 block = "custom"
+command = "/home/toni/projects/config/scripts/timer/timer.sh show"
+hide_when_empty = true
+interval = 1
+format = " $text "
+
+[[block]]
+block = "custom"
 command = "/home/toni/projects/config/scripts/focus_status.sh"
 json = true
 hide_when_empty = true
