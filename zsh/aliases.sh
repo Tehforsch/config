@@ -152,7 +152,6 @@ alias ka="killall"
 alias shut="shutdown -h 0"
 
 alias timer="$CONFIG/scripts/timer/timer.sh"
-alias timerAt="$CONFIG/scripts/timer/timerAt.sh"
 
 alias sys="sysz"
 
