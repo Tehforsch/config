@@ -18,16 +18,16 @@
       overlays = [(import rust-overlay)];
       pkgs = import nixpkgs {inherit system overlays;};
       rust_stable = pkgs.rust-bin.stable.latest.default.override {
-        extensions = ["rust-src" "rust-analyzer"];
+        extensions = ["rust-src" "rust-analyzer" "llvm-tools"];
       };
       rust_nightly = (pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)).override {
-        extensions = ["rust-src" "rust-analyzer"];
+        extensions = ["rust-src" "rust-analyzer" "llvm-tools"];
       };
       rust_oldNightly = (pkgs.rust-bin.nightly."2024-06-10").default.override {
         extensions = ["rust-src" "rust-analyzer"];
       };
       rust_wasm = pkgs.rust-bin.stable.latest.default.override {
-        extensions = ["rust-src" "rust-analyzer"];
+        extensions = ["rust-src" "rust-analyzer" "llvm-tools"];
         targets = ["wasm32-unknown-unknown"];
       };
       rust_embedded = pkgs.rust-bin.stable.latest.default.override {
@@ -64,11 +64,11 @@
         pkgs.mkShell modifiedArgs;
       makeBasicRustShell = rustToolChain:
         mkShellWithAliases {
-          buildInputs = with pkgs; [pkg-config cmake rustToolChain clang];
+          buildInputs = with pkgs; [pkg-config cmake rustToolChain clang cargo-tarpaulin];
         };
       makeScannerShell = rustToolChain:
         mkShellWithAliases {
-          packages = with pkgs; [llvmPackages_19.clang-tools llvmPackages_19.clang mold podman];
+          packages = with pkgs; [llvmPackages_19.clang-tools llvmPackages_19.clang mold podman  cargo-tarpaulin];
           nativeBuildInputs = with pkgs.buildPackages; [
             rustToolChain
             file
@@ -157,6 +157,7 @@
         };
         bevy = mkShellWithAliases rec {
           nativeBuildInputs = [
+            grcov
             clang
             pkg-config
             rust_wasm
