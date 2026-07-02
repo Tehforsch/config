@@ -104,7 +104,21 @@ endif
     set clipboard=unnamedplus
 
 " Paste over visual selections without yanking them
-    xnoremap p pgvy
+    function! s:visual_paste() abort
+        let l:mode = visualmode()
+        let l:reg = v:register
+        let l:contents = getreg(l:reg, 1, 1)
+        let l:type = getregtype(l:reg)
+
+        if l:mode ==# 'v'
+            call setreg(l:reg, l:contents, 'v')
+        endif
+        normal! gv"_d
+        execute 'normal! ' . (l:reg ==# '"' ? 'P' : '"' . l:reg . 'P')
+        call setreg(l:reg, l:contents, l:type)
+    endfunction
+
+    xnoremap <silent> p :<C-U>call <SID>visual_paste()<CR>
 
 " When editing a directory: Make selecting a file open that file in the same buffer instead of a new one
     autocmd FileType netrw setl bufhidden=wipe
