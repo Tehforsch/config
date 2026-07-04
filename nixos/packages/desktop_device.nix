@@ -15,6 +15,8 @@
     python312Packages.python-lsp-server
     nil # language server for nix
     elan
+    rustup # nice to have sometimes for release building etc, although i use shells for this
+    clang
 
     # User applications
     firefox
