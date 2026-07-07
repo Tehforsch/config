@@ -45,6 +45,10 @@
     lean4
     codex
 
+    easyeffects
+
+    github-cli
+
     inputs.torga.packages.x86_64-linux.torga-cli
     inputs.journal.packages.x86_64-linux.dump-sort
     inputs.mpd_rofi.packages.x86_64-linux.default
