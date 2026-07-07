@@ -3,22 +3,5 @@
 set -e
 
 cd $(git rev-parse --show-toplevel)
-cd rust
 
-cargo fmt --check
-typos
-cargo test --all
-cargo test --all --features native-rust-ssh
-cargo clippy --all-targets -- -D warnings 
-cargo clippy --all-targets --features native-rust-ssh -- -D warnings  
-
-set +e
-cd src
-rg "dbg\!"
-ret=$?
-if [[ $ret == 1 ]]; then
-    exit 0
-else
-    echo "dbg statements found"
-    exit 1
-fi
+./check.sh $@
