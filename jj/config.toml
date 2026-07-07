@@ -138,6 +138,8 @@ merged_bookmarks = ["bookmark", "list", "-r", "all() ~ mutable() ~ trunk()", "-T
 merged_remote_bookmarks = ["log", "-r", "all() & remote_bookmarks() ~ mutable() ~ trunk()", "-T", "self.bookmarks().join(' ') ++ ' '", "--no-graph"]
 grep = ["util", "exec", "--", "bash", "-c", "jj log --reversed -r \"description(substring:$1)\"", ""]
 
+commit_id = ["log", "--no-graph", "-T", "self.commit_id()"]
+
 [templates]
 log = "log_oneline"
 
