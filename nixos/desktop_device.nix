@@ -51,4 +51,12 @@
 
   # Oh no
   boot.kernelParams = ["mitigations=off"];
+
+
+  # This allows me to emulate virtual gamepads for game testing and
+  # I think the security considerations are acceptable.
+  boot.kernelModules = [ "uinput" ];
+  services.udev.extraRules = ''
+    KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"
+  '';
 }
