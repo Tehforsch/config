@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Toggle Mumble volume between 100% and 40% (~60% reduction)
+# Toggle Discord volume between 100% and 40% (~60% reduction)
 
 TARGET_VOLUME=0.40
 NORMAL_VOLUME=1.00
@@ -9,9 +9,8 @@ stream_ids=$(pw-dump 2>/dev/null | jq -r '
     .[] |
     select(.info.props["media.class"]? == "Stream/Output/Audio") |
     select(
-        (.info.props["application.name"]? // "" | test("Mumble";"i")) or
-        (.info.props["application.process.binary"]? // "" | test("mumble";"i")) or
-        (.info.props["node.name"]? // "" | test("mumble";"i"))
+        (.info.props["application.name"]? // "" | test("Discord|WEBRTC VoiceEngine";"i")) or
+        (.info.props["application.process.binary"]? // "" | test("Discord";"i"))
     ) |
     .id
 ')
