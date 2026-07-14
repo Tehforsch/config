@@ -10,12 +10,17 @@ return {
 		local rust_analyzer_features = {}
 		local rust_analyzer_config
 
-		vim.keymap.del("n", "grr", { buffer = false })
-		vim.keymap.del("n", "gra", { buffer = false })
-		vim.keymap.del("n", "grn", { buffer = false })
-		vim.keymap.del("n", "gri", { buffer = false })
-		vim.keymap.del("n", "grt", { buffer = false })
-		vim.keymap.del("x", "gra", { buffer = false })
+		local function delete_default_lsp_keymap(mode, lhs)
+			pcall(vim.keymap.del, mode, lhs, { buffer = false })
+		end
+
+		delete_default_lsp_keymap("n", "grr")
+		delete_default_lsp_keymap("n", "gra")
+		delete_default_lsp_keymap("n", "grn")
+		delete_default_lsp_keymap("n", "gri")
+		delete_default_lsp_keymap("n", "grt")
+		delete_default_lsp_keymap("n", "grx")
+		delete_default_lsp_keymap("x", "gra")
 
 		local function get_rust_analyzer_clients()
 			if vim.lsp.get_clients then
@@ -191,7 +196,7 @@ return {
 			end, opts)
 			vim.keymap.set("n", "gr", function()
 				Snacks.picker.lsp_references()
-			end, opts)
+			end, vim.tbl_extend("force", opts, { nowait = true }))
 			vim.keymap.set("n", "gtt", function()
 				Snacks.picker.lsp_type_definitions()
 			end, opts)
