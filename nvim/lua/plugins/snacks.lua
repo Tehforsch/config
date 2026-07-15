@@ -9,8 +9,19 @@ return {
 			ui_select = true,
 			sources = {
 				files = {
-                    hidden = true,
+					hidden = true,
 					exclude = { "*.ogg", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.mp3", "*.wav", "*.flac", "*.svg" },
+				},
+				diagnostics = {
+					sort = {
+						fields = {
+							"severity",
+							"is_current",
+							"is_cwd",
+							"file",
+							"lnum",
+						},
+					},
 				},
 			},
 			layout = {
