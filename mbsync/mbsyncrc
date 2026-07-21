@@ -99,5 +99,53 @@ Far :mailbox-remote:Junk
 Near :mailbox-local:spam
 Create Near
 
+IMAPAccount strato
+Host imap.strato.de
+Port 993
+User mail@sokobrane.com
+PassCmd "cat ~/resource/keys/pw/strato_sokobrane_mail"
+AuthMechs LOGIN
+TLSType IMAPS
+TLSVersions +1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore strato-remote
+Account strato
+
+MaildirStore strato-local
+Path ~/.local/share/mail/strato/
+Inbox ~/.local/share/mail/strato/inbox
+SubFolders Verbatim
+
+Channel strato-inbox
+Far :strato-remote:INBOX
+Near :strato-local:inbox
+Create Near
+
+Channel strato-drafts
+Far :strato-remote:Drafts
+Near :strato-local:drafts
+Create Near
+
+Channel strato-sent
+Far :strato-remote:"Sent Items"
+Near :strato-local:sent
+Create Near
+
+Channel strato-deleted
+Far :strato-remote:Trash
+Near :strato-local:deleted
+Create Near
+
+Channel strato-archive
+Far :strato-remote:Archive
+Near :strato-local:archive
+Create Near
+
+Channel strato-spam
+Far :strato-remote:Spam
+Near :strato-local:spam
+Create Near
+
 Group all
-Channels posteo-inbox posteo-drafts posteo-sent posteo-deleted posteo-archive mailbox-inbox mailbox-drafts mailbox-sent mailbox-deleted mailbox-archive mailbox-archives mailbox-spam
+Channels posteo-inbox posteo-drafts posteo-sent posteo-deleted posteo-archive mailbox-inbox mailbox-drafts mailbox-sent mailbox-deleted mailbox-archive mailbox-archives mailbox-spam strato-inbox strato-drafts strato-sent strato-deleted strato-archive strato-spam

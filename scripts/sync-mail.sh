@@ -6,6 +6,7 @@ notmuch_cmd="${NOTMUCH:-/run/current-system/sw/bin/notmuch}"
 
 mkdir -p "$HOME/.local/share/mail/posteo"
 mkdir -p "$HOME/.local/share/mail/mailbox"
+mkdir -p "$HOME/.local/share/mail/strato"
 
 "$mbsync_cmd" -a
 "$notmuch_cmd" new

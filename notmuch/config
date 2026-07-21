@@ -4,7 +4,7 @@ path=/home/toni/.local/share/mail
 [user]
 name=Toni Peter
 primary_email=mail@tonipeter.de
-other_email=tonipeter@posteo.de;tonipeter92@gmail.com;toni.peter@greenbone.net
+other_email=tonipeter@posteo.de;tonipeter92@gmail.com;toni.peter@greenbone.net;mail@sokobrane.com
 
 [new]
 tags=unread;
