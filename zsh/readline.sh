@@ -38,6 +38,7 @@ bindkey '^l' insert-last-word
 bindkey '^i' expand-or-complete-prefix
 
 export EDITOR="nvim"
+export VISUAL="nvim"
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
