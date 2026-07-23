@@ -49,6 +49,8 @@
     enable32Bit = true;
   };
 
+  environment.sessionVariables.MESA_VK_IGNORE_CONFORMANCE_WARNING = "1";
+
   # Oh no
   boot.kernelParams = ["mitigations=off"];
 
