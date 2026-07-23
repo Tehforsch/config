@@ -1,0 +1,15 @@
+defaults
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile ~/.local/state/msmtp/msmtp.log
+
+account sokobrane
+host smtp.strato.de
+port 465
+tls_starttls off
+from mail@sokobrane.com
+user mail@sokobrane.com
+passwordeval cat ~/resource/keys/pw/strato_sokobrane_mail
+
+account default : sokobrane

@@ -3,6 +3,7 @@
     aerc
     notmuch
     isync # mbsync
+    msmtp
     w3m # HTML mail rendering in aerc
   ];
 

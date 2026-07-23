@@ -72,6 +72,7 @@ make_symlink torga/torga.yml .config/todo/torga.yml
 make_symlink rmpc/config.ron .config/rmpc/config.ron
 make_symlink rmpc/theme.ron .config/rmpc/themes/default.ron
 make_symlink mbsync/mbsyncrc .config/isyncrc
+make_symlink msmtp/config .config/msmtp/config
 make_symlink notmuch/config .notmuch-config
 make_symlink meli/config.toml .config/meli/config.toml
 make_symlink aerc/aerc.conf .config/aerc/aerc.conf
