@@ -82,7 +82,7 @@ hotkeys:
     S-G: !Navigate Bottom
     /: EnterSearch
     Down: !Navigate Down
-    q: Quit
+    S-q: Quit
     '?': EnterSearch
     d: SetTaskDone
     S-S: Sync

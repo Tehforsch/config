@@ -174,8 +174,6 @@ alias kill="kill -KILL"
 
 alias top="btm"
 
-alias tt="$CONFIG/scripts/run_torga.sh"
-
 alias notify="$CONFIG/scripts/notify.sh"
 
 alias j="jj"
