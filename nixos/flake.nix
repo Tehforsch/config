@@ -99,6 +99,7 @@
         modules =
           [
             ./laptop.nix
+            ./packages/laptop.nix
             ./mullvad.nix
           ]
           ++ desktop_device ++ work ++ personal;
@@ -109,6 +110,7 @@
         modules =
           [
             ./laptop.nix
+            ./packages/laptop.nix
             ./mullvad.nix
           ]
           ++ desktop_device ++ work ++ personal;
