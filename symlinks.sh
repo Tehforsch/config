@@ -76,6 +76,7 @@ make_symlink notmuch/config .notmuch-config
 make_symlink meli/config.toml .config/meli/config.toml
 make_symlink aerc/aerc.conf .config/aerc/aerc.conf
 make_symlink aerc/accounts.conf .config/aerc/accounts.conf
+chmod 600 ~/.config/aerc/accounts.conf 
 make_symlink aerc/binds.conf .config/aerc/binds.conf
 make_symlink aerc/stylesets/toni .config/aerc/stylesets/toni
 make_symlink aerc/posteo-query-map .config/aerc/posteo-query-map
