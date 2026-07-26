@@ -1,12 +1,19 @@
 {
-  config,
   pkgs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    pipewire.jack
+    wineWow64Packages.stable
+    yabridge
+    yabridgectl
+  ];
+
   musnix = {
     enable = true;
     rtcqs.enable = true;
   };
+
   security.pam.loginLimits = [
     {
       domain = "@audio";

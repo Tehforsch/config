@@ -2,13 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
-    pipewire.jack
     reaper
     borgbackup
     beets
-    wineWow64Packages.stable
-    yabridge
-    yabridgectl
     qbittorrent
     steam
   ];
