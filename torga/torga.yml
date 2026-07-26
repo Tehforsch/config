@@ -38,6 +38,18 @@ filter_modes:
     cond: IsProject
   - !Not
     cond: !HasTag defer
+  - !Or
+    - !Not
+      cond: !HasTag weekday
+    - IsWeekday
+  - !Or
+    - !Not
+      cond: !HasTag working_hours
+    - !And
+      - IsWeekday
+      - !IsBetweenHours
+        start: 9
+        end: 17
 - name: sokobrane
   filter:
   - !Not
@@ -92,6 +104,8 @@ hotkeys:
     t s: !ToggleTag spree
     t d: !ToggleTag defer
     t p: !ToggleTag pr_open
+    t w d: !ToggleTag weekday
+    t w h: !ToggleTag working_hours
     n: !ToggleTag now
     a: AddTask
     e: EditTask
