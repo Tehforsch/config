@@ -12,7 +12,7 @@
     # Programming languages
     uv
     ruff
-    python312Packages.python-lsp-server
+    # python312Packages.python-lsp-server # temporarily didn't work
     nil # language server for nix
     elan
     rustup # nice to have sometimes for release building etc, although i use shells for this
