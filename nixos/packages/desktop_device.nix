@@ -2,7 +2,10 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  flameshotPkgs =
+    inputs.nixpkgs-flameshot.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   environment.systemPackages = with pkgs; [
     # Developer stuff
     kitty
@@ -73,8 +76,8 @@
     bottom
     nh
     bacon
-    flameshot
     brightnessctl
+    flameshotPkgs.flameshot
     android-tools
     scrcpy
     gvfs # Virtual filesystem with MTP support

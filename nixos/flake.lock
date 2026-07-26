@@ -188,6 +188,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-flameshot": {
+      "locked": {
+        "lastModified": 1781953828,
+        "narHash": "sha256-E8a8cfDD20OpXxfZJyUxFMSlaRbQo52BSfpSMv8cM58=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d4fb4bf52e40489e00b0d3f64af2d789977b506e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d4fb4bf52e40489e00b0d3f64af2d789977b506e",
+        "type": "github"
+      }
+    },
     "nixpkgs_10": {
       "locked": {
         "lastModified": 1775423009,
@@ -561,6 +577,7 @@
         "musnix": "musnix",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_9",
+        "nixpkgs-flameshot": "nixpkgs-flameshot",
         "personalbot": "personalbot",
         "rolf": "rolf",
         "rust-overlay": "rust-overlay_3",

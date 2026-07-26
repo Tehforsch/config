@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs = {url = "github:NixOS/nixpkgs/nixos-unstable";};
+    nixpkgs-flameshot = {
+      url = "github:NixOS/nixpkgs/d4fb4bf52e40489e00b0d3f64af2d789977b506e";
+    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
