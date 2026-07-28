@@ -36,7 +36,7 @@ in {
     nomacs
     zoom-us
     numbat
-    python3 # I sometimes want a REPL, so having this always there is nice
+    (python3.withPackages (ps: [ps.pyyaml ps.telethon])) # I sometimes want a REPL, so having this always there is nice
     obsidian
     hotspot
     anki
