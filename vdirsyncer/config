@@ -20,19 +20,19 @@ fileext = ".ics"
 type = "carddav"
 url = "http://v2202411242091296475.happysrv.de:5232"
 username = "toni"
-password.fetch = ["command", "~/projects/config/scripts/getRadicalePw.sh"]
+password.fetch = ["command", "~/projects/config/scripts/get_radicale_pw.sh"]
 
 [storage personal_calendar_remote]
 type = "caldav"
 url = "http://v2202411242091296475.happysrv.de:5232"
 username = "toni"
-password.fetch = ["command", "~/projects/config/scripts/getRadicalePw.sh"]
+password.fetch = ["command", "~/projects/config/scripts/get_radicale_pw.sh"]
 
 [storage work_calendar_remote]
 type = "caldav"
 url = "https://dav.mailbox.org/caldav/Y2FsOi8vMC8zMDkz"
 username = "toni.peter@greenbone.net"
-password.fetch = ["command", "~/projects/config/scripts/getMailboxPw.sh"]
+password.fetch = ["command", "~/projects/config/scripts/get_mailbox_pw.sh"]
 
 [pair contacts]
 a = "personal_contacts_local"

@@ -49,7 +49,7 @@ IMAPAccount mailbox
 Host imap.mailbox.org
 Port 993
 User toni.peter@greenbone.net
-PassCmd "/home/toni/projects/config/scripts/getMailboxPw.sh"
+PassCmd "/home/toni/projects/config/scripts/get_mailbox_pw.sh"
 AuthMechs LOGIN
 TLSType IMAPS
 TLSVersions +1.2

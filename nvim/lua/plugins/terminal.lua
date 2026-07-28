@@ -1,7 +1,6 @@
 -- Terminal-related functionality for SPC r command
--- Calls the existing runLastCommandInTerminalToTheRight.sh script
 
-local script_path = vim.fn.expand("~/projects/config/scripts/runLastCommandInTerminalToTheRight.sh")
+local script_path = vim.fn.expand("~/projects/config/scripts/run_last_command_in_terminal_to_the_right.sh")
 
 local function run_command_in_terminal_to_right()
 	-- Save the current file

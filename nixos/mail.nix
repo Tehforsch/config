@@ -14,7 +14,7 @@
     wants = ["network-online.target"];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/home/toni/projects/config/scripts/sync-mail.sh";
+      ExecStart = "/home/toni/projects/config/scripts/sync_mail.sh";
     };
   };
 

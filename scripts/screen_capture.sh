@@ -14,7 +14,7 @@ if [[ $# == 0 ]]; then
     if [[ $(($ySize % 2)) == 1 ]]; then
         ySize=$(($ySize + 1))
     fi
-    SCREENCAPTURES_DIR=".local/share/screenCaptures"
+    SCREENCAPTURES_DIR=".local/share/screen_captures"
     mkdir -p $SCREENCAPTURES_DIR
     echo $SCREENCAPTURES_DIR
     outputFile="$SCREENCAPTURES_DIR/$(date +%Y-%m-%d-%H-%M-%S).mp4"

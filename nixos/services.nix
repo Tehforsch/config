@@ -49,7 +49,7 @@ in {
     wantedBy = ["default.target"];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${python}/bin/python /home/toni/projects/config/scripts/calendarReminder.py ${pkgs.libnotify}/bin/notify-send";
+      ExecStart = "${python}/bin/python /home/toni/projects/config/scripts/calendar_reminder.py ${pkgs.libnotify}/bin/notify-send";
       Restart = "always";
       RestartSec = "10";
     };

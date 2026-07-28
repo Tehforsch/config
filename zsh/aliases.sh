@@ -2,7 +2,7 @@ alias l="exa -la"
 alias ls="exa -l"
 alias lt="exa --tree"
 alias cat="bat"
-alias e="$CONFIG/scripts/openVimInKitty.sh"
+alias e="$CONFIG/scripts/open_vim_in_kitty.sh"
 alias vim="nvim"
 function codex() {
     local day_of_week
@@ -99,7 +99,7 @@ function tou() {
     touch $p
 }
 
-alias flame="$scripts/flamegraphRunningProcess.sh"
+alias flame="$scripts/flamegraph_running_process.sh"
 
 alias cp='cp -v'
 
@@ -146,8 +146,8 @@ function nsr() {
 }
 
 alias transfer="rsync --archive --stats --progress --human-readable"
-alias dlc="$CONFIG/scripts/copyLastDownload.sh"
-alias kp="$scripts/killProcess.sh"
+alias dlc="$CONFIG/scripts/copy_last_download.sh"
+alias kp="$scripts/kill_process.sh"
 alias ka="killall"
 alias shut="shutdown -h 0"
 

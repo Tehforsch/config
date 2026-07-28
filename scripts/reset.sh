@@ -1,3 +1,3 @@
-~/projects/config/scripts/clearCapslock.sh
-~/projects/config/scripts/keyboardConfiguration.sh
-~/projects/config/scripts/disableAcceleration.sh
+~/projects/config/scripts/clear_capslock.sh
+~/projects/config/scripts/keyboard_configuration.sh
+~/projects/config/scripts/disable_acceleration.sh

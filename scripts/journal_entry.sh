@@ -62,5 +62,5 @@ if [  ! -f $entry ]; then
     touch $entry
 fi
 mkdir -p $pics
-$scripts/openVimInKitty.sh $entry
+$scripts/open_vim_in_kitty.sh $entry
 
