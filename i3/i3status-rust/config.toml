@@ -77,4 +77,4 @@ critical = 15
 [[block]]
 block = "time"
 interval = 5
-format = " $timestamp.datetime(f:'%H:%M') "
+format = " $timestamp.datetime(f:'%H:%M')"
