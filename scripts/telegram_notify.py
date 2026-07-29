@@ -17,6 +17,7 @@ import time
 
 APP_NAME = "telegram_notify"
 CREDENTIALS_FILE = Path.home() / "resource/keys/telegram/notify.yml"
+WATCHER_METADATA_VERSION = 2
 
 
 @dataclass(frozen=True)
@@ -24,7 +25,9 @@ class Watcher:
     pid: int
     process_start_time: str
     chat_name: str
+    peer_id: int
     metadata_path: Path
+    metadata_version: int
 
 
 def state_dir() -> Path:
@@ -47,46 +50,82 @@ def get_process_start_time(pid: int) -> str | None:
         return None
 
 
-def register_watcher(chat_name: str, peer_id: int) -> Watcher:
+def remove_watcher_metadata(watcher: Watcher) -> None:
+    try:
+        data = json.loads(watcher.metadata_path.read_text())
+        if (
+            int(data.get("pid")) == watcher.pid
+            and str(data.get("process_start_time")) == watcher.process_start_time
+            and int(data.get("peer_id")) == watcher.peer_id
+        ):
+            watcher.metadata_path.unlink(missing_ok=True)
+    except (TypeError, ValueError, FileNotFoundError, json.JSONDecodeError, OSError):
+        pass
+
+
+def register_watcher(
+    chat_name: str,
+    peer_id: int,
+    *,
+    pid: int | None = None,
+    process_start_time: str | None = None,
+) -> Watcher:
     directory = watchers_dir()
     directory.mkdir(mode=0o700, parents=True, exist_ok=True)
-    pid = os.getpid()
-    process_start_time = get_process_start_time(pid)
+    pid = os.getpid() if pid is None else pid
+    current_start_time = get_process_start_time(pid)
+    if process_start_time is None:
+        process_start_time = current_start_time
+    elif current_start_time != process_start_time:
+        raise RuntimeError("The Telegram watcher process is no longer running.")
     if process_start_time is None:
         raise RuntimeError("Could not identify the watcher process.")
 
-    metadata_path = directory / f"{pid}.json"
+    metadata_path = directory / f"{peer_id}.json"
+    temporary_path = directory / f".{peer_id}.{os.getpid()}.{time.time_ns()}.tmp"
     descriptor = os.open(
-        metadata_path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600
+        temporary_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600
     )
-    with os.fdopen(descriptor, "w") as metadata_file:
-        json.dump(
-            {
-                "pid": pid,
-                "process_start_time": process_start_time,
-                "chat_name": chat_name,
-                "peer_id": peer_id,
-            },
-            metadata_file,
-        )
-        metadata_file.write("\n")
+    try:
+        with os.fdopen(descriptor, "w") as metadata_file:
+            json.dump(
+                {
+                    "version": WATCHER_METADATA_VERSION,
+                    "pid": pid,
+                    "process_start_time": process_start_time,
+                    "chat_name": chat_name,
+                    "peer_id": peer_id,
+                },
+                metadata_file,
+            )
+            metadata_file.write("\n")
+        temporary_path.replace(metadata_path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
 
-    return Watcher(pid, process_start_time, chat_name, metadata_path)
+    return Watcher(
+        pid,
+        process_start_time,
+        chat_name,
+        peer_id,
+        metadata_path,
+        WATCHER_METADATA_VERSION,
+    )
 
 
 def unregister_watcher(watcher: Watcher) -> None:
-    try:
-        data = json.loads(watcher.metadata_path.read_text())
-        if data.get("process_start_time") == watcher.process_start_time:
-            watcher.metadata_path.unlink(missing_ok=True)
-    except (FileNotFoundError, json.JSONDecodeError, OSError):
-        pass
+    for active_watcher in active_watchers():
+        if (
+            active_watcher.pid == watcher.pid
+            and active_watcher.process_start_time == watcher.process_start_time
+        ):
+            remove_watcher_metadata(active_watcher)
 
 
 def active_watchers() -> list[Watcher]:
     active = []
     try:
-        metadata_paths = list(watchers_dir().glob("*.json"))
+        metadata_paths = sorted(watchers_dir().glob("*.json"))
     except OSError:
         return active
 
@@ -96,21 +135,39 @@ def active_watchers() -> list[Watcher]:
             pid = int(data["pid"])
             process_start_time = str(data["process_start_time"])
             chat_name = str(data["chat_name"])
+            peer_id = int(data["peer_id"])
+            metadata_version = int(data.get("version", 1))
             if get_process_start_time(pid) != process_start_time:
-                metadata_path.unlink(missing_ok=True)
+                try:
+                    metadata_path.unlink(missing_ok=True)
+                except OSError:
+                    pass
                 continue
             active.append(
-                Watcher(pid, process_start_time, chat_name, metadata_path)
+                Watcher(
+                    pid,
+                    process_start_time,
+                    chat_name,
+                    peer_id,
+                    metadata_path,
+                    metadata_version,
+                )
             )
         except (KeyError, TypeError, ValueError, json.JSONDecodeError, OSError):
-            metadata_path.unlink(missing_ok=True)
+            try:
+                metadata_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
     return active
 
 
 def clear_watchers() -> int:
     watchers = active_watchers()
-    for watcher in watchers:
+    processes = {
+        (watcher.pid, watcher.process_start_time): watcher for watcher in watchers
+    }
+    for watcher in processes.values():
         try:
             os.kill(watcher.pid, signal.SIGTERM)
         except ProcessLookupError:
@@ -120,24 +177,29 @@ def clear_watchers() -> int:
     while time.monotonic() < deadline:
         if all(
             get_process_start_time(watcher.pid) != watcher.process_start_time
-            for watcher in watchers
+            for watcher in processes.values()
         ):
             break
         time.sleep(0.05)
 
-    for watcher in watchers:
+    for watcher in processes.values():
         if get_process_start_time(watcher.pid) == watcher.process_start_time:
             try:
                 os.kill(watcher.pid, signal.SIGKILL)
             except ProcessLookupError:
                 pass
-        watcher.metadata_path.unlink(missing_ok=True)
+
+    for watcher in watchers:
+        remove_watcher_metadata(watcher)
 
     return len(watchers)
 
 
 def watcher_status() -> str:
-    return ", ".join(watcher.chat_name for watcher in active_watchers())
+    chats = {
+        watcher.peer_id: watcher.chat_name for watcher in active_watchers()
+    }
+    return ", ".join(sorted(chats.values(), key=str.casefold))
 
 
 def credentials() -> tuple[int, str]:
@@ -286,7 +348,17 @@ async def watch_chat(
 
         @client.on(events.NewMessage(incoming=True))
         async def on_new_message(event: object) -> None:
-            if event.chat_id != peer_id:
+            watched_chat = next(
+                (
+                    candidate
+                    for candidate in active_watchers()
+                    if candidate.pid == watcher.pid
+                    and candidate.process_start_time == watcher.process_start_time
+                    and candidate.peer_id == event.chat_id
+                ),
+                None,
+            )
+            if watched_chat is None:
                 return
 
             chat = await event.get_chat()
@@ -316,6 +388,11 @@ async def watch_chat(
                     f"notify-send exited with status {result.returncode}.",
                     flush=True,
                 )
+            else:
+                print(
+                    f"Notified for Telegram peer {event.chat_id}.",
+                    flush=True,
+                )
 
         print(f"Watching Telegram peer {peer_id}.", flush=True)
         await client.run_until_disconnected()
@@ -325,6 +402,40 @@ async def watch_chat(
 
 
 def start_background_watcher(peer_id: int, chat_name: str) -> None:
+    watchers = active_watchers()
+    processes = {
+        (watcher.pid, watcher.process_start_time) for watcher in watchers
+    }
+    if (
+        watchers
+        and len(processes) == 1
+        and all(
+            watcher.metadata_version == WATCHER_METADATA_VERSION
+            for watcher in watchers
+        )
+    ):
+        owner = watchers[0]
+        already_watched = any(watcher.peer_id == peer_id for watcher in watchers)
+        register_watcher(
+            chat_name,
+            peer_id,
+            pid=owner.pid,
+            process_start_time=owner.process_start_time,
+        )
+        if already_watched:
+            print(f"Already watching {chat_name} (PID {owner.pid}).")
+        else:
+            print(f"Added {chat_name} to Telegram watcher PID {owner.pid}.")
+        return
+
+    subscriptions = {watcher.peer_id: watcher.chat_name for watcher in watchers}
+    subscriptions[peer_id] = chat_name
+    if watchers:
+        clear_watchers()
+        print(
+            "Migrating existing chat subscriptions to one Telegram watcher."
+        )
+
     directory = state_dir()
     directory.mkdir(mode=0o700, parents=True, exist_ok=True)
     log_path = directory / "watcher.log"
@@ -344,7 +455,23 @@ def start_background_watcher(peer_id: int, chat_name: str) -> None:
             start_new_session=True,
         )
 
-    print(f"Watching {chat_name} in the background (PID {process.pid}).")
+    process_start_time = get_process_start_time(process.pid)
+    if process_start_time is None:
+        raise RuntimeError("The Telegram watcher failed to start.")
+
+    for subscription_peer_id, subscription_chat_name in subscriptions.items():
+        register_watcher(
+            subscription_chat_name,
+            subscription_peer_id,
+            pid=process.pid,
+            process_start_time=process_start_time,
+        )
+
+    watched_names = sorted(subscriptions.values(), key=str.casefold)
+    print(
+        f"Watching {', '.join(watched_names)} in the background "
+        f"(PID {process.pid})."
+    )
     print(f"Log: {log_path}")
 
 
@@ -395,6 +522,11 @@ def main() -> int:
 
         peer_id, chat_name = selection
         if args.foreground:
+            if active_watchers():
+                raise RuntimeError(
+                    "A Telegram watcher is already running; omit --foreground "
+                    "to add this chat to it, or use --clear first."
+                )
             print(f"Watching {chat_name}; press Ctrl-C to stop.")
             asyncio.run(watch_chat(peer_id, chat_name, api_id, api_hash))
         else:
