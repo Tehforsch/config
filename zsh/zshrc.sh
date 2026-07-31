@@ -20,10 +20,5 @@ source "$localConfig"
 
 ulimit -c unlimited
 
-export PATH=$PATH:/opt/texlive/2021/bin/x86_64-linux
-
-export PATH="$HOME/.poetry/bin:$PATH"
-export PATH=$PATH:/usr/lib/llvm15/bin/
-
 eval "$(direnv hook zsh)"
 source "$CONFIG/zsh/patina.sh"
