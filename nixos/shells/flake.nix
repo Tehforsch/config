@@ -153,7 +153,7 @@
           shellHook = "export LIBCLANG_PATH=${pkgs.libclang.lib}/lib";
         };
         website = mkShellWithAliases {
-          buildInputs = [hugo];
+          buildInputs = [hugo yt-dlp];
         };
         bevy = mkShellWithAliases rec {
           nativeBuildInputs = [
