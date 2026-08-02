@@ -14,6 +14,11 @@
     moody = {url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git";};
     personalbot = {url = "git+ssh://git@github.com/tehforsch/personalbot.git";};
     torga = {url = "git+ssh://git@github.com/tehforsch/todo.git";};
+    calendar = {
+      url = "github:tehforsch/calendar";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
     mpd_rofi = {url = "github:tehforsch/mpd_rofi";};
     musnix = {url = "github:musnix/musnix";};
     nixos-hardware.url = "github:nixos/nixos-hardware";

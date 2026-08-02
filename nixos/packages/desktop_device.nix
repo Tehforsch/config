@@ -54,12 +54,12 @@ in {
     github-cli
 
     inputs.torga.packages.x86_64-linux.torga-cli
+    inputs.calendar.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.journal.packages.x86_64-linux.dump-sort
     inputs.mpd_rofi.packages.x86_64-linux.default
     inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     khard
-    khal
 
     # Utilities
     usbutils

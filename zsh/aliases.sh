@@ -166,8 +166,6 @@ alias scannerctl="cargo run --manifest-path ~/projects/openvas-scanner/rust/Carg
 alias scannerctl_release="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
 alias openvasd="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
 
-alias cal="vdirsyncer sync && ikhal"
-
 alias mol="cargo run --manifest-path ~/projects/molt/Cargo.toml --"
 
 alias kill="kill -KILL"

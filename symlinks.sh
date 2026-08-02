@@ -63,7 +63,6 @@ make_symlink helix/config.toml .config/helix/config.toml
 make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink nushell/env.nu .config/nushell/env.nu
 make_symlink vdirsyncer/config .config/vdirsyncer/config
-make_symlink khal/config .config/khal/config
 make_symlink khard/khard.conf .config/khard/khard.conf
 make_symlink striputary/config.yml .config/striputary/config.yaml
 make_symlink qbittorrent/qBittorrent.conf .config/qBittorrent/qBittorrent.conf

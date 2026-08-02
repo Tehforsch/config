@@ -9,25 +9,63 @@ calendar_colors: {}
 hotkeys:
   normal:
     "h": !Navigate Left
+    "a": !Navigate Left
     "Left": !Navigate Left
     "j": !Navigate Down
+    "s": !Navigate Down
     "Down": !Navigate Down
     "k": !Navigate Up
+    "w": !Navigate Up
     "Up": !Navigate Up
     "l": !Navigate Right
+    "d": !Navigate Right
     "Right": !Navigate Right
     "H": PreviousPeriod
     "L": NextPeriod
-    "a": AddEvent
-    "m": MonthView
-    "w": WeekView
+    "n": AddEvent
+    "Enter": OpenAgenda
+    "v a": OpenAgenda
+    "v m": MonthView
+    "v w": WeekView
     "g t": Today
     "r": Reload
     "?": Help
-    "q": Quit
+    "/": Search
+    "q": DefaultView
+    "Esc": DefaultView
   dialog:
+    "C-t": ToggleMode
     "Tab": NextField
     "BackTab": PreviousField
     "Enter": Save
     "Esc": Cancel
+    "q": Cancel
     "C-u": ClearField
+  agenda:
+    "a": !Navigate Left
+    "w": !Navigate Up
+    "s": !Navigate Down
+    "d": !Navigate Right
+    "j": !Navigate Down
+    "Down": !Navigate Down
+    "k": !Navigate Up
+    "Up": !Navigate Up
+    "n": AddEvent
+    "v a": AgendaView
+    "v m": MonthView
+    "v w": WeekView
+    "x": Delete
+    "e": Edit
+    "Enter": Edit
+    "Esc": Close
+    "q": Close
+  confirm:
+    "Enter": Confirm
+    "Esc": Cancel
+    "q": Cancel
+  search:
+    "C-j": !Navigate Down
+    "C-k": !Navigate Up
+    "Enter": Select
+    "Esc": Cancel
+    "q": Cancel
