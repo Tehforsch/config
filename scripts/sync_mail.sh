@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 set -eu
 
 mbsync_cmd="${MBSYNC:-/run/current-system/sw/bin/mbsync}"
