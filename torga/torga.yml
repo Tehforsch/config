@@ -128,6 +128,7 @@ hotkeys:
     f r: !FilterBy done-today
     u: Undo
     C-r: Redo
+    v l: ToggleCommandHistory
   task_dialog:
     Enter: Confirm
     Esc: Cancel
