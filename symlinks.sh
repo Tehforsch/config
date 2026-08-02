@@ -84,6 +84,7 @@ make_symlink aerc/mailbox-query-map .config/aerc/mailbox-query-map
 make_symlink aerc/strato-query-map .config/aerc/strato-query-map
 make_symlink aerc/gmail-query-map .config/aerc/gmail-query-map
 make_symlink jj/config.toml .config/jj/config.toml
+make_symlink calendar/config.yml .config/calendar/config.yml
 
 # The EVIL, polluting my home directory
 make_symlink bash/bashrc.sh .bashrc

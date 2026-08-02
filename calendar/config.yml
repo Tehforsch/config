@@ -1,0 +1,33 @@
+# calendar reads vdirsyncer-style directories recursively. A calendar is the
+# first directory below this path (or "default" for .ics files in the root).
+calendar_dir: ~/.local/share/dav/calendar
+default_calendar: personal/personal
+default_view: Month
+default_start_time: "09:00"
+default_duration_minutes: 60
+calendar_colors: {}
+hotkeys:
+  normal:
+    "h": !Navigate Left
+    "Left": !Navigate Left
+    "j": !Navigate Down
+    "Down": !Navigate Down
+    "k": !Navigate Up
+    "Up": !Navigate Up
+    "l": !Navigate Right
+    "Right": !Navigate Right
+    "H": PreviousPeriod
+    "L": NextPeriod
+    "a": AddEvent
+    "m": MonthView
+    "w": WeekView
+    "g t": Today
+    "r": Reload
+    "?": Help
+    "q": Quit
+  dialog:
+    "Tab": NextField
+    "BackTab": PreviousField
+    "Enter": Save
+    "Esc": Cancel
+    "C-u": ClearField
