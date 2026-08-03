@@ -73,8 +73,13 @@ active = { fg = "default" }
 mutable = { bold = true }
 immutable = { bold = false }
 
+[revsets]
+log = "default_log"
+
 [revset-aliases]
-'default_log' = 'present(@) | ancestors(immutable_heads().., 2) | present(trunk())'
+'review_bookmarks()' = 'bookmarks(glob:"review_*/*")'
+'active_review()' = 'review_bookmarks() & (ancestors(@) | descendants(@))'
+'default_log' = '((present(@) | ancestors(immutable_heads().., 2) | present(trunk())) ~ review_bookmarks()) | active_review()'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'active(rev)' = '(ancestors(rev) | descendants(rev)) ~ immutable()'
 'user(x)' = 'author(x) | committer(x)'
@@ -138,6 +143,7 @@ merged_remote_bookmarks = ["log", "-r", "all() & remote_bookmarks() ~ mutable() 
 grep = ["util", "exec", "--", "bash", "-c", "jj log --reversed -r \"description(substring:$1)\"", ""]
 save = ["util", "exec", "--", "bash", "-c", 'exec "$HOME/projects/config/scripts/jj_save_load.sh" save', ""]
 load = ["util", "exec", "--", "bash", "-c", 'exec "$HOME/projects/config/scripts/jj_save_load.sh" load', ""]
+review = ["util", "exec", "--", "bash", "-c", 'exec "$HOME/projects/config/scripts/jj_review.sh" "$@"', ""]
 
 commit_id = ["log", "--no-graph", "-T", "self.commit_id()"]
 
