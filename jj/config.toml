@@ -7,8 +7,8 @@ email = "mail@tonipeter.de"
 [ui]
 paginate = "never"
 default-command = ["logr"]
-# While my tools don't integrate with the new ones
 conflict-marker-style = "git"
+merge-editor = ["meld", "$left", "$base", "$right", "-o", "$output"]
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
@@ -105,7 +105,6 @@ immutable = { bold = false }
 ab = ["abandon"]
 logr = ["log", "--reversed"]
 oplog = ["op", "log", "--reversed"]
-merge = ["resolve", "--tool", "nvim"]
 
 # Useful logs
 stack = ["logr", "-r", "stack(@)"]
@@ -149,7 +148,3 @@ log = "log_oneline"
 enabled = false
 command = ["rustfmt", "--emit", "stdout"]
 patterns = ["glob:'**/*.rs'"]
-
-[merge-tools.nvim]
-program = "nvim"
-merge-args = ["-c", "DiffviewOpen -m"]
