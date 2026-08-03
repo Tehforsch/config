@@ -137,6 +137,8 @@ merged_bookmarks = ["bookmark", "list", "-r", "all() ~ mutable() ~ trunk()", "-T
 # jb delete $(j merged_remote_bookmarks | sed "s/@origin//g") 
 merged_remote_bookmarks = ["log", "-r", "all() & remote_bookmarks() ~ mutable() ~ trunk()", "-T", "self.bookmarks().join(' ') ++ ' '", "--no-graph"]
 grep = ["util", "exec", "--", "bash", "-c", "jj log --reversed -r \"description(substring:$1)\"", ""]
+save = ["util", "exec", "--", "bash", "-c", 'exec "$HOME/projects/config/scripts/jj_save_load.sh" save', ""]
+load = ["util", "exec", "--", "bash", "-c", 'exec "$HOME/projects/config/scripts/jj_save_load.sh" load', ""]
 
 commit_id = ["log", "--no-graph", "-T", "self.commit_id()"]
 
