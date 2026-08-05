@@ -25,6 +25,7 @@
     cmake
     pkg-config
     jq
+    curl
     wget
     lsof
     sd
