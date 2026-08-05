@@ -173,6 +173,7 @@ alias kill="kill -KILL"
 alias top="btm"
 
 alias notify="$CONFIG/scripts/notify.sh"
+alias jira="$CONFIG/scripts/jira.sh"
 
 alias j="jj"
 alias jf="jj git fetch"
