@@ -174,6 +174,7 @@ alias top="btm"
 
 alias notify="$CONFIG/scripts/notify.sh"
 alias jira="$CONFIG/scripts/jira.sh"
+alias check_prs="$CONFIG/scripts/check_open_prs.sh"
 
 alias j="jj"
 alias jf="jj git fetch"
