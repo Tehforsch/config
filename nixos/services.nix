@@ -25,7 +25,7 @@ in {
   systemd.user.services.syncCalendars = {
     serviceConfig.Type = "oneshot";
     script = ''
-      yes | ${pkgs.vdirsyncer}/bin/vdirsyncer discover
+      ${pkgs.vdirsyncer}/bin/vdirsyncer discover
       ${pkgs.vdirsyncer}/bin/vdirsyncer sync
     '';
   };

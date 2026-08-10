@@ -47,4 +47,5 @@ collections = ["from a", "from b"]
 [pair work_calendar]
 a = "work_calendar_local"
 b = "work_calendar_remote"
-collections = ["from a", "from b"]
+# Only sync the work calendar selected by work_calendar_remote.url. 
+collections = ["Y2FsOi8vMC8zMDkz"]
