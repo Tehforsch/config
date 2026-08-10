@@ -24,6 +24,11 @@
     roboto
   ];
 
+  networking.firewall = {
+    allowedTCPPorts = [4761];
+    allowedUDPPorts = [4761];
+  };
+
   virtualisation = {
     docker.enable = true;
     libvirtd = {
