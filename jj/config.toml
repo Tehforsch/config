@@ -152,5 +152,5 @@ log = "log_oneline"
 
 [fix.tools.rustfmt]
 enabled = false
-command = ["rustfmt", "--emit", "stdout"]
+command = ["rustfmt", "--edition", "2024", "--emit", "stdout"]
 patterns = ["glob:'**/*.rs'"]
