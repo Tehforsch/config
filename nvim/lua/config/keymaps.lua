@@ -4,6 +4,21 @@ local command_history = function()
 	Snacks.picker.command_history()
 end
 
+local restart_nvim = function()
+	local session = vim.fs.joinpath(
+		vim.fn.stdpath("state"),
+		("restart-%d.vim"):format(vim.fn.getpid())
+	)
+
+	vim.cmd.mksession({ args = { session }, bang = true })
+	local restore = (
+		"lua local session=%q; vim.schedule(function() "
+			.. "vim.cmd.source({ session, magic = { file = false, bar = false } }); "
+			.. "vim.fn.delete(session) end)"
+	):format(session)
+	vim.cmd.restart(restore)
+end
+
 keymap("n", "<leader>^", "<C-^>", { desc = "Toggle to last buffer" })
 
 keymap("n", "<Esc>", ":noh<CR>", { desc = "Clear search highlighting" })
@@ -25,6 +40,7 @@ keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 keymap("n", "<leader>s", ":w<CR>", { desc = "Save file" })
+keymap("n", "<leader>vr", restart_nvim, { desc = "Restart Neovim in place" })
 keymap("n", "<leader>ff", function()
 	Snacks.picker.files()
 end, { desc = "Find file" })
