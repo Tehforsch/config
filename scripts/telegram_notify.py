@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Select a Telegram chat and notify once about its next new message."""
+"""Select a Telegram chat with fzf and notify about new messages."""
 
 import argparse
 import asyncio
@@ -341,7 +341,6 @@ async def watch_chat(
 
     client = TelegramClient(StringSession(session), api_id, api_hash)
     watcher = register_watcher(chat_name, peer_id)
-    notifications_in_progress: set[int] = set()
     try:
         await client.connect()
         if not await client.is_user_authorized():
@@ -349,9 +348,6 @@ async def watch_chat(
 
         @client.on(events.NewMessage(incoming=True))
         async def on_new_message(event: object) -> None:
-            if event.chat_id in notifications_in_progress:
-                return
-
             watched_chat = next(
                 (
                     candidate
@@ -365,55 +361,40 @@ async def watch_chat(
             if watched_chat is None:
                 return
 
-            notifications_in_progress.add(event.chat_id)
-            notification_sent = False
-            try:
-                chat = await event.get_chat()
-                sender = await event.get_sender()
-                notification_chat_name = display_name(chat)
-                sender_name = (
-                    display_name(sender) if sender is not None else "Unknown sender"
-                )
-                body = message_text(event)
+            chat = await event.get_chat()
+            sender = await event.get_sender()
+            notification_chat_name = display_name(chat)
+            sender_name = (
+                display_name(sender) if sender is not None else "Unknown sender"
+            )
+            body = message_text(event)
 
-                if event.is_group:
-                    body = f"{sender_name}: {body}"
+            if event.is_group:
+                body = f"{sender_name}: {body}"
 
-                result = subprocess.run(
-                    [
-                        "notify-send",
-                        "--app-name=Telegram",
-                        "--icon=telegram",
-                        "--expire-time=3600000",
-                        f"Telegram — {notification_chat_name}",
-                        html.escape(body),
-                    ],
-                    check=False,
-                )
-                if result.returncode != 0:
-                    print(
-                        f"notify-send exited with status {result.returncode}.",
-                        flush=True,
-                    )
-                    return
-
-                remove_watcher_metadata(watched_chat)
-                notification_sent = True
+            result = subprocess.run(
+                [
+                    "notify-send",
+                    "--app-name=Telegram",
+                    "--icon=telegram",
+                    "--expire-time=3600000",
+                    f"Telegram — {notification_chat_name}",
+                    html.escape(body),
+                ],
+                check=False,
+            )
+            if result.returncode != 0:
                 print(
-                    f"Notified once for Telegram peer {event.chat_id}; "
-                    "stopped watching it.",
+                    f"notify-send exited with status {result.returncode}.",
                     flush=True,
                 )
-            finally:
-                notifications_in_progress.discard(event.chat_id)
-                if notification_sent and not any(
-                    candidate.pid == watcher.pid
-                    and candidate.process_start_time == watcher.process_start_time
-                    for candidate in active_watchers()
-                ):
-                    asyncio.ensure_future(client.disconnect())
+            else:
+                print(
+                    f"Notified for Telegram peer {event.chat_id}.",
+                    flush=True,
+                )
 
-        print(f"Watching Telegram peer {peer_id} for one message.", flush=True)
+        print(f"Watching Telegram peer {peer_id}.", flush=True)
         await client.run_until_disconnected()
     finally:
         await client.disconnect()
@@ -442,12 +423,9 @@ def start_background_watcher(peer_id: int, chat_name: str) -> None:
             process_start_time=owner.process_start_time,
         )
         if already_watched:
-            print(f"Already watching {chat_name} for one message (PID {owner.pid}).")
+            print(f"Already watching {chat_name} (PID {owner.pid}).")
         else:
-            print(
-                f"Added {chat_name} to Telegram watcher PID {owner.pid} "
-                "for one message."
-            )
+            print(f"Added {chat_name} to Telegram watcher PID {owner.pid}.")
         return
 
     subscriptions = {watcher.peer_id: watcher.chat_name for watcher in watchers}
@@ -491,7 +469,7 @@ def start_background_watcher(peer_id: int, chat_name: str) -> None:
 
     watched_names = sorted(subscriptions.values(), key=str.casefold)
     print(
-        f"Watching {', '.join(watched_names)} for one message each in the background "
+        f"Watching {', '.join(watched_names)} in the background "
         f"(PID {process.pid})."
     )
     print(f"Log: {log_path}")
@@ -549,7 +527,7 @@ def main() -> int:
                     "A Telegram watcher is already running; omit --foreground "
                     "to add this chat to it, or use --clear first."
                 )
-            print(f"Watching {chat_name} for one message; press Ctrl-C to stop.")
+            print(f"Watching {chat_name}; press Ctrl-C to stop.")
             asyncio.run(watch_chat(peer_id, chat_name, api_id, api_hash))
         else:
             start_background_watcher(peer_id, chat_name)
