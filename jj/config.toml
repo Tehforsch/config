@@ -154,3 +154,6 @@ log = "log_oneline"
 enabled = false
 command = ["rustfmt", "--edition", "2024", "--emit", "stdout"]
 patterns = ["glob:'**/*.rs'"]
+
+[git]
+private-commits = 'subject(regex:"^TEMP:")'
