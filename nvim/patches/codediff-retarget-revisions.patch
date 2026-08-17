@@ -1,0 +1,87 @@
+diff --git a/lua/codediff/ui/explorer/init.lua b/lua/codediff/ui/explorer/init.lua
+index c513b62..bf617e6 100644
+--- a/lua/codediff/ui/explorer/init.lua
++++ b/lua/codediff/ui/explorer/init.lua
+@@ -15,6 +15,7 @@ M.show_welcome_page = render.show_welcome_page
+ -- Delegate to refresh module
+ M.setup_auto_refresh = refresh.setup_auto_refresh
+ M.refresh = refresh.refresh
++M.retarget_revisions = refresh.retarget_revisions
+ 
+ -- Delegate to actions module
+ M.navigate_next = actions.navigate_next
+diff --git a/lua/codediff/ui/explorer/refresh.lua b/lua/codediff/ui/explorer/refresh.lua
+index f20d7ca..1271f35 100644
+--- a/lua/codediff/ui/explorer/refresh.lua
++++ b/lua/codediff/ui/explorer/refresh.lua
+@@ -369,6 +369,22 @@ function M.refresh(explorer)
+   end
+ end
+ 
++function M.retarget_revisions(explorer, base_revision, target_revision)
++  if not explorer or not explorer.git_root then
++    return false
++  end
++
++  explorer.base_revision = base_revision
++  explorer.target_revision = target_revision
++  explorer.status_result = nil
++  explorer.force_next_selection = true
++
++  local lifecycle = require("codediff.ui.lifecycle")
++  lifecycle.update_revisions(explorer.tabpage, base_revision, target_revision)
++  M.refresh(explorer)
++  return true
++end
++
+ -- Rebuild the tree synchronously from the cached status_result. Used when only
+ -- group visibility changed (gs/gu): hiding or showing a group needs no new git
+ -- data, so we re-render immediately from the last known status instead of
+diff --git a/lua/codediff/ui/explorer/render.lua b/lua/codediff/ui/explorer/render.lua
+index 9f833a6..bda3e56 100644
+--- a/lua/codediff/ui/explorer/render.lua
++++ b/lua/codediff/ui/explorer/render.lua
+@@ -196,5 +196,7 @@ function M.create(status_result, git_root, tabpage, width, base_revision, target
+   local function on_file_select(file_data, opts)
+     opts = opts or {}
++    local base_revision = explorer.base_revision
++    local target_revision = explorer.target_revision
+     local git = require("codediff.core.git")
+     local view = require("codediff.ui.view")
+     local lifecycle = require("codediff.ui.lifecycle")
+@@ -553,6 +555,11 @@ function M.create(status_result, git_root, tabpage, width, base_revision, target
+ 
+   -- Wrap on_file_select to track current file and group
+   explorer.on_file_select = function(file_data, opts)
++    if explorer.force_next_selection then
++      opts = vim.tbl_extend("force", opts or {}, { force = true })
++      explorer.force_next_selection = nil
++    end
++
+     explorer.current_file_path = file_data.path
+     explorer.current_file_group = file_data.group
+     explorer.current_selection = vim.deepcopy(file_data)
+diff --git a/lua/codediff/ui/view/side_by_side.lua b/lua/codediff/ui/view/side_by_side.lua
+index a5b321c..4334a35 100644
+--- a/lua/codediff/ui/view/side_by_side.lua
++++ b/lua/codediff/ui/view/side_by_side.lua
+@@ -409,5 +409,9 @@ function M.update(tabpage, session_config, auto_scroll_to_first_hunk)
+   -- Save current window to restore focus after update
+   local saved_current_win = vim.api.nvim_get_current_win()
++  local saved_current_view
++  if auto_scroll_to_first_hunk ~= true then
++    saved_current_view = vim.api.nvim_win_call(saved_current_win, vim.fn.winsaveview)
++  end
+ 
+   -- Get existing session
+   local session = lifecycle.get_session(tabpage)
+@@ -559,6 +563,9 @@ function M.update(tabpage, session_config, auto_scroll_to_first_hunk)
+         -- Restore focus to the window that was active before update
+         if saved_current_win and vim.api.nvim_win_is_valid(saved_current_win) then
+           vim.api.nvim_set_current_win(saved_current_win)
++          if saved_current_view then
++            vim.fn.winrestview(saved_current_view)
++          end
+         end
+       end
+     end

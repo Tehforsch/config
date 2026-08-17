@@ -1,4 +1,19 @@
 local keymap = vim.keymap.set
+local maximized_tabs = {}
+
+local function toggle_window_maximized()
+	local tabpage = vim.api.nvim_get_current_tabpage()
+	local restore = maximized_tabs[tabpage]
+	if restore then
+		maximized_tabs[tabpage] = nil
+		vim.cmd(restore)
+		return
+	end
+
+	maximized_tabs[tabpage] = vim.fn.winrestcmd()
+	vim.cmd.wincmd("_")
+	vim.cmd.wincmd("|")
+end
 
 local command_history = function()
 	Snacks.picker.command_history()
@@ -40,6 +55,7 @@ keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 keymap("n", "<leader>s", ":w<CR>", { desc = "Save file" })
+keymap("n", "<leader>we", toggle_window_maximized, { desc = "Toggle maximized window" })
 keymap("n", "<leader>vr", restart_nvim, { desc = "Restart Neovim in place" })
 keymap("n", "<leader>ff", function()
 	Snacks.picker.files()

@@ -179,7 +179,7 @@ local function squash_tool_path()
 	return vim.fs.joinpath(vim.fs.dirname(config_dir), "scripts", "jj-codediff-hunk.sh")
 end
 
-local function reopen_parent_diff(tabpage, root)
+local function refresh_parent_diff(tabpage, root)
 	run({
 		"jj",
 		"--ignore-working-copy",
@@ -206,9 +206,11 @@ local function reopen_parent_diff(tabpage, root)
 			return
 		end
 
-		local lifecycle = require("codediff.ui.lifecycle")
-		if lifecycle.get_session(tabpage) then lifecycle.close(tabpage) end
-		vim.schedule(function() vim.api.nvim_cmd({ cmd = "CodeDiff", args = { "-C", root, revisions.parent, revisions.current } }, {}) end)
+		local session = require("codediff.ui.lifecycle").get_session(tabpage)
+		local explorer = session and session.explorer or nil
+		if not explorer or not require("codediff.ui.explorer").retarget_revisions(explorer, revisions.parent, revisions.current) then
+			vim.notify("Squashed the hunk, but could not retarget CodeDiff", vim.log.levels.WARN)
+		end
 	end)
 end
 
@@ -440,7 +442,7 @@ function M.squash_current_hunk()
 			end
 
 			vim.notify(string.format("Squashed CodeDiff hunk %d into @-", hunk_index), vim.log.levels.INFO)
-			reopen_parent_diff(tabpage, root)
+			refresh_parent_diff(tabpage, root)
 		end)
 	end)
 end
