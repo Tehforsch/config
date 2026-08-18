@@ -190,6 +190,41 @@
 
           LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
         };
+        bevy_unstable = mkShellWithAliases rec {
+          nativeBuildInputs = [
+            grcov
+            clang
+            pkg-config
+            rust_nightly
+            trunk
+            rustup # for cross
+            cargo-about
+            tracy_x11
+          ];
+          buildInputs = [
+            wayland
+            pkg-config
+            alsa-lib
+            vulkan-tools
+            vulkan-headers
+            vulkan-loader
+            vulkan-validation-layers
+            udev
+            libglvnd
+            # If on x11
+            libx11
+            libx11
+            libxcursor
+            libxext
+            libxi
+            libxinerama
+            libxrandr
+            libxkbcommon
+            (python3.withPackages (p: with p; [pyyaml]))
+          ];
+
+          LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
+        };
         guitar_practice = mkShellWithAliases {
           nativeBuildInputs = with pkgs; [
             rust_stable
