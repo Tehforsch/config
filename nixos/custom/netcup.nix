@@ -95,6 +95,12 @@
     };
   };
 
+  services.shopping-list = {
+    enable = true;
+    domain = "tonipeter.de";
+    path = "/shopping/";
+  };
+
   networking.firewall.allowedTCPPorts = [80 443 5232 7000 8083 8337 4761];
   networking.firewall.allowedUDPPorts = [4761];
 }

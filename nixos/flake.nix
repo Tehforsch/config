@@ -28,6 +28,7 @@
     };
     rolf.url = "git+ssh://git@github.com/tehforsch/Rolf.git?dir=deployment";
     health_service_assistant.url = "git+ssh://git@github.com/tehforsch/health_service_assistant.git";
+    shopping.url = "git+ssh://git@github.com/tehforsch/shopping.git";
   };
 
   outputs = inputs @ {
@@ -134,6 +135,7 @@
         system = "x86_64-linux";
         hostname = "netcup";
         modules = [
+          inputs.shopping.nixosModules.default
           ./ssl.nix
         ];
       };

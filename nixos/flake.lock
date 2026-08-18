@@ -280,6 +280,22 @@
     },
     "nixpkgs_12": {
       "locked": {
+        "lastModified": 1786862985,
+        "narHash": "sha256-FBJRXmbGXiSUDvYEbfLYRkckayyZ6SK1UEqhCrIZ2Cs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e5bdc4a41d4c072fe1e3787eaa0320a384741d44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_13": {
+      "locked": {
         "lastModified": 1770197578,
         "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
         "owner": "NixOS",
@@ -624,6 +640,7 @@
         "personalbot": "personalbot",
         "rolf": "rolf",
         "rust-overlay": "rust-overlay_3",
+        "shopping": "shopping",
         "torga": "torga",
         "zsh-patina": "zsh-patina"
       }
@@ -705,6 +722,24 @@
         "type": "github"
       }
     },
+    "shopping": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_12"
+      },
+      "locked": {
+        "lastModified": 1787035613,
+        "narHash": "sha256-MClNif8WTGjI+bO2Z8irAizpTeHEFROTQSlDV50sf9g=",
+        "ref": "refs/heads/main",
+        "rev": "974b8dbab5c63039413781b0548e8486c8073017",
+        "revCount": 3,
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/shopping.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/shopping.git"
+      }
+    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -768,7 +803,7 @@
     "torga": {
       "inputs": {
         "flake-utils": "flake-utils_4",
-        "nixpkgs": "nixpkgs_12",
+        "nixpkgs": "nixpkgs_13",
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
