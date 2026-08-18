@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile" },
+		lazy = false,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
 				callback = function()
@@ -16,6 +16,7 @@ return {
 			vim.treesitter.language.register("rust", "molt")
 
 			local ensure_installed = {
+				"bash",
 				"rust",
 				"python",
 				"c",
@@ -30,16 +31,17 @@ return {
 				"query",
 				"markdown",
 				"markdown_inline",
+				"toml",
 			}
 			local already_installed = require("nvim-treesitter.config").get_installed()
-			local to_install = vim.iter(ensure_installed)
+			local to_install = vim
+				.iter(ensure_installed)
 				:filter(function(parser)
-					return not vim.tbl_contains(already_installed, parser)
+					local query_dir = vim.fn.stdpath("data") .. "/site/queries/" .. parser
+					return not vim.tbl_contains(already_installed, parser) or vim.uv.fs_stat(query_dir) == nil
 				end)
 				:totable()
-			if #to_install > 0 then
-				require("nvim-treesitter").install(to_install)
-			end
+			if #to_install > 0 then require("nvim-treesitter").install(to_install, { force = true }) end
 		end,
 	},
 	{
