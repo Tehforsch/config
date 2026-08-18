@@ -727,11 +727,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1787035613,
-        "narHash": "sha256-MClNif8WTGjI+bO2Z8irAizpTeHEFROTQSlDV50sf9g=",
+        "lastModified": 1787048359,
+        "narHash": "sha256-+TNYphII7SkbPTPGpNJr+6fQdUL/bi7Zv0k2/EeFGRU=",
         "ref": "refs/heads/main",
-        "rev": "974b8dbab5c63039413781b0548e8486c8073017",
-        "revCount": 3,
+        "rev": "7e3c9e89bb74cc70c672c02a1fb3935a9dc8f95f",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/shopping.git"
       },
@@ -807,11 +807,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1785656084,
-        "narHash": "sha256-F5d8TXUYLHIdxZ5m8rWh/WdhahoiVaiRJjgW9PXn6IE=",
+        "lastModified": 1787050429,
+        "narHash": "sha256-rJC9OhkcW661joNANXc/P3j3LRgBVx2LAoq+dxDxbn4=",
         "ref": "refs/heads/main",
-        "rev": "d5c68689ea1d8420c1d9ae152be0d95ac9687a34",
-        "revCount": 192,
+        "rev": "6560d24552e42c6b79457c3388ef7aa4fd4953de",
+        "revCount": 193,
         "type": "git",
         "url": "ssh://git@github.com/tehforsch/todo.git"
       },
