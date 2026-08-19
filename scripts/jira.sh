@@ -695,6 +695,61 @@ change_issue() {
     printf '%s/browse/%s\n' "$JIRA_URL" "$issue_key"
 }
 
+choose_work_issue() {
+    local search_jql payload response rows selection
+
+    search_jql=$(scoped_search_jql false)
+    payload=$(jq -n \
+        --arg jql "$search_jql" \
+        --argjson max_results "$JIRA_SEARCH_MAX_RESULTS" '
+        {
+            jql: $jql,
+            maxResults: $max_results,
+            fields: ["summary", "status"]
+        }
+    ')
+    response=$(jira_request POST "$JIRA_API_PATH/search" "$payload")
+    rows=$(jq -r '
+        .issues[]
+        | [
+            (.key + (" " * ([12 - (.key | length), 1] | max))),
+            (.fields.status.name + (" " * ([18 - (.fields.status.name | length), 1] | max))),
+            (.fields.summary | gsub("[\\t\\r\\n]"; " "))
+        ]
+        | join("")
+    ' <<<"$response")
+    [[ -n "$rows" ]] || die "no issues matched: $search_jql"
+
+    selection=$(fzf \
+        --height=70% \
+        --layout=reverse \
+        --border \
+        --no-multi \
+        --header='KEY         STATUS            SUMMARY' \
+        --prompt='Worklog issue > ' \
+        <<<"$rows") || cancel
+    [[ -n "$selection" ]] || cancel
+    printf '%s' "${selection%% *}"
+}
+
+log_work() {
+    local issue_key=${1:-} time_spent comment payload
+
+    [[ -n "$issue_key" ]] || issue_key=$(choose_work_issue)
+    time_spent=$(prompt_required 'Time spent (for example: 1h 30m)')
+    comment=$(prompt_optional 'Work description (optional)')
+
+    payload=$(jq -cn \
+        --arg time_spent "$time_spent" \
+        --arg comment "$comment" '
+        {timeSpent: $time_spent}
+        + if $comment == "" then {} else {comment: $comment} end
+    ')
+    jira_request POST "$JIRA_API_PATH/issue/$issue_key/worklog" "$payload" >/dev/null
+    printf 'Logged %s on %s.\n' "$time_spent" "$issue_key"
+    printf '%s/browse/%s\n' "$JIRA_URL" "$issue_key"
+}
+
 check_issues() {
     local search_jql story_points_field fields response issue_count
     local review_issues review_count review_keys_json pull_requests='[]'
@@ -851,6 +906,7 @@ Usage: $PROGRAM_NAME <command>
 Commands:
   create    interactively create and place a Task, Bug, or Story
   change    fuzzy-find one of your non-Done issues and move it to another column
+  work      log time on a selected issue, or on an issue key passed as an argument
   check     validate PRs, work logs, and story points in the default change scope
   doctor    check dependencies, configuration, and Jira authentication
   help      show this help
@@ -881,6 +937,12 @@ main() {
                 --done) change_issue true ;;
                 *) die "unknown option for change: ${2:-}" ;;
             esac
+            ;;
+        work)
+            require_commands
+            require_config
+            (($# <= 2)) || die "usage: $PROGRAM_NAME work [ISSUE-KEY]"
+            log_work "${2:-}"
             ;;
         check)
             require_commands
