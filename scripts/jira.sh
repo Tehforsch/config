@@ -37,6 +37,7 @@ load_config() {
     JIRA_API_VERSION="${JIRA_API_VERSION:-$(config_value '.api_version')}"
     JIRA_STORY_POINTS_FIELD="${JIRA_STORY_POINTS_FIELD:-$(config_value '.story_points_field')}"
     JIRA_SEARCH_JQL="${JIRA_SEARCH_JQL:-$(config_value '.search_jql')}"
+    JIRA_CHANGE_JQL="${JIRA_CHANGE_JQL:-$(config_value '.change_jql')}"
     JIRA_SEARCH_MAX_RESULTS="${JIRA_SEARCH_MAX_RESULTS:-$(config_value '.search_max_results')}"
     JIRA_MAINTENANCE_LABEL="${JIRA_MAINTENANCE_LABEL:-$(config_value '.maintenance_label')}"
     JIRA_STORY_POINTS_REQUIRED_SINCE="${JIRA_STORY_POINTS_REQUIRED_SINCE:-$(config_value '.story_points_required_since')}"
@@ -54,6 +55,7 @@ load_config() {
     JIRA_API_VERSION="${JIRA_API_VERSION:-2}"
     JIRA_API_PATH="/rest/api/$JIRA_API_VERSION"
     JIRA_SEARCH_JQL="${JIRA_SEARCH_JQL:-(creator = currentUser() OR assignee = currentUser()) ORDER BY updated DESC}"
+    JIRA_CHANGE_JQL="${JIRA_CHANGE_JQL:-project = \"$JIRA_PROJECT\" ORDER BY updated DESC}"
     JIRA_SEARCH_MAX_RESULTS="${JIRA_SEARCH_MAX_RESULTS:-100}"
     JIRA_MAINTENANCE_LABEL="${JIRA_MAINTENANCE_LABEL:-Maintenance}"
     JIRA_STORY_POINTS_REQUIRED_SINCE="${JIRA_STORY_POINTS_REQUIRED_SINCE:-2026-08-05}"
@@ -80,7 +82,7 @@ Create ~/.config/jira/config.json (and chmod 600 it):
 
 Every setting can instead be supplied as an environment variable. Optional
 config keys are api_version, story_points_field, story_points_required_since,
-maintenance_label, search_jql, search_max_results, github_org, github_api_url,
+maintenance_label, search_jql, change_jql, search_max_results, github_org, github_api_url,
 github_token, and
 statuses.{backlog,selected_for_development,in_progress,review,packaging,done}.
 EOF
@@ -233,6 +235,37 @@ choose() {
         --border \
         --no-multi \
         --prompt="$prompt > ") || cancel
+    [[ -n "$selection" ]] || cancel
+    printf '%s' "$selection"
+}
+
+choose_issue_action() {
+    local issue_key=$1 issue preview selection
+
+    issue=$(jira_request GET \
+        "$JIRA_API_PATH/issue/$issue_key?fields=summary,status,assignee,labels")
+    preview=$(jq -r '
+        [
+            "\(.key): \(.fields.summary)",
+            "Status: \(.fields.status.name)",
+            "Assignee: \(.fields.assignee.displayName // "Unassigned")",
+            "Labels: \(if (.fields.labels | length) == 0 then "None" else (.fields.labels | join(", ")) end)"
+        ]
+        | join("\n")
+    ' <<<"$issue")
+
+    selection=$(printf '%s\n' \
+        'Move' \
+        'Log work' \
+        'Assign to me' \
+        'Add Maintenance Label' \
+        'Back' | fzf \
+        --height=60% \
+        --layout=reverse \
+        --border \
+        --no-multi \
+        --header="$preview" \
+        --prompt='Action > ') || cancel
     [[ -n "$selection" ]] || cancel
     printf '%s' "$selection"
 }
@@ -568,7 +601,7 @@ create_issue() {
 
 scoped_search_jql() {
     local include_done=${1:-false}
-    local search_jql=$JIRA_SEARCH_JQL
+    local search_jql=${2:-$JIRA_SEARCH_JQL}
 
     if [[ "$include_done" != true ]]; then
         search_jql=$(jq -nr --arg jql "$search_jql" '
@@ -589,8 +622,9 @@ scoped_search_jql() {
 search_all_jira_issues() {
     local search_jql=$1
     local fields=$2
-    local start_at=0 total=0 count payload response page_issues
-    local issues='[]'
+    local start_at=0 total=0 count payload response issues_file
+
+    issues_file=$(mktemp "${TMPDIR:-/tmp}/jira-issues.XXXXXX")
 
     while true; do
         payload=$(jq -cn \
@@ -606,136 +640,99 @@ search_all_jira_issues() {
             }
         ')
         response=$(jira_request POST "$JIRA_API_PATH/search" "$payload")
-        page_issues=$(jq -c '.issues // []' <<<"$response")
-        count=$(jq 'length' <<<"$page_issues")
+        count=$(jq '.issues | length' <<<"$response")
         total=$(jq -r '.total // 0' <<<"$response")
-        issues=$(jq -cn \
-            --argjson existing "$issues" \
-            --argjson page "$page_issues" \
-            '$existing + $page')
+        jq -c '.issues[]?' <<<"$response" >>"$issues_file"
         start_at=$((start_at + count))
         ((count > 0 && start_at < total)) || break
     done
 
-    jq -cn --argjson total "$total" --argjson issues "$issues" \
-        '{total: $total, issues: $issues}'
+    jq -cs --argjson total "$total" '{total: $total, issues: .}' "$issues_file"
+    rm -f -- "$issues_file"
 }
 
 change_issue() {
     local include_done=${1:-false}
-    local search_jql payload response rows selection issue_key target_column
+    local search_jql response rows selection issue_key action target_column
 
-    search_jql=$(scoped_search_jql "$include_done")
+    search_jql=$(scoped_search_jql "$include_done" "$JIRA_CHANGE_JQL")
+    while true; do
+        response=$(search_all_jira_issues \
+            "$search_jql" \
+            '["summary", "status", "issuetype", "assignee", "updated"]')
+        rows=$(jq -r \
+            --arg backlog "$JIRA_STATUS_BACKLOG" \
+            --arg selected_for_development "$JIRA_STATUS_SELECTED_FOR_DEVELOPMENT" \
+            --arg in_progress "$JIRA_STATUS_IN_PROGRESS" \
+            --arg review "$JIRA_STATUS_REVIEW" \
+            --arg packaging "$JIRA_STATUS_PACKAGING" \
+            --arg 'done' "$JIRA_STATUS_DONE" '
+            def normalize: ascii_downcase | gsub("[^a-z0-9]"; "");
+            def pad($width):
+                . as $value
+                | $value + (" " * ([($width - ($value | length)), 0] | max));
+            def short_status:
+                . as $status
+                | ($status | normalize) as $normalized
+                | if $normalized == ($backlog | normalize) then "backlog"
+                  elif $normalized == ($selected_for_development | normalize) then "dev"
+                  elif $normalized == ($in_progress | normalize) then "progress"
+                  elif $normalized == ($review | normalize) then "review"
+                  elif $normalized == ($packaging | normalize) then "packaging"
+                  elif $normalized == ($done | normalize) then "done"
+                  elif $normalized == "onstaging" then "staging"
+                  else ($status | ascii_downcase)
+                  end;
+            def short_type:
+                ascii_downcase
+                | if . == "improvement" then "improv"
+                  elif . == "external feedback" then "feedback"
+                  else .
+                  end;
 
-    payload=$(jq -n \
-        --arg jql "$search_jql" \
-        --argjson max_results "$JIRA_SEARCH_MAX_RESULTS" '
-        {
-            jql: $jql,
-            maxResults: $max_results,
-            fields: ["summary", "status", "issuetype", "assignee", "updated"]
-        }
-    ')
-    response=$(jira_request POST "$JIRA_API_PATH/search" "$payload")
-    rows=$(jq -r \
-        --arg backlog "$JIRA_STATUS_BACKLOG" \
-        --arg selected_for_development "$JIRA_STATUS_SELECTED_FOR_DEVELOPMENT" \
-        --arg in_progress "$JIRA_STATUS_IN_PROGRESS" \
-        --arg review "$JIRA_STATUS_REVIEW" \
-        --arg packaging "$JIRA_STATUS_PACKAGING" \
-        --arg 'done' "$JIRA_STATUS_DONE" '
-        def normalize: ascii_downcase | gsub("[^a-z0-9]"; "");
-        def pad($width):
-            . as $value
-            | $value + (" " * ([($width - ($value | length)), 0] | max));
-        def short_status:
-            . as $status
-            | ($status | normalize) as $normalized
-            | if $normalized == ($backlog | normalize) then "backlog"
-              elif $normalized == ($selected_for_development | normalize) then "dev"
-              elif $normalized == ($in_progress | normalize) then "progress"
-              elif $normalized == ($review | normalize) then "review"
-              elif $normalized == ($packaging | normalize) then "packaging"
-              elif $normalized == ($done | normalize) then "done"
-              elif $normalized == "onstaging" then "staging"
-              else ($status | ascii_downcase)
-              end;
-        def short_type:
-            ascii_downcase
-            | if . == "improvement" then "improv"
-              elif . == "external feedback" then "feedback"
-              else .
-              end;
+            .issues[]
+            | [
+                (.key | pad(12)),
+                (.fields.status.name | short_status | pad(9)),
+                (.fields.issuetype.name | short_type | pad(8)),
+                ((if .fields.assignee == null then "unassigned" else "me" end) | pad(10)),
+                (.fields.summary | gsub("[\\t\\r\\n]"; " "))
+            ]
+            | join("  ")
+        ' <<<"$response")
+        [[ -n "$rows" ]] || die "no issues matched: $search_jql"
 
-        .issues[]
-        | [
-            (.key | pad(12)),
-            (.fields.status.name | short_status | pad(9)),
-            (.fields.issuetype.name | short_type | pad(8)),
-            ((if .fields.assignee == null then "unassigned" else "me" end) | pad(10)),
-            (.fields.summary | gsub("[\\t\\r\\n]"; " "))
-        ]
-        | join("  ")
-    ' <<<"$response")
-    [[ -n "$rows" ]] || die "no issues matched: $search_jql"
+        selection=$(fzf \
+            --height=70% \
+            --layout=reverse \
+            --border \
+            --no-multi \
+            --header='KEY           STATUS     TYPE      ASSIGNEE    SUMMARY' \
+            --prompt='Issue > ' \
+            <<<"$rows") || cancel
+        [[ -n "$selection" ]] || cancel
+        issue_key=${selection%% *}
 
-    selection=$(fzf \
-        --height=70% \
-        --layout=reverse \
-        --border \
-        --no-multi \
-        --header='KEY           STATUS     TYPE      ASSIGNEE    SUMMARY' \
-        --prompt='Issue > ' \
-        <<<"$rows") || cancel
-    [[ -n "$selection" ]] || cancel
-    issue_key=${selection%% *}
-
-    target_column=$(choose_column)
-    move_issue "$issue_key" "$target_column"
-    printf '%s/browse/%s\n' "$JIRA_URL" "$issue_key"
-}
-
-choose_work_issue() {
-    local search_jql payload response rows selection
-
-    search_jql=$(scoped_search_jql false)
-    payload=$(jq -n \
-        --arg jql "$search_jql" \
-        --argjson max_results "$JIRA_SEARCH_MAX_RESULTS" '
-        {
-            jql: $jql,
-            maxResults: $max_results,
-            fields: ["summary", "status"]
-        }
-    ')
-    response=$(jira_request POST "$JIRA_API_PATH/search" "$payload")
-    rows=$(jq -r '
-        .issues[]
-        | [
-            (.key + (" " * ([12 - (.key | length), 1] | max))),
-            (.fields.status.name + (" " * ([18 - (.fields.status.name | length), 1] | max))),
-            (.fields.summary | gsub("[\\t\\r\\n]"; " "))
-        ]
-        | join("")
-    ' <<<"$response")
-    [[ -n "$rows" ]] || die "no issues matched: $search_jql"
-
-    selection=$(fzf \
-        --height=70% \
-        --layout=reverse \
-        --border \
-        --no-multi \
-        --header='KEY         STATUS            SUMMARY' \
-        --prompt='Worklog issue > ' \
-        <<<"$rows") || cancel
-    [[ -n "$selection" ]] || cancel
-    printf '%s' "${selection%% *}"
+        while true; do
+            action=$(choose_issue_action "$issue_key")
+            case $action in
+                Move)
+                    target_column=$(choose_column)
+                    move_issue "$issue_key" "$target_column"
+                    ;;
+                'Log work') log_work "$issue_key" ;;
+                'Assign to me') assign_issue "$issue_key" ;;
+                'Add Maintenance Label') add_maintenance_label "$issue_key" ;;
+                Back) break ;;
+            esac
+            printf '%s/browse/%s\n' "$JIRA_URL" "$issue_key"
+        done
+    done
 }
 
 log_work() {
-    local issue_key=${1:-} time_spent comment payload
+    local issue_key=$1 time_spent comment payload
 
-    [[ -n "$issue_key" ]] || issue_key=$(choose_work_issue)
     time_spent=$(prompt_required 'Time spent (for example: 1h 30m)')
     comment=$(prompt_optional 'Work description (optional)')
 
@@ -747,7 +744,38 @@ log_work() {
     ')
     jira_request POST "$JIRA_API_PATH/issue/$issue_key/worklog" "$payload" >/dev/null
     printf 'Logged %s on %s.\n' "$time_spent" "$issue_key"
-    printf '%s/browse/%s\n' "$JIRA_URL" "$issue_key"
+}
+
+assign_issue() {
+    local issue_key=$1 account payload assignee
+
+    account=$(jira_request GET "$JIRA_API_PATH/myself")
+    if [[ -n $(jq -r '.accountId // empty' <<<"$account") ]]; then
+        assignee=$(jq -er '.accountId' <<<"$account")
+        payload=$(jq -cn --arg account_id "$assignee" '{accountId: $account_id}')
+    else
+        assignee=$(jq -er '.name // .key' <<<"$account")
+        payload=$(jq -cn --arg name "$assignee" '{name: $name}')
+    fi
+
+    jira_request PUT "$JIRA_API_PATH/issue/$issue_key/assignee" "$payload" >/dev/null
+    printf 'Assigned %s to you.\n' "$issue_key"
+}
+
+add_maintenance_label() {
+    local issue_key=$1 issue payload
+
+    issue=$(jira_request GET "$JIRA_API_PATH/issue/$issue_key?fields=labels")
+    if jq -e --arg label "$JIRA_MAINTENANCE_LABEL" \
+        '.fields.labels | index($label) != null' <<<"$issue" >/dev/null; then
+        printf '%s already has the %s label.\n' "$issue_key" "$JIRA_MAINTENANCE_LABEL"
+        return 0
+    fi
+
+    payload=$(jq -cn --arg label "$JIRA_MAINTENANCE_LABEL" \
+        '{update: {labels: [{add: $label}]}}')
+    jira_request PUT "$JIRA_API_PATH/issue/$issue_key" "$payload" >/dev/null
+    printf 'Added the %s label to %s.\n' "$JIRA_MAINTENANCE_LABEL" "$issue_key"
 }
 
 check_issues() {
@@ -905,8 +933,7 @@ Usage: $PROGRAM_NAME <command>
 
 Commands:
   create    interactively create and place a Task, Bug, or Story
-  change    fuzzy-find one of your non-Done issues and move it to another column
-  work      log time on a selected issue, or on an issue key passed as an argument
+  change    select an issue, then move it, log work, or assign it to yourself
   check     validate PRs, work logs, and story points in the default change scope
   doctor    check dependencies, configuration, and Jira authentication
   help      show this help
@@ -937,12 +964,6 @@ main() {
                 --done) change_issue true ;;
                 *) die "unknown option for change: ${2:-}" ;;
             esac
-            ;;
-        work)
-            require_commands
-            require_config
-            (($# <= 2)) || die "usage: $PROGRAM_NAME work [ISSUE-KEY]"
-            log_work "${2:-}"
             ;;
         check)
             require_commands
