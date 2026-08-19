@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785671146,
-        "narHash": "sha256-GsVwU8r0AoXJSsNBRoTvKusIBI/NA6cwy/j+XsiOiP0=",
+        "lastModified": 1787125754,
+        "narHash": "sha256-TYhZuh26v149hqPMS6+IyFp4Bzu4WMdnISLl2dlG1vo=",
         "owner": "tehforsch",
         "repo": "calendar",
-        "rev": "c02bde605ff0ff3b9a57e8f95cf68caf761c1015",
+        "rev": "fb56ad03dca5055224770620d50982bc6ae1a624",
         "type": "github"
       },
       "original": {
