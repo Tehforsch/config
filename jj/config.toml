@@ -85,7 +85,12 @@ log = "default_log"
 'user(x)' = 'author(x) | committer(x)'
 
 'temp()' = 'temp(@)'
-'temp(x)' = "ancestors(x) & subject(exact:\"TEMP\")"
+'temp(x)' = 'ancestors(x) & subject(regex:"^TEMP:")'
+
+# The newest ancestor of x that is not a TEMP commit or based on one.
+# This is the furthest a bookmark can move without making a TEMP commit
+# reachable from it (and therefore pushable through that bookmark).
+'pushable_head(x)' = 'heads(ancestors(x) ~ descendants(temp(x)))'
 
 'wip()' = 'wip(@)'
 'wip(x)' = "subject(glob:\"{wip*,WIP*}\")"
@@ -119,11 +124,14 @@ latest = ["logr", "-r", "latest(all(), 15)", "--no-graph"]
 context = ["logr", "-r", "stack(@, 30)"]
 
 # Other helpful aliases
-tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "pushable_head(@-)"]
+# Insert selected revisions immediately after the nearest bookmark on the
+# current stack. For example, `jj down -r F` turns main-C-D-F into main-F-C-D.
+down = ["rebase", "--insert-after", "closest_bookmark(@)"]
 retrunk = ["rebase", "-d", "trunk()", "-s", "roots(trunk()..stack(@))"]
 track = ["bookmark", "track", "--remote=origin"]
 untrack = ["bookmark", "untrack", "--remote=origin"]
-squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP", "--editor"]
+squash_temp = ["squash", "--from", "non_roots(temp())", "--into", "roots(temp())", "-m", "TEMP:", "--editor"]
 retrunk-all = ["rebase", "--destination", "trunk()", "--source", "roots(trunk()..mutable())"]
 
 # A utility to allow quick selection of revisions via fzf. Triggered by
