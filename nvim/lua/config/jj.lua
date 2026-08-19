@@ -447,6 +447,99 @@ function M.squash_current_hunk()
 	end)
 end
 
+function M.add_review_note(visual)
+	local lifecycle = require("codediff.ui.lifecycle")
+	local tabpage = vim.api.nvim_get_current_tabpage()
+	local session = lifecycle.get_session(tabpage)
+	if not session then return end
+
+	local bufnr = vim.api.nvim_get_current_buf()
+	local original_bufnr, modified_bufnr = lifecycle.get_buffers(tabpage)
+	local file
+	local side
+	if bufnr == original_bufnr then
+		file = session.original
+		side = "LEFT"
+	elseif bufnr == modified_bufnr then
+		file = session.modified
+		side = "RIGHT"
+	else
+		vim.notify("Move the cursor into a CodeDiff pane before adding a review note", vim.log.levels.WARN)
+		return
+	end
+	if not file or file.relative == "" then
+		vim.notify("The current CodeDiff pane has no file", vim.log.levels.WARN)
+		return
+	end
+
+	local start_line
+	local start_column
+	local end_line
+	local end_column
+	if visual then
+		local anchor = vim.fn.getpos("v")
+		local cursor = vim.fn.getpos(".")
+		if anchor[2] < cursor[2] or (anchor[2] == cursor[2] and anchor[3] <= cursor[3]) then
+			start_line, start_column = anchor[2], anchor[3]
+			end_line, end_column = cursor[2], cursor[3]
+		else
+			start_line, start_column = cursor[2], cursor[3]
+			end_line, end_column = anchor[2], anchor[3]
+		end
+	else
+		local cursor = vim.api.nvim_win_get_cursor(0)
+		start_line = cursor[1]
+		start_column = cursor[2] + 1
+		end_line = start_line
+		end_column = start_column
+	end
+	local metadata = {
+		path = file.relative,
+		line = end_line,
+		column = end_column,
+		side = side,
+		original_revision = session.original_revision,
+		modified_revision = session.modified_revision,
+	}
+	if start_line ~= end_line then
+		metadata.start_line = start_line
+		metadata.start_column = start_column
+		metadata.start_side = side
+	end
+	local location = start_line == end_line and tostring(start_line) or string.format("%d-%d", start_line, end_line)
+	vim.ui.input({ prompt = string.format("Review note for %s:%s: ", metadata.path, location) }, function(comment)
+		if not comment or vim.trim(comment) == "" then return end
+		metadata.body = vim.trim(comment)
+
+		local result = vim.system({ "git", "rev-parse", "--git-path", "codediff-review-notes.md" }, { cwd = session.git_root, text = true }):wait()
+		if result.code ~= 0 then
+			notify_error("Could not find storage for review notes", result)
+			return
+		end
+		local notes_path = vim.trim(result.stdout)
+		if not vim.startswith(notes_path, "/") then notes_path = vim.fs.joinpath(session.git_root, notes_path) end
+		vim.fn.mkdir(vim.fs.dirname(notes_path), "p")
+		local lines = {}
+		if vim.fn.filereadable(notes_path) == 0 then vim.list_extend(lines, { "# CodeDiff review notes", "" }) end
+		local heading_location = start_line == end_line and string.format("%d:%d", end_line, end_column)
+			or string.format("%d:%d-%d:%d", start_line, start_column, end_line, end_column)
+		vim.list_extend(lines, {
+			string.format("## `%s:%s` (%s)", metadata.path, heading_location, metadata.side),
+			"",
+			vim.trim(comment),
+			"",
+			"<!-- codediff-review-note " .. vim.json.encode(metadata) .. " -->",
+			"",
+		})
+		local ok, error = pcall(vim.fn.writefile, lines, notes_path, "a")
+		if not ok then
+			vim.notify("Could not save review note: " .. tostring(error), vim.log.levels.ERROR)
+			return
+		end
+		vim.notify("Saved review note to " .. notes_path, vim.log.levels.INFO)
+	end)
+end
+
 local function disable_blame(bufnr)
 	blame_cache[bufnr] = nil
 	if vim.api.nvim_buf_is_valid(bufnr) then
