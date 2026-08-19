@@ -30,29 +30,10 @@ in {
     '';
   };
 
-  systemd.user.timers.calendarReminder = {
-    wantedBy = ["timers.target"];
-    timerConfig.OnCalendar = "minutely";
-  };
-
   systemd.user.services.journal = makeService {
     description = "journal webserver";
     execStart = "${inputs.journal.packages.x86_64-linux.default}/bin/journal";
     wantedBy = [];
-  };
-
-  systemd.user.services.calendarReminder = let
-    python = pkgs.python3.withPackages (ps: [ps.icalendar ps.python-dateutil]);
-  in {
-    enable = true;
-    description = "calendar reminders";
-    wantedBy = ["default.target"];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${python}/bin/python /home/toni/projects/config/scripts/calendar_reminder.py ${pkgs.libnotify}/bin/notify-send";
-      Restart = "always";
-      RestartSec = "10";
-    };
   };
 
   systemd.user.services.flameshot = makeService {

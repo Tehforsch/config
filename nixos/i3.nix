@@ -2,7 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  calendarPython = pkgs.python3.withPackages (ps: [ps.icalendar ps.python-dateutil]);
+  calendarStatus = pkgs.writeShellScriptBin "calendar-status" ''
+    exec ${calendarPython}/bin/python ${../scripts/calendar_status.py}
+  '';
+in {
   services.xserver = {
     enable = true;
 
@@ -19,6 +24,7 @@
   services.displayManager = {defaultSession = "none+i3";};
 
   environment.systemPackages = with pkgs; [
+    calendarStatus
     rofi
     i3wsr
     xdotool # For the runCommandInTerminalToTheRight.sh script

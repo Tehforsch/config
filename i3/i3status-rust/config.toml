@@ -30,6 +30,14 @@ format = " $text "
 
 [[block]]
 block = "custom"
+command = "/run/current-system/sw/bin/calendar-status"
+hide_when_empty = true
+interval = 30
+signal = 1
+format = "  $text "
+
+[[block]]
+block = "custom"
 command = "/home/toni/projects/config/scripts/telegram_notify.py --status"
 hide_when_empty = true
 interval = 1
