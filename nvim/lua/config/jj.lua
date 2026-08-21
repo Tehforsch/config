@@ -161,6 +161,20 @@ local function build_hunk_patch(file_path, original_lines, modified_lines, origi
 	return table.concat(parts, "\n") .. "\n"
 end
 
+local function content_to_lines(content)
+	if content == "" then return {} end
+	if content:sub(-1) == "\n" then content = content:sub(1, -2) end
+	return vim.split(content, "\n", { plain = true })
+end
+
+local function revision_file(root, revision, file_path) return vim.system({ "git", "show", revision .. ":" .. file_path }, { cwd = root, text = true }):wait() end
+
+local function buffer_matches_content(bufnr, content)
+	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	if content == "" then return #lines == 1 and lines[1] == "" end
+	return vim.deep_equal(lines, content_to_lines(content))
+end
+
 local function write_temp_patch(patch)
 	local path = vim.fn.tempname() .. ".patch"
 	local fd, open_error = vim.uv.fs_open(path, "w", 384)
@@ -177,6 +191,19 @@ end
 local function squash_tool_path()
 	local config_dir = vim.uv.fs_realpath(vim.fn.stdpath("config")) or vim.fn.stdpath("config")
 	return vim.fs.joinpath(vim.fs.dirname(config_dir), "scripts", "jj-codediff-hunk.sh")
+end
+
+local function parse_revision_pair(output)
+	local revisions = {}
+	for _, line in ipairs(vim.split(output, "\n", { plain = true, trimempty = true })) do
+		local kind, commit = line:match("^(%S+)\t(%x+)$")
+		if kind and commit then
+			if revisions[kind] then return nil end
+			revisions[kind] = commit
+		end
+	end
+	if not revisions.parent or not revisions.current then return nil end
+	return revisions
 end
 
 local function refresh_parent_diff(tabpage, root)
@@ -196,12 +223,8 @@ local function refresh_parent_diff(tabpage, root)
 			return
 		end
 
-		local revisions = {}
-		for _, line in ipairs(vim.split(result.stdout, "\n", { plain = true, trimempty = true })) do
-			local kind, commit = line:match("^(%S+)\t(%x+)$")
-			if kind and commit then revisions[kind] = commit end
-		end
-		if not revisions.parent or not revisions.current then
+		local revisions = parse_revision_pair(result.stdout)
+		if not revisions then
 			vim.notify("Squashed the hunk, but could not refresh CodeDiff", vim.log.levels.WARN)
 			return
 		end
@@ -284,12 +307,20 @@ local function squash_vcsigns_hunk()
 		return
 	end
 	local parent_commit = vim.trim(parent_result.stdout)
-	if vim.system({ "git", "cat-file", "-e", parent_commit .. ":" .. file_path }, { cwd = root }):wait().code ~= 0 then
+	local parent_file_result = revision_file(root, parent_commit, file_path)
+	if parent_file_result.code ~= 0 then
 		vim.notify("Squashing an added file is not supported yet", vim.log.levels.WARN)
 		return
 	end
+	if not vim.deep_equal(content_to_lines(parent_file_result.stdout), buffer_state.diff.old_lines) then
+		vim.notify("The VCSigns hunk is stale; refreshed it without changing any revisions", vim.log.levels.WARN)
+		require("vcsigns.actions").start(bufnr)
+		return
+	end
 
-	local patch = build_hunk_patch(file_path, hunk.minus_lines, hunk.plus_lines, hunk.minus_start, hunk.plus_start)
+	local original_start = #hunk.minus_lines == 0 and hunk.minus_start + 1 or hunk.minus_start
+	local modified_start = #hunk.plus_lines == 0 and hunk.plus_start + 1 or hunk.plus_start
+	local patch = build_hunk_patch(file_path, hunk.minus_lines, hunk.plus_lines, original_start, modified_start)
 	local patch_path, patch_error = write_temp_patch(patch)
 	if not patch_path then
 		vim.notify("Could not write the selected hunk: " .. tostring(patch_error), vim.log.levels.ERROR)
@@ -303,11 +334,28 @@ local function squash_vcsigns_hunk()
 		return
 	end
 	squash_in_progress[progress_key] = true
-	run({ "jj", "--color=never", "log", "--no-graph", "-r", "@", "-T", "commit_id" }, { cwd = root }, function(current_result)
+	run({
+		"jj",
+		"--color=never",
+		"log",
+		"--no-graph",
+		"-r",
+		"@ | @-",
+		"-T",
+		'if(current_working_copy, "current", "parent") ++ "\\t" ++ commit_id ++ "\\n"',
+	}, { cwd = root }, function(current_result)
 		if current_result.code ~= 0 then
 			squash_in_progress[progress_key] = nil
 			vim.fn.delete(patch_path)
 			notify_error("Could not snapshot the JJ working-copy revision", current_result)
+			return
+		end
+		local revisions = parse_revision_pair(current_result.stdout)
+		if not revisions or revisions.parent ~= parent_commit then
+			squash_in_progress[progress_key] = nil
+			vim.fn.delete(patch_path)
+			vim.notify("JJ @- changed while preparing the squash; refreshed VCSigns without changing any revisions", vim.log.levels.WARN)
+			if vim.api.nvim_buf_is_valid(bufnr) then require("vcsigns.actions").start(bufnr) end
 			return
 		end
 
@@ -320,9 +368,9 @@ local function squash_vcsigns_hunk()
 			"squash",
 			"--interactive",
 			"--from",
-			"@",
+			revisions.current,
 			"--into",
-			"@-",
+			parent_commit,
 			"--keep-emptied",
 		}, { cwd = root, env = { JJ_CODEDIFF_PATCH = patch_path } }, function(result)
 			squash_in_progress[progress_key] = nil
@@ -389,6 +437,33 @@ function M.squash_current_hunk()
 		vim.notify("Squashing added or deleted files is not supported yet", vim.log.levels.WARN)
 		return
 	end
+	local parent_result = vim
+		.system({
+			"jj",
+			"--ignore-working-copy",
+			"--color=never",
+			"log",
+			"--no-graph",
+			"-r",
+			"@-",
+			"-T",
+			"commit_id",
+		}, { cwd = root, text = true })
+		:wait()
+	if parent_result.code ~= 0 then
+		notify_error("Could not resolve the JJ parent revision", parent_result)
+		return
+	end
+	local parent_commit = vim.trim(parent_result.stdout)
+	local parent_file_result = revision_file(root, parent_commit, original_path)
+	if parent_file_result.code ~= 0 then
+		vim.notify("Squashing an added file is not supported yet", vim.log.levels.WARN)
+		return
+	end
+	if not buffer_matches_content(original_bufnr, parent_file_result.stdout) then
+		vim.notify("The CodeDiff left side does not match @-; reopen the diff before squashing", vim.log.levels.WARN)
+		return
+	end
 
 	local original_lines = vim.api.nvim_buf_get_lines(original_bufnr, hunk.original.start_line - 1, hunk.original.end_line - 1, false)
 	local modified_lines = vim.api.nvim_buf_get_lines(modified_bufnr, hunk.modified.start_line - 1, hunk.modified.end_line - 1, false)
@@ -400,17 +475,27 @@ function M.squash_current_hunk()
 	end
 
 	squash_in_progress[tabpage] = true
-	run({ "jj", "--color=never", "log", "--no-graph", "-r", "@", "-T", "commit_id" }, { cwd = root }, function(current_result)
+	run({
+		"jj",
+		"--color=never",
+		"log",
+		"--no-graph",
+		"-r",
+		"@ | @-",
+		"-T",
+		'if(current_working_copy, "current", "parent") ++ "\\t" ++ commit_id ++ "\\n"',
+	}, { cwd = root }, function(current_result)
 		if current_result.code ~= 0 then
 			squash_in_progress[tabpage] = nil
 			vim.fn.delete(patch_path)
 			notify_error("Could not resolve the JJ working-copy revision", current_result)
 			return
 		end
-		if vim.trim(current_result.stdout) ~= session.modified_revision then
+		local revisions = parse_revision_pair(current_result.stdout)
+		if not revisions or revisions.parent ~= parent_commit or revisions.current ~= session.modified_revision then
 			squash_in_progress[tabpage] = nil
 			vim.fn.delete(patch_path)
-			vim.notify("JJ @ changed after CodeDiff opened; reopen the diff before squashing", vim.log.levels.WARN)
+			vim.notify("JJ @ or @- changed after CodeDiff opened; reopen the diff before squashing", vim.log.levels.WARN)
 			return
 		end
 
@@ -424,9 +509,9 @@ function M.squash_current_hunk()
 			"squash",
 			"--interactive",
 			"--from",
-			"@",
+			revisions.current,
 			"--into",
-			"@-",
+			parent_commit,
 			"--keep-emptied",
 		}, { cwd = root, env = { JJ_CODEDIFF_PATCH = patch_path } }, function(result)
 			squash_in_progress[tabpage] = nil
