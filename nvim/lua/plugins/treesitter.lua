@@ -33,7 +33,7 @@ return {
 				"markdown_inline",
 				"toml",
 			}
-			local already_installed = require("nvim-treesitter.config").get_installed()
+			local already_installed = require("nvim-treesitter").get_installed()
 			local to_install = vim
 				.iter(ensure_installed)
 				:filter(function(parser)
