@@ -70,7 +70,7 @@ make_symlink zsh/zshenv .zshenv
 make_symlink bash/inputrc.sh .config/readline/inputrc # INPUTRC
 make_symlink git/gitconfig.conf .config/git/config
 make_symlink vim/init.vim .config/vim/vimrc
-make_symlink cargo/${SYSTEM_NAME}.toml .cargo/config.toml # ...
+make_symlink cargo/config.toml .cargo/config.toml
 make_symlink helix/config.toml .config/helix/config.toml
 make_symlink nushell/config.nu .config/nushell/config.nu
 make_symlink nushell/env.nu .config/nushell/env.nu
