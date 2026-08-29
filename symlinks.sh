@@ -37,6 +37,18 @@ function copy {
     cp $target $name
 }
 
+function merge_codex_config {
+    local source="$CONFIG/codex/config.toml"
+    local destination="$HOME/.codex/config.toml"
+
+    if ! command -v uv >/dev/null; then
+        echo "Cannot merge Codex config: uv is not installed."
+        return 1
+    fi
+
+    uv run --quiet --script "$CONFIG/codex/merge_config.py" "$source" "$destination"
+}
+
 # The good, following the XDG_CONFIG_DIR structure
 make_symlink xdg/user-dirs.dirs .config/user-dirs.dirs
 make_symlink beets/config.yaml .config/beets/config.yaml
@@ -90,6 +102,8 @@ make_symlink calendar/config.yml .config/calendar/config.yml
 make_symlink bash/bashrc.sh .bashrc
 make_symlink ssh/config .ssh/config
 make_symlink xkb/symbols/custom .config/xkb/symbols/custom
+make_symlink agents/AGENTS.md .codex/AGENTS.md
 
 # The ANNOYING, combining useful config with state. Simply copy this
 copy flameshot/flameshot.ini .config/flameshot/flameshot.ini
+merge_codex_config || exit $?

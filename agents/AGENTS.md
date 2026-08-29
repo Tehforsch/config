@@ -10,4 +10,4 @@ Also keep this in mind when recommending programs to me or suggesting to install
 Please always use flakes for things you write for me to use. For things you just need yourself feel free to use whatever you want, do all the nix-shell in the world
 
 # jujutsu
-For version control, I use `jj` instead of `git`, which means sometimes things might look slightly different than what you expect.
+For version control, I use `jj` instead of `git`, which means sometimes things might look slightly different than what you expect. Also you might be running on a jj workspace, in which case .git doesnt exist but you can still check VC with `jj`

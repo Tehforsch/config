@@ -21,7 +21,7 @@ function codex() {
         builtin cd "$git_root" || return
     fi
 
-    command codex -c 'tui.notifications=false' "$@"
+    command codex "$@"
 }
 
 alias c="check"

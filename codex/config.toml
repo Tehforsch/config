@@ -1,0 +1,25 @@
+model = "gpt-5.6-sol"
+model_reasoning_effort = "xhigh"
+service_tier = "fast"
+project_root_markers = [".jj", ".git"]
+approval_policy = "on-request"
+personality = "pragmatic"
+default_permissions = "jj-workspace"
+
+[permissions.jj-workspace]
+description = "Workspace access in jj repos"
+extends = ":workspace"
+
+[permissions.jj-workspace.filesystem.":workspace_roots"]
+".git" = "write"
+
+[tui]
+notifications = false
+
+[[hooks.Stop]]
+
+[[hooks.Stop.hooks]]
+type = "command"
+command = "/home/toni/projects/config/scripts/jj_new_after_task.sh"
+timeout = 30
+statusMessage = "jj new"

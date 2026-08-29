@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Sync .envrc and CLAUDE.md files to central location
+# Sync .envrc and AGENTS.md files to central location
 # Usage: sync-project-files.sh [directory_name]
 # If no directory name provided, uses basename of current directory
 
@@ -17,7 +17,7 @@ fi
 resource_dir="$HOME/resource/projects/$dirname"
 
 # Files to sync
-files=(".envrc" "CLAUDE.md")
+files=(".envrc" "AGENTS.md")
 
 # Create resource directory if it doesn't exist
 if [ ! -d "$resource_dir" ]; then
