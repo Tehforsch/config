@@ -39,47 +39,57 @@ function 2fa() {
     echo -n "$key" | xclip -selection clipboard
 }
 
-function cargo_with_nightly_acceleration() {
+function cargo_optimized() {
+    local -a cargo_config
+
     if [[ "$(rustc --version)" == *-nightly* ]]; then
-        cargo --config 'target.x86_64-unknown-linux-gnu.rustflags=["-Zthreads=8"]' "$@"
+        cargo_config=(--config 'target.x86_64-unknown-linux-gnu.rustflags=["-Zthreads=8"]')
+    fi
+
+    if [[ -z "${RUSTC_WRAPPER:-}" ]] && (( $+commands[sccache] )); then
+        RUSTC_WRAPPER=sccache command cargo "${cargo_config[@]}" "$@"
     else
-        cargo "$@"
+        command cargo "${cargo_config[@]}" "$@"
     fi
 }
 
-function cb() {
-    cargo_with_nightly_acceleration build "$@"
+function cargo() {
+    cargo_optimized "$@"
 }
-alias cbr="cargo_with_nightly_acceleration build --release"
-alias cr="cargo_with_nightly_acceleration run"
-alias crr="cargo_with_nightly_acceleration run --release"
-alias ct="cargo_with_nightly_acceleration test"
-alias ctl="cargo_with_nightly_acceleration test --lib"
-alias cf="cargo_with_nightly_acceleration fmt"
+
+function cb() {
+    cargo_optimized build "$@"
+}
+alias cbr="cargo_optimized build --release"
+alias cr="cargo_optimized run"
+alias crr="cargo_optimized run --release"
+alias ct="cargo_optimized test"
+alias ctl="cargo_optimized test --lib"
+alias cf="cargo_optimized fmt"
 
 function cc() {
-    cargo_with_nightly_acceleration check "$@"
+    cargo_optimized check "$@"
 }
-alias ccr="cargo_with_nightly_acceleration check --release"
-alias ccl="cargo_with_nightly_acceleration check --lib"
-alias cctl="cargo_with_nightly_acceleration check --lib --tests"
+alias ccr="cargo_optimized check --release"
+alias ccl="cargo_optimized check --lib"
+alias cctl="cargo_optimized check --lib --tests"
 
-alias clip="cargo_with_nightly_acceleration clippy"
-alias cir="cargo_with_nightly_acceleration insta test --review"
+alias clip="cargo_optimized clippy"
+alias cir="cargo_optimized insta test --review"
 
 function ctn() {
-    cargo_with_nightly_acceleration test "$@" -- --nocapture
+    cargo_optimized test "$@" -- --nocapture
 }
 
 function ctln() {
-    cargo_with_nightly_acceleration test --lib "$@" -- --nocapture
+    cargo_optimized test --lib "$@" -- --nocapture
 }
 
-alias ctr="cargo_with_nightly_acceleration test --release"
-alias ci="cargo_with_nightly_acceleration install --locked --path ."
-alias cdo="cargo_with_nightly_acceleration doc --no-deps --open"
-alias cdoc="cargo_with_nightly_acceleration doc --no-deps --open -p"
-alias cbtop="cargo_with_nightly_acceleration build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
+alias ctr="cargo_optimized test --release"
+alias ci="cargo_optimized install --locked --path ."
+alias cdo="cargo_optimized doc --no-deps --open"
+alias cdoc="cargo_optimized doc --no-deps --open -p"
+alias cbtop="cargo_optimized build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb='if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi'
 
 function init_envrc() {
@@ -98,13 +108,13 @@ function init_project() {
     $CONFIG/scripts/init_project.sh $@
 }
 
-alias bb="cargo_with_nightly_acceleration build --features bevy/dynamic_linking"
-alias br="cargo_with_nightly_acceleration run --features bevy/dynamic_linking"
-alias bt="cargo_with_nightly_acceleration test --features bevy/dynamic_linking"
+alias bb="cargo_optimized build --features bevy/dynamic_linking"
+alias br="cargo_optimized run --features bevy/dynamic_linking"
+alias bt="cargo_optimized test --features bevy/dynamic_linking"
 
-alias bbr="cargo_with_nightly_acceleration build --release --features bevy/dynamic_linking"
-alias brr="cargo_with_nightly_acceleration run --release --features bevy/dynamic_linking"
-alias btr="cargo_with_nightly_acceleration test --release --features bevy/dynamic_linking"
+alias bbr="cargo_optimized build --release --features bevy/dynamic_linking"
+alias brr="cargo_optimized run --release --features bevy/dynamic_linking"
+alias btr="cargo_optimized test --release --features bevy/dynamic_linking"
 
 function tou() {
     p="$1"
@@ -175,11 +185,11 @@ alias addmusic="bash $scripts/add_music.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
 
-alias scannerctl="cargo_with_nightly_acceleration run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
-alias scannerctl_release="cargo_with_nightly_acceleration run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
-alias openvasd="cargo_with_nightly_acceleration run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
+alias scannerctl="cargo_optimized run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias scannerctl_release="cargo_optimized run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias openvasd="cargo_optimized run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
 
-alias mol="cargo_with_nightly_acceleration run --manifest-path ~/projects/molt/Cargo.toml --"
+alias mol="cargo_optimized run --manifest-path ~/projects/molt/Cargo.toml --"
 
 alias kill="kill -KILL"
 
