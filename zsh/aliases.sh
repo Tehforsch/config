@@ -39,34 +39,47 @@ function 2fa() {
     echo -n "$key" | xclip -selection clipboard
 }
 
-alias cb="cargo build"
-alias cbr="cargo build --release"
-alias cr="cargo run"
-alias crr="cargo run --release"
-alias ct="cargo test"
-alias ctl="cargo test --lib"
-alias cf="cargo fmt"
+function cargo_with_nightly_acceleration() {
+    if [[ "$(rustc --version)" == *-nightly* ]]; then
+        cargo --config 'target.x86_64-unknown-linux-gnu.rustflags=["-Zthreads=8"]' "$@"
+    else
+        cargo "$@"
+    fi
+}
 
-alias cc="cargo check"
-alias ccl="cargo check --lib"
-alias cctl="cargo check --lib --tests"
+function cb() {
+    cargo_with_nightly_acceleration build "$@"
+}
+alias cbr="cargo_with_nightly_acceleration build --release"
+alias cr="cargo_with_nightly_acceleration run"
+alias crr="cargo_with_nightly_acceleration run --release"
+alias ct="cargo_with_nightly_acceleration test"
+alias ctl="cargo_with_nightly_acceleration test --lib"
+alias cf="cargo_with_nightly_acceleration fmt"
 
-alias clip="cargo clippy"
-alias cir="cargo insta test --review"
+function cc() {
+    cargo_with_nightly_acceleration check "$@"
+}
+alias ccr="cargo_with_nightly_acceleration check --release"
+alias ccl="cargo_with_nightly_acceleration check --lib"
+alias cctl="cargo_with_nightly_acceleration check --lib --tests"
+
+alias clip="cargo_with_nightly_acceleration clippy"
+alias cir="cargo_with_nightly_acceleration insta test --review"
 
 function ctn() {
-    cargo test $@ -- --nocapture
+    cargo_with_nightly_acceleration test "$@" -- --nocapture
 }
 
 function ctln() {
-    cargo test --lib $@ -- --nocapture
+    cargo_with_nightly_acceleration test --lib "$@" -- --nocapture
 }
 
-alias ctr="cargo test --release"
-alias ci="cargo install --locked --path ."
-alias cdo="cargo doc --no-deps --open"
-alias cdoc="cargo doc --no-deps --open -p"
-alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
+alias ctr="cargo_with_nightly_acceleration test --release"
+alias ci="cargo_with_nightly_acceleration install --locked --path ."
+alias cdo="cargo_with_nightly_acceleration doc --no-deps --open"
+alias cdoc="cargo_with_nightly_acceleration doc --no-deps --open -p"
+alias cbtop="cargo_with_nightly_acceleration build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb='if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi'
 
 function init_envrc() {
@@ -85,13 +98,13 @@ function init_project() {
     $CONFIG/scripts/init_project.sh $@
 }
 
-alias bb="cargo build --features bevy/dynamic_linking"
-alias br="cargo run --features bevy/dynamic_linking"
-alias bt="cargo test --features bevy/dynamic_linking"
+alias bb="cargo_with_nightly_acceleration build --features bevy/dynamic_linking"
+alias br="cargo_with_nightly_acceleration run --features bevy/dynamic_linking"
+alias bt="cargo_with_nightly_acceleration test --features bevy/dynamic_linking"
 
-alias bbr="cargo build --release --features bevy/dynamic_linking"
-alias brr="cargo run --release --features bevy/dynamic_linking"
-alias btr="cargo test --release --features bevy/dynamic_linking"
+alias bbr="cargo_with_nightly_acceleration build --release --features bevy/dynamic_linking"
+alias brr="cargo_with_nightly_acceleration run --release --features bevy/dynamic_linking"
+alias btr="cargo_with_nightly_acceleration test --release --features bevy/dynamic_linking"
 
 function tou() {
     p="$1"
@@ -162,11 +175,11 @@ alias addmusic="bash $scripts/add_music.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
 
-alias scannerctl="cargo run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
-alias scannerctl_release="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
-alias openvasd="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
+alias scannerctl="cargo_with_nightly_acceleration run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias scannerctl_release="cargo_with_nightly_acceleration run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias openvasd="cargo_with_nightly_acceleration run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
 
-alias mol="cargo run --manifest-path ~/projects/molt/Cargo.toml --"
+alias mol="cargo_with_nightly_acceleration run --manifest-path ~/projects/molt/Cargo.toml --"
 
 alias kill="kill -KILL"
 
