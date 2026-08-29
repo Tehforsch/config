@@ -300,7 +300,7 @@ return {
 						targetDir = "target/ra",
 					},
 					check = {
-						command = "clippy",
+						command = "check",
 					},
 				},
 			},
