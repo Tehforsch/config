@@ -46,11 +46,7 @@ function cargo_optimized() {
         cargo_config=(--config 'target.x86_64-unknown-linux-gnu.rustflags=["-Zthreads=8"]')
     fi
 
-    if [[ -z "${RUSTC_WRAPPER:-}" ]] && (( $+commands[sccache] )); then
-        RUSTC_WRAPPER=sccache command cargo "${cargo_config[@]}" "$@"
-    else
-        command cargo "${cargo_config[@]}" "$@"
-    fi
+    command cargo "${cargo_config[@]}" "$@"
 }
 
 function cargo() {

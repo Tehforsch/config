@@ -11,7 +11,6 @@ in {
     kitty
     meld
     mold
-    sccache
 
     # Programming languages
     uv
