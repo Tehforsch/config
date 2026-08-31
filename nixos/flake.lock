@@ -137,6 +137,26 @@
         "type": "github"
       }
     },
+    "maily": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788160462,
+        "narHash": "sha256-t9hCfo6synN+XXyfE88dA0BraNpzz+1y99xN4vi5Y10=",
+        "ref": "refs/heads/main",
+        "rev": "4cb6fce39af7f294d8f60ccb850523d8539b815c",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/maily.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tehforsch/maily.git"
+      }
+    },
     "moody": {
       "inputs": {
         "nixpkgs": "nixpkgs_4",
@@ -631,6 +651,7 @@
         "calendar": "calendar",
         "health_service_assistant": "health_service_assistant",
         "journal": "journal",
+        "maily": "maily",
         "moody": "moody",
         "mpd_rofi": "mpd_rofi",
         "musnix": "musnix",
