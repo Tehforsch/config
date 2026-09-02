@@ -39,53 +39,39 @@ function 2fa() {
     echo -n "$key" | xclip -selection clipboard
 }
 
-function cargo_optimized() {
-    local -a cargo_config
-
-    if [[ "$(rustc --version)" == *-nightly* ]]; then
-        cargo_config=(--config 'target.x86_64-unknown-linux-gnu.rustflags=["-Zthreads=8"]')
-    fi
-
-    command cargo "${cargo_config[@]}" "$@"
-}
-
-function cargo() {
-    cargo_optimized "$@"
-}
-
 function cb() {
-    cargo_optimized build "$@"
+    cargo build "$@"
 }
-alias cbr="cargo_optimized build --release"
-alias cr="cargo_optimized run"
-alias crr="cargo_optimized run --release"
-alias ct="cargo_optimized test"
-alias ctl="cargo_optimized test --lib"
-alias cf="cargo_optimized fmt"
+alias cbr="cargo build --release"
+alias cr="cargo run"
+alias crr="cargo run --release"
+alias ct="cargo test"
+alias ctl="cargo test --lib"
+alias cf="cargo fmt"
 
 function cc() {
-    cargo_optimized check "$@"
+    cargo check "$@"
 }
-alias ccr="cargo_optimized check --release"
-alias ccl="cargo_optimized check --lib"
-alias cctl="cargo_optimized check --lib --tests"
+alias ccr="cargo check --release"
+alias ccl="cargo check --lib"
+alias cctl="cargo check --lib --tests"
 
-alias clip="cargo_optimized clippy"
-alias cir="cargo_optimized insta test --review"
+alias clip="cargo clippy"
+alias cir="cargo insta test --review"
 
 function ctn() {
-    cargo_optimized test "$@" -- --nocapture
+    cargo test "$@" -- --nocapture
 }
 
 function ctln() {
-    cargo_optimized test --lib "$@" -- --nocapture
+    cargo test --lib "$@" -- --nocapture
 }
 
-alias ctr="cargo_optimized test --release"
-alias ci="cargo_optimized install --locked --path ."
-alias cdo="cargo_optimized doc --no-deps --open"
-alias cdoc="cargo_optimized doc --no-deps --open -p"
-alias cbtop="cargo_optimized build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
+alias ctr="cargo test --release"
+alias ci="cargo install --locked --path ."
+alias cdo="cargo doc --no-deps --open"
+alias cdoc="cargo doc --no-deps --open -p"
+alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb='if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi'
 
 function init_envrc() {
@@ -104,13 +90,13 @@ function init_project() {
     $CONFIG/scripts/init_project.sh $@
 }
 
-alias bb="cargo_optimized build --features bevy/dynamic_linking"
-alias br="cargo_optimized run --features bevy/dynamic_linking"
-alias bt="cargo_optimized test --features bevy/dynamic_linking"
+alias bb="cargo build --features bevy/dynamic_linking"
+alias br="cargo run --features bevy/dynamic_linking"
+alias bt="cargo test --features bevy/dynamic_linking"
 
-alias bbr="cargo_optimized build --release --features bevy/dynamic_linking"
-alias brr="cargo_optimized run --release --features bevy/dynamic_linking"
-alias btr="cargo_optimized test --release --features bevy/dynamic_linking"
+alias bbr="cargo build --release --features bevy/dynamic_linking"
+alias brr="cargo run --release --features bevy/dynamic_linking"
+alias btr="cargo test --release --features bevy/dynamic_linking"
 
 function tou() {
     p="$1"
@@ -181,11 +167,11 @@ alias addmusic="bash $scripts/add_music.sh"
 
 alias pybob="python3 ~/projects/pybob/main.py"
 
-alias scannerctl="cargo_optimized run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
-alias scannerctl_release="cargo_optimized run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
-alias openvasd="cargo_optimized run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
+alias scannerctl="cargo run --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias scannerctl_release="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin scannerctl --"
+alias openvasd="cargo run --release --manifest-path ~/projects/openvas-scanner/rust/Cargo.toml --bin openvasd --"
 
-alias mol="cargo_optimized run --manifest-path ~/projects/molt/Cargo.toml --"
+alias mol="cargo run --manifest-path ~/projects/molt/Cargo.toml --"
 
 alias kill="kill -KILL"
 
