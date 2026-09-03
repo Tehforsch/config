@@ -79,7 +79,8 @@ log = "default_log"
 [revset-aliases]
 'review_bookmarks()' = 'bookmarks(glob:"review_*/*")'
 'active_review()' = 'review_bookmarks() & (ancestors(@) | descendants(@))'
-'default_log' = '((present(@) | ancestors(immutable_heads().., 2) | present(trunk())) ~ review_bookmarks()) | active_review()'
+'ado_tasks()' = 'subject(regex:"^ado(:| snapshot:)")'
+'default_log' = '(((present(@) | ancestors(immutable_heads().., 2) | present(trunk())) ~ review_bookmarks()) | active_review()) ~ ado_tasks()'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'active(rev)' = '(ancestors(rev) | descendants(rev)) ~ immutable()'
 'user(x)' = 'author(x) | committer(x)'
