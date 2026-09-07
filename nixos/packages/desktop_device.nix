@@ -49,6 +49,7 @@ in {
     lean4
     codex
     zsh-patina
+    zulip
 
     easyeffects
 
