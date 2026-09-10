@@ -21,8 +21,6 @@ in {
     rustup # nice to have sometimes for release building etc, although i use shells for this
     clang
 
-    steam
-
     # User applications
     firefox
     vlc
