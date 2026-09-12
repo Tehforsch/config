@@ -10,6 +10,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     journal = {url = "github:tehforsch/journal";};
     moody = {url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git";};
     personalbot = {url = "git+ssh://git@github.com/tehforsch/personalbot.git";};
@@ -59,6 +63,10 @@
         ./work.nix
         ./yubikey.nix
       ];
+      agent_vm = [
+        inputs.microvm.nixosModules.host
+        ./microvm.nix
+      ];
       personal = [
         ./packages/personal.nix
         ./services.nix
@@ -95,7 +103,7 @@
             ./paperless.nix
             ./android_mounting.nix
           ]
-          ++ desktop_device ++ work ++ personal;
+          ++ desktop_device ++ work ++ personal ++ agent_vm;
       };
       framework = make_system {
         system = "x86_64-linux";
@@ -117,7 +125,7 @@
             ./packages/laptop.nix
             ./mullvad.nix
           ]
-          ++ desktop_device ++ work ++ personal;
+          ++ desktop_device ++ work ++ personal ++ agent_vm;
       };
       rpi = make_system {
         system = "aarch64-linux";
