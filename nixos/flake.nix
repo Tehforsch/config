@@ -11,10 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     journal = {url = "github:tehforsch/journal";};
-    maily = {
-      url = "git+ssh://git@github.com/tehforsch/maily.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     moody = {url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git";};
     personalbot = {url = "git+ssh://git@github.com/tehforsch/personalbot.git";};
     torga = {url = "git+ssh://git@github.com/tehforsch/todo.git";};
@@ -58,7 +54,6 @@
           ./syncthing.nix
           ./mpd.nix
           ./oom_killer.nix
-          ./maily.nix
         ];
       work = [
         ./work.nix
