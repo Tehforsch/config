@@ -4,6 +4,7 @@ alias lt="exa --tree"
 alias cat="bat"
 alias e="$CONFIG/scripts/open_vim_in_kitty.sh"
 alias vim="nvim"
+alias abox="$CONFIG/scripts/abox.sh"
 function codex() {
     local day_of_week
     day_of_week="$(date +%u)"
