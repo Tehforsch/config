@@ -3,12 +3,18 @@
   pkgs,
   ...
 }: {
-  location.provider = "geoclue2";
+  location =
+    if config.networking.hostName == "pc"
+    then {
+      latitude = 51.0;
+      longitude = 10.0;
+      provider = "manual";
+    }
+    else {
+      provider = "geoclue2";
+    };
+
   services.redshift = {
     enable = true;
-    temperature = {
-      day = 5500;
-      night = 3700;
-    };
   };
 }
