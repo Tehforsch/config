@@ -1,0 +1,3 @@
+{...}: {
+  services.ivpn.enable = true;
+}

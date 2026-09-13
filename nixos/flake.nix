@@ -99,7 +99,7 @@
             # inputs.musnix.nixosModules.musnix
             # ./music_production.nix
             ./unifiedremote.nix
-            ./mullvad.nix
+            ./ivpn.nix
             ./paperless.nix
             ./android_mounting.nix
           ]
@@ -112,7 +112,7 @@
           [
             ./laptop.nix
             ./packages/laptop.nix
-            ./mullvad.nix
+            ./ivpn.nix
           ]
           ++ desktop_device ++ work ++ personal;
       };
@@ -123,7 +123,7 @@
           [
             ./laptop.nix
             ./packages/laptop.nix
-            ./mullvad.nix
+            ./ivpn.nix
           ]
           ++ desktop_device ++ work ++ personal ++ agent_vm;
       };

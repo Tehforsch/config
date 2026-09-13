@@ -37,30 +37,33 @@ work_stop() {
     notify "Work VPN stopped"
 }
 
-mullvad_status() {
-    if ! command -v mullvad >/dev/null 2>&1; then
+ivpn_status() {
+    if ! command -v ivpn >/dev/null 2>&1; then
         printf 'unavailable\n'
         return 1
     fi
 
-    case "$(mullvad status 2>/dev/null)" in
-        Connected*) printf 'connected\n' ;;
-        *) printf 'disconnected\n' ;;
-    esac
+    local status
+    status="$(ivpn status 2>/dev/null || true)"
+    if awk -F: '$1 ~ /^[[:space:]]*VPN[[:space:]]*$/ && $2 ~ /^[[:space:]]*CONNECTED/ { found=1 } END { exit !found }' <<< "$status"; then
+        printf 'connected\n'
+    else
+        printf 'disconnected\n'
+    fi
 }
 
-mullvad_start() {
-    mullvad connect
-    notify "Mullvad connecting"
+ivpn_start() {
+    ivpn connect -fastest -protocol WireGuard
+    notify "IVPN connecting"
 }
 
-mullvad_stop() {
-    mullvad disconnect
-    notify "Mullvad disconnected"
+ivpn_stop() {
+    ivpn disconnect
+    notify "IVPN disconnected"
 }
 
 usage() {
-    printf 'Usage: %s {work|mullvad} [toggle|start|stop|status]\n' "$0" >&2
+    printf 'Usage: %s {work|ivpn} [toggle|start|stop|status]\n' "$0" >&2
 }
 
 vpn="${1:-}"
@@ -79,17 +82,17 @@ case "$vpn:$action" in
     work:status)
         work_status
         ;;
-    mullvad:toggle)
-        if [[ "$(mullvad_status)" == "connected" ]]; then mullvad_stop; else mullvad_start; fi
+    ivpn:toggle)
+        if [[ "$(ivpn_status)" == "connected" ]]; then ivpn_stop; else ivpn_start; fi
         ;;
-    mullvad:start|mullvad:connect)
-        mullvad_start
+    ivpn:start|ivpn:connect)
+        ivpn_start
         ;;
-    mullvad:stop|mullvad:disconnect)
-        mullvad_stop
+    ivpn:stop|ivpn:disconnect)
+        ivpn_stop
         ;;
-    mullvad:status)
-        mullvad_status
+    ivpn:status)
+        ivpn_status
         ;;
     *)
         usage

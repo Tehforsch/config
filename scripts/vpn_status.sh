@@ -9,8 +9,8 @@ if [[ "$("$vpn_script" work status)" == "connected" ]]; then
     active+=("work")
 fi
 
-if [[ "$("$vpn_script" mullvad status 2>/dev/null || true)" == "connected" ]]; then
-    active+=("mullvad")
+if [[ "$("$vpn_script" ivpn status 2>/dev/null || true)" == "connected" ]]; then
+    active+=("ivpn")
 fi
 
 if (( ${#active[@]} == 0 )); then
