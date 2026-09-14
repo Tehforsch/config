@@ -1,0 +1,13 @@
+{
+  "calendar": "use flake ~/projects/config/nixos/shells#rust_stable\n",
+  "compily": "use flake ~/projects/config/nixos/shells#rust_stable\n",
+  "config": "",
+  "journal": "use flake ~/projects/config/nixos/shells#rust_stable\n",
+  "molt": "use flake ~/projects/config/nixos/shells#molt\n",
+  "mpd_rofi": "use flake ~/projects/config/nixos/shells#rust_stable\n",
+  "music_selection": "use flake ~/projects/config/nixos/shells#rust_stable\n",
+  "openvas-scanner": "use flake ~/projects/config/nixos/shells#scanner\n",
+  "rust": "if nix flake show path:./src/tools/nix-dev-shell &> /dev/null; then\n  use flake path:./src/tools/nix-dev-shell\nfi\n\nrust_analyzer_out=\"$(nix build --no-link --print-out-paths --inputs-from path:./src/tools/nix-dev-shell nixpkgs#rust-analyzer)\"\nPATH_add \"$rust_analyzer_out/bin\"\n",
+  "sokobrane": "use flake ~/projects/config/nixos/shells#bevy\n",
+  "torga": "use flake ~/projects/config/nixos/shells#rust_stable\n"
+}

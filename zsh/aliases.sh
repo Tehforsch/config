@@ -75,21 +75,7 @@ alias cdoc="cargo doc --no-deps --open -p"
 alias cbtop="cargo build 2>&1 > /dev/null | bat --paging=always -l=rust" # shows the top error messages
 alias rb='if [[ $RUST_BACKTRACE == 1 ]]; then; export RUST_BACKTRACE=0; else; export RUST_BACKTRACE=1; fi'
 
-function init_envrc() {
-    if [[ $# == 1 ]]; then
-        shell_name="$1"
-    else
-        shell_name=rust_stable
-    fi
-    cwd=$(basename $(pwd))
-    echo "use flake ~/projects/config/nixos/shells#$shell_name" > .envrc;
-    direnv allow
-}
-
-function init_project() {
-    init_envrc
-    $CONFIG/scripts/init_project.sh $@
-}
+alias init_envrc="$CONFIG/direnv/init_envrc.sh"
 
 alias bb="cargo build --features bevy/dynamic_linking"
 alias br="cargo run --features bevy/dynamic_linking"
