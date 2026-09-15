@@ -14,7 +14,11 @@
       url = "github:microvm-nix/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    journal = {url = "github:tehforsch/journal";};
+    journal = {
+      url = "github:tehforsch/journal";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
     moody = {url = "git+ssh://git@github.com/tehforsch/moodyTelegramBot.git";};
     personalbot = {url = "git+ssh://git@github.com/tehforsch/personalbot.git";};
     torga = {url = "git+ssh://git@github.com/tehforsch/todo.git";};
