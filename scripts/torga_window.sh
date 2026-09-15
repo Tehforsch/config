@@ -4,8 +4,7 @@ set -euo pipefail
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 if i3-msg -t get_tree | jq -e '.. | objects | select(.window_properties?.class == "torga")' >/dev/null; then
-    i3-msg '[class="^torga$"] move workspace current' >/dev/null
-    i3-msg '[class="^torga$"] focus' >/dev/null
+    i3-msg '[class="^torga$"] move workspace current, move position center, focus' >/dev/null
     exit 0
 fi
 
