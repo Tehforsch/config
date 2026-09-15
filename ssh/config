@@ -1,45 +1,13 @@
-Host helix
-    HostName helix.bwservices.uni-heidelberg.de
-    User hd_hp240
-    ForwardX11 no
-Host bwprod
-    HostName helix.bwservices.uni-heidelberg.de
-    # ProxyCommand ssh ita nc %h %p
-    User hd_hp240
-    ForwardX11 no
-Host binac
-    HostName login01.binac.uni-tuebingen.de
-    User hd_hp240
 Host rpi
     HostName 192.168.178.22
     User toni
 Host rpi2
     HostName rpi2
     User root
-Host rpizero
-    HostName 192.168.0.95
-    User pi
 Host kalyke
     HostName shark.fish
     User toni
     Port 2222
-Host ita
-    HostName welcome.ita.uni-heidelberg.de
-    User tpeter
-Host supermuc
-    HostName skx.supermuc.lrz.de
-    ProxyCommand ssh ita nc %h %p
-    User di46dev
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-Host vera
-    HostName vera01.bc.rzg.mpg.de
-    User tpeter
-    ProxyCommand ssh -W %h:%p gatezero.mpcdf.mpg.de 2>/dev/null
-Host gatezero.mpcdf.mpg.de
-    User tpeter
-    ControlMaster auto
-    ControlPath ~/.ssh/control:%h:%p:%r
 Host netcup
     HostName v2202411242091296475.happysrv.de
     User toni

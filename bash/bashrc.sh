@@ -6,7 +6,6 @@ PATH=$HOME/projects/cpython:$PATH
 SYSTEM_NAME=$(hostname)
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/projects/libffi/lib64
-HDF5_VERSION="1.12.2"
 export CONFIG=$HOME/projects/config
 export scripts="$CONFIG/scripts"
 # Load aliases
@@ -31,7 +30,3 @@ export PROMPT_COMMAND="history -n; history -w; history -c; history -r;history -a
 stty werase undef
 bind '\C-w:unix-filename-rubout'
 export TERM='xterm-256color'
-source ~/modules.sh
-
-export HDF5_DISABLE_VERSION_CHECK=2
-. "$HOME/.cargo/env"
