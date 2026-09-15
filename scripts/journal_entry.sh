@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-JOURNAL_PATH=~/resource/journal
+JOURNAL_PATH=~/resource/obsidian/journal
 
 # Process any images in the dump folder interactively
 if [ -d "$JOURNAL_PATH/dump" ] && [ "$(ls -A "$JOURNAL_PATH/dump" 2>/dev/null)" ]; then
