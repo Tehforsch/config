@@ -15,6 +15,7 @@ extends = ":workspace"
 
 [tui]
 notifications = false
+whimsy = false
 
 [[hooks.Stop]]
 
