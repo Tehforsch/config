@@ -12,6 +12,7 @@ readonly systemctl="/run/current-system/sw/bin/systemctl"
 ssh_options=(
     -o ConnectTimeout=1
     -o LogLevel=ERROR
+    -o SendEnv=COLORTERM
     -o StrictHostKeyChecking=no
     -o UserKnownHostsFile=/dev/null
 )
@@ -117,7 +118,7 @@ run_detached() {
         --collect \
         "--unit=$unit" \
         "--working-directory=$directory" \
-        /run/current-system/sw/bin/bash \
+        /run/current-system/sw/bin/zsh \
         -c \
         "{ /run/current-system/sw/bin/direnv allow 2>/dev/null || true; } && exec /run/current-system/sw/bin/direnv exec . /run/current-system/sw/bin/codex exec --dangerously-bypass-approvals-and-sandbox -- \"\$1\"" \
         abox-codex \
