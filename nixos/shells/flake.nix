@@ -96,6 +96,22 @@
     in {
       devShells = with pkgs; {
         rust_stable = makeBasicRustShell rust_stable;
+        srs = mkShellWithAliases {
+          buildInputs = [
+            pkg-config
+            rust_stable
+            clang
+            mold
+            alsa-lib
+            webkitgtk_4_1
+            gtk3
+            libsoup_3
+            openssl
+            xdotool
+            libappindicator-gtk3
+            librsvg
+          ];
+        };
         rust_nightly = makeBasicRustShell rust_nightly;
         rust_wasm = makeBasicRustShell rust_wasm;
         scanner = makeScannerShell rust_stable;
