@@ -13,9 +13,6 @@ in {
     mold
 
     # Programming languages
-    uv
-    ruff
-    # python312Packages.python-lsp-server # temporarily didn't work
     nil # language server for nix
     elan
     rustup # nice to have sometimes for release building etc, although i use shells for this
@@ -34,7 +31,6 @@ in {
     nomacs
     zoom-us
     numbat
-    (python3.withPackages (ps: [ps.pyyaml ps.telethon])) # I sometimes want a REPL, so having this always there is nice
     obsidian
     hotspot
     anki

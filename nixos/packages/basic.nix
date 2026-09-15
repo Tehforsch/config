@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # Developer stuff
     zsh
@@ -34,6 +33,12 @@
     sysz
     hurl # Temporary
     shellcheck
+
+    # Python
+    uv
+    ruff
+    # python312Packages.python-lsp-server # temporarily didn't work
+    (python3.withPackages (ps: [ps.pyyaml ps.telethon])) # I sometimes want a REPL, so having this always there is nice
   ];
 
   programs.direnv.enable = true;
