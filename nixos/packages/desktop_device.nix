@@ -44,7 +44,7 @@ in {
     sqlite
     alejandra # nix formatter
     prettier
-    lean4
+    # lean4 # temporarily disabled, broken on nightly nixpkgs?
     codex
     zsh-patina
     zulip
