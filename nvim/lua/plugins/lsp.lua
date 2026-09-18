@@ -305,6 +305,7 @@ return {
 				},
 			},
 		}
+		rust_analyzer_config = require("config.rust_analyzer")(rust_analyzer_config)
 		vim.lsp.config.rust_analyzer = rust_analyzer_config
 		vim.lsp.enable("rust_analyzer")
 
