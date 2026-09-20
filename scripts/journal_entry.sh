@@ -16,8 +16,7 @@ if [ $# -eq 0 ]; then
     days_checked=0
     
     while [ $days_checked -lt 30 ]; do
-        folder=$JOURNAL_PATH/$current_date
-        entry=$folder/entry.md
+        entry=$JOURNAL_PATH/$current_date.md
         
         # Check if entry doesn't exist or is empty (only whitespace)
         if [ ! -f "$entry" ] || [ ! -s "$entry" ] || [ -z "$(tr -d '[:space:]' < "$entry")" ]; then
@@ -27,7 +26,7 @@ if [ $# -eq 0 ]; then
             
             # Show previous day's entry as reference
             prev_date=$(date -d "$current_date - 1 day" +%Y-%m-%d)
-            prev_entry=$JOURNAL_PATH/$prev_date/entry.md
+            prev_entry=$JOURNAL_PATH/$prev_date.md
             if [ -f "$prev_entry" ] && [ -s "$prev_entry" ]; then
                 echo ""
                 echo "Previous day ($prev_date):"
@@ -54,7 +53,7 @@ fi
 date=$(date --date="$@" +%Y-%m-%d)
 
 folder=$JOURNAL_PATH/$date
-entry=$folder/entry.md
+entry=$JOURNAL_PATH/$date.md
 pics=$folder/pics
 
 mkdir -p $folder
@@ -63,4 +62,3 @@ if [  ! -f $entry ]; then
 fi
 mkdir -p $pics
 $scripts/open_vim_in_kitty.sh $entry
-
