@@ -3,6 +3,7 @@
   "compily": "use flake ~/projects/config/nixos/shells#rust_stable\n",
   "config": "",
   "journal": "use flake ~/projects/config/nixos/shells#rust_stable\n",
+  "lang": "use flake ~/projects/config/nixos/shells#rust_stable\n",
   "molt": "use flake ~/projects/config/nixos/shells#molt\n",
   "mpd_rofi": "use flake ~/projects/config/nixos/shells#rust_stable\n",
   "music_selection": "use flake ~/projects/config/nixos/shells#rust_stable\n",
