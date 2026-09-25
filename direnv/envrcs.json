@@ -9,7 +9,7 @@
   "music_selection": "use flake ~/projects/config/nixos/shells#rust_stable\n",
   "openvas-scanner": "use flake ~/projects/config/nixos/shells#scanner\n",
   "rssy": "use flake ~/projects/config/nixos/shells#rust_stable\n",
-  "rust": "if nix flake show path:./src/tools/nix-dev-shell &> /dev/null; then\n  use flake path:./src/tools/nix-dev-shell\nfi\n\nrust_analyzer_out=\"$(nix build --no-link --print-out-paths --inputs-from path:./src/tools/nix-dev-shell nixpkgs#rust-analyzer)\"\nPATH_add \"$rust_analyzer_out/bin\"\n",
+  "rust": "if nix flake show path:./src/tools/nix-dev-shell &> /dev/null; then\n  use flake path:./src/tools/nix-dev-shell\nfi\n\nrust_analyzer_out=\"$(nix build --no-link --print-out-paths --inputs-from path:./src/tools/nix-dev-shell nixpkgs#rust-analyzer)\"\nPATH_add \"$rust_analyzer_out/bin\"\nPATH_add \"$HOME/projects/config/zsh/direnv_aliases/rust\"\n",
   "sokobrane": "use flake ~/projects/config/nixos/shells#bevy\n",
   "srs": "use flake ~/projects/config/nixos/shells#rust_stable\n",
   "torga": "use flake ~/projects/config/nixos/shells#rust_stable\n"

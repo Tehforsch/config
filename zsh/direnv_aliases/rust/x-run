@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_dir="$(jj root)"
+
+(
+  cd "$repo_dir"
+  x build
+)
+
+exec "$repo_dir/build/host/stage1/bin/rustc" "$@"
