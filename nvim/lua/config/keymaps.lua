@@ -1,6 +1,17 @@
 local keymap = vim.keymap.set
 local maximized_tabs = {}
 
+local function project_root()
+	return vim.fs.root(0, { ".jj", ".git" }) or vim.uv.cwd()
+end
+
+local function smart_find(root)
+	Snacks.picker.smart({
+		cwd = root,
+		filter = { cwd = root },
+	})
+end
+
 local function toggle_window_maximized()
 	local tabpage = vim.api.nvim_get_current_tabpage()
 	local restore = maximized_tabs[tabpage]
@@ -58,8 +69,8 @@ keymap("n", "<leader>s", ":w<CR>", { desc = "Save file" })
 keymap("n", "<leader>we", toggle_window_maximized, { desc = "Toggle maximized window" })
 keymap("n", "<leader>vr", restart_nvim, { desc = "Restart Neovim in place" })
 keymap("n", "<leader>ff", function()
-	Snacks.picker.files()
-end, { desc = "Find file" })
+	smart_find(project_root())
+end, { desc = "Smart find file" })
 
 keymap("n", "<leader>bf", function()
 	Snacks.picker.buffers()
@@ -107,7 +118,7 @@ keymap("n", "<leader>pf", function()
 		confirm = function(picker, item)
 			picker:close()
 			vim.cmd.cd(item.value)
-			Snacks.picker.files()
+			smart_find(item.value)
 		end,
 	})
 end, { desc = "Switch project" })
