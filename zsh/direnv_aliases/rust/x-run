@@ -1,11 +1,43 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+rustc_log="${RUSTC_LOG-}"
+
+while (( $# > 0 )); do
+  case "$1" in
+    --warn|--info|--debug|--trace)
+      rustc_log="${1#--}"
+      shift
+      ;;
+    --warn=*|--info=*|--debug=*|--trace=*)
+      level="${1%%=*}"
+      target="${1#*=}"
+      if [[ -z "$target" ]]; then
+        echo "x-run: logging target must not be empty" >&2
+        exit 2
+      fi
+      rustc_log="$target=${level#--}"
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
 repo_dir="$(jj root)"
 
 (
   cd "$repo_dir"
-  x build
+  env -u RUSTC_LOG x build
 )
+
+if [[ -n "$rustc_log" ]]; then
+  export RUSTC_LOG="$rustc_log"
+fi
 
 exec "$repo_dir/build/host/stage1/bin/rustc" "$@"
