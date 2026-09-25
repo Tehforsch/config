@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    simple-mtpfs
+    go-mtpfs
   ];
 
   services.udev.extraRules = ''
