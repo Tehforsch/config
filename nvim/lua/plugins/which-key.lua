@@ -30,6 +30,7 @@ return {
 				{ "<leader>g", group = "git" },
 				{ "<leader>e", group = "editor" },
 				{ "<leader>u", group = "ui" },
+				{ "<leader>y", group = "hierarchy" },
 				{ "<localleader>", group = "local" },
 			})
 		end,
