@@ -1,6 +1,6 @@
 # Use fd for fzf
 export FZF_DEFAULT_COMMAND="fd --follow"
-export FZF_CTRL_T_COMMAND="fd --follow -I"
+export FZF_CTRL_T_COMMAND="fd --follow"
 
 source $CONFIG/zsh/fzf/completion.zsh
 source $CONFIG/zsh/fzf/key-bindings.zsh

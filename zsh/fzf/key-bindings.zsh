@@ -141,6 +141,37 @@ bindkey -M emacs '^S' fzf-jj-widget
 bindkey -M vicmd '^S' fzf-jj-widget
 bindkey -M viins '^S' fzf-jj-widget
 
+__fzf_jj_files() {
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local revision='@'
+  local files item
+
+  files=$(command jj --no-pager --color never diff --name-only -r "$revision" 2> /dev/null) || return $?
+  if [[ -z "$files" ]]; then
+    revision='@-'
+    files=$(command jj --no-pager --color never diff --name-only -r "$revision" 2> /dev/null) || return $?
+  fi
+  [[ -z "$files" ]] && return 0
+
+  print -r -- "$files" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --scheme=path --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-}" $(__fzfcmd) -m --prompt "$revision> " "$@" | while IFS= read -r item; do
+    echo -n "${(q)item} "
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+fzf-jj-file-widget() {
+  LBUFFER="${LBUFFER}$(__fzf_jj_files)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-jj-file-widget
+bindkey -M emacs '^B' fzf-jj-file-widget
+bindkey -M vicmd '^B' fzf-jj-file-widget
+bindkey -M viins '^B' fzf-jj-file-widget
+
 } always {
   eval $__fzf_key_bindings_options
   'unset' '__fzf_key_bindings_options'
