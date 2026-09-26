@@ -12,6 +12,12 @@ return {
 					hidden = true,
 					exclude = { "*.ogg", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.mp3", "*.wav", "*.flac", "*.svg" },
 				},
+				lsp_references = {
+					include_current = true,
+				},
+				lsp_implementations = {
+					include_current = true,
+				},
 				diagnostics = {
 					sort = {
 						fields = {
