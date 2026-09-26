@@ -66,11 +66,13 @@ return {
 			vim.keymap.set({ "x", "o" }, "ia", function() select("@parameter.inner", "textobjects") end)
 
 			vim.keymap.set({ "n", "x", "o" }, "]f", function() move.goto_next_start("@function.outer", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "gfn", function() move.goto_next_start("@function.outer", "textobjects") end, { desc = "Next function" })
 			vim.keymap.set({ "n", "x", "o" }, "]c", function() move.goto_next_start("@class.outer", "textobjects") end)
 			vim.keymap.set({ "n", "x", "o" }, "L", function() move.goto_next_start("@parameter.inner", "textobjects") end)
 			vim.keymap.set({ "n", "x", "o" }, "]F", function() move.goto_next_end("@function.outer", "textobjects") end)
 			vim.keymap.set({ "n", "x", "o" }, "]C", function() move.goto_next_end("@class.outer", "textobjects") end)
 			vim.keymap.set({ "n", "x", "o" }, "[f", function() move.goto_previous_start("@function.outer", "textobjects") end)
+			vim.keymap.set({ "n", "x", "o" }, "gfp", function() move.goto_previous_start("@function.outer", "textobjects") end, { desc = "Previous function" })
 			vim.keymap.set({ "n", "x", "o" }, "[c", function() move.goto_previous_start("@class.outer", "textobjects") end)
 			vim.keymap.set({ "n", "x", "o" }, "H", function() move.goto_previous_start("@parameter.inner", "textobjects") end)
 			vim.keymap.set({ "n", "x", "o" }, "[F", function() move.goto_previous_end("@function.outer", "textobjects") end)
