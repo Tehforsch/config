@@ -26,6 +26,7 @@ return {
 
 			wk.add({
 				{ "<leader>f", group = "file" },
+				{ "<leader>j", group = "jumps" },
 				{ "<leader>p", group = "project" },
 				{ "<leader>g", group = "git" },
 				{ "<leader>e", group = "editor" },
